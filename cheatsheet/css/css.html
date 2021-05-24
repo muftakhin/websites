@@ -1,0 +1,3610 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>CSS</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+        .main-header,
+        .menu,
+        .menu__item,
+        .section__header,
+        .button {
+            background-color: steelblue;
+        }
+        .button:hover {
+            color: steelblue;
+        }
+        .button {
+            border-color: steelblue;
+        }
+        .menu__item:hover {
+            background-color: #56a3e2;
+        }
+
+        table p,
+        table li {
+            text-align: left;
+        }
+
+        .lists-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin: 4px 8px;
+        }
+        .list {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 4px;
+            list-style-type: none;
+        }
+        .list__header {
+            margin: 4px 0px;
+            padding: 4px 8px;
+            font-size: 16px;
+            text-align: center;
+            color: white;
+            background-color: grey;
+        }
+        .list__item {
+            margin: 2px;
+            font-size: 16px;
+            font-family: monospace;
+            list-style-type: none;
+        }
+        @media all and (min-width: 1080px) {
+
+            .lists-wrapper {
+                margin: 16px 32px;
+            }
+
+            .list {
+                margin-bottom: 16px;
+            }
+
+            .list__header {
+                margin: 8px 0px;
+                padding: 8px 16px;
+                font-size: 20px;
+            }
+
+            .list__item {
+                margin: 4px;
+                font-size: 20px;
+            }
+        }
+
+    </style>
+</head>
+
+<body id="top" class="page">
+    <div class="main-wrapper">
+        <header class="main-header">
+            <div class="button button_left">
+                &equiv;
+            </div>
+
+            <a href="../index.html">
+                <div class="button button_home">
+                    &uArr;
+                </div>
+            </a>
+
+            <h1 class="main-header__title">
+                CSS
+            </h1>
+
+            <a href="../index.html">
+                <div class="button button_prev">
+                    &lArr;
+                </div>
+            </a>
+
+            <div class="button button_right">
+                &equiv;
+            </div>
+        </header>
+
+        <aside class="menu menu_left menu_2-col">
+            <header class="menu__header">
+                <div class="button button_left-close">
+                    X
+                </div>
+            </header>
+
+            <ul class="menu__list">
+                <li><a href="#top"><div class="menu__item">Наверх</div></a></li>
+                <li><a href="#selectors"><div class="menu__item">Селекторы</div></a></li>
+                <li><a href="#format"><div class="menu__item">Форматирование текста</div></a></li>
+                <li><a href="#table"><div class="menu__item">Форматирование таблиц</div></a></li>
+                <li><a href="#color_bg"><div class="menu__item">Цвета и фон</div></a></li>
+                <li><a href="#block_model"><div class="menu__item">Блочная модель</div></a></li>
+                <li><a href="#table_layout"><div class="menu__item">Табличное представление</div></a></li>
+                <li><a href="#float"><div class="menu__item">Float</div></a></li>
+                <li><a href="#position"><div class="menu__item">Позиционирование</div></a></li>
+                <li><a href="#flex"><div class="menu__item">Flex</div></a></li>
+                <li><a href="#grid"><div class="menu__item">Grid</div></a></li>
+                <li><a href="#animation"><div class="menu__item menu__item_triple">Переходы,<br>Преобразования<br>и Анимация</div></a></li>
+                <li><a href="#media"><div class="menu__item">Медиазапросы</div></a></li>
+                <li><a href="#column"><div class="menu__item">Column</div></a></li>
+                <li><a href="#svg"><div class="menu__item">SVG</div></a></li>
+                <li><a href="#other"><div class="menu__item">Другое</div></a></li>
+            </ul>
+        </aside>
+
+        <nav class="menu menu_right">
+            <header class="menu__header">
+                <div class="button button_right-close">
+                    X
+                </div>
+            </header>
+
+            <ul class="menu__list">
+                <li><a href="less/less.html"><div class="menu__item">LESS</div></a></li>
+                <li><a href="scss/scss.html"><div class="menu__item">SCSS</div></a></li>
+            </ul>
+        </nav>
+
+<!-- Link -->
+        <section id="css" class="section">
+            <h2 class="section__header">Виды CSS</h2>
+
+            <pre class="screen screen_pre">
+селектор {
+    свойство: значение;
+}</pre>
+            <p class="text">
+                <strong>свойство: значение; </strong>- объявление<br>
+                <strong>{ } </strong> - блок объявлений<br>
+                <strong>селектор { ... }</strong> - набор правил
+            </p>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Встроенные (inline) стили</h3>
+
+                <pre class="screen screen_post">
+&lt;p style="font-size: 20px"&gt; Текст &lt;&frasl;p&gt;</pre>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Внутренние таблицы стилей</h3>
+
+                <pre class="screen screen_post">
+&lt;head&gt;
+    ...
+    &lt;style&gt;
+        p {
+            font-size: 20px;
+        }
+    &lt;&frasl;style&gt;
+    ...
+&lt;&frasl;head&gt;</pre>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Внешние таблицы стилей</h3>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Использованием элемента link</h4>
+
+                    <pre class="screen screen_post">
+&lt;head&gt;
+    ...
+    &lt;link rel="stylesheet" href="style.css"&gt;
+    ...
+&lt;&frasl;head&gt;</pre>
+                    <p class="text">
+                        &bull; Подключать внешние стили желательно выше в документе<br>
+                        &bull; При использовании нескольких таблиц стилей при помощи элемента <strong>&lt;link&gt;</strong>, внутри элемента <strong>&lt;head&gt;</strong> помещают отдельный элемент <strong>&lt;link&gt;</strong> для каждой таблицы стилей<br>
+                        &bull; Если более одного правила применяются к одному и тому же элементу, то указанный
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Импортирование</h4>
+
+                    <pre class="screen screen_post">
+@import url("styles&frasl;style.css");</pre>
+                    <p class="text">
+                        &bull; <strong>@import</strong> Добавляется во внешний файл <strong>.css</strong> либо в элемент <strong>style</strong><br>
+                        &bull; При использовании правила <strong>@import</strong> в таблице стилей, его необходимо помещать перед всеми остальными правилами
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Модульные таблицы стилей</h4>
+
+                    <pre class="screen screen_post">
+&frasl;* настройки форматирования текста *&frasl;
+@import url("type.css")
+&frasl;* обработка форм *&frasl;
+@import url("forms.css")
+&frasl;* навигация *&frasl;
+@import url("list-nav.css")
+&frasl;* конкретные стили *&frasl;
+body {background: orange;}
+...</pre>
+                    <p class="text">
+                        Указываются перед правилами, которые используют селекторы
+                    </p>
+                </div>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Принципы каскадирования правил</h3>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Исхдный порядок</h4>
+
+                    <p class="text">
+                        Приоритет получает правило, которое ниже в списке. Ибо позже интерпритируется. Это же относится и к наследуемым свойствам, тот, что ближе к элементу более приоритетен
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Специфичность</h4>
+
+                    <p class="text">
+                        Приоритет получает более специфичный селектор:<br>
+                        &nbsp; <strong>tag</strong> = <strong>1</strong><br>
+                        &nbsp; <strong>class</strong> = <strong>10</strong><br>
+                        &nbsp; <strong>id</strong> = <strong>100</strong><br>
+                        &nbsp; <strong>inline</strong> = <strong>1000</strong>
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Источник</h4>
+
+                    <p class="text">
+                        &bull; Правило с <strong>!important</strong> после значения любого свойства важнее любого другого<br>
+                        &bull; Авторское правило важнее пользовательского<br>
+                        &bull; Пользовательсое правило важнее правила браузера
+                    </p>
+                </div>
+                <p class="text">
+                    Сокращённые записи свойств могут незаметно переопределять свойства
+                </p>
+            </div>
+        </section>
+
+<!-- Селекторы -->
+        <section id="selectors" class="section">
+            <h2 class="section__header">Селекторы</h2>
+
+            <div class="nsection__item">
+
+                <h4 class="sub2section__header">Универсальный селектор</h4>
+
+                <pre class="screen screen_pre">
+*</pre>
+                <p class="text">
+                    Применяется ко всем элементам в документе
+                </p>
+            </div>
+
+            <div class="nsection__item">
+                <h4 class="sub2section__header">Селектор элемента (тега &frasl; типа)</h4>
+
+                <pre class="screen screen_pre">
+element</pre>
+                <p class="text">
+                    Соответствует имени элемента
+                </p>
+            </div>
+
+            <div class="nsection__item">
+                <h4 class="sub2section__header">Сгруппированные селекторы</h4>
+
+                <pre class="screen screen_pre">
+element_1, element_2, ..., element_n</pre>
+            </div>
+
+            <div class="nsection__item">
+                <h4 class="sub2section__header">Дочерний селектор</h4>
+
+                <pre class="screen screen_pre">
+parent_element&gt;child_element</pre>
+                <p class="text">
+                    Соответсвует элементу, являющемуся прямым потомком другого элемента (дочернему элементу)
+                </p>
+            </div>
+
+            <div class="nsection__item">
+                <h4 class="sub2section__header">Селектор потомка</h4>
+
+                <pre class="screen screen_pre">
+element_1 element_2</pre>
+                <p class="text">
+                    Соответствует элементу, являющемуся потомком (не обязательно прямым) другого элемента (потомку любого уровня вложенности)
+                </p>
+            </div>
+
+            <div class="nsection__item">
+                <h4 class="sub2section__header">Селектор соседнего элемента</h4>
+
+                <pre class="screen screen_pre">
+element_1 + element_2</pre>
+            </div>
+
+            <div class="nsection__item">
+                <h4 class="sub2section__header">Селектор родственного элемента</h4>
+
+                <pre class="screen screen_pre">
+element_1 ~ element_2</pre>
+            </div>
+
+            <div class="nsection__item">
+                <h4 class="sub2section__header">Селектор идентификатора</h4>
+
+                <pre class="screen screen_pre">
+#Name</pre>
+            </div>
+
+            <div class="nsection__item">
+                <h4 class="sub2section__header">Селектор класса</h4>
+
+                <pre class="screen screen_pre">
+.ClassName</pre>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Селекторы псевдокласса</h3>
+
+                <p class="text">
+                    Псевдоклассы ведут себя как дополнительные значения атрибута <strong>class=""</strong> к которым можно применять различные стили
+                </p>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Якорные псевдоклассы</h4>
+
+                    <p class="text">
+                        Псевдоклассы <strong>:link</strong> и <strong>:visited</strong> позволяют применять различные стили к ещё не посещённым и посещённым ссылкам
+                    </p>
+                    <pre class="screen screen_pre">
+:link
+:visited</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Псевдоклассы действий пользователя</h4>
+
+                    <p class="text">
+                        Позволяют изменять внешний вид элементов в ответ на действия пользователя
+                    </p>
+                    <pre class="screen screen_pre">
+:focus
+:hover
+:active</pre>
+                    <pre class="screen screen_pre">
+element_1:hover element_2 {
+    ...: ...;
+}</pre>
+                    <p class="text">
+                        Применится к <strong> element_2 </strong> при наведении на <strong> element_1 </strong>
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Дочерний селектор</h4>
+
+                    <pre class="screen screen_pre">
+:first-child
+:last-child
+:only-child</pre>
+                    <p class="text">
+                        <strong>:first-child</strong> - первый<br>
+                        <strong>:last-child</strong> - последний<br>
+                        <strong>:only-child</strong> - единственный
+                    </p>
+                    <pre class="screen screen_pre">
+:nth-child(...)
+           odd  - нечётные
+           even - чётные
+           2n
+           2n+1
+           число
+           ...</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Дочерний селектор по типам</h4>
+
+                    <pre class="screen screen_pre">
+:first-of-type
+:last-of-type
+:nth-of-type</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Селектор пустого элемента</h4>
+
+                    <pre class="screen screen_pre">
+:empty</pre>
+                    <pre class="screen screen_post">
+.item:empty {
+    display: none;
+}</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Селекторы ещё</h4>
+
+                    <pre class="screen screen_pre">
+:target
+:enabled
+:disabled</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Селектор отрицания</h4>
+
+                    <pre class="screen screen_pre">
+selector_1:not(selector_2)</pre>
+                    <p class="text">
+                        - для всех элементов <strong>selector_1</strong>, кроме элемента <strong>selector_2</strong>
+                    </p>
+                    <pre class="screen screen_post">
+ul:hover li:not(:hover)</pre>
+                </div>
+
+                <h3 class="subsection__header">Селекторы :: псевдоэлементов</h3>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Первая строка или буква</h4>
+
+                    <p class="text">
+                        Псевдоэлементы действуют как дополнительный элемент в коде. При использовании псевдоэлементов <strong>:first-line</strong> и <strong>:first-letter</strong> вокруг первой строки текста или первой буквы как-будто создаётся дополнительный элемент, к которому можно применять собственные стили
+                    </p>
+                    <pre class="screen screen_pre">
+::first-line {
+        color:
+        font:
+        background:
+        word-spacing:
+        letter-spacing:
+        text-decoration:
+        vertical-align:
+        text-transform:
+        line-height:
+}
+
+::first-letter {
+        color:
+        font:
+        background:
+        word-spacing:
+        letter-spacing:
+        text-decoration:
+        text-transform:
+        vertical-align:
+        padding:
+        margin:
+        line-height:
+        border:
+        float:
+}</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Генерируемый контент</h4>
+
+                    <pre class="screen screen_pre">
+::before {
+        content: "...";
+}
+
+::after {
+        content: "...";
+}</pre>
+                    <p class="text">
+                        Псевдоэлемент по умолчанию <strong>display: inline;</strong>, ему можно задать <strong>display: block;</strong> с <strong>content: "";</strong> и он станет вести себя как полноценный блок
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Выделенный контент</h4>
+
+                    <pre class="screen screen_pre">
+::selection {
+        color: "...";
+        background-color: "...";
+}</pre>
+                    <p class="text">
+                        Можно изменить лишь свойства <strong>color:</strong> и <strong>background-color:</strong>
+                    </p>
+                </div>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Селекторы атрибутов</h3>
+
+                <div class="nsection__item">
+                    <div class="tag-header">
+                        <div class="tag-header__element">[ ]</div>
+                        <span class="tag-header__description">Селектор простых атрибутов (существования атрибута)</span>
+                    </div>
+
+                    <p class="text">
+                        Соответствует конкретному атрибуту независимо от его значения
+                    </p>
+                    <pre class="screen screen_pre">
+элемент[атрибут]</pre>
+                    <pre class="screen screen_post">
+img[title] {border: 3px solid;}</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <div class="tag-header">
+                        <div class="tag-header__element">[ = ]</div>
+                        <span class="tag-header__description">Селектор точного значения атрибута (равенства атрибута)</span>
+                    </div>
+
+                    <p class="text">
+                        Соответствует конкретному атрибуту с конкретным значением
+                    </p>
+                    <pre class="screen screen_pre">
+элемент[атрибут="точное значение"]</pre>
+                    <pre class="screen screen_post">
+img[title="first grade" {border: 3px solid;}</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <div class="tag-header">
+                        <div class="tag-header__element">[ ~= ]</div>
+                        <span class="tag-header__description">Селектор неполного значения атрибута (атрибута с пробелами)</span>
+                    </div>
+
+                    <p class="text">
+                        Сответствует конкретному атрибуту, чьё значение присутствует в списке слов, разделённых пробелами (позволяет задать часть значения атрибута отделённую пробелами)
+                    </p>
+                    <pre class="screen screen_pre">
+элемент[атрибут~="часть значения отделённая пробелами"]</pre>
+                    <pre class="screen screen_post">
+img[title~="grade"] {border: 3px solid;}</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <div class="tag-header">
+                        <div class="tag-header__element">[ |= ]</div>
+                        <span class="tag-header__description">Селектор разделённого дефисом значения атрибута</span>
+                    </div>
+
+                    <p class="text">
+                        Позволяет задать часть значения атрибута, отделённую дефисами
+                    </p>
+                    <pre class="screen screen_pre">
+элемент[атрибут|="часть-значения-отделённая-дефисами"]</pre>
+                    <pre class="screen screen_post">
+*[hreflang|="en"] {border: 3px solid;}</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <div class="tag-header">
+                        <div class="tag-header__element">[ ^= ]</div>
+                        <span class="tag-header__description">Селектор начала значения атрибута (префикса атрибута)</span>
+                    </div>
+
+                    <p class="text">
+                        Соответствует конкретному атрибуту, чьё значение начинается с конкретной строки
+                    </p>
+                    <pre class="screen screen_pre">
+элемент[атрибут^="первая часть значения"]</pre>
+                    <pre class="screen screen_post">
+img[src^="/images/icons"] {border: 3px solid;}</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <div class="tag-header">
+                        <div class="tag-header__element">[ $= ]</div>
+                        <span class="tag-header__description">Селектор конца значения атрибута (суффикса атрибута)</span>
+                    </div>
+
+                    <p class="text">
+                        Соответствует конкретному атрибуту, чьё значение заканчивается конкретной строкой
+                    </p>
+                    <pre class="screen screen_pre">
+элемент[атрибут$="последняя часть значения"]</pre>
+                    <pre class="screen screen_post">
+a[href$=".pdf"] {border: 3px solid;}</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <div class="tag-header">
+                        <div class="tag-header__element">[ *= ]</div>
+                        <span class="tag-header__description">Селектор части значения в любом месте атрибута (подстроки атрибута)</span>
+                    </div>
+
+                    <p class="text">
+                        Соответствует конкретному атрибуту, чьё значение содержит конкретную подстроку
+                    </p>
+                    <pre class="screen screen_pre">
+элемент[атрибут*="любая часть значения"]</pre>
+                </div>
+            </div>
+        </section>
+<!-- Форматирование текста -->
+        <section id="format" class="section">
+            <h2 class="section__header">Форматирование текста</h2>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Свойство шрифта</h3>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Семейство шрифтов (Гарнитура шрифта)</h4>
+
+                    <p class="text">
+                        &bull; Свойство <strong>font-family</strong> даёт возможность задать список предпочтительных шрифтов<br>
+                        &bull; Если имя шрифта состоит не из одного слова, то его указываем в двойных кавычках<br>
+                        &bull; В конце списка всегда указываем название семейства шрифтов(serif, sans-serif, cursive или monospace)<br>
+                        &bull; Вместо названия семейства шрифтов браузер будет применять тот шрифт, который определён им как используемый по умолчанию для указанного семейства шрифтов
+                    </p>
+                    <pre class="screen screen_post">
+font-family: "Trebuchet MS", Verdana, sans-serif;</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Размер шрифта</h4>
+
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">Конкретным размером</h5>
+
+                        <pre class="screen screen_pre">
+font-size: ...px;
+         - ...em;
+         - ...ex;
+         - ...rem;</pre>
+                        <p class="text">
+                            <strong> em </strong>- размер относительно наследуемого шрифта<br>
+                            <strong> rem </strong>- размер относительно шрифта в корневом элементе (<strong>&lt;html&gt;</strong>)
+                        </p>
+                    </div>
+
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">Процентным значением</h5>
+
+                        <pre class="screen screen_pre">
+font-size: ...%;</pre>
+                    </div>
+
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">Используя абсолютное зарезервированное слово</h5>
+
+                        <pre class="screen screen_pre">
+font-size: xx-small;
+         - x-small;
+         - small;
+         - medium;
+         - large;
+         - x-large;
+         - xx-large;</pre>
+                    </div>
+
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">Используя относительное (сравнительное) зарезервированное слово</h5>
+
+                        <pre class="screen screen_pre">
+font-size: larger;
+         - smaller;</pre>
+                    </div>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Дополнительный шрифты</h4>
+
+                    <p class="text">
+                        Свойство <strong>@font-face</strong> позволяет использовать шрифт, даже если он не установлен на компьютере пользователя, предоставляя путь к файлу шрифта
+                    </p>
+                    <pre class="screen screen_pre">
+@font-face {
+    font-family: "name";
+    src: url{".../..."};
+}</pre>
+                    <p class="text">
+                        <strong>font-family:</strong> присваивает шрифту имя <strong>name</strong>
+                    </p>
+                    <pre class="screen screen_post">
+@font-face {
+    font-family: "ChunkFiveRegular";
+    src: url{"fonts/chunkfive.eot"};
+}
+h1, h2 {
+    font-family: ChunkFiveRegular, Georgia, serif;
+}</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Насыщенность шрифта</h4>
+
+                    <pre class="screen screen_pre">
+font-weight: normal;
+           - bold;
+           - bolder;
+           - lighter;
+           - 100;
+           - 200;
+           - 300;
+           - 400;
+           - 500;
+           - 600;
+           - 700;
+           - 800;
+           - 900;
+           - inherit;</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Начертание шрифта</h4>
+
+                    <pre class="screen screen_pre">
+font-style: normal;
+          - italic;
+          - oblique;
+          - inherit;</pre>
+                    <p class="text">
+                        <strong>oblique</strong> - наклонный шрифт
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Капитель</h4>
+
+                    <pre class="screen screen_pre">
+font-variant: normal;
+            - small-caps;
+            - inherit</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Сокращённая запись</h4>
+
+                    <pre class="screen screen_pre">
+font: font-style font-weight font-variant font-size/line-height font-family;</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Цвет текста</h4>
+
+                    <pre class="screen screen_post">
+h1 { color: black; }
+h1 { color: #000000; }
+h1 { color: #000; }
+h1 { color: rgb(0,0,0); }</pre>
+                </div>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Выравнивание строк текста</h3>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Интерлиньяж</h4>
+
+                    <p class="text">
+                        Интерлиньяж - минимальное (ибо рисунок в строке его увеличит) расстояние между базовыми линиями строк текста.<br>
+                        Базовая линия - воображаемая линия, на которой располагаются нижние части символов.
+                    </p>
+                    <pre class="screen screen_pre">
+line-height: число (масштабный множитель на текущий размер;
+           - ...em;
+           - ...%;
+           - normal;
+           - inherit;</pre>
+                    <p class="text">
+                        Можно воспользоваться свойством <strong>line-height</strong>, чтобы выровнять текст по средней линии блока:
+                    </p>
+                    <pre class="screen screen_post">
+text-align: center;
+line-height: (высота блока);</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Красная строка</h4>
+
+                    <pre class="screen screen_pre">
+text-indent: ...px;
+           - ...em; ()
+           - ...% (на основе ширины родительского элемента);</pre>
+                    <p class="text">
+                        Применяется к блочным элементам и ячейкам таблицы <br>
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Горизонтальное выравнивание</h4>
+
+                    <pre class="screen screen_pre">
+text-align: left;
+          - right;
+          - center;
+          - justify;
+          - inherit;</pre>
+                    <p class="text">
+                        <strong>justify</strong>  определяет, что каждая строка абзаца, кроме последней, должна занимать всю ширину текстового поля.<br>
+                        Применяется к блочным элементам и ячейкам таблицы <br>
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Вертикальное выравнивание</h4>
+
+                    <pre class="screen screen_pre">
+vertical-align: baseline;
+              - sub;
+              - super;
+              - top;
+              - text-top;
+              - middle;
+              - bottom;
+              - text-bottom;
+              - px;
+              - em;
+              - %;</pre>
+                    <p class="text">
+                        <strong>vertical-align</strong> выравнивает только <strong>inline</strong>-элементы и содержимое ячеек таблицы
+                    </p>
+                </div>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Декоративные эффекты</h3>
+
+                <pre class="screen screen_pre">
+text-decoration: none;
+               - underline;
+               - overline;
+               - line-throught;
+               - blink (мерцание);
+               - inherit;</pre>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Изменение регистра</h3>
+
+                <pre class="screen screen_pre">
+text-transform: none;
+              - capitalize (первая буква каждого слова заглавная);
+              - lowercase;
+              - uppercase;
+              - inherit;</pre>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Интервал между знаками (кернинг) и интервал между словами</h3>
+
+                <pre class="screen screen_pre">
+letter-spacing:                 - между знаками
+
+word-spacing: значение длины;   - между словами
+            - normal;
+            - inherit;</pre>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Обработка пробелов между словами и переносы строк внутри элемента</h3>
+
+                <pre class="screen screen_pre">
+white-space: normal;     (default)
+           - nowrap;
+           - pre;
+           - pre-wrap;
+           - pre-line;
+           - break-spaces;
+           - initial;
+           - inherit;</pre>
+                <p class="text">
+                    <strong>nowrap</strong> - отмена переносов, кроме <strong>&lt;br&gt;</strong><br>
+                    <strong>pre-wrap</strong> - сохранение пробелов, делая разрыв строк, где необходимо<br>
+                    <strong>pre-line</strong> - удаление лишних пробелов, за исключением случая с <strong>&lt;br&gt;</strong>
+                </p>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Тень текста</h3>
+
+                <pre class="screen screen_pre">
+text-shadow: "смещение по горизонтали" "смещение по вертикали" "радиус размытия" "цвет";</pre>
+                <p class="text">
+                    &bull; Если размытие не требуется его можно опустить<br>
+                    &bull; Можно применить несколько теней, через запятую
+                </p>
+                <pre class="screen screen_post">
+text-shadow: .2em .2em .15em silver;
+text-shadow: 8px 8px black;
+text-shadow: .2em .2em .15em silver, 8px 8px 16px black;</pre>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Изменение маркеров и нумерации списков</h3>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Выбор маркера</h4>
+
+                    <p class="text">
+                        Маркеры находятся по умолчанию вне элемента <strong>&lt;li&gt;</strong>, слева, в <strong>padding-left:</strong> элемента <strong>&lt;ul&gt;</strong>
+                    </p>
+                    <pre class="screen screen_pre">
+list-style-type: none;
+               - disc;        (default)
+               - circle;
+               - square;
+               - decimal;
+               - decimal-leading-zero;
+               - lower-alpha;
+               - upper-alpha;
+               - lower-latin;
+               - upper-latin;
+               - lower-roman;
+               - upper-roman;
+               - lower-greek;
+               - upper-greek;
+               - inherit;</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Положение маркера</h4>
+
+                    <pre class="screen screen_pre">
+list-style-position: inside;
+                   - outside;
+                   - inherit;
+                   - handing;</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Создание пользовательских маркеров</h4>
+
+                    <pre class="screen screen_post">
+list-style-image: url('images/pic.gif');
+                - none;
+                - inherit;</pre>
+                </div>
+            </div>
+        </section>
+<!-- Таблицы -->
+        <section id="table" class="section">
+            <h2 class="section__header">Форматирование таблиц</h2>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Расположение заголовка</h3>
+
+                <pre class="screen screen_pre">
+caption-side: top;     (default)
+            - bottom;
+            - initial;
+            - inherit;</pre>
+                <p class="text">
+                    <strong>iniial</strong> устанавливает значение по умолчанию
+                </p>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Промежуток между ячейками</h3>
+
+                <pre class="screen screen_pre">
+border-collapse: separate;
+               - collapse;
+               - initial;
+               - inherit;</pre>
+                <pre class="screen screen_pre">
+border-spacing: расстояние;
+              - "расстояние по X" "расстояние по Y";
+              - initial;
+              - inherit;</pre>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Видимость пустых ячеек</h3>
+
+                <pre class="screen screen_pre">
+empty-cells: show;
+           - hide;
+           - initial;
+           - inherit;</pre>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Компоновка макета</h3>
+
+                <pre class="screen screen_pre">
+table-layout: auto;
+            - fixed;
+            - initial;
+            - inherit;</pre>
+            </div>
+        </section>
+
+<!-- Цвета и фон -->
+        <section id="color_bg" class="section">
+            <h2 class="section__header">Цвета и фон</h2>
+
+            <pre class="screen screen_pre">
+    RGB:
+
+color: rgb(255, 255, 255);
+     - rgb(100%, 100%, 100%);
+     - #FFFFFF;
+     - #FFF;
+
+    RGBa:
+
+color: rgba(0, 0, 0, .5);</pre>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Основной цвет</h3>
+
+                <pre class="screen screen_pre">
+color: значение (имя/число);
+     - inherit;</pre>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Фоновый цвет</h3>
+
+                <pre class="screen screen_pre">
+background-color: значение (имя/число);
+                - transparent;          (default)
+                - inherit;</pre>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Непрозрачность</h3>
+
+                <pre class="screen screen_pre">
+opacity: число от 0 до 1;        (по умолчанию - 1)</pre>
+                <p class="text">
+                    <strong>0</strong> - прозрачный<br>
+                    <strong>1</strong> - не прозрачный<br>
+                            Наследуется и не изменяется во вложенных элементах
+                </p>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Фоновые изображения</h3>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Добавление фонового изображения</h4>
+
+                    <pre class="screen screen_pre">
+background-image: url(images/image.gif);
+                - none;                  (default)
+                - inherit;</pre>
+                    <p class="text">
+                        &bull; Если не задан <strong>padding:</strong>, фон заходит под <strong>border:</strong><br>
+                        &bull; Если задать вместе <strong>background-color:</strong> и <strong>background-image:</strong>,изображение будет помещено поверх цвета
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Управление мозаичным покрытием фона</h4>
+
+                    <pre class="screen screen_pre">
+background-repeat: repeat;   (default)
+                 - repeat-x;
+                 - repeat-y;
+                 - no-repeat;
+                 - inherit;</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Положение фона</h4>
+
+                    <pre class="screen screen_pre">
+background-position: "значение_X" "значение_Y";      (default: 0% 0% /(left top))
+                   - left;
+                   - center;
+                   - right;
+                   - top;
+                   - bottom;
+                   - inherit;
+                   - top left;
+                   - top center;
+                   - top right;
+                   - left center;
+                   - center center;
+                   - right center;
+                   - bottom left;
+                   - bottom center;
+                   - bottom right;
+                   - "направление" "значение"</pre>
+                   <p class="text">
+                       По умолчанию <strong>background-position</strong> отсчитывается от <strong>padding-box</strong>, чтобы <strong>border</strong> не закрывал собой фоновое изображение
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Позиционирование фона</h4>
+
+                    <pre class="screen screen_pre">
+background-origin: content-box;
+                 - padding-box;  (default)
+                 - border-box;
+</pre>
+                    <p class="text">
+                        Можно задавать через запятую несколько систем отсчёта (для разных фоновых изображений)
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Фиксация фона</h4>
+
+                    <pre class="screen screen_pre">
+background-attachment: scroll;   (default)
+                     - fixed;
+                     - inherit;
+                     - local; (перемещение внутри элемента)</pre>
+                </div>
+            </div>
+
+            <div class="nsection__item">
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Размер фонового изображения</h4>
+
+                    <pre class="screen screen_pre">
+background-size: auto;   (default)
+               - ширина высота;
+               - %;
+               - cover;
+               - contain;
+               - initial;
+               - inherit;</pre>
+                    <p class="text">
+                        <strong>auto</strong> - естественный размер элемента<br>
+                        <strong>cover</strong> - заполняет, сохраняя соотношение сторон<br>
+                        <strong>contain</strong> - вписывает, сохраняя соотношение сторон
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">background-clip</h4>
+
+                    <pre class="screen screen_pre">
+background-clip: border-box;     (default)
+               - padding-box;
+               - content-box;</pre>
+
+                    <p class="text">
+                            <strong>border-box</strong> - фон обрезается внешней границей рамки<br>
+                            <strong>padding-box</strong> - фон обрезаеится внешней границей padding (внутренней границей border)<br>
+                            <strong>content-box</strong> - фон обрезается границей контента
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Сокращённое свойство фона</h4>
+
+                    <pre class="screen screen_pre">
+background: background-color background-image/url(images/image.gif)
+            background-repeat background-attachment background-position
+            background-size;
+          - inherit;</pre>
+                    <p class="text">
+                        порядок значений не важен
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Множественные фоновые изображения</h4>
+
+                    <pre class="screen screen_pre">
+background-image: url(image_1.png), url(image_2.png), url(image_3.png);
+background-position: left top, center center, right bottom;
+background-repeat: no-repeat; no-repeat; no-repeat;
+
+background:
+    url(image1.png) left top no-repeat,
+    url(image2.png) center center no-repeat,
+    url(image3.png) right bottom no-repeat;</pre>
+                </div>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Градиенты</h3>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Линейные градиенты</h4>
+
+                    <pre class="screen screen_pre">
+linear-gradient(color_1, color_2);</pre>
+                    <p class="text">
+                        - простейший вариант
+                    </p>
+
+                    <pre class="screen screen_pre">
+linear-gradient(direction, color_1, color_2);
+
+direction = to top
+            to right
+            to bottom
+            to left
+            to top right
+            to top left
+            to bottom right
+            to bottom left
+            ...deg</pre>
+
+                    <pre class="screen screen_post">
+#banner {
+    background-image: linear-gradient(180deg, yellow, green);
+}
+
+или
+
+    background-image: linear-gradient(to bottom, yellow, green);</pre>
+                    <pre class="screen screen_pre">
+linear-gradient(direction, color_1 dot_1, ... ..., color_n dot_n);
+
+dot = % пути по направлению (может быть со знаком " - ")</pre>
+
+                    <pre class="screen screen_post">
+#banner {
+    background-image: linear-gradient(90deg, yellow, orange 25%, blue);
+}</pre>
+                    <p class="text">
+                        - оранжевый появляется через 25% пути по линии градиента
+                    </p>
+
+                    <pre class="screen screen_post">
+linear-gradient(yellow 50%, lightblue 50%);</pre>
+                    <p class="text">
+                        Если точки перехода цвета совпадают, то один цвет резко сменит другой в этой точке перехода
+                    </p>
+
+                    <pre class="screen screen_pre">
+linear-gradient(yellow 50%, lightblue 0);</pre>
+                    <p class="text">
+                        Если задать следующую точку равную <strong>0</strong>, то она автоматически будет в том же месте, что и предыдущая (если меньше предыдущей, то на том же месте, что и предыдущая)
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Радиальные градиенты</h4>
+
+                    <pre class="screen screen_pre">
+radial-gradient(size type direction, color_1, ..., color_n)</pre>
+                    <pre class="screen screen_post">
+#banner {
+    background-image: radial-gradient(center, contain, yellow, green);
+}</pre>
+                </div>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Clip</h3>
+
+                <p class="text">
+                    - вырезает прямоугольник
+                </p>
+                <pre class="screen screen_post">
+clip: rect (x, y, x, y);</pre>
+            </div>
+        </section>
+<!-- Блочная модель -->
+        <section id="block_model" class="section">
+            <h2 class="section__header">Блочная модель</h2>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Задавание размеров блока</h3>
+
+                <p class="text">
+                    &bull; <strong>margin-"сторона": auto; </strong> занимает всё свободное пространство в этом направлении<br>
+                    &bull; Если задать ширину блока, то <strong>margin</strong>, <strong>border</strong> и <strong>padding</strong> будут добавлены к его ширине и высоте
+                </p>
+                <pre class="screen screen_pre">
+width:
+height: ...px;
+      - ...%;
+      - auto;
+      - inherit;</pre>
+                <p class="text">
+                    &bull; Применяется к <strong> block </strong> элементам и изображениям<br>
+                    &bull; <strong> inline </strong> элементам <strong> width </strong> и <strong> height </strong> не задаются (не работают)<br>
+                    &bull; <strong>%</strong> задаются от ближайшего родительского элемента с заданным аналогичным размером (если ни у одного из предков не задана ширина, отсчитывается от ширины окна браузера)
+                </p>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Задавание размеров области контента</h4>
+
+                    <p class="text">
+                        Значения ширины и высоты применяются только к области контента.В результате размеры видимого блока будут складываться с размерами отступов, границ и полей
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Модель border-box</h4>
+
+                    <pre class="screen screen_pre">
+* {
+    box-sizing: content-box;    (default)
+              - padding-box;
+              - border-box;
+              - inherit;
+}</pre>
+
+                    <p class="text">
+                        Чтобы не было не желательного влияния на некоторые элементы вводят следующий код:
+                    </p>
+                    <pre class="screen screen_pre">
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+html {
+    box-sizing: border-box;
+}
+.content-box-component {
+    box-sizing: content-box;
+}</pre>
+                </div>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Выход контента за пределы блока</h3>
+
+                <pre class="screen screen_pre">
+overflow: visible;   (default)
+        - hidden;
+        - scroll;
+        - auto;
+        - inherit;</pre>
+                <p class="text">
+                    Применяется к блочным элементам и изображениям
+                </p>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Ограничение ширины и высоты</h3>
+                <pre class="screen screen_pre">
+min-width:
+max-width:
+min-height:
+max-width:</pre>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Границы</h3>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Стиль границы</h4>
+
+                    <pre class="screen screen_pre">
+border-style:
+
+border-top-style:
+border-right-style:
+border-bottom-style:
+border-left-style: none;  (default)
+                 - dotted;
+                 - dashed;
+                 - solid;
+                 - double;
+                 - groove;
+                 - ridge;
+                 - inset;
+                 - outset;
+                 - inherit;</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Ширина границы</h4>
+
+                    <pre class="screen screen_pre">
+border-width:
+
+border-top-width:
+border-right-width:
+border-bottom-width:
+border-left-width: значение;
+                 - thin;
+                 - medium;   (default)
+                 - thick;
+                 - inherit;</pre>
+                    <p class="text">
+                        Нельзя задавать значение в <strong>%</strong>
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Цвет границы</h4>
+
+                    <pre class="screen screen_pre">
+border-color:
+
+border-top-color:
+border-right-color:
+border-bottom-color:
+border-left-color: значение или имя;
+                 - transparent;
+                 - inherit;</pre>
+                    <p class="text">
+                        По умолчанию того же цвета, что и элемент
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Комбинирование стилей</h4>
+
+                    <pre class="screen screen_pre">
+border:
+
+border-top:
+border-right:
+border-bottom:
+border-left: border-style border-width border-color;   (в любом порядке)
+           - inherit;</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Скругление углов</h4>
+
+                    <pre class="screen screen_pre">
+border-radius:
+
+border-top-left-radius:
+border-top-right-radius:
+border-bottom-right-radius:
+border-bottom-left-radius: рx;
+                         - em;
+                         - %;</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Овальные углы</h4>
+
+                    <pre class="screen screen_pre">
+border-top-left-radius:
+border-top-right-radius:
+border-bottom-right-radius:
+border-bottom-left-radius: "горизонтальный размер" "вертикальный размер";
+
+border-radius: "горизонтальный размер"/"вертикальный размер";
+
+border-radius: "гор.разм. 1уг." "гор.разм. 2уг.""гор.разм. 3уг." "гор.разм. 4уг." /
+                 "верт.разм. 1уг." "верт.разм. 2уг." "верт.разм. 3уг." "верт.разм. 4уг.";</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Красивые границы</h4>
+
+                    <pre class="screen screen_pre">
+border-image: border-image-source border-image-slice border-image-width border-image-outset border-image-repeat;</pre>
+                    <p class="text">
+                        <strong>border-image-source</strong> - URL изображения<br>
+                        <strong>border-image-slice</strong> - значения 4х линий разреза по часовой<br>
+                        <strong>border-image-width</strong> - ширина границы<br>
+                        <strong>border-image-outset</strong> - расстояние, на которое изображение выступает за границы<br>
+                        <strong>border-image-repeat</strong> - образ заполнения сторон (stretch, repeat, round)
+                    </p>
+
+                    <pre class="screen screen_post">
+border-image: url(border.png) 55 55 55 55 stretch;</pre>
+                    <p class="text">
+                        <strong>55</strong> - border-image-width  - ширина от каждого края изображения, по часовой (top, right, bottom, left)
+                    </p>
+
+                    <pre class="screen screen_post">
+border-width: 55px;
+border-image: url(border.png) 55 stretch;</pre>
+                </div>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Контур</h3>
+
+                <p class="text">
+                    <strong>outline</strong> отрисовывается за пределами границы элемента иможет перекрывать другое содержимое (не является частью размеров элемента)
+                </p>
+
+                <p class="text">
+                    <strong>Отрисовывается вокруг элементов находящихся в фокусе</strong>
+                </p>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Стиль контура</h4>
+
+                    <pre class="screen screen_pre">
+outline-style: dotted;
+             - dashed;
+             - solid;
+             - double;
+             - groove;
+             - ridge;
+             - inset;
+             - outset;
+             - none;
+             - hidden;</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Цвет контура</h4>
+
+                    <pre class="screen screen_pre">
+outline-color: значение;</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Цвет контура</h4>
+
+                    <pre class="screen screen_pre">
+outline-width: значение;</pre>
+
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Сокращённая запись</h4>
+
+                    <pre class="screen screen_pre">
+outline: "outline-style" "outline-color" "outline-width";</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Смещение контура</h4>
+
+                    <pre class="screen screen_pre">
+outline-offset: значение;</pre>
+                    <p class="text">
+                        Может быть отрицательным
+                    </p>
+                </div>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Поля</h3>
+
+                <pre class="screen screen_pre">
+margin: значение;
+      - %;
+      - auto;      (default)
+      - inherit;</pre>
+                <p class="text">
+                    <strong>%</strong> - процент от размера ближайшего родительского элемента с указанными размерами (так же как и <strong>padding</strong>)
+                </p>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Поведение полей</h4>
+
+                    <p class="text">
+                        &bull; Верхние и нижние поля соседних элементов схлопываются (смежные поля совмещаются и используется большее значение). Кроме <strong>float: ...</strong> и <strong>position: absolute</strong><br>
+                        &bull; Левое и правое никогда не схлопываются<br>
+                        &bull; Если у родительских элементов не указаны <strong> border:, padding: </strong> или <strong> overflow:hidden; </strong> (то, что ограничивало бы), то вертикальные <strong> margin: </strong> перетекают к родительскому элементу (выпадают), вплоть до <strong> &lt; body &gt; </strong> (если при этом у родительского элемента задано значение <strong> margin: </strong>, то выбирается наибольшее из них)<br>
+                        &bull; Только левое и правое поля отображаются у <strong> inline </strong> элементов, кроме изображений<br>
+                        &bull; Значение может быть отрицательным
+                    </p>
+                </div>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Типы отображения</h3>
+
+                <pre class="screen screen_pre">
+display: inline;
+       - block;
+       - list-item;
+       - inline-block;
+       - table;
+       - inline-table;
+       - table-row-group;
+       - table-header-group;
+       - table-footer-group;
+       - table-row;
+       - table-column-group;
+       - table-column;
+       - table-cell;
+       - table-caption;
+       - none;
+       - run-in;
+       - compact;
+       - ruby;
+       - ruby-base;
+       - ruby-base-container;
+       - ruby-text-container;
+       - flex;
+       - grid;</pre>
+                <p class="text">
+                    &bull; <strong>none</strong> полностью удаляет контент из потока, не сохраняя пространство. В отличие от <strong>visibility: hidden;</strong> которое делает элемент невидимым сохраняя пространство<br>
+                    &bull; <strong>inline-block</strong> заставляет блочный элемент располагаться как встроенный, но при этом сохранять остальные особенности блочного. Чтобы блок не "плясал" (из-за значения по умолчанию <strong>vertical-align: baseline;</strong> ), нужно задать явно <strong>vertical-align: center</strong>, <strong>vertical-align: top</strong> или завернуть элементы в родительский блок той же высоты). По умолчанию <strong>&lt;img&gt;</strong> имеет значение <strong>inline-block</strong><br>
+                    &bull; <strong>list-item</strong> создаёт маркер у элемента (при помощи <strong>list-style-type</strong> задаётся тип маркера)
+                </p>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Сокрытие блоков</h3>
+
+                <p class="text">
+                    Свойство <strong>visibility</strong> позволяет скрывать блоки, но при этом оставлять пустое пространство на месте элемента
+                </p>
+                <pre class="screen screen_pre">
+visibility: hidden;
+          - visible;</pre>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Тень блока</h3>
+
+                <pre class="screen screen_pre">
+box-shadow: x y b e c z;
+          - none;                                   (default)</pre>
+                <p class="text">
+                    <strong>x</strong>   - горизонтальное смещение<br>
+                    <strong>y</strong> - вертикальное смещение<br>
+                    <strong>b</strong> - размытие (может отсутствовать)<br>
+                    <strong>e</strong> - распространение - увеличивает или уменьшает размер тени<br>
+                    <strong>c</strong> - цвет<br>
+                    <strong>z</strong> - тень внутрь <strong>" inset "</strong> (не обязательный параметр)
+                </p>
+
+                <p class="text">
+                    &bull; Можно применять сразу несколько теней, через запятую<br>
+                    &bull; Если первые три параметра будут иметь нулевое значение, тень будет иметь вид рамки
+                </p>
+            </div>
+        </section>
+
+<!-- Table layout -->
+        <section id="table_layout" class="section">
+            <h2 class="section__header">Табличное представление</h2>
+
+            <p class="text">
+                Позволяет располагать как таблицу элементы HTML и применять свойства для таблиц
+            </p>
+
+            <pre class="screen screen_pre">
+display: table;
+       - inline-table;
+       - table-row-group;
+       - table-header-group;
+       - table-footer-group;
+       - table-row;
+       - table-column-group;
+       - table-column;
+       - table-cell;
+       - table-caption;</pre>
+            <p class="text">
+                <strong>display: table;</strong> - превращает элемент в таблицу<br>
+                <strong>display: table-row;</strong> - в строку таблицы<br>
+                <strong>display: table-cell;</strong> - в ячейку таблицы<br>
+                <strong>display: table-header-group;</strong> - в секцию шапки<br>
+                <strong>display: table-row-group;</strong> - в секцию основного содержания<br>
+                <strong>display: table-footer-group;</strong> - в секцию подвала<br>
+                <strong>display: table-caption;</strong> - в заголовок таблицы
+            </p>
+            <p class="text">
+                Для <strong>table-cell</strong> можно задать <strong>vertical-align</strong>
+            </p>
+
+            <pre class="screen screen_post">
+&lt;div id="tableContainer"&gt;
+    &lt;div id="tableRow_1"&gt;
+        &lt;div id="left_1"&gt;
+            ...
+        &lt;&frasl;div&gt;
+        &lt;div id="right_1"&gt;
+            ...
+        &lt;&frasl;div&gt;
+    &lt;&frasl;div&gt;
+    &lt;div id="tableRow2"&gt;
+        &lt;div id="left_2"&gt;
+            ...
+        &lt;&frasl;div&gt;
+        &lt;div id="right_2"&gt;
+            ...
+        &lt;&frasl;div&gt;
+    &lt;&frasl;div&gt;
+&lt;&frasl;div&gt;</pre>
+
+
+            <pre class="screen screen_post">
+div#tableContainer {
+    display: table;
+    border-spacing: 10px;
+}
+
+div#tableRow_1, div#tableRow_2 {
+    display: table-row;
+}
+
+div#left_1, div#right_1, div#left_2, div#right_2 {
+    display: table-cell;
+    vertical-align: top;
+}</pre>
+        </section>
+
+<!-- Float -->
+        <section id="float" class="section">
+            <h2 class="section__header">Float</h2>
+
+            <p class="text">
+                &bull; Свойство <strong>float</strong> позволяет поместить элемент, позиционированный с помощью схемы нормального потока, с левого или с правого края элемента-контейнера<br>
+                &bull; Всё, что находится внутри элемента-контейнера, будет обтекать плавающий элемент<br>
+                &bull; При использовании свойства (<strong>float</strong>) должна быть задана ширина (<strong>width</strong>) плавающего элемента<br>
+                &bull; Если в элементе-контейнере всем элементам задать своство <strong>float</strong>, то некоторые браузеры будут воспринимать будто элемент-контейнер имеет высоту в 0px
+            </p>
+
+            <pre class="screen screen_pre">
+float: left;
+     - right;
+     - none;     (default)
+     - inherit;</pre>
+
+            <p class="text">
+                &bull; Если задать <strong>inline</strong> элементу <strong>float: left;</strong> или <strong>float: right;</strong>, он будет вести себя как <strong>block</strong> элемент<br>
+                &bull; Если в элементе-контейнере всем элементам задать своство <strong>float</strong>, то некоторые браузеры будут воспринимать будто элемент-контейнер имеет высоту в 0px
+            </p>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Обтекание inline элементов</h3>
+
+                <p class="text">
+                    &bull; Необходимо задавать ширину (<strong>width</strong>) обтекаемого <strong>inline</strong> элемента<br>
+                    &bull; Обтекаемые <strong>inline</strong> элементы ведут себя как блочные (поля со всех сторон сохраняются)<br>
+                    &bull; Поля (<strong>margin</strong>) обтекаемых элементов не схлопываются
+                </p>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Обтекание блочных элементов</h3>
+
+                <p class="text">
+                    &bull; Необходимо задавать ширину (<strong>width</strong>) обтекаемого блочного элемента<br>
+                    &bull; Обтекаемый элемент остаётся ниже любых блочных элементов предшествовавших ему в исходном коде
+                </p>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Схлопывание контейнера</h3>
+
+                <p class="text">
+                    &bull; Если в элементе-контейнере всем элементам задать своство <strong>float</strong>, то некоторые браузеры будут воспринимать будто элемент-контейнер имеет высоту в 0px
+                </p>
+
+                <p class="text">
+                    Варанты решения:
+                </p>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Сделать контейнер плавающим</h4>
+
+                    <pre class="screen screen_pre">
+#container {
+    float: left;
+        ...
+}</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Воспользоваться свойством overflow:</h4>
+
+                    <pre class="screen screen_pre">
+#container {
+    overflow: auto;
+            - hidden;
+    width: 100%;
+        ...
+}</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Воспользоваться псевдоэлементом :after</h4>
+
+                    <pre class="screen screen_pre">
+#container:after {
+    content: "";
+    display: block;
+    clear: both;
+}</pre>
+                </div>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Запрет обтекания</h3>
+
+                <p class="text">
+                    Свойство <strong>clear</strong> позволяет указать, что ни один элемент, находящийся в том же элементе-контейнере, не должен касаться левой, правой или обеих стороны блока
+                </p>
+                <pre class="screen screen_pre">
+clear: left;
+     - right;
+     - both;
+     - none;     (default)
+     - inherit;</pre>
+            </div>
+
+            <p class="text">
+                Ширина <strong>float</strong> элементов заданная в процентах, может по разному расчитываться разными браузерами. В данный момент использование не желательно
+            </p>
+        </section>
+
+<!-- Позиционирование -->
+        <section id="position" class="section">
+            <h2 class="section__header">Позиционирование</h2>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Типы позиционирования</h3>
+
+                <pre class="screen screen_pre">
+position: static;    (default)
+        - relative;
+        - absolute;
+        - fixed;
+        - inherit;
+        - sticky;</pre>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Static</h4>
+
+                    <p class="text">
+                        Обычное размещение в потоке
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Relative</h4>
+
+                    <p class="text">
+                        &bull; Сдвигает блок относительно его начального положения в потоке<br>
+                        &bull; Исходное пространство в потоке сохраняется и продолжает влиять на расположение окружающего контента<br>
+                        &bull; Потенциально может перекрыть другие элементы
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Absolute</h4>
+
+                    <p class="text">
+                        &bull; Элемент удаляется из потока и позиционируются относительно ближайшего родительского элемента не <strong>position: static;</strong><br>
+                        &bull; По умолчанию задано <strong>top: auto; right: auto; bottom: auto; left: auto;</strong>, если не задавать <strong>top, right, bottom</strong> или <strong>left</strong>, то элемент будучи вырванным из потока, окажется над тем же местом, которое он освободил<br>
+                        &bull; Пространство, которое он занимал бы, смыкается<br>
+                        &bull; Абсолютно позиционированные элементы не влияют на расположение окружающих элементов<br>
+                        &bull; Если задать противоположные расстояния, то элемент растянется
+                    </p>
+
+                    <p class="text">
+                        &bull; Элемент помещается относительно его ближайшего содержащего элемента<br>
+                        &bull; <strong>html</strong> - начальный содержащий блок<br>
+                        &bull; Абсолютно позиционированные объекты всегда ведут себя как блочные
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Fixed</h4>
+
+                    <p class="text">
+                        &bull; Элемент удаляется из потока и позиционируется относительно окна браузера<br>
+                        &bull; Смещение всегда относительно окна браузера
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Sticky</h4>
+
+                    <p class="text">
+                        <strong>top, right, bottom, left</strong> указывают границу, дальше которой элемент не будет перемещаться
+                    </p>
+
+                    <p class="text">
+                        Невозможно, когда высота позиционированного элемента равна высоте родительского элемента или значение его свойства overflow равна не visible
+                    </p>
+                </div>
+
+                <p class="text">
+                    Все типы позиционирования (<strong>position:</strong>) ,кроме <strong>static</strong> делают <strong>inline</strong> элемент блочным (<strong>display: block;</strong>)
+                </p>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Задавание положения</h3>
+
+                <p class="text">
+                    Положение задаётся с помощью 4х свойств смещения
+                </p>
+                <pre class="screen screen_pre">
+position: ... ;
+top:
+right:
+bottom:
+left: px;
+    - %;
+    - auto;            (default)
+    - inherit;
+
+
+Применяется к позиционированным элементам (relative, absolute, fixed)</pre>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Содержащие блоки</h3>
+
+                <p class="text">
+                    &bull; Если позиционированный элемент содержится внутри другого не позиционированного элемента, тогда он будет размещён относительно начального содержащего блока (<strong>html</strong>)<br>
+                    &bull; Если элемент содержится внутри другого элемента позиционированного (<strong>relative</strong>, <strong>absolute</strong>, <strong>fixed</strong>), он будет позиционирован относительно краёв этого элемента<br>
+                    &bull; Позиционированные элементы становятся содержащим блоком для элементов, которые он содержит
+                </p>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Перекрывающиеся объекты</h3>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Порядок наложения</h4>
+
+                    <p class="text">
+                        &bull; <strong>z-index</strong> применяется элементам позиционированным (<strong>relative</strong>, <strong>absolute</strong> или <strong>fixed</strong>)<br>
+                        &bull; По умолчанию элементы имеют значение свойства <strong>z-index: auto;</strong> и располагаются в том порядке,в котором появляются в документе (исходя из положения в <strong>HTML</strong> коде). Родительский элемент располагается ниже дочернего, а из дочерних более низко описаный в коде элемент располагается выше на странице
+                    </p>
+
+                    <pre class="screen screen_pre">
+z-index: число (целое);
+       - auto;     (default)
+       - inherit;</pre>
+                    <p class="text">
+                        <strong>z-index</strong> - число, чем больше значение, тем выше располагается элемент (ближе к переднему плану),дочерние элементы наследуют <strong>z-index</strong> родителя. При равном значении <strong>z-index</strong> на передний план выходит тот элемент, который в коде <strong>HTML</strong> располагается ниже<br>
+                        &bull; Родительский элемент не может располагаться выше дочернего элемента, какой бы <strong>z-index</strong> мы ему не присвоили. При этом значение <strong>z-index</strong> образует для вложенных элементов свой уровень иерархии внутри данного уровня. Так потомки одного элемента с указанным значением <strong>z-index</strong> никогда не будут выше потомков другого элемента с указанным более высоким значением <strong>z-index</strong>
+                    </p>
+                </div>
+            </div>
+        </section>
+<!-- Flex -->
+        <section id="flex" class="section">
+            <h2 class="section__header">Flex</h2>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Flex-контейнер</h3>
+
+                <pre class="screen screen_pre">
+.container {
+    display: flex;
+           - inline-flex;
+
+    flex-direction: row;            (default)
+                  - row-reverse;
+                  - column;
+                  - column-reverse;
+
+    flex-wrap: nowrap;              (default)
+             - wrap;
+             - wrap-reverse;
+
+    flex-flow: flex-direction flex-wrap;
+
+
+    justify-content: flex-start;    (default)
+                   - flex-end;
+                   - center;
+                   - space-between;
+                   - space-around;
+                   - space-evenly;
+
+    align-items: flex-start;
+               - flex-end;
+               - center;
+               - baseline;
+               - stretch;           (default)
+
+    align-content: flex-start;
+                 - flex-end;
+                 - center;
+                 - space-between;
+                 - space-around;
+                 - space-evenly;
+                 - stretch;
+                 - start;
+                 - end;
+                 - baseline;
+                 - first-baseline;
+                 - last-baseline;
+                 - ...             + safe / unsafe;
+}</pre>
+                <p class="text">
+                    <strong>{ justify-content: }</strong> (выравнивание по главной оси) - если элементы располагаются в одну строку<br>
+                    <strong>{ align-items: }</strong> (выравнивание поперёк главной оси) - если элементы располагаются в одну строку<br>
+                    <strong>{ align-content: }</strong> (выравнивание поперёк главной оси) - если элементы в располагаются в несколько строк<br>
+                    <strong>inline-flex</strong> - строчно-блочный контейнер
+                </p>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Flex-элемент</h3>
+
+                <pre class="screen screen_pre">
+.item {
+    order: integer;         (defaulf=0)
+
+    flex-grow: number;      (default=0)
+
+    flex-shrink: number;    (default=1)
+
+    flex-basis: length;
+              - auto;       (default)
+
+    align-self: auto;
+              - flex-start;
+              - flex-end;
+              - center;
+              - baseline;
+              - stretch;
+}
+
+.item {
+    flex: flex-grow flex_shrink flex_basis;   (default: 0 1 auto)
+}
+</pre>
+                <p class="text">
+                    &bull; По умолчанию ужимаются под содержимое (если не указаны размеры)<br>
+                    &bull; Если задать <strong>{order: -1}</strong> элемент переместится в начало, если задать <strong>{order: 1}</strong> - в конец списка. У элементов по умолчанию <strong>{order: 0}</strong><br>
+                    &bull; <strong>{flex-grow: }</strong> - величина относительно других flex-элементов, до которой может увеличиваться flex-элемент при наличии свободного пространства (относительный размер)<br>
+                    &bull; <strong>{flex-shrink: }</strong> - величина, до которой может уменьшаться flex-элемент относительно других flex-элементов, когда имеется дефицит пространства (когда размер контейнера меньше суммы размеров элементов). Это значение важно, если у контейнера указан <strong>{ flex-wrap: nowrap; }</strong>. Если при <strong>{ flex-wrap: nowrap; }</strong> <strong>{ flex-shrink: 0 ; }</strong>, то элементы будут расширяться за пределы контейнера<br>
+                    &bull; Свободное место "съедается" свойствами <strong>{flex-grow: }</strong> или <strong>{margin: auto}</strong> до того, как начнётся применяться выавнивание flex-элементов<br>
+                    &bull; <strong>{flex-basis: }</strong> - базовый размер, к которому приводится размер flex-элемента. Если <strong>{ flex-grow: 0;}</strong> , то размер элемента будет соответствовать <strong>{ flex-basis: }</strong>(если он указан), а если <strong>{ flex-grow: >0;}</strong> ,то элемент растянется на всю ширину. Разница размера контейнера и суммы <strong>flex-basis</strong> размеров элементов разделится между ними в пропорциях указанных в <strong>flex-hrow</strong> (при условии, что его значение более нуля)<br>
+                    &bull; <strong>{align-self: }</strong> - переопределение выравнивания для элемента относительно поперечной оси (сделать "не таким как все")<br>
+                    &bull; При использовании <strong>{display: flex;}</strong> у контейнера, перестаёт работать свойство <strong>{columns}</strong><br>
+                    &bull; При использовании свойства <strong>{flex: }</strong> у элемента, перестают работать свойства <strong>{float: }</strong>, <strong>{clean: }</strong> и <strong>{vertical-align: }</strong><br>
+                    &bull; При использовании <strong>{margin: auto;}</strong> элемент центрируется внутри контейнера по вертикали и горизонтали. <strong>margin-...:auto</strong> отъедает всё свободное пространство в этом направлении<br>
+                    &bull; Если у нескольких элементов <strong>margin-...: auto</strong>, то свободное место делится поровну<br>
+                    &bull; <strong>{margin: }</strong>ы в <strong>flexbox</strong> не схлопываются, а суммируются<br>
+                    &bull; Элементы FLEX-контейнера не обязательно должны быть одного типа<br>
+                    &bull; <strong>::</strong>Псевдоэлементы внутри flex-контейера становятся flex-элементами
+                </p>
+
+                <p class="text">
+                    Чтобы прижать <strong>&lt;footer&gt;</strong> к низу окна, нужно задать <strong>&lt;footer&gt;</strong> и <strong>&lt;header&gt;</strong> <strong>{flex-grow: 0;}</strong>, а <strong>&lt;main&gt;</strong> <strong>{flex-grow: 1;}</strong>
+                </p>
+
+                <p class="text">
+                    Если задать элементу <strong>{ margin-right: auto; }</strong> , то он прижмётся к левой стороне, а справая сторона заполнится пустым пространством (если элементы не заполняют полностью контейнер). Аналогично с другими направлениями
+                </p>
+
+                <pre class="screen screen_post">
+.container {
+    width: 1000px;
+    flex-wrap: wrap;
+    ...
+}
+.item {
+    flex: 1 1 400px;
+}</pre>
+                <p class="text">
+                    3 элемента <strong>.item</strong>. 2 заполнят первую строку, 3-й полностью заполнит вторую строку
+                </p>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Рекомендации  построения сеток на FLEX</h3>
+                <p class="text">
+                    &bull; Всегда явно задавайте размер колонок (<strong>width</strong> или <strong>flex-basis</strong>)<br>
+                    &bull; Расстояние между колонок задавайте с помощью:<br>
+                    &nbsp; - <strong>justify-content</strong>, если отступы одинаковые<br>
+                    &nbsp; - <strong>margin</strong>, если отступы разные<br>
+                    &bull; Если количество колонок может изменяться (карточный интерфейс), то <strong>margin</strong> предпочтительней
+                    &bull; Чтобы элементы с имеющимися <strong>margin:</strong> прижимались к границам родительского элемента (flex-контейнеру). То этому родительскому <strong>flex-контейеру</strong> задаём отрицательный <strong>margin:</strong>
+                </p>
+            </div>
+        </section>
+
+<!-- Grid -->
+        <section id="grid" class="section">
+            <h2 class="section__header">Grid</h2>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Grid-контейнер</h3>
+
+                <pre class="screen screen_pre">
+.grid {
+    display: grid;
+           - inline-grid;
+}</pre>
+                <p class="text">
+                    &bull; Элемент с <strong> { display: grid; } </strong> в отличии от элемента с <strong> { display: block; } </strong> не "заползает" под <strong> float</strong>-элемент<br>
+                    &bull; Отступы <strong> grid</strong>-контейнеров не схлопываются с отступами дочерних элементов<br>
+                    &bull; Для <strong> grid</strong>-контейнеров игнорируются свойства семейства <strong>column</strong><br>
+                    &bull; Для <strong> grid</strong>-элементов игнорируются псевдоэлементы <strong> ::first-line </strong> и <strong> ::first-letter </strong> и не обрабатываются свойства <strong> float </strong> и <strong> clear </strong>, а свойство <strong>vertical-align</strong> работает для содержимого, а не для них самих
+                </p>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Размер колонок</h4>
+
+                    <pre class="screen screen_pre">
+.grid {
+    grid-template-columns: width_1 width_2 ... width_n;
+}</pre>
+                    <p class="text">
+                        &bull; <strong>width</strong> - ширина колонки в (<strong>px</strong> , <strong>fr</strong> , <strong>%</strong> или <strong>em</strong> и смешение их). Где <strong>fr</strong> - доля колонки (как <strong>flex-grow:</strong>)<br>
+                        &bull; Размер можно задавать как <strong>min-content</strong> (минимальное расттояние)
+                    </p>
+
+                    <pre class="screen screen_pre">
+.grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+}</pre>
+                    <p class="text">
+                        - заполнить пространство максимально возможным числом колонок, с минимальным или максимальным размером
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Размер строк</h4>
+
+                    <pre class="screen screen_pre">
+.grid {
+    grid-template-rows: heigth_1 heigth_2 ... heigth_n;
+}
+
+.grid {
+    grid-template-rows: repeat("количество повторений", "повторяющаяя последовательность");
+}</pre>
+
+                    <pre class="screen screen_post">
+grid-template-rows: repeat(4, auto);
+
+эквивалентно:
+
+grid-template-rows: auto auto auto auto;</pre>
+
+                    <pre class="screen screen_post">
+grid-template-rows: repeat(3, 2fr 1fr);
+
+эквивалентно:
+
+grid-template-rows: 2fr 1fr 2fr 1fr 2fr 1fr;</pre>
+
+                    <pre class="screen screen_post">
+grid-template-rows: 1fr repeat(2, 3fr) 1fr;
+
+эквивалентно:
+
+grid-template-rows: 1fr 3fr 3fr 1fr;</pre>
+                    <p class="text">
+                        &bull; <strong>heigth</strong> - высота строки в (<strong>px</strong> , <strong>fr</strong> , <strong>%</strong> или <strong>em</strong> и смешение их). Где <strong>fr</strong> - доля строки (как flex-grow:)<br>
+                        &bull; <strong>auto</strong> - полоса будет автоматически увеличиваться по мере необходимости, в соответствии с размером контента<br>
+                        &bull; <strong>repeat()</strong> - функция - сокращённый вариант для определения нескольких полос
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Зазор между строками</h4>
+
+                    <pre class="screen screen_pre">
+row-gap: размер;</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Зазор между колонок</h4>
+
+                    <pre class="screen screen_pre">
+column-gap: размер;</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Зазор между ячейками</h4>
+
+                    <pre class="screen screen_pre">
+grid-gap: размер;</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Выравнивание элементов</h4>
+
+                    <pre class="screen screen_pre">
+align-items: stretch;   (default)
+           - start;</pre>
+                </div>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Grid-элемент</h3>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Если элемент занимает одну ячейку сетки</h4>
+
+                    <pre class="screen screen_pre">
+.item {
+    grid-column: "номер занимаемого столбца":
+    grid-row: "номер занимаемой строки"
+}
+                    </pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Если элемент занимает более одной ячейки сетки</h4>
+
+                    <pre class="screen screen_pre">
+.item {
+    grid-column: "номер_верт.линии_от" / "номер_верт.линии_до";
+    grid-row: "номер_гор.линии_от" / "номер_гор.линии_до";
+}</pre>
+                    <p class="text">
+                        Или:
+                    </p>
+                    <pre class="screen screen_pre">
+.item {
+    grid-column: "номер_верт.линии_от" / span "кол-во занимаемых ячеек";
+    grid-row: "номер_гор.линии_от" / span "кол-во занимаемых ячеек";
+}</pre>
+                </div>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Альтернативный синтаксис</h3>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Именованные линии сетки</h4>
+
+                    <pre class="screen screen_pre">
+.grid {
+    grid-template-columns: [имя_перв.линии] ширина_1_кол. [имя_ср.линии] ширина_2_кол. [имя_посл.линии];
+}
+.item {
+    grid-column: "имя от" / "имя до";
+}</pre>
+                    <p class="text">
+                        &bull; Можно задать линии несколько имён через пробел, и использовать любое из них<br>
+                        &bull; Можно задать одинаковые имена с разными "суффиксами" и обращаться через одно имя сразу к двум именам, между которыми находится полоса
+                    </p>
+                    <pre class="screen screen_post">
+.grid {
+    grid-template-columns: [start] 1fr [center] 2fr [end];
+}
+.item {
+    grid-column: start / center;
+}</pre>
+                    <pre class="screen screen_post">
+.grid {
+    grid-template-columns: [left-start] 1fr [left-end right-start] 2fr [right-end];
+}
+.item {
+    grid-column: left;
+}</pre>
+                    <p class="text">
+                        &bull; Можно задать одинаковые имена с разными "суффиксами" и обращаться через одно имя сразу к двум именам, между которыми находится полоса
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Именованные области сетки</h4>
+
+                    <pre class="screen screen_pre">
+.item-1 {
+    grid-area: name-1;
+}
+.item-2 {
+    grid-area: name-2;
+}
+...
+.item-n {
+    grid-area: name-n;
+}
+
+.grid {
+    grid-template-areas: "name name ..."
+                         "name ...  ..."
+                         "...  ...  ...";
+}</pre>
+                </div>
+            </div>
+        </section>
+
+<!-- Переходы, преобразования и анимация -->
+        <section id="animation" class="section">
+            <h2 class="section__header">Переходы, преобразования и анимация</h2>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">CSS переходы</h3>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Основные сведения о переходах</h4>
+
+                    <pre class="screen screen_pre">
+&bull; transition-property        - свойство
+&bull; transition-duration        - продолжительность перехода
+&bull; transition-timing-function - ускорение перехода
+&bull; transition-delay           - пауза перед началом</pre>
+
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Определение свойств</h4>
+
+                    <pre class="screen screen_pre">
+transition-property: свойство;
+                   - all;        (default)
+                   - none;</pre>
+                    <p class="text">
+                        Применяется:<br>
+                        &nbsp; - ко всем элементам<br>
+                        &nbsp; - к псевдоэлементам <strong>:before</strong> и <strong>:after</strong>
+                    </p>
+
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">Свойства CSS, к которым можно применить анимацию:</h5>
+
+                        <ul class="lists-wrapper">
+                            <li class="list">
+                                <span class="list__header">Фоны</span>
+                                <ul>
+                                    <li class="list__item">background-color</li>
+                                    <li class="list__item">background-position</li>
+                                </ul>
+                            </li>
+
+                            <li class="list">
+                                <span class="list__header">Границы и контуры</span>
+                                <ul>
+                                    <li class="list__item">border-bottom-color</li>
+                                    <li class="list__item">border-bottom-width</li>
+                                    <li class="list__item">border-left-color</li>
+                                    <li class="list__item">border-left-width</li>
+                                    <li class="list__item">border-right-color</li>
+                                    <li class="list__item">border-right-width</li>
+                                    <li class="list__item">border-top-color</li>
+                                    <li class="list__item">border-top-width</li>
+                                    <li class="list__item">border-spacing</li>
+                                    <li class="list__item">outline-color</li>
+                                    <li class="list__item">outline-offset</li>
+                                    <li class="list__item">outlne-width</li>
+                                </ul>
+                            </li>
+
+                            <li class="list">
+                                <span class="list__header">Цвет и непрозрачность</span>
+                                <ul>
+                                    <li class="list__item">color</li>
+                                    <li class="list__item">opacity</li>
+                                    <li class="list__item">visibility</li>
+                                </ul>
+                            </li>
+
+                            <li class="list">
+                                <span class="list__header">Шрифт и текст</span>
+                                <ul>
+                                    <li class="list__item">font-size</li>
+                                    <li class="list__item">font-weight</li>
+                                    <li class="list__item">letter-spacing</li>
+                                    <li class="list__item">line-height</li>
+                                    <li class="list__item">text-indent</li>
+                                    <li class="list__item">text-shadow</li>
+                                    <li class="list__item">word-spacing</li>
+                                    <li class="list__item">vertical-align</li>
+                                </ul>
+                            </li>
+
+                            <li class="list">
+                                <span class="list__header">Размеры блока элемента</span>
+                                <ul>
+                                    <li class="list__item">height</li>
+                                    <li class="list__item">width</li>
+                                    <li class="list__item">max-height</li>
+                                    <li class="list__item">max-width</li>
+                                    <li class="list__item">min-height</li>
+                                    <li class="list__item">min-width</li>
+                                    <li class="list__item">margin-bottom</li>
+                                    <li class="list__item">margin-left</li>
+                                    <li class="list__item">margin-right</li>
+                                    <li class="list__item">margin-top</li>
+                                    <li class="list__item">padding-bottom</li>
+                                    <li class="list__item">padding-left</li>
+                                    <li class="list__item">padding-right</li>
+                                    <li class="list__item">padding-top</li>
+                                    <li class="list__item">crop</li>
+                                </ul>
+                            </li>
+
+                            <li class="list">
+                                <span class="list__header">Положение</span>
+                                <ul>
+                                    <li class="list__item">top</li>
+                                    <li class="list__item">right</li>
+                                    <li class="list__item">bottom</li>
+                                    <li class="list__item">left</li>
+                                    <li class="list__item">z-index</li>
+                                    <li class="list__item">clip</li>
+                                </ul>
+                            </li>
+
+                            <li class="list">
+                                <span class="list__header">Преобразования</span>
+                                <ul>
+                                    <li class="list__item">transform</li>
+                                    <li class="list__item">transform-origin</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Продолжительность перехода</h4>
+
+                    <pre class="screen screen_pre">
+transition-duration: 0s;     (default)</pre>
+                    <p class="text">
+                        Применяется:<br>
+                        &nbsp; - ко всем элементам<br>
+                        &nbsp; - к псевдоэлементам <strong> :before </strong> и <strong> :after </strong>
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Функция тайминга</h4>
+
+                    <pre class="screen screen_pre">
+transition-timing-function: ease;        (default)
+                          - linear;
+                          - ease-in;
+                          - ease-out;
+                          - ease-in-out;
+                          - step-start;
+                          - step-end;
+                          - steps;
+                          - cubic-bezier(#,#,#,#)</pre>
+                    <p class="text">
+                        Применяется:<br>
+                        &nbsp; - ко всем элементам<br>
+                        &nbsp; - к псевдоэлементам <strong> :before </strong> и <strong> :after </strong>
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Задержка</h4>
+
+                    <pre class="screen screen_pre">
+transition-delay: 0s;</pre>
+                    <p class="text">Применяется:<br>
+                        &nbsp; - ко всем элементам<br>
+                        &nbsp; - к псевдоэлементам <strong> :before </strong> и <strong> :after </strong>
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Сокращённое свойство перехода</h4>
+
+                    <pre class="screen screen_pre">
+transition: свойство продолжительность тайминг задержка;</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Применение множественных переходов</h4>
+
+                    <pre class="screen screen_post">
+transition-property: background-color, color, letter-spacing;
+transition-duration: 0.3s, 2s, 0.3s;
+transition-timing-function: ease-out, ease-in, ease-out;</pre>
+                    <pre class="screen screen_post">
+transition: background-color 0.3s ease-out, color 2s ease-in, letter-spacing 0.3s ease-out;</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Переход на все случаи</h4>
+
+                    <pre class="screen screen_post">
+transition: all 0.2s ease-in-out;</pre>
+                </div>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">CSS-преобразования</h3>
+
+                <pre class="screen screen_pre">
+transform: функция(и) преобразования
+         - none                          (default)</pre>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Преобразование угла (поворот)</h4>
+
+                    <pre class="screen screen_pre">
+transform: rotate(...deg);</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Смещение центра вращения</h4>
+
+                    <pre class="screen screen_pre">
+transform-origin: смещение_по_X смещение_по_Y;
+
+смещение задаётся в %;
+                    px;
+                    left;
+                    center;
+                    right;
+                    top;
+                    bottom;
+
+по умолчанию: 50% 50%;</pre>
+                    <pre class="screen screen_post">
+img {
+    width: 300px;
+    height: 400px;
+    transform: rotate(-10deg);
+    transform-origin: center top;
+                    = 50%, 0%;
+                    = 150px, 0px;
+}</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Преобразование позиции (перемещение)</h4>
+
+                    <pre class="screen screen_pre">
+transform: translateX(смещение_по_X);
+
+transform: translateY(смещение_по_Y);
+
+
+transform: translate(смещение_по_X, смещение_по_Y);
+
+    если одно значение, то X</pre>
+                    <p class="text">
+                        Задаётся в px или %
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Преобразование размера (масштабирование)</h4>
+
+                    <pre class="screen screen_pre">
+transform: scaleX(значение);
+
+transform: scaleY(значение);
+
+transform: scale(значение_X, значение_Y);</pre>
+                    <p class="text">
+                        Если значение будет со знаком минус (<strong>-</strong>), то элемент перевернётся по данной оси
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Скашивание (наклон)</h4>
+
+                    <pre class="screen screen_post">
+transform: skewX(...deg);
+
+transform: skewY(...deg);
+
+transform: skew(...deg, ...deg);</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Перспектива</h4>
+
+                    <pre class="screen screen_pre">
+transform: perspective(...px);</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Точка перспективы</h4>
+
+                    <pre class="screen screen_pre">
+transform: perspective-origin: ...% ...%;    (defaulf: 50% 50%;)</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Множественные преобразования</h4>
+
+                    <p class="text">
+                        <strong>transform: функция(значение) функция(значение);</strong>
+                    </p>
+                    <pre class="screen screen_post">
+.class:hover {
+    transform: scale(1.5) rotate(-5deg) translate(50px, 30px);
+}</pre>
+                    <p class="text">
+                        Преобразования применяются в том порядке, в котором перечислены
+                    </p>
+                </div>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Анимация</h3>
+
+                <pre class="screen screen_pre">
+@keyframes "имя" {
+    from {
+        свойство: значение_1;
+    }
+    ...% {
+        свойство: значение_2;
+    }
+    ...% {
+        свойство: значение_3;
+    }
+    to {
+        свойство: значение_n;
+    }
+}
+
+element {
+    animation-name: "имя";
+}</pre>
+                <p class="text">
+                    <strong>name</strong> - имя анимации<br>
+                    <strong>from</strong> - начальный ключевой кадр<br>
+                    <strong>to</strong> - конечный ключевой кадр
+                </p>
+
+                <pre class="screen screen_post">
+@keyframes color_font {
+    from {
+        color: black;
+    }
+    to {
+        color: red;
+    }
+}
+
+black ---&gt; red
+ 0%        100%</pre>
+                <pre class="screen screen_post">
+@keyframes color_font {
+    from {
+        color: black;
+    }
+    50% {
+        color: green;
+    }
+    to {
+        color: red;
+    }
+}
+
+black ---&gt; green ---&gt; red
+ 0%         50%       100%</pre>
+                <pre class="screen screen_post">
+@keyframes color_font {
+    from {
+        color: black;
+    }
+    20%, 40% {
+        color: blue;
+    }
+    60%, 80% {
+        color: green;
+    }
+    to {
+        color: red;
+    }
+}
+
+black ---&gt; blue ---&gt; blue ---&gt; green ---&gt; green ---&gt; red
+ 0%         20%       40%       60%        80%       100%</pre>
+                <pre class="screen screen_post">
+@keyframes color_font {
+    from {
+        color: black;
+    }
+    20%, 60% {
+        color: blue;
+    }
+    40%, 80% {
+        color: green;
+    }
+    to {
+        color: red;
+    }
+}
+
+black ---&gt; blue ---&gt; green ---&gt; blue ---&gt; green ---&gt; red
+ 0%         20%       40%        60%       80%       100%</pre>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Продолжительность анимации</h4>
+
+                    <pre class="screen screen_pre">
+animation-duration: ...s;
+                  - ...ms;</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Функция тайминга</h4>
+
+                    <pre class="screen screen_pre">
+animation-timing-function: ease-in-out;</pre>
+                    <p class="text">
+                        Как у <strong>transition:</strong>
+                    </p>
+
+                    <p class="text">
+                        Можно задать для каждоо интервала
+                    </p>
+                <pre class="screen screen_post">
+@keyframes color_font {
+    from {
+        color: black;
+        animation-timing-function: ease-in-out;
+    }
+    50% {
+        color: green;
+        animation-timing-function: linear;
+    }
+    to {
+        color: red;
+        animation-timing-function: ease-out;
+    }
+}</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Задержка</h4>
+
+                    <pre class="screen screen_pre">
+animation-delay: ...s;
+               - ...ms;</pre>
+                    <p class="text">
+                        Как у <strong>transition:</strong>
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Количество итераций</h4>
+
+                    <pre class="screen screen_pre">
+animation-iteration-count: число;
+                         - infinite;</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Направление</h4>
+
+                    <pre class="screen screen_pre">
+animation-direction: alternate;</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Вид по окончании анимации</h4>
+
+                    <pre class="screen screen_pre">
+animation-fill-mode: forwards;</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Сокращённая запись анимации</h4>
+
+                    <pre class="screen screen_pre">
+animation: "name" "duration" "timing-function" "iteration-count" "direction" "delay" "fill-mode";</pre>
+                    <p class="text">
+                        Если к елементу применяется несколько анимаций, списки сокращённых свойств записываются через запятую
+                    </p>
+                    <pre class="screen screen_pre">
+element {
+    animation-name: "имя_1", "имя_2", "имя_n";
+    animation-duration: ...s, ...s, ...s;
+}</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Приостановка анимации</h4>
+
+                    <pre class="screen screen_pre">
+элемент:Псевдокласс {
+    animation-play-state: paised;
+                        - running;
+}</pre>
+                    <p class="text">
+                        Применить это свойство можно только с помощью псевдокласса
+                    </p>
+                </div>
+            </div>
+        </section>
+
+<!-- Медиазапросы -->
+        <section id="media" class="section">
+            <h2 class="section__header">Медиазапросы</h2>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">В элементе link</h3>
+
+                <pre class="screen screen_pre">
+&lt;link rel="stylesheet" media="screen" href="name.css"&gt;
+
+&lt;link href="print.css" rel="stylesheet" media="print"&gt;
+
+&lt;link rel="stylesheet" media="screen and (orientation: portrait)" href="name.css"&gt;
+
+&lt;link rel="stylesheet" media="not screen and (orientation: landscape)" href="name.css"&gt;</pre>
+                <p class="text">
+                    Логику любого медиазапроса можно реверсировать, добавив <strong>not</strong> в его начало
+                </p>
+
+                <p class="text">
+                    В одной строке можно записать несколько выражений, где: <strong>and</strong> - логическое <strong>и</strong>, а <strong>,</strong> - логическое <strong>или</strong>
+                </p>
+                <pre class="screen screen_pre">
+&lt;link rel="stylesheet" media="screen and (orientation: portrait) and (min-width: 320px)" href="name.css"&gt;</pre>
+
+                <p class="text">
+                    Можно создать список медиазапросов
+                </p>
+                <pre class="screen screen_pre">
+&lt;link rel="stylesheet" media="screen and (orientation: portrait) and (max-device-width: 640px), projection" href="name.css"&gt;</pre>
+                <p class="text">
+                    Медиазапросы разделяются запятыми. Если после указания устройства отсутствуют в скобках значение:свойство, стиль применяется для всех устройств данного типа медиаустройств
+                </p>
+
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">С использованием @import</h3>
+
+                <p class="text">
+                    Добавляется в существующую таблицу стилей
+                </p>
+                <pre class="screen screen_pre">
+@import url("name.css") screen and (max-width:360px);
+</pre>
+                <p class="text">
+                    Код <strong>@import</strong> добавляется к HTTP-запросам, что влияет на скорость загрузки
+                </p>
+
+
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Внутри CSS</h3>
+
+                <pre class="screen screen_pre">
+@media device and (свойство: значение) {
+    /* styles */
+}
+
+свойство - min
+         - max-width
+              -height
+              -device-width
+              -device-height
+              -orientation
+              -aspect-ratio
+              -device-aspect-ratio
+              -color
+              -color-index
+              -monochrome
+              -resolution
+         -scan
+         -grid
+
+device - all
+       - print
+       - screen
+       - speach</pre>
+
+                <p class="text">
+                   &quot;Контрольные точки&quot; определяются не разрешением экранов устройств, а дизайном проекта<br>
+                   <strong>all and</strong> можно не указывать, если подразумеваются все устройства
+                </p>
+
+                <pre class="screen screen_post">
+@media (min-width: 321px) and (max-width:720px) {
+    ...
+}</pre>
+            </div>
+
+            <p class="text">
+                Медиазапросы с использованием табличного представления
+            </p>
+            <pre class="screen screen_post">
+@media screen and (min-width: 320px) {
+    .table {
+        display: table;
+        table-layout: fixed;
+        width: 100%;
+    }
+    .cell {
+        display: table-cell;
+        width: 50%;
+        vertical-align: middle;
+        text-align: center;
+    }
+}</pre>
+            <p class="text">
+                Для устройств с высоким разрешением, использующих 2 точки на пиксель
+            </p>
+            <pre class="screen screen_post">
+@media (min-resolution: 2dppx) {
+    /* styles */
+}</pre>
+            <div class="nsection__item">
+                <h3 class="subsection__header">BreakpointЫ BootstrapА</h3>
+
+                <pre class="screen screen_post">
+@media (max-width: 575.98px) { ... }
+
+@media (min-width: 576px) and (max-width: 767.98px) { ... }
+
+@media (min-width: 768px) and (max-width: 991.98px) { ... }
+
+@media (min-width: 992px) and (max-width: 1199.98px) { ... }
+
+@media (min-width: 1200px) { ... }</pre>
+            </div>
+        </section>
+
+<!-- Column -->
+        <section id="column" class="section">
+            <h2 class="section__header">Column</h2>
+
+            <p class="text">
+                - многоколоночная вёрстка
+            </p>
+            <div class="nsection__item">
+                <h3 class="subsection__header">Ширина колонки</h3>
+                <pre class="screen screen_post">
+column-width: auto;   (defaulf)
+            - px;
+            - em;
+            - vw;
+            - inherit;
+            - initial;</pre>
+                <p class="text">
+                    <strong>volume</strong> задаётся в единицах размера, кроме <strong>%</strong>
+                </p>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Количество колонок</h3>
+
+                <pre class="screen screen_pre">
+column-count: auto;    (default)
+            - integer;</pre>
+                <p class="text"> 
+                    <strong>integer</strong> - число
+                </p>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">
+                    Просвет между колонок
+                </h3>
+
+                <pre class="screen screen_pre"> 
+column-gap: normal;     (defaulf)
+          - "величина";</pre>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">
+                    Разделительная линия между колонок
+                </h3>
+
+                <pre class="pre">
+column-rule: "тольщина" "стиль" "цвет";</pre>
+                <p class="text">
+                    Задаётся как и у свойства <strong>border:</strong>
+                </p>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">
+                        Толщина разделительной линии
+                    </h4>
+
+                    <pre class="screen screen_pre"> 
+column-rule-width: "значение";</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">
+                        Стиль разделительной линии
+                    </h4>
+
+                    <pre class="screen screen_pre"> 
+column-rule-style: "значение";</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">
+                        Цвет разделительной линии
+                    </h4>
+
+                    <pre class="screen screen_pre"> 
+column-rule-color: "значение";</pre>
+                </div>
+            </div>
+        </section>
+
+<!-- SVG -->
+        <section id="svg" class="section">
+            <h2 class="section__header">SVG</h2>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Добавление в HTML</h3>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Используя тег &lt;img&gt;</h4>
+
+                    <p class="text">
+                        &bull; Подходит для контентных изображений<br>
+                        &bull; Встроенные стили работают<br>
+                        &bull; Скрипты не работают
+                    </p>
+                    <pre class="screen screen_post">
+&lt;img src='data:image/svg+xml;utf8,&lt;svg&gt;...&lt;svg&gt;'&gt;
+&lt;img src='data:image/svg+xml;base64,PHN2ZyB4SD623FK...'&gt;</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">INLINE SVG в &lt;img&gt;</h4>
+
+                    <p class="text">
+                        &bull; Не кешируется<br>
+                        &bull; "Замусоривает" разметку<br>
+                        &bull; Дубликаты утяжеляют страницу
+                    </p>
+                    <pre class="screen screen_post">
+&lt;img src="images/name.svg" alt="svg picture" width="..." height="...: &frasl;&gt;</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Используя тег &lt; object &gt; , &lt; embed &gt; или &lt; iframe &gt;</h4>
+
+                    <p class="text">
+                        &bull; Работают встроенные стили и скрипты<br>
+                        &bull; Можно управлять из JavaScript
+                    </p>
+                    
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">&lt; iframe &gt;</h5>
+                        
+                        <p class="text">
+                            &bull; Неверно с идеологической точки зрения<br>
+                            &bull; Не подстраивается под размер содержимого
+                        </p>
+
+                        <pre class="screen screen_post">
+&lt;iframe src="pic.svg" width="400" height="400"&gt;
+&lt;&frasl;iframe&gt;</pre>
+                    </div>
+                    
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">&lt; object &gt;</h5>
+
+                        <p class="text">
+                            Позволяет встраивать не-HTML* содержимое в HTML-документ<br>
+                            * - PDF, FLASH, SVG
+                        </p>
+                        <pre class="screen screen_post">
+&lt;object data="images/name.svg" type="image/svg+xml" width="200" height="200"&gt;
+&lt;&frasl;object&gt;</pre>
+                       
+                        <p class="text">
+                            Необходимо указание хотябы одного из атрибутов
+                        </p>
+                    </div>
+
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">&lt; embed &gt;</h5>
+
+                        <p class="text">
+                            Позволяет встраивать не-HTML содержимое в HTML-документ<br>
+                            * - PDF, FLASH, SVG
+                        </p>
+                        <pre class="screen screen_post">
+&lt;embed src="images/name.svg" width="200" height="200"&gt;</pre>
+                       
+                        <p class="text">
+                            Необходимо указание хотябы одного из атрибутов
+                        </p>
+
+                    </div>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Непосредственная вставка</h4>
+
+                    <p class="text">
+                        &bull; Не кешируется<br>
+                        &bull; "Замусоривает" разметку<br>
+                        &bull; Дубликаты утяжеляют страницу
+                    </p>
+
+                    <pre class="screen screen_post">
+&lt;div class="look_it_this"&gt;
+   &lt;svg&gt;
+       ...
+   &lt;&frasl;svg&gt;
+&lt;&frasl;div&gt;</pre>
+                </div>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Добавление в CSS</h3>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">INLINE SVG в CSS</h4>
+
+                    <p class="text">
+                        &bull; Кешируется вместе с CSS-файлом<br>
+                        &bull; Ухудшает читаемость кода
+                    </p>
+                    <pre class="screen screen_post">
+.background {
+    background-image: url('data:image/svg+xml;utf8,&lt;svg&gt;...&lt;svg&gt;');
+}
+
+.background {
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4SD623FK...');
+}</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">В качестве фонового изображения</h4>
+
+                    <p class="text">
+                        &bull; Подходит для оформительских изображений<br>
+                        &bull; Встроенные стили работают<br>
+                        &bull; Скрипты не работают
+                    </p>
+                    <pre class="screen screen_post">
+width: ...;
+background-repeat: no-repeat;
+background-image: url('images/name.svg');
+background-size: 200px auto;</pre>
+                </div>
+            </div>
+        </section>
+        
+<!-- Other -->
+        <section id="other" class="section">
+            <h2 class="section__header">Другое</h2>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Calc</h3>
+
+                <pre class="screen screen_pre">
+свойство: calc(...);</pre>
+                <pre class="screen screen_post">
+background-position: calc(100% - 10px);
+margin: calc(var(--name) * 2);</pre>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Адаптивные меры длины</h3>
+
+                <pre class="screen screen_pre">
+Процентное отношение:
+
+...vw   - к ширине окна просмотра
+...vh   - к высоте окна просмотра
+...vmin - к минимальному размеру окна просмотра (наименьшее из vh и vw)
+...vmax - к максимальному размеру окна просмотра (наибольшее из vh и vw)</pre>
+                <pre class="screen screen_post">
+.main {
+    height: 100vh;
+}</pre>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Переменные</h3>
+
+                <pre class="screen screen_pre">
+    Объявление:
+
+:root {
+    --имя: значение;
+}
+
+    Вызов:
+
+.class {
+    свойство: var(--имя);
+</pre>
+                <p class="text">
+                    &bull; С целью хранения пользовательского свойства (переменной) в корне документа используем псевдокласс <strong>:root</strong><br>
+                    &bull; Переменные можно переназначать в потомках<br>
+                    &bull; Переменную можно задать в элементе (локально) и использовать в потомках этого элемента
+                </p>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Фильтры</h3>
+
+                <pre class="screen screen_pre">
+filter: blur();
+      - brightness();
+      - contrast();
+      - drop-shadow();
+      - grayscale();
+      - hue-rotate();
+      - invert();
+      - opacity();
+      - saturate();
+      - sepia();
+      - url();
+      - none;         (default)
+      - initial;
+      - inherit;</pre>
+                <p class="text">
+                    <strong>url()</strong> - ссылка на SVG-фильтр в этом или другом документе
+                </p>
+
+                <p class="text">
+                    Фильтры можно объединять через пробел
+                </p>
+                <pre class="screen screen_post">
+filter: blur() opacity() sepia();</pre>
+
+                <div class="nsection__item">
+                    <div class="tag-header">
+                        <div class="tag-header__element">blur</div>
+                        <span class="tag-header__description">Размытие</span>
+                    </div>
+
+                    <pre class="screen screen_pre">
+blur(значение);</pre>
+                    <pre class="screen screen_post">
+filter: blur(16px);
+            (1em);</pre>
+                    <p class="text">
+                        &bull; <strong>значение</strong> задаётся в единицах длины (px, em, ...)<br>
+                        &bull; По умолччанию равно <strong>0</strong>
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <div class="tag-header">
+                        <div class="tag-header__element">brightness</div>
+                        <span class="tag-header__description">Яркость</span>
+                    </div>
+
+                    <pre class="screen screen_pre">
+brightness(значение);</pre>
+                    <pre class="screen screen_post">
+filter: brightness(70%);
+                  (0.7);</pre>
+                    <p class="text">
+                        &bull; <strong>значение</strong> задаётся в % или в десятичых дробях<br>
+                        &bull; По умолччанию равно <strong>1</strong><br>
+                        &bull; <strong> значение > 100% </strong> увеличивает яркость
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <div class="tag-header">
+                        <div class="tag-header__element">contrast</div>
+                        <span class="tag-header__description">Контрастность</span>
+                    </div>
+
+                    <pre class="screen screen_pre">
+contrast(значение);</pre>
+                    <pre class="screen screen_post">
+filter: contrast(80%);
+                (0.8);</pre>
+                    <p class="text">
+                        &bull; <strong>значение</strong> задаётся в % или в десятичых дробях<br>
+                        &bull; По умолччанию равно <strong>100%</strong><br>
+                        &bull; <strong> значение &gt; 100% </strong> усиливает констрастность
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <div class="tag-header">
+                        <div class="tag-header__element">drop-shadow</div>
+                        <span class="tag-header__description">Тень</span>
+                    </div>
+
+                    <pre class="screen screen_pre">
+drop-shadow(x y размытость растяжение цвет);</pre>
+                    <pre class="screen screen_post">
+filter: drop-shadow(16px 32px 8px -4px black);
+                   (1em 2em 0.5em -0.25em #000);</pre>
+                    <p class="text">
+                        Добавляется к элементам и его содержимому с учетом их прозрачности
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <div class="tag-header">
+                        <div class="tag-header__element">grayscale</div>
+                        <span class="tag-header__description">Оттенки серого</span>
+                    </div>
+
+                    <pre class="screen screen_pre">
+grayscale(значение);</pre>
+                    <pre class="screen screen_post">
+filter: grayscale(40%);
+                 (0.4);</pre>
+                    <p class="text">
+                        &bull; <strong>значение</strong> задаётся в % или в десятичых дробях<br>
+                        &bull; По умолчанию <strong>0%</strong> т.е. нет эффекта<br>
+                        &bull; При <strong>100%</strong> полностью обесцвечивается
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <div class="tag-header">
+                        <div class="tag-header__element">hue-rotate</div>
+                        <span class="tag-header__description">Оттенок</span>
+                    </div>
+
+                    <pre class="screen screen_pre">
+hue-rotate(0deg ... 360deg);</pre>
+                    <p class="text">
+                        &bull; Меняет цвета изображения в зависимости от заданного угла поворота в цветовом круге<br>
+                        &bull; По умолчанию <strong>0deg</strong> т.е. нет эффекта
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <div class="tag-header">
+                        <div class="tag-header__element">invert</div>
+                        <span class="tag-header__description">Инвертация</span>
+                    </div>
+
+                    <pre class="screen screen_pre">
+invert(0% ... 100%);</pre>
+                    <p class="text">
+                        &bull; По умолчанию <strong>0%</strong> т.е. нет эффекта
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <div class="tag-header">
+                        <div class="tag-header__element">opacity</div>
+                        <span class="tag-header__description">Прозрачность</span>
+                    </div>
+
+                    <pre class="screen screen_pre">
+opacity(100% ... 0%);</pre>
+                    <p class="text">
+                        &bull; <strong>0%</strong> - полностью прозрачный<br>
+                        &bull; По умолчанию <strong>100%</strong> т.е. нет эффекта<br>
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <div class="tag-header">
+                        <div class="tag-header__element">saturate</div>
+                        <span class="tag-header__description">Насыщенность</span>
+                    </div>
+
+                    <pre class="screen screen_pre">
+saturate(значение);</pre>
+                    <p class="text">
+                        &bull; <strong> значение </strong> указывается числом или процентами<br>
+                        &bull; <strong> 0% </strong> убирает цветность<br>
+                        &bull; По умолчанию <strong> 100% </strong> т.е. нет эффекта и равно <strong> 1 </strong><br>
+                        &bull; <strong> значение > 100% </strong> усиливает насыщенность
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <div class="tag-header">
+                        <div class="tag-header__element">sepia</div>
+                        <span class="tag-header__description">Сепия</span>
+                    </div>
+
+                    <pre class="screen screen_pre">
+sepia(0% ... 100%);</pre>
+                    <p class="text">
+                        &bull; По умолчанию <strong>0%</strong> т.е. нет эффекта
+                    </p>
+                </div>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Обтравочный контур</h3>
+
+                <pre class="screen screen_pre">
+clip-path: polygon(x1% y1%, x2% y2%, ... ..., (xn=x1)% (yn=y1)%);</pre>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">
+                    Курсор мыши
+                </h3>
+
+                <pre class="screen screen_pre">
+cursor: auto;            (defaulf)
+      - default;
+      - pointer;
+      - text;
+      - progress;
+      - wait;
+      - help;
+      - crosshair;
+      - not-allowed;
+      - url(../..), alt;
+      - none;</pre>
+                <p class="text">
+                    <strong>default</strong> - стрелка<br>
+                    <strong>pointer</strong> - палец<br>
+                    <strong>text</strong> - текстовый<br>
+                    <strong>progress</strong> - стрелка с вращающимся индикатором процесса<br>
+                    <strong>wait</strong> - вращающийся индикатором процесса<br>
+                    <strong>help</strong> - стрелка со знаком вопроса<br>
+                    <strong>crosshair</strong> - перекрестие<br>
+                    <strong>not-allowed</strong> - перечёркнутый красный круг<br>
+                    <strong>url</strong> - из файла, или <strong>alt</strong> - один из стандартных, если не загрузится<br>
+                    <strong>none</strong> - не отображается<br>
+                </p>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Стилизация CHECKBOXa</h3>
+
+                <pre class="screenscreen_pre">
+    HTML:
+                
+<label for="" class="label">
+    <input type="checkbox" name="" id="">
+    <div class="fake-checkbox"><img src="img.png" alt="fake checkbox"></div>
+    <div class="btn">Push Me</div>
+</label>
+                
+    CSS:
+                
+.checkbox {
+    display: none;
+}
+
+.fake-checkbox {
+    width: 64px;
+    height: 64px;
+    opacity: 0;
+    transition: 2s ease-in-out;
+}
+
+.checkbox:checked + fake-checkbox {
+    opacity: 1;
+}</pre>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">
+                    Раскрывающиеся объекты
+                </h3>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">
+                        Спойлер
+                    </h4>
+
+                    <pre class="screen screen_post">
+    HTML:
+
+&lt;div class="spoiler"&gt;
+    &lt;input type="checkbox" id="sptoggler"&gt;
+    &lt;label for="sptoggler"&gt;
+        &lt;span&gt;
+        &lt;&frasl;span&gt;
+        ..."Header"...
+    &lt;&frasl;label&gt;
+    &lt;div&gt;
+        ..."Content"...
+    &lt;&frasl;div&gt;
+&lt;&frasl;div&gt;
+
+
+    CSS:
+
+.spoler {
+    ...
+}
+.spoiler > input {
+    display: none;
+}
+.spoler > label {
+    display: block;
+    ...
+}
+.spoler > div {
+    display: none;
+    ...
+}
+.spoler > label > span {
+    font-family: monospace;
+}
+.spoler > label> span:before {
+    content: "[+] ";
+}
+.spoler > input:checked ~ div {
+    display: block;
+}
+.spoler > input:checked ~ label > span:before {
+    content: "[-] ";
+}</pre>
+                    <p class="text">
+                        <strong>&lt;span&gt;</strong> - служит для вывода индикатора состояния<br>
+                        <strong>input {display:none;}</strong> - скрывает флажок<br>
+                        <strong>.a ~ .b</strong> - любой элемент <strong>.b</strong> , которому предшествует элемент <strong>.a</strong>
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">
+                        Меню-гамбургер
+                    </h4>
+
+                    <pre class="screen screen_post">
+    HTML:
+
+&lt;div class="hamburger"&gt;
+    &lt;input type="checkbox" id="hambtoggler"&gt;
+    &lt;label for="hambtoggler"&gt;&lt;&frasl;label&gt;
+    &lt;nav&gt;
+        &lt;a href="#"&gt;One&lt;&frasl;a&gt;
+        &lt;a href="#"&gt;Two&lt;&frasl;a&gt;
+        &lt;a href="#"&gt;Three&lt;&frasl;a&gt;
+    &lt;&frasl;nav&gt;
+&lt;&frasl;div&gt;
+
+
+    CSS:
+
+.hamburger {
+    ...
+}
+.hamburger > input {
+    display: none;
+}
+.hamburger > label {
+    display: block;
+    ...
+}
+.hamburger > nav {
+    display: none;
+    ...
+}
+.hamburger > nav > a {
+    display: block;
+}
+.hamburger > input:checked ~ nav {
+    display: inline-block;
+}</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">
+                        Аккордеон
+                    </h4>
+
+                    <pre class="screen screen_post">
+    HTML:
+
+&lt;div class="accordion"&gt;
+    &lt;input type="radio" name="accordion" id="acctoggler-1" checked&gt;
+    &lt;label for="acctoggler-1"&gt;First&lt;&frasl;label&gt;
+    &lt;nav&gt;
+        &lt;a href="#"&gt;One&lt;&frasl;a&gt;
+        &lt;a href="#"&gt;Two&lt;&frasl;a&gt;
+        &lt;a href="#"&gt;Three&lt;&frasl;a&gt;
+    &lt;&frasl;nav&gt;
+&lt;&frasl;div&gt;
+&lt;div class="accordion"&gt;
+    &lt;input type="radio" name="accordion" id="acctoggler-2" checked&gt;
+    &lt;label for="acctoggler-2"&gt;Second&lt;&frasl;label&gt;
+    &lt;nav&gt;
+        &lt;a href="#"&gt;Four&lt;&frasl;a&gt;
+        &lt;a href="#"&gt;Five&lt;&frasl;a&gt;
+        &lt;a href="#"&gt;Six&lt;&frasl;a&gt;
+    &lt;&frasl;nav&gt;
+&lt;&frasl;div&gt;
+
+
+    CSS:
+
+.accordion {
+    ...
+}
+.accordion > input {
+    display: none;
+}
+.accordion > label {
+    display: block;
+    ...
+}
+.accordion > nav {
+    display: none;
+    ...
+}
+.accordion > nav > a {
+    display: block;
+}
+.accordion > input:checked ~ nav {
+    display: block;
+}</pre>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="../script.js"></script>
+</body>
+</html>

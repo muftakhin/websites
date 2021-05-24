@@ -1,0 +1,1817 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>HTML</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+        .main-header,
+        .menu,
+        .menu__item,
+        .section__header,
+        .button {
+            background-color: peru;
+        }
+        .button:hover {
+            color: peru;
+        }
+        .button {                              /* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+            border-color: peru;
+        }
+
+        fieldset {
+            margin: 4px;
+            padding: 4px;
+        }
+        fieldset li {
+             margin: 8px;
+             list-style-type: none;
+        }
+
+
+        .table_simbol th {
+            font-size: 16px;
+            font-weight: normal;
+            padding-top: 4px;
+            padding-bottom: 4px;
+            border-color: grey;
+        }
+        .table_simbol td:first-child {
+            font-size: 16px;
+            padding: 2px;
+        }
+        .table_simbol td:last-child {
+            font-family: monospace;
+            color: lightgreen;
+            background-color: #222;
+        }
+        .table_simbol td:nth-last-child(2) {
+            font-family: monospace;
+            color: lightpink;
+            background-color: #222;
+        }
+
+        .ml-32 {
+            margin-left: 16px;
+        }
+        .fs20 {
+            font-size: 16px;
+        }
+        @media all and (min-width: 1080px) {
+            fieldset {
+            margin: 8px;
+            padding: 8px;
+        }
+        fieldset li {
+             margin: 16px;
+             list-style-type: none;
+        }
+
+
+        .table_simbol th {
+            font-size: 24px;
+            font-weight: normal;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            border-color: grey;
+        }
+        .table_simbol td:first-child {
+            font-size: 32px;
+            padding: 8px;
+        }
+        .table_simbol td:last-child {
+            font-family: monospace;
+            color: lightgreen;
+            background-color: #222;
+        }
+        .table_simbol td:nth-last-child(2) {
+            font-family: monospace;
+            color: lightpink;
+            background-color: #222;
+        }
+
+        .ml-32 {
+            margin-left: 32px;
+        }
+        .fs20 {
+            font-size: 20px;
+        }
+        }
+    </style>
+</head>
+
+<body id="top" class="page">
+    <div class="main-wrapper">
+        <header class="main-header">
+            <div class="button button_left">
+                &equiv;
+            </div>
+
+            <a href="../index.html">
+                <div class="button button_home">
+                    &uArr;
+                </div>
+            </a>
+
+            <h1 class="main-header__title">
+                HTML
+            </h1>
+
+            <a href="../index.html">
+                <div class="button button_prev">
+                    &lArr;
+                </div>
+            </a>
+        </header>
+
+        <aside class="menu menu_left">
+            <header class="menu__header">
+                <div class="button button_left-close">
+                    X
+                </div>
+            </header>
+            <ul class="menu__list">
+                <li><a href="#top"><div class="menu__item">Наверх</div></a></li>
+                <li><a href="#tags"><div class="menu__item">Элементы</div></a></li>
+                <li><a href="#attr"><div class="menu__item">Атрибуты</div></a></li>
+                <li><a href="#forms"><div class="menu__item">Формы</div></a></li>
+                <li><a href="#viewport"><div class="menu__item">Viewport</div></a></li>
+            </ul>
+        </aside>
+
+<!-- Элементы -->
+        <section id="tags" class="section">
+            <h2 class="section__header">Элементы</h2>
+
+            <div class="nsection__item">
+                <div class="tag-header">
+                    <div class="tag-header__element">a</div>
+                    <span class="tag-header__description">Гиперссылка</span>
+                </div>
+
+                <pre class="screen screen_pre">
+&lt;a href="url"&gt; текст ссылки или изображение &lt;&frasl;a&gt;</pre>
+
+                <div class="nsection__item">
+                    <h5 class="sub3section__header">Cсылка-текст</h5>
+
+                    <pre class="screen screen_post">
+&lt;a href="http://www.ovnasite.ru"&gt; сайт овна &lt;&frasl;a&gt;</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h5 class="sub3section__header">Ссылка на определённую часть сайта</h5>
+
+                    <pre class="screen screen_post">
+&lt;a href="#home"&gt; Домой &lt;&frasl;a&gt;</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h5 class="sub3section__header">Ссылка на определённую часть другого сайта</h5>
+
+                    <pre class="screen screen_post">
+&lt;a href="http://www.ovnasite.ru/#news"&gt; Новости сайта овна &lt;&frasl;a&gt;</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h5 class="sub3section__header">Ссылка-картинка</h5>
+
+                    <pre class="screen screen_post">
+&lt;a href="http://www.ovnasite.ru"&gt; &lt;img src="ovnalogo.jpg" alt="логотип овна"&gt; &lt;&frasl;a&gt;</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h5 class="sub3section__header">Открытие ссылки-картники в новой вкладке при помощи target="_blank"</h5>
+
+                    <pre class="screen screen_post">
+&lt;a href="http://www.ovnasite.ru" target="_blank"&gt; &lt;img src="ovnalogo.jpg" alt="логотип овна"&gt; &lt;&frasl;a&gt;</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h5 class="sub3section__header">Запуск почтовой программы и отправка письма</h5>
+
+                    <pre class="screen screen_post">
+&lt;a href="mailto:oven@ovnasite.ru"&gt; написать письмо овну &lt;&frasl;a&gt;</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h5 class="sub3section__header">Запуск почтовой программы и отправка письма</h5>
+
+                    <pre class="screen screen_post">
+&lt;a href="tel:1234567890"&gt; позвонить овну &lt;&frasl;a&gt;</pre>
+                </div>
+            </div>
+
+            <div class="nsection__item">
+                <div class="tag-header">
+                    <div class="tag-header__element">abbr</div>
+                    <span class="tag-header__description">Аббревиатуры, акронимы и сокращения</span>
+                </div>
+
+                <pre class="screen screen_pre">
+&lt;abbr&gt; ... &lt;&frasl;abbr&gt;</pre>
+                <pre class="screen screen_post">
+&lt;abbr title="Конструкторское Бюро Транспортно-Химического Машиностроения"&gt; КБТХМ &lt;&frasl;abbr&gt;</pre>
+            </div>
+
+            <div class="nsection__item">
+                <div class="tag-header">
+                    <div class="tag-header__element">address</div>
+                    <span class="tag-header__description">Контактная информация создателя сайта</span>
+                </div>
+
+                <pre class="screen screen_pre">
+&lt;address&gt; ... &lt;&frasl;address&gt;</pre>
+            </div>
+
+            <div class="nsection__item">
+                <div class="tag-header">
+                    <div class="tag-header__element">article</div>
+                    <span class="tag-header__description">Независимая смысловая еденица</span>
+                </div>
+
+                <pre class="screen screen_pre">
+&lt;article&gt; ... &lt;&frasl;article&gt;</pre>
+
+            </div>
+
+            <div class="nsection__item">
+                <div class="tag-header">
+                    <div class="tag-header__element">b</div>
+                    <span class="tag-header__description">Полужирный текст</span>
+                </div>
+
+                <pre class="screen screen_pre">
+&lt;b&gt; ... &lt;&frasl;b&gt;</pre>
+            </div>
+
+            <div class="nsection__item">
+                <div class="tag-header">
+                    <div class="tag-header__element">blockquote</div>
+                    <span class="tag-header__description">Длинная блочная цитата</span>
+                </div>
+
+                <pre class="screen screen_pre">
+&lt;blockquote&gt; ... &lt;&frasl;blockquote&gt;</pre>
+                <p class="text">
+                    &bull; В него добавляем всё, что ненаше. Чтобы не пропасть из поисковиков<br>
+                    &bull; Внутри используется элемент <strong>&lt;p&gt;...&lt;&frasl;p&gt;</strong>
+                </p>
+            </div>
+
+            <div class="nsection__item">
+                <div class="tag-header">
+                    <div class="tag-header__element">br</div>
+                    <span class="tag-header__description">Перевод строки</span>
+                </div>
+
+                <pre class="screen screen_pre">
+&lt;br&gt;</pre>
+               <p class="text">
+                   Использовать только в тексте
+                </p>
+            </div>
+
+            <div class="nsection__item">
+                <div class="tag-header">
+                    <div class="tag-header__element">button</div>
+                    <span class="tag-header__description">Кнопка</span>
+                <div class="tag-header"></div>
+
+                <pre class="screen screen_pre">
+&lt;button&gt; ... &lt;&frasl;button&gt;</pre>
+
+               <p class="text">
+                   Желательно указывать атрибут <strong>type</strong>
+               </p>
+            </div>
+
+            <div class="nsection__item">
+                <div class="tag-header">
+                    <div class="tag-header__element">cite</div>
+                    <span class="tag-header__description">Цитата</span>
+                </div>
+
+                <pre class="screen screen_pre">
+&lt;cite&gt; ... &lt;&frasl;cite&gt;</pre>
+                <p class="text">
+                    &bull; По умолчнанию преставлена курсивом<br>
+                    &bull; Используется для обозначения источника
+                </p>
+            </div>
+
+            <div class="nsection__item">
+                <div class="tag-header">
+                    <div class="tag-header__element">code</div>
+                    <span class="tag-header__description">Код</span>
+                <div class="tag-header"></div>
+
+                <pre class="screen screen_pre">
+&lt;code&gt; ... &lt;&frasl;code&gt;</pre>
+            </div>
+
+            <div class="nsection__item">
+                <div class="tag-header">
+                    <div class="tag-header__element">del</div>
+                    <span class="tag-header__description">Удаленный текст</span>
+                <div class="tag-header"></div>
+
+                <pre class="screen screen_pre">
+&lt;del&gt; ... &lt;&frasl;del&gt;</pre>
+                <pre class="screen screen_post">
+Город &lt;del title="переименован"&gt; Свердловск &lt;&frasl;del&gt; &lt;ins&gt; Екатеринбург &lt;&frasl;ins&gt; ...</pre>
+                <p class="text">
+                    Отображается зачёркнутым
+                </p>
+            </div>
+
+            <div class="nsection__item">
+                <div class="tag-header">
+                    <div class="tag-header__element">details</div>
+                    <span class="tag-header__description">Раскрывающийся элемент</span>
+                </div>
+
+                <pre class="screen screen_pre">
+&lt;details&gt;
+    &lt;summary&gt; visibility content &lt;&frasl;summary&gt;
+    &lt;p&gt; hidden content &lt;&frasl;p&gt;
+&lt;&frasl;details&gt;</pre>
+                <p class="text">
+                    Чтобы элемент <strong>&lt;details&gt;</strong> был изначально открыт, нужно добавить атрибут <strong>open</strong>:
+                </p>
+                <pre class="screen screen_pre">
+&lt;details open&gt;
+    ...
+&lt;&frasl;details&gt;</pre>
+            </div>
+
+            <div class="nsection__item">
+                <div class="tag-header">
+                    <div class="tag-header__element">dfn</div>
+                    <span class="tag-header__description">Определение термина</span>
+                </div>
+
+                <pre class="screen screen_pre">
+&lt;dfn&gt; ... &lt;&frasl;dfn&gt;</pre>
+                <p class="text">
+                    &bull; Используется внутри <strong>&lt;p&gt;...&lt;&frasl;p&gt;</strong> для выделения определения
+                </p>
+            </div>
+
+            <div class="nsection__item">
+                <div class="tag-header">
+                    <div class="tag-header__element">div</div>
+                    <span class="tag-header__description">Универсальный контейнер</span>
+                </div>
+
+                <pre class="screen screen_pre">
+&lt;div&gt; ... &lt;&frasl;div&gt;</pre>
+
+            </div>
+
+            <div class="nsection__item">
+                <div class="tag-header">
+                    <div class="tag-header__element">em</div>
+                    <span class="tag-header__description">Акцентированный текст</span>
+                </div>
+
+                <pre class="screen screen_pre">
+&lt;em&gt; ... &lt;&frasl;em&gt;</pre>
+                <p class="text">
+                    Выделяется курсивом
+                </p>
+            </div>
+
+            <div class="nsection__item">
+                <div class="tag-header">
+                    <div class="tag-header__element">figure</div>
+                    <span class="tag-header__description">Связанное с контентом изображение или ресурс</span>
+                </div>
+
+                <pre class="screen screen_pre">
+&lt;figure&gt; ... &lt;&frasl;figure&gt;</pre>
+                <pre class="screen screen_post">
+&lt;figure&gt;
+    &lt;img src="table" alt="таблица"&gt;
+&lt;&frasl;figure&gt;</pre>
+                <pre class="screen screen_pre">
+&lt;figcaption&gt; ... &lt;&frasl;figcaption&gt;</pre>
+                <pre class="screen screen_post">
+&lt;figure&gt;
+    &lt;img src="ovnacode.jpg" alt="код овна"&gt;
+    &lt;figcaption&gt;
+        овна код
+    &lt;&frasl;figcaption&gt;
+&lt;&frasl;figure&gt;</pre>
+                <p class="text">
+                    <strong>&lt;figcaption&gt;</strong> - текстовое описание рисунка
+                </p>
+            </div>
+
+            <div class="nsection__item">
+                <div class="tag-header">
+                    <div class="tag-header__element">footer</div>
+                    <div class="tag-header__description">Заключительная часть</div>
+                </div>
+
+                <pre class="screen screen_pre">
+&lt;footer&gt; ... &lt;&frasl;footer&gt;
+                </pre>
+
+                <p class="text">
+                    Может содержать информацию об авторах, копирайт и т.д.
+                </p>
+            </div>
+
+            <div class="nsection__item">
+                <div class="tag-header">
+                    <div class="tag-header__element">h1 ... h6</div>
+                    <span class="tag-header__description">Заголовок</span>
+                </div>
+
+                <pre class="screen screen_pre">
+&lt;h1&gt; ... &lt;&frasl;h1&gt;
+&lt;h2&gt; ... &lt;&frasl;h2&gt;
+&lt;h3&gt; ... &lt;&frasl;h3&gt;
+&lt;h4&gt; ... &lt;&frasl;h4&gt;
+&lt;h5&gt; ... &lt;&frasl;h5&gt;
+&lt;h6&gt; ... &lt;&frasl;h6&gt;</pre>
+
+                <p class="text">
+                    &bull; Используется для формирования структуры документа<br>
+                    &bull; Не желателен пропуск в уровнях заголовков<br>
+                    &bull; Желательно использовать <strong>h1</strong> один раз на странице (кроме <strong>&lt;article&gt;</strong>, в нём можно начинать с <strong>h1</strong>)
+                </p>
+            </div>
+
+            <div class="nsection__item">
+                <div class="tag-header">
+                    <div class="tag-header__element">header</div>
+                    <span class="tag-header__description">Вводная часть</span>
+                </div>
+
+                <pre class="screen screen_pre">
+&lt;header&gt; ... &lt;&frasl;header&gt;</pre>
+            </div>
+
+            <div class="nsection__item">
+                <div class="tag-header">
+                    <div class="tag-header__element">hgroup</div>
+                    <span class="tag-header__description">Группа заголовков</span>
+                </div>
+
+                <pre class="screen screen_pre">
+&lt;hgroup&gt; ... &lt;&frasl;hgroup&gt;</pre>
+                <pre class="screen screen_pre">
+&lt;hgroup&gt;
+    &lt;h1&gt; Заголовок &lt;&frasl;h1&gt;
+    &lt;h2&gt; Подзаголовок &lt;&frasl;h2&gt;
+&lt;&frasl;hgroup&gt;</pre>
+                <p>В структуре учитывается только заголовок верхнего уровня в группе составных заголовков</p>
+            </div>
+
+            <div class="nsection__item">
+                <div class="tag-header">
+                    <div class="tag-header__element">hr</div>
+                    <span class="tag-header__description">Горизонтальная линия</span>
+                </div>
+
+                <pre class="screen screen_pre">
+&lt;hr&gt;</pre>
+            </div>
+
+            <div class="nsection__item">
+                <div class="tag-header">
+                    <div class="tag-header__element">i</div>
+                    <span class="tag-header__description">Курсив</span>
+                </div>
+
+                <pre class="screen screen_pre">
+&lt;i&gt; ... &lt;&frasl;i&gt;</pre>
+            </div>
+
+            <div class="nsection__item">
+                <div class="tag-header">
+                    <div class="tag-header__element">img</div>
+                    <span class="tag-header__description">Изображение</span>
+                </div>
+
+                <pre class="screen screen_pre">
+&lt;img src="..." alt="..." title="..."&gt;</pre>
+                <pre class="screen screen_post">
+&lt;img src="oven.jpg" alt="овен" title="снято без штатива"&gt;</pre>
+                <p class="text">
+                    &bull; <strong>alt</strong> - текст вместо картинки, если не отображется (замещающий текст)<br>
+                    &bull; <strong>title</strong> - всплывающий текст при наведении
+                </p>
+            </div>
+
+            <div class="nsection__item">
+                <div class="tag-header">
+                    <div class="tag-header__element">ins</div>
+                    <span class="tag-header__description">Вставленный (добавленный) текст</span>
+                </div>
+
+                <pre class="screen screen_pre">
+&lt;ins&gt; ... &lt;&frasl;ins&gt;</pre>
+                <p class="text">
+                    Выводится подчёркнутым
+                </p>
+            </div>
+
+            <div class="nsection__item">
+                <div class="tag-header">
+                    <div class="tag-header__element">kbd</div>
+                    <span class="tag-header__description">Нажатия клавиш вводимые пользователем</span>
+                </div>
+
+                <pre class="screen screen_pre">
+&lt;kbd&gt; ... &lt;&frasl;kbd&gt;</pre>
+                <p class="text">
+                    <strong>code</strong>, <strong>samp</strong> и <strong>kbd</strong> отображаются моножиринным шрифтом, а <strong>var</strong> курсивом
+                </p>
+            </div>
+
+            <div class="nsection__item">
+                <div class="tag-header">
+                    <div class="tag-header__element">main</div>
+                    <span class="tag-header__description">Основное содержимое не повторяющееся на других страницах</span>
+                </div>
+
+                <pre class="screen screen_pre">
+&lt;main&gt; ... &lt;&frasl;main&gt;</pre>
+            </div>
+
+            <div class="nsection__item">
+                <div class="tag-header">
+                    <div class="tag-header__element">mark</div>
+                    <span class="tag-header__description">Выделенный текст (жёлтым фоном)</span>
+                </div>
+
+                <pre class="screen screen_pre">
+&lt;mark&gt; ... &lt;&frasl;mark&gt;</pre>
+            </div>
+
+            <div class="nsection__item">
+                <div class="tag-header">
+                    <div class="tag-header__element">nav</div>
+                    <span class="tag-header__description">Навигация</span>
+                </div>
+
+                <pre class="screen screen_pre">
+&lt;nav&gt; ... &lt;&frasl;nav&gt;</pre>
+            </div>
+
+            <div class="nsection__item">
+                <div class="tag-header">
+                    <div class="tag-header__element">p</div>
+                    <span class="tag-header__description">Параграф (абзац)</span>
+                </div>
+
+                <pre class="screen screen_pre">
+&lt;p&gt; ... &lt;&frasl;p&gt;</pre>
+            </div>
+
+            <div class="nsection__item">
+                <div class="tag-header">
+                    <div class="tag-header__element">pre</div>
+                    <span class="tag-header__description">Предварительно отформатированный текст</span>
+                </div>
+
+                <pre class="screen screen_pre">
+&lt;pre&gt; ... &lt;&frasl;pre&gt;</pre>
+            </div>
+
+            <div class="nsection__item">
+                <div class="tag-header">
+                    <div class="tag-header__element">q</div>
+                    <span class="tag-header__description">Короткие inline цитаты</span>
+                </div>
+
+                <pre class="screen screen_pre">
+&lt;q&gt; ... &lt;&frasl;q&gt;</pre>
+            </div>
+
+            <div class="nsection__item">
+                <div class="tag-header">
+                    <div class="tag-header__element">s</div>
+                    <span class="tag-header__description">Зачёркнутый текст</span>
+                </div>
+
+                <pre class="screen screen_pre">
+&lt;s&gt; ... &lt;&frasl;s&gt;</pre>
+            </div>
+
+            <div class="nsection__item">
+                <div class="tag-header">
+                    <div class="tag-header__element">samp</div>
+                    <span class="tag-header__description">Пример программы</span>
+                </div>
+
+                <pre class="screen screen_pre">
+&lt;samp&gt; ... &lt;&frasl;samp&gt;</pre>
+            </div>
+
+            <div class="nsection__item">
+                <div class="tag-header">
+                    <div class="tag-header__element">section</div>
+                    <span class="tag-header__description">Смысловой или тематический раздел</span>
+                </div>
+
+                <pre class="screen screen_pre">
+&lt;section&gt; ... &lt;&frasl;section&gt;</pre>
+            </div>
+
+            <div class="nsection__item">
+                <div class="tag-header">
+                    <div class="tag-header__element">small</div>
+                    <span class="tag-header__description">Мелкий шрифт (юридическая информация)</span>
+                </div>
+
+                <p class="text">
+                    - информация, которую не горят желанием предоставить, но которую необходимо разместить согласно каким-либо требованиям
+                </p>
+                <pre class="screen screen_pre">
+&lt;small&gt; ... &lt;&frasl;small&gt;</pre>
+            </div>
+
+            <div class="nsection__item">
+                <div class="tag-header">
+                    <div class="tag-header__element">span</div>
+                    <span class="tag-header__description">Универсальный строчный элемент</span>
+                </div>
+
+                <pre class="screen screen_pre">
+&lt;span&gt; ... &lt;&frasl;span&gt;</pre>
+            </div>
+
+            <div class="nsection__item">
+                <div class="tag-header">
+                    <div class="tag-header__element">strong</div>
+                    <span class="tag-header__description">Важный текст (придание особого значения)</span>
+                </div>
+
+                <p class="text">
+                    По умолчанию выглядит как полужирный
+                </p>
+                <pre class="screen screen_pre">
+&lt;strong&gt; ... &lt;&frasl;strong&gt;</pre>
+            </div>
+
+            <div class="nsection__item">
+                <div class="tag-header">
+                    <div class="tag-header__element">sub</div>
+                    <span class="tag-header__description">Нижний индекс</span>
+                </div>
+
+                <pre class="screen screen_pre">
+&lt;sub&gt; ... &lt;&frasl;sub&gt;</pre>
+            </div>
+
+            <div class="nsection__item">
+                <div class="tag-header">
+                    <div class="tag-header__element">sup</div>
+                    <span class="tag-header__description">Верхний индекс</span>
+                </div>
+
+                <pre class="screen screen_pre">
+&lt;sup&gt; ... &lt;&frasl;sup&gt;</pre>
+            </div>
+
+            <div class="nsection__item">
+                <div class="tag-header">
+                    <div class="tag-header__element">table</div>
+                    <span class="tag-header__description">Таблица</span>
+                </div>
+
+                <pre class="screen screen_pre">
+&lt;table&gt; ... &lt;&frasl;table&gt;</pre>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Строка</h4>
+
+                    <pre class="screen screen_pre ml">
+&lt;tr&gt; ... &lt;&frasl;tr&gt;</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Заголовок</h4>
+
+                    <p class="text">
+                        Ячейки заголовка с жирным шрифтом центрированным по середине
+                    </p>
+                    <pre class="screen screen_pre">
+&lt;th&gt; ... &lt;&frasl;th&gt;</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Ячейка</h4>
+
+                    <pre class="screen screen_pre">
+&lt;td&gt; ... &lt;&frasl;td&gt;</pre>
+                </div>
+
+                <pre class="screen screen_post">
+&lt;table&gt;
+    &lt;caption&gt;Таблица&lt;&frasl;caption&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt; 1 &lt;&frasl;th&gt;
+            &lt;th&gt; 2 &lt;&frasl;th&gt;
+            &lt;th&gt; 3 &lt;&frasl;th&gt;
+        &lt;&frasl;tr&gt;
+    &lt;&frasl;thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td rowspan="2"&gt; 4 &lt;&frasl;td&gt;
+            &lt;td&gt; 5 &lt;&frasl;td&gt;
+            &lt;td&gt; 6 &lt;&frasl;td&gt;
+        &lt;&frasl;tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt; 7 &lt;&frasl;td&gt;
+            &lt;td&gt; 8 &lt;&frasl;td&gt;
+        &lt;&frasl;tr&gt;
+    &lt;&frasl;tbody&gt;
+    &lt;tfoot&gt;
+        &lt;tr&gt;
+            &lt;td&gt; 9 &lt;&frasl;td&gt;
+            &lt;td colspan="2"&gt; 10 &lt;&frasl;td&gt;
+        &lt;&frasl;tr&gt;
+    &lt;&frasl;tfoot&gt;
+&lt;&frasl;table&gt;</pre>
+
+                <table>
+                    <caption>Таблица</caption>
+                    <thead>
+                        <tr>
+                            <th>1</th>
+                            <th>2</th>
+                            <th>3</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td rowspan="2">4</td>
+                            <td>5</td>
+                            <td>6</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>8</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td>9</td>
+                            <td colspan="2">10</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+            <div class="nsection__item">
+                <div class="tag-header">
+                    <div class="tag-header__element">time</div>
+                    <span class="tag-header__description">Обозначение времени</span>
+                </div>
+
+                <pre class="screen screen_pre">
+&lt;time&gt; ... &lt;&frasl;time&gt;</pre>
+                <p class="text">
+                    атрибут <strong>datetime</strong> представляет ту же информацию м машиночитаемом формате в стандартном формате:<br>
+                    <strong>ГГГГ-ММ-ДД<mark>T</mark>:чч:мм:сс&plusmn;ЧЧ:ММ</strong>
+                </p>
+                <pre class="screen screen_post">
+&lt;time datetime="2020-01-01T 00:00:01+3:00" pubdate&gt; 1 января, 2020 года, 00:01 МСК &lt;&frasl;time&gt;</pre>
+                <p class="text">
+                    атрибут <strong>pubdate</strong> применяется, когда указываемая дата совпадает с датой публикации текущего содержимого
+                </p>
+            </div>
+
+            <div class="nsection__item">
+                <div class="tag-header">
+                    <div class="tag-header__element">u</div>
+                    <span class="tag-header__description">Подчёркнутый текст</span>
+                </div>
+
+                <pre class="screen screen_pre">
+&lt;u&gt; ... &lt;&frasl;u&gt;</pre>
+            </div>
+
+            <div class="nsection__item">
+                <div class="tag-header">
+                    <div class="tag-header__element">var</div>
+                    <span class="tag-header__description">Переменная величина</span>
+                </div>
+
+                <pre class="screen screen_pre">
+&lt;var&gt; ... &lt;&frasl;var&gt;</pre>
+            </div>
+
+            <div class="nsection__item">
+                <div class="tag-header">
+                    <div class="tag-header__element">video</div>
+                    <span class="tag-header__description">Видео</span>
+                </div>
+
+                <pre class="screen screen_pre">
+&lt;video id="..." class="..." autoplay autobuffer controls width="..." src="..." poster="..."&gt;&lt;&frasl;video&gt;</pre>
+            </div>
+
+            <div class="nsection__item">
+                <div class="tag-header">
+                    <div class="tag-header__element">wbr</div>
+                    <span class="tag-header__description">Перенос слова</span>
+                </div>
+
+                <pre class="screen screen_pre">
+&lt;wbr&gt; ... &lt;&frasl;wbr&gt;</pre>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Списки</h3>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Cписок маркированный (неупорядочный)</h4>
+
+                    <pre class="screen screen_pre">
+&lt;ul&gt; ... &lt;&frasl;ul&gt;</pre>
+
+                    <h4 class="sub2section__header">Список нумерованный (упорядочный)</h4>
+
+                    <pre class="screen screen_pre">
+&lt;ol&gt; ... &lt;&frasl;ol&gt;</pre>
+
+                    <pre class="screen screen_post">
+&lt;ol start="17"&gt;</pre>
+                    <p class="text">
+                        - список начнётся с номера 17
+                    </p>
+
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">Пункт списка (для ul и ol)</h5>
+
+                        <pre class="screen screen_pre">
+&lt;li&gt; ... &lt;&frasl;li&gt;</pre>
+
+                        <pre class="screen screen_post">
+&lt;ul&gt;
+    &lt;li&gt; &lt;a href=" ... "&gt; One &lt;&frasl;a&gt; &lt;&frasl;li&gt;
+    &lt;li&gt; &lt;a href=" ... "&gt; Two &lt;&frasl;a&gt; &lt;&frasl;li&gt;
+    &lt;li&gt; &lt;a href=" ... "&gt; Three &lt;&frasl;a&gt; &lt;&frasl;li&gt;
+    &lt;li&gt; &lt;a href=" ... "&gt; Four &lt;&frasl;a&gt; &lt;&frasl;li&gt;
+    &lt;li&gt; &lt;a href=" ... "&gt; Five &lt;&frasl;a&gt; &lt;&frasl;li&gt;
+&lt;&frasl;ul&gt;</pre>
+
+                    </div>
+
+                    <h4 class="sub2section__header">Cписок определений</h4>
+
+                    <p class="text">
+                        Применяется для расшифровки терминов
+                    </p>
+                    <pre class="screen screen_pre">
+&lt;dl&gt;...&lt;&frasl;dl&gt;</pre>
+                    <p class="text">
+                        &bull; содержит только <strong>dt</strong> и <strong>dd</strong><br>
+                        &bull; <strong>dt</strong> может иметь несколько <strong>dd</strong>
+                    </p>
+
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">Имя (термин/метка)</h5>
+
+                        <pre class="screen screen_pre">
+&lt;dt&gt; ... &lt;&frasl;dt&gt;</pre>
+                        <p class="text">
+                            содержит только строчные элементы
+                        </p>
+                    </div>
+
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">Значение (описание/определение)</h5>
+
+                        <pre class="screen screen_pre">
+&lt;dd&gt; ... &lt;&frasl;dd&gt;</pre>
+                        <p class="text">
+                            может содержать любой элемент потокового контента
+                        </p>
+                    </div>
+
+                        <pre class="screen screen_pre ml">
+&lt;dl&gt;
+    &lt;dt&gt; ... &lt;&frasl;dt&gt;
+    &lt;dd&gt; ... &lt;&frasl;dd&gt;
+    &lt;dt&gt; ... &lt;&frasl;dt&gt;
+    &lt;dd&gt; ... &lt;&frasl;dd&gt;
+&lt;&frasl;dl&gt;</pre>
+
+                </div>
+            </div>
+        </section>
+
+<!-- Атрибуты -->
+        <section id="attr" class="section">
+            <h2 class="section__header">Атрибуты</h2>
+
+            <pre class="screen screen_pre">
+&lt; элемент имя_атрибута="значение" &gt;
+
+    или
+
+&lt;элемент имя_атрибута="значение" &gt; контент &lt;&frasl; элемент &gt;</pre>
+            <pre class="screen screen_post">
+&lt;img src="bird.jpg" alt="Фотография птицы"&gt;</pre>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Кавычки</h3>
+
+                <p class="text">
+                    Можно с одинарными, двойными или вообще без кавычек. Можно их сочетать. Можно их экранировать символом "<strong> \ </strong>"
+                </p>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Язык содержимого</h3>
+
+                <p class="text">
+                    Допускается ставить в любом элементе
+                </p>
+                <pre class="screen screen_pre">
+lang="..."</pre>
+                <pre class="screen screen_post">
+&lt;div lang="ru"&gt; ... &lt;&frasl;div&gt;</pre>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Идентификатор</h3>
+
+                <p class="text">
+                    Уникальный, один в документе
+                </p>
+                <pre class="screen screen_pre">
+id="name"</pre>
+                <pre class="screen screen_post">
+&lt;div id="main"&gt; ... &lt;div&frasl;&gt;</pre>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Класс</h3>
+
+                <pre class="screen screen_pre">
+class="name"</pre>
+
+                <p class="text">
+                    Имя класса должно отражать назначение элемента,а не внешний вид
+                </p>
+
+                <pre class="screen screen_post">
+&lt;div class="first"&gt; ... &lt;div&frasl;&gt;</pre>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Всплывающая подсказка</h3>
+
+                <p class="text">
+                    Всплывает при наведении курсора<br>
+                    Можно добавлять к любому элементу
+                </p>
+                <pre class="screen screen_pre">
+title="text"</pre>
+                <pre class="screen screen_post">
+&lt;img src="oven.jpg" alt="овен" title="всплывающий текст"&gt;</pre>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">onClick</h3>
+
+                <pre class="screen screen_pre">
+&lt;tag onClick="script"&gt; ... &lt;&frasl;tag&gt;</pre>
+                <p class="text">
+                    &bull; <strong>tag</strong> - имя элемента<br>
+                    &bull; <strong>script</strong> - код javascript или название функции
+                </p>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">tabindex</h3>
+
+                <p class="text">
+                    управляет фокусом
+                </p>
+
+                <pre class="screen screen_pre">
+tabindex="значение"</pre>
+                <p class="text">
+                    <strong>значение:</strong><br>
+                    &nbsp;&nbsp; <strong>0</strong> - добавляет элемент в порядок фокуса<br>
+                    &nbsp; <strong>-1</strong> - делает элемент интерактивным<br>
+                    &nbsp;&nbsp; <strong>1, 2, ...</strong> - задаёт порядок фокуса
+                </p>
+            </div>
+        </section>
+
+<!-- Сущности -->
+        <section id="simbols" class="section">
+            <h2 class="section__header">Сущности</h2>
+
+            <table class="table_simbol">
+                <tr>
+                    <th>Символ</th>
+                    <th>Описание</th>
+                    <th>Имя</th>
+                    <th>Число</th>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>пробел неразрывный</td>
+                    <td>&amp;nbsp;</td>
+                    <td>&amp;#160;</td>
+                </tr>
+                <tr>
+                    <td>&amp;</td>
+                    <td>амперсанд</td>
+                    <td>&amp;amp;</td>
+                    <td>&amp;#038;</td>
+                </tr>
+                <tr>
+                    <td>&apos;</td>
+                    <td>апостроф</td>
+                    <td>&amp;apos;</td>
+                    <td>&amp;#039</td>
+                </tr>
+                <tr>
+                    <td>&lt;</td>
+                    <td>меньше</td>
+                    <td>&amp;lt;</td>
+                    <td>&amp;#060;</td>
+                </tr>
+                <tr>
+                    <td>&gt;</td>
+                    <td>больше</td>
+                    <td>&amp;gt;</td>
+                    <td>&amp;#062;</td>
+                </tr>
+                <tr>
+                    <td>&copy;</td>
+                    <td>авторское право</td>
+                    <td>&amp;copy;</td>
+                    <td>&amp;#169;</td>
+                </tr>
+                <tr>
+                    <td>&reg;</td>
+                    <td>зарегистрированная торговая марка</td>
+                    <td>&amp;reg;</td>
+                    <td>&amp;#174;</td>
+                </tr>
+                <tr>
+                    <td>&trade;</td>
+                    <td>торговая марка</td>
+                    <td>&amp;trade;</td>
+                    <td>&amp;#8482;</td>
+                </tr>
+                <tr>
+                    <td>&pound;</td>
+                    <td>фунт</td>
+                    <td>&amp;pound;</td>
+                    <td>&amp;#163;</td>
+                </tr>
+                <tr>
+                    <td>&yen;</td>
+                    <td>иена</td>
+                    <td>&amp;yen;</td>
+                    <td>&amp;#165;</td>
+                </tr>
+                <tr>
+                    <td>&euro;</td>
+                    <td>евро</td>
+                    <td>&amp;euro;</td>
+                    <td>&amp;#8364</td>
+                </tr>
+                <tr>
+                    <td>&ndash;</td>
+                    <td>короткое тире</td>
+                    <td>&amp;ndash;</td>
+                    <td>&amp;#8211;</td>
+                </tr>
+                <tr>
+                    <td>&mdash;</td>
+                    <td>длинное тире</td>
+                    <td>&amp;mdash;</td>
+                    <td>&amp;#8212;</td>
+                </tr>
+                <tr>
+                    <td>&lsquo;</td>
+                    <td>кавычка левая одиночная</td>
+                    <td>&amp;lsquo;</td>
+                    <td>&amp;#8216;</td>
+                </tr>
+                <tr>
+                    <td>&rsquo;</td>
+                    <td>кавычка правая одиночная</td>
+                    <td>&amp;rsquo;</td>
+                    <td>&amp;#8217</td>
+                </tr>
+                <tr>
+                    <td>&ldquo;</td>
+                    <td>кавычка двойная левая</td>
+                    <td>&amp;ldquo;</td>
+                    <td>&amp;#8220</td>
+                </tr>
+                <tr>
+                    <td>&rdquo;</td>
+                    <td>кавычка двойная правая</td>
+                    <td>&amp;rdquo;</td>
+                    <td>&amp;#8221</td>
+                </tr>
+                <tr>
+                    <td>&bull;</td>
+                    <td>маркер</td>
+                    <td>&amp;bull;</td>
+                    <td>&amp;#8226;</td>
+                </tr>
+                <tr>
+                    <td>&hellip;</td>
+                    <td>маркеры эллиптические горизонтаьлные</td>
+                    <td>&amp;hellip;</td>
+                    <td>&amp;#8230;</td>
+                </tr>
+                <tr>
+                    <td>&#9800;</td>
+                    <td>овна код</td>
+                    <td></td>
+                    <td>&amp;#9800;</td>
+                </tr>
+            </table>
+
+        </section>
+<!-- Формы -->
+        <section id="forms" class="section">
+            <h2 class="section__header"> Формы </h2>
+
+            <pre class="screen screen_pre">
+&lt;form&gt; ... &lt;&frasl;form&gt;</pre>
+            <p class="text">
+                Информация посылается на сервер в виде пар <b>"имя=значение"</b>
+            </p>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Атрибуты формы</h3>
+
+                <pre class="screen screen_pre">
+action="..."</pre>
+                <p class="text">
+                    указывает URL обрабатывающего сценария на сервере
+                </p>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Метод отправки данных POST и GET</h4>
+
+                    <pre class="screen screen_pre">
+method="..."</pre>
+                    <p class="text">
+                        <strong>GET</strong> данные добавляются в конец URL-адреса. Используется для коротких форм (поисковый запрос) или при простом получении данных с сервера (без отправки сведений в базу данных). По умолчанию<br>
+                        <strong>POST</strong> позволяет пользователям загружать файлы на сервер. Используется если форма длинная, содержит конфиденциальную информацию или добавляет сведения в базу данных или удаляет их оттуда
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Имя переменной элемента формы</h4>
+
+                    <pre class="screen screen_pre">
+name="..."</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Анвыделейбл</h4>
+
+                    <pre class="screen screen_pre">
+disabled="disabled"</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Анизменейбл</h4>
+
+                    <pre class="screen screen_pre">
+readonly="readonly"</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Обязательный ввод</h4>
+
+                    <pre class="screen screen_pre">
+required</pre>
+                </div>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Поле текстовое однострочное</h3>
+
+                <pre class="screen screen_pre">
+&lt;input type="text"&gt;</pre>
+                <p class="text">
+                    Если не задать <strong>type="..."</strong>, то по умолчанию ему будет присвоено значение <strong>"text"</strong>
+                </p>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Атрибуты</h4>
+
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">Имя переменной</h5>
+
+                        <pre class="screen screen_pre">
+name="..."</pre>
+                    </div>
+
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">Текст отображаемый по умолчанию</h5>
+
+                        <pre class="screen screen_pre">
+value="..."</pre>
+                    </div>
+
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">Максимальное число символов</h5>
+
+                        <pre class="screen screen_pre">
+maxlength="..."</pre>
+                    </div>
+
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">Подстановочный текст</h5>
+
+                        <pre class="screen screen_pre">
+placeholder="Подстановочный текст"</pre>
+                    </div>
+
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">Автофокус</h5>
+
+                        <pre class="screen screen_pre">
+autofocus - атрибут без значения</pre>
+                   </div>
+                </div>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Поле текстовое многострочное</h3>
+
+                <pre class="screen screen_pre">
+&lt;textarea&gt; ... &lt;&frasl;textarea&gt;</pre>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Атрибуты</h4>
+
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">Количество строк</h5>
+                        <pre class="screen screen_pre">
+rows="..."</pre>
+                    </div>
+
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">Количество символов по ширине</h5>
+                        <pre class="screen screen_pre">
+cols="..."</pre>
+                    </div>
+
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">Максимальное число символов</h5>
+                        <pre class="screen screen_pre">
+maxlength="..."</pre>
+                    </div>
+
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">wrap атрибут textarea</h5>
+                        <pre class="screen screen_pre">
+wrap="..."</pre>
+
+                        <p class="text">
+                            Атрибут <strong>wrap</strong> говорит браузеру, как осуществлять перенос текста в поле &lt;textarea&gt; и в каком виде отправлять данные на сервер
+                        </p>
+
+                        <p class="text">
+                            <strong>soft</strong> - не сохраняет переносы строк (по умолчанию)<br>
+                            <strong>hard</strong> - сохраняет
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Поле ввода пароля</h3>
+
+                <pre class="screen screen_pre">
+&lt;input type="password"&gt;</pre>
+                <pre class="screen screen_post">
+&lt;p&gt;
+    &lt;label for="pass"&gt; Пароль: &lt;&frasl;label&gt;
+    &lt;input type="password" name="password" maxlength="6" id="pass"&gt;
+&lt;&frasl;p&gt;</pre>
+                <p class="text">
+                    <label for="pass">Пароль:</label>
+                    <input type="password" name="password" maxlength="6" id="pass">
+                </p>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Поле поиска</h3>
+
+                <pre class="screen screen_pre">
+&lt;input type="search"&gt;</pre>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Поле ввода email</h3>
+
+                <pre class="screen screen_pre">
+&lt;input type="email"&gt;</pre>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Поле ввода № телефона</h3>
+
+                <pre class="screen screen_pre">
+&lt;input type="tel"&gt;</pre>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Поле ввода URL</h3>
+
+                <pre class="screen screen_pre">
+&lt;input type="url"&gt;</pre>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Кнопки</h3>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Отправка данных формы на сервер</h4>
+
+                    <pre class="screen screen_pre">
+&lt;input type="submit"&gt;</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Сброс</h4>
+
+                    <pre class="screen screen_pre">
+&lt;input type="reset"&gt;</pre>
+
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header ml">Изментить текст на кнопке</h5>
+
+                        <pre class="screen screen_pre ml">
+value="..."</pre>
+                    </div>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Кнопка с изображением</h4>
+
+                    <pre class="screen screen_pre">
+&lt;input type="image"&gt;</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Действие настраивается языком сценария</h4>
+
+                    <pre class="screen screen_pre">
+&lt;input type="button"&gt;</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Пользовательская кнопка, отображающая на себе содержимое (текст/изображение)</h4>
+
+                    <pre class="screen screen_pre">
+&lt;button&gt; ... &lt;&frasl;button&gt;</pre>
+                </div>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Переключатели и флажки</h3>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Переключатель</h4>
+
+                    <pre class="screen screen_pre">
+&lt;input type="radio"&gt;</pre>
+                    <pre class="screen screen_pre">
+&lt;input type="radio" name="..." value="..." cheked="cheked"&gt;</pre>
+                    <p class="text">
+                        <strong>name="..."</strong> - объединяет несколько переключателей в группу, одно для всех вариантов<br>
+                        <strong>cheked="cheked"</strong> - вариант по умолчанию<br>
+                        <strong>value=".."</strong> - значение отправляемое на сервер вместе с именем выбранного элемента
+                    </p>
+
+                    <pre class="screen screen_post">
+&lt;p&gt; Ты кто такой? Давай до свидания! &lt;&frasl;p&gt;
+&lt;ol&gt;
+    &lt;li&gt;&lt;input type="radio" name="status" value="intern" checked="checked"&gt; стажёр &lt;&frasl;li&gt;
+    &lt;li&gt;&lt;input type="radio" name="status" value="junior"&gt; джун &lt;&frasl;li&gt;
+    &lt;li&gt;&lt;input type="radio" name="status" value="middle"&gt; мидл &lt;&frasl;li&gt;
+    &lt;li&gt;&lt;input type="radio" name="status" value="guru"&gt; синьор помидор &lt;&frasl;li&gt;
+&lt;&frasl;ol&gt;</pre>
+                    <p class="text">
+                        Ты кто такой? Давай до свидания!
+                    </p>
+                    <ol class="ml-32">
+                        <li><input type="radio" name="status" value="intern" checked="checked"> стажёр</li>
+                        <li><input type="radio" name="status" value="junior"> джун</li>
+                        <li><input type="radio" name="status" value="middle"> мидл</li>
+                        <li><input type="radio" name="status" value="guru"> синьор помидор</li>
+                    </ol>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Флажок</h4>
+
+                    <pre class="screen screen_pre">
+&lt;input type="checkbox"&gt;</pre>
+                    <pre class="screen screen_post">
+&lt;p&gt; Языками владеешь? &lt;&frasl;p&gt;
+&lt;ul&gt;
+    &lt;li&gt;&lt;input type="checkbox" name="lang" value="js" checked="checked"&gt; javascript &lt;&frasl;li&gt;
+    &lt;li&gt;&lt;input type="checkbox" name="lang" value="pyton"&gt; pyton &lt;&frasl;li&gt;
+    &lt;li&gt;&lt;input type="checkbox" name="lang" value="php"&gt; php &lt;&frasl;li&gt;
+    &lt;li&gt;&lt;input type="checkbox" name="lang" value="java"&gt; java &lt;&frasl;li&gt;
+&lt;&frasl;ul&gt;</pre>
+                    <p class="text">
+                        Языками владеешь?
+                    </p>
+                    <ul class="ml-32">
+                        <li><input type="checkbox" name="lang" value="javascrip" checked="checked"> javascrip</li>
+                        <li><input type="checkbox" name="lang" value="pyton"> pyton</li>
+                        <li><input type="checkbox" name="lang" value="php"> php</li>
+                        <li><input type="checkbox" name="lang" value="java"> java</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Списки</h3>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Раскрывающийся список с вариантами, для выбора в текстовом поле</h4>
+
+                    <pre class="screen screen_pre">
+&lt;datalist&gt; ... &lt;&frasl;datalist&gt;</pre>
+                    <pre class="screen screen_post">
+&lt;p&gt; какие ваши доказательства?
+    &lt;input type="text" name="red_heat" list="cocainum"&gt;
+    &lt;datalist id="cocainum"&gt;
+        &lt;option value="хулыгани"&gt;
+        &lt;option value="джюрак"&gt;
+        &lt;option value="ми такие простие луди"&gt;
+    &lt;&frasl;datalist&gt;
+&lt;&frasl;p&gt;</pre>
+                    <p class="text">
+                        Какие ваши доказательства?
+                        <input type="text" name="red_heat" list="cocainum">
+                        <datalist id="cocainum">
+                            <option value="хулыгани">
+                            <option value="джюрак">
+                            <option value="ми такие проcтие луди">
+                        </datalist>
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Список</h4>
+
+                    <pre class="screen screen_pre">
+&lt;select&gt;...&lt;&frasl;select&gt;</pre>
+                    <p class="text">
+                        Может содержать два и более элементов <strong>&lt;options&gt;...&lt;&frasl;options&gt;</strong>
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Пункт списка</h4>
+
+                    <pre class="screen screen_pre ml">
+&lt;option&gt;...&lt;&frasl;option&gt;</pre>
+                    <p class="text">
+                        Используется для указания вариантов ответа (пунктов раскрывающегося списка)
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Логическая группа пунктов списка</h4>
+
+                    <pre class="screen screen_pre">
+&lt;optgroup&gt;...&lt;&frasl;optgroup&gt;</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Раскрывающийся список</h4>
+
+                    <p class="text">
+                        Если  элемент <strong>options</strong> указан без атрибута <strong>value</strong>, то  в качестве значения будет отправляться содержимое элемента <strong>options</strong> (текст)
+                    </p>
+                    <pre class="screen screen_post">
+&lt;p&gt; Ваш любимый исполнитель?
+    &lt;select name="singer"&gt;
+        &lt;option value="shura"&gt; Шура &lt;&frasl;option&gt;
+        &lt;option value="prof"&gt; Профессор Лебединский &lt;&frasl;option&gt;
+        &lt;option value="linda"&gt; Линда &lt;&frasl;option&gt;
+        &lt;option value="abp"&gt; Алла Пугачёва &lt;&frasl;option&gt;
+    &lt;&frasl;select&gt;
+&lt;&frasl;p&gt;</pre>
+                    <p class="text">
+                        Ваш любимый исполнитель?
+                        <select name="singer">
+                            <option value="shura">Шура</option>
+                            <option value="prof">Профессор Лебединский</option>
+                            <option value="linda">Линда</option>
+                            <option value="abp">Алла Пугачёва</option>
+                        </select>
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Прокручиваемый список</h4>
+
+                    <pre class="screen screen_post">
+&lt;p&gt; Ваш любимый актёр?
+    &lt;select name="actor" size="3" multiple&gt;
+        &lt;option value="stallone"&gt; Сильвестр Сталлоне &lt;&frasl;option&gt;
+        &lt;option value="arnold" selected="selected"&gt; Арнольд Шварценеггер &lt;&frasl;option&gt;
+        &lt;option value="norris"&gt; Чак Норрис &lt;&frasl;option&gt;
+        &lt;option value="jkvd"&gt; Жан Клод Ван Дамм &lt;&frasl;option&gt;
+        &lt;option value="chan"&gt; Джекки Чан &lt;&frasl;option&gt;
+        &lt;option value="lee"&gt; Брюс Ли &lt;&frasl;option&gt;
+    &lt;&frasl;select&gt;
+&lt;&frasl;p&gt;</pre>
+                    <p class="text">
+                        Ваш любимый актёр?
+                        <select name="actor" size="3" multiple>
+                            <option value="stallone">Сильвестр Сталлоне</option>
+                            <option value="arnold" selected="selected">Арнольд Шварценеггер</option>
+                            <option value="norris">Чак Норрис</option>
+                            <option value="jkvd">Жан Клод Ван Дамм</option>
+                            <option value="chan">Джекки Чан</option>
+                            <option value="lee">Брюс Ли</option>
+                        </select>
+                    </p>
+
+                    <p class="text">
+                        <strong>multiple</strong> - позволяет выбрать более одного элемента из списка<br>
+                        <strong>selected="selected"</strong> устанавливает вариант ответа, выбраный по умолчанию во время загрузуи страницы
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Группировка пунктов раскрывающегося списка</h4>
+
+                    <pre class="screen screen_post">
+&lt;p&gt; Субстанции
+    &lt;select name="substance" size="3" multiple&gt;
+        &lt;optgroup label="тёплое"&gt;
+            &lt;option value="beer"&gt; пиво &lt;&frasl;option&gt;
+            &lt;option value="place"&gt; местечко &lt;&frasl;option&gt;
+        &lt;&frasl;optgroup&gt;
+        &lt;optgroup label="мягкое"&gt;
+            &lt;option value="icecream"&gt; мороженое &lt;&frasl;option&gt;
+            &lt;option value="armchair"&gt; кресло &lt;&frasl;option&gt;
+        &lt;&frasl;optgroup&gt;
+    &lt;&frasl;select&gt;
+&lt;&frasl;p&gt;</pre>
+                    <p class="text">
+                        <strong>label</strong> - название группы
+                    </p>
+
+                    <p class="text">
+                        Субстанции
+                        <select name="substance" size="3" multiple>
+                            <optgroup label="тёплое">
+                                <option value="beer">пиво</option>
+                                <option value="place">местечко</option>
+                            </optgroup>
+                            <optgroup label="мягкое">
+                                <option value="icecream">мороженое</option>
+                                <option value="armchair">кресло</option>
+                            </optgroup>
+                        </select>
+                    </p>
+                </div>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Поле выбора файла</h3>
+
+                <pre class="screen screen_pre">
+&lt;input type="file" name="..."&gt;</pre>
+                <pre class="screen screen_post">
+&lt;form action="file.php" method="POST" enctype="multipart/form-data"&gt;
+    &lt;label&gt;
+        Загрузите изображение &lt;em&gt; необязательно &lt;&frasl;em&gt; &lt;br&gt;
+        &lt;input type="file" name="picture" size="31"&gt;
+    &lt;&frasl;label&gt;
+&lt;&frasl;form&gt;</pre>
+                <form action="file.php" method="POST" enctype="multipart/form-data" class="ml-32">
+                    <label>
+                        Загрузите изображение <em>необязательно</em><br>
+                        <input type="file" name="picture" size="31">
+                    </label>
+                </form>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Скрытый элемент формы</h3>
+
+                <pre class="screen screen_pre">
+&lt;input type="hidden" name="..." value="..."&gt;</pre>
+                <p class="text">
+                    передача пары имя/значение (<strong>name/value</strong>) на сервер в момент отправки данных формы
+                </p>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Элементы даты и времени</h3>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Варианты выбора даты</h4>
+
+                    <pre class="screen screen_pre">
+&lt;input type="date"&gt;</pre>
+                    <input type="date" class="ml-32">
+
+                    <pre class="screen screen_pre">
+&lt;input type="time"&gt;</pre>
+                    <input type="time" class="ml-32">
+
+                    <pre class="screen screen_pre">
+&lt;input type="datetime"&gt;</pre>
+                    <input type="datetime" class="ml-32">
+
+                    <pre class="screen screen_post">
+&lt;input type="datetime-local"&gt;</pre>
+                    <input type="datetime-local" class="ml-32">
+
+                    <pre class="screen screen_post">
+&lt;input type="month"&gt;</pre>
+                    <input type="month" class="ml-32">
+
+                    <pre class="screen screen_post">
+&lt;input type="week"&gt;</pre>
+                    <input type="week" class="ml-32">
+                </div>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Ввод чисел</h3>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Варианты ввода числа</h4>
+                    <pre class="screen screen_pre">
+&lt;input type="number"&gt;</pre>
+                    <pre class="screen screen_post">
+&lt;label&gt; Корочек хлеба
+    &lt;input type="number" name="krutons" min="1" max="5"&gt;
+&lt;&frasl;label&gt;</pre>
+                    <label class="ml-32">Корочек хлеба
+                        <input type="number" name="krutons" min="1" max="5">
+                    </label>
+
+                    <pre class="screen screen_pre">
+&lt;input type="range"&gt;</pre>
+                    <pre class="screen screen_post">
+&lt;label&gt; Твой Level
+    &lt;input type="range" name="level" min="1" max="80" step="1"&gt;
+&lt;&frasl;label&gt;</pre>
+                    <label class="ml-32">Твой Level
+                        <input type="range" name="level" min="1" max="80" step="1">
+                    </label>
+                </div>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Выбор цвета</h3>
+
+                <pre class="screen screen_pre">
+&lt;input type="color"&gt;</pre>
+                <input type="color" class="ml-32">
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Ассоциация</h3>
+
+                <p class="text">
+                    Лучше весь текст в форме обрамлять <strong>label</strong>-ом
+                </p>
+                <pre class="screen screen_pre">
+&lt;label&gt; ... &lt;&frasl;label&gt;</pre>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Неявная ассоциация</h4>
+
+                    <p class="text">
+                        - в элемент <strong>label</strong> внедряется элементы формы вместе с его описанием
+                    </p>
+                    <pre class="screen screen_post">
+&lt;ul&gt;
+    &lt;li&gt; &lt;label&gt; &lt;input type="checkbox" name="icecream" value="vanilla"&gt; ванильное &lt;&frasl;label&gt;&lt;&frasl;li&gt;
+    &lt;li&gt; &lt;label&gt; &lt;input type="checkbox" name="icecream" value="cherry"&gt; вишнёвое &lt;&frasl;label&gt;&lt;&frasl;li&gt;
+    &lt;li&gt; &lt;label&gt; &lt;input type="checkbox" name="icecream" value="chokolate"&gt; шоколадное &lt;&frasl;label&gt;&lt;&frasl;li&gt;
+&lt;&frasl;ul&gt;</pre>
+                    <ul class="ml-32">
+                        <li><label><input type="checkbox" name="icecream" value="vanilla"> ванильное</label></li>
+                        <li><label><input type="checkbox" name="icecream" value="cherry"> вишнёвое</label></li>
+                        <li><label><input type="checkbox" name="icecream" value="chokolate"> шоколадное</label></li>
+                    </ul>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Явная ассоциация</h4>
+
+                    <p class="text">
+                        - сопоставляется метка с идентификатором <strong>id</strong> элемента формы
+                    </p>
+                    <pre class="screen screen_post">
+&lt;label for="one"&gt; Дядя: &lt;&frasl;label&gt;
+&lt;input type="text" name="ancles_name" id="one"&gt; &lt;br&gt;
+&lt;label for="two"&gt; Тётя: &lt;&frasl;label&gt;
+&lt;input type="text" name="aunts_name" id="two"&gt;</pre>
+                    <p class="text">
+                        <label for="one">Дядя: </label>
+                        <input type="text" name="uncles_name" id="one"><br>
+                        <label for="two">Тётя: </label>
+                        <input type="text" name="aunts_name" id="two">
+                    </p>
+                </div>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">fieldset и legend</h3>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">fieldset</h4>
+
+                    <p class="text">
+                        - логическая группа элементов формы
+                    </p>
+                    <pre class="screen screen_pre">
+&lt;fieldset&gt; ... &lt;&frasl;fieldset&gt;</pre>
+
+                    <h4 class="sub2section__header">legend</h4>
+
+                    <p class="text">
+                        - условное обозначение логической группы
+                    </p>
+                    <pre class="screen screen_pre">
+&lt;legend&gt; ... &lt;&frasl;legend&gt;</pre>
+                </div>
+
+                <pre class="screen screen_post">
+&lt;fieldset&gt;
+    &lt;legend&gt; Параметры кандидата &lt;&frasl;legend&gt;
+    &lt;ol&gt;
+        &lt;li&gt; &lt;label&gt; Цвет волос: &lt;input type="text" name="color"&gt; &lt;&frasl;label&gt; &lt;&frasl;li&gt;
+        &lt;li&gt; &lt;label&gt; Рост: &lt;input type="text" name="height"&gt; &lt;&frasl;label&gt; &lt;&frasl;li&gt;
+        &lt;li&gt; &lt;label&gt; Вес: &lt;input type="text" name="weight"&gt; &lt;&frasl;label&gt; &lt;&frasl;li&gt;
+    &lt;&frasl;ol&gt;
+&lt;&frasl;fieldset&gt;</pre>
+
+                <fieldset>
+                    <legend>Параметры кандидата</legend>
+                    <ol>
+                        <li><label>Цвет волос: <input type="text" name="color"></label></li>
+                        <li><label>Рост: <input type="text" name="height"></label></li>
+                        <li><label>Вес: <input type="text" name="weight"></label></li>
+                    </ol>
+                </fieldset>
+            </div>
+        </section>
+
+<!-- Viewport -->
+        <section id="viewport" class="section">
+            <h2 class="section__header">Viewport</h2>
+
+                <p class="text">
+                    Подойдёт для большинства случаев:
+                </p>
+                <pre class="screen screen_post">
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</pre>
+                <p class="text">
+                    - отобразить содержимое во всю ширину экрана устройства
+                </p>
+                <pre class="screen screen_post">
+&lt;meta name="viewport" content="width=device-width, maximum-scale=3, minimum-scale=0.5"&gt;</pre>
+                <p class="text">
+                     - позволяет в 3 раза увеличить и в два раза уменьшить масштаб
+                </p>
+                <pre class="screen screen_post">
+&lt;meta name="viewport" content="initial-scale=1.0, user-scalabe=no"&gt;</pre>
+                <p class="text">
+                     - запрет на изменение масштаба
+                </p>
+
+        </section>
+    </div>
+
+    <script src="../script.js"></script>
+</body>
+</html>

@@ -1,0 +1,3464 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>JavaScript</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+        .main-header,
+        .menu,
+        .menu__item,
+        .section__header,
+        .button {
+            background-color: brown;
+        }
+        .button:hover {
+            color: brown;
+        }
+        .button {
+            border-color: brown;
+        }
+        .menu__item:hover {
+            background-color: red;
+        }
+        table {
+            width: 80%;
+            border-spacing: 4px;
+        }
+        td:first-child {
+            width: 50%;
+            font-size: 18px;
+            font-family: monospace;
+            background-color: #222;
+            color: lightpink;
+            text-shadow: 0 0 4px lightpink;
+        }
+        td:last-child {
+            padding-left: 24px;
+            font-size: 18px;
+            text-align: left;
+        }
+
+        .eventList {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin: 8px;
+        }
+        .eventList__list {
+            display: flex;
+            flex-direction: column;
+            list-style-type: none;
+        }
+        .eventList__header {
+            margin: 4px 0px;
+            padding: 8px 16px;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            color: white;
+            background-color: grey;
+        }
+        .eventList__item {
+            margin: 4px;
+            font-size: 20px;
+            font-family: monospace;
+            list-style-type: none;
+        }
+    </style>
+</head>
+    
+<body id="top" class="page">
+    <div class="main-wrapper">
+        <header class="main-header">
+            <div class="button button_left">
+                &equiv;
+            </div>
+
+            <a href="../index.html">
+                <div class="button button_home">
+                    &uArr;
+                </div>
+            </a>
+
+            <h1 class="main-header__title">
+                JavaScript
+            </h1>
+
+            <a href="../index.html">
+                <div class="button button_prev">
+                    &lArr;
+                </div>
+            </a>
+
+            <div class="button button_right">
+                &equiv;
+            </div>
+        </header>
+
+        <aside class="menu menu_left">
+            <header class="menu__header">
+                <div class="button button_left-close">
+                    X
+                </div>
+            </header>
+
+            <ul class="menu__list">
+                <li><a href="#top"><div class="menu__item">Наверх</div></a></li>
+                <li><a href="#type"><div class="menu__item">Типы данных и переменные</div></a></li>
+                <li><a href="#cycles"><div class="menu__item">Условия и циклы</div></a></li>
+                <li><a href="#functions"><div class="menu__item">Функции</div></a></li>
+                <li><a href="#arrays"><div class="menu__item">Массивы</div></a></li>
+                <li><a href="#objects"><div class="menu__item">Объекты</div></a></li>
+                <li><a href="#constructor"><div class="menu__item">Конструктор</div></a></li>
+                <li><a href="#prototype"><div class="menu__item">Прототип</div></a></li>
+                <li><a href="#dom"><div class="menu__item">DOM</div></a></li>
+                <li><a href="#other"><div class="menu__item">Other</div></a></li>
+            </ul>
+        </aside>
+
+        <nav class="menu menu_right">
+            <header class="menu__header">
+                <div class="button button_right-close">
+                    X
+                </div>
+            </header>
+
+            <ul class="menu__list">
+                <li><a href="fw/reactjs/reactjs.html"><div class="menu__item">React JS</div></a></li>
+                <li><a href="fw/angular/angular.html"><div class="menu__item">Angular JS</div></a></li>
+           </ul>
+        </nav>
+
+<!-- Link -->
+        <section id="link" class="section">
+            <h2 class="section__header">Начало</h2>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Подключение JavaScript</h3>
+
+                <div class="nsection__item">                
+                    <h4 class="sub2section__header">Ссылкой на отдельный файл</h4>
+
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">Внутри &lt;head&gt;</h5>
+                        
+                        <pre class="screen screen_pre">
+&lt;head&gt;
+    ...
+    &lt;script src="scripts.js"&gt;&lt;&frasl;script&gt;
+    ...
+&lt;&frasl;head&gt;</pre>
+                    </div>
+
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">Внутри &lt;body&gt;</h5>
+                    
+                        <pre class="screen screen_pre">
+&lt;body&gt;
+    ...
+    &lt;script src="scripts.js"&gt;&lt;&frasl;script&gt;
+    ...
+&lt;&frasl;body&gt;</pre>
+                    </div>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Как встроенный элемент</h4>
+                        
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">Внутри &lt;head&gt;</h5>
+
+                        <pre class="screen screen_pre">
+&lt;head&gt;
+    ...
+    &lt;script&gt;
+        ...
+    &lt;&frasl;script&gt;
+    ...
+&lt;&frasl;head&gt;</pre>
+                    </div>
+                   
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">или внутри &lt;body&gt;</h5>
+
+                        <pre class="screen screen_pre">
+&lt;body&gt;
+    ...
+    &lt;script&gt;
+        ...
+    &lt;&frasl;script&gt;
+&lt;&frasl;body&gt;</pre>
+                        <p class="text">
+                            Чтобы заработала интерактивность после загрузки всей страницы, <strong>JavaScript</strong> подключают в самом низу
+                        </p>
+                    </div>
+                </div>
+            
+                <h3 class="subsection__header">Комментарии</h3>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Однострочный комментарий</h4>
+                            
+                    <pre class="screen screen_pre">
+// Однострочный комментарий</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Многострочный комментарий</h4>
+                        
+                    <pre class="screen screen_pre">
+/* Многострочный
+комментарий */</pre>
+                </div>
+            </div>
+        </section> <!-- /Link -->
+
+<!-- Типы данных и переменные -->
+        <section id="type" class="section">
+            <h2 class="section__header">Типы данных и переменные</h2>
+
+            <p class="text">
+                Выражение - всё, что при вычислении даёт некоторое значение
+            </p> 
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Типы данных</h3>
+
+                <div class="nsection__item">
+                    <ul class="text-list">
+                        <li class="text-list__item">&bull; Числа</li>
+                        <li class="text-list__item">&bull; Строки</li>
+                        <li class="text-list__item">&bull; Булевы значения</li>
+                        <li class="text-list__item">&bull; Undefined</li>
+                    </ul>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Числа</h4>
+    
+                    <p class="text">
+                        &bull; В JavaScript всего один числовой тип. Он представляет собой 64-разрядное число с плавающей точкой, поэтому 1 и 1.0 - это одно и то же значение<br>
+                        &bull; Если числовое значение содержит показатель степени, то оно вычисляется путём умножения на 10 части, стоящей перед <strong>e</strong>, столько раз, сколько указано после <strong>e</strong>. Т.е. 100 и 1е2 одно и то же<br>
+                    </p>
+
+                    <p class="text">
+                        Если разделить число на ноль, выдаст <strong>Infinity</strong>
+                    </p>
+                </div>
+    
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Строки</h4>
+    
+                    <p class="text">
+                        &bull; Строка может быть заключена в одинарные или двойные кавычки. Она может содержать ноль и более символов. <strong>\</strong> является экранирующим символом. Все символы являются 16-разрядными<br>
+                        &bull; JavaScript не имеет символьного типа. Для того, чтобы получить символ, нужно задать строку из одного символа
+                    </p>
+                    <p class="text">
+                        &bull; JS может временно преобразовывать строку-примитив в строку-объект<br>
+                        &bull; Строка всегда примитив, если она не была создана с помощью конструкторов
+                    </p>
+    
+                    <p class="text">
+                        Создать строку <strong>name_1</strong>:
+                    </p>
+                    <pre class="screen screen_post">
+let name_1 = "строка";</pre>
+
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">Отдельный символ строки</h5>
+
+                        <pre class="screen screen_pre">
+name_1[0];  -   первый символ строки name_1
+name_1[1];  -   второй символ строки name_1
+. . . .
+name_1[n];  -   n-ый символ строки name_1</pre>
+                    </div>
+
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">Методы строк</h5>
+
+                        <div class="nsection__item">
+                            <div class="tag-header">
+                                <div class="tag-header__element_small">.length</div>
+                                <span class="tag-header__description_small">Длина строки</span>
+                            </div>
+        
+                            <pre class="screen screen_pre">
+name_1.length;</pre>
+                        </div>
+    
+                        <div class="nsection__item">
+                            <div class="tag-header">
+                                <div class="tag-header__element_small">.slice(..., ...)</div>
+                                <span class="tag-header__description_small">Срез строки</span>
+                            </div>
+    
+                            <pre class="screen screen_post">
+name_1.slice(1, 4);</pre>
+                            <p class="text">
+                                числа в скобках - позиции символов перед которыми производится срез строки name_1
+                            </p>
+                        </div>
+    
+                        <div class="nsection__item">
+                            <div class="tag-header">
+                                <div class="tag-header__element_small">.toUpperCase()</div>
+                                <span class="tag-header__description_small">Перевод строки в заглавный регистр</span>
+                            </div>
+    
+                            <pre class="screen screen_pre">
+name_1.toUpperCase();</pre>
+                        </div>
+
+                        <div class="nsection__item">
+                            <div class="tag-header">
+                                <div class="tag-header__element_small">.toLowerCase()</div>
+                                <span class="tag-header__description_small">Перевод строки в строчный регистр</span>
+                            </div>
+
+                            <pre class="screen screen_pre">
+name_1.toLowerCase();</pre>
+                        </div>
+
+                        <div class="nsection__item">
+                            <div class="tag-header">
+                                <div class="tag-header__element_small">.charAt(i)</div>
+                                <span class="tag-header__description_small">Символ строки с индексом i</span>
+                            </div>
+
+                            <pre class="screen screen_pre">
+name_1.charAt(i);</pre>
+                        </div>
+
+                        <div class="nsection__item">
+                            <div class="tag-header">
+                                <div class="tag-header__element_small">.indexOff("...")</div>
+                            </div>
+                            <p class="text">
+                                - индекс первого символа первого вхождения аргумента <strong>"строка"</strong> в строке <strong>name_1</strong>
+                            </p>
+
+                            <pre class="screen screen_pre">
+name_1.indexOff("строка");</pre>
+
+                            <pre class="screen screen_pre">
+name_1.indexOff("строка", i);</pre>
+                            <p class="text">
+                                i - индекс начальной позиции поиска
+                            </p>
+                            <p class="text">
+                                Если аргумент в строке найти не удалось, метод возвратит <strong>-1</strong>
+                            </p>
+                        </div>
+
+                        <div class="nsection__item">
+                            <div class="tag-header">
+                                <div class="tag-header__element_small">.substring("...")</div>
+                                <span class="tag-header__description_small">Извлечение части строки</span>
+                            </div>
+
+                            <pre class="screen screen_pre">
+name_1.substring(i, j);</pre>
+                            <p class="text">
+                                Возвратит часть строки начинающуюся с индекса <strong>i</strong> включая его, и заканчивающуюсю индексом <strong>j</strong> не включая его
+                            </p>
+
+                            <pre class="screen screen_pre">
+name_1.substring(i);</pre>
+                            <p class="text">
+                                Если не указывать второй индекс, метод возвратит часть строки начинающуюся с индекса <strong>i</strong> и до конца строки
+                            </p>
+                        </div>
+
+                        <div class="nsection__item">
+                            <div class="tag-header">
+                                <div class="tag-header__element_small">.split("...")</div>
+                            </div>
+
+                            <p class="text">
+                                - получает символ-ограничитель и разбивает строку на части по позиции ограничителя и возвращает их в массиве
+                            </p>
+                            <pre class="screen screen_pre">
+let name_1 = "string_1|string_2|string_3";
+let name_2 = name_1.split("|");
+
+console.log(vals);
+
+    вернёт:
+
+["sreing_1", "string_2", "string_3"]</pre>
+                         </div>
+                </div>
+    
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Булевы значения</h4>
+    
+                    <pre class="screen screen_pre">
+true
+false</pre>
+                    <p class="text">
+                        Все выражения <strong>true</strong>,<br>
+                        кроме: <strong>'false'</strong>, <strong>''</strong>, <strong>0</strong>, <strong>-0</strong>, <strong>null</strong>, <strong>undefined</strong> и <strong>NaN</strong>
+                    </p>
+                    <p class="text">
+                        Псевдоложные значения:<br>
+                        - <strong>undefined</strong><br>
+                        - <strong>null</strong><br>
+                        - <strong>0</strong><br>
+                        - <strong>пустая строка</strong><br>
+                        - <strong>NaN</strong>
+                    </p>
+                </div>
+    
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">undefined и null</h4>
+    
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">undefined</h5>
+
+                        <p class="text">
+                            - значение, присваиваемое тому, что ещё не имеет значение (значение не определено)
+                        </p>
+                        <p class="text">
+                            &bull; Позволяет проверить, было ли присвоено значение (была ли переменная инициализированна)<br>
+                            &bull; Используется для неинициализированных переменных, отсутствующих свойств объектов или отсутствующих значений в массивах
+                        </p>
+                        <pre class="screen screen_post">
+let name_1;
+
+if (name_1 == undefined) {
+    ...
+}</pre>
+                    </div>
+
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">null</h5>
+
+                        <p class="text">
+                            - явное отсутствие значения
+                        </p>
+                        <p class="text">
+                            &bull; Чаще используется там, где объект ещё не создан или не найден
+                        </p>
+                    </div>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">NaN</h4>
+
+                    <p class="text">
+                        &bull; <strong>NaN</strong> - не определённое числовое значение<br>
+                        &bull; Значение <strong>NaN</strong> используется для обозначения результатов вычисления, в ходе которых не может быть получен нормальный результат<br>
+                        &bull; <strong>NaN</strong> не имеет конкретного числового значения<br>
+                        &bull; Используется для представления числовых результатов, не имеющих представления<br>
+                    </p>
+
+                    <pre class="screen screen_pre">
+NaN != NaN</pre>
+                    <p class="text">
+                        Не равен самому себе и вообще ничему
+                    </p>
+
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">Проверка isNaN</h5>
+
+                        <pre class="screen screen_pre">
+isNaN(name_1)</pre>
+                        <pre class="screen screen_post">
+if (isNaN(name_1)) {
+    ...
+}</pre>
+                        <p class="text">
+                            вернёт <strong>true</strong>, если <strong>name_1</strong> присвоено не числовое значение
+                        </p>
+                    </div>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Infinity</h4>
+
+                    <p class="text">
+                        - представляет все значения, выходящие за границы представления чисел с плавающей точкой (1.7976931348623157Е+10308)  или -1.7976931348623157Е+10308 для <strong>-Infinity</strong> )
+                    </p>
+
+                    <p class="text">
+                        &bull; <strong>число / 0 = Infinity</strong><br>
+                        &bull; <strong>Infinity - Infinity = NaN</strong>
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Просмотр типа данных</h4>
+
+                    <pre class="screen screen_pre">
+typeof name_1</pre>
+                    <p class="text">
+                        <strong>name_1</strong> - переменная
+                    </p>
+
+                    <pre class="screen screen_post">
+typeof NaN; --&gt; number
+typeof null; --&gt; object</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Преобразование типов данных</h4>
+    
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">Преобразование в число</h5>
+
+                        <pre class="screen screen_pre">
+name_1 = '123';
+n *= 1
+
+или
+
+parseInt(name_1)</pre>
+                        <p class="text">
+                            <strong>name_1</strong> - имя переменной содержащей исходные данные
+                        </p>
+                    </div>
+
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">Преобразование в строку</h5>
+
+                        <pre class="screen screen_pre">
+name_1 = 123;
+n += ''</pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Переменные</h3>
+
+                <p class="text">
+                    &bull; переменная <strong>var</strong> видна до её объявления<br>
+                    &bull; все объекты в булевом контексте являются <strong>true</strong>
+                </p>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Инициализация и присвоение значения</h4>
+
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">Инициализация (создание)</h5>
+
+                        <pre class="screen screen_pre">
+let name_1;</pre>
+                    </div>
+
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">Присвоение значения</h5>
+
+                        <pre class="screen screen_pre">
+let name_1 = value_1;</pre>
+
+                        <pre class="screen screen_pre">
+name_1 = value_2;</pre>
+                        <p class="text">
+                            При присвоении нового значения или ранее созданной переменной, использование ключевого слова не обязательно
+                        </p>
+                    </div>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Области видимости переменных</h4>
+
+                    <p class="text"> 
+                        Если имена глобальной и локальной переменных совпадают, то локальная переменная замещает внутри функции глобальную
+                    </p>
+
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">Глобальные</h5>
+
+                        <p class="text">
+                            Объявленные за пределами функций или внутри функции без использования ключевого слова <strong>var</strong> (используемые без предварительного объявления)
+                        </p>
+
+                        <p class="text">
+                            &bull; Видны даже в дополнительных сценариях<br>
+                            &bull; Существуют, пока существует страница (при перезагрузке страницы уничтожаются и создаются заново)
+                        </p>
+                    </div>
+
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">Локальные</h5>
+                                
+                        <p class="text">
+                           Объявленные внутри функции используя ключевое слово <strong>var</strong>
+                        </p>
+
+                        <p class="text">
+                            &bull; Доступны только локально в самой функции<br>
+                            &bull; Параметр переданный функции приобретают локальную область видимости, кроме массивов, передаваемых функции по ссылке. Если внести изменение в элемент массива, переданного в качестве параметра, изменятся элемент исходного массива<br>
+                            &bull; Переменная цикла видна во всей функции, внутри которой объявлена<br>
+                            &bull; Создаются при первом вызове функции и исчезают при завершении функции
+                        </p>
+                    </div>
+
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">Зарезервированные слова</h5>
+
+                        <p class="text">
+                            Не допускается использование зарезервированных слов для именования переменных
+                        </p>
+
+                        <ul class="text-list_reserved-words">
+                            <li class="text-list__item">abstract</li>
+                            <li class="text-list__item">as</li>
+                            <li class="text-list__item">boolean</li>
+                            <li class="text-list__item">break</li>
+                            <li class="text-list__item">byte</li>
+                            <li class="text-list__item">case</li>
+                            <li class="text-list__item">catch</li>
+                            <li class="text-list__item">char</li>
+                            <li class="text-list__item">class</li>
+                            <li class="text-list__item">continue</li>
+                            <li class="text-list__item">const</li>
+                            <li class="text-list__item">debugger</li>
+                            <li class="text-list__item">default</li>
+                            <li class="text-list__item">delete</li>
+                            <li class="text-list__item">do</li>
+                            <li class="text-list__item">double</li>
+                            <li class="text-list__item">else</li>
+                            <li class="text-list__item">enum</li>
+                            <li class="text-list__item">export</li>
+                            <li class="text-list__item">extends</li>
+                            <li class="text-list__item">false</li>
+                            <li class="text-list__item">final</li>
+                            <li class="text-list__item">finally</li>
+                            <li class="text-list__item">float</li>
+                            <li class="text-list__item">for</li>
+                            <li class="text-list__item">function</li>
+                            <li class="text-list__item">goto</li>
+                            <li class="text-list__item">if</li>
+                            <li class="text-list__item">implements</li>
+                            <li class="text-list__item">import</li>
+                            <li class="text-list__item">in</li>
+                            <li class="text-list__item">instanceof</li>
+                            <li class="text-list__item">int</li>
+                            <li class="text-list__item">interface</li>
+                            <li class="text-list__item">is</li>
+                            <li class="text-list__item">long</li>
+                            <li class="text-list__item">namespace</li>
+                            <li class="text-list__item">nativ</li>
+                            <li class="text-list__item">new</li>
+                            <li class="text-list__item">null</li>
+                            <li class="text-list__item">package</li>
+                            <li class="text-list__item">private</li>
+                            <li class="text-list__item">protected</li>
+                            <li class="text-list__item">public</li>
+                            <li class="text-list__item">return</li>
+                            <li class="text-list__item">short</li>
+                            <li class="text-list__item">static</li>
+                            <li class="text-list__item">super</li>
+                            <li class="text-list__item">switch</li>
+                            <li class="text-list__item">synchronized</li>
+                            <li class="text-list__item">this</li>
+                            <li class="text-list__item">throw</li>
+                            <li class="text-list__item">throws</li>
+                            <li class="text-list__item">transient</li>
+                            <li class="text-list__item">true</li>
+                            <li class="text-list__item">try</li>
+                            <li class="text-list__item">typeof</li>
+                            <li class="text-list__item">use</li>
+                            <li class="text-list__item">var</li>
+                            <li class="text-list__item">void</li>
+                            <li class="text-list__item">volatile</li>
+                            <li class="text-list__item">while</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Константы</h3>
+
+                <p class="text">
+                    Записываются заглавными буквами
+                </p>
+                <pre class="screen screen_pre">
+const NAME1;</pre>
+                <p class="text">
+                    Нельзя присвоить новое значение
+                </p>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Операторы</h3>
+
+                <p class="text">
+                    &bull; <strong>Унарные</strong> - воспринимают один операнд<br>
+                    &bull; <strong>Бинарные</strong> - воспринимают два операнда<br>
+                    &bull; <strong>Тернарные</strong> - имеют форму <strong>? x:y</strong>, является краткой однострочной формой инструкции <strong>if</strong>, которая выбирает одно из двух выражений на основе значения третьего выражения
+                </p>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Строковые</h4>
+
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">Конкатенация</h5>
+
+                        <p class="text">
+                            - объединение строк
+                        </p>
+                        <pre class="screen screen_pre">
++
++=</pre>
+                        <pre class="screen screen_post">
+let name_1 = 'one' + 'two';</pre>
+                        <p class="text">
+                            То же самое:
+                        </p>
+                        <pre class="screen screen_post">
+let name_1 = 'one';
+name_1 += 'two';</pre>
+
+                        <p class="text">
+                            &bull; При конкатенации строки и числа, число преобразуется в строку<br>
+                            &bull; А <strong>true</strong> преобразуется в строку "true"
+                        </p>
+                    </div>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Присваивания</h4>
+
+                    <p class="text">
+                        - оператор обычного присваивания и его сочетания
+                    </p>
+
+                    <pre class="screen screen_pre">
+=
++=
+-=
+*=
+/=
+%=</pre>
+                    <p class="text">
+                        Присваивает левому операнду значение правого операнда
+                    </p>
+                    <pre class="screen screen_pre">
+let name_1 =  value_1;
+          +=
+          -=
+          *=
+          /=
+          %=</pre>
+                    <p class="text">
+                        <strong>name_1</strong> - левый операнд<br>
+                        <strong>value_1</strong> - значение
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Арифметические операторы</h4>
+
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">Инкремент и декремент</h5>
+
+                        <pre class="screen screen_pre">
+let name = 0;
+++name;  или  --name;  вернёт 1 и -1,
+name++;  или  name--;  вернёт 0</pre>
+                    </div>
+
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">На заданное число</h5>
+
+                        <pre class="screen screen_pre">
++  -  увеличение
+-  -  уменьшение
+*  -  умножение
+/  -  деление
+%  -  деление по модулю (остаток от деления)
+** -  возведение в степень</pre>
+                        <p class="text">
+                            &bull; При сложении числа со строкой выполняется конкатенация<br>
+                            &bull; При умножении, делении и вычитании, JavaScript рассматривает операции как арифметические и строки преобразует в числа
+                        </p>
+                    </div>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Логические операторы</h4>
+    
+                    <pre class="screen screen_pre">
+&amp;&amp;  -  и
+||  -  или
+!   -  не</pre>
+                    <p class="text">
+                        &bull; <strong>&amp;&amp;</strong> - используются с двумя булевыми значениями, чтобы узнать равны ли оба <strong>true</strong><br>
+                        &bull; <strong>&amp;&amp;</strong> - возвращает первое ложное значение
+                    </p>
+                    <pre class="screen screen_post">
+1 && 2 && 3 && null && 4
+
+вернёт
+
+null</pre>
+
+                    <p class="text">
+                        &bull; <strong>||</strong> - равен ли кто-то <strong>true</strong><br>
+                        &bull; <strong>||</strong> возвращает первое истинное значение (ибо если первый операнд <strong>true</strong>, то второй не будет вычисляться )
+                    </p>
+                    <pre class="screen screen_post">
+1 || 2 || 3 || null || 4
+
+вернёт
+
+1</pre>
+
+                    <p class="text">
+                        <strong>!</strong> - меняет значение на противоположное
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Операторы сравнения</h4>
+
+                    <pre class="screen screen_pre">
+==   - равно
+===  - равно и того же типа (строго равно)
+&gt;    - больше
+&lt;    - меньше
+&gt;=   - больше или равно
+&lt;=   - меньше или равно
+!=   - не равно
+!==  - не равно и того же типа</pre>
+
+                    <p class="text">
+                        Если переменную нужно сравнить, не является она <strong>true</strong> или <strong>false</strong>, то записывается только имя переменной (упрощается запись):
+                    </p>
+                    <pre class="screen screen_post">
+    Вместо:
+(name_1 == true) или (name_1 == false)
+
+    Записывается:
+(name_1)</pre>
+
+                    <div class="nsection__item">
+                        <div class="nsection__item">
+                            <div class="tag-header">
+                                <div class="tag-header__element">==</div>
+                                <span class="tag-header__description">
+                                    Оператор проверки равенства
+                                </span>
+                            </div>
+
+                            <p class="text">
+                                &bull; Если сравнивается число и строка, строка преобразуется в число (строка из букв преобразуется в NaN)<br>
+                                &bull; Булевское значение преобразуется в число ( true в 1, false в 0)<br>
+                                &bull; <strong>undefined</strong> равен <strong>null</strong><br>
+                                &bull; Пустая строка преобразуется в <strong>0</strong><br>
+                                &bull; Для проверки равенства объектов не важно какой из операторов равенства (<strong>==</strong> или <strong>===</strong>), они работают одинаково. Сравниваются ссылки на объекты. Две ссылки равны, если оны ссылаются на один объект
+                            </p>
+                        </div>
+
+                        <div class="nsection__item">
+                            <div class="tag-header">
+                                <div class="tag-header__element">&lt; &gt;</div>
+                                <span class="tag-header__description">
+                                    Операторы проверки больше или меньше
+                                </span>
+                            </div>
+
+                            <p class="text">
+                                &bull; Булевское значение преобразуется в число ( true в 1, false в 0)<br>
+                                &bull; Cтроки преобразуется в числа, по порядку символов в юникоде
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Приоритетность операторов</h4>
+
+                    <table>
+                        <tr>
+                            <td>() []</td><td>Скобки, вызовы и составляющая объекта</td>
+                        </tr>
+                        <tr>
+                            <td>++ --</td><td>Инкремент и декремент</td>
+                        </tr>
+                        <tr>
+                            <td>+ - ~ !</td><td>Унарные, поразрядные и логические</td>
+                        </tr>
+                        <tr>
+                            <td>* / %</td><td>Арифметические</td>
+                        </tr>
+                            <td>+ -</td><td>Арифметические и строковые</td>
+                        </tr>
+                        <tr>
+                            <td>&lt;&lt; &gt;&gt; &gt;&gt;&gt;</td><td>Поразрядные</td>
+                        </tr>
+                        <tr>
+                            <td>&lt;&gt; &lt;= &gt;=</td><td>Сравнения</td>
+                        </tr>
+                        <tr>
+                            <td>== != === !==</td><td>Сравнения</td>
+                        </tr>
+                        <tr>
+                            <td>& ^ |</td><td>Поразрядные</td>
+                        </tr>
+                        <tr>
+                            <td>&&</td><td>Логический</td>
+                        </tr>
+                        <tr>
+                            <td>||</td><td>Логический</td>
+                        </tr>
+                        <tr>
+                            <td>? :</td><td>Трёхкомпонентный</td>
+                        </tr>
+                        <tr>
+                            <td>= += -= *= /= %= &lt;&lt;= &gt;&gt;= &gt;&gt;&gt;= &= ^= |=</td><td>Присваивания</td>
+                        </tr>
+                        <tr>
+                            <td>,</td><td>Разделитель</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Взаимосвязанность операторов</h4>
+
+                    <table>
+                        <caption>
+                            Отсутствует
+                        </caption>
+                        <tr>
+                            <td>++&nbsp; --</td>
+                            <td>Инкремент и декремент</td>
+                        </tr>
+                    </table>
+
+                    <table>
+                        <caption>
+                            Правая
+                        </caption>
+                        <tr>
+                            <td>new</td>
+                            <td>Создание нового объекта</td>
+                        </tr>
+                        <tr>
+                            <td>+&nbsp; -&nbsp; ~&nbsp; !</td>
+                            <td>Унарные и поразрядные операции</td>
+                        </tr>
+                        <tr>
+                            <td>?&nbsp; :</td>
+                            <td>Условный оператор</td>
+                        </tr>
+                        <tr>
+                            <td>==&nbsp; *=&nbsp; /=&nbsp; %=&nbsp; +=&nbsp; -=</td>
+                            <td>Присваивание</td>
+                        </tr>
+                        <tr>
+                            <td>&lt;&lt;=&nbsp; &gt;&gt;=&nbsp; &gt;&gt;&gt;=&nbsp; &=&nbsp; ^=&nbsp; |=</td>
+                            <td>Присваивание</td>
+                        </tr>
+                    </table>
+
+                    <table>
+                        <caption>
+                            Левая
+                        </caption>
+                        <tr>
+                            <td>,</td>
+                            <td>Разделитель</td>
+                        </tr>
+                        <tr>
+                            <td>+&nbsp; -&nbsp; *&nbsp; /&nbsp; %</td>
+                            <td>Арифметические операции</td>
+                        </tr>
+                        <tr>
+                            <td>&lt;&lt;&nbsp; &gt;&gt;&nbsp; &gt;&gt;&gt;</td>
+                            <td>Порязрядные операции</td>
+                        </tr>
+                        <tr>
+                            <td>&lt;&nbsp; &lt;=&nbsp; &gt;&nbsp; &gt;=&nbsp; ==&nbsp; !=&nbsp; ===&nbsp; !==</td>
+                            <td>Операции отношения</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </section> <!-- /Типы данных и переменные -->
+
+<!-- Условия и циклы -->
+        <section id="cycles" class="section">
+            <h2 class="section__header">Условия и циклы</h2>
+
+            <p class="text">
+                &bull; Условные конструкции и циклы - управляющие конструкции<br>
+                &bull; <strong>{</strong> Программный блок <strong>}</strong>
+            </p>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Условные конструкции</h3>
+
+                <p class="text">
+                    Условными конструкциями можно пользоваться, чтобы запускать код в нужные моменты, а циклами - чтобы программа выполнялась так долго, как требуется
+                </p>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Конструкция if</h4>
+
+                    <pre class="screen screen_pre">
+if (условие) {
+    console.log ("Действие");
+}</pre>
+                    <p class="text">
+                        Пример:
+                    </p>
+                    <pre class="screen screen_post">
+let name = "Николай";
+console.log("Привет, " + name);
+if (name.length > 6) {
+    console.log("Ну и длиннющее же у вас имя!");
+}</pre>
+                    <p class="text">
+                        Тело оператора <strong>if</strong> выполняется, только когда условие даёт <strong>true</strong>
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Конструкция if ... else</h4>
+
+                    <pre class="screen screen_pre">
+if (условие) {
+    console.log("Действие");
+} else {
+    console.log("Действие иное");
+}</pre>
+                
+                    <p class="text">
+                        Пример:
+                    </p>
+                    <pre class="screen screen_post">
+let name = "Николай";
+console.log("Привет, " + name);
+if (name.length > 6) {
+    console.log("Ну и длиннющее же у вас имя!");
+} else {
+    console.log("Имя у вас не из длинных.");
+}</pre>
+                </div>
+
+                <div class="nsection__item">               
+                    <h4 class="sub2section__header">Цепочка конструкций if ... else</h4>
+
+                    <pre class="screen screen_pre">
+if (условие_1) {
+    console.log ("Действие, если условие 1 истинно");
+} else if (условие_2) {
+    console.log ("Действие, если условие 2 истинно");
+} else if (условие_3) {
+    console.log ("Действие, если условие 3 истинно");
+} else {
+    console.log ("Иначе действие");
+}</pre>
+                    <p class="text">
+                        Указывать завершающий <strong>else</strong> не обязательно
+                    </p>
+                </div>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Циклы</h3>
+
+                <p class="text">
+                    Для проверки каких-либо действий в программе нужен <strong>цикл</strong>
+                </p>
+ 
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Цикл while</h4>
+
+                    <p class="text">
+                        выполняется пока <strong>condition</strong>(условие) = <strong>true</strong>
+                    </p>
+                    <pre class="screen screen_post">
+while (условие) {
+    console.log("Действие");
+    i++;
+}</pre>
+                
+                    <p class="text">
+                        Пример: "Считаем овец"
+                    </p>
+                    <pre class="screen screen_post">
+let sheepCounted = 0;
+while (sheepCounted &lt; 10) {
+    console.log("Посчитано овец: " + sheepCounted + "!");
+    sheepCounted++;
+}
+console.log("Z-z-z-z-z-z");</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Цикл do while</h4>
+
+                    <p class="text">
+                        аналогично <strong>while</strong>, но условие проверяется после выполнения
+                    </p>
+                    <pre class="screen screen_post">
+do {
+    ...;
+    i++;
+} while (условие);</pre>
+                </div>
+
+                <div class="nsection__item">               
+                    <h4 class="sub2section__header">Цикл for</h4>
+
+                    <p class="text">
+                        Создаём переменную, задаём условие, указываем как должна меняться переменная после каждого повтора, пишем тело цикла
+                    </p>
+                    <pre class="screen screen_pre">
+for ( настройка; условие; приращение ) {
+    console.log("Действие");
+}</pre>
+                
+                    <p class="text">
+                        Пример: "Считаем овец"
+                    </p>
+                    <pre class="screen screen_post">
+for (let sheepCounted = 0; sheepCounted &lt; 10; sheepCounted++) {
+    console.log("Посчитано овец: " + sheepCounted + "!");
+}
+console.log("Z-z-z-z-z-z-z-z");</pre>
+                
+                    <p class="text">
+                        Цикл <strong>for</strong> удобен, когда нужно сделать определённое количество циклов
+                    </p>
+                
+                    <p class="text">
+                        Пример: "Три раза сказать привет"
+                    </p>
+                    <pre class="screen screen_post">
+let timesToSayHello = 3;
+for (let i = 0; i &lt; timesToSayHello; i++) {
+    console.log("Привет!");
+}</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Цикл for, массивы и строки</h4>
+
+                    <p class="text">
+                        Часто цикл <strong>for</strong> используют для перебора всех элементов массива или всех символов строки
+                    </p>
+                
+                    <p class="text">
+                        Пример: "Напечатать названия всех животных в зоопарке"
+                    </p>
+                    <pre class="screen screen_post">
+let animals = ["лев", "фламинго", "белый медведь", "удав"];
+for (let i=0; i &lt; animals.length; i++) {
+    console.log("В этом зоопарке есть " + animals(i) + ".");
+}</pre>
+                    <p class="text">
+                        Пример: "Вывод символов имени"
+                    </p>
+                    <pre class="screen screen_post">
+let name = "Николай";
+for (let i=0; i &lt; animals.length; i++) {
+    console.log("В этом имени есть буква " + name(i) + ".");
+}</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Другие варианты применения цикла for</h4>
+
+                    <p class="text">
+                        Не обязательно сначала задавать переменной цикла значение <strong>0</strong>, а затем каждый раз увеличивать её на <strong>1</strong>
+                    </p>
+                    
+                    <p class="text">
+                        Пример: Вывести все степени цифры <strong>2</strong> не превышающие числа <strong>10000</strong>
+                    </p>
+                    <pre class="screen screen_post">
+for (let x=2; x &lt; 10000; x=x*2) {
+    console.log(x);
+}</pre>
+                </div>
+            </div>
+        </section> <!-- /Условия и циклы -->
+
+<!-- Функции -->
+        <section id="functions" class="section">
+            <h2 class="section__header">Функции</h2>
+
+            <p class="text">
+                &bull; Функции позволяют повторно использовать фрагменты кода<br>
+                &bull; Параметру функции передаётся аргумент по значению (передаётся копия значения). Параметр инициализируется при передачи аргументом копии его значения<br>
+                &bull; При налии функций с одинаковым именем в разных файлах будет использоваться та,которую браузер увидит последней<br>
+                &bull; Функцию (ссылку на неё) можно присвоить переменной<br>
+                &bull; Функция является значением, и мы можем сохранять её в переменных, массивах, передавать в качестве аргумента других функций или присваивать свойствам объектов
+            </p>
+
+            <p class="text">
+                &bull; Два способа определения функций:<br>&nbsp;&nbsp; 1. Объявления функций<br>&nbsp;&nbsp; 2. Функциональные выражения<br>
+                &bull; Ссылка на функцию - значение, которое может использоваться для обращения к функции<br>
+                &bull; Объявления функций обрабатываются до обработки кода<br>
+                &bull; Когда браузер обрабатывает объявление функции, он создает функцию и переменную, имя которой совпадает с именем функции, и сохраняет ссылку на функцию в переменной<br>
+                &bull; Когда браузер обрабатывает функциональное выражение, он создает функ-цию, а вы сами решаете, что делать со ссылкой<br>
+
+            </p>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Создание и вызов простой функции</h3>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Объявление функции</h4>
+
+                    <pre class="screen screen_pre">
+function name_1(name_2) {
+...
+}</pre>
+                    <p class="text">
+                        - объявление функции с ключевым словом <strong>function</strong>, именем <strong>name_2</strong>, параметром <strong>name_2</strong> и блоком кода <strong>{ ... }</strong>
+                    </p>
+                </div>
+
+                <p class="text">
+                    &bull; Функция объявляется с использованием ключевого слова <strong>function</strong><br>
+                    &bull; Параметры заключаются внутри круглых скобок. Если параметров нет, используются пустые скобки<br>
+                    &bull; Тело функции (блок кода) находится внутри фигурных скобок, которое содержит команды (операторы)<br>
+                    &bull; Функция создаёт локальную область действия параметров и локальных переменных используемых ею
+                </p>
+                
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Вызов функции</h4>
+
+                    <pre class="screen screen_pre">
+name_1();</pre>
+                    <p class="text">
+                        &bull; Функция вызывается по имени<br>
+                        &bull; Вызов и передача управления функции это одно и то же
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Функциональное выражение</h4>
+
+                    <pre class="screen screen_pre">
+let name_3 = function(name_4) {
+...
+};</pre>
+                    <p class="text">
+                        &bull; Функция вызывается через переменную <strong>name_3</strong><br>
+                        &bull; В отличии от объявления, эта функция не имеет имени<br>
+                        &bull; Результатом обработки функционального выражения является значение, которое затем присваивается переменной <strong>name_3</strong>. Это значение является ссылкой на функцию<br>
+                        &bull; Можно пере-дать другой функции или вернуть его из функции
+                    </p>
+                </div>
+
+                <p class="text">
+                    &bull; Сначала браузер ищет объявления функций<br>
+                    &bull; Затем он обрабатывает функцию и создаёт переменную с именем функции, в которой хранит ссылку на эту функцию, для дальнейшего использования<br>
+                    &bull; После обработки всех объявлений функций браузер переходит в начало кода и начинает его выполнять от начала к концу
+                </p>
+                <p class="text">
+                    Отличие объявления функции от функционального выражения:<br>
+                    &bull; С объявлением, функция создаётся и подготавливается до обработки остального кода. А с функциональным выражением, функция создаётся при выполнении кода (на стадии выполнения)<br>
+                    &bull; С объявлением, имя функции используется для создания переменной, содержащей ссылку на функцию. А при использовании функционального выражениея имя функции не указывается, а функция либо присваивается переменной в коде, либо используется иным образом<br>
+                </p>
+            </div>
+
+            <div class="ndection__item">
+                <h3 class="subsection__header">
+                    Анонимные функции
+                </h3>
+
+                <p class="text">
+                    - функциональное выражение без имени
+                </p>
+                <p class="text">
+                    &bull; При определении функции с использованием функционального выражения присваивать функции имя не обязательно<br>
+                    &bull; Вместо переменной с сылкой на функцию мы подставляем функциональное выражение (которое при расчёте становится ссылкой)
+                </p>
+                <pre class="screen screen_pre">
+... = function() {
+...
+};</pre>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Вложенные функции</h3>
+
+                <p class="text">
+                    - определяются внутри других функций
+                </p>
+                <p class="text">
+                    Вложенная функция имеет локальную область видимости, как и другие переменные
+                </p>
+                <p class="text">
+                    Внутри функции при определении вложенной функции посредством объявления эта вложенная функция определена в любой точке тела функции. С другой стороны, если при создании вложенной функции используется функциональное выражение, то эта вложенная функция определена только после обработки функционального выражения
+                </p>
+                <pre class="screen screen_pre">
+let name_1 = function() {
+...
+function name_2() {
+...
+}
+};
+
+function name_3 {
+...
+let name_4 = function () {
+...
+};
+}</pre>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Функции как значения</h3>
+
+                <p class="text">
+                    Функции в JavaScript являются значениями - значениями, которые могут присваиваться переменным
+                </p>
+                <pre class="screen screen_pre">
+function name_1(name_2) {
+...
+}
+
+let name_3 = function(name_4) {
+...
+};
+
+let name_5 = name_1;
+let name_6 = name_3;
+
+name_5(value_1);
+name_6(value_2);</pre>
+                <p class="text">
+                    &bull; Ссылка на функции содержащиеся в переменных <strong>name_1</strong> и <strong>name_3</strong> присваиваются переменным <strong>name_5</strong> и <strong>name_6</strong> соответственно<br>
+                    &bull; Эти функции могут быть вызваны используя имена переменных <strong>name_5</strong> и <strong>name_6</strong> с круглыми скобками и атрибутами в них, если они есть
+                </p>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Передача аргументов в функцию</h3>
+
+                <p class="text">
+                    При вызове функции ей передаются аргументы, которые сопоставляются с параметрами из определения функции. В аргументе можно передать практически любое значение. Переменные тоже могут передаваться как аргументы
+                </p>
+                <p class="text">
+                    Параметры определяются один раз при определении функции (являются локальными переменными функции)<br>
+                    Аргументы передаются функции каждый раз при её вызове (значение аргумента копируется в параметр, или значение переменной копируется в параметр, являющийся переменной функции)
+                </p>
+
+                <pre class="screen screen_post">
+function name_1(name_2, name_3, ..., name_n) {
+...
+}
+
+let name_4 = function(name_5, name_6, ..., name_n) {
+...
+};</pre>
+
+                <p class="text"> 
+                    Параметрам не получившим аргумент присваивается значение <strong>undefined</strong><br>
+                    Если переданы лишние аргументы, то они игнорируются
+                </p>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Возврат значения из функции</h3>
+
+                <p class="text">
+                    &bull; Чтобы вернуть из функции значение, используется оператор <strong>return</strong>, после которого  указывается само значение<br>
+                    &bull; После <strong>return</strong> все строки кода внутри функции игнорируются
+                </p>
+
+                <p class="text">
+                    Оператор <strong>return</strong> включает выражение, которое возвращается в качестве результата вызова функции
+                </p>
+
+                <pre class="screen screen_pre">
+function name_1(parameter) {
+...         ;
+return x + y;
+}
+
+let name_2 = name_1(parameter);
+alert(name_2);</pre>
+                <p class="text">
+                    Функция <strong>name_1</strong> возвращает значение переменной <strong>name_2</strong>
+                </p>
+
+                <pre class="screen screen_post">
+let double = function(number) {
+return number * 2;
+};
+   
+double(3); вернёт 6</pre>
+                <p class="text">
+                    Если не указать в теле функции, что именно возвращать, она вернёт <strong>undefined</strong>
+                </p>
+
+                <p class="text">
+                    Также вызов функции можно указать в качестве аргумента другой функции
+                </p>
+                <pre class="screen screen_post">
+double(double(3));</pre>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Ранний выход из функции по return</h4>
+
+                    <p class="text">
+                        &bull; Когда JavaScript, выполняя код функции, встречает оператор <strong>return</strong>, он завершает выполнение функции, даже если после остался код<br>
+                        &bull; <strong>return</strong> часто используют для выхода из функции в самом начале, если какие-нибудь из переданных аргументов имеют некорректные значения - т.е. если с такими аргументами функция не сможет правильно работать
+                    </p>
+                </div>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Многократное использование return вместо конструкций if ... else</h3>
+
+                <pre class="screen screen_post">
+let medalForScore = function (score) {
+if (score &lt; 3) {
+return "Bronze";
+}
+
+if (score &lt; 2) {
+return "Silver";
+}
+
+return "Gold";
+};</pre>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Лексическая область действия</h3>
+
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Замыкание</h3>
+
+                <p class="text">
+                    - функция вместе с её окружением (свободными переменными), внутри лексической области действия (в теле функции, в которую они вложены).
+                </p>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Свободные переменные</h4>
+
+                    <p class="text">
+                        - переменные используемые в теле вложенной функции и объявляемые за пределами этой вложенной функции, но при этом не являющиеся глобальными и находящиеся вместе с этой вложенной функцией внутри окружения лексической области действия в которой эта вложенная функция замкнута, и в этой же области содержатся значения этих переменных
+                    </p>
+                    <p class="text">
+                        &bull; При выполнении замыкания в контексте, отличном от контекста его создания, значения свободных переменных определяются окружением<br>
+                        &bull; Замыкания часто используются для сохра-нения состояния в обработчиках событий
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Замыкание при помощи возвращения функции</h5>
+
+                    <pre class="screen screen_pre">
+let name_1 = x_1;
+let name_2 = y_1;
+
+function name_3() {
+let name_1 = x_2;
+let name_2 = y_2;
+
+return function () {
+return name_1 + name_2;
+}
+}
+
+let name_4 = name_3;
+
+name_4(); // >> x_2 + y_2</pre>
+
+                    <pre class="screen screen_post">
+Счётчик с замыканием:
+
+function name_1() {
+let name_2 = 0;
+
+function name_3() {
+name_2 = name_2 + 1;
+return name_2;         
+}
+
+return name_3;
+}
+
+let name_4 = name_1;</pre>
+                    <p class="text">
+                        - счётчик с локальной и защищённой переменной <strong>name_2</strong>, которая не будет конфликтовать с другими переменными, а увеличить её можно только вызовом функции. Т.е. доступна она только через функцию
+                    </p>
+
+                    <pre class="screen screen_post">
+function name_1(name_2) {
+return function(name_3) {
+return name_3 + name_2;
+}
+}
+
+const name_4 = name_1(name_2);
+
+console.log(name_4(name_3));</pre>
+                </div>
+
+                <p class="text">
+                    Замыкания создаются везде, где появляется ссылка на функцию со свободными переменными, и эта функция выполняется вне контекста, в котором она была создана
+                </p>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Замыкание создаваемые передачей функции при вызове функции </h5>
+
+                    <p class="text">
+                        Передаваемая функция выполняется в контексте, отличном от контекста её создания
+                    </p>
+
+                    <pre class="screen screen_post">
+function name_1(string_1, x_1) {
+setTimeout(function()
+alert(string_1);
+}, x_1);
+}
+                
+name_1(string_1, x_1);</div>
+                <p class="text">
+                    &bull; <strong>name_1</strong> - функциональное выражение содержащее свободную переменную <strong>string_1</strong>, передаётся параментру функции <strong>setTimeout</strong> в качестве значения аргумента
+                    &bull; При этом функциональное выражение обрабатывается для получения ссылки на функцию, которая затем передается <strong>setTimeout</strong><br>
+                    &bull; Метод <strong>setTimeout</strong> сохраняет функцию (а вернее, функцию вместе с окружением — иначе говоря, замыкание), после чего через <strong>x_1</strong> миллисекунд вызывает ее
+                    &bull; Функция, передаваемая <strong>setTimeout</strong>, представляет собой замыкание, потому что вместе с ней передается окружение, связывающее свободную переменную <strong>string_1</strong> с значением передаваемым ей атрибутом
+                </p>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Упрощение кода с помощью функций</h3>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Функции для выбора случайного элемента массива слова</h4>
+
+                    <pre class="screen screen_pre">
+let name_1 = ["One", "Two", "...", "N"];
+let name_2 = function(name_3) {
+return name_3[Math.floor(Math.random() * name_3.length)];
+};</pre>
+           
+                    <p class="text">
+                        С помощью функции <strong>name_2</strong> можно получить случайный элемент из массива <strong>name_1</strong>, передав его с помощью аргумента, параметру <strong>name_3</strong>
+                    </p>
+                    <pre class="screen screen_pre">
+name_2(name_1);</pre>
+        </div>
+    </div>
+</section> <!-- /Функции -->
+
+<!-- Массивы -->    
+        <section id="arrays" class="section">
+            <h2 class="section__header">Массивы</h2>
+
+            <p class="text">
+                Массив - структура данных для работы с упорядоченными данными<br>
+                Массивы часто используют для хранения сходных данных<br>
+                Определение массива начинается с символа <strong>[</strong>
+            </p>
+            <pre class="screen screen_post">
+let name_1 = [ "one", "two", "three", "four", "five" ];
+
+    Другой вариант написания:
+
+let name_1 = [
+    "one",
+    "two",
+    "three",
+    "four",
+    "five"
+];
+
+"one", "two", ... - элементы массива name_1</pre>
+            <p class="text">
+                - массив присваивается переменной name_1
+            </p>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Доступ к элементам массива</h3>
+
+                <pre class="screen screen_pre">
+name_1[0] - доступ к первому элементу массива name_1
+name_1[1] - доступ ко второму элементу массива name_1
+...</pre>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Создание и изменение элементов</h3>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">
+                        Создание пустого массива
+                    </h4>
+
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">Упрощённая запись</h5>
+
+                        <pre class="screen screen_pre">
+let name_1 = [];</pre>
+                    </div>
+
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">С помощью конструктора Array</h5>
+
+                        <pre class="screen screen_pre">
+let name_1 = new Array();</pre>
+                    </div>
+
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">Создание пустого массива с несколькими элементами</h5>
+
+                        <pre class="screen screen_pre">
+let name_1 = new Array(n);</pre>
+                        <p class="text">
+                            <strong>n</strong> - количество элементов
+                        </p>
+
+
+                    </div>
+
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">Создание массива при помощи литерала</h5>
+
+                        <pre class="screen screen_pre">
+let name_1 = ["one", "two", "three"];</pre>
+                        <p class="text">
+                            - упрощённая запись
+                        </p>
+
+                        <pre class="screen screen_post">
+let name_1 = new Array("one", "two", "three");</pre>
+                    </div>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">
+                        Задать или изменение значение элемента массива
+                    </h4>
+
+                    <pre class="screen screen_post">
+name_1[0] = "six";</pre>
+                    <p class="text">
+- задать или изменить значение первого элемента массива name_1</p>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">
+                        Добавление элементов в массив
+                    </h4>
+
+                    <pre class="screen screen_post">
+let name_1 = [];
+name_1[0] = "one";
+name_1[1] = "two";
+name_1[2] = "three";
+name_1[3] = "four";
+name_1[4] = "five";</pre>
+
+                    <p class="text">
+                        Или
+                    </p>
+                    <pre class="screen screen_post">
+let name_1 =  new Array ();
+name_1[0] = "one";
+name_1[1] = "two";
+name_1[2] = "three";
+name_1[3] = "four";
+name_1[4] = "five";</pre>
+
+                    <p class="text">
+                        Если добавить в пустой массив элементы с индексами <strong>[0]</strong> и <strong>[10]</strong>, элементы с индексами от <strong>[1]</strong> по <strong>[9]</strong> включительно, будут иметь значения <strong>undefined</strong>. Длинна этого массива будет равна <strong>10</strong>
+                    </p>
+
+                </div>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Разные типы данных в массиве</h3>
+
+                <pre class="screen screen_post">
+let name_1 = [ 1, [ 2, "three", 4], "five"];
+
+name_1[1][2]; - вернёт 4</pre>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Работа с массивами</h3>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Длина массива</h4>
+
+                    <pre class="screen screen_post">
+let name_1 = [1, 2, 3, 4, 5];
+
+name_1.length; - вернёт кол-во элементов массива name</pre>
+                    <pre class="screen screen_post">
+name_1[name_1.length - 1]; - вернёт значение последнего
+                          элемента массива name</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Добавление элементов в массив</h4>
+
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">.push ()</h5>
+                        
+                        <p class="text">
+                            - добавление элемента в конец массива
+                        </p>
+                        <pre class="screen screen_post">
+let name_1 = [];
+name_1.push("one");
+name_1.push(2);
+name_1.push("three");
+
+name_1; - вернёт ["one", 2, "three"]
+
+name_1.length; - вернёт 3</pre>
+                    </div>
+
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">.unshift ()</h5>
+
+                        <p class="text">
+                            - добавление элемента в начало массива
+                        </p>
+                        <pre class="screen screen_post">
+продолжение:
+
+name_1.unshift(5);
+
+name_1; - вернёт [5, "one", 2, "three"]</pre>
+                    </div>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Удаление элементов из массива</h4>
+
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">.pop ()</h5>
+                        
+                        <p class="text">
+                            - удаление элемента из конца массива
+                        </p>
+                        <pre class="screen screen_post">
+let name_1 = [1, 2, 3];
+let lastElementh = name_1.pop();
+
+lastElementh; - вернёт 3
+
+name_1; - вернёт [1, 2]</pre>
+                    </div>
+
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">.shift ()</h5>
+
+                        <p class="text">
+                            - удаление элемента из начала массива
+                        </p>
+                        <pre class="screen screen_post">
+продолжение:            
+            
+let firstElementh = name_1.shift();
+           
+firstElementh; - вернёт 1
+           
+name_1; - вернёт [2]</pre>
+                    </div>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Объединение массивов</h4>
+
+                    <pre class="screen screen_post">
+firstArray.concat(secondArray); - объединение 2х массивов</pre>
+                    <p class="text">
+                        Массивы <strong>firstArray</strong> и <strong>secondArray</strong> остаются прежними
+                    </p>
+                    <pre class="screen screen_post">
+firstArray.concat(secondArray, ..., lastArray); - объединение нескольких массивов</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Поиск индекса элемента в массиве</h4>
+
+                    <pre class="screen screen_post">
+let colors = ["red", "green", "blue"];
+
+colors.indexOf("blue"); - вернёт 2
+
+colors[2]; - вернёт blue
+               
+colors.indexOf("voilet"); - вернёт -1 (нет в массиве)</pre>
+                    <p class="text">
+                        Если элемент встречается несколько раз, вернёт ближайший к началу
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Объединение элементов массива в одну строку</h4>
+
+                    <pre class="screen screen_post">
+let colors = ["red", "green", "blue"];
+
+colors.join(); - вернёт "red,green,blue"
+               
+colors.join(" and "); - вернёт "red and green and blue"
+               
+.join() - в скобках указывается разделитель</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Случайный элемент массива</h4>
+
+                    <pre class="screen screen_post">
+let name_2 = Math.floor(Math.random() * name_1.length);</pre>
+                    <p class="text">
+                        переменной <strong>name_2</strong> присваивается значение случайного элемента массива <strong>name_1</strong>
+                    </p>
+                </div>
+            </div>
+        </section> <!-- /Массивы --> 
+
+<!-- Объекты -->
+        <section id="objects" class="section">
+            <h2 class="section__header">Объекты</h2>
+
+            <p class="text">
+                &bull; Объект представляет собой всего лишь коллекцию(набор) свойств, которые представляют собой пары {ключ(имя свойства): значение}<br>
+                &bull; Для доступа к элементам объекта (свойствам и их значениям) используются ключи, а не числа (индексы) как в массиве<br>
+                &bull; Объект обладает состоянием и поведением
+
+            </p>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Готовые объекты JavaScript</h3>
+
+                <table>
+                    <caption>Предоставляет JavaScript</caption>
+                    <tr>
+                        <td>Date</td>
+                        <td>Для работы с датой и временем</td>
+                    </tr>
+                    <tr>
+                        <td>Math</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>RegExp</td>
+                        <td>Позволяет искать текст в строках по заданному шаблону</td>
+                    </tr>
+                    <tr>
+                        <td>JSON</td>
+                        <td>С помощью него можно передавать объекты <strong>objects</strong> в другие</td>
+                    </tr>
+                </table>
+
+                <table>
+                    <caption>Предоставляет Браузер</caption>
+                    <tr>
+                        <td>Document</td>
+                        <td>Для записи в страницу из программного кода</td>
+                    </tr>
+                    <tr>
+                        <td>Window</td>
+                        <td>Предоставляет свойства, относящиеся к браузеру и методы, используемые в коде</td>
+                    </tr>
+                    <tr>
+                        <td>Console</td>
+                        <td>Его метод <strong>.log</strong> используется для вывода в консоль сообщений</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Создание объектов</h3>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">С использованием объектных литералов</h4>
+
+                    <p class="text">
+                        Объектный литерал - полное описание объекта
+                    </p>
+                    <p class="text">
+                        Подходит для создания небольшого количества объектов
+                    </p>
+                    <pre class="screen screen_pre">
+let name_1 = {
+    "string_1": value_1,
+    "string_2": value_2,
+        ...
+    "string_n": value_n       
+};</pre>
+                    <p class="text">
+                        &bull; Определение объекта начинается с символа <strong>{</strong><br>
+                        &bull; Ключ всегда строковый и его можно записывать без кавычек, но по_правилам<br>
+                        &bull; Фигурные скобки и их содержимое называется литералом объекта<br>
+                        &bull; В переменной хранится не сам объект, а ссылка на объект (значение представляющее механизм обращения к конкретному объекту). Такая переменная называется ссылочная переменная
+                    </p>
+
+                    <div class="nsection__item">
+                        <h4 class="sub2section__header">Создание пустого объекта</h4>
+
+                        <pre class="screen screen_pre">
+let name_1 = {};</pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Доступ к значениям внутри объектов</h3>
+
+                <pre class="screen screen_pre">
+name_1["name_2"]; - скобочная нотация
+
+name_1.name_2;    - точечная нотация
+
+где:    name_1 - имя объекта
+        name_2 - ключ(свойство, строка) объекта</pre>
+                <p class="text">
+                    &bull; Отличие от массива - вместо индекса(числа) ключ(строка)<br>
+                    &bull; Точечная нотация возможна, если имя ключа соответствует правилам
+                </p>
+                
+                <pre class="screen screen_pre">
+name_1.keys(); - возвращает массив, содержащий все ключи объекта name_1</pre>
+
+                <p class="text">
+                    При обращении к несуществующему свойству объекта, вернётся <strong>undefined</strong>
+                </p>
+
+                <p class="text">
+                    Скобочная нотация позволяет заключать в квадратные скобки любые выражения. Необходимо лишь, чтобы результатом его вычисления являлось имя свойства
+                </p>
+                <pre class="screen screen_pre">
+name_1['one' + 'two'];
+                    
+    равно
+                    
+name_1.['onetwo'];</pre>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Добавление свойств объекту</h3>
+
+                <pre class="screen screen_pre">
+name_1["name_3"] = value_1;</pre>
+                
+                <pre class="screen screen_pre">
+let name_1 = {};
+name_1["name_2"] = value_1;
+name_1["name_3"] = value_2;
+...
+name_1["name_n"] = value_n;</pre>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">
+                        Используя точечную нотацию
+                    </h4>
+
+                    <pre class="screen screen_pre">
+name_1.name_3 = value_1;</pre>
+
+                    <pre class="screen screen_pre">
+let name_1 = {};
+name_1.name_2 = value_1;
+name_1.name_3 = value_2;
+...
+name_1.name_n = value_n;</pre>
+                </div>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Удаление элемента объекта (свойства)</h3>
+
+                <pre class="screen screen_pre">
+delete name_1.name_2;</pre>
+
+                <p class="text">
+                    - выраженние <strong>delete</strong> возвращает <strong>true</strong> если свойство было успешно удалено (либо если вы удаляете не существующее свойство или то, что не является свойством объекта
+                </p>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">
+                    Вычисления с использованием свойств
+                </h3>
+
+                <p class="text">
+                    Свойство объекта можно использовать так же как переменную:
+                </p>
+                <pre class="screen screen_post">
+if (car.whells &lt; 4) {
+    ready = true;
+}
+
+for (let i = 0; i &lt; 3; car.passengers++) {
+    addPassenger();
+}</pre>
+            </div>
+
+            <div class="nsection__item">            
+                <h3 class="subsection__header">Перечислние свойств объекта</h3>
+
+                <p class="text">
+                    Для перечисления свойств объекта <strong>name_2</strong> используем цикл <strong>for-in</strong>:
+                </p>
+                <pre class="screen screen_pre">
+let name_1;
+for (name_1 in name_2) {
+    alert (name_1);
+}</pre>
+                <p class="text">
+                    При каждом выполнении цикла переменная <strong>name_1</strong> получает строковое значение следующего по очереди имени свойства объекта <strong>name_2</strong>
+                </p>
+                <pre class="screen screen_pre">
+name_2[name_1];</pre>
+                <p class="text">
+                    Используя скобочную нотацию можем получить доступ к значению соответствующего свойства <strong>name_1</strong> объекта <strong>name_2</strong>
+                </p>
+
+                <p class="text">
+                    Для перечисления свойств и их значений:
+                </p>
+                <pre class="screen screen_pre">
+for (let name_1 in name_2) {
+    console.log (name_1 + ': ' + name_2[name_1]);
+}</pre>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Массив объектов</h3>
+
+                <pre class="screen screen_pre">
+let name_1 = [
+    { name_2: value_1, name_3: value_2 },
+    { name_4: value_3, name_5: value_4 },
+    { name_6: value_5, name_7: value_6 }
+];
+           
+name_1[0]; - вернёт { name_2: value_1, name_3: value_2 }
+name_1[1][name_4]; - вернёт value_3
+
+name_1[2].name_7; - вернёт value_6</pre>
+
+                <pre class="screen screen_pre">
+    Создадим 3 объекта:            
+
+let name_1 = { name_2: value_1, name_3: value_2, name_4: [value_3, value_4, value_5, value_6] };
+let name_5 = { name_6: value_7, name_7: value_8, name_8: [value_9, value_10, value_11] };
+let name_9 = { name_10: value_12, name_11: value_13, name_12: [value_14, value_15, value_16] };
+           
+    Создадим массив из объектов:
+           
+let name_17 = [name_1, name_5, name_9];</pre>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Получение объектов из массива</h4>
+
+                    <pre class="screen screen_pre">
+name_17[1]; - вернёт - { name_6: value_7, name_7: value_8, name_8: [value_9, value_10, value_11] }
+
+name_17[2].name_11; - вернёт - value_13
+           
+name_17[0].name_4[1]; - вернёт - value_4</pre>
+                </div>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Передача объектов функциям</h3>
+
+                <p class="text">
+                    &bull; При присвоении объекта переменной, переменная будет содержать не сам объект, а ссылку (указатель) на объект<br>
+                    Если передать параметру функции в качестве аргумента значение этой переменной , то в переменной параметра функции будет храниться копия ссылки на объект<br>
+                    &bull; При изменении свойства объекта внутри функции, изменяется свойство исходного объекта
+                </p>
+                <pre class="screen screen_post">
+pluto.weight = 48;
+
+function loseWeight(dog) {
+    dog.weight = dog.weight - 2;
+}
+
+loseWeight(pluto)
+
+alert(pluto.name + " now weights " + pluto.weight);</pre>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Методы</h3>
+
+                <p class="text">
+                    Помимо строк, чисел и булевых значений в свойствах объектов можно хранить <strong>функции</strong> (функция является значением свойства) - тогда эти свойства называются <strong>методами</strong><br>
+                    &bull; Методы могут получать аргументы
+                
+                <pre class="screen screen_pre">
+let name_1 = {
+    name_2 : value_1,
+    name_3 : value_2,
+    name_4 : function() {
+            ...
+    }
+};</pre>
+                <p class="text">
+                    те же яйца, только в профиль:
+                </p>
+                <pre class="screen screen_pre">
+let name_1 = {
+    this.name_2 = value_1,
+    this.name_3 = value_2,
+    this.name_4 = function() {
+            ...
+    }
+};</pre>
+                <p class="text">
+                   <strong>name_4</strong> - метод объекта <strong>name_1</strong>
+                </p>
+                
+                <pre class="screen screen_pre">
+name_1.name_4(); - вызов метода</pre>
+
+                <p class="text">
+                    Разница между функцией и методом:<br>
+                    &bull; Функция - отдельный блок кода, который можно вызвать<br>
+                    &bull; Метод - поведение привязанное к определённому объекту
+                </p>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Добавление объектам новых методов</h4>
+                    
+                    <pre class="screen screen_pre">
+name_1.name_5 = function() {
+            ...
+};</pre>
+                    <p class="text">
+                        - добавили объекту <strong>name_1</strong> свойство <strong>name_5</strong> и задали в качестве его значения функцию (т.е. добавили объекту <strong>name_1</strong> метод <strong>name_5</strong> )
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Ключевое слово this</h4>
+
+                    <p class="text">
+                        &bull; - не является переменной<br>
+                        &bull; Ключевое слово <strong>this</strong> можно использовать в теле метода, чтобы обратиться к объекту (интерпритируется как ссылка на объект), для которого этот метод вызывается<br>
+                        &bull; Делает методы более гибкими, позволяя добавлять один и тот же метод ко многим объектам так, чтобы он имел доступ к свойствам того объекта, для которого в данный момент вызывается
+                    </p>
+                </div>
+
+                <div class="nsection__item">                
+                    <h4 class="sub2section__header">Использование одного метода с разными объектами</h4>
+
+                    <p class="text">
+                        Создадим функцию <strong>name_1</strong>, чтобы затем использовать её как метод с разными объектами
+                    </p>
+                    <pre class="screen screen_pre">
+let name_1 = function() {
+        ...
+};</pre>
+                    <p class="text">
+                        Теперь создадим объект <strong>name_2</strong>, и добавим в него 2 свойства и метод <strong>name_1</strong>
+                    </p>
+                    <pre class="screen screen_pre">
+let name_2 = {
+    name_3: value_1,
+    name_4: value_2,
+    name_5: name_1
+};</pre>
+                    <p class="text">
+                        &bull; Создали объект <strong>name_2</strong> со свойствами <strong>name_3</strong>, <strong>name_4</strong> и <strong>name_5</strong><br>
+                        &bull; Присвоили свойству <strong>name_5</strong> значение - функцию <strong>name_1</strong><br>
+                        &bull; Теперь <strong>name_2.name_1</strong> является методом, который можно вызвать командой <strong>name_2.name_1()</strong>
+                    </p>
+
+                    <p class="text">
+                        Функцию <strong>name_1</strong> можно использовать как метод и для других объектов:
+                    </p>
+                    <pre class="screen screen_pre">
+let name_6 = {
+    name_7: value_3,
+    name_8: value_4,
+    name_9: name_1
+};
+
+let name_10 = {
+    name_11: value_5,
+    name_12: value_6,
+    name_13: name_1
+};</pre>
+                    <p class="text">
+                        Чтобы использовать один и тот же код метода с разными объектами, достаточно добавить его в виде свойства каждому из этих объектов
+                    </p>
+                </div>
+            </div>
+        </section> <!-- /Объекты -->
+
+<!-- Constructor -->
+        <section class="section" id="constructor">
+            <div class="nsection__item">
+                <h3 class="subsection__header">Конструктор</h3>
+
+                <p class="text">
+                    &bull; Это функция, которая создаёт объекты, давая им набор заранее определённых свойств и методов<br>
+                    &bull; Принимает значения свойств, которые вы хотите задать в соём объекте, и возвращает новый объект со всеми нужными апм свойствами и методами<br>
+                    &bull; Должен использоваться с оператором <strong>new</strong> и иметь имя начинающееся с большой буквы<br>
+                    &bull; Создаёт объекты имеющие одинаковую структуру, с общими именами свойств и методов<br>
+                    &bull; Аргументы, передаваемые конструктору, используются при инициализации свойств создаваемого объекта<br>
+                    &bull; Если Конструктор содержит слишком много параметров, можно объединить их в один параметр-объект
+                </p>
+
+                <div class="subnsection__item">            
+                    <h4 class="sub2section__header">Устройство Конструктора</h4>
+                    
+                    <pre class="screen screen_pre">
+let name_1 = new Name_2( value_1, value_2, ..., value_n )</pre>
+
+                    <p class="text">
+                        &bull; При каждом вызове Конструктор создаёт объект, добавляя ему нужные свойства<br>
+                        &bull; Для вызова Конструктора используется ключевое слово <strong>new</strong>, а следом - Имя Конструктора с большой буквы (по соглашению) и скобки<br>
+                        &bull; <strong>new</strong> сообщает JavaScript, что вы собираетесь использовать вункцию как Конструктор
+                    </p>
+
+                    <p class="text">
+                        &bull; <strong>name_1</strong> - в этой переменной будет сохранена ссылка на новый объект<br>
+                        &bull; <strong>Name_2</strong> - имя Конструктора. JavaScript - программистов называют Конструкторы с заглавной буквы, чтобы отличать их от обычных функций (класс объектов)<br>
+                        &bull; <strong>( value_1, value_2, ..., value_n )</strong> - значения аргументов передаваемые параметрам Конструктора соответствующим свойствам передаваемым создаваемому объекту. Значения параметров присваиваются соответствующим свойствам<br>
+                        &bull; Имена свойств и параметров не обязательно должны совпадать, но по соглашению желательно
+                    </p>
+                    
+                    <p class="text">
+                        Конструктор принимает значения свойств и возвращает объект
+                    </p>
+                </div>
+
+                <div class="subnsection__item">
+                    <h4 class="sub2section__header">Создание Конструктора</h4>
+
+                    <p class="text">
+                        Создадим Конструктор, который будет добавлять к каждому созданному объекту свойства <strong>x</strong> ... <strong>z</strong>
+                    </p>
+                    <pre class="screen screen_pre">
+let Name_1 = function(param_1, param_2, ..., param_n) {
+    this.param_1 = param_1;
+    this.param_2 = param_2;
+    ...
+    this.param_n = param_n;
+
+    this.name_2 = function() { 
+        ...                         // могут использоваться в теле и this.param_1 ... this.param_n 
+    };
+};</pre>
+                    <p class="text">
+                        Или
+                    </p>
+                    <pre class="screen screen_pre">
+function Name_1(param_1, param_2, ..., param_n) {
+    this.param_1 = param_1;
+    this.param_2 = param_2;
+    ... 
+    this.param_n = param_n;
+
+    this.name_2 = function() { 
+        ...                        // аналогично
+    };
+}</pre>
+                    <p class="text">
+                       Имена свойств и имена параметров необязательно должны быть одинаковыми но зачастую таковыми оказываются по соглашению
+                    </p>
+                    
+                    <p class="text">
+                        Конструктор (параметры конструктора) принимает значения свойств(аргументы)(<strong>param_1</strong> ... <strong>param_n</strong>), и добавляет новому объекту свойства <strong>this.param_1</strong> ... <strong>this.param_n</strong>, которыми должен обладать создаваемый объект, сохраняя в них переданные значения <strong>x</strong> и <strong>y</strong><br>
+                        При вызове Конструктора <strong>Name_1</strong> будет создан новый объект со свойствами <strong>param_1</strong> ... <strong>param_n</strong>, значения которых соответствуют переданным аргументам
+                    </p>
+
+                    <p class="text">
+                        <strong>this.param_n = param_n;</strong> - инициализация свойства объекта значением, переданным Конструктору
+                    </p>
+
+                    <p class="text">
+                        Мы можем включить метод <strong>name_2</strong> в конструируемый объект путём инициализации свойства <strong>name_2</strong> значением функции
+                    </p>
+
+                    <p class="text">
+                        Чтобы добавить метод, назначаем свойству функцию
+                    </p>
+
+                    <p class="text">
+                        Необходимо использовать <strong>this.</strong> в методе для ссылки на свойства в объекте
+                    </p>
+                    <pre class="screen screen_pre">
+function Name_1(param_1, param_2, ..., param_n) {
+    this.param_1 = param_1;
+    this.param_2 = param_2;
+    ...
+    this.param_n = param_n;
+}</pre>
+                    <pre class="screen screen_post">
+function Name_1(x, y) {
+    this.x = x;
+    this.y = y;
+
+}
+let name_2 = new Name_1(10, 20);
+       
+name_2;  вернёт:  Name_1 {x: 10, y: 20}</pre>
+                    <p class="text">
+                        Создаётся объект, используя функцию <strong>Name_1</strong> в качестве конструктора с передачей ей аргументов <strong>10</strong> и <strong>20</strong> для свойств <strong>x</strong> и <strong>y</strong>, затем возвращается полученный объект и сохраняется в переменной <strong>name_2</strong>
+                    </p>
+                    <pre class="screen screen_post">
+function Name_1(param_1, param_2) {
+    this.param_1 = param_1;
+    this.param_2 = param_2;
+
+    this.name_5 = function() {
+       ... ; 
+    };
+}
+                
+Создадим 3 разных объекта:
+
+let name_2 = new Name_1(10, 20);
+let name_3 = new Name_1(30, 40);
+let name_4 = new Name_1(50, 60);
+       
+Можем вызвать их методы:
+       
+name_2.name_5();
+name_3.name_5();
+name_4.name_5();</pre>
+                    <p class="text">
+                        Мы создаём 3 разных объекта <strong>Name_1</strong>, каждый из которых будет обладать своими свойствами, для чего используем ключнвое слово <strong>new</strong> в сочетании с ранее созданным конструктором <strong>Name_1</strong>. Конструктор возвращает объект <strong>Name_1</strong>, сконфигурированный в соответствии с переданными нами аргументами
+                    </p>
+                    
+                    <p class="text">
+                        Далее мы вызываем метод <strong>name_5</strong> в отношении каждого объекта <strong>Name_1</strong>
+                    </p>
+                </div>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Объектный литерал и параметр-объект</h3>
+
+                <pre class="screen screen_pre">
+let name_1 = { name_2: value_1,
+               name_3: value_2,
+               ...
+               name_n: value_n
+            };</pre>
+                <p class="text">
+                    - объектный литерал
+                </p>
+
+                <pre class="screen screen_pre">
+function NameName_1(params_1) {
+    this.nameName_2 = params_1.nameName_2;
+    this.nameName_3 = params_1.nameName_3;
+    ...
+    this.nameName_n = params_1.nameName_n;
+
+    this.name_x = function() {
+        ...
+    };
+}</pre>
+                <p class="text">
+                    - Конструктор с параметром-объектом
+                </p>
+
+                <pre class="screen screen_pre">
+let nameNameName_1 = new NameName_1(name_1)</pre>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Как работает Конструктор</h3>
+
+                <ul class="text-list">
+                    <li class="text-list__item">1) new создаёт новый, пустой объект</li>
+                    <li class="text-list__item">2) new заносит в this ссылку на новый объект</li>
+                    <li class="text-list__item">3) После подготовки this вызывается функция Конструктора</li>
+                    <li class="text-list__item">4) Вызывается тело функции. Конструктор задаёт значения свойств нового объекта this</li>
+                    <li class="text-list__item">5) После того как функция Конструктора будет выполнена, оператор new возвращает this, т.е. ссылку на новый объект. И эта ссылка присваивается далее переменной нового объекта</li>
+                </ul>
+            </div>
+
+            <p class="text">
+                &bull; В Конструкторе нельзя возвращать значение (отличное от <strong>this</strong> )<br>
+                &bull; Если не использовать <strong>new</strong> при создании объекта Конструктором, все ссылки в Конструкторе будут относиться к глобальному объекту приложения - глобальному объекту верхнего уровня, в коротом хранятся глобальные переменные (в браузере это объект <strong>window</strong> )<br>
+                &bull; В объект созданный с помощью конструктора можно добавлять и удалять новые свойства и методы как в обычный объект<br>
+                &bull; В новом объекте можно после создания переопределять свойства и методы
+            </p>
+
+            <p class="text">
+                &bull; Объект является экземпляром конструктора (даже если его после изменить)<br>
+                &bull; <strong>instanceof</strong> возвращает <strong>true</strong>, если объект был создан указанным конструктором
+            </p>
+            <pre class="screen screen_post">
+if (name_1 instanceof Name_2) {
+    ...
+};</pre>
+            <p class="text">
+                - выполнится если <strong>name_1</strong> экземпляр созданный конструктором <strong>Name_2</strong>
+            </p>
+        </section> <!-- /Constructor -->
+
+<!-- Prototype -->
+        <section class="section" id="prototype">
+            <h2 class="section__header">Прототип</h2>
+
+            <p class="text">
+                Одинаковые свойства и методы объектов можно задавать в прототипе
+            </p>
+
+            <div class="nsection__header">
+                <h3 class="subsection__header">Обращение к прототипу</h3>
+
+                <pre class="screen screen_pre">
+Name_1.prototype</pre>
+            </div>
+
+            <p class="text">
+                &bull; В JavaScript функции являются объектами<br>
+                &bull; Конструктор имеет свойство <strong>.prortotype</strong><br>
+                &bull; <strong>.this</strong> вызывает метод находящийся в прототипе, если его нет в объекте, ссылаясь на исходный объект<br>
+                &bull; Добавляемые в прототип методы и свойства, соответственно наследуются и в объектах<br>
+                &bull; <strong>Object</strong> - объект, от которого наследуются все прототипы и экземпляры
+            </p>
+
+            <div class="nsection__header">
+                <h3 class="subsection__header">Создание прототипа</h3>
+
+                <pre class="screen screen_pre">
+function Name_1(param_1, param_2, ..., param_3) {
+    this.param_1 = param_1;
+    this.param_2 = param_2;
+    ...
+    this.param_n = param_n;
+}</pre>
+                <p class="text">
+                    - Сначала создаём Конструктор
+                </p>
+
+                <pre class="screen screen_pre">
+Name_1.prototype.name_2 = value_2;
+Name_1.prototype.name_3 = value_3;
+...
+Name_1.prototype.name_n = value_n;   // Задаём свойства
+
+
+Name_1.prototype.name_name_1 = function() {
+    ...
+};
+Name_1.prototype.name_name_2 = function() {
+    ...
+};
+...
+Name_1.prototype.name_name_n = function() {
+    ...
+};                                   // Задаём методы</pre>
+                <p class="text">
+                    <strong>name_n</strong> - имя свойства<br>
+                    <strong>name_name_n</strong> - имя метода
+                </p>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Переопределение метода</h3>
+
+                <pre class="screen screen_pre">
+let name_2 = new Name_1(value_1, value_2, ..., value_n);
+
+name_2.name_3 = function() {
+    ...
+};</pre>
+                <p class="text">
+                    <strong>name_3</strong> - переопределяемый метод
+                </p>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Переопределение при помощи метода прототипа</h4>
+
+                    <pre class="screen screen_pre">
+Name_1.prototype.name_2 = value_1;
+
+Name_1.prototype.name_3 = function() {
+    if (this.name_2 == value_1) {
+        this.name_2 = value_2;
+    }
+};</pre>
+                    <p class="text">
+                        &bull; Вызов метода <strong>.name_3()</strong> переопределяет значение унаследованного свойства <strong>name_2</strong> объекта и присваивает его экземпляру, при заданном условии<br>
+                        &bull; При первом обращении к свойству <strong>.this</strong> его значение берётся из прототипа, но затем значение свойства присваивается в экземпляре
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="nsection_item">
+                <h3 class="subsection__header">Определение местоположения свойства</h3>
+
+                <pre class="screen screen_pre">
+name_1.hasOwnProperty(name_2);</pre>
+                <p class="text">
+                    &bull; <strong>true</strong> - если в экземпляре<br>
+                    &bull; <strong>false</strong> - если в прототипе
+                </p>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Цепочка прототипов</h3>
+
+                <pre class="screen screen_pre">
+function Name_1(param_1, param_2, ..., param_n) {
+    this.param_1 = param_1;
+    this.param_2 = param_2;
+    ...
+    this.param_n = param_n;
+}
+
+function Name_2(param_1, param_2, ..., param_n) {
+    this.param_1 = param_1;
+    this.param_2 = param_2;
+    ...
+    this.param_n = param_n;
+}
+
+Name_2.prototype = new Name_1();
+
+
+Name_2.prototype.name_name_1 = value_1;
+Name_2.prototype.name_name_2 = value_2;
+...
+Name_2.prototype.name_name_n = value_n;
+
+
+Name_2.prototype.name_name_name_1 = function() {
+    ...
+};
+Name_2.prototype.name_name_name_2 = function() {
+    ...
+};
+...
+Name_2.prototype.name_name_name_n = function() {
+    ...
+};</pre>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Метод .call()</h3>
+
+                <pre class="screen screen_post">
+function Name_1(param_1, param_2, param_3) {
+    this.param_1 = param_1;
+    this.param_2 = param_2;
+    this.param_3 = param_3;
+}
+
+function Name_2(param_1, param_2, param_3, param_4, param_5) {
+    Name_1.call (this, param_1,param_2, param_3);
+    this.param_4 = param_4;
+    this.param_5 = function() {
+    ...
+    };
+}
+
+Name_2.prototype = new Name_1();
+
+Name_2.prototype.name_6 = value_1;
+Name_2.prototype.name_7 = function() {
+    ...
+};</pre>
+            </div>
+        </section> <!-- /Prototype -->
+            
+<!-- DOM -->
+        <section id="dom" class="section">
+            <h2 class="section__header">DOM</h2>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">window</h3>
+
+                <p class="text">
+                    - внутреннее представление страницы в браузере
+                </p>
+                <p class="text">
+                    &bull; Глобальный объект, занимается окном, внутри которого DOM-дерево<br>
+                    &bull; Т.к. объект <strong>window</strong> действует как глобальная среда, любые имена свойств или методов данного объекта разрешается указывать без указания перед ними слова window<br>
+                    &bull; Любые глобальные переменные, которые вы определяете, помещаются в пространство имён <strong>window</strong>, так что вы можете ссылаться на них следующим образом: <strong>window.имя_переменной</strong>
+                </p>
+                    
+                <p class="text">
+                    Закрытие всплывающего окна при нажатии клавиши <strong>Esc</strong> на клавиатуре
+                </p>
+                <pre class="screen screen_post">
+window.addEventListener("keydown", function(evt) {
+    if (evt.keyCode === 27) {
+        if (popup.classList.contains("modal_show")) {
+            popup.classList.remove("modal_show")
+        }
+    }
+});</pre>
+
+                <div class="nsection__item">                    
+                    <h4 class="sub2section__header">Свойства объекта window</h4>
+
+                    <p class="text">
+                        <strong>location</strong> - содержит URL-адрес страницы<br>
+                        <strong>status</strong> - содержит строку отображающуюся в статусной строке<br>
+                        <strong>onload</strong> - содержит функцию, вызываемую после полной загрузки страницы<br>
+                        <strong>document</strong> - содержит объектную модель документа (DOM)
+                    </p>
+
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">window.onload</h5>
+
+                        <p class="text">
+                            - выполнение кода после загрузки страницы
+                        </p>
+
+                        <p class="text">
+                            Присваивая свойству <strong>window.onload</strong> функции мы можем гарантировать, что код в теле функции не будет выполняться до тех пор, пока загрузув страницы не закончится и ибъектная модель документа не будет полностью сгенерирована
+                        </p>
+                        <pre class="screen screen_pre">
+window.onload = function() {
+    ...
+};</pre>
+                        <p class="text">
+                            Другой вариант:
+                        </p>
+                        <pre class="screen screen_pre">
+function name_1() {
+    ...
+}
+
+window.onload = name_1;</pre>
+                        <p class="text">
+                            &bull; Перед <strong>onload</strong> указываем <strong>window.</strong>, ибо существует масса других объектов, имеющих свойство <strong>onload</strong><br>
+                            &bull; Если вместо <strong>window.onload = name_1;</strong> (присвоение значения функции свойству <strong>onload</strong>) указать <strong>window.onload = name_1();</strong>, то этим скажем, что хотим вызвать функцию <strong>name_1</strong>. А так мы просто связываем функцию <strong>name_1</strong> c <strong>window.onload</strong>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Методы объекта window</h4>
+
+                    <p class="text">
+                        <strong>alert</strong> - выводит соответствующее диалоговое окно<br>
+                        <strong>prompt</strong> - получает информацию от пользователя<br>
+                        <strong>open</strong> - открывает новое окно браузера<br>
+                        <strong>close</strong> - закрывает окно<br>
+                        <strong>setTimeout</strong> - вызывает обработчик по истечении заданного интервала времени<br>
+                        <strong>setInterval</strong> - многократно вызывает обработчик через заданный интервал времени
+                    </p>
+                </div>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">document</h3>
+
+                <p class="text">
+                    &bull; Является свойством объекта <strong>window</strong>
+                    &bull; Глобальный объект<br>
+                    &bull; Корневой элемент дерева DOM
+                </p>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Свойства объекта document</h4>
+                    
+                    <p class="text">
+                        <strong>domain</strong> - домен сервера, с которого загружается документ, например bestsite.com<br>
+                        <strong>title</strong> - может использоваться для извлечения заголовка документа, для чего нужно указать document.title<br>
+                        <strong>URL</strong> - URL-адрес документа
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Методы объекта document</h4>
+
+                    <p class="text">
+                        <strong>getElementById</strong> - позволяет извлекать элемент в соответствии с его идентификатором<br>
+                        <strong>getElementsByTagName</strong> и <br>
+                        <strong>getElementsByClassName</strong> - позволяют извлекать элементы в соответствии с миенами тегов и классов<br>
+                        <strong>createElement</strong> - генерирует элемент, подходящий для включения в DOM
+                    </p>
+
+                    <p class="text">
+                        Элементы, которые возвращают методы вроде <strong>getElementById</strong> также являются объектами
+                    </p>
+                </div>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Объект элемента</h3>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Свойства элемента (объекта элемента), например элемента &lt;p&gt;</h4>
+
+                    <p class="text">
+                        <strong>innerHTML</strong> - с его помощью можем изменить содержимое элемента<br>
+                        <strong>childElementCount</strong> - количество дочерних элементов<br>
+                        <strong>firstChild</strong> - первый дочерний элемент (если есть)<br>
+                    </p>
+                </div>
+
+                <div class="subnsection__item">
+                    <h4 class="sub2section__header">Методы элемента (объекта элемнта)</h4>
+                    
+                    <p class="text">
+                        <strong>appendChild</strong> и<br>
+                        <strong>insertBefore</strong> - используются для вставки новых элементов в DOM<br>
+                        <strong>setAttribute</strong> и<br>
+                        <strong>getAttribute</strong> - используются для задания и извлечения атрибутов, таких как src, class и id
+                    </p>
+                </div>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Методы DOM</h3>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">.getElementById() (es5)</h4>
+    
+                    <p class="text">
+                        &bull; <strong>.getElementById()</strong> принимает аргумент в виде значения <strong>id</strong> элемента и возвращает объект элемента<br>
+                        &bull; Применяется во всех случаях, когда необходимо найти элемент на текущей странице
+                        &bull; Позволяет получить доступ к любому элементу HTML по id<br>
+                        &bull; Если элемент с таким идентификатором отсутствует, то <strong>.getElementById()</strong> вернёт <strong>null</strong>
+                    </p>
+                    <pre class="screen screen_pre">
+let name_1 = document.getElementById("name_2");</pre>
+                    <p class="text">
+                        &bull; Присваиваем элемент с данным <strong>id="name_2"</strong> переменной <strong>name_1</strong><br>
+                        &bull; Теперь можем использовать переменную <strong>name_1</strong> для ссылки на соответствующий элемент
+                    </p>
+
+                    <div class="nsection__item">               
+                        <h5 class="sub3section__header">.innerHTML</h5>
+        
+                        <p class="text">
+                            &bull; С помощью свойства <strong>.innerHTML</strong> можем изменить содержимое элемента:<br>
+                            &bull; <strong>.innerHTML</strong> представляет всё содержимое элемента, включая вложенные элементы
+                        </p>
+                        <pre class="screen screen_pre">
+name_1.innerHTML = "Содержимое элемента";</pre>
+
+                        <p class="text">
+                            Или вывести его содержимое:
+                        </p>
+                        <pre class="screen screen_pre">
+console.log(name_1.innerHTML);</pre>
+                    </div>
+
+                    <div class="nsection__item">               
+                        <h5 class="sub3section__header">.outerHTML</h5>
+        
+                        <p class="text">
+                            &bull; <strong>.outerHTML</strong> возвращает элемент и всю разметку внутри него
+                        </p>
+                    </div>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">.getElementsByClassName() (es5)</h4>
+    
+                    <pre class="screen screen_pre">
+let name_1 = document.getElementsByClassName("name_2");</pre>
+                    <p class="text">
+                        &bull; 
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">.getElementsByTagName() (es5)</h4>
+    
+                    <pre class="screen screen_pre">
+let name_1 = document.getElementsByTagName("name_2");</pre>
+                    <p class="text">
+                        &bull; 
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">.querySelector()</h4>
+
+                    <p class="text">
+                        - возвращает первый элемент DOM соответствующий селектору
+                    </p>
+
+                    <pre class="screen screen_pre">
+document.querySelector("css_selector");</pre>
+                    <pre class="screen screen_post">
+document.querySelector(".menu");</pre>
+                    <p class="text">
+                        <strong>document</strong> - объект, внутри которого производится поиск<br>
+                        <strong>css_selector</strong> - css селектор
+                    </p>
+
+                    <pre class="screen screen_pre">
+let name_1 = document.querySelector("css_selector");</pre>
+                    <pre class="screen screen_post">
+let imageSmall = document.querySelector('#img_320px');</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">.querySelectorAll</h4>
+
+                    <p class="text">
+                        Возвращает все элементы DOM соответствующие селектору в виде массива
+                    </p>
+
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">Слайдер с использованием .querySelectorAll</h5>
+
+                        <pre class="screen screen_post">
+let btn_prev = document.querySelectorAll('.gallery__btn_prev');
+let btn_next = document.querySelectorAll('.gallery__btn_next');
+
+let images = document.querySelectorAll('.images__image');
+
+let i = 0;
+
+btn_prev.onclick = function() {
+    images[i].style.display = 'none';
+    i--;
+
+    if(i &lt; 0) {
+        i = images.length - 1;
+    }
+
+    images[i].style.display = 'block';
+};
+
+btn_next.onclick = function() {
+    images[i].style.display = 'none';
+    i++;
+
+    if(i &gt; images.length) {
+        i = 0;
+    }
+
+    images[i].style.display = 'block';
+};</pre>
+                    </div>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">.setAttribute()</h4>
+
+                    <p class="text">
+                        - вызывается для создания атрибута
+                    </p>
+
+                    <pre class="screen screen_pre">
+name_1.setAttribute("name_2", "volume_1");</pre>
+                    <p class="text">
+                        <strong>name_1</strong> - объект <strong>element</strong><br>
+                        <strong>name_2</strong> - имя атрибута<br>
+                        <strong>volume_1</strong> - значение атрибута
+                    </p>
+                    <p class="text">
+                        &bull; Если атрибут <strong>name_2</strong> есть, то поменяется его значение<br>
+                        &bull; А если такого атрибута нет, то он появится
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">.getAttribute()</h4>
+
+                    <p class="text">
+                        - вызывается для получения значения атрибута
+                    </p>
+
+                    <pre class="screen screen_pre">
+name_1.setAttribute("name_2");</pre>
+                    <p class="text">
+                        <strong>name_1</strong> - объект <strong>element</strong><br>
+                        <strong>name_2</strong> - имя атрибута, значение которого хотим получить
+                    </p>
+                </div>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">
+                    Обработчики события (функции обратного вызова)
+                </h3>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">.addEventListener()</h4>
+
+                    <p class="text">
+                        - отлавливает событие элемента и выполняет переданную функцию
+                    </p>
+
+                    <pre class="screen screen_pre">
+name_1.addEventListener("событие", function(){});</pre>
+
+                    <p class="text">
+                        <strong>name_1</strong> - имя элемента у которого отслеживается событие
+                    </p>
+
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">События отслеживаемые</h5>
+
+                        <ul class="eventList">
+                            <li class="eventList__list">
+                                <span class="eventList__header">Мыши</span>
+                                <ul>
+                                    <li class="eventList__item">mouseenter</li>
+                                    <li class="eventList__item">mouseover</li>
+                                    <li class="eventList__item">mousemove</li>
+                                    <li class="eventList__item">mousedown</li>
+                                    <li class="eventList__item">mouseup</li>
+                                    <li class="eventList__item">click</li>
+                                    <li class="eventList__item">dblclick</li>
+                                    <li class="eventList__item">contextmenu</li>
+                                    <li class="eventList__item">wheel</li>
+                                    <li class="eventList__item">mouseleave</li>
+                                    <li class="eventList__item">mouseout</li>
+                                    <li class="eventList__item">select</li>
+                                </ul>
+                            </li>
+
+                            <li class="eventList__list">
+                                <span class="eventList__header">Клавиатуры</span>
+                                <ul>
+                                    <li class="eventList__item">keydown</li>
+                                    <li class="eventList__item">keypress</li>
+                                    <li class="eventList__item">keyup</li>
+                                </ul>
+                            </li>
+
+                            <li class="eventList__list">
+                                <span class="eventList__header">Фокуса</span>
+                                <ul>
+                                    <li class="eventList__item">focus</li>
+                                    <li class="eventList__item">blur</li>
+                                </ul>
+                            </li>
+
+                            <li class="eventList__list">
+                                <span class="eventList__header">Формы</span>
+                                <ul>
+                                    <li class="eventList__item">reset</li>
+                                    <li class="eventList__item">submit</li>
+                                </ul>
+                            </li>
+
+                            <li class="eventList__list">
+                                <span class="eventList__header">Сетевые</span>
+                                <ul>
+                                    <li class="eventList__item">online</li>
+                                    <li class="eventList__item">offline</li>
+                                </ul>
+                            </li>
+
+                            <li class="eventList__list">
+                                <span class="eventList__header">Другие</span>
+                                <ul>
+                                    <li class="eventList__item">transitionend</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <pre class="screen screen_post">
+let buttonIn = document.querySelector(".button_in");
+
+buttonIn.addEventListener("click", function(){
+    cosole.log("Кнопка нОжата нажАта!");
+});</pre>
+                    <pre class="screen screen_pre">
+name_1.addEventListener("событие", function(name_2){});</pre>
+                                                    
+                    <p class="text">
+                        <strong>name_1</strong> - имя элемента у которого отслеживается событие<br>
+                        <strong>name_2</strong> - имя объекта события
+                    </p>
+    
+                    <pre class="screen screen_post">
+let buttonLink = document.querySelector(".button_link");
+    
+buttonLink.addEventListener("click", function(lnkevent){
+    lnkevent.preventDefault();
+    cosole.log("Кнопка нОжата нажАта!");
+});</pre>
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">.removeEventListener()</h5>
+
+                        <p class="text">
+                            - удаление слушателя событий
+                        </p>
+
+                        <pre class="screen screen_pre">
+let name_1 = document.querySelector('.css_selector_1');
+let name_2 = document.querySelector('.css_selector_2');
+
+name_1.addEventListener('name_event', function() {
+    name_2. ... ;
+
+    let name_3 = function() {
+        ...
+        name_2.removeEventListener('transitionend', name_3);
+    };
+
+    name_2.addEventListener('transitionend', name_3);
+});</pre>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">
+                    Что-то
+                </h3>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">.preventDefault()</h4>
+
+                    <p>Отмена действия по умолчанию</p>
+
+                    <p class="text">
+                        <strong>lnkevent.preventDefault();</strong> - отменяет переход по ссылке (как действие по умолчанию элемента с селектором <strong>.button_link</strong> )
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">.classList.</h4>
+
+                    <p class="text">
+                        - набор методов для управления классами
+                    </p>
+
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">.classList.add()</h5>
+
+                        <p class="text">
+                            - добавление класса
+                        </p>
+
+                        <pre class="screen screen_pre">
+name_1.classList.add("class_1");</pre>
+                        <p class="text">
+                            <strong>name_1</strong> - элемент, которому добавляем класс<br>
+                            <strong>class_1</strong> - имя добавляемого класса (записывается без точки)
+                        </p>
+                        <pre class="screen screen_pre">
+let name_1 = document.querySelector('css-selector_1');
+name_1.classList.add("class_1");</pre>
+
+                        <p class="text">
+                            &bull; Создаём предварительно в CSS класс <strong>class_1</strong> с необходимыми свойствами<br>
+                            &bull; Элементу <strong>element_1</strong> добавляется класс <strong>class_1</strong>. Если у элемента <strong>element_1</strong> имеются классы, то новый класс добавляется в список последним
+                        </p>
+
+                        <p class="text">
+                            <strong>Пример:</strong><br>
+                            Открытие окна
+                        </p>
+                        <pre class="screen screen_post">
+let buttonLink = document.querySelector(".button_link");
+let popup = document.querySelector(".sale_popup");
+
+buttonLink.addEventListener("click", function(lnkEvent){
+    lnkEvent.preventDefault();
+    popup.classList.add("sale_popup_show")
+});</pre>
+                    </div>
+
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">.classList.remove()</h5>
+
+                        <p class="text">
+                            - удаляет класс
+                        </p>
+                        
+                        <p class="text">
+                            <strong>Пример:</strong>
+                            Закрытие окна
+                        </p>
+                        <pre class="screen screen_post">
+let closePopup = document.querySelector(".sale_popup_close");
+
+close.addEventListener("click", function(lnkEvent){
+    lnkEvent.preventDefault();
+    popup.classList.remove("sale_popup_show");
+});</pre>
+                    </div>
+                    
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">.classList.toggle()</h5>
+
+                        <p class="text">
+                            - переключает класс
+                        </p>
+                    </div>
+
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">.classList.cotains()</h5>
+
+                        <p class="text">
+                            - сообщает, есть ли у элемента класс
+                        </p>
+
+                        <p class="text">
+                            Возвращает булево значение
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">.focus()</h4>
+                    
+                    <p class="text">
+                        - наводит фокус на элемент
+                    </p>
+                    
+                    <pre class="screen screen_pre">
+элемент.focus();</pre>
+                </div>
+
+                <p class="text">
+                    Пример всплывающего окна:
+                </p>
+                <pre class="screen screen_post">
+&lt;script&gt;
+
+let link = document.querySelector(".login-link");
+let popup = document.querySelector(".modal-login");
+let close = popup.querySelector(".modal-close");
+let form = popup.query.Selector("form");
+let login = popup.querySelector("[name=login]");
+let password = popup.querySelector("name=password");
+let storage = localStorage.getItem("login");
+
+link.addEventListener("click", function(evt){
+    evt.preventDefault();
+    popup.classList.add("modal-show")
+    if (storage) {
+        login.value = storage;
+        password.focus();
+    } else {
+        login.focus();
+    }
+});
+
+close.addEventListener("click", function(evt){
+    evt.preventDefault();
+    popup.classList.remove("modal-show");
+    popup.classList,remove("modal-error");
+});
+
+form.addEventListener("submit", function(evt) {
+    if(!login.value || !password.value) {
+        evt.preventDefault();
+        popup.classList.add("modal-error");
+    } else {
+        localStorage.setItem("login", login.value)
+});
+
+window.addEventListener("keydown", function(evt) {
+    if (evt.keyCode === 27) {
+        if (popup.classList.contains("modal-show")) {
+            popup.classList.remove("modal-show")
+        }
+    }
+});
+
+&lt;&frasl;script&gt;
+
++ CSS code:
+
+&lt;style&gt;
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+    20%, 40%, 60%, 80% { transform: translateX(10px); }
+}
+
+.modal-error {
+    animation-name: shake;
+    animation-duration: 0,6s;
+}
+
+&lt;&frasl;style&gt;</pre>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Создание нового элемента</h3>
+
+                <pre class="screen screen_pre">
+let element_name = document.createElement("element");
+element_name.innerHTML = content_name;</pre>
+            </div>
+
+            <div class="nsection__item">            
+                <h3 class="subsection__header">Добавление элемента в DOM</h3>
+
+                <pre class="screen screen_pre">
+let element_name = document.createElement("element");
+element_name.innerHTML = content_name;
+
+let parent_element = document.getElementById("parent_Id");
+parent_element.appendChild(element_name);</pre>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Обработчик событий onclick</h3>
+
+                <pre class="screen screen_pre">
+let name = document.getElementById("button");
+name.onclick = instructions;
+function instructions() {
+    ...
+}</pre>
+                <p class="text">
+                    Получив элемент DOM с id="button", задаём для свойства <strong>onclick</strong> функцию <strong>instructions</strong>
+                </p>
+
+                <pre class="screen screen_post">
+let colorRed = document.querySelector('.menu__item');
+colorRed.onclick = function() {
+    .menu__item.style.color = 'red';
+};</pre>
+                <p class="text">
+                    Элементу DOM с атрибутом <strong>class="menu__item"</strong> задаём свойству <strong>color:</strong> значение <strong>red</strong>;
+                </p>
+            </div>
+        </section> <!-- /DOM -->
+
+<!-- Other -->
+        <section id="other" class="section">
+            <h2 class="section__header">Other</h2>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Обработчик события</h3>
+
+                <p class="text">
+                    Обработчик события - фрагмент кода, который должен выполниться при возникновении события
+                </p>
+                <p class="text">
+                    Чтобы обработчик вызывался при возникновении события, его необходимо сначала зарегистрировать
+                </p>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Сначала пишем функцию, обрабатывающую событие</h4>
+
+                    <pre class="screen screen_pre">
+function name_1() {
+    ...
+}</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">
+                        Создаём связь между функцией и событием
+                    </h4>
+
+                    <pre class="screen screen_pre">
+name_2.name_3 = name_1;</pre>
+                </div>  
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Диалоговое окно</h3>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">prompt ()</h4>
+                    
+                    <p class="text">
+                        <strong>prompt()</strong> принимает данные типа <strong>string</strong>
+                    </p>
+                    <pre class="screen screen_post">
+let name = prompt("Как вас зовут?");</pre>
+                    <p class="text">
+                        &bull; создаём переменную <strong>name</strong> и присваиваем ей значение, которое вернёт вызов <strong>prompt()</strong>
+                    </p>
+
+                    <p class="text">
+                        &bull; если нажать "Отмена", то <strong>prompt()</strong> вернёт <strong>null</strong>
+                    </p>
+                </div>
+                
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">confirm ()</h4>
+                
+                    <p class="text">
+                        Функция <strong>confirm</strong> позволяет задать вопрос, на который можно ответить <strong>"да"</strong> или <strong>"нет"</strong> и возвращает <strong>true</strong> или <strong>false</strong>
+                    </p>
+                    <pre class="screen screen_post">
+let ok = confirm("Жми OK!");
+if (ok) {
+console.log("Молодцом!");
+} else {
+console.log("Не на ту нажал!");
+}</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">alert ()</h4>
+
+                    <p class="text">
+                        Отображается, пока пользователь не нажмёт <strong>OK</strong>
+                    </p>
+                    <pre class="screen screen_post">
+alert("А хорошо жить ещё лучше!");</pre>
+                </div>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Вывод в консоль</h3>
+
+                <pre class="screen screen_pre">
+console.log('Выводимый текст');</pre>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Случайный выбор</h3>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Math.random ()</h4>
+
+                    <pre class="screen screen_post">
+let name_1 = Math.random();</pre>
+                    <p class="text">
+                        &bull; Возвращает число от 0 до 1<br>
+                        &bull; Если нужно число побольше, умножьте полученное на подходящий коэффициент
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Math.floor ()</h4>
+
+                    <pre class="screen screen_post">
+let name_1 = Math.floor();</pre>
+                    <p class="text">
+                        Oкругляет число до ближайшего снизу целого
+                    </p>
+
+                    <pre class="screen screen_pre">
+let name_1 = Math.floor(Math.random() * n);</pre>
+                    <p class="text">
+                        Случайный выбор элемента массива (выпадет число от 0 до n-1)
+                    </p>
+                </div>
+
+                <p class="text">
+                    Пример:
+                </p>
+                <pre class="screen screen_post">
+let colors = ["red", "green", "blue", "yellow", "violet"];
+colors[Math.floor(Math.random * 5)];</pre>
+                <p class="text">
+                    &bull; <strong>Math.random()</strong> умножаем на кол-во элементов массива<br>
+                    &bull; В итоге возвратится один из элементов массива <strong>colors</strong>
+                </p>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Local Storage</h3>
+           
+                <p class="text">
+                    Браузеры выделяют объём 10Мб
+                </p>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">.getItem ()</h4>
+
+                    <p class="text">
+                        - метод для получения ключа из хранилища
+                    </p>
+                    <pre class="screen screen_pre">
+localStorage.getItem(ключ);</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">.setItem ()</h4>
+
+                    <p class="text">
+                        - метод для создания новой записи в хранилище
+                    </p>
+                
+                    <pre class="screen screen_pre">
+ localStorage.setItem(ключ, значение);</pre>
+               
+                    <pre class="screen screen_post">
+ form.addEventListener("submit", function(evt) {
+     if(!login.value || !password.value) {
+         evt.preventDefault();
+         console.log("Введите логин и пароль");
+     } else {
+         localStorage.setItem("login", login.value)
+ });</pre>
+ 
+                    <p class="text">
+                        Подстановка ранее сохранённого логина:
+                    </p>
+                    <pre class="screen screen_post">
+ let popup = document.querySelector(".modal-login");
+ let form = popup.query.Selector("form");
+ let login = popup.querySelector("[name=login]");
+ let password = popup.querySelector("name=password");
+ let storage = localStorage.getItem("login");
+ 
+ link.addEventListener("click", function(evt){
+     evt.preventDefault();
+     popup.classList.add("modal-show")
+     if (storage) {
+         login.value = storage;
+         password.focus()
+     } else {
+         login.focus();
+     }
+ });</pre>
+                </div>
+ 
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">.removeItem ()</h4>
+
+                    <p class="text">
+                        - метод удаляет запись из хранилища
+                    </p>
+                </div>
+ 
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">clear ()</h4>
+
+                    <p class="text">
+                        - метод полной очистки хранилища
+                    </p>
+                </div>
+            </div>
+ 
+            <div class="nsection__item">
+                <h3 class="subsection__header">Canvas</h3>
+    
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Context</h4>
+    
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">Получение контекста</h5>
+    
+                        <pre class="screen screen_pre">
+let canvas = document.getElementById('nameOfId')
+let context = canvas.getContext('2d')</pre>
+                        <p class="text">
+                            <strong>nameOfId</strong> - имя идентификатора элемента в HTML (id="...")
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section> <!-- /Other -->
+    </div>
+
+    <script src="../script.js"></script>
+</body>
+</html>

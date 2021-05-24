@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>ReactJS</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../../../style.css">
+
+    <style>
+        .main-header,
+        .menu,
+        .menu__item,
+        .section__header,
+        .button {
+            background-color: rgb(0, 217, 255);
+            text-shadow: 0px 0px 4px black;
+        }
+        .button:hover {
+            color: rgb(0, 217, 255);
+        }
+        .button {
+            border-color: rgb(0, 217, 255);
+        }
+    </style>
+</head>
+    
+<body id="top" class="page">
+    <div class="main-wrapper">
+        <header class="main-header">
+            <a href="../index.html">
+                <div class="button button_home">
+                    &uArr;
+                </div>
+            </a>
+
+            <h1 class="main-header__title">
+                React JS
+            </h1>
+
+            <a href="../index.html">
+                <div class="button button_prev">
+                    &lArr;
+                </div>
+            </a>
+        </header>
+
+        <section id="link" class="section">
+            <p class="text">
+                React JS основан на компонентах. Приложение созданное с использованием React JS состоит из компонентов
+            </p>
+            <h2 class="section__header">Подключение</h2>
+
+            <p class="text">
+                &bull; Скачиванием файла<br>
+                &bull; Указанием URL
+            </p>
+            <pre class="screen screen_post">
+...
+&lt;head&gt;
+    ...
+    &lt;script src=".../react.js"&gt;&lt;&frasl;script&gt;
+    &lt;script src=".../react-dom.js"&gt;&lt;&frasl;script&gt;
+    &lt;script src=".../browser.js"&gt;&lt;&frasl;script&gt;
+    ...
+&lt;&frasl;head&gt;
+&lt;body&gt;
+    ...
+    &lt;div id="content"&gt;&lt;&frasl;div&gt;
+    ...
+    &lt;script type="text/babel"&gt;
+    
+    &lt;&frasl;script&gt;
+    ...
+&lt;&frasl;body&gt;
+...</pre>
+        </section>
+    </div>
+</body>
+</html>

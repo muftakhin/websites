@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>Gulp</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../../style.css">
+
+    <style>
+        .main-header,
+        .menu,
+        .menu__item,
+        .section__header,
+        .button {
+            background-color: red;
+        }
+        .button:hover {
+            color: red;
+        }
+        .button {
+            border-color: red;
+        }
+    </style>
+</head>
+
+<body id="top" class="page">
+    <div class="main-wrapper">
+        <header class="main-header">
+            <a href="../index.html">
+                <div class="button button_home">
+                    &uArr;
+                </div>
+            </a>
+
+            <h1 class="main-header__title">
+                Gulp
+            </h1>
+
+            <a href="../index.html">
+                <div class="button button_prev">
+                    &lArr;
+                </div>
+            </a>
+
+        </header>
+
+        <section class="section">
+            <h2 class="section__header">Начало работы</h2>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Установка npm</h3>
+
+                <p class="text">
+                    &bull; Скачиваем и устанавливаем <strong>NodeJS</strong><br>
+                    &bull; Запускаем <strong>Node.js command prompt</strong><br>
+                </p>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Установка Gulp</h3>
+
+                <pre class="screen screen_post">
+npm i gulp-cli -g</pre>
+                <p class="text">
+                    <strong>i</strong> - install (сокращённая запись)<br>
+                    <strong>-g</strong> - установка пакета глобально
+                </p>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Формирование package.json</h3>
+
+                <p class="text">
+                    - в нём содержится информация о нашем проекте<br>
+                    Чтобы можно было с его помощью в других папках инициализировать наше приложение
+                </p>
+                <pre class="screen screen_post">
+npm init</pre>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Просмотр установленных глобально пакетов</h3>
+
+                <pre class="screen screen_post">
+npm ls -g</pre>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Установка Gulp в папке</h3>
+
+                <pre class="screen screen_post">
+npm i gulp --save-dev</pre>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Вызов Gulp</h3>
+
+                <p class="text">
+                    Находясь в папке проекта вводим команду <strong>gulp</strong>
+                </p>
+
+                <pre class="screen screen_post">
+gulp</pre>
+
+                <p class="text">
+                    Чтобы вызвать <strong>gulp</strong> создаём файл <strong>gulpfile.js</strong>, в котором прописываем:
+                </p>
+                <pre class="screen screen_post">
+const gulp = require('gulp');</pre>
+                <p class="text">
+                    С помощью команды <strong>require</strong> мы может подключать все пакеты, которые установили с помощью <strong>nmp</strong> в данную папку
+                </p>
+
+                <pre class="screen screen_post">
+const gulp = require('gulp');
+
+gulp.task('default', function() {
+    console.log(1);
+});</pre>
+                <p class="text">
+                    Используем метод <strong>.task</strong> на команду <strong>default</strong> и вешаем сюда функцию с выводом в консоль <strong>1</strong>
+                </p>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Установка модулей gulp-less и gulp-sass</h3>
+
+                <pre class="screen screen_post">
+npm install gulp-less</pre>
+
+                <pre class="screen screen_post">
+npm install gulp-sass --save-dev</pre>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Компилирование LESS to CSS</h3>
+
+                <pre class="screen screen_post">
+const gulp = require('gulp');
+const less = require('gulp-less');
+
+gulp.task('default', function() {
+    gulp.src('less/styles.less')
+        .pipe(less())
+        .pipe(gulp.dest('./css'));
+});</pre>
+                <p class="text">
+                    <strong>var gulp = require('gulp-less');</strong> - подключаем плагин <strong>gulp-less</strong><br>
+                    <strong>gulp.src</strong> - получение необходимого файла
+                </p>
+
+                <p class="text">
+                    Выполняем команду <strong>.pipe(less())</strong> - это метод, который выплоняет одно действие (В данном случае компиляция)<br>
+                    и <strong>.pipe(gulp.dest('css')); </strong>(указываю папку <strong>./css</strong>, в качестве папки назначения для скомпилированного файла)
+                </p>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Компилирование SASS to CSS</h3>
+
+                <pre class="screen screen_post">
+const gulp = require('gulp');
+const less = require('gulp-sass');
+                    
+gulp.task('sass', function() {
+    gulp.src('./project/**/*.scss')
+        .pipe(sass())
+        .pipe(gulp.dest('./project'));
+});</pre>
+                <p class="text">
+                    <strong>**/*.scss</strong> - ищем все файлы с расширением <strong>.scss</strong>, рассматривая и все вложенные папки, внутри папки <strong>project/</strong>
+                </p>
+
+                <p class="text">
+                    Чтобы вызвать задачу <strong>sass</strong>, ввожу следующее:
+                </p>
+                <pre class="screen screen_post">
+gulp sass</pre>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Отслеживание изменений в файле</h3>
+
+                <p class="text">
+                    Происходит при помощи команды <strong>gulp.watch();</strong>
+                </p>
+                <pre class="screen screen_post">
+const gulp = require('gulp');
+const less = require('gulp-less');
+                    
+gulp.task('default', function() {
+    gulp.watch('less/*.less', function(e) {
+        gulp.src(e.path)
+            .pipe(less())
+            .pipe(gulp.dest('css'));
+    });
+});</pre>
+                <p class="text">
+                    - отслеживаем все файлы <strong>.less</strong> в папке <strong>less/</strong><br>
+                    <strong>gulp.src</strong> - получение необходимого файла
+                </p>
+
+                <p class="text">
+                    Или:
+                </p>
+                <pre class="screen screen_post">
+const gulp = require('gulp');
+const less = require('gulp-less');
+
+function styles() {
+    return gulp.src('./less/styles.less')
+               .pipe(less())
+               .pipe(gulp.dest('./css'));
+}
+
+function watch() {
+    return gulp.watch('./less/**/*.less', styles);
+}
+
+gulp.task('css', styles);
+gulp.task('watch', watch);</pre>
+
+            </div>
+        </section>
+    </div>
+</body>
+</html>
