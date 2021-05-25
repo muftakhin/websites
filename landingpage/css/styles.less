@@ -25,6 +25,11 @@
 
 @gradient: linear-gradient(to right, #fe985b, #fe4fa7);
 
+@screen-sm: 576px;
+@screen-md: 768px;
+@screen-lg: 992px;
+@screen-xl: 1200px;
+
 /// -= Variables =-
 
 // -= Common =-
@@ -41,9 +46,12 @@ body {
     color: #414141;
 }
 
-.section-outer {}
+.section-outer {
+    padding-left: 20px;
+    padding-right: 20px;
+}
 .section-inner {
-    width: 1180px;
+    max-width: 1180px;
     margin: 0 auto;
 }
 
@@ -425,7 +433,7 @@ body {
     }
 
     &-inner {
-        width: 1180px;
+        max-width: 1180px;
         margin: 0 auto;
     }
 }
