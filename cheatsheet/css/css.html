@@ -2138,21 +2138,21 @@ z-index: число (целое);
                     <pre class="screen screen_post">
 grid-template-rows: repeat(4, auto);
 
-эквивалентно:
+    эквивалентно:
 
 grid-template-rows: auto auto auto auto;</pre>
 
                     <pre class="screen screen_post">
 grid-template-rows: repeat(3, 2fr 1fr);
 
-эквивалентно:
+    эквивалентно:
 
 grid-template-rows: 2fr 1fr 2fr 1fr 2fr 1fr;</pre>
 
                     <pre class="screen screen_post">
 grid-template-rows: 1fr repeat(2, 3fr) 1fr;
 
-эквивалентно:
+    эквивалентно:
 
 grid-template-rows: 1fr 3fr 3fr 1fr;</pre>
                     <p class="text">
@@ -2166,6 +2166,10 @@ grid-template-rows: 1fr 3fr 3fr 1fr;</pre>
                     <h4 class="sub2section__header">Зазор между строками</h4>
 
                     <pre class="screen screen_pre">
+grid-row-gap: размер;
+
+    новее:
+
 row-gap: размер;</pre>
                 </div>
 
@@ -2173,6 +2177,10 @@ row-gap: размер;</pre>
                     <h4 class="sub2section__header">Зазор между колонок</h4>
 
                     <pre class="screen screen_pre">
+grid-column-gap: размер;
+
+    новее:
+
 column-gap: размер;</pre>
                 </div>
 
@@ -2180,16 +2188,51 @@ column-gap: размер;</pre>
                     <h4 class="sub2section__header">Зазор между ячейками</h4>
 
                     <pre class="screen screen_pre">
-grid-gap: размер;</pre>
+grid-gap: размер;
+        - row-gap / column-gap;</pre>
                 </div>
 
                 <div class="nsection__item">
                     <h4 class="sub2section__header">Выравнивание элементов</h4>
 
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">
+                            Горизонтальное выравнивание
+                        </h5>
+
+                        <pre class="screen screen_pre">
+justify-content: start; (default)
+               - end;
+               - center;
+               - stretch;
+               - space-around;
+               - space-between;
+               - space-evenly;</pre>
+                    </div>
+
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">
+                            Вертикальное выравнивание
+                        </h5>
+
                     <pre class="screen screen_pre">
-align-items: stretch;   (default)
-           - start;</pre>
+align-items: start;   (default)
+           - end;
+           - center:
+           - stretch;
+           - space-around;
+           - space-between;
+           - space-evenly;</pre>
                 </div>
+
+                <div class="nsection__item">
+                    <h5 class="sub3section__header">
+                        Горизонтальное и вертикальное выравнивание
+                    </h5>
+
+                <pre class="screen screen_pre">
+place-content: "align-items" / "justify-content";</pre>
+            </div>
             </div>
 
             <div class="nsection__item">
@@ -2200,7 +2243,7 @@ align-items: stretch;   (default)
 
                     <pre class="screen screen_pre">
 .item {
-    grid-column: "номер занимаемого столбца":
+    grid-column: "номер занимаемого столбца";
     grid-row: "номер занимаемой строки"
 }
                     </pre>
@@ -2209,24 +2252,55 @@ align-items: stretch;   (default)
                 <div class="nsection__item">
                     <h4 class="sub2section__header">Если элемент занимает более одной ячейки сетки</h4>
 
-                    <pre class="screen screen_pre">
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">
+                            Первый вариант записи
+                        </h5>
+
+                        <pre class="screen screen_pre">
+.item {
+    grid-column-start: "номер_верт.линии_от";
+    grid-column-end: / "номер_верт.линии_до";
+    grid-row-start: "номер_гор.линии_от";
+    grid-row-end: "номер_гор.линии_до";
+}</pre>
+
+                        <p class="text">Вариант сокращённой записи:</p>
+                        <pre class="screen screen_pre">
 .item {
     grid-column: "номер_верт.линии_от" / "номер_верт.линии_до";
     grid-row: "номер_гор.линии_от" / "номер_гор.линии_до";
 }</pre>
-                    <p class="text">
-                        Или:
-                    </p>
-                    <pre class="screen screen_pre">
-.item {
-    grid-column: "номер_верт.линии_от" / span "кол-во занимаемых ячеек";
-    grid-row: "номер_гор.линии_от" / span "кол-во занимаемых ячеек";
-}</pre>
-                </div>
-            </div>
+                    </div>
 
-            <div class="nsection__item">
-                <h3 class="subsection__header">Альтернативный синтаксис</h3>
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">
+                            Второй вариант записи
+                        </h5>
+
+                        <pre class="screen screen_pre">
+.item {
+    grid-column: "номер_верт.линии_от" / span "кол-во_занимаемых_ячеек_колонки";
+    grid-row: "номер_гор.линии_от" / span "кол-во_занимаемых_ячеек_строки";
+}</pre>
+                    </div>
+
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">
+                            Третий вариант записи
+                        </h5>
+
+                        <pre class="screen screen_pre">
+.item {
+    grid-area: "номер_гор.линии_от" / "номер_верт.линии_от" / "номер_гор.линии_до" /"номер_верт.линии_до";
+}</pre>
+                        <p class="text">Или:</p>
+                        <pre class="screen screen_pre">
+.item {
+    grid-area: "номер_гор.линии_от" / "номер_верт.линии_от" / span "кол-во_занимаемых_ячеек_строки" / span "кол-во_занимаемых_ячеек_колонки";
+}</pre>
+                    </div>
+                </div>
 
                 <div class="nsection__item">
                     <h4 class="sub2section__header">Именованные линии сетки</h4>
@@ -2277,11 +2351,55 @@ align-items: stretch;   (default)
 }
 
 .grid {
+    grid-template-columns: ... ;
+    grid-template-areas: ... ;
     grid-template-areas: "name name ..."
                          "name ...  ..."
                          "...  ...  ...";
 }</pre>
                 </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Выравнивание отдельной ячейки</h4>
+
+                    <pre class="screen screen_pre">
+.item {
+    justify-self: ...;
+    align-self: ...;
+    place-self: ...;
+              - ... / ...;
+}</pre>
+                </div>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Автоматическая генерация строк и колонок</h3>
+
+                <pre class="screen screen_pre">
+.grid {
+    ...
+    grid-auto-rows: "размер";
+    grid-auto-columns: "размер";
+}</pre>
+                <p class="text">
+                    &bull;
+                </p>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">grid-auto-flow</h3>
+
+                <pre class="screen screen_pre">
+.grid {
+    ...
+    grid-auto-flow: row;           (default)
+                  - column;
+                  - row dense;
+                  - column dense;
+}</pre>
+                <p class="text">
+                    &bull;
+                </p>
             </div>
         </section>
 
