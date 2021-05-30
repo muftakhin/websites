@@ -3456,6 +3456,39 @@ let context = canvas.getContext('2d')</pre>
                     </div>
                 </div>
             </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Карусель</h3>
+
+                <pre class="screen screen_post">
+    HTML:
+
+&lt;div class="slider-container"&gt;
+    &lt;div class="slider-track"&gt;
+        &lt;div class="slider-item"&gt;&lt;&frasl;div&gt;
+        &lt;div class="slider-item"&gt;&lt;&frasl;div&gt;
+            ...
+        &lt;div class="slider-item"&gt;&lt;&frasl;div&gt;
+    &lt;&frasl;div&gt;
+&lt;&frasl;div&gt;
+&lt;div class="slider-buttons"&gt;
+    &lt;div class="btn-prev"&gt;Preview&lt;&frasl;div&gt;
+    &lt;div class="btn-next"&gt;Next&lt;&frasl;div&gt;
+&lt;&frasl;div&gt;
+
+    CSS:
+
+.slider-container {
+    overflow: hidden;
+}
+.slider-track {
+    display: flex;
+}
+.slider-item {
+    height: 100px;
+}
+</pre>
+            </div>
         </section> <!-- /Other -->
     </div>
 

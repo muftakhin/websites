@@ -1178,12 +1178,13 @@ background-clip: border-box;     (default)
                     <h4 class="sub2section__header">Сокращённое свойство фона</h4>
 
                     <pre class="screen screen_pre">
-background: background-color background-image/url(images/image.gif)
+background: background-color background-image/url("images/image.gif")
             background-repeat background-attachment background-position
             background-size;
           - inherit;</pre>
                     <p class="text">
-                        порядок значений не важен
+                        &bull; Порядок значений не важен<br>
+                        &bull; В <strong>background-image</strong> URL записывается в кавычках, в отличии от отдельного указания <strong>background-image</strong>
                     </p>
                 </div>
 
@@ -2665,7 +2666,9 @@ transform: scaleX(значение);
 
 transform: scaleY(значение);
 
-transform: scale(значение_X, значение_Y);</pre>
+transform: scale(значение_X, значение_Y);
+
+transform: scale(значение_X_и_Y);</pre>
                     <p class="text">
                         Если значение будет со знаком минус (<strong>-</strong>), то элемент перевернётся по данной оси
                     </p>
@@ -3537,14 +3540,14 @@ cursor: auto;            (defaulf)
             <div class="nsection__item">
                 <h3 class="subsection__header">Стилизация CHECKBOXa</h3>
 
-                <pre class="screenscreen_pre">
+                <pre class="screen screen_pre">
     HTML:
                 
-<label for="" class="label">
-    <input type="checkbox" name="" id="">
-    <div class="fake-checkbox"><img src="img.png" alt="fake checkbox"></div>
-    <div class="btn">Push Me</div>
-</label>
+&lt;label for="" class="label"&gt;
+    &lt;input type="checkbox" name="" id=""&gt;
+    &lt;div class="fake-checkbox"&gt;&lt;img src="img.png" alt="fake checkbox"&gt;&lt;&frasl;div&gt;
+    &lt;div class="btn"> Push Me &lt;&frasl;div&gt;
+&lt;&frasl;label&gt;
                 
     CSS:
                 
@@ -3719,6 +3722,53 @@ cursor: auto;            (defaulf)
     display: block;
 }</pre>
                 </div>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Табы</h3>
+
+                <pre class="screen screen_post">
+    HTML:
+
+&lt;div class="tabs-wrapper"&gt;
+    &lt;div class="input" type="radio" name="tabs" id="tab-1"&gt;
+    &lt;div class="input" type="radio" name="tabs" id="tab-2"&gt;
+    &lt;label class="tab tab-1" for="tab-1"&gt;Tab 1&lt;&frasl;label&gt;
+    &lt;label class="tab tab-2" for="tab-2"&gt;Tab 2&lt;&frasl;label&gt;
+    &lt;div class="content content-1"&gt;Content 1&lt;&frasl;div&gt;
+    &lt;div class="content content-2"&gt;Content 2&lt;&frasl;div&gt;
+&lt;&frasl;div&gt;
+
+    CSS:
+
+.input {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.tabs-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.content {
+    width: 100%;
+    display: none;
+    background-color: gray;
+}
+
+.tab {
+    flex-basis: 50%;
+}
+
+#tab-1:checked ~ .tab-1 { background-color: gray }
+#tab-1:checked ~ .content-1 { display: block }
+
+#tab-1:checked ~ .tab-1 { background-color: gray }
+#tab-1:checked ~ .content-1 { display: block }</pre>
             </div>
         </section>
     </div>

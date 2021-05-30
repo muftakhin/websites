@@ -461,7 +461,7 @@ body {
 .footer__content {
   display: flex;
   justify-content: center;
-  height: calc(100% - 78px);
+  height: 480px;
 }
 .footer .form {
   width: 500px;
@@ -538,6 +538,7 @@ body {
     padding: 16px;
   }
   .footer__content {
+    min-height: 680px;
     display: flex;
     flex-direction: column;
     text-align: center;
