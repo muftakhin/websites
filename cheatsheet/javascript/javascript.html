@@ -3457,11 +3457,76 @@ let context = canvas.getContext('2d')</pre>
                 </div>
             </div>
 
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Аккордеон</h3>
+
+                <pre class="screen screen_post">
+    HTML:
+
+&lt;div class="accordion"&gt;
+    &lt;div class="accordion-item"&gt;
+        &lt;div class="accordion-item__trigger"&gt;
+            Trigger 1
+        &lt;&frasl;div&gt;
+        &lt;div class="accordion-item__content"&gt;
+            Content 1
+        &lt;&frasl;div&gt;
+    &lt;&frasl;div&gt;
+                    
+    &lt;div class="accordion-item"&gt;
+        &lt;div class="accordion-item__trigger"&gt;
+            Trigger 2
+        &lt;&frasl;div&gt;
+        &lt;div class="accordion-item__content"&gt;
+            Content 2
+        &lt;&frasl;div&gt;
+    &lt;&frasl;div&gt;
+&lt;&frasl;div&gt;
+                    
+                    
+    CSS:
+                    
+.accordion {}
+                    
+.accordion-item {
+    margin-bottom: 20px;
+}
+
+.accordion-item__trigger {}
+
+.accordion-item__content {
+    display: none;
+}
+
+.accordion-item--active .accordion-item__content {
+    display: block;
+}
+
+    JavaScript:
+
+document.querySelectorAll('.accordion-item__trigger').forEach((item) =>
+    item.addEventListener('click', () => {
+        const parent = item.parentNode;
+
+        if (parent.classList.contains('accordion-item--active')) {
+            parent.classList.remove('accordion-item--active')
+        } else {
+            document.querySelectorAll('.accordion-item').forEach((child) => child.classList.remove('accordion-item--active'))
+
+            parent.classList.add('accordion-item--active');
+        }
+    });
+)
+                </pre>
+            </div>
+
             <div class="nsection__item">
                 <h3 class="subsection__header">Карусель</h3>
 
                 <pre class="screen screen_post">
     HTML:
+
 
 &lt;div class="slider-container"&gt;
     &lt;div class="slider-track"&gt;
@@ -3476,7 +3541,9 @@ let context = canvas.getContext('2d')</pre>
     &lt;div class="btn-next"&gt;Next&lt;&frasl;div&gt;
 &lt;&frasl;div&gt;
 
+
     CSS:
+
 
 .slider-container {
     overflow: hidden;
@@ -3487,7 +3554,59 @@ let context = canvas.getContext('2d')</pre>
 .slider-item {
     height: 100px;
 }
-</pre>
+
+
+    JavaScript:
+
+
+let position = 0;
+
+const slidesToShow = 3;
+const slidesToScroll = 2;
+
+const container = document.querySelector('.slider-container');
+const track = document.querySelector('.slider-track');
+
+const brnPrev = document.querySelector('.btn-prev');
+const btnNext = document.querySelector('.btn-next');
+const items = document.querySelectorAll('.slider-item');
+
+const itemsCount = items.length;
+const itemWidth = container.clientwidth &frasl; slidesToShow;
+const movePosition = slidesToScroll * itemWidth;
+
+item.forEach((item) =&gt; {
+    item.style.minWidth = '${itemWidth}px';
+});
+
+btnNext.addEventListener('click', () =&gt; {
+    const itemsLeft = itemsCount - (Math.abs(position) + slidesToShow * itemWidth) &frasl; itemWidth;
+
+    position -= itemsLeft &gt;= slidesToScroll ? movePosition : itemsLeft * itemWidth;
+
+    setPosition();
+    checkBtns();
+});
+
+btnPrev.addEventListener('click', () =&gt; {
+    const itemsLeft = Math.abs(position) &frasl; itemWidth;
+
+    position += itemsLeft &gt;= slidesToScroll ? movePosition : itemsLeft * itemWidth;
+
+    setPosition();
+    checkBtns();
+});
+
+const setPosition = () =&gt; {
+    track.style.transform = 'translateX(${position}px)';
+};
+
+const checkBtns = () =&gt; {
+    btnPrev.disabled = position === 0;
+    btnNext.disabled = position &lt;= -(itemsCount - slidesToShow) * itemWidth;
+};
+
+checkBtns(); </pre>
             </div>
         </section> <!-- /Other -->
     </div>

@@ -3673,7 +3673,7 @@ cursor: auto;            (defaulf)
 
                 <div class="nsection__item">
                     <h4 class="sub2section__header">
-                        Аккордеон
+                        Аккордеон 1
                     </h4>
 
                     <pre class="screen screen_post">
@@ -3719,6 +3719,135 @@ cursor: auto;            (defaulf)
     display: block;
 }
 .accordion > input:checked ~ nav {
+    display: block;
+}</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">
+                        Аккордеон 2
+                    </h4>
+
+                    <pre class="screen screen_post">
+    HTML:
+
+&lt;div class="accordion"&gt;
+    &lt;div class="accordion-item"&gt;
+        &lt;input class="accordion-item__input" type="checkbox" id="accordion-1"&gt;
+        &lt;label class="accordion-item__trigger" for="accordion-1"&gt;
+            Trigger 1
+        &lt;&frasl;label&gt;
+        &lt;div class="accordion-item__content"&gt;
+            Content 1
+        &lt;&frasl;div&gt;
+    &lt;&frasl;div&gt;
+
+    &lt;div class="accordion-item"&gt;
+        &lt;input class="accordion-item__input" type="checkbox" id="accordion-2"&gt;
+        &lt;label class="accordion-item__trigger" for="accordion-2"&gt;
+            Trigger 2
+        &lt;&frasl;label&gt;
+        &lt;div class="accordion-item__content"&gt;
+            Content 2
+        &lt;&frasl;div&gt;
+    &lt;&frasl;div&gt;
+&lt;&frasl;div&gt;
+
+
+    CSS:
+
+.accordion {}
+
+.accordion-item {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.accordion-item__input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+.accordion-item__trigger {
+    padding: 20px;
+    border: 1px solid black;
+}
+
+.accordion-item__content {
+    padding: 20px;
+    border: 1px solid black;
+    border-top: 0;
+    display: none;
+}
+
+.accordion-item__input:checked ~ .accordion-item__content {
+    display: block;
+}
+</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">
+                        Аккордеон 2 radio
+                    </h4>
+
+                    <pre class="screen screen_post">
+    HTML:
+
+&lt;div class="accordion"&gt;
+    &lt;div class="accordion-item"&gt;
+        &lt;input class="accordion-item__input" type="radio" name="accordion" id="accordion-1"&gt;
+        &lt;label class="accordion-item__trigger" for="accordion-1"&gt;
+            Trigger 1
+        &lt;&frasl;label&gt;
+        &lt;div class="accordion-item__content"&gt;
+            Content 1
+        &lt;&frasl;div&gt;
+    &lt;&frasl;div&gt;
+
+    &lt;div class="accordion-item"&gt;
+        &lt;input class="accordion-item__input" type="radio" name="accordion" id="accordion-2"&gt;
+        &lt;label class="accordion-item__trigger" for="accordion-2"&gt;
+            Trigger 2
+        &lt;&frasl;label&gt;
+        &lt;div class="accordion-item__content"&gt;
+            Content 2
+        &lt;&frasl;div&gt;
+    &lt;&frasl;div&gt;
+&lt;&frasl;div&gt;
+
+
+    CSS:
+
+.accordion {}
+
+.accordion-item {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.accordion-item__input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+.accordion-item__trigger {
+    padding: 20px;
+    border: 1px solid black;
+}
+
+.accordion-item__content {
+    padding: 20px;
+    border: 1px solid black;
+    border-top: 0;
+    display: none;
+}
+
+.accordion-item__input:checked ~ .accordion-item__content {
     display: block;
 }</pre>
                 </div>
