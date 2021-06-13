@@ -1,0 +1,255 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+a {
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+        color: tan;
+    }
+
+    h2 {
+        transition: all 0.3s ease-in-out;
+        
+        &:hover {
+            color: tan;
+        }
+    }
+}
+li {
+    list-style-type: none;
+}
+
+.link {
+    display: inline-block;
+    height: 44px;
+    margin: 0 0 16px 16px;
+    padding: 0 24px;
+    color: white;
+    background-color: @main-color;
+    line-height: 44px;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+        background-color: tan;
+    }
+}
+.screen {
+    padding: 12px;
+    margin-bottom: 8px;
+    background-color: #222;
+    box-shadow: 0 0 8px 1px grey inset;
+    font-size: 16px;
+    font-family: monospace;
+    overflow: auto;
+
+    &_pre {
+        color: lightpink;
+        text-shadow: 0 0 4px lightpink;
+    }
+    &_post {
+        color: lightgreen;
+        text-shadow: 0 0 4px lightgreen;
+    }
+}
+
+.text   {
+    padding: 8px;
+    margin: 0 0 16px 16px;
+    font-size: 18px;
+}
+strong {
+    font-size: 20px;
+    font-family: monospace;
+    color: maroon;
+}
+
+// === Variables ===
+
+@main-color: steelblue;
+
+// === /Variables ===
+// === Mixins ===
+
+.headers() {
+    height: 44px;
+    font-size: 22px;
+    line-height: 44px;
+    font-family: monospace;
+    font-weight: normal;
+    text-align: center;
+}
+
+// === /Mixins ===
+
+
+.page {
+    background-color: tan;
+}
+
+
+.header {
+    background-color: @main-color;
+    display: grid;
+    grid-template-columns: 80px 80px 1fr 80px 80px;
+    grid-template-rows: 56px;
+    grid-template-areas: "button . title nav nav";
+
+    &__button {
+        width: 160px;
+        padding-left: 22px;
+        font-size: 32px;
+        line-height: 56px;
+        color: white;
+        transition: all 0.2s ease-in-out;
+        grid-area: button;
+
+        &:hover {
+            color: tan;
+        }
+    }
+
+    &__title {
+        color: white;
+        font-size: 32px;
+        font-family: monospace;
+        line-height: 56px;
+        text-align: center;
+        grid-area: title;
+    }
+
+    &_css {
+
+        &__button {
+            width: 112px;
+        }
+    }
+}
+
+.nav {
+    background-color: @main-color;
+    grid-area: nav;
+
+    &__list {
+        height: 40px;
+        display: flex;
+        justify-content: space-evenly;
+
+        &-item {
+
+            &-text {
+                line-height: 56px;
+                color: white;
+                font-family: monospace;
+                transition: all 0.2s ease-in-out;
+
+                &:hover {
+                    color: tan;
+                }
+            }
+        }
+    }
+} 
+
+.section {
+    max-width: 1080px;
+    margin: 8px auto;
+    background-color: snow;
+
+    &__header {
+        .headers;
+
+        color: white;
+        background-color: @main-color;
+    }
+}
+
+.subsection {
+    padding: 8px;
+    background-color: white;
+
+    &__header {
+        .headers;
+
+        margin-bottom: 8px;
+        border: 2px solid @main-color;
+    }
+
+    &__item {
+        padding: 8px;
+
+        &-header {
+            width: fit-content;
+            height: 32px;
+            margin-bottom: 4px;
+            padding: 0 16px;
+            font-size: 20px;
+            font-weight: normal;
+            line-height: 32px;
+            font-family: monospace;
+            color: @main-color;
+            border: 2px dotted @main-color;
+        }
+    }
+}
+
+.list {
+    margin: 16px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    overflow: auto;
+
+    &_160 {
+        height: 160px;
+    }
+
+    &__item-simbols {
+        font-size: 24px;
+        color: steelblue;
+        line-height: 36px;
+    }
+}
+
+@media all and (max-width: 992px) {
+
+    .list {
+    
+        &_160 {
+            height: 240px;
+        }
+    }
+}
+
+@media all and (max-width: 768px) {
+
+    .list {
+
+        &_160 {
+            height: 320px;
+        }
+    }
+}
+
+@media all and (max-width: 576px) {
+
+    .header {
+        grid-template-columns: 80px 1fr 80px;
+        grid-template-rows: 56px 56px;
+        grid-template-areas: "button title ."
+                             ". nav .";
+    }
+
+    .list {
+
+        &_160 {
+            height: 440px;
+        }
+    }
+}

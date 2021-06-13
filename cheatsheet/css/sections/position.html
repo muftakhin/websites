@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Float</title>
+    <link rel="stylesheet" href="../../styles/link.css">
+</head>
+<body class="page">
+    <header class="header">
+        <h1 class="header__title">Float</h1>
+    </header>
+    <article class="article">
+        <section class="section">
+            <h2 class="section__header">Типы позиционирования</h2>
+
+            <pre class="screen screen_pre">
+position: static;    (default)
+        - relative;
+        - absolute;
+        - fixed;
+        - inherit;
+        - sticky;</pre>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Static</h3>
+
+                <p class="text">
+                    Обычное размещение в потоке
+                </p>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Relative</h3>
+
+                <p class="text">
+                    &bull; Сдвигает блок относительно его начального положения в потоке<br>
+                    &bull; Исходное пространство в потоке сохраняется и продолжает влиять на расположение окружающего контента<br>
+                    &bull; Потенциально может перекрыть другие элементы
+                </p>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Absolute</h3>
+
+                <p class="text">
+                    &bull; Элемент удаляется из потока и позиционируются относительно ближайшего родительского элемента не <strong>position: static;</strong><br>
+                    &bull; По умолчанию задано <strong>top: auto; right: auto; bottom: auto; left: auto;</strong>, если не задавать <strong>top, right, bottom</strong> или <strong>left</strong>, то элемент будучи вырванным из потока, окажется над тем же местом, которое он освободил<br>
+                    &bull; Пространство, которое он занимал бы, смыкается<br>
+                    &bull; Абсолютно позиционированные элементы не влияют на расположение окружающих элементов<br>
+                    &bull; Если задать противоположные расстояния, то элемент растянется
+                </p>
+
+                <p class="text">
+                    &bull; Элемент помещается относительно его ближайшего содержащего элемента<br>
+                    &bull; <strong>html</strong> - начальный содержащий блок<br>
+                    &bull; Абсолютно позиционированные объекты всегда ведут себя как блочные
+                </p>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Fixed</h3>
+
+                <p class="text">
+                    &bull; Элемент удаляется из потока и позиционируется относительно окна браузера<br>
+                    &bull; Смещение всегда относительно окна браузера
+                </p>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Sticky</h3>
+
+                <p class="text">
+                    <strong>top, right, bottom, left</strong> указывают границу, дальше которой элемент не будет перемещаться
+                </p>
+
+                <p class="text">
+                    Невозможно, когда высота позиционированного элемента равна высоте родительского элемента или значение его свойства overflow равна не visible
+                </p>
+            </div>
+
+            <p class="text">
+                Все типы позиционирования (<strong>position:</strong>) ,кроме <strong>static</strong> делают <strong>inline</strong> элемент блочным (<strong>display: block;</strong>)
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="subsection__header">Задавание положения</h2>
+
+            <p class="text">
+                Положение задаётся с помощью 4х свойств смещения
+            </p>
+            <pre class="screen screen_pre">
+position: ... ;
+top:
+right:
+bottom:
+left: px;
+    - %;
+    - auto;            (default)
+    - inherit;
+
+
+Применяется к позиционированным элементам (relative, absolute, fixed)</pre>
+        </section>
+
+        <section class="section">
+            <h2 class="section__header">Содержащие блоки</h2>
+
+            <p class="text">
+                &bull; Если позиционированный элемент содержится внутри другого не позиционированного элемента, тогда он будет размещён относительно начального содержащего блока (<strong>html</strong>)<br>
+                &bull; Если элемент содержится внутри другого элемента позиционированного (<strong>relative</strong>, <strong>absolute</strong>, <strong>fixed</strong>), он будет позиционирован относительно краёв этого элемента<br>
+                &bull; Позиционированные элементы становятся содержащим блоком для элементов, которые он содержит
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section__header">Перекрывающиеся объекты</h2>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Порядок наложения</h3>
+
+                <p class="text">
+                    &bull; <strong>z-index</strong> применяется элементам позиционированным (<strong>relative</strong>, <strong>absolute</strong> или <strong>fixed</strong>)<br>
+                    &bull; По умолчанию элементы имеют значение свойства <strong>z-index: auto;</strong> и располагаются в том порядке,в котором появляются в документе (исходя из положения в <strong>HTML</strong> коде). Родительский элемент располагается ниже дочернего, а из дочерних более низко описаный в коде элемент располагается выше на странице
+                </p>
+
+                <pre class="screen screen_pre">
+z-index: число (целое);
+       - auto;     (default)
+       - inherit;</pre>
+                <p class="text">
+                    <strong>z-index</strong> - число, чем больше значение, тем выше располагается элемент (ближе к переднему плану),дочерние элементы наследуют <strong>z-index</strong> родителя. При равном значении <strong>z-index</strong> на передний план выходит тот элемент, который в коде <strong>HTML</strong> располагается ниже<br>
+                    &bull; Родительский элемент не может располагаться выше дочернего элемента, какой бы <strong>z-index</strong> мы ему не присвоили. При этом значение <strong>z-index</strong> образует для вложенных элементов свой уровень иерархии внутри данного уровня. Так потомки одного элемента с указанным значением <strong>z-index</strong> никогда не будут выше потомков другого элемента с указанным более высоким значением <strong>z-index</strong>
+                </p>
+            </div>
+        </section>
+    </article>
+</body>
+</html>

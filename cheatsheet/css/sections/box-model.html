@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Блочная модель</title>
+    <link rel="stylesheet" href="../../styles/link.css">
+</head>
+<body class="page">
+    <header class="header">
+        <h1 class="header__title">Блочная модель</h1>
+    </header>
+    <article class="article">
+        <section class="section">
+            <h2 class="section__header">Задавание размеров блока</h2>
+
+            <p class="text">
+                &bull; <strong>margin-"сторона": auto; </strong> занимает всё свободное пространство в этом направлении<br>
+                &bull; Если задать ширину блока, то <strong>margin</strong>, <strong>border</strong> и <strong>padding</strong> будут добавлены к его ширине и высоте
+            </p>
+            <pre class="screen screen_pre">
+width:
+height:
+min-width:
+max-width:
+min-height:
+max-width: ...px;
+         - ...%;
+         - auto;
+         - inherit;
+         - min-content;
+         - max-content;
+         - fit-content;
+         - stretch;</pre>
+            <p class="text">
+                &bull; Применяется к <strong> block </strong> элементам и изображениям<br>
+                &bull; <strong> inline </strong> элементам <strong> width </strong> и <strong> height </strong> не задаются (не работают)<br>
+                &bull; <strong>%</strong> задаются от ближайшего родительского элемента с заданным аналогичным размером (если ни у одного из предков не задана ширина, отсчитывается от ширины окна браузера)
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section__header">Модель border-box</h2>
+
+            <pre class="screen screen_pre">
+* {
+    box-sizing: content-box;    (default)
+              - padding-box;
+              - border-box;
+              - inherit;
+}</pre>
+        </section>
+
+
+        <section class="section">
+            <h2 class="section__header">Выход контента за пределы блока</h2>
+
+            <pre class="screen screen_pre">
+overflow: visible;   (default)
+        - hidden;
+        - scroll;
+        - auto;
+        - inherit;</pre>
+            <p class="text">
+                Применяется к блочным элементам и изображениям
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section__header">Границы</h2>
+
+                <div class="subsection">
+                    <h3 class="subsection__header">Стиль границы</h3>
+
+                    <pre class="screen screen_pre">
+border-style:
+
+border-top-style:
+border-right-style:
+border-bottom-style:
+border-left-style: none;  (default)
+                 - dotted;
+                 - dashed;
+                 - solid;
+                 - double;
+                 - groove;
+                 - ridge;
+                 - inset;
+                 - outset;
+                 - inherit;</pre>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection__header">Ширина границы</h3>
+
+                    <pre class="screen screen_pre">
+border-width:
+
+border-top-width:
+border-right-width:
+border-bottom-width:
+border-left-width: значение;
+                 - thin;
+                 - medium;   (default)
+                 - thick;
+                 - inherit;</pre>
+                    <p class="text">
+                        Нельзя задавать значение в <strong>%</strong>
+                    </p>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection__header">Цвет границы</h3>
+
+                    <pre class="screen screen_pre">
+border-color:
+
+border-top-color:
+border-right-color:
+border-bottom-color:
+border-left-color: значение или имя;
+                 - transparent;
+                 - inherit;</pre>
+                    <p class="text">
+                        По умолчанию того же цвета, что и элемент
+                    </p>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection__header">Комбинирование стилей</h3>
+
+                    <pre class="screen screen_pre">
+border:
+
+border-top:
+border-right:
+border-bottom:
+border-left: border-style border-width border-color;   (в любом порядке)
+           - inherit;</pre>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection__header">Скругление углов</h3>
+
+                    <pre class="screen screen_pre">
+border-radius:
+
+border-top-left-radius:
+border-top-right-radius:
+border-bottom-right-radius:
+border-bottom-left-radius: рx;
+                         - em;
+                         - %;</pre>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection__header">Овальные углы</h3>
+
+                    <pre class="screen screen_pre">
+border-top-left-radius:
+border-top-right-radius:
+border-bottom-right-radius:
+border-bottom-left-radius: "горизонтальный размер" "вертикальный размер";
+
+border-radius: "горизонтальный размер"/"вертикальный размер";
+
+border-radius: "гор.разм. 1уг." "гор.разм. 2уг.""гор.разм. 3уг." "гор.разм. 4уг." /
+                 "верт.разм. 1уг." "верт.разм. 2уг." "верт.разм. 3уг." "верт.разм. 4уг.";</pre>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection__header">Красивые границы</h3>
+
+                    <pre class="screen screen_pre">
+border-image: border-image-source border-image-slice border-image-width border-image-outset border-image-repeat;</pre>
+                    <p class="text">
+                        <strong>border-image-source</strong> - URL изображения<br>
+                        <strong>border-image-slice</strong> - значения 4х линий разреза по часовой<br>
+                        <strong>border-image-width</strong> - ширина границы<br>
+                        <strong>border-image-outset</strong> - расстояние, на которое изображение выступает за границы<br>
+                        <strong>border-image-repeat</strong> - образ заполнения сторон (stretch, repeat, round)
+                    </p>
+
+                    <pre class="screen screen_post">
+border-image: url(border.png) 55 55 55 55 stretch;</pre>
+                    <p class="text">
+                        <strong>55</strong> - border-image-width  - ширина от каждого края изображения, по часовой (top, right, bottom, left)
+                    </p>
+
+                    <pre class="screen screen_post">
+border-width: 55px;
+border-image: url(border.png) 55 stretch;</pre>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section__header">Контур</h2>
+
+            <p class="text">
+                &bull; <strong>outline</strong> отрисовывается за пределами границы элемента иможет перекрывать другое содержимое (не является частью размеров элемента)
+                &bull; <strong>Отрисовывается вокруг элементов находящихся в фокусе</strong>
+            </p>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Стиль контура</h3>
+
+                <pre class="screen screen_pre">
+outline-style: dotted;
+             - dashed;
+             - solid;
+             - double;
+             - groove;
+             - ridge;
+             - inset;
+             - outset;
+             - none;
+             - hidden;</pre>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Цвет контура</h3>
+
+                    <pre class="screen screen_pre">
+outline-color: значение;</pre>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Ширина контура</h3>
+
+                <pre class="screen screen_pre">
+outline-width: значение;</pre>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Сокращённая запись</h3>
+
+                <pre class="screen screen_pre">
+outline: "outline-style" "outline-color" "outline-width";</pre>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Смещение контура</h3>
+
+                <pre class="screen screen_pre">
+outline-offset: значение;</pre>
+                <p class="text">
+                    Может быть отрицательным
+                </p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section__header">Поля</h2>
+
+            <pre class="screen screen_pre">
+margin: значение;
+      - %;
+      - auto;      (default)
+      - inherit;</pre>
+            <p class="text">
+                <strong>%</strong> - процент от размера ближайшего родительского элемента с указанными размерами (так же как и <strong>padding</strong>)
+            </p>
+
+            <div class="subsection">
+                <h4 class="subsection__header">Поведение полей</h4>
+
+                <p class="text">
+                    &bull; Верхние и нижние поля соседних элементов схлопываются (смежные поля совмещаются и используется большее значение). Кроме <strong>float: ...</strong> и <strong>position: absolute</strong><br>
+                    &bull; Левое и правое никогда не схлопываются<br>
+                    &bull; Если у родительских элементов не указаны <strong> border:, padding: </strong> или <strong> overflow:hidden; </strong> (то, что ограничивало бы), то вертикальные <strong> margin: </strong> перетекают к родительскому элементу (выпадают), вплоть до <strong> &lt; body &gt; </strong> (если при этом у родительского элемента задано значение <strong> margin: </strong>, то выбирается наибольшее из них)<br>
+                    &bull; Только левое и правое поля отображаются у <strong> inline </strong> элементов, кроме изображений<br>
+                    &bull; Значение может быть отрицательным
+                </p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section__header">Типы отображения</h2>
+
+            <pre class="screen screen_pre">
+display: inline;
+       - block;
+       - list-item;
+       - inline-block;
+       - table;
+       - inline-table;
+       - table-row-group;
+       - table-header-group;
+       - table-footer-group;
+       - table-row;
+       - table-column-group;
+       - table-column;
+       - table-cell;
+       - table-caption;
+       - none;
+       - run-in;
+       - compact;
+       - ruby;
+       - ruby-base;
+       - ruby-base-container;
+       - ruby-text-container;
+       - flex;
+       - grid;</pre>
+            <p class="text">
+                &bull; <strong>none</strong> полностью удаляет контент из потока, не сохраняя пространство. В отличие от <strong>visibility: hidden;</strong> которое делает элемент невидимым сохраняя пространство<br>
+                &bull; <strong>inline-block</strong> заставляет блочный элемент располагаться как встроенный, но при этом сохранять остальные особенности блочного. Чтобы блок не "плясал" (из-за значения по умолчанию <strong>vertical-align: baseline;</strong> ), нужно задать явно <strong>vertical-align: center</strong>, <strong>vertical-align: top</strong> или завернуть элементы в родительский блок той же высоты). По умолчанию <strong>&lt;img&gt;</strong> имеет значение <strong>inline-block</strong><br>
+                &bull; <strong>list-item</strong> создаёт маркер у элемента (при помощи <strong>list-style-type</strong> задаётся тип маркера)
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section__header">Сокрытие блоков</h2>
+
+            <p class="text">
+                Свойство <strong>visibility</strong> позволяет скрывать блоки, но при этом оставлять пустое пространство на месте элемента
+            </p>
+            <pre class="screen screen_pre">
+visibility: hidden;
+          - visible;</pre>
+        </section>
+
+        <section class="section">
+            <h2 class="section__header">Тень блока</h2>
+
+            <pre class="screen screen_pre">
+box-shadow: x y b e c z;
+          - none;            (default)</pre>
+            <p class="text">
+                <strong>x</strong>   - горизонтальное смещение<br>
+                <strong>y</strong> - вертикальное смещение<br>
+                <strong>b</strong> - размытие (может отсутствовать)<br>
+                <strong>e</strong> - распространение - увеличивает или уменьшает размер тени<br>
+                <strong>c</strong> - цвет<br>
+                <strong>z</strong> - тень внутрь <strong>" inset "</strong> (не обязательный параметр)
+            </p>
+
+            <p class="text">
+                &bull; Можно применять сразу несколько теней, через запятую<br>
+                &bull; Если первые три параметра будут иметь нулевое значение, тень будет иметь вид рамки
+            </p>
+        </section>
+    </article>
+</body>
+</html>

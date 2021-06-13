@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Раскрывающиеся объекты</title>
+    <link rel="stylesheet" href="../../../styles/link.css">
+</head>
+<body class="page">
+    <header class="header">
+        <h1 class="header__title">Раскрывающиеся объекты</h1>
+    </header>
+    <article class="article">
+        <section class="section">
+            <h2 class="section__header">Спойлер</h2>
+
+            <pre class="screen screen_post">
+    HTML:
+
+&lt;div class="spoiler"&gt;
+    &lt;input type="checkbox" id="sptoggler"&gt;
+    &lt;label for="sptoggler"&gt;
+        &lt;span&gt;
+        &lt;&frasl;span&gt;
+        ..."Header"...
+    &lt;&frasl;label&gt;
+    &lt;div&gt;
+        ..."Content"...
+    &lt;&frasl;div&gt;
+&lt;&frasl;div&gt;
+
+
+    CSS:
+
+.spoler {
+    ...
+}
+.spoiler > input {
+    display: none;
+}
+.spoler > label {
+    display: block;
+    ...
+}
+.spoler > div {
+    display: none;
+    ...
+}
+.spoler > label > span {
+    font-family: monospace;
+}
+.spoler > label> span:before {
+    content: "[+] ";
+}
+.spoler > input:checked ~ div {
+    display: block;
+}
+.spoler > input:checked ~ label > span:before {
+    content: "[-] ";
+}</pre>
+            <p class="text">
+                <strong>&lt;span&gt;</strong> - служит для вывода индикатора состояния<br>
+                <strong>input {display:none;}</strong> - скрывает флажок<br>
+                <strong>.a ~ .b</strong> - любой элемент <strong>.b</strong> , которому предшествует элемент <strong>.a</strong>
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section__header">Меню-гамбургер</h2>
+
+            <pre class="screen screen_post">
+    HTML:
+
+&lt;div class="hamburger"&gt;
+    &lt;input type="checkbox" id="hambtoggler"&gt;
+    &lt;label for="hambtoggler"&gt;&lt;&frasl;label&gt;
+    &lt;nav&gt;
+        &lt;a href="#"&gt;One&lt;&frasl;a&gt;
+        &lt;a href="#"&gt;Two&lt;&frasl;a&gt;
+        &lt;a href="#"&gt;Three&lt;&frasl;a&gt;
+    &lt;&frasl;nav&gt;
+&lt;&frasl;div&gt;
+
+
+    CSS:
+
+.hamburger {
+    ...
+}
+.hamburger > input {
+    display: none;
+}
+.hamburger > label {
+    display: block;
+    ...
+}
+.hamburger > nav {
+    display: none;
+    ...
+}
+.hamburger > nav > a {
+    display: block;
+}
+.hamburger > input:checked ~ nav {
+    display: inline-block;
+}</pre>
+        </section>
+
+        <section class="section">
+            <h2 class="section__header">Аккордеон 1</h2>
+
+            <pre class="screen screen_post">
+    HTML:
+
+&lt;div class="accordion"&gt;
+    &lt;input type="radio" name="accordion" id="acctoggler-1" checked&gt;
+    &lt;label for="acctoggler-1"&gt;First&lt;&frasl;label&gt;
+    &lt;nav&gt;
+        &lt;a href="#"&gt;One&lt;&frasl;a&gt;
+        &lt;a href="#"&gt;Two&lt;&frasl;a&gt;
+        &lt;a href="#"&gt;Three&lt;&frasl;a&gt;
+    &lt;&frasl;nav&gt;
+&lt;&frasl;div&gt;
+&lt;div class="accordion"&gt;
+    &lt;input type="radio" name="accordion" id="acctoggler-2" checked&gt;
+    &lt;label for="acctoggler-2"&gt;Second&lt;&frasl;label&gt;
+    &lt;nav&gt;
+        &lt;a href="#"&gt;Four&lt;&frasl;a&gt;
+        &lt;a href="#"&gt;Five&lt;&frasl;a&gt;
+        &lt;a href="#"&gt;Six&lt;&frasl;a&gt;
+    &lt;&frasl;nav&gt;
+&lt;&frasl;div&gt;
+
+
+    CSS:
+
+.accordion {
+    ...
+}
+.accordion > input {
+    display: none;
+}
+.accordion > label {
+    display: block;
+    ...
+}
+.accordion > nav {
+    display: none;
+    ...
+}
+.accordion > nav > a {
+    display: block;
+}
+.accordion > input:checked ~ nav {
+    display: block;
+}</pre>
+        </section>
+
+        <section class="section">
+            <h2 class="section__header">Аккордеон 2</h2>
+
+            <pre class="screen screen_post">
+    HTML:
+
+&lt;div class="accordion"&gt;
+    &lt;div class="accordion-item"&gt;
+        &lt;input class="accordion-item__input" type="checkbox" id="accordion-1"&gt;
+        &lt;label class="accordion-item__trigger" for="accordion-1"&gt;
+            Trigger 1
+        &lt;&frasl;label&gt;
+        &lt;div class="accordion-item__content"&gt;
+            Content 1
+        &lt;&frasl;div&gt;
+    &lt;&frasl;div&gt;
+
+    &lt;div class="accordion-item"&gt;
+        &lt;input class="accordion-item__input" type="checkbox" id="accordion-2"&gt;
+        &lt;label class="accordion-item__trigger" for="accordion-2"&gt;
+            Trigger 2
+        &lt;&frasl;label&gt;
+        &lt;div class="accordion-item__content"&gt;
+            Content 2
+        &lt;&frasl;div&gt;
+    &lt;&frasl;div&gt;
+&lt;&frasl;div&gt;
+
+
+    CSS:
+
+.accordion {}
+
+.accordion-item {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.accordion-item__input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+.accordion-item__trigger {
+    padding: 20px;
+    border: 1px solid black;
+}
+
+.accordion-item__content {
+    padding: 20px;
+    border: 1px solid black;
+    border-top: 0;
+    display: none;
+}
+
+.accordion-item__input:checked ~ .accordion-item__content {
+    display: block;
+}
+</pre>
+        </section>
+
+        <section class="section">
+            <h2 class="section__header">Аккордеон 2 radio</h2>
+
+            <pre class="screen screen_post">
+    HTML:
+
+&lt;div class="accordion"&gt;
+    &lt;div class="accordion-item"&gt;
+        &lt;input class="accordion-item__input" type="radio" name="accordion" id="accordion-1"&gt;
+        &lt;label class="accordion-item__trigger" for="accordion-1"&gt;
+            Trigger 1
+        &lt;&frasl;label&gt;
+        &lt;div class="accordion-item__content"&gt;
+            Content 1
+        &lt;&frasl;div&gt;
+    &lt;&frasl;div&gt;
+
+    &lt;div class="accordion-item"&gt;
+        &lt;input class="accordion-item__input" type="radio" name="accordion" id="accordion-2"&gt;
+        &lt;label class="accordion-item__trigger" for="accordion-2"&gt;
+            Trigger 2
+        &lt;&frasl;label&gt;
+        &lt;div class="accordion-item__content"&gt;
+            Content 2
+        &lt;&frasl;div&gt;
+    &lt;&frasl;div&gt;
+&lt;&frasl;div&gt;
+
+
+    CSS:
+
+.accordion {}
+
+.accordion-item {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.accordion-item__input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+.accordion-item__trigger {
+    padding: 20px;
+    border: 1px solid black;
+}
+
+.accordion-item__content {
+    padding: 20px;
+    border: 1px solid black;
+    border-top: 0;
+    display: none;
+}
+
+.accordion-item__input:checked ~ .accordion-item__content {
+    display: block;
+}</pre>
+        </section>
+    </article>
+</body>
+</html>

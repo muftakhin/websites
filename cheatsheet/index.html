@@ -3,133 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Записки</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
-
-        * {
-            margin: 0;
-            padding: 0;
-            font-size: 10px;
-            box-sizing: border-box;
-            transition: all 0.3s ease-in-out;
-            font-family: 'Special Elite', cursive;
-        }
-
-        .page {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-            height: 100vh;
-            background-color: cornsilk;
-        }
-
-        .page__header {
-            flex-grow: 0;
-            height: 60px;
-            background-color: rgb(60, 30, 0);
-        }
-        .page__header-title {
-            line-height: 60px;
-            font-size: 24px;
-            letter-spacing: 4px;
-            color: cornsilk;
-            text-align: center;
-        }
-
-        .page__nav {
-            flex-grow: 1;
-        }
-        .page__menu {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-            height: 100%;
-            padding: 16px 0;
-        }
-        .page__menu-item {
-            text-align: center;
-        }
-        a {
-            text-decoration: none;
-            font-size: 36px;
-            color: black;
-            text-shadow: 0 0 0px black;
-        }
-
-        @media all and (min-width: 360px) {
-            
-            a {
-                font-size: 48px;
-            }
-        }
-
-        @media all and (min-width: 480px) {
-
-            .page__header {
-                height: 160px;
-            }
-            .page__header-title {
-                line-height: 160px;
-                font-size: 48px;
-                letter-spacing: 8px;
-            }
-            .page__menu {
-                padding: 32px 0;
-            }
-            a {
-                font-size: 56px;
-            }
-        }
-
-        @media all and (min-width: 576px) {
-
-            .page__header-title {
-                font-size: 64px;
-                letter-spacing: 8px;
-            }
-            a {
-                font-size: 64px;
-            }
-        }
-
-        @media all and (min-width: 1080px) {
-
-            .page__header {
-                height: 300px;
-            }
-            .page__header-title {
-                line-height: 300px;
-                font-size: 96px;
-                letter-spacing: 16px;
-            }
-            .page__menu {
-                justify-content: center;
-            }
-            .page__menu-item a:hover{
-                font-size: 80px;
-                text-shadow: 0 16px 32px #222;
-            }
-
-            a {
-                line-height: 120px;
-                font-size: 64px;
-            }
-        }
-    </style>
+    <title>Шпоргалка</title>
+    <link rel="stylesheet" href="styles/index.css">
 </head>
-<body class="page">
-    <header class="page__header">
-        <h1 class="page__header-title">CHEAT SHEET</h1>
-    </header>
 
-    <nav class="page__nav">
-        <ul class="page__menu">
-            <li class="page__menu-item"><a href="html/html.html">HTML</a></li>
-            <li class="page__menu-item"><a href="css/css.html">CSS</a></li>
-            <li class="page__menu-item"><a href="javascript/javascript.html">JavaScript</a></li>
-            <li class="page__menu-item"><a href="other/other.html">Other</a></li>
-        </ul>
+<body>
+    <nav class="nav">
+        <div class="nav__item nav__item_1">
+            <a href="html/html.html">
+                <img src="images/logos/html5_icon.png" alt="">
+            </a>
+        </div>
+        <div class="nav__item nav__item_2">
+            <a href="css/css.html">
+                <img src="images/logos/css_icon.png" alt="">
+            </a>
+        </div>
+        <div class="nav__item nav__item_3">
+            <a href="javascript/javascript.html">
+                <img src="images/logos/javascript_icon.png" alt="">
+            </a>
+        </div>
+        <div class="nav__item nav__item_4">
+            <a href="other/other.html" class="other">
+                &equiv;
+            </a>
+        </div>
     </nav>
 </body>
 </html>

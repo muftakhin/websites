@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Column</title>
+    <link rel="stylesheet" href="../../styles/link.css">
+</head>
+<body class="page">
+    <header class="header">
+        <h1 class="header__title">Многоколоночная вёрстка</h1>
+    </header>
+    <article class="article">
+        <section class="section">
+            <h2 class="section__header">Ширина колонки</h2>
+
+            <pre class="screen screen_post">
+column-width: auto;   (defaulf)
+            - px;
+            - em;
+            - vw;
+            - inherit;
+            - initial;</pre>
+            <p class="text">
+                <strong>volume</strong> задаётся в единицах размера, кроме <strong>%</strong>
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section__header">Количество колонок</h2>
+
+            <pre class="screen screen_pre">
+column-count: auto;    (default)
+            - integer;</pre>
+            <p class="text"> 
+                <strong>integer</strong> - число
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section__header">Просвет между колонок</h2>
+
+            <pre class="screen screen_pre"> 
+column-gap: normal;     (defaulf)
+          - "величина";</pre>
+        </section>
+
+        <section class="section">
+            <h2 class="section__header">Разделительная линия между колонок</h2>
+
+            <pre class="screen screen_pre">
+column-rule: "тольщина" "стиль" "цвет";</pre>
+            <p class="text">
+                Задаётся как и у свойства <strong>border:</strong>
+            </p>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Толщина разделительной линии</h3>
+
+                <pre class="screen screen_pre"> 
+column-rule-width: "значение";</pre>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Стиль разделительной линии</h3>
+
+                <pre class="screen screen_pre"> 
+column-rule-style: "значение";</pre>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Цвет разделительной линии</h3>
+
+                <pre class="screen screen_pre"> 
+column-rule-color: "значение";</pre>
+            </div>
+        </section>
+    </article>
+</body>
+</html>

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>input</title>
+    <link rel="stylesheet" href="../../../styles/link.css">
+</head>
+<body class="page">
+    <header class="header">
+        <h1 class="header__title">input</h1>
+    </header>
+    <article class="article">
+        <section class="section">
+            <h2 class="section__header">Поле текстовое однострочное</h2>
+
+            <pre class="screen screen_pre">
+&lt;input type="text"&gt;</pre>
+            <p class="text">
+                Если не задать <strong>type="..."</strong>, то по умолчанию ему будет присвоено значение <strong>"text"</strong>
+            </p>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Атрибуты</h3>
+
+                <div class="subsection__item">
+                    <h4 class="subsection__item-header">Имя переменной</h4>
+
+                    <pre class="screen screen_pre">
+name="..."</pre>
+                </div>
+
+                <div class="subsection__item">
+                    <h4 class="subsection__item-header">Текст отображаемый по умолчанию</h4>
+
+                    <pre class="screen screen_pre">
+value="..."</pre>
+                </div>
+
+                <div class="subsection__item">
+                    <h4 class="subsection__item-header">Максимальное число символов</h4>
+
+                    <pre class="screen screen_pre">
+maxlength="..."</pre>
+                </div>
+
+                <div class="subsection__item">
+                    <h4 class="subsection__item-header">Подстановочный текст</h4>
+
+                    <pre class="screen screen_pre">
+placeholder="Подстановочный текст"</pre>
+                </div>
+
+                <div class="subsection__item">
+                    <h4 class="subsection__item-header">Автофокус</h4>
+
+                    <pre class="screen screen_pre">
+autofocus - атрибут без значения</pre>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section__header">Поле ввода пароля</h2>
+
+            <pre class="screen screen_pre">
+&lt;input type="password"&gt;</pre>
+            <pre class="screen screen_post">
+&lt;p&gt;
+    &lt;label for="pass"&gt; Пароль: &lt;&frasl;label&gt;
+    &lt;input type="password" name="password" maxlength="6" id="pass"&gt;
+&lt;&frasl;p&gt;</pre>
+            <p class="text">
+                <label for="pass">Пароль:</label>
+                <input type="password" name="password" maxlength="6" id="pass">
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section__header">Поле поиска</h2>
+
+            <pre class="screen screen_pre">
+&lt;input type="search"&gt;</pre>
+        </section>
+
+        <section class="section">
+            <h2 class="section__header">Поле ввода email</h2>
+
+            <pre class="screen screen_pre">
+&lt;input type="email"&gt;</pre>
+        </section>
+
+        <section class="section">
+            <h2 class="section__header">Поле ввода № телефона</h2>
+
+            <pre class="screen screen_pre">
+&lt;input type="tel"&gt;</pre>
+        </section>
+
+        <section class="section">
+            <h2 class="section__header">Поле ввода URL</h2>
+
+            <pre class="screen screen_pre">
+&lt;input type="url"&gt;</pre>
+        </section>
+
+        <section class="section">
+            <h2 class="section__header">Кнопки</h2>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Отправка данных формы на сервер</h3>
+
+                <pre class="screen screen_pre">
+&lt;input type="submit"&gt;</pre>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Сброс</h3>
+
+                <pre class="screen screen_pre">
+&lt;input type="reset"&gt;</pre>
+
+                <div class="subsection__item">
+                    <h4 class="subsection__item-header">Изменить текст на кнопке</h4>
+
+                    <pre class="screen screen_pre ml">
+value="..."</pre>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Кнопка с изображением</h3>
+
+                <pre class="screen screen_pre">
+&lt;input type="image"&gt;</pre>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Действие настраивается языком сценария</h3>
+
+                <pre class="screen screen_pre">
+&lt;input type="button"&gt;</pre>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section__header">Переключатели и флажки</h2>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Переключатель</h3>
+
+                <pre class="screen screen_pre">
+&lt;input type="radio"&gt;</pre>
+                <pre class="screen screen_pre">
+&lt;input type="radio" name="..." value="..." cheked="cheked"&gt;</pre>
+                <p class="text">
+                    <strong>name="..."</strong> - объединяет несколько переключателей в группу, одно для всех вариантов<br>
+                    <strong>cheked="cheked"</strong> - вариант по умолчанию<br>
+                    <strong>value=".."</strong> - значение отправляемое на сервер вместе с именем выбранного элемента
+                </p>
+
+                <pre class="screen screen_post">
+&lt;p&gt; Ты кто такой? Давай до свидания! &lt;&frasl;p&gt;
+&lt;ol&gt;
+    &lt;li&gt;&lt;input type="radio" name="status" value="intern" checked="checked"&gt; стажёр &lt;&frasl;li&gt;
+    &lt;li&gt;&lt;input type="radio" name="status" value="junior"&gt; джун &lt;&frasl;li&gt;
+    &lt;li&gt;&lt;input type="radio" name="status" value="middle"&gt; мидл &lt;&frasl;li&gt;
+    &lt;li&gt;&lt;input type="radio" name="status" value="guru"&gt; синьор помидор &lt;&frasl;li&gt;
+&lt;&frasl;ol&gt;</pre>
+                <p class="text">
+                    Ты кто такой? Давай до свидания!
+                </p>
+                <ol class="ml-32">
+                    <li><input type="radio" name="status" value="intern" checked="checked"> стажёр</li>
+                    <li><input type="radio" name="status" value="junior"> джун</li>
+                    <li><input type="radio" name="status" value="middle"> мидл</li>
+                    <li><input type="radio" name="status" value="guru"> синьор помидор</li>
+                </ol>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Флажок</h3>
+
+                <pre class="screen screen_pre">
+&lt;input type="checkbox"&gt;</pre>
+                <pre class="screen screen_post">
+&lt;p&gt; Языками владеешь? &lt;&frasl;p&gt;
+&lt;ul&gt;
+    &lt;li&gt;&lt;input type="checkbox" name="lang" value="js" checked="checked"&gt; javascript &lt;&frasl;li&gt;
+    &lt;li&gt;&lt;input type="checkbox" name="lang" value="pyton"&gt; pyton &lt;&frasl;li&gt;
+    &lt;li&gt;&lt;input type="checkbox" name="lang" value="php"&gt; php &lt;&frasl;li&gt;
+    &lt;li&gt;&lt;input type="checkbox" name="lang" value="java"&gt; java &lt;&frasl;li&gt;
+&lt;&frasl;ul&gt;</pre>
+                <p class="text">
+                    Языками владеешь?
+                </p>
+                <ul class="ml-32">
+                    <li><input type="checkbox" name="lang" value="javascrip" checked="checked"> javascrip</li>
+                    <li><input type="checkbox" name="lang" value="pyton"> pyton</li>
+                    <li><input type="checkbox" name="lang" value="php"> php</li>
+                    <li><input type="checkbox" name="lang" value="java"> java</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section__header">Списки</h2>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Раскрывающийся список с вариантами, для выбора в текстовом поле</h3>
+
+                <pre class="screen screen_pre">
+&lt;datalist&gt; ... &lt;&frasl;datalist&gt;</pre>
+                <pre class="screen screen_post">
+&lt;p&gt; какие ваши доказательства?
+&lt;input type="text" name="red_heat" list="cocainum"&gt;
+&lt;datalist id="cocainum"&gt;
+    &lt;option value="хулыгани"&gt;
+    &lt;option value="джюрак"&gt;
+    &lt;option value="ми такие простие луди"&gt;
+&lt;&frasl;datalist&gt;
+&lt;&frasl;p&gt;</pre>
+                <p class="text">
+                    Какие ваши доказательства?
+                    <input type="text" name="red_heat" list="cocainum">
+                    <datalist id="cocainum">
+                        <option value="хулыгани">
+                        <option value="джюрак">
+                        <option value="ми такие проcтие луди">
+                    </datalist>
+                </p>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Поле выбора файла</h3>
+
+                <pre class="screen screen_pre">
+&lt;input type="file" name="..."&gt;</pre>
+                <pre class="screen screen_post">
+&lt;form action="file.php" method="POST" enctype="multipart/form-data"&gt;
+    &lt;label&gt;
+        Загрузите изображение &lt;em&gt; необязательно &lt;&frasl;em&gt; &lt;br&gt;
+        &lt;input type="file" name="picture" size="31"&gt;
+    &lt;&frasl;label&gt;
+&lt;&frasl;form&gt;</pre>
+                <form action="file.php" method="POST" enctype="multipart/form-data" class="ml-32">
+                    <label>
+                        Загрузите изображение <em>необязательно</em><br>
+                        <input type="file" name="picture" size="31">
+                    </label>
+                </form>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Скрытый элемент формы</h3>
+
+                <pre class="screen screen_pre">
+&lt;input type="hidden" name="..." value="..."&gt;</pre>
+                <p class="text">
+                    передача пары имя/значение (<strong>name/value</strong>) на сервер в момент отправки данных формы
+                </p>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Элементы даты и времени</h3>
+
+                <div class="subsection__item">
+                    <h4 class="subsection__item-header">Варианты выбора даты</h4>
+
+                    <pre class="screen screen_pre">
+&lt;input type="date"&gt;</pre>
+                    <input type="date">
+
+                    <pre class="screen screen_pre">
+&lt;input type="time"&gt;</pre>
+                    <input type="time">
+
+                    <pre class="screen screen_pre">
+&lt;input type="datetime"&gt;</pre>
+                    <input type="datetime">
+
+                    <pre class="screen screen_post">
+&lt;input type="datetime-local"&gt;</pre>
+                    <input type="datetime-local">
+
+                    <pre class="screen screen_post">
+&lt;input type="month"&gt;</pre>
+                    <input type="month">
+
+                    <pre class="screen screen_post">
+&lt;input type="week"&gt;</pre>
+                    <input type="week">
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Ввод чисел</h3>
+
+                <div class="subsection__item">
+                    <h4 class="subsection__item-header">Варианты ввода числа</h4>
+
+                    <pre class="screen screen_pre">
+&lt;input type="number"&gt;</pre>
+                    <pre class="screen screen_post">
+&lt;label&gt; Корочек хлеба
+    &lt;input type="number" name="krutons" min="1" max="5"&gt;
+&lt;&frasl;label&gt;</pre>
+                    <label class="ml-32">Корочек хлеба
+                        <input type="number" name="krutons" min="1" max="5">
+                    </label>
+
+                    <pre class="screen screen_pre">
+&lt;input type="range"&gt;</pre>
+                    <pre class="screen screen_post">
+&lt;label&gt; Твой Level
+    &lt;input type="range" name="level" min="1" max="80" step="1"&gt;
+&lt;&frasl;label&gt;</pre>
+                    <label class="ml-32">Твой Level
+                        <input type="range" name="level" min="1" max="80" step="1">
+                    </label>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Выбор цвета</h3>
+
+                <pre class="screen screen_pre">
+&lt;input type="color"&gt;</pre>
+                <input type="color" class="ml-32">
+            </div>
+        </section>
+    </article>
+</body>
+</html>

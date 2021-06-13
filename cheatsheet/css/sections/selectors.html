@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Селекторы</title>
+    <link rel="stylesheet" href="../../styles/link.css">
+</head>
+<body class="page">
+    <header class="header">
+        <h1 class="header__title">Селекторы</h1>
+    </header>
+    <article class="article">
+        <section class="section">
+            <div class="subsection">
+                <h3 class="subsection__header">Универсальный селектор</h3>
+
+                <pre class="screen screen_pre">
+*</pre>
+                <p class="text">
+                    Применяется ко всем элементам в документе
+                </p>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Селектор элемента (тега &frasl; типа)</h3>
+
+                <pre class="screen screen_pre">
+element</pre>
+                <p class="text">
+                    Соответствует имени элемента
+                </p>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Сгруппированные селекторы</h3>
+
+                <pre class="screen screen_pre">
+element_1, element_2, ..., element_n</pre>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Дочерний селектор</h3>
+
+                <pre class="screen screen_pre">
+parent_element&gt;child_element</pre>
+                <p class="text">
+                    Соответсвует элементу, являющемуся прямым потомком другого элемента (дочернему элементу)
+                </p>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Селектор потомка</h3>
+
+                <pre class="screen screen_pre">
+element_1 element_2</pre>
+                <p class="text">
+                    Соответствует элементу, являющемуся потомком (не обязательно прямым) другого элемента (потомку любого уровня вложенности)
+                </p>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Селектор соседнего элемента</h3>
+
+                <pre class="screen screen_pre">
+element_1 + element_2</pre>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Селектор родственного элемента</h3>
+
+                <pre class="screen screen_pre">
+element_1 ~ element_2</pre>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Селектор идентификатора</h3>
+
+                <pre class="screen screen_pre">
+#Name</pre>
+            </div>
+
+            <div class="subsection">
+                <h4 class="subsection__header">Селектор класса</h4>
+
+                <pre class="screen screen_pre">
+.ClassName</pre>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section__header">Селекторы псевдокласса</h2>
+
+            <p class="text">
+                Псевдоклассы ведут себя как дополнительные значения атрибута <strong>class=""</strong> к которым можно применять различные стили
+            </p>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Якорные псевдоклассы</h3>
+
+                <p class="text">
+                    Псевдоклассы <strong>:link</strong> и <strong>:visited</strong> позволяют применять различные стили к ещё не посещённым и посещённым ссылкам
+                </p>
+                <pre class="screen screen_pre">
+:link
+:visited</pre>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Псевдоклассы действий пользователя</h3>
+
+                <p class="text">
+                    Позволяют изменять внешний вид элементов в ответ на действия пользователя
+                </p>
+                <pre class="screen screen_pre">
+:focus
+:hover
+:active</pre>
+                <pre class="screen screen_pre">
+element_1:hover element_2 {
+...: ...;
+}</pre>
+                <p class="text">
+                    Применится к <strong> element_2 </strong> при наведении на <strong> element_1 </strong>
+                </p>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Дочерний селектор</h3>
+
+                <pre class="screen screen_pre">
+:first-child
+:last-child
+:only-child</pre>
+                <p class="text">
+                    <strong>:first-child</strong> - первый<br>
+                    <strong>:last-child</strong> - последний<br>
+                    <strong>:only-child</strong> - единственный
+                </p>
+                <pre class="screen screen_pre">
+:nth-child(...)
+       odd  - нечётные
+       even - чётные
+       2n
+       2n+1
+       число
+       ...</pre>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Дочерний селектор по типам</h3>
+
+                <pre class="screen screen_pre">
+:first-of-type
+:last-of-type
+:nth-of-type</pre>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Селектор пустого элемента</h3>
+
+                <pre class="screen screen_pre">
+:empty</pre>
+                <pre class="screen screen_post">
+.item:empty {
+display: none;
+}</pre>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Селекторы ещё</h3>
+
+                <pre class="screen screen_pre">
+:target
+:enabled
+:disabled</pre>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Селектор отрицания</h3>
+
+                <pre class="screen screen_pre">
+selector_1:not(selector_2)</pre>
+                <p class="text">
+                    - для всех элементов <strong>selector_1</strong>, кроме элемента <strong>selector_2</strong>
+                </p>
+                <pre class="screen screen_post">
+ul:hover li:not(:hover)</pre>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section__header">Селекторы :: псевдоэлементов</h2>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Первая строка или буква</h3>
+
+                <p class="text">
+                    Псевдоэлементы действуют как дополнительный элемент в коде. При использовании псевдоэлементов <strong>:first-line</strong> и <strong>:first-letter</strong> вокруг первой строки текста или первой буквы как-будто создаётся дополнительный элемент, к которому можно применять собственные стили
+                </p>
+                <pre class="screen screen_pre">
+::first-line {
+    color:
+    font:
+    background:
+    word-spacing:
+    letter-spacing:
+    text-decoration:
+    vertical-align:
+    text-transform:
+    line-height:
+}
+
+::first-letter {
+    color:
+    font:
+    background:
+    word-spacing:
+    letter-spacing:
+    text-decoration:
+    text-transform:
+    vertical-align:
+    padding:
+    margin:
+    line-height:
+    border:
+    float:
+}</pre>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Генерируемый контент</h3>
+
+                <pre class="screen screen_pre">
+::before {
+    content: "...";
+}
+
+::after {
+    content: "...";
+}</pre>
+                <p class="text">
+                    Псевдоэлемент по умолчанию <strong>display: inline;</strong>, ему можно задать <strong>display: block;</strong> с <strong>content: "";</strong> и он станет вести себя как полноценный блок
+                </p>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Выделенный контент</h3>
+
+                <pre class="screen screen_pre">
+::selection {
+    color: "...";
+    background-color: "...";
+}</pre>
+                <p class="text">
+                    Можно изменить лишь свойства <strong>color:</strong> и <strong>background-color:</strong>
+                </p>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Placeholder</h3>
+
+                <pre class="screen screen_pre">
+::placeholder {
+...
+}</pre>
+                <p class="text">
+                    Можно изменить лишь свойства <strong>color:</strong> и <strong>background-color:</strong>
+                </p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section__header">Селекторы атрибутов</h2>
+
+            <div class="subsection">
+                <h3 class="subsection__header">[ ] - Селектор простых атрибутов (существования атрибута)</h3>
+
+                <p class="text">
+                    Соответствует конкретному атрибуту независимо от его значения
+                </p>
+                <pre class="screen screen_pre">
+элемент[атрибут]</pre>
+                <pre class="screen screen_post">
+img[title] {border: 3px solid;}</pre>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">[ = ] - Селектор точного значения атрибута (равенства атрибута)</h3>
+
+                <p class="text">
+                    Соответствует конкретному атрибуту с конкретным значением
+                </p>
+                <pre class="screen screen_pre">
+элемент[атрибут="точное значение"]</pre>
+                <pre class="screen screen_post">
+img[title="first grade" {border: 3px solid;}</pre>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">[ ~= ] - Селектор неполного значения атрибута (атрибута с пробелами)</h3>
+
+                <p class="text">
+                    Сответствует конкретному атрибуту, чьё значение присутствует в списке слов, разделённых пробелами (позволяет задать часть значения атрибута отделённую пробелами)
+                </p>
+                <pre class="screen screen_pre">
+элемент[атрибут~="часть значения отделённая пробелами"]</pre>
+                <pre class="screen screen_post">
+img[title~="grade"] {border: 3px solid;}</pre>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">[ |= ] - Селектор разделённого дефисом значения атрибута</h3>
+
+                <p class="text">
+                    Позволяет задать часть значения атрибута, отделённую дефисами
+                </p>
+                <pre class="screen screen_pre">
+элемент[атрибут|="часть-значения-отделённая-дефисами"]</pre>
+                <pre class="screen screen_post">
+*[hreflang|="en"] {border: 3px solid;}</pre>
+            </div>
+
+            <div class="subsection">
+                <h4 class="subsection__header">[ ^= ] - Селектор начала значения атрибута (префикса атрибута)</h4>
+
+                <p class="text">
+                    Соответствует конкретному атрибуту, чьё значение начинается с конкретной строки
+                </p>
+                <pre class="screen screen_pre">
+элемент[атрибут^="первая часть значения"]</pre>
+                <pre class="screen screen_post">
+img[src^="/images/icons"] {border: 3px solid;}</pre>
+            </div>
+
+            <div class="subsection">
+                <h4 class="subsection__header">[ $= ] - Селектор конца значения атрибута (суффикса атрибута)</h4>
+
+                <p class="text">
+                    Соответствует конкретному атрибуту, чьё значение заканчивается конкретной строкой
+                </p>
+                <pre class="screen screen_pre">
+элемент[атрибут$="последняя часть значения"]</pre>
+                <pre class="screen screen_post">
+a[href$=".pdf"] {border: 3px solid;}</pre>
+            </div>
+
+            <div class="subsection">
+                <h4 class="subsection__header">[ *= ] - Селектор части значения в любом месте атрибута (подстроки атрибута)</h4>
+                <p class="text">
+                    Соответствует конкретному атрибуту, чьё значение содержит конкретную подстроку
+                </p>
+                <pre class="screen screen_pre">
+элемент[атрибут*="любая часть значения"]</pre>
+            </div>
+        </section>
+    </article>
+</body>
+</html>

@@ -1,3 +1,4 @@
+// -= Common =-
 * {
     margin: 0;
     padding: 0;
@@ -13,19 +14,25 @@ a {
 li {
     list-style-type: none;
 }
+// -= /Common =-
 
-                            /// button
+// -= Buttons =-
 .button {
     width: 64px;
     height: 64px;
     line-height: 64px;
     font-size: 64px;
     color: white;
+    background-color: brown;
     text-align: center;
     cursor: pointer;
+    border-color: brown;
 
     &:active {
         background-color: white;
+    }
+    &:hover {
+        color: brown;
     }
 }
 .button_left {
@@ -48,12 +55,14 @@ li {
     margin-left: auto;
     font-size: 44px;
 }
+// -= /Buttons =-
 
 
-                            // main-header
+// -= Main-header
 .main-header {
     height: 64px;
     padding: 0 64px;
+    background-color: brown;
     display: flex;
     justify-content: space-between;
 }
@@ -73,6 +82,7 @@ li {
     top: 0px;
     max-height: 100vh;
     width: 100%;
+    background-color: brown;
 }
 
 .menu_left {
@@ -119,7 +129,12 @@ li {
     padding: 8px;
     font-size: 16px;
     color: white;
+    background-color: brown;
     text-align: center;
+
+    &:hover {
+        background-color: red;
+    }
 }
 
 .menu_2-col .menu__item{
@@ -141,6 +156,7 @@ li {
     font-size: 24px;
     font-weight: 500;
     color: white;
+    background-color: brown;
 }
 
 
@@ -277,6 +293,8 @@ strong {
 }
 
 table {
+    width: 80%;
+    border-spacing: 4px;
     margin: 8px auto;
     padding: 4px;
     background-color: #eee;
@@ -296,6 +314,19 @@ table {
         background-color: white;
         border: 1px solid black;
     }
+    td:first-child {
+        width: 50%;
+        font-size: 18px;
+        font-family: monospace;
+        background-color: #222;
+        color: lightpink;
+        text-shadow: 0 0 4px lightpink;
+    }
+    td:last-child {
+        padding-left: 24px;
+        font-size: 18px;
+        text-align: left;
+    }
 }
 
 .link {
@@ -307,6 +338,32 @@ table {
     font-size: 16px;
     display: inline-block;
     margin: 4px 8px;
+}
+.eventList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 8px;
+}
+.eventList__list {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+}
+.eventList__header {
+    margin: 4px 0px;
+    padding: 8px 16px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    background-color: grey;
+}
+.eventList__item {
+    margin: 4px;
+    font-size: 20px;
+    font-family: monospace;
+    list-style-type: none;
 }
 
 

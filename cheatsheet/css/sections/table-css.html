@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Табличное представление</title>
+    <link rel="stylesheet" href="../../styles/link.css">
+</head>
+<body class="page">
+    <header class="header">
+        <h1 class="header__title">Табличное представление</h1>
+    </header>
+    <article class="article">
+        <section class="section">
+            <p class="text">
+                Позволяет располагать как таблицу элементы HTML и применять свойства для таблиц
+            </p>
+
+            <pre class="screen screen_pre">
+display: table;
+       - inline-table;
+       - table-row-group;
+       - table-header-group;
+       - table-footer-group;
+       - table-row;
+       - table-column-group;
+       - table-column;
+       - table-cell;
+       - table-caption;</pre>
+            <p class="text">
+                <strong>display: table;</strong> - превращает элемент в таблицу<br>
+                <strong>display: table-row;</strong> - в строку таблицы<br>
+                <strong>display: table-cell;</strong> - в ячейку таблицы<br>
+                <strong>display: table-header-group;</strong> - в секцию шапки<br>
+                <strong>display: table-row-group;</strong> - в секцию основного содержания<br>
+                <strong>display: table-footer-group;</strong> - в секцию подвала<br>
+                <strong>display: table-caption;</strong> - в заголовок таблицы
+            </p>
+            <p class="text">
+                Для <strong>table-cell</strong> можно задать <strong>vertical-align</strong>
+            </p>
+
+            <pre class="screen screen_post">
+&lt;div id="tableContainer"&gt;
+    &lt;div id="tableRow_1"&gt;
+        &lt;div id="left_1"&gt;
+            ...
+        &lt;&frasl;div&gt;
+        &lt;div id="right_1"&gt;
+            ...
+        &lt;&frasl;div&gt;
+    &lt;&frasl;div&gt;
+    &lt;div id="tableRow2"&gt;
+        &lt;div id="left_2"&gt;
+            ...
+        &lt;&frasl;div&gt;
+        &lt;div id="right_2"&gt;
+            ...
+        &lt;&frasl;div&gt;
+    &lt;&frasl;div&gt;
+&lt;&frasl;div&gt;</pre>
+
+
+            <pre class="screen screen_post">
+div#tableContainer {
+    display: table;
+    border-spacing: 10px;
+}
+
+div#tableRow_1, div#tableRow_2 {
+    display: table-row;
+}
+
+div#left_1, div#right_1, div#left_2, div#right_2 {
+    display: table-cell;
+    vertical-align: top;
+}</pre>
+        </section>
+    </article>
+</body>
+</html>

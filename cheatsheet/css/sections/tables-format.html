@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форматирование таблиц</title>
+    <link rel="stylesheet" href="../../styles/link.css">
+</head>
+<body class="page">
+    <header class="header">
+        <h1 class="header__title">Форматирование таблиц</h1>
+    </header>
+    <article class="article">
+        <section class="section">
+            <h2 class="section__header">Расположение заголовка</h2>
+
+            <pre class="screen screen_pre">
+caption-side: top;     (default)
+            - bottom;
+            - initial;
+            - inherit;</pre>
+            <p class="text">
+                <strong>initial</strong> устанавливает значение по умолчанию
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section__header">Промежуток между ячейками</h2>
+
+            <pre class="screen screen_pre">
+border-collapse: separate;
+               - collapse;
+               - initial;
+               - inherit;</pre>
+            <pre class="screen screen_pre">
+border-spacing: расстояние;
+              - "расстояние по X" "расстояние по Y";
+              - initial;
+              - inherit;</pre>
+        </section>
+
+        <section class="section">
+            <h2 class="section__header">Видимость пустых ячеек</h2>
+
+            <pre class="screen screen_pre">
+empty-cells: show;
+           - hide;
+           - initial;
+           - inherit;</pre>
+        </section>
+
+        <section class="section">
+            <h2 class="section__header">Компоновка макета</h2>
+
+            <pre class="screen screen_pre">
+table-layout: auto;
+            - fixed;
+            - initial;
+            - inherit;</pre>
+        </section>
+    </article>
+</body>
+</html>

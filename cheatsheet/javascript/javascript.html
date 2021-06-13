@@ -1217,7 +1217,7 @@ for (let x=2; x &lt; 10000; x=x*2) {
 
                     <pre class="screen screen_pre">
 function name_1(name_2) {
-...
+    ...
 }</pre>
                     <p class="text">
                         - объявление функции с ключевым словом <strong>function</strong>, именем <strong>name_2</strong>, параметром <strong>name_2</strong> и блоком кода <strong>{ ... }</strong>
@@ -1247,7 +1247,7 @@ name_1();</pre>
 
                     <pre class="screen screen_pre">
 let name_3 = function(name_4) {
-...
+    ...
 };</pre>
                     <p class="text">
                         &bull; Функция вызывается через переменную <strong>name_3</strong><br>
@@ -1283,7 +1283,7 @@ let name_3 = function(name_4) {
                 </p>
                 <pre class="screen screen_pre">
 ... = function() {
-...
+    ...
 };</pre>
             </div>
 
@@ -1301,17 +1301,19 @@ let name_3 = function(name_4) {
                 </p>
                 <pre class="screen screen_pre">
 let name_1 = function() {
-...
-function name_2() {
-...
-}
+    ...
+
+    function name_2() {
+        ...
+    }
 };
 
 function name_3 {
-...
-let name_4 = function () {
-...
-};
+    ...
+
+    let name_4 = function () {
+    ...
+    };
 }</pre>
             </div>
 
@@ -1323,11 +1325,11 @@ let name_4 = function () {
                 </p>
                 <pre class="screen screen_pre">
 function name_1(name_2) {
-...
+    ...
 }
 
 let name_3 = function(name_4) {
-...
+    ...
 };
 
 let name_5 = name_1;
@@ -1354,11 +1356,11 @@ name_6(value_2);</pre>
 
                 <pre class="screen screen_post">
 function name_1(name_2, name_3, ..., name_n) {
-...
+    ...
 }
 
 let name_4 = function(name_5, name_6, ..., name_n) {
-...
+    ...
 };</pre>
 
                 <p class="text"> 
@@ -1381,8 +1383,8 @@ let name_4 = function(name_5, name_6, ..., name_n) {
 
                 <pre class="screen screen_pre">
 function name_1(parameter) {
-...         ;
-return x + y;
+    ...         ;
+    return x + y;
 }
 
 let name_2 = name_1(parameter);
@@ -1393,7 +1395,7 @@ alert(name_2);</pre>
 
                 <pre class="screen screen_post">
 let double = function(number) {
-return number * 2;
+    return number * 2;
 };
    
 double(3); вернёт 6</pre>
@@ -1422,15 +1424,15 @@ double(double(3));</pre>
 
                 <pre class="screen screen_post">
 let medalForScore = function (score) {
-if (score &lt; 3) {
-return "Bronze";
-}
+    if (score &lt; 3) {
+        return "Bronze";
+    }
 
-if (score &lt; 2) {
-return "Silver";
-}
+    if (score &lt; 2) {
+        return "Silver";
+    }
 
-return "Gold";
+    return "Gold";
 };</pre>
             </div>
 
@@ -1465,12 +1467,12 @@ let name_1 = x_1;
 let name_2 = y_1;
 
 function name_3() {
-let name_1 = x_2;
-let name_2 = y_2;
+    let name_1 = x_2;
+    let name_2 = y_2;
 
-return function () {
-return name_1 + name_2;
-}
+    return function () {
+        return name_1 + name_2;
+    }
 }
 
 let name_4 = name_3;
@@ -1481,14 +1483,14 @@ name_4(); // >> x_2 + y_2</pre>
 Счётчик с замыканием:
 
 function name_1() {
-let name_2 = 0;
+    let name_2 = 0;
 
-function name_3() {
-name_2 = name_2 + 1;
-return name_2;         
-}
+    function name_3() {
+        name_2 = name_2 + 1;
+        return name_2;         
+    }
 
-return name_3;
+    return name_3;
 }
 
 let name_4 = name_1;</pre>
@@ -1498,9 +1500,9 @@ let name_4 = name_1;</pre>
 
                     <pre class="screen screen_post">
 function name_1(name_2) {
-return function(name_3) {
-return name_3 + name_2;
-}
+    return function(name_3) {
+        return name_3 + name_2;
+    }
 }
 
 const name_4 = name_1(name_2);
@@ -1521,9 +1523,9 @@ console.log(name_4(name_3));</pre>
 
                     <pre class="screen screen_post">
 function name_1(string_1, x_1) {
-setTimeout(function()
-alert(string_1);
-}, x_1);
+    setTimeout( function() {
+        alert(string_1);
+    }, x_1);
 }
                 
 name_1(string_1, x_1);</div>
@@ -1544,7 +1546,7 @@ name_1(string_1, x_1);</div>
                     <pre class="screen screen_pre">
 let name_1 = ["One", "Two", "...", "N"];
 let name_2 = function(name_3) {
-return name_3[Math.floor(Math.random() * name_3.length)];
+    return name_3[Math.floor(Math.random() * name_3.length)];
 };</pre>
            
                     <p class="text">
@@ -1552,9 +1554,16 @@ return name_3[Math.floor(Math.random() * name_3.length)];
                     </p>
                     <pre class="screen screen_pre">
 name_2(name_1);</pre>
-        </div>
-    </div>
-</section> <!-- /Функции -->
+                </div>
+            </div>
+
+            <div class="nsection__item">
+                <h3 class="subsection__header">Самовызывающаяся функция</h3>
+
+                <pre class="screen screen_pre">
+(function () {...})()</pre>
+            </div>
+        </section> <!-- /Функции -->
 
 <!-- Массивы -->    
         <section id="arrays" class="section">
@@ -3096,6 +3105,12 @@ close.addEventListener("click", function(lnkEvent){
                     <div class="nsection__item">
                         <h5 class="sub3section__header">.classList.toggle()</h5>
 
+                        <pre class="screen screen_pre">
+const name_1 = document.querySelector('.name_2');
+name_1.addEventListener('click', () => {
+    name_1.classList.toggle(.name_3);
+});
+                        </pre>
                         <p class="text">
                             - переключает класс
                         </p>

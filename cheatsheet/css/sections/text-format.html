@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форматирование текста</title>
+    <link rel="stylesheet" href="../../styles/link.css">
+</head>
+<body class="page">
+    <header class="header">
+        <h1 class="header__title">Форматирование текста</h1>
+    </header>
+    <article class="article">
+        <section class="section">
+            <h2 class="section__header">Подключение шрифтов</h2>
+
+            <p class="text">
+                Свойство <strong>@font-face</strong> позволяет использовать шрифт, даже если он не установлен на компьютере пользователя, предоставляя путь к файлу шрифта
+            </p>
+            <pre class="screen screen_pre">
+@font-face {
+    font-family: "name";
+    src: url{".../..."};
+}</pre>
+            <p class="text">
+                <strong>font-family:</strong> присваивает шрифту имя <strong>name</strong>
+            </p>
+            <pre class="screen screen_post">
+@font-face {
+    font-family: "ChunkFiveRegular";
+    src: url{"fonts/chunkfive.eot"};
+}
+h1, h2 {
+    font-family: ChunkFiveRegular, Georgia, serif;
+}</pre>
+        </section>
+
+        <section class="section">
+            <h2 class="section__header">Свойства шрифта</h2>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Семейство шрифтов (Гарнитура шрифта)</h3>
+
+                <p class="text">
+                    &bull; Свойство <strong>font-family</strong> даёт возможность задать список предпочтительных шрифтов<br>
+                    &bull; Если имя шрифта состоит не из одного слова, то его указываем в двойных кавычках<br>
+                    &bull; В конце списка всегда указываем название семейства шрифтов(serif, sans-serif, cursive или monospace)<br>
+                    &bull; Вместо названия семейства шрифтов браузер будет применять тот шрифт, который определён им как используемый по умолчанию для указанного семейства шрифтов
+                </p>
+                <pre class="screen screen_post">
+font-family: "Trebuchet MS", Verdana, sans-serif;</pre>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Размер шрифта</h3>
+
+                <div class="subsection__item">
+                    <h4 class="subsection__item-header">Конкретным размером</h4>
+
+                    <pre class="screen screen_pre">
+font-size: ...px;
+         - ...em;
+         - ...ex;
+         - ...rem;</pre>
+                    <p class="text">
+                        <strong> em </strong>- размер относительно наследуемого шрифта<br>
+                        <strong> rem </strong>- размер относительно шрифта в корневом элементе (<strong>&lt;html&gt;</strong>)
+                    </p>
+                </div>
+
+                <div class="subsection__item">
+                    <h4 class="subsection__item-header">Процентным значением</h4>
+
+                    <pre class="screen screen_pre">
+font-size: ...%;</pre>
+                </div>
+
+                <div class="subsection__item">
+                    <h4 class="subsection__item-header">Используя абсолютное зарезервированное слово</h4>
+
+                    <pre class="screen screen_pre">
+font-size: xx-small;
+         - x-small;
+         - small;
+         - medium;
+         - large;
+         - x-large;
+         - xx-large;</pre>
+                </div>
+
+                <div class="subsection__item">
+                    <h4 class="subsection__item-header">Используя относительное (сравнительное) зарезервированное слово</h4>
+
+                        <pre class="screen screen_pre">
+font-size: larger;
+         - smaller;</pre>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Насыщенность шрифта</h3>
+
+                <pre class="screen screen_pre">
+font-weight: normal;
+           - bold;
+           - bolder;
+           - lighter;
+           - 100;
+           - 200;
+           - 300;
+           - 400;
+           - 500;
+           - 600;
+           - 700;
+           - 800;
+           - 900;
+           - inherit;</pre>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Начертание шрифта</h3>
+
+                <pre class="screen screen_pre">
+font-style: normal;
+          - italic;
+          - oblique;
+          - inherit;</pre>
+                <p class="text">
+                    <strong>oblique</strong> - наклонный шрифт
+                </p>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Капитель</h3>
+
+                <pre class="screen screen_pre">
+font-variant: normal;
+            - small-caps;
+            - inherit</pre>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Сокращённая запись</h3>
+
+                <pre class="screen screen_pre">
+font: font-style font-weight font-variant font-size/line-height font-family;</pre>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section__header">Выравнивание строк текста</h2>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Интерлиньяж</h3>
+
+                <p class="text">
+                    Интерлиньяж - минимальное (ибо рисунок в строке его увеличит) расстояние между базовыми линиями строк текста.<br>
+                    Базовая линия - воображаемая линия, на которой располагаются нижние части символов.
+                </p>
+                <pre class="screen screen_pre">
+line-height: число (масштабный множитель на текущий размер;
+           - ...em;
+           - ...%;
+           - normal;
+           - inherit;</pre>
+                <p class="text">
+                    Можно воспользоваться свойством <strong>line-height</strong>, чтобы выровнять текст по средней линии блока:
+                </p>
+                <pre class="screen screen_post">
+text-align: center;
+line-height: (высота блока);</pre>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Красная строка</h3>
+
+                <pre class="screen screen_pre">
+text-indent: ...px;
+           - ...em; ()
+           - ...% (на основе ширины родительского элемента);</pre>
+                <p class="text">
+                    Применяется к блочным элементам и ячейкам таблицы <br>
+                </p>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Горизонтальное выравнивание</h3>
+
+                <pre class="screen screen_pre">
+text-align: left;
+          - right;
+          - center;
+          - justify;
+          - inherit;</pre>
+                <p class="text">
+                    <strong>justify</strong>  определяет, что каждая строка абзаца, кроме последней, должна занимать всю ширину текстового поля.<br>
+                    Применяется к блочным элементам и ячейкам таблицы <br>
+                </p>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Вертикальное выравнивание</h3>
+
+                <pre class="screen screen_pre">
+vertical-align: baseline;
+              - sub;
+              - super;
+              - top;
+              - text-top;
+              - middle;
+              - bottom;
+              - text-bottom;
+              - px;
+              - em;
+              - %;</pre>
+                <p class="text">
+                    <strong>vertical-align</strong> выравнивает только <strong>inline</strong>-элементы и содержимое ячеек таблицы
+                </p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section__header">Декоративные эффекты</h2>
+
+            <pre class="screen screen_pre">
+text-decoration: none;
+               - underline;
+               - overline;
+               - line-throught;
+               - blink (мерцание);
+               - inherit;</pre>
+        </section>
+
+        <section class="section">
+            <h2 class="subsection__header">Изменение регистра</h2>
+
+            <pre class="screen screen_pre">
+text-transform: none;
+              - capitalize (первая буква каждого слова заглавная);
+              - lowercase;
+              - uppercase;
+              - inherit;</pre>
+        </section>
+
+        <section class="section">
+            <h2 class="subsection__header">Интервал между знаками (кернинг) и интервал между словами</h2>
+
+            <pre class="screen screen_pre">
+letter-spacing:                 - между знаками
+
+word-spacing: значение длины;   - между словами
+            - normal;
+            - inherit;</pre>
+        </section>
+
+        <section class="section">
+            <h2 class="section__header">Обработка пробелов между словами и переносы строк внутри элемента</h2>
+
+            <pre class="screen screen_pre">
+white-space: normal;     (default)
+           - nowrap;
+           - pre;
+           - pre-wrap;
+           - pre-line;
+           - break-spaces;
+           - initial;
+           - inherit;</pre>
+            <p class="text">
+                <strong>nowrap</strong> - отмена переносов, кроме <strong>&lt;br&gt;</strong><br>
+                <strong>pre-wrap</strong> - сохранение пробелов, делая разрыв строк, где необходимо<br>
+                <strong>pre-line</strong> - удаление лишних пробелов, за исключением случая с <strong>&lt;br&gt;</strong>
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section__header">Тень текста</h2>
+
+            <pre class="screen screen_pre">
+text-shadow: "смещение по горизонтали" "смещение по вертикали" "радиус размытия" "цвет";</pre>
+            <p class="text">
+                &bull; Если размытие не требуется его можно опустить<br>
+                &bull; Можно применить несколько теней, через запятую
+            </p>
+            <pre class="screen screen_post">
+text-shadow: .2em .2em .15em silver;
+text-shadow: 8px 8px black;
+text-shadow: .2em .2em .15em silver, 8px 8px 16px black;</pre>
+        </section>
+
+        <section class="section">
+            <h2 class="section__header">Изменение маркеров и нумерации списков</h2>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Выбор маркера</h3>
+
+                <p class="text">
+                    Маркеры находятся по умолчанию вне элемента <strong>&lt;li&gt;</strong>, слева, в <strong>padding-left:</strong> элемента <strong>&lt;ul&gt;</strong>
+                </p>
+                <pre class="screen screen_pre">
+list-style-type: none;
+               - disc;        (default)
+               - circle;
+               - square;
+               - decimal;
+               - decimal-leading-zero;
+               - lower-alpha;
+               - upper-alpha;
+               - lower-latin;
+               - upper-latin;
+               - lower-roman;
+               - upper-roman;
+               - lower-greek;
+               - upper-greek;
+               - inherit;</pre>
+            </div>
+
+            <div class="susection">
+                <h3 class="subsection__header">Положение маркера</h3>
+
+                    <pre class="screen screen_pre">
+list-style-position: inside;
+                   - outside;
+                   - inherit;
+                   - handing;</pre>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Создание пользовательских маркеров</h3>
+
+                <pre class="screen screen_post">
+list-style-image: url('images/pic.gif');
+                - none;
+                - inherit;</pre>
+            </div>
+        </section>
+    </article>
+</body>
+</html>

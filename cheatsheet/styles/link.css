@@ -1,0 +1,117 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+a {
+  text-decoration: none;
+}
+a h2 {
+  transition: all 0.3s ease-in-out;
+}
+a h2:hover {
+  color: tan;
+}
+li {
+  list-style-type: none;
+}
+input {
+  margin-bottom: 8px;
+}
+fieldset {
+  padding: 8px;
+}
+.screen {
+  padding: 12px;
+  margin-bottom: 8px;
+  background-color: #222;
+  box-shadow: 0 0 8px 1px grey inset;
+  font-size: 16px;
+  font-family: monospace;
+  overflow: auto;
+}
+.screen_pre {
+  color: lightpink;
+  text-shadow: 0 0 4px lightpink;
+}
+.screen_post {
+  color: lightgreen;
+  text-shadow: 0 0 4px lightgreen;
+}
+.text {
+  padding: 8px;
+  margin: 0 0 16px 16px;
+  font-size: 18px;
+}
+strong {
+  font-size: 20px;
+  color: maroon;
+  font-family: monospace;
+}
+.page {
+  background-color: tan;
+}
+.header {
+  min-height: 44px;
+  background-color: steelblue;
+}
+.header__title {
+  color: white;
+  text-align: center;
+  font-size: 24px;
+  line-height: 44px;
+  font-weight: normal;
+  font-family: monospace;
+}
+.article {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 8px;
+  background-color: snow;
+}
+.section {
+  padding: 8px;
+}
+.section__header {
+  min-height: 36px;
+  margin-bottom: 8px;
+  line-height: 36px;
+  font-size: 20px;
+  font-family: monospace;
+  font-weight: normal;
+  color: white;
+  background-color: steelblue;
+  text-align: center;
+  border: 1px solid steelblue;
+}
+.subsection {
+  margin-bottom: 16px;
+}
+.subsection__header {
+  min-height: 36px;
+  margin-bottom: 8px;
+  line-height: 36px;
+  font-size: 20px;
+  font-family: monospace;
+  font-weight: normal;
+  text-align: center;
+  color: steelblue;
+  border: 2px solid steelblue;
+}
+.subsection__item {
+  padding: 16px;
+}
+.subsection__item-header {
+  width: fit-content;
+  height: 32px;
+  margin-bottom: 4px;
+  padding: 0 16px;
+  font-size: 20px;
+  font-weight: normal;
+  line-height: 32px;
+  font-family: monospace;
+  color: steelblue;
+  border: 2px dotted steelblue;
+}

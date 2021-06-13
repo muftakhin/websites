@@ -1,11 +1,11 @@
 // open-close menu ----------------------------------------
 
 let ml = document.querySelector('.menu_left');
-let bml = document.querySelector('.button_left');
+let bml = document.querySelector('.button_left-menu');
 let bcml = document.querySelector('.button_left-close');
 
 let mr = document.querySelector('.menu_right');
-let bmr = document.querySelector('.button_right');
+let bmr = document.querySelector('.button_right-menu');
 let bcmr = document.querySelector('.button_right-close');
 
 bml.addEventListener('click', function() {
