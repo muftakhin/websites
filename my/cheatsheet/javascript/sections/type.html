@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Типы данных</title>
+    <link rel="stylesheet" href="../../styles/link.css">
+</head>
+<body class="page">
+    <header class="header">
+        <h1 class="header__title">Типы данных</h1>
+    </header>
+    <article class="article">
+        <section class="section">
+            <a href="type-subsections/number.html">
+                <h2 class="section__header">Число</h2>
+            </a>
+        </section>
+
+        <section class="section">
+            <a href="type-subsections/string.html">
+                <h2 class="section__header">Строка</h2>
+            </a>
+        </section>
+
+    
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Булевы значения</h4>
+    
+                    <pre class="screen screen_pre">
+true
+false</pre>
+                    <p class="text">
+                        Все выражения <strong>true</strong>,<br>
+                        кроме: <strong>'false'</strong>, <strong>''</strong>, <strong>0</strong>, <strong>-0</strong>, <strong>null</strong>, <strong>undefined</strong> и <strong>NaN</strong>
+                    </p>
+                    <p class="text">
+                        Псевдоложные значения:<br>
+                        - <strong>undefined</strong><br>
+                        - <strong>null</strong><br>
+                        - <strong>0</strong><br>
+                        - <strong>пустая строка</strong><br>
+                        - <strong>NaN</strong>
+                    </p>
+                </div>
+    
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">undefined и null</h4>
+    
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">undefined</h5>
+
+                        <p class="text">
+                            - значение, присваиваемое тому, что ещё не имеет значение (значение не определено)
+                        </p>
+                        <p class="text">
+                            &bull; Позволяет проверить, было ли присвоено значение (была ли переменная инициализированна)<br>
+                            &bull; Используется для неинициализированных переменных, отсутствующих свойств объектов или отсутствующих значений в массивах
+                        </p>
+                        <pre class="screen screen_post">
+let name_1;
+
+if (name_1 == undefined) {
+    ...
+}</pre>
+                    </div>
+
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">null</h5>
+
+                        <p class="text">
+                            - явное отсутствие значения
+                        </p>
+                        <p class="text">
+                            &bull; Чаще используется там, где объект ещё не создан или не найден
+                        </p>
+                    </div>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">NaN</h4>
+
+                    <p class="text">
+                        &bull; <strong>NaN</strong> - не определённое числовое значение<br>
+                        &bull; Значение <strong>NaN</strong> используется для обозначения результатов вычисления, в ходе которых не может быть получен нормальный результат<br>
+                        &bull; <strong>NaN</strong> не имеет конкретного числового значения<br>
+                        &bull; Используется для представления числовых результатов, не имеющих представления<br>
+                    </p>
+
+                    <pre class="screen screen_pre">
+NaN != NaN</pre>
+                    <p class="text">
+                        Не равен самому себе и вообще ничему
+                    </p>
+
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">Проверка isNaN</h5>
+
+                        <pre class="screen screen_pre">
+isNaN(name_1)</pre>
+                        <pre class="screen screen_post">
+if (isNaN(name_1)) {
+    ...
+}</pre>
+                        <p class="text">
+                            вернёт <strong>true</strong>, если <strong>name_1</strong> присвоено не числовое значение
+                        </p>
+                    </div>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Infinity</h4>
+
+                    <p class="text">
+                        - представляет все значения, выходящие за границы представления чисел с плавающей точкой (1.7976931348623157Е+10308)  или -1.7976931348623157Е+10308 для <strong>-Infinity</strong> )
+                    </p>
+
+                    <p class="text">
+                        &bull; <strong>число / 0 = Infinity</strong><br>
+                        &bull; <strong>Infinity - Infinity = NaN</strong>
+                    </p>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Просмотр типа данных</h4>
+
+                    <pre class="screen screen_pre">
+typeof name_1</pre>
+                    <p class="text">
+                        <strong>name_1</strong> - переменная
+                    </p>
+
+                    <pre class="screen screen_post">
+typeof NaN; --&gt; number
+typeof null; --&gt; object</pre>
+                </div>
+
+                <div class="nsection__item">
+                    <h4 class="sub2section__header">Преобразование типов данных</h4>
+    
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">Преобразование в число</h5>
+
+                        <pre class="screen screen_pre">
+name_1 = '123';
+n *= 1
+
+или
+
+parseInt(name_1)</pre>
+                        <p class="text">
+                            <strong>name_1</strong> - имя переменной содержащей исходные данные
+                        </p>
+                    </div>
+
+                    <div class="nsection__item">
+                        <h5 class="sub3section__header">Преобразование в строку</h5>
+
+                        <pre class="screen screen_pre">
+name_1 = 123;
+n += ''</pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </article>
+</body>
+</html>

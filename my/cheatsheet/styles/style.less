@@ -10,14 +10,14 @@ a {
     transition: all 0.3s ease-in-out;
 
     &:hover {
-        color: tan;
+        color: black;
     }
 
     h2 {
         transition: all 0.3s ease-in-out;
         
         &:hover {
-            color: tan;
+            color:  black;
         }
     }
 }
@@ -37,7 +37,7 @@ li {
     transition: all 0.3s ease-in-out;
 
     &:hover {
-        background-color: tan;
+        background-color: black; 
     }
 }
 .screen {
@@ -100,6 +100,11 @@ strong {
     grid-template-columns: 80px 80px 1fr 80px 80px;
     grid-template-rows: 56px;
     grid-template-areas: "button . title nav nav";
+
+    &_js {
+        grid-template-columns: 120px 1fr 120px;
+        grid-template-areas: "button title nav";
+    }
 
     &__button {
         width: 160px;

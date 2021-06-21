@@ -10,13 +10,13 @@ a {
   transition: all 0.3s ease-in-out;
 }
 a:hover {
-  color: tan;
+  color: black;
 }
 a h2 {
   transition: all 0.3s ease-in-out;
 }
 a h2:hover {
-  color: tan;
+  color: black;
 }
 li {
   list-style-type: none;
@@ -33,7 +33,7 @@ li {
   transition: all 0.3s ease-in-out;
 }
 .link:hover {
-  background-color: tan;
+  background-color: black;
 }
 .screen {
   padding: 12px;
@@ -71,6 +71,10 @@ strong {
   grid-template-columns: 80px 80px 1fr 80px 80px;
   grid-template-rows: 56px;
   grid-template-areas: "button . title nav nav";
+}
+.header_js {
+  grid-template-columns: 120px 1fr 120px;
+  grid-template-areas: "button title nav";
 }
 .header__button {
   width: 160px;
