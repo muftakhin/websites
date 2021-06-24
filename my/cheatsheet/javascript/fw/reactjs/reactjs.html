@@ -1,53 +1,20 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <title>ReactJS</title>
-
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="../../../style.css">
-
-    <style>
-        .main-header,
-        .menu,
-        .menu__item,
-        .section__header,
-        .button {
-            background-color: rgb(0, 217, 255);
-            text-shadow: 0px 0px 4px black;
-        }
-        .button:hover {
-            color: rgb(0, 217, 255);
-        }
-        .button {
-            border-color: rgb(0, 217, 255);
-        }
-    </style>
+    <link rel="stylesheet" href="../../../styles/section.css">
+    <title>ReactJS</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../../styles/section.css">
 </head>
     
-<body id="top" class="page">
-    <div class="main-wrapper">
-        <header class="main-header">
-            <a href="../index.html">
-                <div class="button button_home">
-                    &uArr;
-                </div>
-            </a>
+<body class="page">
+    <header class="header">
+        <h1 class="header__title">React JS</h1>
+    </header>
 
-            <h1 class="main-header__title">
-                React JS
-            </h1>
-
-            <a href="../index.html">
-                <div class="button button_prev">
-                    &lArr;
-                </div>
-            </a>
-        </header>
-
-<!-- Link -->
-        <section id="link" class="section">
+    <article class="article">
+        <section class="section">
             <h2 class="section__header">Подключение</h2>
 
             <p class="text">
@@ -74,9 +41,8 @@
 &lt;&frasl;body&gt;
 ...</pre>
         </section>
-<!-- /Link -->
-<!-- Install -->
-        <section id="install" class="section">
+
+        <section class="section">
             <h2 class="section__header">Установка</h2>
 
             <p class="text">
@@ -89,9 +55,8 @@ npx create-react-app my-app
 cd my-app
 npm start</pre>
         </section>
-<!-- /Install -->
-<!-- Basic -->
-        <section id="basic" class="section">
+
+        <section class="section">
             <h2 class="section__header">Основы</h2>
 
             <p class="text">
@@ -106,7 +71,7 @@ const Name_1 = () =&gt; {
         ... );
 }</pre>
 
-            <div class="nsection__item">
+            <div class="subsection">
                 <h3 class="subsection__header">Импорт компонентов</h3>
 
                 <p class="text">
@@ -149,8 +114,8 @@ export default name_3;</pre>
                     В <strong>name.js</strong> <strong>Name_1</strong> и <strong>Name_3</strong> можно писать любые имена (из-за того, что в <strong>name_2.js</strong> и <strong>name_4.js</strong> написано <strong>default</strong> ), но желательно соответствующие компонентам и с  большой буквы
                 </p>
 
-                <div class="nsection__item">
-                    <h4 class="sub2section__header">Импорт для JSX</h4>
+                <div class="subsection__item">
+                    <h4 class="subsection__item-header">Импорт для JSX</h4>
 
                     <p class="text">
                         Чтобы использовать JSX разметку, нужно в этот файл импортировать:
@@ -161,18 +126,17 @@ import React from 'react';</pre>
                 </div>
             </div>
 
-            <div class="nsection__item">
+            <div class="subsection">
                 <h3 class="subsection__header">JSX</h3>
 
-                <div class="nsection__item">
-                    <h4 class="sub2section__header">class="..."</h4>
+                <div class="subsection__item">
+                    <h4 class="subsection__item-header">class="..."</h4>
 
                     <pre class="screen scree_pre">
 className='name_1'</pre>
                 </div>
             </div>
         </section>
-<!-- /Basic -->
-    </div>
+    </article>
 </body>
 </html>

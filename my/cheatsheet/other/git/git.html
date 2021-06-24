@@ -2,22 +2,25 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Git</title>
-    <link rel="stylesheet" href="style-git.css">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../styles/section.css">
 </head>
-<body id="body">
-    <header class="main-header">
-        <h1 class="main-header__main-header">Git</h1>
+<body class="page">
+    <header class="header">
+        <h1 class="header__title">Git</h1>
     </header>
 
-    <section id="base-setting" class="section">
-        <h2 class="section__section-header">Базовые настройки</h2>
+    <article class="article">
+        <section class="section">
+            <h2 class="section__header">Базовые настройки</h2>
 
-        <div class="section-item">
-            <h3 class="section-item__section-item-header">Команды</h3>
+            <div class="subsection">
+                <h3 class="subsection__header">Команды</h3>
 
-            <pre class="display">
+                <pre class="screen screen_post">
 ls   //вывод списка файлов данной директории
 
 ls -1   //вывод списка файлов, содержащихся в данной директори, в столбик
@@ -42,297 +45,297 @@ start .   //открыть текущую папку
 
 start ~/directory_1/directory_2/file.txt   //открытие файла file.txt находящемуся
                                                 в директории directory_2</pre>
-        </div> <!-- section-item -->
+            </div>
 
-        <div class="section-item">
-            <h3 class="section-item__section-item-header">Установка и начальная настройка</h3>
+            <div class="subsection">
+                <h3 class="subsection__header">Установка и начальная настройка</h3>
 
-            <p class="text">
-                После установки Git и создания аккаунта на удалённом репозитории нужно соединить локальный репозиторий с удалённым
-            </p>
+                <p class="text">
+                    После установки Git и создания аккаунта на удалённом репозитории нужно соединить локальный репозиторий с удалённым
+                </p>
 
-            <p class="text">
-                Для первоначальной настройки Git зададим имя и адрес электронной почты (желательно такой же как и при регистрации на удалённом репозитории)
-            </p>
-            <pre class="display">
+                <p class="text">
+                    Для первоначальной настройки Git зададим имя и адрес электронной почты (желательно такой же как и при регистрации на удалённом репозитории)
+                </p>
+                <pre class="screen screen_post">
 user ~
 $ git config --global user.name "First-name Second-name"
 
 user ~
 $ git config --global user.email "name@mail.com"</pre>
-            <p class="text">
-                <strong>user</strong> - пользователь компьютера
-            </p>
+                <p class="text">
+                    <strong>user</strong> - пользователь компьютера
+                </p>
 
-            <p class="text">
-                Создадим директорию репозитория и перейдя в неё инициализируем git-репозиторий
-            </p>
-            <pre class="display">
+                <p class="text">
+                    Создадим директорию репозитория и перейдя в неё инициализируем git-репозиторий
+                </p>
+                <pre class="screen screen_post">
 $ git init</pre>
-        </div> <!-- section-item -->
+            </div>
 
-        <div class="section-item">
-            <h3 class="section-item__section-item-header">Клонирование удалённого репозитория</h3>
+            <div class="subsection">
+                <h3 class="subsection__header">Клонирование удалённого репозитория</h3>
 
-            <pre class="display">
+                <pre class="screen screen_post">
 user ~
 $ git clone https://github.com/username/repositoryname.git
 
 user ~ cd repositoryname</pre>
-            <pre class="display">
+                <pre class="screen screen_post">
 //Выдаст:
 
 user ~/repositoryname master</pre>
-        </div> <!-- section-item -->
+            </div>
 
-        <div class="section-item">
-            <h3 class="section-item__section-item-header">add и commit</h3>
+            <div class="subsection">
+                <h3 class="subsection__header">add и commit</h3>
 
-            <p class="text">
-                <strong>add</strong> - добавление файла в индекс изменений<br>
-                <strong>commit</strong> - фиксирование изменений в локальном репозитории
-            </p>
-            <pre class="display">
+                <p class="text">
+                    <strong>add</strong> - добавление файла в индекс изменений<br>
+                    <strong>commit</strong> - фиксирование изменений в локальном репозитории
+                </p>
+                <pre class="screen screen_post">
 user ~/repositoryname master
 $ git add Filename.txt
 
 user ~/repositoryname master
 $ git commit -m "Первый коммит"</pre>
 
-            <p class="text">
-                Чтобы добавить все новые и изменённые файлы:
-            </p>
-            <pre class="display">
+                <p class="text">
+                    Чтобы добавить все новые и изменённые файлы:
+                </p>
+                <pre class="screen screen_post">
 $ git add .</pre>
-        </div> <!-- section-item -->
+            </div>
 
-        <div class="section-item">
-            <h3 class="section-item__section-item-header">push</h3>
+            <div class="subsection">
+                <h3 class="subsection__header">push</h3>
 
-            <p class="text">
-                <strong>push</strong> - отправка изменений на удалённый репозиторий
-            </p>
-            <pre class="display">
+                <p class="text">
+                    <strong>push</strong> - отправка изменений на удалённый репозиторий
+                </p>
+                <pre class="screen screen_post">
 user ~/repositoryname master
 $ git push origin master</pre>
-            <p class="text">
-                <strong>origin</strong> и <strong>master</strong> - значения по умолчанию<br>
-                <strong>origin</strong> - короткое название ссылки на удалённый клонированный репозиторий<br>
-                <strong>master</strong> - основная ветка репозитория
-            </p>
-        </div> <!-- section-item -->
+                <p class="text">
+                    <strong>origin</strong> и <strong>master</strong> - значения по умолчанию<br>
+                    <strong>origin</strong> - короткое название ссылки на удалённый клонированный репозиторий<br>
+                    <strong>master</strong> - основная ветка репозитория
+                </p>
+            </div>
 
-        <div class="section-item">
-            <h3 class="section-item__section-item-header">pull</h3>
+            <div class="subsection">
+                <h3 class="subsection__header">pull</h3>
 
-            <p class="text">
-                <strong>pull</strong> - получение последнего состояния ветки и всех её предыдущих изменений с удалённого репозитория
-            </p> 
-            <pre class="display">
+                <p class="text">
+                    <strong>pull</strong> - получение последнего состояния ветки и всех её предыдущих изменений с удалённого репозитория
+                </p> 
+                <pre class="screen screen_post">
 user ~/repositoryname master
 $ git pull</pre>
-        </div> <!-- section-item -->
+            </div>
 
-        <div class="section-item">
-            <h3 class="section-item__section-item-header">Создание новой ветки</h3>
+            <div class="subsection">
+                <h3 class="section__header">Создание новой ветки</h3>
 
-            <p class="text">
-                Создание новой ветки <strong>adaptive</strong>:
-            </p>
-            <pre class="display">
+                <p class="text">
+                    Создание новой ветки <strong>adaptive</strong>:
+                </p>
+                <pre class="screen screen_post">
 user ~/repositoryname master
 $ git checkout -b adaptive</pre>
-            <pre class="display">
+                <pre class="screen screen_post">
 //Выдаст:
 
 user ~/repositoryname adaptive</pre>
-            <p class="text">
-                <strong>git checkout -b</strong> - создание новой ветки<br>
-                <strong>adaptive</strong> - название новой ветки
-            </p>
-        </div> <!-- section-item -->
+                <p class="text">
+                    <strong>git checkout -b</strong> - создание новой ветки<br>
+                    <strong>adaptive</strong> - название новой ветки
+                </p>
+            </div>
 
-        <div class="section-item">
-            <h3 class="section-item__section-item-header">Переключение на другую ветку</h3>
+            <div class="subsection">
+                <h3 class="section__header">Переключение на другую ветку</h3>
 
-            <p class="text">
-                Переключение на ветку <strong>second-branch</strong>:
-            </p>
-            <pre class="display">
+                <p class="text">
+                    Переключение на ветку <strong>second-branch</strong>:
+                </p>
+                <pre class="screen screen_post">
 user ~/repositoryname master
 $ git checkout second-branch</pre>
-            <pre class="display">
+                <pre class="screen screen_post">
 //Выдаст:
 
 user ~/repositoryname second-branch</pre>
-        </div> <!-- section-item -->
+            </div>
 
-        <div class="section-item">
-            <h3 class="section-item__section-item-header">Внесение изменений в новую ветку</h3>
+            <div class="subsection">
+                <h3 class="section__header">Внесение изменений в новую ветку</h3>
 
-            <pre class="display">
+                <pre class="screen screen_post">
 user ~/repositoryname adaptive
 $ git add Filename.txt
 
 user ~/repositoryname adaptive
 $ git commit -m "Изменил что-то"</pre>
-        </div> <!-- section-item -->
+            </div>
 
-        <div class="section-item">
-            <h3 class="section-item__section-item-header">Отправка изменённой новой ветки</h3>
+            <div class="subsection">
+                <h3 class="section__header">Отправка изменённой новой ветки</h3>
 
-            <pre class="display">
+                <pre class="screen screen_post">
 user ~/repositoryname adaptive
 $ git push origin adaptive</pre>
-            <p class="text">
-                Отправляем изменения из новой ветки <strong>adaptive</strong> локального репозитория в ветку <strong>adaptive</strong> удалённого репозитория
-            </p>
-        </div> <!-- section-item -->
-    </section> <!-- base setting -->
+                <p class="text">
+                    Отправляем изменения из новой ветки <strong>adaptive</strong> локального репозитория в ветку <strong>adaptive</strong> удалённого репозитория
+                </p>
+            </div>
+        </section>
 
-    <section id="commit" class="section">
-        <h2 class="section__section-header">Работа с коммитами</h2>
+        <section class="section">
+            <h2 class="section__header">Работа с коммитами</h2>
 
-        <div class="section-item">
-            <h3 class="section-item__section-item-header">Просмотр списка коммитов</h3>
+            <div class="subsection">
+                <h3 class="subsection__header">Просмотр списка коммитов</h3>
 
-            <pre class="display">
+                <pre class="screen screen_post">
 user ~/repositoryname adaptive
 $ git log --oneline</pre>
-        </div> <!-- section-item -->
+            </div>
 
-        <div class="section-item">
-            <h3 class="section-item__section-item-header">Просмотр схемы коммитов</h3>
+            <div class="subsection">
+                <h3 class="subsection__header">Просмотр схемы коммитов</h3>
 
-            <pre class="display">
+                <pre class="screen screen_post">
 user ~/repositoryname adaptive
 $ git log --oneline --all --graph</pre>
-        </div> <!-- section-item -->
+            </div>
 
-        <div class="section-item">
-            <h3 class="section-item__section-item-header">Просмотр содержимого коммита</h3>
+            <div class="subsection">
+                <h3 class="subsection__header">Просмотр содержимого коммита</h3>
 
-            <pre class="display">
+                <pre class="screen screen_post">
 user ~/repositoryname adaptive
 $ git cat-file -p индекс-коммита</pre>
-        </div> <!-- section-item -->
+            </div>
 
-        <div class="section-item">
-            <h3 class="section-item__section-item-header">Переключение на коммит</h3>
+            <div class="subsection">
+                <h3 class="subsection__header">Переключение на коммит</h3>
 
-            <pre class="display">
+                <pre class="screen screen_post">
 user ~/repositoryname adaptive
 $ git checkout индекс-коммита</pre>
-        </div> <!-- section-item -->
+            </div>
 
-        <div class="section-item">
-            <h3 class="section-item__section-item-header">Создание указателя коммита</h3>
+            <div class="subsection">
+                <h3 class="subsection__header">Создание указателя коммита</h3>
 
-            <pre class="display">
+                <pre class="screen screen_post">
 user ~/repositoryname adaptive
 $ git checkout -b имя-указателя индекс-коммита</pre>
-        </div> <!-- section-item -->
-    </section> <!-- commit -->
+            </div>
+        </section>
 
-    <section id="second-pc" class="section">
-        <h2 class="section__section-header">Работа с другого компьютера</h2>
+        <section class="section">
+            <h2 class="section__header">Работа с другого компьютера</h2>
 
-        <div class="section-item">
-            <h3 class="section-item__section-item-header">Клонируем репозиторий на другой компьютер</h3>
+            <div class="subsection">
+                <h3 class="subsection__header">Клонируем репозиторий на другой компьютер</h3>
 
-            <pre class="display">
+                <pre class="screen screen_post">
 other-user ~
 $ git clone git@github.com:username/repositoryname.git
 
 other-user ~
 $ cd repositoryname</pre>
-            <pre class="display">
+                <pre class="screen screen_post">
 //Выдаст:
 
 other-user ~/repositoryname master</pre>
-            <p class="text">
-                Клонирование ветки <strong>master</strong> удалённого репозитория
-            </p>
-            <pre class="display">
+                <p class="text">
+                    Клонирование ветки <strong>master</strong> удалённого репозитория
+                </p>
+                <pre class="screen screen_post">
 other-user ~/repositoryname master
 $ git checkout origin/second-branch -b second-branch</pre>
-            <p class="text">
-                Создание локальной ветки <strong>second-branch</strong> и получение в неё изменений из ветки <strong>second-branch</strong> удалённого репозитория
-            </p>
-        </div> <!-- section-item -->
-    </section> <!-- second-pc -->
+                <p class="text">
+                    Создание локальной ветки <strong>second-branch</strong> и получение в неё изменений из ветки <strong>second-branch</strong> удалённого репозитория
+                </p>
+            </div>
+        </section>
     
-    <section id="rollback" class="section">
-        <h2 class="section__section-header">Откат последнего изменения</h2>
+        <section class="section">
+            <h2 class="section__header">Откат последнего изменения</h2>
 
-        <div class="section-item">
-            <h3 class="section-item__section-item-header">Просмотр текущего состояния</h3>
+            <div class="subsection">
+                <h3 class="subsection__header">Просмотр текущего состояния</h3>
 
-            <pre class="display">
+                <pre class="screen screen_post">
 $ git status</pre>
-            <p class="text">
-                &bull; Покажет какие файлы изенены (<strong>modified:</strong>) или удалены (<strong>deleted:</strong>)<br>
-                &bull; Покажет так же на каком изменении находятся <strong>on branch master</strong> или <strong>on branch имя-указателя</strong>
-            </p>
-        </div> <!-- section-item -->
+                <p class="text">
+                    &bull; Покажет какие файлы изенены (<strong>modified:</strong>) или удалены (<strong>deleted:</strong>)<br>
+                    &bull; Покажет так же на каком изменении находятся <strong>on branch master</strong> или <strong>on branch имя-указателя</strong>
+                </p>
+            </div>
         
-        <div class="section-item">
-            <h3 class="section-item__section-item-header">Просмотр изменений</h3>
+            <div class="subsection">
+                <h3 class="subsection__header">Просмотр изменений</h3>
 
-            <pre class="display">
+                <pre class="screen screen_post">
 $ git diff</pre>
-        </div> <!-- section-item -->
+            </div>
 
-        <div class="section-item">
-            <h3 class="section-item__section-item-header">Возврат к состоянию крайнего коммита</h3>
+            <div class="subsection">
+                <h3 class="subsection__header">Возврат к состоянию крайнего коммита</h3>
 
-            <pre class="display">
+                <pre class="screen screen_post">
 $ git checkout folders-name/file-name.txt</pre>
-            <p class="text">
-                Если прежде "закомиченый" файл <strong>file-name.txt</strong> был удалён, то он вернётся в своё прежнее состояние, т.е. восстановится
-            </p>
-        </div> <!-- section-item -->
+                <p class="text">
+                    Если прежде "закомиченый" файл <strong>file-name.txt</strong> был удалён, то он вернётся в своё прежнее состояние, т.е. восстановится
+                </p>
+            </div>
+        </section>
 
-        <div class="section-item">
-            <h3 class="section-item__section-item-header">Слияние двух веток</h3>
+        <section class="section">
+            <h2 class="section__header">Слияние двух веток</h2>
 
-            <pre class="display">
+            <pre class="screen screen_post">
 user ~/repositoryname master
 $ git merge second-branch</pre>
             <p class="text">
                 Сливание изменений из ветки <strong>second-branch</strong> в ветку <strong>master</strong>
             </p>
 
-            <pre class="display">
+            <pre class="screen screen_post">
 user ~/repositoryname master
 $ git merge second-branch -m 'Коммит'</pre>
             <p class="text">
                 Слияние с созданием коммита
             </p>
-        </div> <!-- section-item -->
-    </section> <!-- rollback -->
+        </section>
     
-    <section id="links" class="section">
-        <h2 class="section__section-header">Cвязь локального репозитория с удалённым</h2>
+        <section class="section">
+            <h2 class="section__header">Cвязь локального репозитория с удалённым</h2>
 
-        <div class="section-item">
-            <h3 class="section-item__section-item-header">Просмотр связей</h3>
+            <div class="subsection">
+                <h3 class="subsection__header">Просмотр связей</h3>
 
-            <pre class="display">
+                <pre class="screen screen_post">
 user ~/repositoryname master
 $ git remote -v</pre>
-        </div> <!-- section-item -->
+            </div>
         
-        <div class="section-item">
-            <h3 class="section-item__section-item-header">Добавление новой связи</h3>
+            <div class="subsection">
+                <h3 class="subsection__header">Добавление новой связи</h3>
         
-            <pre class="display">
+                <pre class="screen screen_post">
 user ~/repositoryname master
 $ git remote add name-1 git@github.com:name-2/branch-2.git</pre>
-            <p class="text">
-                В итоге, помимо связи c <strong>origin</strong>, мы увидим новую связь с <strong>name-1</strong> репозиториями
-            </p>
-            <pre class="display">
+                <p class="text">
+                    В итоге, помимо связи c <strong>origin</strong>, мы увидим новую связь с <strong>name-1</strong> репозиториями
+                </p>
+                <pre class="screen screen_post">
 user ~/repositoryname master
 $ git remote -v
 
@@ -342,18 +345,19 @@ origin ... (fetch)
 origin ... (push)
 name-1 ... (fetch)
 name-1 ... (push)</pre>
-        </div> <!-- section-item -->
+            </div>
         
-        <div class="section-item">
-            <h3 class="section-item__section-item-header">pull из добавленного репозитория</h3>
+            <div class="subsection">
+                <h3 class="subsection__header">pull из добавленного репозитория</h3>
 
-            <pre class="display">
+                <pre class="screen screen_post">
 user ~/repositoryname master
 $ git pull name-1 master</pre>
-            <p class="text">
-                - забираем изменения к себе в <strong>master</strong>-ветку из <strong>master</strong>-ветки репозитория обозначенным как <strong>name-1</strong>
-            </p>
-        </div>  <!-- section-item -->
-    </section>
+                <p class="text">
+                    - забираем изменения к себе в <strong>master</strong>-ветку из <strong>master</strong>-ветки репозитория обозначенным как <strong>name-1</strong>
+                </p>
+            </div>
+        </section>
+    </article>
 </body>
 </html>

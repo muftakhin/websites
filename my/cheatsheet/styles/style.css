@@ -63,7 +63,7 @@ strong {
   color: maroon;
 }
 .page {
-  background-color: tan;
+  background-color: #222;
 }
 .header {
   background-color: steelblue;
@@ -86,7 +86,7 @@ strong {
   grid-area: button;
 }
 .header__button:hover {
-  color: tan;
+  color: black;
 }
 .header__title {
   color: white;
@@ -115,7 +115,7 @@ strong {
   transition: all 0.2s ease-in-out;
 }
 .nav__list-item-text:hover {
-  color: tan;
+  color: black;
 }
 .section {
   max-width: 1080px;

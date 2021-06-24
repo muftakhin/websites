@@ -12,7 +12,7 @@ a h2 {
   transition: all 0.3s ease-in-out;
 }
 a h2:hover {
-  color: tan;
+  color: black;
 }
 li {
   list-style-type: none;
@@ -49,6 +49,37 @@ strong {
   font-size: 20px;
   color: maroon;
   font-family: monospace;
+}
+.table {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 36px;
+  grid-gap: 4px;
+}
+.table__header {
+  grid-column: span 2;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: monospace;
+  line-height: 36px;
+  text-align: center;
+  color: steelblue;
+}
+.table__screen {
+  padding-left: 16px;
+  background-color: #222;
+  box-shadow: 0 0 8px 1px grey inset;
+  font-size: 16px;
+  line-height: 36px;
+  font-family: monospace;
+  color: lightgreen;
+  text-shadow: 0 0 4px lightgreen;
+}
+.table__definition {
+  padding-left: 16px;
+  font-size: 16px;
+  line-height: 36px;
 }
 .page {
   background-color: tan;
@@ -114,4 +145,17 @@ strong {
   font-family: monospace;
   color: steelblue;
   border: 2px dotted steelblue;
+}
+.text-list {
+  height: 240px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+.text-list__item {
+  font-family: monospace;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 24px;
+  color: darkred;
 }
