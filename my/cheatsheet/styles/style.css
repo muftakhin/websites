@@ -151,7 +151,7 @@ strong {
 }
 .subsection__item-header {
   width: fit-content;
-  height: 32px;
+  min-height: 32px;
   margin-bottom: 4px;
   padding: 0 16px;
   font-size: 20px;
