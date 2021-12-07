@@ -123,12 +123,13 @@ strong {
   background-color: snow;
 }
 .section__header {
-  height: 44px;
+  min-height: 44px;
   font-size: 22px;
   line-height: 44px;
   font-family: monospace;
   font-weight: normal;
   text-align: center;
+  padding: 0 15px;
   color: white;
   background-color: steelblue;
 }
@@ -137,7 +138,7 @@ strong {
   background-color: white;
 }
 .subsection__header {
-  height: 44px;
+  min-height: 44px;
   font-size: 22px;
   line-height: 44px;
   font-family: monospace;
