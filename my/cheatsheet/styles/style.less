@@ -78,7 +78,7 @@ strong {
 // === Mixins ===
 
 .headers() {
-    height: 44px;
+    min-height: 44px;
     font-size: 22px;
     line-height: 44px;
     font-family: monospace;
@@ -170,6 +170,7 @@ strong {
     &__header {
         .headers;
 
+        padding: 0 15px;
         color: white;
         background-color: @main-color;
     }
