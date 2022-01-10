@@ -86,6 +86,22 @@ user ~ cd repositoryname</pre>
 //Выдаст:
 
 user ~/repositoryname master</pre>
+                <p class="text">
+                    - автоматически создастся папка с именем клонируемого репозитория <strong>repositoryname</strong>, в которую он клонируется
+                </p>
+
+                <pre class="screen screen_post">
+user ~
+$ git clone https://github.com/username/repositoryname.git directoryname
+                    
+user ~ cd directoryname</pre>
+                <pre class="screen screen_post">
+//Выдаст:
+                    
+user ~/directoryname master</pre>
+                <p class="text">
+                    - создастся папка с именем директории <strong>directoryname</strong>, в которую клонируется репозиторий
+                </p>
             </div>
 
             <div class="subsection">
