@@ -20,15 +20,30 @@
             </p>
             <pre class="screen screen_pre">
 @font-face {
-    font-family: "name";
+    font-family: Name;
     src: url{".../..."};
+}
+
+.class_name {
+    font-family: Name, ..., ...;
+}</pre>
+            <pre class="screen screen_pre">
+другой вариант написания присваиваемого имени шрифта:
+
+@font-face {
+    font-family: "Name";
+    src: url{".../..."};
+}
+
+.class_name {
+    font-family: "Name", ..., ...;
 }</pre>
             <p class="text">
-                <strong>font-family:</strong> присваивает шрифту имя <strong>name</strong>
+                &bull; <strong>font-family:</strong> присваивает шрифту по данному <strong>url</strong> имя <strong>Name</strong>
             </p>
             <pre class="screen screen_post">
 @font-face {
-    font-family: "ChunkFiveRegular";
+    font-family: ChunkFiveRegular;
     src: url{"fonts/chunkfive.eot"};
 }
 h1, h2 {
