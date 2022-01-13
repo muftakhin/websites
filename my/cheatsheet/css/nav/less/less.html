@@ -110,6 +110,10 @@ color: darken(цвет, ...%);
         <section class="section">
             <h2 class="section__header">Математические операции</h2>
 
+            <p class="text">
+                &bull; В отличии от <strong>.css</strong> (в котором вычисления происходят в браузере) в <strong>.less</strong> математические операции производятся перед компилированием в <strong>.css</strong>-файл.<br>
+                &nbsp; Поэтомунельзя использовать значения отображения зависящие от переменных параметров, таких как, например, размер окна браузера                
+            </p>
             <pre class="screen screen_pre">
 @name_1: value_1;
 
