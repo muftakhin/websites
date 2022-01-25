@@ -95,34 +95,42 @@ grid-template-rows: 1fr 3fr 3fr 1fr;</pre>
             </div>
 
             <div class="subsection">
-                <h3 class="subsection__header">Зазор между строками</h3>
+                <h3 class="subsection__header">Gap</h3>
 
-                <pre class="screen screen_pre">
-grid-row-gap: размер;
+                <p class="text">
+                    Позволяет не использовать отрицательные <strong>margin</strong> по краям контейнера
+                </p>
 
-    новее:
+                <div class="subsection__item">
+                    <h4 class="subsection__item-header">Зазор между строками</h4>
 
-row-gap: размер;</pre>
-            </div>
-
-            <div class="subsection">
-                <h3 class="subsection__header">Зазор между колонок</h3>
-
-                <pre class="screen screen_pre">
-grid-column-gap: размер;
+                    <pre class="screen screen_pre">
+grid-row-gap: значение;
 
     новее:
 
-column-gap: размер;</pre>
-            </div>
+row-gap: значение;</pre>
+                </div>
 
-            <div class="subsection">
-                <h3 class="subsection__header">Зазор между ячейками</h3>
+                <div class="subsection__item">
+                    <h4 class="subsection__item-header">Зазор между колонок</h4>
 
-                <pre class="screen screen_pre">
-grid-gap: размер;
+                    <pre class="screen screen_pre">
+grid-column-gap: значение;
+
+    новее:
+
+column-gap: значение;</pre>
+                </div>
+
+                <div class="subsection__item">
+                    <h4 class="subsection__item-header">Зазор между ячейками</h4>
+
+                    <pre class="screen screen_pre">
+grid-gap: значение;
         - row-gap / column-gap;</pre>
-            </div>
+                </div>
+            </section>
         </section>
 
         <section class="section">
