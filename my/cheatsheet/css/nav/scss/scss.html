@@ -68,6 +68,23 @@ $name: ...;
 .class_2 {
     property: $name + ... ;  (выражение)
 }</pre>
+            <div class="subsection">
+                <h3 class="subsection__header">Интерполяция переменных</h3>
+
+                <pre class="screen screen_pre">
+$name: value_1;
+
+.class-#{$name} {
+property-#{$name}: value_2;
+}</pre>
+
+                <pre class="screen screen_post">
+$where: bottom;
+
+.no-#{$where} {
+border-#{$where}: none;
+}</pre>
+            </div>
         </section>
 
         <section class="section">
