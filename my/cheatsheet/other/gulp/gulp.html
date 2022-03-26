@@ -97,6 +97,71 @@ gulp.task('default', function() {
         </section>
 
         <section class="section">
+            <h2 class="section__header">Вариант</h2>
+
+            <div class="subsection">
+                <pre class="screen screen_post">
+const gulp = require("gulp");
+const plumber = require("gulp-plumber");
+const sourcemap = require("gulp-sourcemaps");
+const sass = require("gulp-sass");
+const postcss = require("gulp-postcss");
+const autoprefixer = require("autoprefixer");
+const sync = require("browser-sync").create();</pre>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Функция styles</h3>
+
+                <pre class="screen screen_post">
+const styles = () => {
+    return gulp.src("source/sass/style.scss")
+        .pipe(plumber())
+        .ppipe(sourcemap.init())
+        .pipe(sass())
+        .pipe(postcss([autoprefixer()]))
+        .pipe(sourcemap.write("."))
+        .pipe(gulp.dest("source/css"))
+        .pipe(sync.stream());
+}</pre>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Функция server</h3>
+
+                <pre class="screen screen_post">
+const server = () => {
+    sync.init({
+        server: {
+            baseDir: 'source'
+        },
+        cors: true,
+        notify: false,
+        ui: flase,
+    });
+}</pre>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Функция watcher</h3>
+
+                <pre class="screen screen_post">
+const watcher = () => {
+    gulp.watch("source/sass/**/*.scss", gulp.series("styles"));
+    gulp.watch("source/*.html").on("change", sync.reload);
+}
+
+exports.default = gulp.series(
+    styles, server, watcher
+);</pre>
+
+                <p class="text">
+                    Создаётся дефолтный таск, который запускает серию функций
+                </p>
+            </div>
+        </section>
+
+        <section class="section">
             <h2 class="section__header">Установка модулей gulp-less и gulp-sass</h2>
 
             <div class="subsection">
