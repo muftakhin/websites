@@ -16,7 +16,7 @@
             <h2 class="section__header">Grid-контейнер</h2>
 
             <pre class="screen screen_pre">
-.grid {
+.containerName {
     display: grid;
            - inline-grid;
 }</pre>
@@ -31,7 +31,7 @@
                 <h4 class="subsection__header">Размер колонок</h4>
 
                 <pre class="screen screen_pre">
-.grid {
+.containerName {
     grid-template-columns: width_1 width_2 ... width_n;
 }</pre>
                 <p class="text">
@@ -40,7 +40,7 @@
                 </p>
 
                 <pre class="screen screen_pre">
-.grid {
+.containerName {
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
 }</pre>
                 <p class="text">
@@ -58,11 +58,11 @@
                 <h3 class="subsection__header">Размер строк</h3>
 
                 <pre class="screen screen_pre">
-.grid {
+.containerName {
     grid-template-rows: heigth_1 heigth_2 ... heigth_n;
 }
 
-.grid {
+.containerName {
     grid-template-rows: repeat("количество повторений", "повторяющаяя последовательность");
 }</pre>
 
@@ -140,7 +140,7 @@ grid-gap: значение;
                 <h3 class="subsection__header">Если элемент занимает одну ячейку сетки</h3>
 
                 <pre class="screen screen_pre">
-.item {
+.itemName {
     grid-column: "номер занимаемого столбца";
     grid-row: "номер занимаемой строки"
 }
@@ -154,7 +154,7 @@ grid-gap: значение;
                     <h4 class="subsection__item-header">Первый вариант записи</h4>
 
                     <pre class="screen screen_pre">
-.item {
+.itemName {
     grid-column-start: "номер_верт.линии_от";
     grid-column-end: / "номер_верт.линии_до";
     grid-row-start: "номер_гор.линии_от";
@@ -163,7 +163,7 @@ grid-gap: значение;
                         
                     <p class="text">Вариант сокращённой записи:</p>
                     <pre class="screen screen_pre">
-.item {
+.itemName {
     grid-column: "номер_верт.линии_от" / "номер_верт.линии_до";
     grid-row: "номер_гор.линии_от" / "номер_гор.линии_до";
 }</pre>
@@ -178,7 +178,7 @@ grid-gap: значение;
                     <h4 class="subsection__item-header">Второй вариант записи</h4>
 
                     <pre class="screen screen_pre">
-.item {
+.itemName {
     grid-column: "номер_верт.линии_от" / span "кол-во_занимаемых_ячеек_колонки";
     grid-row: "номер_гор.линии_от" / span "кол-во_занимаемых_ячеек_строки";
 }</pre>
@@ -188,12 +188,12 @@ grid-gap: значение;
                     <h4 class="subsection__item-header">Третий вариант записи</h4>
 
                     <pre class="screen screen_pre">
-.item {
+.itemName {
     grid-area: "номер_гор.линии_от" / "номер_верт.линии_от" / "номер_гор.линии_до" /"номер_верт.линии_до";
 }</pre>
                     <p class="text">Или:</p>
                     <pre class="screen screen_pre">
-.item {
+.itemName {
     grid-area: "номер_гор.линии_от" / "номер_верт.линии_от" / span "кол-во_занимаемых_ячеек_строки" / span "кол-во_занимаемых_ячеек_колонки";
 }</pre>
                 </div>
@@ -274,7 +274,7 @@ place-items: "align-items" / "justify-items";</pre>
                     <h3 class="subsection__item-header">Выравнивание отдельной ячейки</h3>
 
                     <pre class="screen screen_pre">
-.item {
+.itemName {
     justify-self: start; (default)
                 - end;
                 - center;
@@ -296,10 +296,10 @@ place-items: "align-items" / "justify-items";</pre>
             <h2 class="section__header">Именованные линии сетки</h2>
 
             <pre class="screen screen_pre">
-.grid {
+.containerName {
     grid-template-columns: [имя_перв.линии] ширина_1_кол. [имя_ср.линии] ширина_2_кол. [имя_посл.линии];
 }
-.item {
+.itemName {
     grid-column: "имя от" / "имя до";
 }</pre>
             <p class="text">
@@ -307,17 +307,17 @@ place-items: "align-items" / "justify-items";</pre>
                 &bull; Можно задать одинаковые имена с разными "суффиксами" и обращаться через одно имя сразу к двум именам, между которыми находится полоса
             </p>
             <pre class="screen screen_post">
-.grid {
+.containerName {
     grid-template-columns: [start] 1fr [center] 2fr [end];
 }
-.item {
+.itemName {
     grid-column: start / center;
 }</pre>
             <pre class="screen screen_post">
-.grid {
+.containerName {
     grid-template-columns: [left-start] 1fr [left-end right-start] 2fr [right-end];
 }
-.item {
+.itemName {
     grid-column: left;
 }</pre>
             <p class="text">
@@ -329,18 +329,18 @@ place-items: "align-items" / "justify-items";</pre>
             <h2 class="section__header">Именованные области сетки</h2>
 
             <pre class="screen screen_pre">
-.item-1 {
+.itemName-1 {
     grid-area: name-1;
 }
-.item-2 {
+.itemName-2 {
     grid-area: name-2;
 }
 ...
-.item-n {
+.itemName-n {
     grid-area: name-n;
 }
 
-.grid {
+.containerName {
     grid-template-columns: ... ;
     grid-template-areas: ... ;
     grid-template-areas: "name name ..."
@@ -353,7 +353,7 @@ place-items: "align-items" / "justify-items";</pre>
             <h2 class="section__header">Автоматическая генерация строк и колонок</h2>
 
             <pre class="screen screen_pre">
-.grid {
+.containerName {
     ...
     grid-auto-rows: "размер";
     grid-auto-columns: "размер";
@@ -367,7 +367,7 @@ place-items: "align-items" / "justify-items";</pre>
             <h2 class="section__header">grid-auto-flow</h2>
 
             <pre class="screen screen_pre">
-.grid {
+.containerName {
     ...
     grid-auto-flow: row;           (default)
                   - column;
