@@ -93,14 +93,76 @@
     flex: flex-grow flex_shrink flex_basis;   (default: 0 1 auto)
 }
 </pre>
+
+			<div class="subsection">
+				<h3 class="subsection__header">order</h3>
+				
+				<pre class="screen screen_pre">
+order: integer;         (defaulf=0)</pre>
+
+				<p class="text">
+					<strong>{order: -1}</strong> - в начале списка<br>
+                    <strong>{order: 0}</strong> - по умолчанию<br>
+                    <strong>{order: 1}</strong> - в конце списка
+				</p>
+			</div>
+
+			<div class="subsection">
+				<h3 class="subsection__header">flex-grow</h3>
+				
+				<pre class="screen screen_pre">
+flex-grow: number;      (default=0)</pre>
+
+				<p class="text">
+                    - величина относительно других flex-элементов, до которой может увеличиваться flex-элемент при наличии свободного пространства (относительный размер). &quot;Отъедает&quot; в долях(частях) свободное пространство, подобно фракциям <strong>fr</strong>
+				</p>
+			</div>
+
+            <div class="subsection">
+				<h3 class="subsection__header">flex-shrink</h3>
+				
+				<pre class="screen screen_pre">
+flex-shrink: number;    (default=1)</pre>
+
+				<p class="text">
+                    - величина, до которой может уменьшаться flex-элемент относительно других flex-элементов, когда имеется дефицит пространства (когда размер контейнера меньше суммы размеров элементов). Это значение важно, если у контейнера указан <strong>{ flex-wrap: nowrap; }</strong>. Если при <strong>{ flex-wrap: nowrap; }</strong> <strong>{ flex-shrink: 0 ; }</strong>, то элементы будут расширяться за пределы контейнера
+				</p>
+			</div>
+
+            <div class="subsection">
+				<h3 class="subsection__header">flex-basis</h3>
+				
+				<pre class="screen screen_pre">
+flex-basis: length;
+          - auto;       (default)</pre>
+
+				<p class="text">
+                    - базовый размер, к которому приводится размер flex-элемента<br>
+                    &bull; Если <strong>{ flex-grow: 0;}</strong> , то размер элемента будет соответствовать <strong>{ flex-basis: }</strong>(если он указан)<br>
+                    &bull; Если <strong>{ flex-grow: >0;}</strong> ,то элемент растянется на всё свободное пространство (&quot;съест его&quot;)<br>
+                    &bull; Разница размера контейнера и суммы <strong>flex-basis</strong> размеров элементов разделится между ними в пропорциях указанных в <strong>flex-grow</strong> (при условии, что его значение более нуля)
+				</p>
+			</div>
+
+            <div class="subsection">
+				<h3 class="subsection__header">align-self</h3>
+				
+				<pre class="screen screen_pre">
+align-self: auto;
+          - flex-start;
+          - flex-end;
+          - center;
+          - baseline;
+          - stretch;</pre>
+
+				<p class="text">
+                    - переопределение выравнивания для элемента относительно поперечной оси (сделать "не таким как все")
+				</p>
+			</div>
+
             <p class="text">
-                &bull; По умолчанию ужимаются под содержимое (если не указаны размеры)<br>
-                &bull; Если задать <strong>{order: -1}</strong> элемент переместится в начало, если задать <strong>{order: 1}</strong> - в конец списка. У элементов по умолчанию <strong>{order: 0}</strong><br>
-                &bull; <strong>{flex-grow: }</strong> - величина относительно других flex-элементов, до которой может увеличиваться flex-элемент при наличии свободного пространства (относительный размер). &quot;Отъедает&quot; в долях(частях) свободное пространство, подобно фракциям <strong>fr</strong><br>
-                &bull; <strong>{flex-shrink: }</strong> - величина, до которой может уменьшаться flex-элемент относительно других flex-элементов, когда имеется дефицит пространства (когда размер контейнера меньше суммы размеров элементов). Это значение важно, если у контейнера указан <strong>{ flex-wrap: nowrap; }</strong>. Если при <strong>{ flex-wrap: nowrap; }</strong> <strong>{ flex-shrink: 0 ; }</strong>, то элементы будут расширяться за пределы контейнера<br>
                 &bull; Свободное место "съедается" свойствами <strong>{flex-grow: }</strong> или <strong>{margin: auto}</strong> до того, как начнётся применяться выавнивание flex-элементов<br>
-                &bull; <strong>{flex-basis: }</strong> - базовый размер, к которому приводится размер flex-элемента. Если <strong>{ flex-grow: 0;}</strong> , то размер элемента будет соответствовать <strong>{ flex-basis: }</strong>(если он указан), а если <strong>{ flex-grow: >0;}</strong> ,то элемент растянется на всё свободное пространство (&quot;съест его&quot;). Разница размера контейнера и суммы <strong>flex-basis</strong> размеров элементов разделится между ними в пропорциях указанных в <strong>flex-grow</strong> (при условии, что его значение более нуля)<br>
-                &bull; <strong>{align-self: }</strong> - переопределение выравнивания для элемента относительно поперечной оси (сделать "не таким как все")<br>
+				&bull; По умолчанию элементы ужимаются под содержимое (если не указаны размеры)<br>
                 &bull; При использовании <strong>{display: flex;}</strong> у контейнера, перестаёт работать свойство <strong>{columns}</strong><br>
                 &bull; При использовании свойства <strong>{flex: }</strong> у элемента, перестают работать свойства <strong>{float: }</strong>, <strong>{clean: }</strong> и <strong>{vertical-align: }</strong><br>
                 &bull; При использовании <strong>{margin: auto;}</strong> элемент центрируется внутри контейнера по вертикали и горизонтали. <strong>{margin-...: auto}</strong> отъедает всё свободное пространство в этом направлении<br>
