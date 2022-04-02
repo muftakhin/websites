@@ -28,7 +28,9 @@
             </p>
 
             <p class="text">
-                В одной строке можно записать несколько выражений, где: <strong>and</strong> - логическое <strong>и</strong>, а <strong>,</strong> - логическое <strong>или</strong>
+                В одной строке можно записать несколько выражений, где:<br>
+                &nbsp; <strong>and</strong> - логическое &quot;и&quot;<br>
+                &nbsp; <strong>,</strong> - логическое &quot;или&quot;
             </p>
             <pre class="screen screen_pre">
 &lt;link rel="stylesheet" media="screen and (orientation: portrait) and (min-width: 320px)" href="name.css"&gt;</pre>
@@ -62,21 +64,23 @@
 
             <pre class="screen screen_pre">
 @media device and (свойство: значение) {
-    /* styles */
+    ...
 }
 
 свойство - min
          - max-width
+
               -height
-              -device-width
+         - width              - обычно не используется
+              -device-width   - обычно не используется
               -device-height
-              -orientation
-              -aspect-ratio
-              -device-aspect-ratio
-              -color
-              -color-index
-              -monochrome
               -resolution
+         -color-index
+         -color
+         -monochrome
+         -aspect-ratio
+         -device-aspect-ratio
+         -orientation
          -scan
          -grid
 
@@ -86,7 +90,8 @@ device - all
        - speach</pre>
 
             <p class="text">
-                &quot;Контрольные точки&quot; определяются не разрешением экранов устройств, а дизайном проекта<br>
+                &bull; <strong>device and</strong> между <strong>@media</strong> и <strong>(...)</strong> можно опустить<br>
+                &bull; &quot;Контрольные точки&quot; определяются не разрешением экранов устройств, а дизайном проекта<br>
                 <strong>all and</strong> можно не указывать, если подразумеваются все устройства
             </p>
 
