@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NaN</title>
+    <link rel="stylesheet" href="../../../styles/section.css">
+</head>
+<body class="page">
+    <header class="header">
+        <h1 class="header__title">NaN</h1>
+    </header>
+    <article class="article">
+        <section class="section">
+            <p class="text">
+                &bull; <strong>NaN</strong> - не определённое числовое значение<br>
+                &bull; Значение <strong>NaN</strong> используется для обозначения результатов вычисления, в ходе которых не может быть получен нормальный результат<br>
+                &bull; <strong>NaN</strong> не имеет конкретного числового значения<br>
+                &bull; Используется для представления числовых результатов, не имеющих представления<br>
+            </p>
+
+            <pre class="screen screen_pre">
+NaN != NaN</pre>
+            <p class="text">
+                Не равен самому себе и вообще ничему
+            </p>
+
+            <div class="subsection">
+                <h5 class="subsection__header">Проверка isNaN</h5>
+
+                <pre class="screen screen_pre">
+isNaN(name_1)</pre>
+                <pre class="screen screen_post">
+if (isNaN(name_1)) {
+...
+}</pre>
+                <p class="text">
+                    вернёт <strong>true</strong>, если <strong>name_1</strong> присвоено не числовое значение
+                </p>
+            </div>
+        </section>
+    </article>
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Цвета и фон</title>
+    <link rel="stylesheet" href="../../styles/section.css">
+</head>
+<body class="page">
+    <header class="header">
+        <h1 class="header__title">Цвета и фон</h1>
+    </header>
+    <article class="article">
+        <section class="section">
+            <h2 class="section__header">Основной цвет</h2>
+
+            <pre class="screen screen_pre">
+color: значение (имя/число);
+     - inherit;</pre>
+        </section>
+
+        <section class="section">
+            <h2 class="section__header">Фоновый цвет</h2>
+
+            <pre class="screen screen_pre">
+background-color: значение (имя/число);
+                - transparent;          (default)
+                - inherit;</pre>
+        </section>
+
+        <section class="section">
+            <h2 class="subsection__header">Непрозрачность</h2>
+
+            <pre class="screen screen_pre">
+opacity: число от 0 до 1;        (по умолчанию - 1)</pre>
+            <p class="text">
+                <strong>0</strong> - прозрачный<br>
+                <strong>1</strong> - не прозрачный<br>
+                Наследуется и не изменяется во вложенных элементах
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section__header">Фоновые изображения</h2>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Добавление фонового изображения</h3>
+
+                <pre class="screen screen_pre">
+background-image: url(images/image.gif);
+                - none;                  (default)
+                - inherit;</pre>
+                <p class="text">
+                    &bull; Если не задан <strong>padding:</strong>, фон заходит под <strong>border:</strong><br>
+                    &bull; Если задать вместе <strong>background-color:</strong> и <strong>background-image:</strong>,изображение будет помещено поверх цвета
+                </p>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Управление мозаичным покрытием фона</h3>
+
+                <pre class="screen screen_pre">
+background-repeat: repeat;   (default)
+                 - repeat-x;
+                 - repeat-y;
+                 - no-repeat;
+                 - inherit;</pre>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Положение фона</h3>
+
+                <pre class="screen screen_pre">
+background-position: "значение_X" "значение_Y";      (default: 0% 0% /(left top))
+                   - left;
+                   - center;
+                   - right;
+                   - top;
+                   - bottom;
+                   - inherit;
+                   - top left;
+                   - top center;
+                   - top right;
+                   - left center;
+                   - center center;
+                   - right center;
+                   - bottom left;
+                   - bottom center;
+                   - bottom right;
+                   - "направление" "значение"</pre>
+                <p class="text">
+                    По умолчанию <strong>background-position</strong> отсчитывается от <strong>padding-box</strong>, чтобы <strong>border</strong> не закрывал собой фоновое изображение
+                </p>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Позиционирование фона</h3>
+            
+                <pre class="screen screen_pre">
+background-origin: content-box;
+                 - padding-box;  (default)
+                 - border-box;</pre>
+                <p class="text">
+                    Можно задавать через запятую несколько систем отсчёта (для разных фоновых изображений)
+                </p>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Фиксация фона</h3>
+            
+                <pre class="screen screen_pre">
+background-attachment: scroll;   (default)
+                     - fixed;
+                     - inherit;
+                     - local; (перемещение внутри элемента)</pre>
+            </div>
+
+            <div class="subsection">
+                <h3 class="section__header">Размер фона</h3>
+            
+                <pre class="screen screen_pre">
+background-size: auto;   (default)
+               - ширина высота;
+               - %;
+               - cover;
+               - contain;
+               - initial;
+               - inherit;</pre>
+                <p class="text">
+                    <strong>auto</strong> - естественный размер элемента<br>
+                    <strong>cover</strong> - заполняет, сохраняя соотношение сторон<br>
+                    <strong>contain</strong> - вписывает, сохраняя соотношение сторон
+                </p>
+            </div>
+        </section>
+            
+            
+        <section class="section">
+            <h2 class="section__header">Сокращённое свойство фона</h2>
+            
+            <pre class="screen screen_pre">
+background: background-color background-image/url("images/image.gif")
+            background-repeat background-attachment background-position
+            background-size;
+
+          - inherit;</pre>
+            <p class="text">
+                &bull; Порядок значений не важен<br>
+                &bull; В <strong>background-image</strong> URL записывается в кавычках, в отличии от отдельного указания <strong>background-image</strong>
+            </p>
+        </section>
+            
+        <section class="section">
+            <h2 class="section__header">Множественные фоновые изображения</h2>
+            
+            <pre class="screen screen_pre">
+background-image: url(image_1.png), url(image_2.png), url(image_3.png);
+background-position: left top, center center, right bottom;
+background-repeat: no-repeat; no-repeat; no-repeat;
+            
+background:
+    url(image1.png) left top no-repeat,
+    url(image2.png) center center no-repeat,
+    url(image3.png) right bottom no-repeat;</pre>
+        </section>
+
+        <section class="section">
+            <h2 class="section__header">background-clip</h2>
+                            
+            <pre class="screen screen_pre">
+background-clip: border-box;     (default)
+               - padding-box;
+               - content-box;</pre>
+                            
+            <p class="text">
+                <strong>border-box</strong> - фон обрезается внешней границей рамки<br>
+                <strong>padding-box</strong> - фон обрезаеится внешней границей padding (внутренней границей border)<br>
+                <strong>content-box</strong> - фон обрезается границей контента
+            </p>
+        </section>
+            
+        <section class="section">
+            <h2 class="section__header">Градиенты</h2>
+            
+            <div class="subsection">
+                <h3 class="subsection__header">Линейные градиенты</h3>
+            
+                <pre class="screen screen_pre">
+linear-gradient(color_1, color_2);</pre>
+                <p class="text">
+                    - простейший вариант
+                </p>
+            
+                <pre class="screen screen_pre">
+linear-gradient(direction, color_1, color_2);
+            
+direction = to top
+            to right
+            to bottom
+            to left
+            to top right
+            to top left
+            to bottom right
+            to bottom left
+            ...deg</pre>
+            
+                <pre class="screen screen_post">
+#banner {
+    background-image: linear-gradient(180deg, yellow, green);
+}
+            
+    или
+            
+background-image: linear-gradient(to bottom, yellow, green);</pre>
+                <pre class="screen screen_pre">
+linear-gradient(direction, color_1 dot_1, ... ..., color_n dot_n);
+            
+    dot = % пути по направлению (может быть со знаком " - ")</pre>
+            
+                <pre class="screen screen_post">
+#banner {
+    background-image: linear-gradient(90deg, yellow, orange 25%, blue);
+}</pre>
+                <p class="text">
+                    - оранжевый появляется через 25% пути по линии градиента
+                </p>
+            
+                <pre class="screen screen_post">
+linear-gradient(yellow 50%, lightblue 50%);</pre>
+                <p class="text">
+                    Если точки перехода цвета совпадают, то один цвет резко сменит другой в этой точке перехода
+                </p>
+            
+                <pre class="screen screen_pre">
+linear-gradient(yellow 50%, lightblue 0);</pre>
+                <p class="text">
+                    Если задать следующую точку равную <strong>0</strong>, то она автоматически будет в том же месте, что и предыдущая (если меньше предыдущей, то на том же месте, что и предыдущая)
+                </p>
+            </div>
+            
+            <div class="subsection">
+                <h3 class="subsection__header">Радиальные градиенты</h3>
+            
+                <pre class="screen screen_pre">
+radial-gradient(size type direction, color_1, ..., color_n)</pre>
+                <pre class="screen screen_post">
+#banner {
+    background-image: radial-gradient(center, contain, yellow, green);
+}</pre>
+            </div>
+        </section>
+    </article>
+</body>
+</html>

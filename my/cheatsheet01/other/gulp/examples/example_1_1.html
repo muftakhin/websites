@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Пример 1</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../../styles/section.css">
+</head>
+
+<body class="page">
+    <header class="header">
+        <h1 class="header__title">
+            Пример 1
+        </h1>
+    </header>
+
+    <article class="article">
+        <section class="section">
+            <h2 class="section__header">Новый проект</h2>
+
+            <p class="text">
+                Скопировав файлы <strong>package.json</strong> и <strong>gulpfile.js</strong> вводим в терминале:
+            </p>
+            <pre class="screen screen_post">
+npm i</pre>
+            <p class="text">
+                после чего устанавливаются необходимые модули из <strong>package.json</strong>
+            </p>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Установка gulp-less и gulp-sourcemaps</h3>
+
+                <pre class="screen screen_post">
+npm i gulp-sourcemaps gulp-less --SD</pre>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Редактирование <strong>gulpfile.js</strong></h3>
+
+                <pre class="screen screen_post">
+const gulp = require('gulp');
+const concat = require('gulp-concat');
+const autoprefixer = require('gulp-autoprefixer');
+const cleanCSS = require('gulp-clean-css');
+const uglify = require('gulp-uglify');
+const del = require('del');
+const browserSync = require('browser-sync').create();
+
+const sourcemaps = require('gulp-sourcemaps');  //+
+const less = require('gulp-less');              //+
+
+const  cssFiles = [
+    './src/css/main.less',    //-+
+    './src/css/color.less'    //-+
+]
+
+const  jsFiles = [
+    './src/js/lib.js',
+    './src/js/main.js'
+]
+
+function styles() {
+    return gulp.src(cssFiles)
+    .pipe(sourcemaps.init())            //+
+    .pipe(less())                       //+
+    .pipe(concat('style.css'))
+    .pipe(autoprefixer({
+        browsers: ['last 2 versions'],
+        cascade: false
+    }))
+    .pipe(cleanCSS({
+        level: 2
+    }))
+    .pipe(sourcemaps.write('./'))      //+
+    .pipe(gulp.dest('./build/css'))
+    .pipe(browserSync.stream());
+}
+
+function scripts() {
+    return gulp.src(jsFiles)
+    .pipe(concat('script.js'))
+    .pipe(gulp.dest('./build/js'))
+    .pipe(browserSync.stream());
+}
+
+function watch() {
+    browserSync.init({
+        server: {
+            baseDir: "./"
+        }
+    });
+    gulp.watch('./src/css/**/*.less', styles)  //+
+    gulp.watch('./src/js/**/*.js', scripts)
+    gulp.watch("./*.html").on('change', browserSync.reload);
+}</pre>
+            </div>
+        </section>
+    </article>
+</body>
+</html>

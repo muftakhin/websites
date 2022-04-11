@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../../styles/section.css">
+    <title>ReactJS</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../../styles/section.css">
+</head>
+    
+<body class="page">
+    <header class="header">
+        <h1 class="header__title">React JS</h1>
+    </header>
+
+    <article class="article">
+        <section class="section">
+            <h2 class="section__header">Подключение</h2>
+
+            <p class="text">
+                &bull; Скачиванием файла<br>
+                &bull; Указанием URL
+            </p>
+            <pre class="screen screen_post">
+...
+&lt;head&gt;
+    ...
+    &lt;script src=".../react.js"&gt;&lt;&frasl;script&gt;
+    &lt;script src=".../react-dom.js"&gt;&lt;&frasl;script&gt;
+    &lt;script src=".../browser.js"&gt;&lt;&frasl;script&gt;
+    ...
+&lt;&frasl;head&gt;
+&lt;body&gt;
+    ...
+    &lt;div id="content"&gt;&lt;&frasl;div&gt;
+    ...
+    &lt;script type="text/babel"&gt;
+    
+    &lt;&frasl;script&gt;
+    ...
+&lt;&frasl;body&gt;
+...</pre>
+        </section>
+
+        <section class="section">
+            <h2 class="section__header">Установка</h2>
+
+            <p class="text">
+                &bull; Запускаем <strong>NodeJS Command Prompt</strong><br>
+                &bull; Перемещаемся в папку с проектом<br>
+                &bull; Вводим
+            </p>
+            <pre class="screen screen_post">
+npx create-react-app my-app
+cd my-app
+npm start</pre>
+        </section>
+
+        <section class="section">
+            <h2 class="section__header">Основы</h2>
+
+            <p class="text">
+                &bull; <strong>Компонента</strong> - функция, возвращающая разметку JSX<br>
+                &bull; Мы "вставляем" компоненту как тег с именем соответствующим имени функции<br>
+                &bull; В <strong>JSX</strong> разметке внутри функции, все элементы должны быть обёрнуты в единый элемент
+            </p>
+
+            <pre class="screen screen_pre">
+const Name_1 = () =&gt; {
+    return (
+        ... );
+}</pre>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Импорт компонентов</h3>
+
+                <p class="text">
+                    - для использования компонентов, находящихся в других файлах
+                </p>
+                <pre class="screen screen_pre">
+    name.js:
+
+import Name_1 from '.&frasl;name_2.js';
+import Name_3 from '.&frasl;..&frasl;name_4.js';
+
+let name_5 = () =&gt; {
+
+    &lt;Name_1&frasl;&gt;
+    &lt;Name_3&frasl;&gt;
+
+}</pre>
+                <p class="text">
+                    &bull; Путь относительный, и начинается с <strong>./</strong>, <strong>.js</strong> можно не ставить<br>
+                    &bull; При этом в файле из которого импортируются компоненты должен быть прописан <strong>export</strong>
+                </p>
+
+                <pre class="screen screen_pre">
+    name_2.js :
+
+let name_1 = () =&gt; {
+    ...
+}
+
+export default name_1;</pre>
+                <pre class="screen screen_pre">
+    name_4.js :
+
+let name_3 = () =&gt; {
+    ...
+}
+
+export default name_3;</pre>
+                <p class="text">
+                    В <strong>name.js</strong> <strong>Name_1</strong> и <strong>Name_3</strong> можно писать любые имена (из-за того, что в <strong>name_2.js</strong> и <strong>name_4.js</strong> написано <strong>default</strong> ), но желательно соответствующие компонентам и с  большой буквы
+                </p>
+
+                <div class="subsection__item">
+                    <h4 class="subsection__item-header">Импорт для JSX</h4>
+
+                    <p class="text">
+                        Чтобы использовать JSX разметку, нужно в этот файл импортировать:
+                    </p>
+
+                    <pre class="screen screen_pre">
+import React from 'react';</pre>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">JSX</h3>
+
+                <div class="subsection__item">
+                    <h4 class="subsection__item-header">class="..."</h4>
+
+                    <pre class="screen screen_pre">
+className='name_1'</pre>
+                </div>
+            </div>
+        </section>
+    </article>
+</body>
+</html>

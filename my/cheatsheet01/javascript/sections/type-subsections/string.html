@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String</title>
+    <link rel="stylesheet" href="../../../styles/section.css">
+</head>
+<body class="page">
+    <header class="header">
+        <h1 class="header__title">string</h1>
+    </header>
+    <article class="article">
+        <section class="section">
+            <p class="text">
+                &bull; Строка может быть заключена в одинарные или двойные кавычки<br>
+                &bull; Строка может содержать ноль и более символов<br>
+                &bull; <strong>\</strong> является экранирующим символом<br>
+                &bull; Все символы являются 16-разрядными<br>
+                &bull; JavaScript не имеет символьного типа. Для того, чтобы получить символ, нужно задать строку из одного символа<br>
+                &bull; JS может временно преобразовывать строку-примитив в строку-объект<br>
+                &bull; Строка всегда примитив, если она не была создана с помощью конструкторов
+            </p>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Создание строки</h3>
+
+                <pre class="screen screen_post">
+let name_1 = "строка";</pre>
+                <p class="text">
+                    Создать строку <strong>name_1</strong>:
+                </p>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Отдельный символ строки</h3>
+
+                <pre class="screen screen_pre">
+name_1[0];  -   первый символ строки name_1
+name_1[1];  -   второй символ строки name_1
+. . . .
+name_1[n];  -   n-ый символ строки name_1</pre>
+            </div>
+
+                <div class="nsection__item">
+                    <h5 class="sub3section__header">Методы строк</h5>
+
+                    <div class="nsection__item">
+                        <div class="tag-header">
+                            <div class="tag-header__element_small">.length</div>
+                            <span class="tag-header__description_small">Длина строки</span>
+                        </div>
+    
+                        <pre class="screen screen_pre">
+name_1.length;</pre>
+                    </div>
+
+                    <div class="nsection__item">
+                        <div class="tag-header">
+                            <div class="tag-header__element_small">.slice(..., ...)</div>
+                            <span class="tag-header__description_small">Срез строки</span>
+                        </div>
+
+                        <pre class="screen screen_post">
+name_1.slice(1, 4);</pre>
+                        <p class="text">
+                            числа в скобках - позиции символов перед которыми производится срез строки name_1
+                        </p>
+                    </div>
+
+                    <div class="nsection__item">
+                        <div class="tag-header">
+                            <div class="tag-header__element_small">.toUpperCase()</div>
+                            <span class="tag-header__description_small">Перевод строки в заглавный регистр</span>
+                        </div>
+
+                        <pre class="screen screen_pre">
+name_1.toUpperCase();</pre>
+                    </div>
+
+                    <div class="nsection__item">
+                        <div class="tag-header">
+                            <div class="tag-header__element_small">.toLowerCase()</div>
+                            <span class="tag-header__description_small">Перевод строки в строчный регистр</span>
+                        </div>
+
+                        <pre class="screen screen_pre">
+name_1.toLowerCase();</pre>
+                    </div>
+
+                    <div class="nsection__item">
+                        <div class="tag-header">
+                            <div class="tag-header__element_small">.charAt(i)</div>
+                            <span class="tag-header__description_small">Символ строки с индексом i</span>
+                        </div>
+
+                        <pre class="screen screen_pre">
+name_1.charAt(i);</pre>
+                    </div>
+
+                    <div class="nsection__item">
+                        <div class="tag-header">
+                            <div class="tag-header__element_small">.indexOff("...")</div>
+                        </div>
+                        <p class="text">
+                            - индекс первого символа первого вхождения аргумента <strong>"строка"</strong> в строке <strong>name_1</strong>
+                        </p>
+
+                        <pre class="screen screen_pre">
+name_1.indexOff("строка");</pre>
+
+                        <pre class="screen screen_pre">
+name_1.indexOff("строка", i);</pre>
+                        <p class="text">
+                            i - индекс начальной позиции поиска
+                        </p>
+                        <p class="text">
+                            Если аргумент в строке найти не удалось, метод возвратит <strong>-1</strong>
+                        </p>
+                    </div>
+
+                    <div class="nsection__item">
+                        <div class="tag-header">
+                            <div class="tag-header__element_small">.substring("...")</div>
+                            <span class="tag-header__description_small">Извлечение части строки</span>
+                        </div>
+
+                        <pre class="screen screen_pre">
+name_1.substring(i, j);</pre>
+                        <p class="text">
+                            Возвратит часть строки начинающуюся с индекса <strong>i</strong> включая его, и заканчивающуюсю индексом <strong>j</strong> не включая его
+                        </p>
+
+                        <pre class="screen screen_pre">
+name_1.substring(i);</pre>
+                        <p class="text">
+                            Если не указывать второй индекс, метод возвратит часть строки начинающуюся с индекса <strong>i</strong> и до конца строки
+                        </p>
+                    </div>
+
+                    <div class="nsection__item">
+                        <div class="tag-header">
+                            <div class="tag-header__element_small">.split("...")</div>
+                        </div>
+
+                        <p class="text">
+                            - получает символ-ограничитель и разбивает строку на части по позиции ограничителя и возвращает их в массиве
+                        </p>
+                        <pre class="screen screen_pre">
+let name_1 = "string_1|string_2|string_3";
+let name_2 = name_1.split("|");
+
+console.log(vals);
+
+вернёт:
+
+["sreing_1", "string_2", "string_3"]</pre>
+                     </div>
+            </div>
+        </section>
+    </article>
+</body>
+</html>

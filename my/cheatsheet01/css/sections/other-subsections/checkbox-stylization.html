@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Стилизация CHECKBOXa</title>
+    <link rel="stylesheet" href="../../../styles/section.css">
+</head>
+<body class="page">
+    <header class="header">
+        <h1 class="header__title">Стилизация CHECKBOXa</h1>
+    </header>
+    <article class="article">
+        <section class="section">
+            <pre class="screen screen_post">
+    HTML:
+                
+&lt;label for="" class="label"&gt;
+    &lt;input type="checkbox" name="" id=""&gt;
+    &lt;div class="fake-checkbox"&gt;&lt;img src="img.png" alt="fake checkbox"&gt;&lt;&frasl;div&gt;
+    &lt;div class="btn"&gt; Push Me &lt;&frasl;div&gt;
+&lt;&frasl;label&gt;
+                
+    CSS:
+
+.checkbox {
+    display: none;
+}
+
+.fake-checkbox {
+    width: 64px;
+    height: 64px;
+    opacity: 0;
+    transition: 2s ease-in-out;
+}
+
+.checkbox:checked + fake-checkbox {
+    opacity: 1;
+}</pre>
+        </section>
+    </article>
+</body>
+</html>

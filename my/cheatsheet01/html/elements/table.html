@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>table</title>
+    <link rel="stylesheet" href="../../styles/section.css">
+</head>
+<body class="page">
+    <header class="header">
+        <h1 class="header__title">Таблица</h1>
+    </header>
+    <article class="article">
+        <section class="section">
+            <pre class="screen screen_pre">
+&lt;table&gt; ... &lt;&frasl;table&gt;</pre>
+
+            <div class="subsection">
+                <h2 class="subsection__header">Строка</h2>
+
+                <pre class="screen screen_pre ml">
+&lt;tr&gt; ... &lt;&frasl;tr&gt;</pre>
+            </div>
+
+            <div class="subsection">
+                <h2 class="subsection__header">Заголовок</h2>
+
+                <p class="text">
+                    Ячейки заголовка с жирным шрифтом центрированным по середине
+                </p>
+                <pre class="screen screen_pre">
+&lt;th&gt; ... &lt;&frasl;th&gt;</pre>
+            </div>
+
+            <div class="subsection">
+                <h4 class="subsection__header">Ячейка</h4>
+
+                <pre class="screen screen_pre">
+&lt;td&gt; ... &lt;&frasl;td&gt;</pre>
+            </div>
+
+            <pre class="screen screen_post">
+&lt;table&gt;
+    &lt;caption&gt;Таблица&lt;&frasl;caption&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt; 1 &lt;&frasl;th&gt;
+            &lt;th&gt; 2 &lt;&frasl;th&gt;
+            &lt;th&gt; 3 &lt;&frasl;th&gt;
+        &lt;&frasl;tr&gt;
+    &lt;&frasl;thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td rowspan="2"&gt; 4 &lt;&frasl;td&gt;
+            &lt;td&gt; 5 &lt;&frasl;td&gt;
+            &lt;td&gt; 6 &lt;&frasl;td&gt;
+        &lt;&frasl;tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt; 7 &lt;&frasl;td&gt;
+            &lt;td&gt; 8 &lt;&frasl;td&gt;
+        &lt;&frasl;tr&gt;
+    &lt;&frasl;tbody&gt;
+    &lt;tfoot&gt;
+        &lt;tr&gt;
+            &lt;td&gt; 9 &lt;&frasl;td&gt;
+            &lt;td colspan="2"&gt; 10 &lt;&frasl;td&gt;
+        &lt;&frasl;tr&gt;
+    &lt;&frasl;tfoot&gt;
+&lt;&frasl;table&gt;</pre>
+        </section>
+    </article>
+</body>
+</html>
