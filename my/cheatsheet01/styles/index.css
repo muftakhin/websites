@@ -15,15 +15,12 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
 }
 .nav__item img {
   width: 15vh;
   height: 15vh;
-}
-.nav__item:not(:first-child) {
-  margin-top: 3vh;
 }
 .other {
   display: block;
@@ -45,9 +42,5 @@
   }
   .nav__item:hover {
     transform: scale(1.2, 1.2);
-  }
-  .nav__item:not(:first-child) {
-    margin-top: 0;
-    margin-left: 3vw;
   }
 }
