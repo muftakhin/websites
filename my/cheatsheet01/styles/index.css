@@ -8,8 +8,7 @@
 ::after {
   box-sizing: border-box;
 }
-html,
-body {
+.page-body {
   background-color: #222;
 }
 .nav {
