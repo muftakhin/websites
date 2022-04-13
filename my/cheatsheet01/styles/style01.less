@@ -3,6 +3,8 @@
     padding: 0;
     font-size: 16px;
     font-family: sans-serif;
+    font-weight: normal;
+    letter-spacing: 0.05em;
 }
 
 *,
@@ -33,7 +35,7 @@ li {
 .page-header {
     background-color: @main-color;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 56px 1fr 56px;
         grid-template-rows: 56px;
         grid-template-areas: "button title .";
 
@@ -60,12 +62,12 @@ li {
     }
 }
 
-.main-nav-list {
+.items-list {
     max-width: 1080px;
     margin: 8px auto;
 
     &__item {
-        margin-bottom: 8px;
+        margin-bottom: 4px;
         font-size: 22px;
         font-family: monospace;
         text-align: center;
@@ -80,4 +82,65 @@ li {
             color: black;
         }
     }
+}
+
+.page-main {
+    max-width: 1080px;
+    margin: 8px auto;
+    padding: 6px;
+    background-color: white;
+}
+
+.screen {
+    padding: 12px;
+    margin-bottom: 8px;
+    background-color: #222;
+    box-shadow: 0 0 8px 1px grey inset;
+    font-size: 16px;
+    font-family: monospace;
+    overflow: auto;
+
+    &_pre {
+        color: lightpink;
+        text-shadow: 0 0 4px lightpink;
+    }
+    &_post {
+        color: lightgreen;
+        text-shadow: 0 0 4px lightgreen;
+    }
+}
+
+.paragraph {
+    padding: 8px;
+    margin: 0 0 16px 16px;
+    font-size: 18px;
+}
+
+strong {
+    font-size: 20px;
+    font-family: monospace;
+    color: maroon;
+}
+
+.subitems-list {
+
+    &__item {
+        margin: 4px;
+        padding: 8px;
+        font-family: monospace;
+        font-size: 24px;
+        color: white;
+        background-color: @main-color;
+        text-align: center;
+    }
+}
+
+.section-header {
+    min-height: 40px;
+    line-height: 40px;
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 8px;
+    color: white;
+    background-color: @main-color;
 }
