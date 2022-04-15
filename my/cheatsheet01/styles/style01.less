@@ -36,12 +36,12 @@ li {
     background-color: @main-color;
     display: grid;
     grid-template-columns: 56px 1fr 56px;
-        grid-template-rows: 56px;
-        grid-template-areas: "button title .";
+    grid-template-areas: "button title .";
 
     &__button {
         padding-left: 22px;
         font-size: 32px;
+        height: 56px;
         line-height: 56px;
         color: white;
         transition: all 0.2s ease-in-out;
@@ -56,6 +56,7 @@ li {
         color: white;
         font-size: 32px;
         font-family: monospace;
+        min-height: 56px;
         line-height: 56px;
         text-align: center;
         grid-area: title;
