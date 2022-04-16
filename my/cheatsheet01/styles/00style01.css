@@ -117,3 +117,14 @@ strong {
   color: white;
   background-color: steelblue;
 }
+.subsection-header {
+  margin-bottom: 8px;
+  min-height: 36px;
+  line-height: 36px;
+  font-size: 20px;
+  font-family: monospace;
+  font-weight: normal;
+  text-align: center;
+  color: steelblue;
+  border: 2px solid steelblue;
+}

@@ -5,42 +5,45 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>table</title>
-    <link rel="stylesheet" href="../../styles/section.css">
+    <link rel="stylesheet" href="../../../styles/style.css">
 </head>
-<body class="page">
-    <header class="header">
-        <h1 class="header__title">Таблица</h1>
+
+<body class="page-body">
+    <header class="page-header">
+        <a class="page-header__button"  href="../elements.html">&uArr;</a>
+        <h1 class="page-header__title">Таблица</h1>
     </header>
-    <article class="article">
-        <section class="section">
-            <pre class="screen screen_pre">
+
+    <main class="page-main">
+        <pre class="screen screen_pre">
 &lt;table&gt; ... &lt;&frasl;table&gt;</pre>
 
-            <div class="subsection">
-                <h2 class="subsection__header">Строка</h2>
+        <section>
+            <h2 class="section-header">Строка</h2>
 
-                <pre class="screen screen_pre ml">
+            <pre class="screen screen_pre ml">
 &lt;tr&gt; ... &lt;&frasl;tr&gt;</pre>
-            </div>
+        </section>
 
-            <div class="subsection">
-                <h2 class="subsection__header">Заголовок</h2>
+        <section>
+            <h2 class="section-header">Заголовок</h2>
 
-                <p class="text">
-                    Ячейки заголовка с жирным шрифтом центрированным по середине
-                </p>
-                <pre class="screen screen_pre">
+            <p class="paragraph">
+                Ячейки заголовка с жирным шрифтом центрированным по середине
+            </p>
+            <pre class="screen screen_pre">
 &lt;th&gt; ... &lt;&frasl;th&gt;</pre>
-            </div>
+        </section>
 
-            <div class="subsection">
-                <h4 class="subsection__header">Ячейка</h4>
+        <section>
+            <h2 class="section-header">Ячейка</h2>
 
-                <pre class="screen screen_pre">
+            <pre class="screen screen_pre">
 &lt;td&gt; ... &lt;&frasl;td&gt;</pre>
-            </div>
+        </section>
 
-            <pre class="screen screen_post">
+        <p class="paragraph">Пример:</p>
+        <pre class="screen screen_post">
 &lt;table&gt;
     &lt;caption&gt;Таблица&lt;&frasl;caption&gt;
     &lt;thead&gt;
@@ -68,7 +71,6 @@
         &lt;&frasl;tr&gt;
     &lt;&frasl;tfoot&gt;
 &lt;&frasl;table&gt;</pre>
-        </section>
-    </article>
+    </main>
 </body>
 </html>
