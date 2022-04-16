@@ -5,42 +5,45 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>select</title>
-    <link rel="stylesheet" href="../../../styles/section.css">
+    <link rel="stylesheet" href="../../../../styles/style.css">
 </head>
-<body class="page">
-    <header class="header">
-        <h1 class="header__title">Список</h1>
+
+<body class="page-body">
+    <header class="page-header">
+        <a class="page-header__button"  href="../elements-and-areas.html">&uArr;</a>
+        <h1 class="page-header__title">Список</h1>
     </header>
-    <article class="article">
+
+    <main class="page-main">
         <section class="section">
             <pre class="screen screen_pre">
 &lt;select&gt;...&lt;&frasl;select&gt;</pre>
-            <p class="text">
+            <p class="paragraph">
                 Может содержать два и более элементов <strong>&lt;options&gt;...&lt;&frasl;options&gt;</strong>
             </p>
         </section>
 
         <section class="section">
-            <h2 class="section__header">Пункт списка</h2>
+            <h2 class="section-header">Пункт списка</h2>
 
-            <pre class="screen screen_pre ml">
+            <pre class="screen screen_pre">
 &lt;option&gt;...&lt;&frasl;option&gt;</pre>
-            <p class="text">
+            <p class="paragraph">
                 Используется для указания вариантов ответа (пунктов раскрывающегося списка)
             </p>
         </section>
 
         <section class="section">
-            <h2 class="section__header">Логическая группа пунктов списка</h2>
+            <h2 class="section-header">Логическая группа пунктов списка</h2>
 
             <pre class="screen screen_pre">
 &lt;optgroup&gt;...&lt;&frasl;optgroup&gt;</pre>
         </section>
 
         <section class="section">
-            <h2 class="section__header">Раскрывающийся список</h2>
+            <h2 class="section-header">Раскрывающийся список</h2>
 
-            <p class="text">
+            <p class="paragraph">
                 Если  элемент <strong>options</strong> указан без атрибута <strong>value</strong>, то  в качестве значения будет отправляться содержимое элемента <strong>options</strong> (текст)
             </p>
             <pre class="screen screen_post">
@@ -52,7 +55,7 @@
         &lt;option value="abp"&gt; Алла Пугачёва &lt;&frasl;option&gt;
     &lt;&frasl;select&gt;
 &lt;&frasl;p&gt;</pre>
-            <p class="text">
+            <p class="paragraph">
                 Ваш любимый исполнитель?
                 <select name="singer">
                     <option value="shura">Шура</option>
@@ -64,7 +67,7 @@
         </section>
 
         <section class="section">
-            <h2 class="section__header">Прокручиваемый список</h2>
+            <h2 class="section-header">Прокручиваемый список</h2>
 
             <pre class="screen screen_post">
 &lt;p&gt; Ваш любимый актёр?
@@ -77,7 +80,7 @@
         &lt;option value="lee"&gt; Брюс Ли &lt;&frasl;option&gt;
     &lt;&frasl;select&gt;
 &lt;&frasl;p&gt;</pre>
-            <p class="text">
+            <p class="paragraph">
                 Ваш любимый актёр?
                 <select name="actor" size="3" multiple>
                     <option value="stallone">Сильвестр Сталлоне</option>
@@ -89,14 +92,14 @@
                 </select>
             </p>
 
-            <p class="text">
+            <p class="paragraph">
                 <strong>multiple</strong> - позволяет выбрать более одного элемента из списка<br>
                 <strong>selected="selected"</strong> устанавливает вариант ответа, выбраный по умолчанию во время загрузуи страницы
             </p>
         </section>
 
         <section class="section">
-            <h2 class="section__header">Группировка пунктов раскрывающегося списка</h2>
+            <h2 class="section-header">Группировка пунктов раскрывающегося списка</h2>
 
             <pre class="screen screen_post">
 &lt;p&gt; Субстанции
@@ -111,11 +114,11 @@
         &lt;&frasl;optgroup&gt;
     &lt;&frasl;select&gt;
 &lt;&frasl;p&gt;</pre>
-            <p class="text">
+            <p class="paragraph">
                 <strong>label</strong> - название группы
             </p>
 
-            <p class="text">
+            <p class="paragraph">
                 Субстанции
                 <select name="substance" size="3" multiple>
                     <optgroup label="тёплое">
@@ -129,6 +132,6 @@
                 </select>
             </p>
         </section>
-    </article>
+    </main>
 </body>
 </html>

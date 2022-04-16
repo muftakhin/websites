@@ -73,7 +73,7 @@ li {
   display: block;
   width: 15vh;
   height: 15vh;
-  font-size: 20vh;
+  font-size: 18vh;
   line-height: 15vh;
   text-align: center;
   text-decoration: none;
@@ -141,6 +141,9 @@ strong {
   background-color: steelblue;
   text-align: center;
 }
+.section {
+  padding-bottom: 16px;
+}
 .section-header {
   min-height: 40px;
   line-height: 40px;
@@ -149,6 +152,9 @@ strong {
   margin-bottom: 8px;
   color: white;
   background-color: steelblue;
+}
+.subsection {
+  margin-bottom: 16px;
 }
 .subsection-header {
   margin-bottom: 8px;
@@ -160,4 +166,16 @@ strong {
   text-align: center;
   color: steelblue;
   border: 2px solid steelblue;
+}
+.subsubsection-header {
+  width: fit-content;
+  min-height: 32px;
+  margin-bottom: 4px;
+  padding: 0 16px;
+  font-size: 20px;
+  font-weight: normal;
+  line-height: 32px;
+  font-family: monospace;
+  color: steelblue;
+  border: 2px dotted steelblue;
 }
