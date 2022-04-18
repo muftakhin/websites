@@ -5,13 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Media</title>
-    <link rel="stylesheet" href="../../styles/section.css">
+    <link rel="stylesheet" href="../../styles/style.css">
 </head>
-<body class="page">
+
+<body class="body">
     <header class="header">
+        <a class="header__button"  href="../css.html">&uArr;</a>
         <h1 class="header__title">Медиазапросы</h1>
     </header>
-    <article class="article">
+
+    <main class="main">
         <section class="section">
             <h2 class="section__header">В элементе link</h2>
 
@@ -23,11 +26,9 @@
 &lt;link rel="stylesheet" media="screen and (orientation: portrait)" href="name.css"&gt;
 
 &lt;link rel="stylesheet" media="not screen and (orientation: landscape)" href="name.css"&gt;</pre>
-            <p class="text">
-                Логику любого медиазапроса можно реверсировать, добавив <strong>not</strong> в его начало
-            </p>
+            <p class="paragraph">Логику любого медиазапроса можно реверсировать, добавив <strong>not</strong> в его начало</p>
 
-            <p class="text">
+            <p class="paragraph">
                 В одной строке можно записать несколько выражений, где:<br>
                 &nbsp; <strong>and</strong> - логическое &quot;и&quot;<br>
                 &nbsp; <strong>,</strong> - логическое &quot;или&quot;
@@ -35,12 +36,10 @@
             <pre class="screen screen_pre">
 &lt;link rel="stylesheet" media="screen and (orientation: portrait) and (min-width: 320px)" href="name.css"&gt;</pre>
 
-            <p class="text">
-                Можно создать список медиазапросов
-            </p>
+            <p class="paragraph">Можно создать список медиазапросов</p>
             <pre class="screen screen_pre">
 &lt;link rel="stylesheet" media="screen and (orientation: portrait) and (max-device-width: 640px), projection" href="name.css"&gt;</pre>
-            <p class="text">
+            <p class="paragraph">
                 Медиазапросы разделяются запятыми. Если после указания устройства отсутствуют в скобках значение:свойство, стиль применяется для всех устройств данного типа медиаустройств
             </p>
         </section>
@@ -48,13 +47,13 @@
         <section class="section">
             <h2 class="section__header">С использованием @import</h2>
 
-            <p class="text">
+            <p class="paragraph">
                 Добавляется в существующую таблицу стилей
             </p>
             <pre class="screen screen_pre">
 @import url("name.css") screen and (max-width:360px);
 </pre>
-            <p class="text">
+            <p class="paragraph">
                 Код <strong>@import</strong> добавляется к HTTP-запросам, что влияет на скорость загрузки
             </p>
         </section>
@@ -89,7 +88,7 @@ device - all
        - screen
        - speach</pre>
 
-            <p class="text">
+            <p class="paragraph">
                 &bull; <strong>device and</strong> между <strong>@media</strong> и <strong>(...)</strong> можно опустить<br>
                 &bull; &quot;Контрольные точки&quot; определяются не разрешением экранов устройств, а дизайном проекта<br>
                 <strong>all and</strong> можно не указывать, если подразумеваются все устройства
@@ -102,7 +101,7 @@ device - all
         </section>
 
         <section class="section">
-            <p class="text">
+            <p class="paragraph">
                 Для устройств с высоким разрешением, использующих 2 точки на пиксель
             </p>
             <pre class="screen screen_post">
@@ -125,6 +124,6 @@ device - all
 
 @media (min-width: 1200px) { ... }</pre>
         </section>
-    </article>
+    </main>
 </body>
 </html>

@@ -5,13 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Column</title>
-    <link rel="stylesheet" href="../../styles/section.css">
+    <link rel="stylesheet" href="../../styles/style.css">
 </head>
-<body class="page">
+
+<body class="body">
     <header class="header">
+        <a class="header__button"  href="../css.html">&uArr;</a>
         <h1 class="header__title">Многоколоночная вёрстка</h1>
     </header>
-    <article class="article">
+
+    <main class="main">
         <section class="section">
             <h2 class="section__header">Ширина колонки</h2>
 
@@ -22,9 +25,7 @@ column-width: auto;   (defaulf)
             - vw;
             - inherit;
             - initial;</pre>
-            <p class="text">
-                <strong>volume</strong> задаётся в единицах размера, кроме <strong>%</strong>
-            </p>
+            <p class="paragraph"><strong>volume</strong> задаётся в единицах размера, кроме <strong>%</strong></p>
         </section>
 
         <section class="section">
@@ -33,9 +34,7 @@ column-width: auto;   (defaulf)
             <pre class="screen screen_pre">
 column-count: auto;    (default)
             - integer;</pre>
-            <p class="text"> 
-                <strong>integer</strong> - число
-            </p>
+            <p class="paragraph"><strong>integer</strong> - число</p>
         </section>
 
         <section class="section">
@@ -51,9 +50,7 @@ column-gap: normal;     (defaulf)
 
             <pre class="screen screen_pre">
 column-rule: "тольщина" "стиль" "цвет";</pre>
-            <p class="text">
-                Задаётся как и у свойства <strong>border:</strong>
-            </p>
+            <p class="paragraph">Задаётся как и у свойства <strong>border:</strong></p>
 
             <div class="subsection">
                 <h3 class="subsection__header">Толщина разделительной линии</h3>
@@ -76,6 +73,6 @@ column-rule-style: "значение";</pre>
 column-rule-color: "значение";</pre>
             </div>
         </section>
-    </article>
+    </main>
 </body>
 </html>

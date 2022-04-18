@@ -5,13 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Раскрывающиеся объекты</title>
-    <link rel="stylesheet" href="../../../styles/section.css">
+    <link rel="stylesheet" href="../../../styles/style.css">
 </head>
-<body class="page">
+
+<body class="body">
     <header class="header">
+        <a class="header__button"  href="../css.html">&uArr;</a>
         <h1 class="header__title">Раскрывающиеся объекты</h1>
     </header>
-    <article class="article">
+
+    <main class="main">
         <section class="section">
             <h2 class="section__header">Спойлер</h2>
 
@@ -59,7 +62,7 @@
 .spoler > input:checked ~ label > span:before {
     content: "[-] ";
 }</pre>
-            <p class="text">
+            <p class="paragraph">
                 <strong>&lt;span&gt;</strong> - служит для вывода индикатора состояния<br>
                 <strong>input {display:none;}</strong> - скрывает флажок<br>
                 <strong>.a ~ .b</strong> - любой элемент <strong>.b</strong> , которому предшествует элемент <strong>.a</strong>
@@ -281,6 +284,6 @@
     display: block;
 }</pre>
         </section>
-    </article>
+    </main>
 </body>
 </html>

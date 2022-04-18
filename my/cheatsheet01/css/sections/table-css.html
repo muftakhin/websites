@@ -5,17 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Табличное представление</title>
-    <link rel="stylesheet" href="../../styles/section.css">
+    <link rel="stylesheet" href="../../styles/style.css">
 </head>
-<body class="page">
+
+<body class="body">
     <header class="header">
+        <a class="header__button"  href="../css.html">&uArr;</a>
         <h1 class="header__title">Табличное представление</h1>
     </header>
-    <article class="article">
+
+    <main class="main">
         <section class="section">
-            <p class="text">
-                Позволяет располагать как таблицу элементы HTML и применять свойства для таблиц
-            </p>
+            <p class="paragraph">Позволяет располагать как таблицу элементы HTML и применять свойства для таблиц</p>
 
             <pre class="screen screen_pre">
 display: table;
@@ -28,7 +29,7 @@ display: table;
        - table-column;
        - table-cell;
        - table-caption;</pre>
-            <p class="text">
+            <p class="paragraph">
                 <strong>display: table;</strong> - превращает элемент в таблицу<br>
                 <strong>display: table-row;</strong> - в строку таблицы<br>
                 <strong>display: table-cell;</strong> - в ячейку таблицы<br>
@@ -37,9 +38,7 @@ display: table;
                 <strong>display: table-footer-group;</strong> - в секцию подвала<br>
                 <strong>display: table-caption;</strong> - в заголовок таблицы
             </p>
-            <p class="text">
-                Для <strong>table-cell</strong> можно задать <strong>vertical-align</strong>
-            </p>
+            <p class="paragraph">Для <strong>table-cell</strong> можно задать <strong>vertical-align</strong></p>
 
             <pre class="screen screen_post">
 &lt;div id="tableContainer"&gt;
@@ -77,6 +76,6 @@ div#left_1, div#right_1, div#left_2, div#right_2 {
     vertical-align: top;
 }</pre>
         </section>
-    </article>
+    </main>
 </body>
 </html>

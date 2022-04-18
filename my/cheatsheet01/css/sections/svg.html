@@ -5,20 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SVG</title>
-    <link rel="stylesheet" href="../../styles/section.css">
+    <link rel="stylesheet" href="../../styles/style.css">
 </head>
-<body class="page">
+
+<body class="body">
     <header class="header">
+        <a class="header__button"  href="../css.html">&uArr;</a>
         <h1 class="header__title">SVG</h1>
     </header>
-    <article class="article">
+
+    <main class="main">
         <section class="section">
             <h2 class="section__header">Добавление в HTML</h2>
 
             <div class="subsection">
                 <h3 class="subsection__header">Используя тег &lt;img&gt;</h3>
 
-                <p class="text">
+                <p class="paragraph">
                     &bull; Подходит для контентных изображений<br>
                     &bull; Встроенные стили работают<br>
                     &bull; Скрипты не работают
@@ -31,7 +34,7 @@
             <div class="subsection">
                 <h3 class="subsection__header">INLINE SVG в &lt;img&gt;</h3>
 
-                <p class="text">
+                <p class="paragraph">
                     &bull; Не кешируется<br>
                     &bull; "Замусоривает" разметку<br>
                     &bull; Дубликаты утяжеляют страницу
@@ -43,15 +46,15 @@
             <div class="subsection">
                 <h3 class="subsection__header">Используя тег &lt;object&gt; , &lt;embed&gt; или &lt;iframe&gt;</h3>
 
-                <p class="text">
+                <p class="paragraph">
                     &bull; Работают встроенные стили и скрипты<br>
                     &bull; Можно управлять из JavaScript
                 </p>
                     
-                <div class="subsection__item">
-                    <h4 class="subsection__item-header">&lt;iframe&gt;</h4>
+                <div class="subsubsection">
+                    <h4 class="subsubsection__header">&lt;iframe&gt;</h4>
                         
-                    <p class="text">
+                    <p class="paragraph">
                         &bull; Неверно с идеологической точки зрения<br>
                         &bull; Не подстраивается под размер содержимого
                     </p>
@@ -61,10 +64,10 @@
 &lt;&frasl;iframe&gt;</pre>
                 </div>
                     
-                <div class="subsection__item">
-                    <h4 class="subsection__item-header">&lt;object&gt;</h4>
+                <div class="subsubsection">
+                    <h4 class="subsubsection__header">&lt;object&gt;</h4>
 
-                    <p class="text">
+                    <p class="paragraph">
                         Позволяет встраивать не-HTML* содержимое в HTML-документ<br>
                         * - PDF, FLASH, SVG
                     </p>
@@ -72,31 +75,27 @@
 &lt;object data="images/name.svg" type="image/svg+xml" width="200" height="200"&gt;
 &lt;&frasl;object&gt;</pre>
                        
-                    <p class="text">
-                        Необходимо указание хотябы одного из атрибутов
-                    </p>
+                    <p class="paragraph">Необходимо указание хотябы одного из атрибутов</p>
                 </div>
 
-                <div class="subsection__item">
-                    <h4 class="subsection__item-header">&lt;embed&gt;</h4>
+                <div class="subsubsection">
+                    <h4 class="subsubsection__header">&lt;embed&gt;</h4>
 
-                    <p class="text">
+                    <p class="paragraph">
                         Позволяет встраивать не-HTML содержимое в HTML-документ<br>
                         * - PDF, FLASH, SVG
                     </p>
                     <pre class="screen screen_post">
 &lt;embed src="images/name.svg" width="200" height="200"&gt;</pre>
                        
-                    <p class="text">
-                        Необходимо указание хотябы одного из атрибутов
-                    </p>
+                    <p class="paragraph">Необходимо указание хотябы одного из атрибутов</p>
                 </div>
             </div>
 
             <div class="subsection">
                 <h3 class="subsection__header">Непосредственная вставка</h3>
 
-                <p class="text">
+                <p class="paragraph">
                     &bull; Не кешируется<br>
                     &bull; "Замусоривает" разметку<br>
                     &bull; Дубликаты утяжеляют страницу
@@ -117,7 +116,7 @@
             <div class="subsection">
                 <h3 class="subsection__header">INLINE SVG в CSS</h3>
 
-                <p class="text">
+                <p class="paragraph">
                     &bull; Кешируется вместе с CSS-файлом<br>
                     &bull; Ухудшает читаемость кода
                 </p>
@@ -134,7 +133,7 @@
             <div class="subsection">
                 <h3 class="subsection__header">В качестве фонового изображения</h3>
 
-                <p class="text">
+                <p class="paragraph">
                     &bull; Подходит для оформительских изображений<br>
                     &bull; Встроенные стили работают<br>
                     &bull; Скрипты не работают
@@ -146,6 +145,6 @@ background-image: url('images/name.svg');
 background-size: 200px auto;</pre>
             </div>
         </section>
-    </article>
+    </main>
 </body>
 </html>

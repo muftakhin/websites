@@ -5,19 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Форматирование текста</title>
-    <link rel="stylesheet" href="../../styles/section.css">
+    <link rel="stylesheet" href="../../styles/style.css">
 </head>
-<body class="page">
+
+<body class="body">
     <header class="header">
+        <a class="header__button"  href="../css.html">&uArr;</a>
         <h1 class="header__title">Форматирование текста</h1>
     </header>
-    <article class="article">
+
+    <main class="main">
         <section class="section">
             <h2 class="section__header">Подключение шрифтов</h2>
 
-            <p class="text">
-                Свойство <strong>@font-face</strong> позволяет использовать шрифт, даже если он не установлен на компьютере пользователя, предоставляя путь к файлу шрифта
-            </p>
+            <p class="paragraph">Свойство <strong>@font-face</strong> позволяет использовать шрифт, даже если он не установлен на компьютере пользователя, предоставляя путь к файлу шрифта</p>
             <pre class="screen screen_pre">
 @font-face {
     font-family: "Name One";
@@ -30,9 +31,7 @@
 .class_name {
     font-family: "Name One", ..., ...;
 }</pre>
-            <p class="text">
-                &bull; <strong>font-family:</strong> присваивает шрифту имя <strong>"Name One"</strong>
-            </p>
+            <p class="paragraph">&bull; <strong>font-family:</strong> присваивает шрифту имя <strong>"Name One"</strong></p>
             <pre class="screen screen_post">
 @font-face {
     font-family: "ChunkFiveRegular";
@@ -51,7 +50,7 @@ h1, h2 {
             <div class="subsection">
                 <h3 class="subsection__header">Семейство шрифтов (Гарнитура шрифта)</h3>
 
-                <p class="text">
+                <p class="paragraph">
                     &bull; Свойство <strong>font-family</strong> даёт возможность задать список предпочтительных шрифтов<br>
                     &bull; Если имя шрифта состоит не из одного слова, то его указываем в двойных кавычках<br>
                     &bull; В конце списка всегда указываем название семейства шрифтов(serif, sans-serif, cursive или monospace)<br>
@@ -64,29 +63,29 @@ font-family: "Trebuchet MS", Verdana, sans-serif;</pre>
             <div class="subsection">
                 <h3 class="subsection__header">Размер шрифта</h3>
 
-                <div class="subsection__item">
-                    <h4 class="subsection__item-header">Конкретным размером</h4>
+                <div class="subsubsection">
+                    <h4 class="subsubsection__header">Конкретным размером</h4>
 
                     <pre class="screen screen_pre">
 font-size: ...px;
          - ...em;
          - ...ex;
          - ...rem;</pre>
-                    <p class="text">
+                    <p class="paragraph">
                         <strong> em </strong>- размер относительно заданного или наследуемого размера шрифта данного элемента<br>
                         <strong> rem </strong>- размер относительно шрифта в корневом элементе (<strong>&lt;html&gt;</strong>)
                     </p>
                 </div>
 
-                <div class="subsection__item">
-                    <h4 class="subsection__item-header">Процентным значением</h4>
+                <div class="subsubsection">
+                    <h4 class="subsubsection__header">Процентным значением</h4>
 
                     <pre class="screen screen_pre">
 font-size: ...%;</pre>
                 </div>
 
-                <div class="subsection__item">
-                    <h4 class="subsection__item-header">Используя абсолютное зарезервированное слово</h4>
+                <div class="subsubsection">
+                    <h4 class="subsubsection__header">Используя абсолютное зарезервированное слово</h4>
 
                     <pre class="screen screen_pre">
 font-size: xx-small;
@@ -98,8 +97,8 @@ font-size: xx-small;
          - xx-large;</pre>
                 </div>
 
-                <div class="subsection__item">
-                    <h4 class="subsection__item-header">Используя относительное (сравнительное) зарезервированное слово</h4>
+                <div class="subsubsection">
+                    <h4 class="subsubsection__header">Используя относительное (сравнительное) зарезервированное слово</h4>
 
                         <pre class="screen screen_pre">
 font-size: larger;
@@ -135,9 +134,7 @@ font-style: normal;
           - italic;
           - oblique;
           - inherit;</pre>
-                <p class="text">
-                    <strong>oblique</strong> - наклонный шрифт
-                </p>
+                <p class="paragraph"><strong>oblique</strong> - наклонный шрифт</p>
             </div>
 
             <div class="subsection">
@@ -163,7 +160,7 @@ font: font-style font-weight font-variant font-size/line-height font-family;</pr
             <div class="subsection">
                 <h3 class="subsection__header">Интерлиньяж</h3>
 
-                <p class="text">
+                <p class="paragraph">
                     Интерлиньяж - минимальное (ибо рисунок в строке его увеличит) расстояние между базовыми линиями строк текста.<br>
                     Базовая линия - воображаемая линия, на которой располагаются нижние части символов.
                 </p>
@@ -173,9 +170,7 @@ line-height: число (масштабный множитель на текущ
            - ...%;
            - normal;
            - inherit;</pre>
-                <p class="text">
-                    Можно воспользоваться свойством <strong>line-height</strong>, чтобы выровнять текст по средней линии блока:
-                </p>
+                <p class="paragraph">Можно воспользоваться свойством <strong>line-height</strong>, чтобы выровнять текст по средней линии блока:</p>
                 <pre class="screen screen_post">
 text-align: center;
 line-height: (высота блока);</pre>
@@ -188,8 +183,8 @@ line-height: (высота блока);</pre>
 text-indent: ...px;
            - ...em; ()
            - ...% (на основе ширины родительского элемента);</pre>
-                <p class="text">
-                    Применяется к блочным элементам и ячейкам таблицы <br>
+                <p class="paragraph">
+                    Применяется к блочным элементам и ячейкам таблицы
                 </p>
             </div>
 
@@ -202,7 +197,7 @@ text-align: left;
           - center;
           - justify;
           - inherit;</pre>
-                <p class="text">
+                <p class="paragraph">
                     <strong>justify</strong>  определяет, что каждая строка абзаца, кроме последней, должна занимать всю ширину текстового поля.<br>
                     Применяется к блочным элементам и ячейкам таблицы <br>
                 </p>
@@ -223,7 +218,7 @@ vertical-align: baseline;
               - px;
               - em;
               - %;</pre>
-                <p class="text">
+                <p class="paragraph">
                     <strong>vertical-align</strong> выравнивает только <strong>inline</strong>-элементы и содержимое ячеек таблицы
                 </p>
             </div>
@@ -275,7 +270,7 @@ white-space: normal;     (default)
            - break-spaces;
            - initial;
            - inherit;</pre>
-            <p class="text">
+            <p class="paragraph">
                 <strong>nowrap</strong> - отмена переносов, кроме <strong>&lt;br&gt;</strong><br>
                 <strong>pre-wrap</strong> - сохранение пробелов, делая разрыв строк, где необходимо<br>
                 <strong>pre-line</strong> - удаление лишних пробелов, за исключением случая с <strong>&lt;br&gt;</strong>
@@ -287,7 +282,7 @@ white-space: normal;     (default)
 
             <pre class="screen screen_pre">
 text-shadow: "смещение по горизонтали" "смещение по вертикали" "радиус размытия" "цвет";</pre>
-            <p class="text">
+            <p class="paragraph">
                 &bull; Если размытие не требуется его можно опустить<br>
                 &bull; Можно применить несколько теней, через запятую
             </p>
@@ -303,7 +298,7 @@ text-shadow: .2em .2em .15em silver, 8px 8px 16px black;</pre>
             <div class="subsection">
                 <h3 class="subsection__header">Выбор маркера</h3>
 
-                <p class="text">
+                <p class="paragraph">
                     Маркеры находятся по умолчанию вне элемента <strong>&lt;li&gt;</strong>, слева, в <strong>padding-left:</strong> элемента <strong>&lt;ul&gt;</strong>
                 </p>
                 <pre class="screen screen_pre">
@@ -343,6 +338,6 @@ list-style-image: url('images/pic.gif');
                 - inherit;</pre>
             </div>
         </section>
-    </article>
+    </main>
 </body>
 </html>

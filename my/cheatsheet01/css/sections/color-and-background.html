@@ -5,13 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Цвета и фон</title>
-    <link rel="stylesheet" href="../../styles/section.css">
+    <link rel="stylesheet" href="../../styles/style.css">
 </head>
-<body class="page">
+
+<body class="body">
     <header class="header">
+        <a class="header__button"  href="../css.html">&uArr;</a>
         <h1 class="header__title">Цвета и фон</h1>
     </header>
-    <article class="article">
+
+    <main class="main">
         <section class="section">
             <h2 class="section__header">Основной цвет</h2>
 
@@ -34,7 +37,7 @@ background-color: значение (имя/число);
 
             <pre class="screen screen_pre">
 opacity: число от 0 до 1;        (по умолчанию - 1)</pre>
-            <p class="text">
+            <p class="paragraph">
                 <strong>0</strong> - прозрачный<br>
                 <strong>1</strong> - не прозрачный<br>
                 Наследуется и не изменяется во вложенных элементах
@@ -51,7 +54,7 @@ opacity: число от 0 до 1;        (по умолчанию - 1)</pre>
 background-image: url(images/image.gif);
                 - none;                  (default)
                 - inherit;</pre>
-                <p class="text">
+                <p class="paragraph">
                     &bull; Если не задан <strong>padding:</strong>, фон заходит под <strong>border:</strong><br>
                     &bull; Если задать вместе <strong>background-color:</strong> и <strong>background-image:</strong>,изображение будет помещено поверх цвета
                 </p>
@@ -89,9 +92,7 @@ background-position: "значение_X" "значение_Y";      (default: 0
                    - bottom center;
                    - bottom right;
                    - "направление" "значение"</pre>
-                <p class="text">
-                    По умолчанию <strong>background-position</strong> отсчитывается от <strong>padding-box</strong>, чтобы <strong>border</strong> не закрывал собой фоновое изображение
-                </p>
+                <p class="paragraph">По умолчанию <strong>background-position</strong> отсчитывается от <strong>padding-box</strong>, чтобы <strong>border</strong> не закрывал собой фоновое изображение</p>
             </div>
 
             <div class="subsection">
@@ -101,9 +102,7 @@ background-position: "значение_X" "значение_Y";      (default: 0
 background-origin: content-box;
                  - padding-box;  (default)
                  - border-box;</pre>
-                <p class="text">
-                    Можно задавать через запятую несколько систем отсчёта (для разных фоновых изображений)
-                </p>
+                <p class="paragraph">Можно задавать через запятую несколько систем отсчёта (для разных фоновых изображений)</p>
             </div>
 
             <div class="subsection">
@@ -127,7 +126,7 @@ background-size: auto;   (default)
                - contain;
                - initial;
                - inherit;</pre>
-                <p class="text">
+                <p class="paragraph">
                     <strong>auto</strong> - естественный размер элемента<br>
                     <strong>cover</strong> - заполняет, сохраняя соотношение сторон<br>
                     <strong>contain</strong> - вписывает, сохраняя соотношение сторон
@@ -145,7 +144,7 @@ background: background-color background-image/url("images/image.gif")
             background-size;
 
           - inherit;</pre>
-            <p class="text">
+            <p class="paragraph">
                 &bull; Порядок значений не важен<br>
                 &bull; В <strong>background-image</strong> URL записывается в кавычках, в отличии от отдельного указания <strong>background-image</strong>
             </p>
@@ -173,7 +172,7 @@ background-clip: border-box;     (default)
                - padding-box;
                - content-box;</pre>
                             
-            <p class="text">
+            <p class="paragraph">
                 <strong>border-box</strong> - фон обрезается внешней границей рамки<br>
                 <strong>padding-box</strong> - фон обрезаеится внешней границей padding (внутренней границей border)<br>
                 <strong>content-box</strong> - фон обрезается границей контента
@@ -188,9 +187,7 @@ background-clip: border-box;     (default)
             
                 <pre class="screen screen_pre">
 linear-gradient(color_1, color_2);</pre>
-                <p class="text">
-                    - простейший вариант
-                </p>
+                <p class="paragraph">- простейший вариант</p>
             
                 <pre class="screen screen_pre">
 linear-gradient(direction, color_1, color_2);
@@ -222,21 +219,15 @@ linear-gradient(direction, color_1 dot_1, ... ..., color_n dot_n);
 #banner {
     background-image: linear-gradient(90deg, yellow, orange 25%, blue);
 }</pre>
-                <p class="text">
-                    - оранжевый появляется через 25% пути по линии градиента
-                </p>
+                <p class="paragraph">- оранжевый появляется через 25% пути по линии градиента</p>
             
                 <pre class="screen screen_post">
 linear-gradient(yellow 50%, lightblue 50%);</pre>
-                <p class="text">
-                    Если точки перехода цвета совпадают, то один цвет резко сменит другой в этой точке перехода
-                </p>
+                <p class="paragraph">Если точки перехода цвета совпадают, то один цвет резко сменит другой в этой точке перехода</p>
             
                 <pre class="screen screen_pre">
 linear-gradient(yellow 50%, lightblue 0);</pre>
-                <p class="text">
-                    Если задать следующую точку равную <strong>0</strong>, то она автоматически будет в том же месте, что и предыдущая (если меньше предыдущей, то на том же месте, что и предыдущая)
-                </p>
+                <p class="paragraph">Если задать следующую точку равную <strong>0</strong>, то она автоматически будет в том же месте, что и предыдущая (если меньше предыдущей, то на том же месте, что и предыдущая)</p>
             </div>
             
             <div class="subsection">
@@ -250,6 +241,6 @@ radial-gradient(size type direction, color_1, ..., color_n)</pre>
 }</pre>
             </div>
         </section>
-    </article>
+    </main>
 </body>
 </html>

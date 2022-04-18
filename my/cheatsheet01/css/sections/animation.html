@@ -5,14 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Animation</title>
-    <link rel="stylesheet" href="../../styles/section.css">
+    <link rel="stylesheet" href="../../styles/style.css">
 </head>
 
-<body class="page">
+<body class="body">
     <header class="header">
+        <a class="header__button"  href="../css.html">&uArr;</a>
         <h1 class="header__title">Переходы, преобразования и анимация</h1>
     </header>
-    <article class="article">
+
+    <main class="main">
         <section class="section">
             <h2 class="section__header">CSS переходы</h2>
 
@@ -33,7 +35,7 @@
 transition-property: свойство;
                    - all;        (default)
                    - none;</pre>
-                <p class="text">
+                <p class="paragraph">
                     Применяется:<br>
                     &nbsp; - ко всем элементам<br>
                     &nbsp; - к псевдоэлементам <strong>:before</strong> и <strong>:after</strong>
@@ -45,7 +47,7 @@ transition-property: свойство;
 
                 <pre class="screen screen_pre">
 transition-duration: 0s;     (default)</pre>
-                <p class="text">
+                <p class="paragraph">
                     Применяется:<br>
                     &nbsp; - ко всем элементам<br>
                     &nbsp; - к псевдоэлементам <strong> :before </strong> и <strong> :after </strong>
@@ -65,7 +67,7 @@ transition-timing-function: ease;        (default)
                           - step-end;
                           - steps;
                           - cubic-bezier(#,#,#,#)</pre>
-                <p class="text">
+                <p class="paragraph">
                     Применяется:<br>
                     &nbsp; - ко всем элементам<br>
                     &nbsp; - к псевдоэлементам <strong> :before </strong> и <strong> :after </strong>
@@ -77,7 +79,7 @@ transition-timing-function: ease;        (default)
 
                 <pre class="screen screen_pre">
 transition-delay: 0s;</pre>
-                <p class="text">Применяется:<br>
+                <p class="paragraph">Применяется:<br>
                     &nbsp; - ко всем элементам<br>
                     &nbsp; - к псевдоэлементам <strong> :before </strong> и <strong> :after </strong>
                 </p>
@@ -161,7 +163,7 @@ transform: translateY(смещение_по_Y);
 transform: translate(смещение_по_X, смещение_по_Y);
 
     если одно значение, то X</pre>
-                <p class="text">
+                <p class="paragraph">
                     Задаётся в px или %
                 </p>
             </div>
@@ -177,7 +179,7 @@ transform: scaleY(значение);
 transform: scale(значение_X, значение_Y);
 
 transform: scale(значение_X_и_Y);</pre>
-                <p class="text">
+                <p class="paragraph">
                     Если значение будет со знаком минус (<strong>-</strong>), то элемент перевернётся по данной оси
                 </p>
             </div>
@@ -210,14 +212,14 @@ transform: perspective-origin: ...% ...%;    (defaulf: 50% 50%;)</pre>
             <div class="subsection">
                 <h3 class="subsection__header">Множественные преобразования</h3>
 
-                <p class="text">
+                <p class="paragraph">
                     <strong>transform: функция(значение) функция(значение);</strong>
                 </p>
                 <pre class="screen screen_post">
 .class:hover {
     transform: scale(1.5) rotate(-5deg) translate(50px, 30px);
 }</pre>
-                <p class="text">
+                <p class="paragraph">
                     Преобразования применяются в том порядке, в котором перечислены
                 </p>
             </div>
@@ -245,7 +247,7 @@ transform: perspective-origin: ...% ...%;    (defaulf: 50% 50%;)</pre>
 element {
     animation-name: "имя";
 }</pre>
-            <p class="text">
+            <p class="paragraph">
                 <strong>name</strong> - имя анимации<br>
                 <strong>from</strong> - начальный ключевой кадр<br>
                 <strong>to</strong> - конечный ключевой кадр
@@ -328,11 +330,11 @@ animation-duration: ...s;
 
                 <pre class="screen screen_pre">
 animation-timing-function: ease-in-out;</pre>
-                <p class="text">
+                <p class="paragraph">
                     Как у <strong>transition:</strong>
                 </p>
 
-                <p class="text">
+                <p class="paragraph">
                     Можно задать для каждого интервала
                 </p>
                 <pre class="screen screen_post">
@@ -358,7 +360,7 @@ animation-timing-function: ease-in-out;</pre>
                 <pre class="screen screen_pre">
 animation-delay: ...s;
                - ...ms;</pre>
-                <p class="text">
+                <p class="paragraph">
                     Как у <strong>transition:</strong>
                 </p>
             </div>
@@ -390,7 +392,7 @@ animation-fill-mode: forwards;</pre>
 
                 <pre class="screen screen_pre">
 animation: "name" "duration" "timing-function" "iteration-count" "direction" "delay" "fill-mode";</pre>
-                <p class="text">
+                <p class="paragraph">
                     Если к елементу применяется несколько анимаций, списки сокращённых свойств записываются через запятую
                 </p>
                 <pre class="screen screen_pre">
@@ -408,11 +410,9 @@ element {
     animation-play-state: paised;
                         - running;
 }</pre>
-                <p class="text">
-                    Применить это свойство можно только с помощью псевдокласса
-                </p>
+                <p class="paragraph">Применить это свойство можно только с помощью псевдокласса</p>
             </div>
         </section>
-    </article>
+    </main>
 </body>
 </html>

@@ -5,13 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>links</title>
-    <link rel="stylesheet" href="../../styles/section.css">
+    <link rel="stylesheet" href="../../styles/style.css">
 </head>
-<body class="page">
+
+<body class="body">
     <header class="header">
+        <a class="header__button"  href="../css.html">&uArr;</a>
         <h1 class="header__title">Способы подключения</h1>
     </header>
-    <article class="article">
+
+    <main class="main">
         <section class="section">
             <h2 class="section__header">Способы подключения</h2>
 
@@ -40,8 +43,8 @@
             <div class="subsection">
                 <h3 class="subsection__header">Внешние таблицы стилей</h3>
 
-                <div class="subsection__item">
-                    <h4 class="subsection__item-header">Использованием элемента link</h4>
+                <div class="subsubsection">
+                    <h4 class="subsubsection__header">Использованием элемента link</h4>
 
                     <pre class="screen screen_post">
 &lt;head&gt;
@@ -49,27 +52,27 @@
     &lt;link rel="stylesheet" href="style.css"&gt;
     ...
 &lt;&frasl;head&gt;</pre>
-                    <p class="text">
+                    <p class="paragraph">
                         &bull; Подключать внешние стили желательно выше в документе<br>
                         &bull; При использовании нескольких таблиц стилей при помощи элемента <strong>&lt;link&gt;</strong>, внутри элемента <strong>&lt;head&gt;</strong> помещают отдельный элемент <strong>&lt;link&gt;</strong> для каждой таблицы стилей<br>
                         &bull; Если более одного правила применяются к одному и тому же элементу, то указанный
                     </p>
                 </div>
 
-                <div class="subsection__item">
-                    <h4 class="subsection__item-header">Импортирование</h4>
+                <div class="subsubsection">
+                    <h4 class="subsubsection__header">Импортирование</h4>
 
                     <pre class="screen screen_post">
 @import url("styles&frasl;style.css");</pre>
-                    <p class="text">
+                    <p class="paragraph">
                         &bull; <strong>@import</strong> Добавляется во внешний файл <strong>.css</strong> либо в элемент <strong>style</strong><br>
                         &bull; При использовании правила <strong>@import</strong> в таблице стилей, его необходимо помещать перед всеми остальными правилами<br>
                         &bull; <strong>@import</strong> ухудшают загрузку
                     </p>
                 </div>
 
-                <div class="subsection__item">
-                    <h4 class="subsection__item-header">Модульные таблицы стилей</h4>
+                <div class="subsubsection">
+                    <h4 class="subsubsection__header">Модульные таблицы стилей</h4>
 
                     <pre class="screen screen_post">
 &frasl;* настройки форматирования текста *&frasl;
@@ -81,12 +84,10 @@
 &frasl;* конкретные стили *&frasl;
 body {background: orange;}
 ...</pre>
-                    <p class="text">
-                        Указываются перед правилами, которые используют селекторы
-                    </p>
+                    <p class="paragraph">Указываются перед правилами, которые используют селекторы</p>
                 </div>
             </div>
         </section>
-    </article>
+    </main>
 </body>
 </html>

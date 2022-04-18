@@ -5,13 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SVG Filters</title>
-    <link rel="stylesheet" href="../../../styles/section.css">
+    <link rel="stylesheet" href="../../../styles/style.css">
 </head>
-<body class="page">
+
+<body class="body">
     <header class="header">
+        <a class="header__button"  href="../css.html">&uArr;</a>
         <h1 class="header__title">SVG Фильтры</h1>
     </header>
-    <article class="article">
+
+    <main class="main">
         <section class="section">
             <pre class="screen screen_pre">
 filter: blur();
@@ -28,13 +31,9 @@ filter: blur();
       - none;         (default)
       - initial;
       - inherit;</pre>
-            <p class="text">
-                <strong>url()</strong> - ссылка на SVG-фильтр в этом или другом документе
-            </p>
+            <p class="paragraph"><strong>url()</strong> - ссылка на SVG-фильтр в этом или другом документе</p>
 
-            <p class="text">
-                Фильтры можно объединять через пробел
-            </p>
+            <p class="paragraph">Фильтры можно объединять через пробел</p>
             <pre class="screen screen_post">
 filter: blur() opacity() sepia();</pre>
 
@@ -46,7 +45,7 @@ blur(значение);</pre>
                 <pre class="screen screen_post">
 filter: blur(16px);
             (1em);</pre>
-                <p class="text">
+                <p class="paragraph">
                     &bull; <strong>значение</strong> задаётся в единицах длины (px, em, ...)<br>
                     &bull; По умолччанию равно <strong>0</strong>
                 </p>
@@ -60,7 +59,7 @@ brightness(значение);</pre>
                 <pre class="screen screen_post">
 filter: brightness(70%);
                   (0.7);</pre>
-                <p class="text">
+                <p class="paragraph">
                     &bull; <strong>значение</strong> задаётся в % или в десятичых дробях<br>
                     &bull; По умолччанию равно <strong>1</strong><br>
                     &bull; <strong> значение > 100% </strong> увеличивает яркость
@@ -75,7 +74,7 @@ contrast(значение);</pre>
                 <pre class="screen screen_post">
 filter: contrast(80%);
                 (0.8);</pre>
-                <p class="text">
+                <p class="paragraph">
                     &bull; <strong>значение</strong> задаётся в % или в десятичых дробях<br>
                     &bull; По умолччанию равно <strong>100%</strong><br>
                     &bull; <strong> значение &gt; 100% </strong> усиливает констрастность
@@ -90,9 +89,7 @@ drop-shadow(x y размытость растяжение цвет);</pre>
                 <pre class="screen screen_post">
 filter: drop-shadow(16px 32px 8px -4px black);
                    (1em 2em 0.5em -0.25em #000);</pre>
-                <p class="text">
-                    Добавляется к элементам и его содержимому с учетом их прозрачности
-                </p>
+                <p class="paragraph">Добавляется к элементам и его содержимому с учетом их прозрачности</p>
             </div>
 
             <div class="subsection">
@@ -103,7 +100,7 @@ grayscale(значение);</pre>
                 <pre class="screen screen_post">
 filter: grayscale(40%);
                  (0.4);</pre>
-                <p class="text">
+                <p class="paragraph">
                     &bull; <strong>значение</strong> задаётся в % или в десятичых дробях<br>
                     &bull; По умолчанию <strong>0%</strong> т.е. нет эффекта<br>
                     &bull; При <strong>100%</strong> полностью обесцвечивается
@@ -115,7 +112,7 @@ filter: grayscale(40%);
 
                 <pre class="screen screen_pre">
 hue-rotate(0deg ... 360deg);</pre>
-                <p class="text">
+                <p class="paragraph">
                     &bull; Меняет цвета изображения в зависимости от заданного угла поворота в цветовом круге<br>
                     &bull; По умолчанию <strong>0deg</strong> т.е. нет эффекта
                 </p>
@@ -126,9 +123,7 @@ hue-rotate(0deg ... 360deg);</pre>
 
                 <pre class="screen screen_pre">
 invert(0% ... 100%);</pre>
-                <p class="text">
-                    &bull; По умолчанию <strong>0%</strong> т.е. нет эффекта
-                </p>
+                <p class="paragraph">По умолчанию <strong>0%</strong> т.е. нет эффекта</p>
             </div>
 
             <div class="subsection">
@@ -136,7 +131,7 @@ invert(0% ... 100%);</pre>
 
                 <pre class="screen screen_pre">
 opacity(100% ... 0%);</pre>
-                <p class="text">
+                <p class="paragraph">
                     &bull; <strong>0%</strong> - полностью прозрачный<br>
                     &bull; По умолчанию <strong>100%</strong> т.е. нет эффекта<br>
                 </p>
@@ -147,7 +142,7 @@ opacity(100% ... 0%);</pre>
                 
                 <pre class="screen screen_pre">
 saturate(значение);</pre>
-                <p class="text">
+                <p class="paragraph">
                     &bull; <strong> значение </strong> указывается числом или процентами<br>
                     &bull; <strong> 0% </strong> убирает цветность<br>
                     &bull; По умолчанию <strong> 100% </strong> т.е. нет эффекта и равно <strong> 1 </strong><br>
@@ -160,11 +155,9 @@ saturate(значение);</pre>
 
                 <pre class="screen screen_pre">
 sepia(0% ... 100%);</pre>
-                <p class="text">
-                    &bull; По умолчанию <strong>0%</strong> т.е. нет эффекта
-                </p>
+                <p class="paragraph">По умолчанию <strong>0%</strong> т.е. нет эффекта</p>
             </div>
         </section>
-    </article>
+    </main>
 </body>
 </html>

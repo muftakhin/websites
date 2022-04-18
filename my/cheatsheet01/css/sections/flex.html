@@ -5,13 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Float</title>
-    <link rel="stylesheet" href="../../styles/section.css">
+    <link rel="stylesheet" href="../../styles/style.css">
 </head>
-<body class="page">
+
+<body class="body">
     <header class="header">
+        <a class="header__button"  href="../css.html">&uArr;</a>
         <h1 class="header__title">Flex</h1>
     </header>
-    <article class="article">
+
+    <main class="main">
         <section class="section">
             <h2 class="section__header">Flex-контейнер</h2>
 
@@ -59,7 +62,7 @@
                  - last-baseline;
                  - ...             + safe / unsafe;
 }</pre>
-            <p class="text">
+            <p class="paragraph">
                 <strong>{ justify-content: }</strong> (выравнивание по главной оси) - если элементы располагаются в одну строку<br>
                 <strong>{ align-items: }</strong> (выравнивание поперёк главной оси) - если элементы располагаются в одну строку<br>
                 <strong>{ align-content: }</strong> (выравнивание поперёк главной оси) - если элементы в располагаются в несколько строк<br>
@@ -100,7 +103,7 @@
 				<pre class="screen screen_pre">
 order: integer;         (defaulf=0)</pre>
 
-				<p class="text">
+				<p class="paragraph">
 					<strong>{order: -1}</strong> - в начале списка<br>
                     <strong>{order: 0}</strong> - по умолчанию<br>
                     <strong>{order: 1}</strong> - в конце списка
@@ -113,9 +116,7 @@ order: integer;         (defaulf=0)</pre>
 				<pre class="screen screen_pre">
 flex-grow: number;      (default=0)</pre>
 
-				<p class="text">
-                    - величина относительно других flex-элементов, до которой может увеличиваться flex-элемент при наличии свободного пространства (относительный размер). &quot;Отъедает&quot; в долях(частях) свободное пространство, подобно фракциям <strong>fr</strong>
-				</p>
+				<p class="paragraph">- величина относительно других flex-элементов, до которой может увеличиваться flex-элемент при наличии свободного пространства (относительный размер). &quot;Отъедает&quot; в долях(частях) свободное пространство, подобно фракциям <strong>fr</strong></p>
 			</div>
 
             <div class="subsection">
@@ -124,9 +125,7 @@ flex-grow: number;      (default=0)</pre>
 				<pre class="screen screen_pre">
 flex-shrink: number;    (default=1)</pre>
 
-				<p class="text">
-                    - величина, до которой может уменьшаться flex-элемент относительно других flex-элементов, когда имеется дефицит пространства (когда размер контейнера меньше суммы размеров элементов). Это значение важно, если у контейнера указан <strong>{ flex-wrap: nowrap; }</strong>. Если при <strong>{ flex-wrap: nowrap; }</strong> <strong>{ flex-shrink: 0 ; }</strong>, то элементы будут расширяться за пределы контейнера
-				</p>
+				<p class="paragraph">- величина, до которой может уменьшаться flex-элемент относительно других flex-элементов, когда имеется дефицит пространства (когда размер контейнера меньше суммы размеров элементов). Это значение важно, если у контейнера указан <strong>{ flex-wrap: nowrap; }</strong>. Если при <strong>{ flex-wrap: nowrap; }</strong> <strong>{ flex-shrink: 0 ; }</strong>, то элементы будут расширяться за пределы контейнера</p>
 			</div>
 
             <div class="subsection">
@@ -136,7 +135,7 @@ flex-shrink: number;    (default=1)</pre>
 flex-basis: length;
           - auto;       (default)</pre>
 
-				<p class="text">
+				<p class="paragraph">
                     - базовый размер, к которому приводится размер flex-элемента<br>
                     &bull; Если <strong>{ flex-grow: 0;}</strong> , то размер элемента будет соответствовать <strong>{ flex-basis: }</strong>(если он указан)<br>
                     &bull; Если <strong>{ flex-grow: >0;}</strong> ,то элемент растянется на всё свободное пространство (&quot;съест его&quot;)<br>
@@ -155,12 +154,10 @@ align-self: auto;
           - baseline;
           - stretch;</pre>
 
-				<p class="text">
-                    - переопределение выравнивания для элемента относительно поперечной оси (сделать "не таким как все")
-				</p>
+				<p class="paragraph">- переопределение выравнивания для элемента относительно поперечной оси (сделать "не таким как все")</p>
 			</div>
 
-            <p class="text">
+            <p class="paragraph">
                 &bull; Свободное место "съедается" свойствами <strong>{flex-grow: }</strong> или <strong>{margin: auto}</strong> до того, как начнётся применяться выавнивание flex-элементов<br>
 				&bull; По умолчанию элементы ужимаются под содержимое (если не указаны размеры)<br>
                 &bull; При использовании <strong>{display: flex;}</strong> у контейнера, перестаёт работать свойство <strong>{columns}</strong><br>
@@ -172,13 +169,9 @@ align-self: auto;
                 &bull; <strong>::</strong>Псевдоэлементы внутри flex-контейера становятся flex-элементами
             </p>
 
-            <p class="text">
-                Чтобы прижать <strong>&lt;footer&gt;</strong> к низу окна, нужно задать <strong>&lt;footer&gt;</strong> и <strong>&lt;header&gt;</strong> <strong>{flex-grow: 0;}</strong>, а <strong>&lt;main&gt;</strong> <strong>{flex-grow: 1;}</strong>
-            </p>
+            <p class="paragraph">Чтобы прижать <strong>&lt;footer&gt;</strong> к низу окна, нужно задать <strong>&lt;footer&gt;</strong> и <strong>&lt;header&gt;</strong> <strong>{flex-grow: 0;}</strong>, а <strong>&lt;main&gt;</strong> <strong>{flex-grow: 1;}</strong></p>
 
-            <p class="text">
-                Если задать элементу <strong>{ margin-right: auto; }</strong> , то он прижмётся к левой стороне, а справая сторона заполнится пустым пространством (если элементы не заполняют полностью контейнер). Аналогично с другими направлениями
-            </p>
+            <p class="paragraph">Если задать элементу <strong>{ margin-right: auto; }</strong> , то он прижмётся к левой стороне, а справая сторона заполнится пустым пространством (если элементы не заполняют полностью контейнер). Аналогично с другими направлениями</p>
 
             <pre class="screen screen_post">
 .container {
@@ -189,15 +182,13 @@ align-self: auto;
 .item {
     flex: 1 1 400px;
 }</pre>
-            <p class="text">
-                3 элемента <strong>.item</strong>. 2 заполнят первую строку, 3-й полностью заполнит вторую строку
-            </p>
+            <p class="paragraph">3 элемента <strong>.item</strong>. 2 заполнят первую строку, 3-й полностью заполнит вторую строку</p>
         </section>
 
         <section class="section">
             <h2 class="section__header">Рекомендации  построения сеток на FLEX</h2>
 
-            <p class="text">
+            <p class="paragraph">
                 &bull; Всегда явно задавайте размер колонок (<strong>width</strong> или <strong>flex-basis</strong>)<br>
                 &bull; Расстояние между колонок задавайте с помощью:<br>
                 &nbsp; - <strong>justify-content</strong>, если отступы одинаковые<br>
@@ -206,7 +197,7 @@ align-self: auto;
                 &bull; Чтобы элементы с имеющимися <strong>margin:</strong> прижимались к границам родительского элемента (flex-контейнеру). То этому родительскому <strong>flex-контейеру</strong> задаём отрицательный <strong>margin:</strong>
             </p>
 
-            <p class="text">
+            <p class="paragraph">
                 Приоритетность размеров Flex-контейнера:<br>
                 1) <strong>flex-basis: (не auto);</strong><br>
                 2) <strong>width: (не auto);</strong> при <strong>flex-direction: row;</strong><br>
@@ -214,6 +205,6 @@ align-self: auto;
                 3) Размер содержимого (по умолчанию)
             </p>
         </section>
-    </article>
+    </main>
 </body>
 </html>
