@@ -28,11 +28,11 @@ li {
 
 // === /Variables ===
 
-.page-body {
+.body {
     background-color: @main-bgcolor;
 }
 
-.page-header {
+.header {
     background-color: @main-color;
     display: grid;
     grid-template-columns: 56px 1fr 56px;
@@ -64,7 +64,12 @@ li {
 }
 
 .nav {
+    padding: 0 8px;
+}
+
+.nav-list {
     height: 100vh;
+    padding: 0 4px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -81,7 +86,7 @@ li {
 
 @media (min-width: 1024px) {
 
-    .nav {
+    .nav-list {
         flex-direction: row;
 
         &__item {
@@ -131,7 +136,20 @@ li {
     }
 }
 
-.page-main {
+.subitems-list {
+
+    &__item {
+        margin: 4px;
+        padding: 8px;
+        font-family: monospace;
+        font-size: 24px;
+        color: white;
+        background-color: @main-color;
+        text-align: center;
+    }
+}
+
+main {
     max-width: 1080px;
     margin: 8px auto;
     padding: 6px;
@@ -169,57 +187,47 @@ strong {
     color: maroon;
 }
 
-.subitems-list {
-
-    &__item {
-        margin: 4px;
-        padding: 8px;
-        font-family: monospace;
-        font-size: 24px;
-        color: white;
-        background-color: @main-color;
-        text-align: center;
-    }
-}
 .section {
     padding-bottom: 16px;
-}
 
-.section-header {
-    min-height: 40px;
-    line-height: 40px;
-    font-size: 20px;
-    text-align: center;
-    margin-bottom: 8px;
-    color: white;
-    background-color: @main-color;
+    &__header {
+        min-height: 40px;
+        line-height: 40px;
+        font-size: 20px;
+        text-align: center;
+        margin-bottom: 8px;
+        color: white;
+        background-color: @main-color;
+    }
 }
 
 .subsection {
     margin-bottom: 16px;
+
+    &__header {
+        margin-bottom: 8px;
+        min-height: 36px;
+        line-height: 36px;
+        font-size: 20px;
+        font-family: monospace;
+        font-weight: normal;
+        text-align: center;
+        color: @main-color;
+        border: 2px solid @main-color;
+    }
 }
 
-.subsection-header {
-    margin-bottom: 8px;
-    min-height: 36px;
-    line-height: 36px;
-    font-size: 20px;
-    font-family: monospace;
-    font-weight: normal;
-    text-align: center;
-    color: @main-color;
-    border: 2px solid @main-color;
-}
-
-.subsubsection-header {
-    width: fit-content;
-    min-height: 32px;
-    margin-bottom: 4px;
-    padding: 0 16px;
-    font-size: 20px;
-    font-weight: normal;
-    line-height: 32px;
-    font-family: monospace;
-    color: @main-color;
-    border: 2px dotted @main-color;
+.subsubsection {
+    &__header {
+        width: fit-content;
+        min-height: 32px;
+        margin-bottom: 4px;
+        padding: 0 16px;
+        font-size: 20px;
+        font-weight: normal;
+        line-height: 32px;
+        font-family: monospace;
+        color: @main-color;
+        border: 2px dotted @main-color;
+    }
 }

@@ -17,16 +17,16 @@ a {
 li {
   list-style-type: none;
 }
-.page-body {
+.body {
   background-color: #222222;
 }
-.page-header {
+.header {
   background-color: steelblue;
   display: grid;
   grid-template-columns: 56px 1fr 56px;
   grid-template-areas: "button title .";
 }
-.page-header__button {
+.header__button {
   padding-left: 22px;
   font-size: 32px;
   height: 56px;
@@ -35,10 +35,10 @@ li {
   transition: all 0.2s ease-in-out;
   grid-area: button;
 }
-.page-header__button:hover {
+.header__button:hover {
   color: black;
 }
-.page-header__title {
+.header__title {
   color: white;
   font-size: 32px;
   font-family: monospace;
@@ -48,24 +48,28 @@ li {
   grid-area: title;
 }
 .nav {
+  padding: 0 8px;
+}
+.nav-list {
   height: 100vh;
+  padding: 0 4px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
 }
-.nav__item img {
+.nav-list__item img {
   width: 15vh;
   height: 15vh;
 }
 @media (min-width: 1024px) {
-  .nav {
+  .nav-list {
     flex-direction: row;
   }
-  .nav__item {
+  .nav-list__item {
     transition: transform 0.3s ease-in-out;
   }
-  .nav__item:hover {
+  .nav-list__item:hover {
     transform: scale(1.2, 1.2);
   }
 }
@@ -99,7 +103,16 @@ li {
 .items-list__item:hover {
   color: black;
 }
-.page-main {
+.subitems-list__item {
+  margin: 4px;
+  padding: 8px;
+  font-family: monospace;
+  font-size: 24px;
+  color: white;
+  background-color: steelblue;
+  text-align: center;
+}
+main {
   max-width: 1080px;
   margin: 8px auto;
   padding: 6px;
@@ -132,19 +145,10 @@ strong {
   font-family: monospace;
   color: maroon;
 }
-.subitems-list__item {
-  margin: 4px;
-  padding: 8px;
-  font-family: monospace;
-  font-size: 24px;
-  color: white;
-  background-color: steelblue;
-  text-align: center;
-}
 .section {
   padding-bottom: 16px;
 }
-.section-header {
+.section__header {
   min-height: 40px;
   line-height: 40px;
   font-size: 20px;
@@ -156,7 +160,7 @@ strong {
 .subsection {
   margin-bottom: 16px;
 }
-.subsection-header {
+.subsection__header {
   margin-bottom: 8px;
   min-height: 36px;
   line-height: 36px;
@@ -167,7 +171,7 @@ strong {
   color: steelblue;
   border: 2px solid steelblue;
 }
-.subsubsection-header {
+.subsubsection__header {
   width: fit-content;
   min-height: 32px;
   margin-bottom: 4px;
