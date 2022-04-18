@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Типы данных</title>
+    <link rel="stylesheet" href="../../styles/style.css">
+</head>
+
+<body class="body">
+    <header class="header">
+        <a class="header__button"  href="../javascript.html">&uArr;</a>
+        <h1 class="header__title">Переменные и константы</h1>
+    </header>
+
+    <main class="main">
+        <section class="section">
+            <h2 class="section__header">Переменные</h2>
+
+            <p class="paragraph">
+                &bull; переменная <strong>var</strong> видна до её объявления<br>
+                &bull; все объекты в булевом контексте являются <strong>true</strong>
+            </p>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Инициализация и присвоение значения</h3>
+
+                <div class="subsubsection">
+                    <h4 class="subsubsection__header">Инициализация (создание)</h4>
+
+                    <pre class="screen screen_pre">
+let name_1;</pre>
+                </div>
+
+                <div class="subsubsection">
+                    <h4 class="subsubsection__header">Присвоение значения</h4>
+
+                    <pre class="screen screen_pre">
+let name_1 = value_1;</pre>
+
+                    <pre class="screen screen_pre">
+name_1 = value_2;</pre>
+                    <p class="paragraph">При присвоении нового значения или ранее созданной переменной, использование ключевого слова не обязательно</p>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Области видимости переменных</h3>
+
+                <p class="paragraph">Если имена глобальной и локальной переменных совпадают, то локальная переменная замещает внутри функции глобальную</p>
+
+                <div class="subsubsection">
+                    <h4 class="subsubsection__header">Глобальные</h4>
+
+                    <p class="paragraph">Объявленные за пределами функций или внутри функции без использования ключевого слова <strong>var</strong> (используемые без предварительного объявления)</p>
+
+                    <p class="paragraph">
+                        &bull; Видны даже в дополнительных сценариях<br>
+                        &bull; Существуют, пока существует страница (при перезагрузке страницы уничтожаются и создаются заново)
+                    </p>
+                </div>
+
+                <div class="subsubsection">
+                    <h4 class="subsubsection__header">Локальные</h4>
+                            
+                    <p class="paragraph">Объявленные внутри функции используя ключевое слово <strong>var</strong></p>
+
+                    <p class="paragraph">
+                        &bull; Доступны только локально в самой функции<br>
+                        &bull; Параметр переданный функции приобретают локальную область видимости, кроме массивов, передаваемых функции по ссылке. Если внести изменение в элемент массива, переданного в качестве параметра, изменятся элемент исходного массива<br>
+                        &bull; Переменная цикла видна во всей функции, внутри которой объявлена<br>
+                        &bull; Создаются при первом вызове функции и исчезают при завершении функции
+                    </p>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Зарезервированные слова</h3>
+
+                <p class="paragraph">Не допускается использование зарезервированных слов для именования переменных</p>
+
+                <ul class="subitems-list">
+                    <li class="subitems-list__item">abstract</li>
+                    <li class="subitems-list__item">as</li>
+                    <li class="subitems-list__item">boolean</li>
+                    <li class="subitems-list__item">break</li>
+                    <li class="subitems-list__item">byte</li>
+                    <li class="subitems-list__item">case</li>
+                    <li class="subitems-list__item">catch</li>
+                    <li class="subitems-list__item">char</li>
+                    <li class="subitems-list__item">class</li>
+                    <li class="subitems-list__item">continue</li>
+                    <li class="subitems-list__item">const</li>
+                    <li class="subitems-list__item">debugger</li>
+                    <li class="subitems-list__item">default</li>
+                    <li class="subitems-list__item">delete</li>
+                    <li class="subitems-list__item">do</li>
+                    <li class="subitems-list__item">double</li>
+                    <li class="subitems-list__item">else</li>
+                    <li class="subitems-list__item">enum</li>
+                    <li class="subitems-list__item">export</li>
+                    <li class="subitems-list__item">extends</li>
+                    <li class="subitems-list__item">false</li>
+                    <li class="subitems-list__item">final</li>
+                    <li class="subitems-list__item">finally</li>
+                    <li class="subitems-list__item">float</li>
+                    <li class="subitems-list__item">for</li>
+                    <li class="subitems-list__item">function</li>
+                    <li class="subitems-list__item">goto</li>
+                    <li class="subitems-list__item">if</li>
+                    <li class="subitems-list__item">implements</li>
+                    <li class="subitems-list__item">import</li>
+                    <li class="subitems-list__item">in</li>
+                    <li class="subitems-list__item">instanceof</li>
+                    <li class="subitems-list__item">int</li>
+                    <li class="subitems-list__item">interface</li>
+                    <li class="subitems-list__item">is</li>
+                    <li class="subitems-list__item">long</li>
+                    <li class="subitems-list__item">namespace</li>
+                    <li class="subitems-list__item">nativ</li>
+                    <li class="subitems-list__item">new</li>
+                    <li class="subitems-list__item">null</li>
+                    <li class="subitems-list__item">package</li>
+                    <li class="subitems-list__item">private</li>
+                    <li class="subitems-list__item">protected</li>
+                    <li class="subitems-list__item">public</li>
+                    <li class="subitems-list__item">return</li>
+                    <li class="subitems-list__item">short</li>
+                    <li class="subitems-list__item">static</li>
+                    <li class="subitems-list__item">super</li>
+                    <li class="subitems-list__item">switch</li>
+                    <li class="subitems-list__item">synchronized</li>
+                    <li class="subitems-list__item">this</li>
+                    <li class="subitems-list__item">throw</li>
+                    <li class="subitems-list__item">throws</li>
+                    <li class="subitems-list__item">transient</li>
+                    <li class="subitems-list__item">true</li>
+                    <li class="subitems-list__item">try</li>
+                    <li class="subitems-list__item">typeof</li>
+                    <li class="subitems-list__item">use</li>
+                    <li class="subitems-list__item">var</li>
+                    <li class="subitems-list__item">void</li>
+                    <li class="subitems-list__item">volatile</li>
+                    <li class="subitems-list__item">while</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section__header">Константы</h2>
+
+            <p class="paragraph">Записываются заглавными буквами</p>
+            <pre class="screen screen_pre">
+const NAME1;</pre>
+            <p class="paragraph">
+                &bull; Нельзя присвоить новое значение<br>
+                &bull; Если значением является объект, то можно изменять его свойства
+            </p>
+        </section>
+    </main>
+</body>
+</html>

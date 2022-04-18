@@ -5,17 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Прототип</title>
-    <link rel="stylesheet" href="../../styles/section.css">
+    <link rel="stylesheet" href="../../styles/style.css">
 </head>
-<body class="page">
+
+<body class="body">
     <header class="header">
+        <a class="header__button"  href="../javascript.html">&uArr;</a>
         <h1 class="header__title">Прототип</h1>
     </header>
-    <article class="article">
+
+    <main class="main">
         <section class="section">
-            <p class="text">
-                Одинаковые свойства и методы объектов можно задавать в прототипе
-            </p>
+            <p class="paragraph">Одинаковые свойства и методы объектов можно задавать в прототипе</p>
         </section>
 
         <section class="section">
@@ -26,7 +27,7 @@ Name_1.prototype</pre>
         </section>
 
         <section class="section">
-            <p class="text">
+            <p class="paragraph">
                 &bull; В JavaScript функции являются объектами<br>
                 &bull; Конструктор имеет свойство <strong>.prortotype</strong><br>
                 &bull; <strong>.this</strong> вызывает метод находящийся в прототипе, если его нет в объекте, ссылаясь на исходный объект<br>
@@ -45,9 +46,7 @@ function Name_1(param_1, param_2, ..., param_3) {
     ...
     this.param_n = param_n;
 }</pre>
-            <p class="text">
-                - Сначала создаём Конструктор
-            </p>
+            <p class="paragraph">- Сначала создаём Конструктор</p>
 
             <pre class="screen screen_pre">
 Name_1.prototype.name_2 = value_2;
@@ -66,7 +65,7 @@ Name_1.prototype.name_name_2 = function() {
 Name_1.prototype.name_name_n = function() {
     ...
 };                                   // Задаём методы</pre>
-            <p class="text">
+            <p class="paragraph">
                 <strong>name_n</strong> - имя свойства<br>
                 <strong>name_name_n</strong> - имя метода
             </p>
@@ -81,9 +80,7 @@ let name_2 = new Name_1(value_1, value_2, ..., value_n);
 name_2.name_3 = function() {
     ...
 };</pre>
-            <p class="text">
-                <strong>name_3</strong> - переопределяемый метод
-            </p>
+            <p class="paragraph"><strong>name_3</strong> - переопределяемый метод</p>
 
             <div class="subsection">
                 <h3 class="subsection__header">Переопределение при помощи метода прототипа</h3>
@@ -96,7 +93,7 @@ Name_1.prototype.name_3 = function() {
         this.name_2 = value_2;
     }
 };</pre>
-                <p class="text">
+                <p class="paragraph">
                     &bull; Вызов метода <strong>.name_3()</strong> переопределяет значение унаследованного свойства <strong>name_2</strong> объекта и присваивает его экземпляру, при заданном условии<br>
                     &bull; При первом обращении к свойству <strong>.this</strong> его значение берётся из прототипа, но затем значение свойства присваивается в экземпляре
                 </p>
@@ -109,7 +106,7 @@ Name_1.prototype.name_3 = function() {
 
             <pre class="screen screen_pre">
 name_1.hasOwnProperty(name_2);</pre>
-            <p class="text">
+            <p class="paragraph">
                 &bull; <strong>true</strong> - если в экземпляре<br>
                 &bull; <strong>false</strong> - если в прототипе
             </p>
@@ -179,6 +176,6 @@ Name_2.prototype.name_7 = function() {
     ...
 };</pre>
         </section>
-    </article>
+    </main>
 </body>
 </html>

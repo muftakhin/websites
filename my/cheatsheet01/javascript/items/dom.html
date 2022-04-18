@@ -5,21 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DOM</title>
-    <link rel="stylesheet" href="../../styles/section.css">
+    <link rel="stylesheet" href="../../styles/style.css">
 </head>
-<body class="page">
+
+<body class="body">
     <header class="header">
+        <a class="header__button"  href="../javascript.html">&uArr;</a>
         <h1 class="header__title">DOM</h1>
     </header>
-    <article class="article">
+
+    <main class="main">
         <section class="section">
             <h2 class="section__header">window</h2>
 
-            <p class="text">
-                - внутреннее представление страницы в браузере
-            </p>
+            <p class="paragraph">- внутреннее представление страницы в браузере</p>
 
-            <p class="text">
+            <p class="paragraph">
                 &bull; Глобальный объект, занимается окном, внутри которого DOM-дерево<br>
                 &bull; Т.к. объект <strong>window</strong> действует как глобальная среда, любые имена свойств или методов данного объекта разрешается указывать без указания перед ними слова window<br>
                 &bull; Любые глобальные переменные, которые вы определяете, помещаются в пространство имён <strong>window</strong>, так что вы можете ссылаться на них следующим образом: <strong>window.имя_переменной</strong>
@@ -41,37 +42,31 @@ window.addEventListener("keydown", function(evt) {
             <div class="subsection">                    
                 <h3 class="subsection__header">Свойства объекта window</h3>
 
-                <p class="text">
+                <p class="paragraph">
                     <strong>location</strong> - содержит URL-адрес страницы<br>
                     <strong>status</strong> - содержит строку отображающуюся в статусной строке<br>
                     <strong>onload</strong> - содержит функцию, вызываемую после полной загрузки страницы<br>
                     <strong>document</strong> - содержит объектную модель документа (DOM)
                 </p>
 
-                <div class="subsection__item">
-                    <h4 class="subsection__item-header">window.onload</h4>
+                <div class="subsubsection">
+                    <h4 class="subsubsection__header">window.onload</h4>
 
-                    <p class="text">
-                        - выполнение кода после загрузки страницы
-                    </p>
+                    <p class="paragraph">- выполнение кода после загрузки страницы</p>
 
-                    <p class="text">
-                        Присваивая свойству <strong>window.onload</strong> функции мы можем гарантировать, что код в теле функции не будет выполняться до тех пор, пока загрузув страницы не закончится и ибъектная модель документа не будет полностью сгенерирована
-                    </p>
+                    <p class="paragraph">Присваивая свойству <strong>window.onload</strong> функции мы можем гарантировать, что код в теле функции не будет выполняться до тех пор, пока загрузув страницы не закончится и ибъектная модель документа не будет полностью сгенерирована</p>
                     <pre class="screen screen_pre">
 window.onload = function() {
     ...
 };</pre>
-                    <p class="text">
-                        Другой вариант:
-                    </p>
-                        <pre class="screen screen_pre">
+                    <p class="paragraph">Другой вариант:</p>
+                    <pre class="screen screen_pre">
 function name_1() {
     ...
 }
 
 window.onload = name_1;</pre>
-                    <p class="text">
+                    <p class="paragraph">
                         &bull; Перед <strong>onload</strong> указываем <strong>window.</strong>, ибо существует масса других объектов, имеющих свойство <strong>onload</strong><br>
                         &bull; Если вместо <strong>window.onload = name_1;</strong> (присвоение значения функции свойству <strong>onload</strong>) указать <strong>window.onload = name_1();</strong>, то этим скажем, что хотим вызвать функцию <strong>name_1</strong>. А так мы просто связываем функцию <strong>name_1</strong> c <strong>window.onload</strong>
                     </p>
@@ -81,7 +76,7 @@ window.onload = name_1;</pre>
             <div class="subsection">
                 <h3 class="subsection__header">Методы объекта window</h3>
 
-                <p class="text">
+                <p class="paragraph">
                     <strong>alert</strong> - выводит соответствующее диалоговое окно<br>
                     <strong>prompt</strong> - получает информацию от пользователя<br>
                     <strong>open</strong> - открывает новое окно браузера<br>
@@ -95,7 +90,7 @@ window.onload = name_1;</pre>
         <section class="section">
             <h2 class="section__header">document</h2>
 
-            <p class="text">
+            <p class="paragraph">
                 &bull; Является свойством объекта <strong>window</strong>
                 &bull; Глобальный объект<br>
                 &bull; Корневой элемент дерева DOM
@@ -104,7 +99,7 @@ window.onload = name_1;</pre>
             <div class="subsection">
                 <h3 class="subsection__header">Свойства объекта document</h3>
                     
-                <p class="text">
+                <p class="paragraph">
                     <strong>domain</strong> - домен сервера, с которого загружается документ, например bestsite.com<br>
                     <strong>title</strong> - может использоваться для извлечения заголовка документа, для чего нужно указать document.title<br>
                     <strong>URL</strong> - URL-адрес документа
@@ -114,16 +109,14 @@ window.onload = name_1;</pre>
             <div class="subsection">
                 <h3 class="subsection__header">Методы объекта document</h3>
 
-                <p class="text">
+                <p class="paragraph">
                     <strong>getElementById</strong> - позволяет извлекать элемент в соответствии с его идентификатором<br>
                     <strong>getElementsByTagName</strong> и <br>
                     <strong>getElementsByClassName</strong> - позволяют извлекать элементы в соответствии с миенами тегов и классов<br>
                     <strong>createElement</strong> - генерирует элемент, подходящий для включения в DOM
                 </p>
 
-                <p class="text">
-                    Элементы, которые возвращают методы вроде <strong>getElementById</strong> также являются объектами
-                </p>
+                <p class="paragraph">Элементы, которые возвращают методы вроде <strong>getElementById</strong> также являются объектами</p>
             </div>
         </section>
 
@@ -133,7 +126,7 @@ window.onload = name_1;</pre>
             <div class="subsection">
                 <h3 class="subsection__header">Свойства элемента (объекта элемента), например элемента &lt;p&gt;</h3>
 
-                <p class="text">
+                <p class="paragraph">
                     <strong>innerHTML</strong> - с его помощью можем изменить содержимое элемента<br>
                     <strong>childElementCount</strong> - количество дочерних элементов<br>
                     <strong>firstChild</strong> - первый дочерний элемент (если есть)<br>
@@ -143,7 +136,7 @@ window.onload = name_1;</pre>
             <div class="sunsection">
                 <h3 class="sub2section__header">Методы элемента (объекта элемнта)</h3>
                     
-                <p class="text">
+                <p class="paragraph">
                     <strong>appendChild</strong> и<br>
                     <strong>insertBefore</strong> - используются для вставки новых элементов в DOM<br>
                     <strong>setAttribute</strong> и<br>
@@ -158,7 +151,7 @@ window.onload = name_1;</pre>
             <div class="subsection">
                 <h3 class="subsection__header">.getElementById() (es5)</h3>
     
-                <p class="text">
+                <p class="paragraph">
                     &bull; <strong>.getElementById()</strong> принимает аргумент в виде значения <strong>id</strong> элемента и возвращает объект элемента<br>
                     &bull; Применяется во всех случаях, когда необходимо найти элемент на текущей странице
                     &bull; Позволяет получить доступ к любому элементу HTML по id<br>
@@ -166,7 +159,7 @@ window.onload = name_1;</pre>
                 </p>
                 <pre class="screen screen_pre">
 let name_1 = document.getElementById("name_2");</pre>
-                <p class="text">
+                <p class="paragraph">
                     &bull; Присваиваем элемент с данным <strong>id="name_2"</strong> переменной <strong>name_1</strong><br>
                     &bull; Теперь можем использовать переменную <strong>name_1</strong> для ссылки на соответствующий элемент
                 </p>
@@ -175,16 +168,14 @@ let name_1 = document.getElementById("name_2");</pre>
             <div class="subsection">               
                 <h3 class="subsection__header">.innerHTML</h3>
         
-                <p class="text">
+                <p class="paragraph">
                     &bull; С помощью свойства <strong>.innerHTML</strong> можем изменить содержимое элемента:<br>
                     &bull; <strong>.innerHTML</strong> представляет всё содержимое элемента, включая вложенные элементы
                 </p>
                 <pre class="screen screen_pre">
 name_1.innerHTML = "Содержимое элемента";</pre>
 
-                <p class="text">
-                    Или вывести его содержимое:
-                </p>
+                <p class="paragraph">Или вывести его содержимое:</p>
                 <pre class="screen screen_pre">
 console.log(name_1.innerHTML);</pre>
             </div>
@@ -192,9 +183,7 @@ console.log(name_1.innerHTML);</pre>
             <div class="subsection">               
                 <h3 class="subsection__header">.outerHTML</h3>
         
-                <p class="text">
-                    &bull; <strong>.outerHTML</strong> возвращает элемент и всю разметку внутри него
-                </p>
+                <p class="paragraph"><strong>.outerHTML</strong> возвращает элемент и всю разметку внутри него</p>
             </div>
 
             <div class="subsection">
@@ -202,7 +191,7 @@ console.log(name_1.innerHTML);</pre>
     
                 <pre class="screen screen_pre">
 let name_1 = document.getElementsByClassName("name_2");</pre>
-                <p class="text">
+                <p class="paragraph">
                     &bull; 
                 </p>
             </div>
@@ -212,7 +201,7 @@ let name_1 = document.getElementsByClassName("name_2");</pre>
     
                 <pre class="screen screen_pre">
 let name_1 = document.getElementsByTagName("name_2");</pre>
-                <p class="text">
+                <p class="paragraph">
                     &bull; 
                 </p>
             </div>
@@ -220,15 +209,13 @@ let name_1 = document.getElementsByTagName("name_2");</pre>
             <div class="subsection">
                 <h3 class="subsection__header">.querySelector()</h3>
 
-                <p class="text">
-                    - возвращает первый элемент DOM соответствующий селектору
-                </p>
+                <p class="paragraph">- возвращает первый элемент DOM соответствующий селектору</p>
 
                 <pre class="screen screen_pre">
 document.querySelector("css_selector");</pre>
                 <pre class="screen screen_post">
 document.querySelector(".menu");</pre>
-                <p class="text">
+                <p class="paragraph">
                     <strong>document</strong> - объект, внутри которого производится поиск<br>
                     <strong>css_selector</strong> - css селектор
                 </p>
@@ -238,8 +225,8 @@ let name_1 = document.querySelector("css_selector");</pre>
                 <pre class="screen screen_post">
 let imageSmall = document.querySelector('#img_320px');</pre>
 
-                <div class="subsection__item">
-                    <h4 class="subsection__item-header">Задавание значений свойств с использованием .querySelector</h4>
+                <div class="subsubsection">
+                    <h4 class="subsubsection__header">Задавание значений свойств с использованием .querySelector</h4>
 
                     <pre class="screen screen_pre">
 document.querySelector("css_selector").style.свойство = 'значение';</pre>
@@ -249,12 +236,10 @@ document.querySelector("css_selector").style.свойство = 'значени�
             <div class="subsection">
                 <h3 class="subsection__header">.querySelectorAll</h3>
 
-                <p class="text">
-                    Возвращает все элементы DOM соответствующие селектору в виде массива
-                </p>
+                <p class="paragraph">Возвращает все элементы DOM соответствующие селектору в виде массива</p>
 
-                <div class="subsection__item">
-                    <h4 class="subsection__item-header">Слайдер с использованием .querySelectorAll</h4>
+                <div class="subsubsection">
+                    <h4 class="subsubsection__header">Слайдер с использованием .querySelectorAll</h4>
 
                     <pre class="screen screen_post">
 let btn_prev = document.querySelectorAll('.gallery__btn_prev');
@@ -291,18 +276,16 @@ btn_next.onclick = function() {
             <div class="subsection">
                 <h3 class="subsection__header">.setAttribute()</h3>
 
-                <p class="text">
-                    - вызывается для создания атрибута
-                </p>
+                <p class="paragraph">- вызывается для создания атрибута</p>
 
                 <pre class="screen screen_pre">
 name_1.setAttribute("name_2", "volume_1");</pre>
-                <p class="text">
+                <p class="paragraph">
                     <strong>name_1</strong> - объект <strong>element</strong><br>
                     <strong>name_2</strong> - имя атрибута<br>
                     <strong>volume_1</strong> - значение атрибута
                 </p>
-                <p class="text">
+                <p class="paragraph">
                     &bull; Если атрибут <strong>name_2</strong> есть, то поменяется его значение<br>
                     &bull; А если такого атрибута нет, то он появится
                 </p>
@@ -311,13 +294,11 @@ name_1.setAttribute("name_2", "volume_1");</pre>
             <div class="subsection">
                 <h3 class="subsection__header">.getAttribute()</h3>
 
-                <p class="text">
-                    - вызывается для получения значения атрибута
-                </p>
+                <p class="paragraph">- вызывается для получения значения атрибута</p>
 
                 <pre class="screen screen_pre">
 name_1.setAttribute("name_2");</pre>
-                <p class="text">
+                <p class="paragraph">
                     <strong>name_1</strong> - объект <strong>element</strong><br>
                     <strong>name_2</strong> - имя атрибута, значение которого хотим получить
                 </p>
@@ -326,9 +307,9 @@ name_1.setAttribute("name_2");</pre>
             <div class="subsection">
                 <h3 class="subsection__header">.preventDefault()</h3>
 
-                <p>Отмена действия по умолчанию</p>
+                <p>- отмена действия по умолчанию</p>
 
-                <p class="text">
+                <p class="paragraph">
                     <strong>lnkevent.preventDefault();</strong> - отменяет переход по ссылке (как действие по умолчанию элемента с селектором <strong>.button_link</strong> )
                 </p>
             </div>
@@ -336,20 +317,16 @@ name_1.setAttribute("name_2");</pre>
             <div class="subsection">
                 <h3 class="subsection__header">.classList.</h3>
 
-                <p class="text">
-                    - набор методов для управления классами
-                </p>
+                <p class="paragraph">- набор методов для управления классами</p>
 
-                <div class="subsection__item">
-                    <h4 class="subsection__item-header">.classList.add()</h4>
+                <div class="subsubsection">
+                    <h4 class="subsubsection__header">.classList.add()</h4>
 
-                    <p class="text">
-                        - добавление класса
-                    </p>
+                    <p class="paragraph">- добавление класса</p>
 
                     <pre class="screen screen_pre">
 name_1.classList.add("class_1");</pre>
-                    <p class="text">
+                    <p class="paragraph">
                         <strong>name_1</strong> - элемент, которому добавляем класс<br>
                         <strong>class_1</strong> - имя добавляемого класса (записывается без точки)
                     </p>
@@ -357,12 +334,12 @@ name_1.classList.add("class_1");</pre>
 let name_1 = document.querySelector('css-selector_1');
 name_1.classList.add("class_1");</pre>
 
-                    <p class="text">
+                    <p class="paragraph">
                         &bull; Создаём предварительно в CSS класс <strong>class_1</strong> с необходимыми свойствами<br>
                         &bull; Элементу <strong>element_1</strong> добавляется класс <strong>class_1</strong>. Если у элемента <strong>element_1</strong> имеются классы, то новый класс добавляется в список последним
                     </p>
 
-                    <p class="text">
+                    <p class="paragraph">
                         <strong>Пример:</strong><br>
                         Открытие окна
                     </p>
@@ -376,15 +353,13 @@ popup.classList.add("sale_popup_show")
 });</pre>
                 </div>
 
-                <div class="subsection__item">
-                    <h4 class="subsection__item-header">.classList.remove()</h4>
+                <div class="subsubsection">
+                    <h4 class="subsubsection__header">.classList.remove()</h4>
 
-                    <p class="text">
-                        - удаляет класс
-                    </p>
+                    <p class="paragraph">- удаляет класс</p>
                     
-                    <p class="text">
-                        <strong>Пример:</strong>
+                    <p class="paragraph">
+                        <strong>Пример:</strong><br>
                         Закрытие окна
                     </p>
                     <pre class="screen screen_post">
@@ -396,8 +371,8 @@ popup.classList.remove("sale_popup_show");
 });</pre>
                 </div>
                 
-                <div class="subsection__item">
-                    <h4 class="subsection__item-header">.classList.toggle()</h4>
+                <div class="subsubsection">
+                    <h4 class="subsubsection__header">.classList.toggle()</h4>
 
                     <pre class="screen screen_pre">
 const name_1 = document.querySelector('.name_2');
@@ -405,20 +380,15 @@ name_1.addEventListener('click', () => {
 name_1.classList.toggle(.name_3);
 });
                     </pre>
-                    <p class="text">
-                        - переключает класс
-                    </p>
+                    <p class="paragraph">- переключает класс</p>
                 </div>
 
-                <div class="subsection__item">
-                    <h4 class="subsection__item-header">.classList.cotains()</h4>
+                <div class="subsubsection">
+                    <h4 class="subsubsection__header">.classList.cotains()</h4>
 
-                    <p class="text">
-                        - сообщает, есть ли у элемента класс
-                    </p>
-
-                    <p class="text">
-                        Возвращает булево значение
+                    <p class="paragraph">
+                        - сообщает, есть ли у элемента класс<br>
+                        &bull; Возвращает булево значение
                     </p>
                 </div>
             </div>
@@ -426,15 +396,13 @@ name_1.classList.toggle(.name_3);
             <div class="subsection">
                 <h3 class="subsection__header">.focus()</h3>
                 
-                <p class="text">
-                    - наводит фокус на элемент
-                </p>
+                <p class="paragraph">- наводит фокус на элемент</p>
                 
                 <pre class="screen screen_pre">
 элемент.focus();</pre>
 
-                <div class="subsection__item">
-                    <div class="subsection__item-header">Пример всплывающего окна</div>
+                <div class="subsubsection">
+                    <div class="subsubsection__header">Пример всплывающего окна</div>
 
                     <pre class="screen screen_post">
 &lt;script&gt;
@@ -502,7 +470,7 @@ animation-duration: 0,6s;
 
                 <div class="subsection">
                     <h3 class="subsection__header">.createElement()</h3>
-                    <p class="text">- cоздание нового элемента</p>
+                    <p class="paragraph">- cоздание нового элемента</p>
     
                     <pre class="screen screen_pre">
     let element_name = document.createElement("element");
@@ -511,9 +479,7 @@ animation-duration: 0,6s;
     
                 <div class="subsection">            
                     <h3 class="subsection__header">.appendChild()</h3>
-                    <p class="text">
-                        - добавление элемента в DOM
-                    </p>
+                    <p class="paragraph">- добавление элемента в DOM</p>
     
                     <pre class="screen screen_pre">
     let element_name = document.createElement("element");
@@ -532,18 +498,14 @@ animation-duration: 0,6s;
     function instructions() {
         ...
     }</pre>
-                    <p class="text">
-                        Получив элемент DOM с id="button", задаём для свойства <strong>onclick</strong> функцию <strong>instructions</strong>
-                    </p>
+                    <p class="paragraph">Получив элемент DOM с id="button", задаём для свойства <strong>onclick</strong> функцию <strong>instructions</strong></p>
     
                     <pre class="screen screen_post">
     let colorRed = document.querySelector('.menu__item');
     colorRed.onclick = function() {
         .menu__item.style.color = 'red';
     };</pre>
-                    <p class="text">
-                        Элементу DOM с атрибутом <strong>class="menu__item"</strong> задаём свойству <strong>color:</strong> значение <strong>red</strong>;
-                    </p>
+                    <p class="paragraph">Элементу DOM с атрибутом <strong>class="menu__item"</strong> задаём свойству <strong>color:</strong> значение <strong>red</strong>;</p>
                 </div>
             </div>
         </section>
@@ -554,76 +516,72 @@ animation-duration: 0,6s;
             <div class="subsection">
                 <h3 class="subsection__header">.addEventListener()</h3>
 
-                <p class="text">
-                    - отлавливает событие элемента и выполняет переданную функцию
-                </p>
+                <p class="paragraph">- отлавливает событие элемента и выполняет переданную функцию</p>
 
                 <pre class="screen screen_pre">
 name_1.addEventListener("событие", function(){});</pre>
 
-                <p class="text">
-                    <strong>name_1</strong> - имя элемента у которого отслеживается событие
-                </p>
+                <p class="paragraph"><strong>name_1</strong> - имя элемента у которого отслеживается событие</p>
 
-                <div class="subsection__item">
-                    <h4 class="subsection__item-header">События отслеживаемые</h4>
+                <div class="subsubsection">
+                    <h4 class="subsubsection__header">События отслеживаемые</h4>
 
-                    <ul class="text-list text-list_horizontal">
-                        <li class="text-list__item">
-                            <div class="text-list__header">Мыши</div>
+                    <ul>
+                        <li>
+                            <div class="paragraph-list__header">Мыши</div>
                             <ul>
-                                <li class="text-list__item">mouseenter</li>
-                                <li class="text-list__item">mouseover</li>
-                                <li class="text-list__item">mousemove</li>
-                                <li class="text-list__item">mousedown</li>
-                                <li class="text-list__item">mouseup</li>
-                                <li class="text-list__item">click</li>
-                                <li class="text-list__item">dblclick</li>
-                                <li class="text-list__item">contextmenu</li>
-                                <li class="text-list__item">wheel</li>
-                                <li class="text-list__item">mouseleave</li>
-                                <li class="text-list__item">mouseout</li>
-                                <li class="text-list__item">select</li>
+                                <li class="paragraph-list__item">mouseenter</li>
+                                <li class="paragraph-list__item">mouseover</li>
+                                <li class="paragraph-list__item">mousemove</li>
+                                <li class="paragraph-list__item">mousedown</li>
+                                <li class="paragraph-list__item">mouseup</li>
+                                <li class="paragraph-list__item">click</li>
+                                <li class="paragraph-list__item">dblclick</li>
+                                <li class="paragraph-list__item">contextmenu</li>
+                                <li class="paragraph-list__item">wheel</li>
+                                <li class="paragraph-list__item">mouseleave</li>
+                                <li class="paragraph-list__item">mouseout</li>
+                                <li class="paragraph-list__item">select</li>
                             </ul>
                         </li>
 
-                        <li class="text-list__item">
-                            <div class="text-list__header">Клавиатуры</div>
+                        <li>
+                            <div class="paragraph-list__header">Клавиатуры</div>
                             <ul>
-                                <li class="text-list__item">keydown</li>
-                                <li class="text-list__item">keypress</li>
-                                <li class="text-list__item">keyup</li>
+                                <li class="paragraph-list__item">keydown</li>
+                                <li class="paragraph-list__item">keypress</li>
+                                <li class="paragraph-list__item">keyup</li>
                             </ul>
                         </li>
 
-                        <li class="text-list__item">
-                            <div class="text-list__header">Фокуса</div>
+                        <li>
+                            <div class="paragraph-list__header">Фокуса</div>
                             <ul>
-                                <li class="text-list__item">focus</li>
-                                <li class="text-list__item">blur</li>
+                                <li class="paragraph-list__item">focus</li>
+                                <li class="paragraph-list__item">blur</li>
                             </ul>
                         </li>
 
-                        <li class="text-list__item">
-                            <div class="text-list__header">Формы</div>
+                        <li>
+                            <div class="paragraph-list__header">Формы</div>
                             <ul>
-                                <li class="text-list__item">reset</li>
-                                <li class="text-list__item">submit</li>
+                                <li class="paragraph-list__item">reset</li>
+                                <li class="paragraph-list__item">submit</li>
                             </ul>
                         </li>
 
-                        <li class="text-list__item">
-                            <div class="text-list__header">Сетевые</div>
+                        <li>
+                            <div class="paragraph-list__header">Сетевые</div>
                             <ul>
-                                <li class="text-list__item">online</li>
-                                <li class="text-list__item">offline</li>
+                                <li class="paragraph-list__item">online</li>
+                                <li class="paragraph-list__item">offline</li>
                             </ul>
                         </li>
 
-                        <li class="text-list__item">
-                            <div class="text-list__header">Другие</div>
+                        <li>
+                            <div class="paragraph-list__header">Другие</div>
                             <ul>
-                                <li class="text-list__item">transitionend</li>
+                                <li class="paragraph-list__item">transitionend</li>
                             </ul>
                         </li>
                     </ul>
@@ -638,7 +596,7 @@ buttonIn.addEventListener("click", function(){
                 <pre class="screen screen_pre">
 name_1.addEventListener("событие", function(name_2){});</pre>
                                                     
-                <p class="text">
+                <p class="paragraph">
                     <strong>name_1</strong> - имя элемента у которого отслеживается событие<br>
                     <strong>name_2</strong> - имя объекта события
                 </p>
@@ -655,9 +613,7 @@ buttonLink.addEventListener("click", function(lnkevent){
             <div class="subsection">
                 <h3 class="subsection__header">.removeEventListener()</h3>
 
-                    <p class="text">
-                        - удаление слушателя событий
-                    </p>
+                    <p class="paragraph">- удаление слушателя событий</p>
 
                     <pre class="screen screen_pre">
 let name_1 = document.querySelector('.css_selector_1');
@@ -675,6 +631,6 @@ name_1.addEventListener('name_event', function() {
 });</pre>
             </div>
         </section>
-    </article>
+    </main>
 </body>
 </html>

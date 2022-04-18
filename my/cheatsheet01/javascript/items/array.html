@@ -5,17 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Массивы</title>
-    <link rel="stylesheet" href="../../styles/section.css">
+    <link rel="stylesheet" href="../../styles/style.css">
 </head>
-<body class="page">
+
+<body class="body">
     <header class="header">
+        <a class="header__button"  href="../javascript.html">&uArr;</a>
         <h1 class="header__title">array</h1>
     </header>
-    <article class="article">
+
+    <main class="main">
         <section class="section">
             <h2 class="section__header">Определение массива</h2>
 
-            <p class="text">
+            <p class="paragraph">
                 &bull; Массив - структура данных для работы с упорядоченными данными<br>
                 &bull; Массивы часто используют для хранения сходных данных<br>
                 &bull; Определение массива начинается с символа <strong>[</strong>
@@ -34,9 +37,7 @@ let name_1 = [
 ];
 
 "one", "two", ... - элементы массива name_1</pre>
-            <p class="text">
-                - массив присваивается переменной name_1
-            </p>
+            <p class="paragraph">- массив присваивается переменной name_1</p>
         </section>
 
         <section class="section">
@@ -54,28 +55,26 @@ name_1[1] - доступ ко второму элементу массива nam
             <div class="subsection">
                 <h3 class="subsection__header">Создание пустого массива</h3>
 
-                <div class="subsection__item">
-                    <h4 class="subsection__item-header">Упрощённая запись</h4>
+                <div class="subsubsection">
+                    <h4 class="subsubsection__header">Упрощённая запись</h4>
 
                     <pre class="screen screen_pre">
 let name_1 = [];</pre>
                 </div>
 
-                <div class="subsection__item">
-                    <h4 class="subsection__item-header">С помощью конструктора Array</h4>
+                <div class="subsubsection">
+                    <h4 class="subsubsection__header">С помощью конструктора Array</h4>
 
                     <pre class="screen screen_pre">
 let name_1 = new Array();</pre>
                 </div>
 
-                <div class="subsection__item">
-                    <h4 class="subsection__item-header">Создание пустого массива с несколькими элементами</h4>
+                <div class="subsubsection">
+                    <h4 class="subsubsection__header">Создание пустого массива с несколькими элементами</h4>
 
                     <pre class="screen screen_pre">
 let name_1 = new Array(n);</pre>
-                    <p class="text">
-                        <strong>n</strong> - количество элементов
-                    </p>
+                    <p class="paragraph"><strong>n</strong> - количество элементов</p>
                 </div>
             </div>
 
@@ -84,9 +83,7 @@ let name_1 = new Array(n);</pre>
 
                 <pre class="screen screen_pre">
 let name_1 = ["one", "two", "three"];</pre>
-                <p class="text">
-                    - упрощённая запись
-                </p>
+                <p class="paragraph">- упрощённая запись</p>
 
                 <pre class="screen screen_post">
 let name_1 = new Array("one", "two", "three");</pre>
@@ -98,9 +95,7 @@ let name_1 = new Array("one", "two", "three");</pre>
 
             <pre class="screen screen_post">
 name_1[0] = "six";</pre>
-            <p class="text">
-                - задать или изменить значение первого элемента массива name_1
-            </p>
+            <p class="paragraph">- задать или изменить значение первого элемента массива name_1</p>
         </section>
 
         <section class="section">
@@ -114,9 +109,7 @@ name_1[2] = "three";
 name_1[3] = "four";
 name_1[4] = "five";</pre>
 
-            <p class="text">
-                Или
-            </p>
+            <p class="paragraph">Или</p>
             <pre class="screen screen_post">
 let name_1 =  new Array ();
 name_1[0] = "one";
@@ -125,7 +118,7 @@ name_1[2] = "three";
 name_1[3] = "four";
 name_1[4] = "five";</pre>
 
-            <p class="text">
+            <p class="paragraph">
                 &bull; Если добавить в пустой массив элементы с индексами <strong>[0]</strong> и <strong>[10]</strong>, элементы с индексами от <strong>[1]</strong> по <strong>[9]</strong> включительно, будут иметь значения <strong>undefined</strong>. Длинна этого массива будет равна <strong>10</strong>
             </p>
         </section>
@@ -157,12 +150,10 @@ name_1[name_1.length - 1]; - вернёт значение последнего
             <div class="subsection">
                 <h3 class="subsection__header">Добавление элементов в массив</h3>
 
-                <div class="subsection__item">
-                    <h4 class="subsection__item-header">.push ()</h4>
+                <div class="subsubsection">
+                    <h4 class="subsubsection__header">.push ()</h4>
                         
-                    <p class="text">
-                        - добавление элемента в конец массива
-                    </p>
+                    <p class="paragraph">- добавление элемента в конец массива</p>
                     <pre class="screen screen_post">
 let name_1 = [];
 name_1.push("one");
@@ -174,12 +165,10 @@ name_1; - вернёт ["one", 2, "three"]
 name_1.length; - вернёт 3</pre>
                 </div>
 
-                <div class="subsection__item">
-                    <h4 class="subsection__item-header">.unshift ()</h4>
+                <div class="subsubsection">
+                    <h4 class="subsubsection__header">.unshift ()</h4>
 
-                    <p class="text">
-                        - добавление элемента в начало массива
-                    </p>
+                    <p class="paragraph">- добавление элемента в начало массива</p>
                     <pre class="screen screen_post">
 продолжение:
 
@@ -192,12 +181,10 @@ name_1; - вернёт [5, "one", 2, "three"]</pre>
             <div class="subsection">
                 <h3 class="subsection__header">Удаление элементов из массива</h3>
 
-                <div class="subsection__item">
-                    <h4 class="subsection__item-header">.pop ()</h4>
+                <div class="subsubsection">
+                    <h4 class="subsubsection__header">.pop ()</h4>
                         
-                    <p class="text">
-                        - удаление элемента из конца массива
-                    </p>
+                    <p class="paragraph">- удаление элемента из конца массива</p>
                     <pre class="screen screen_post">
 let name_1 = [1, 2, 3];
 let lastElementh = name_1.pop();
@@ -207,12 +194,10 @@ lastElementh; - вернёт 3
 name_1; - вернёт [1, 2]</pre>
                 </div>
 
-                <div class="subsection__item">
-                    <h4 class="subsection__item-header">.shift ()</h4>
+                <div class="subsubsection">
+                    <h4 class="subsubsection__header">.shift ()</h4>
 
-                    <p class="text">
-                        - удаление элемента из начала массива
-                    </p>
+                    <p class="paragraph">- удаление элемента из начала массива</p>
                     <pre class="screen screen_post">
 продолжение:            
             
@@ -229,9 +214,7 @@ name_1; - вернёт [2]</pre>
 
                 <pre class="screen screen_post">
 firstArray.concat(secondArray); - объединение 2х массивов</pre>
-                <p class="text">
-                    Массивы <strong>firstArray</strong> и <strong>secondArray</strong> остаются прежними
-                </p>
+                <p class="paragraph">Массивы <strong>firstArray</strong> и <strong>secondArray</strong> остаются прежними</p>
                 <pre class="screen screen_post">
 firstArray.concat(secondArray, ..., lastArray); - объединение нескольких массивов</pre>
             </div>
@@ -247,9 +230,7 @@ colors.indexOf("blue"); - вернёт 2
 colors[2]; - вернёт blue
                
 colors.indexOf("voilet"); - вернёт -1 (нет в массиве)</pre>
-                <p class="text">
-                    Если элемент встречается несколько раз, вернёт ближайший к началу
-                </p>
+                <p class="paragraph">Если элемент встречается несколько раз, вернёт ближайший к началу</p>
             </div>
 
             <div class="subsection">
@@ -266,15 +247,13 @@ colors.join(" and "); - вернёт "red and green and blue"
             </div>
 
             <div class="subsection">
-                <h3 class="sub2section__header">Случайный элемент массива</h3>
+                <h3 class="subsection__header">Случайный элемент массива</h3>
 
                 <pre class="screen screen_post">
 let name_2 = Math.floor(Math.random() * name_1.length);</pre>
-                <p class="text">
-                    переменной <strong>name_2</strong> присваивается значение случайного элемента массива <strong>name_1</strong>
-                </p>
+                <p class="paragraph">переменной <strong>name_2</strong> присваивается значение случайного элемента массива <strong>name_1</strong></p>
             </div>
         </section>
-    </article>
+    </main>
 </body>
 </html>
