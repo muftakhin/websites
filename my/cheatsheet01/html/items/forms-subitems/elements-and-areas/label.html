@@ -8,27 +8,23 @@
     <link rel="stylesheet" href="../../../../styles/style.css">
 </head>
 
-<body class="page-body">
-    <header class="page-header">
-        <a class="page-header__button"  href="../elements-and-areas.html">&uArr;</a>
-        <h1 class="page-header__title">Ассоциация</h1>
+<body class="body">
+    <header class="header">
+        <a class="header__button"  href="../elements-and-areas.html">&uArr;</a>
+        <h1 class="header__title">Ассоциация</h1>
     </header>
 
-    <main class="page-main">
-        <section>
-            <p class="paragraph">
-                Лучше весь текст в форме обрамлять <strong>label</strong>-ом
-            </p>
+    <main class="main">
+        <section class="section">
+            <p class="paragraph">Лучше весь текст в форме обрамлять <strong>label</strong>-ом</p>
             <pre class="screen screen_pre">
 &lt;label&gt; ... &lt;&frasl;label&gt;</pre>
         </section>
 
-        <section>
-            <h2 class="section-header">Неявная ассоциация</h2>
+        <section class="section">
+            <h2 class="section__header">Неявная ассоциация</h2>
 
-            <p class="paragraph">
-                - в элемент <strong>label</strong> внедряется элементы формы вместе с его описанием
-            </p>
+            <p class="paragraph">- в элемент <strong>label</strong> внедряется элементы формы вместе с его описанием</p>
             <pre class="screen screen_post">
 &lt;ul&gt;
     &lt;li&gt; &lt;label&gt; &lt;input type="checkbox" name="icecream" value="vanilla"&gt; ванильное &lt;&frasl;label&gt;&lt;&frasl;li&gt;
@@ -42,12 +38,10 @@
             </ul>
         </section>
 
-        <section>
-            <h2 class="section-header">Явная ассоциация</h2>
+        <section class="section">
+            <h2 class="section__header">Явная ассоциация</h2>
 
-            <p class="paragraph">
-                - сопоставляется метка с идентификатором <strong>id</strong> элемента формы
-            </p>
+            <p class="paragraph">- сопоставляется метка с идентификатором <strong>id</strong> элемента формы</p>
             <pre class="screen screen_post">
 &lt;label for="one"&gt; Дядя: &lt;&frasl;label&gt;
 &lt;input type="text" name="ancles_name" id="one"&gt; &lt;br&gt;

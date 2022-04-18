@@ -7,43 +7,41 @@
     <title>Атрибуты формы</title>
     <link rel="stylesheet" href="../../../styles/style.css">
     <style>
-        .page-header {
+        .header {
             grid-template-rows: 112px;
         }
-        .page-header__title {
+        .header__title {
             width: 180px;
             margin: 0 auto;
         }
 
         @media (min-width:480px) {
-            .page-header {
+            .header {
                 grid-template-rows: 56px;
             }
-            .page-header__title {
+            .header__title {
                 width: auto;
             }
         }
     </style>
 </head>
 
-<body class="page-body">
-    <header class="page-header">
-        <a class="page-header__button"  href="../forms.html">
-            &uArr;
-        </a>
-        <h1 class="page-header__title">Атрибуты формы</h1>
+<body class="body">
+    <header class="header">
+        <a class="header__button"  href="../forms.html">&uArr;</a>
+        <h1 class="header__title">Атрибуты формы</h1>
     </header>
 
-    <main class="page-main">
-        <section>
-            <h2 class="section-header">URL обрабатывающего сценария на сервере</h2>
+    <main class="main">
+        <section class="section">
+            <h2 class="section__header">URL обрабатывающего сценария на сервере</h2>
 
             <pre class="screen screen_pre">
 action="..."</pre>
         </section>
 
-        <section>
-            <h2 class="section-header">Метод отправки данных POST и GET</h2>
+        <section class="section">
+            <h2 class="section__header">Метод отправки данных POST и GET</h2>
                     
             <pre class="screen screen_pre">
 method="..."</pre>
@@ -53,8 +51,8 @@ method="..."</pre>
             </p>
         </section>
 
-        <section>
-            <h2 class="section-header">Метод отправки данных POST и GET</h2>
+        <section class="section">
+            <h2 class="section__header">Метод отправки данных POST и GET</h2>
                     
             <pre class="screen screen_pre">
 method="..."</pre>
@@ -64,29 +62,29 @@ method="..."</pre>
             </p>
         </section>
 
-        <section>
-            <h2 class="section-header">Имя переменной элемента формы</h2>
+        <section class="section">
+            <h2 class="section__header">Имя переменной элемента формы</h2>
             
             <pre class="screen screen_pre">
 name="..."</pre>
         </section>
             
-        <section>
-            <h2 class="section-header">Анвыделейбл</h2>
+        <section class="section">
+            <h2 class="section__header">Анвыделейбл</h2>
             
             <pre class="screen screen_pre">
 disabled="disabled"</pre>
         </section>
             
-        <section>
-            <h2 class="section-header">Анизменейбл</h2>
+        <section class="section">
+            <h2 class="section__header">Анизменейбл</h2>
             
             <pre class="screen screen_pre">
 readonly="readonly"</pre>
         </section>
             
-        <section>
-            <h2 class="section-header">Обязательный ввод</h2>
+        <section class="section">
+            <h2 class="section__header">Обязательный ввод</h2>
             
             <pre class="screen screen_pre">
 required</pre>

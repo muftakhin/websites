@@ -13,55 +13,53 @@
     </style>
 </head>
 
-<body class="page-body">
-    <header class="page-header">
-        <a class="page-header__button"  href="../elements-and-areas.html">&uArr;</a>
-        <h1 class="page-header__title">input</h1>
+<body class="body">
+    <header class="header">
+        <a class="header__button"  href="../elements-and-areas.html">&uArr;</a>
+        <h1 class="header__title">input</h1>
     </header>
 
-    <main class="page-main">
-        <section>
-            <h2 class="section-header">Поле текстовое однострочное</h2>
+    <main class="main">
+        <section class="section">
+            <h2 class="section__header">Поле текстовое однострочное</h2>
 
             <pre class="screen screen_pre">
 &lt;input type="text"&gt;</pre>
-            <p class="paragraph">
-                Если не задать <strong>type="..."</strong>, то по умолчанию ему будет присвоено значение <strong>"text"</strong>
-            </p>
+            <p class="paragraph">Если не задать <strong>type="..."</strong>, то по умолчанию ему будет присвоено значение <strong>"text"</strong></p>
 
             <div class="subsection">
-                <h3 class="subsection-header">Атрибуты</h3>
+                <h3 class="subsection__header">Атрибуты</h3>
 
                 <div class="subsubsection">
-                    <h4 class="subsubsection-header">Имя переменной</h4>
+                    <h4 class="subsubsection__header">Имя переменной</h4>
 
                     <pre class="screen screen_pre">
 name="..."</pre>
                 </div>
 
                 <div class="subsubsection">
-                    <h4 class="subsubsection-header">Текст отображаемый по умолчанию</h4>
+                    <h4 class="subsubsection__header">Текст отображаемый по умолчанию</h4>
 
                     <pre class="screen screen_pre">
 value="..."</pre>
                 </div>
 
                 <div class="subsubsection">
-                    <h4 class="subsubsection-header">Максимальное число символов</h4>
+                    <h4 class="subsubsection__header">Максимальное число символов</h4>
 
                     <pre class="screen screen_pre">
 maxlength="..."</pre>
                 </div>
 
                 <div class="subsubsection">
-                    <h4 class="subsubsection-header">Подстановочный текст</h4>
+                    <h4 class="subsubsection__header">Подстановочный текст</h4>
 
                     <pre class="screen screen_pre">
 placeholder="Подстановочный текст"</pre>
                 </div>
 
                 <div class="subsubsection">
-                    <h4 class="subsubsection-header">Автофокус</h4>
+                    <h4 class="subsubsection__header">Автофокус</h4>
 
                     <pre class="screen screen_pre">
 autofocus - атрибут без значения</pre>
@@ -69,8 +67,8 @@ autofocus - атрибут без значения</pre>
             </div>
         </section>
 
-        <section>
-            <h2 class="section-header">Поле ввода пароля</h2>
+        <section class="section">
+            <h2 class="section__header">Поле ввода пароля</h2>
 
             <pre class="screen screen_pre">
 &lt;input type="password"&gt;</pre>
@@ -85,52 +83,52 @@ autofocus - атрибут без значения</pre>
             </p>
         </section>
 
-        <section>
-            <h2 class="section-header">Поле поиска</h2>
+        <section class="section">
+            <h2 class="section__header">Поле поиска</h2>
 
             <pre class="screen screen_pre">
 &lt;input type="search"&gt;</pre>
         </section>
 
-        <section>
-            <h2 class="section-header">Поле ввода email</h2>
+        <section class="section">
+            <h2 class="section__header">Поле ввода email</h2>
 
             <pre class="screen screen_pre">
 &lt;input type="email"&gt;</pre>
         </section>
 
-        <section>
-            <h2 class="section-header">Поле ввода № телефона</h2>
+        <section class="section">
+            <h2 class="section__header">Поле ввода № телефона</h2>
 
             <pre class="screen screen_pre">
 &lt;input type="tel"&gt;</pre>
         </section>
 
-        <section>
-            <h2 class="section-header">Поле ввода URL</h2>
+        <section class="section">
+            <h2 class="section__header">Поле ввода URL</h2>
 
             <pre class="screen screen_pre">
 &lt;input type="url"&gt;</pre>
         </section>
 
-        <section>
-            <h2 class="section-header">Кнопки</h2>
+        <section class="section">
+            <h2 class="section__header">Кнопки</h2>
 
             <div class="subsection">
-                <h3 class="subsection-header">Отправка данных формы на сервер</h3>
+                <h3 class="subsection__header">Отправка данных формы на сервер</h3>
 
                 <pre class="screen screen_pre">
 &lt;input type="submit"&gt;</pre>
             </div>
 
             <div class="subsection">
-                <h3 class="subsection-header">Сброс</h3>
+                <h3 class="subsection__header">Сброс</h3>
 
                 <pre class="screen screen_pre">
 &lt;input type="reset"&gt;</pre>
 
                 <div class="subsubsection">
-                    <h4 class="subsubsection-header">Изменить текст на кнопке</h4>
+                    <h4 class="subsubsection__header">Изменить текст на кнопке</h4>
 
                     <pre class="screen screen_pre">
 value="..."</pre>
@@ -138,25 +136,25 @@ value="..."</pre>
             </div>
 
             <div class="subsection">
-                <h3 class="subsection-header">Кнопка с изображением</h3>
+                <h3 class="subsection__header">Кнопка с изображением</h3>
 
                 <pre class="screen screen_pre">
 &lt;input type="image"&gt;</pre>
             </div>
 
             <div class="subsection">
-                <h3 class="subsection-header">Действие настраивается языком сценария</h3>
+                <h3 class="subsection__header">Действие настраивается языком сценария</h3>
 
                 <pre class="screen screen_pre">
 &lt;input type="button"&gt;</pre>
             </div>
         </section>
 
-        <section>
-            <h2 class="section-header">Переключатели и флажки</h2>
+        <section class="section">
+            <h2 class="section__header">Переключатели и флажки</h2>
 
             <div class="subsection">
-                <h3 class="subsection-header">Переключатель</h3>
+                <h3 class="subsection__header">Переключатель</h3>
 
                 <pre class="screen screen_pre">
 &lt;input type="radio"&gt;</pre>
@@ -176,9 +174,7 @@ value="..."</pre>
     &lt;li&gt;&lt;input type="radio" name="status" value="middle"&gt; мидл &lt;&frasl;li&gt;
     &lt;li&gt;&lt;input type="radio" name="status" value="guru"&gt; синьор помидор &lt;&frasl;li&gt;
 &lt;&frasl;ol&gt;</pre>
-                <p class="paragraph">
-                    Ты кто такой? Давай до свидания!
-                </p>
+                <p class="paragraph">Ты кто такой? Давай до свидания!</p>
                 <ol>
                     <li><input type="radio" name="status" value="intern" checked="checked"> стажёр</li>
                     <li><input type="radio" name="status" value="junior"> джун</li>
@@ -188,7 +184,7 @@ value="..."</pre>
             </div>
 
             <div class="subsection">
-                <h3 class="subsection-header">Флажок</h3>
+                <h3 class="subsection__header">Флажок</h3>
 
                 <pre class="screen screen_pre">
 &lt;input type="checkbox"&gt;</pre>
@@ -200,9 +196,7 @@ value="..."</pre>
     &lt;li&gt;&lt;input type="checkbox" name="lang" value="php"&gt; php &lt;&frasl;li&gt;
     &lt;li&gt;&lt;input type="checkbox" name="lang" value="java"&gt; java &lt;&frasl;li&gt;
 &lt;&frasl;ul&gt;</pre>
-                <p class="paragraph">
-                    Языками владеешь?
-                </p>
+                <p class="paragraph">Языками владеешь?</p>
                 <ul>
                     <li><input type="checkbox" name="lang" value="javascrip" checked="checked"> javascrip</li>
                     <li><input type="checkbox" name="lang" value="pyton"> pyton</li>
@@ -212,11 +206,11 @@ value="..."</pre>
             </div>
         </section>
 
-        <section>
-            <h2 class="section-header">Списки</h2>
+        <section class="section">
+            <h2 class="section__header">Списки</h2>
 
             <div class="subsection">
-                <h3 class="subsection-header">Раскрывающийся список с вариантами, для выбора в текстовом поле</h3>
+                <h3 class="subsection__header">Раскрывающийся список с вариантами, для выбора в текстовом поле</h3>
 
                 <pre class="screen screen_pre">
 &lt;datalist&gt; ... &lt;&frasl;datalist&gt;</pre>
@@ -229,8 +223,7 @@ value="..."</pre>
     &lt;option value="ми такие простие луди"&gt;
 &lt;&frasl;datalist&gt;
 &lt;&frasl;p&gt;</pre>
-                <p class="paragraph">
-                    Какие ваши доказательства?
+                <p class="paragraph">Какие ваши доказательства?
                     <input type="text" name="red_heat" list="cocainum">
                     <datalist id="cocainum">
                         <option value="хулыгани">
@@ -241,7 +234,7 @@ value="..."</pre>
             </div>
 
             <div class="subsection">
-                <h3 class="subsection-header">Поле выбора файла</h3>
+                <h3 class="subsection__header">Поле выбора файла</h3>
 
                 <pre class="screen screen_pre">
 &lt;input type="file" name="..."&gt;</pre>
@@ -261,20 +254,18 @@ value="..."</pre>
             </div>
 
             <div class="subsection">
-                <h3 class="subsection-header">Скрытый элемент формы</h3>
+                <h3 class="subsection__header">Скрытый элемент формы</h3>
 
                 <pre class="screen screen_pre">
 &lt;input type="hidden" name="..." value="..."&gt;</pre>
-                <p class="paragraph">
-                    передача пары имя/значение (<strong>name/value</strong>) на сервер в момент отправки данных формы
-                </p>
+                <p class="paragraph">передача пары имя/значение (<strong>name/value</strong>) на сервер в момент отправки данных формы</p>
             </div>
 
             <div class="subsection">
-                <h3 class="subsection-header">Элементы даты и времени</h3>
+                <h3 class="subsection__header">Элементы даты и времени</h3>
 
                 <div class="subsubsection">
-                    <h4 class="subsubsection-header">Варианты выбора даты</h4>
+                    <h4 class="subsubsection__header">Варианты выбора даты</h4>
 
                     <pre class="screen screen_pre">
 &lt;input type="date"&gt;</pre>
@@ -303,10 +294,10 @@ value="..."</pre>
             </div>
 
             <div class="subsection">
-                <h3 class="subsection-header">Ввод чисел</h3>
+                <h3 class="subsection__header">Ввод чисел</h3>
 
                 <div class="subsubsection">
-                    <h4 class="subsubsection-header">Варианты ввода числа</h4>
+                    <h4 class="subsubsection__header">Варианты ввода числа</h4>
 
                     <pre class="screen screen_pre">
 &lt;input type="number"&gt;</pre>
@@ -331,13 +322,13 @@ value="..."</pre>
             </div>
 
             <div class="subsection">
-                <h3 class="subsection-header">Выбор цвета</h3>
+                <h3 class="subsection__header">Выбор цвета</h3>
 
                 <pre class="screen screen_pre">
 &lt;input type="color"&gt;</pre>
                 <input type="color">
             </div>
         </section>
-    </article>
+    </main>
 </body>
 </html>
