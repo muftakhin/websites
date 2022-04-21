@@ -112,7 +112,31 @@ li {
   background-color: steelblue;
   text-align: center;
 }
-main {
+.word-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 16px;
+  gap: 8px;
+}
+.word-list__header {
+  padding: 8px;
+  text-align: center;
+  font-size: 20px;
+  background-color: #ddd;
+}
+.word-list__item {
+  padding-left: 16px;
+  font-family: monospace;
+  font-size: 20px;
+  font-weight: normal;
+  color: maroon;
+}
+@media (min-width: 1024px) {
+  .word-list {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+.main {
   max-width: 1080px;
   margin: 8px auto;
   padding: 6px;
@@ -182,4 +206,34 @@ strong {
   font-family: monospace;
   color: steelblue;
   border: 2px dotted steelblue;
+}
+.table {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  padding: 8px;
+}
+.table__header {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  text-align: center;
+  font-size: 20px;
+  line-height: 36px;
+  background-color: #ddd;
+}
+.table__screen {
+  padding: 8px 16px;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  background-color: #222222;
+  color: lightgreen;
+  text-shadow: 0 0 4px lightgreen;
+  font-family: monospace;
+}
+.table__definition {
+  padding-left: 16px;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  font-size: 18px;
+  line-height: 32px;
 }
