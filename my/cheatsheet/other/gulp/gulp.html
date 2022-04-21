@@ -9,24 +9,20 @@
     <link rel="stylesheet" href="../../styles/style.css">
 </head>
 
-<body class="page">
+<body class="body">
     <header class="header">
-        <a class="header__button"  href="../../index.html">
-            &uArr;
-        </a>
-        <h1 class="header__title">
-            Gulp
-        </h1>
+        <a class="header__button"  href="../other.html">&uArr;</a>
+        <h1 class="header__title">Gulp</h1>
     </header>
 
-    <article class="article">
+    <main class="main">
         <section class="section">
             <h2 class="section__header">Установка Gulp</h2>
 
             <div class="subsection">
                 <pre class="screen screen_post">
 npm i gulp-cli -g</pre>
-                <p class="text">
+                <p class="paragraph">
                     <strong>i</strong> - install (сокращённая запись)<br>
                     <strong>-g</strong> - установка пакета глобально
                 </p>
@@ -37,7 +33,7 @@ npm i gulp-cli -g</pre>
             <h2 class="section__header">Формирование package.json</h2>
 
             <div class="subsection">
-                <p class="text">
+                <p class="paragraph">
                     &bull; в нём содержится информация о нашем проекте<br>
                     &bull; Чтобы можно было с его помощью в других папках инициализировать наше приложение
                 </p>
@@ -68,21 +64,15 @@ npm i gulp --save-dev</pre>
             <h2 class="section__header">Вызов Gulp</h2>
 
             <div class="subsection">
-                <p class="text">
-                    Находясь в папке проекта вводим команду <strong>gulp</strong>
-                </p>
+                <p class="paragraph">Находясь в папке проекта вводим команду <strong>gulp</strong></p>
 
                 <pre class="screen screen_post">
 gulp</pre>
 
-                <p class="text">
-                    Чтобы вызвать <strong>gulp</strong> создаём файл <strong>gulpfile.js</strong>, в котором прописываем:
-                </p>
+                <p class="paragraph">Чтобы вызвать <strong>gulp</strong> создаём файл <strong>gulpfile.js</strong>, в котором прописываем:</p>
                 <pre class="screen screen_post">
 const gulp = require('gulp');</pre>
-                <p class="text">
-                    С помощью команды <strong>require</strong> мы может подключать все пакеты, которые установили с помощью <strong>npm</strong> в данную папку
-                </p>
+                <p class="paragraph">С помощью команды <strong>require</strong> мы может подключать все пакеты, которые установили с помощью <strong>npm</strong> в данную папку</p>
 
                 <pre class="screen screen_post">
 const gulp = require('gulp');
@@ -90,9 +80,7 @@ const gulp = require('gulp');
 gulp.task('default', function() {
     console.log(1);
 });</pre>
-                <p class="text">
-                    Используем метод <strong>.task</strong> на команду <strong>default</strong> и вешаем сюда функцию с выводом в консоль <strong>1</strong>
-                </p>
+                <p class="paragraph">Используем метод <strong>.task</strong> на команду <strong>default</strong> и вешаем сюда функцию с выводом в консоль <strong>1</strong></p>
             </div>
         </section>
 
@@ -155,9 +143,7 @@ exports.default = gulp.series(
     styles, server, watcher
 );</pre>
 
-                <p class="text">
-                    Создаётся дефолтный таск, который запускает серию функций
-                </p>
+                <p class="paragraph">Создаётся дефолтный таск, который запускает серию функций</p>
             </div>
         </section>
 
@@ -186,12 +172,12 @@ gulp.task('default', function() {
         .pipe(less())
         .pipe(gulp.dest('./css'));
 });</pre>
-                <p class="text">
+                <p class="paragraph">
                     <strong>var gulp = require('gulp-less');</strong> - подключаем плагин <strong>gulp-less</strong><br>
                     <strong>gulp.src</strong> - получение необходимого файла
                 </p>
 
-                <p class="text">
+                <p class="paragraph">
                     Выполняем команду <strong>.pipe(less())</strong> - это метод, который выплоняет одно действие (В данном случае компиляция)<br>
                     и <strong>.pipe(gulp.dest('css')); </strong>(указываю папку <strong>./css</strong>, в качестве папки назначения для скомпилированного файла)
                 </p>
@@ -211,13 +197,9 @@ gulp.task('sass', function() {
         .pipe(sass())
         .pipe(gulp.dest('./project'));
 });</pre>
-                <p class="text">
-                    <strong>**/*.scss</strong> - ищем все файлы с расширением <strong>.scss</strong>, рассматривая и все вложенные папки, внутри папки <strong>project/</strong>
-                </p>
+                <p class="paragraph"><strong>**/*.scss</strong> - ищем все файлы с расширением <strong>.scss</strong>, рассматривая и все вложенные папки, внутри папки <strong>project/</strong></p>
 
-                <p class="text">
-                    Чтобы вызвать задачу <strong>sass</strong>, ввожу следующее:
-                </p>
+                <p class="paragraph">Чтобы вызвать задачу <strong>sass</strong>, ввожу следующее:</p>
                 <pre class="screen screen_post">
 gulp sass</pre>
             </div>
@@ -227,9 +209,7 @@ gulp sass</pre>
             <h2 class="section__header">Отслеживание изменений в файле</h2>
 
             <div class="subsection">
-                <p class="text">
-                    Происходит при помощи команды <strong>gulp.watch();</strong>
-                </p>
+                <p class="paragraph">Происходит при помощи команды <strong>gulp.watch();</strong></p>
                 <pre class="screen screen_post">
 const gulp = require('gulp');
 const less = require('gulp-less');
@@ -241,14 +221,12 @@ gulp.task('default', function() {
             .pipe(gulp.dest('css'));
     });
 });</pre>
-                <p class="text">
+                <p class="paragraph">
                     &bull; - отслеживаем все файлы <strong>.less</strong> в папке <strong>less/</strong><br>
                     &bull; <strong>gulp.src</strong> - получение необходимого файла
                 </p>
 
-                <p class="text">
-                    Или:
-                </p>
+                <p class="paragraph">Или:</p>
                 <pre class="screen screen_post">
 const gulp = require('gulp');
 const less = require('gulp-less');
@@ -271,11 +249,9 @@ gulp.task('watch', watch);</pre>
         <section class="section">
             <h3 class="section__header">Примеры</h3>
 
-            <div class="subsection">
-                <a href="examples/example_1.html"><div class="link">Пример 1</div></a>
-                <a href="examples/example_1_1.html"><div class="link">Пример 1.1</div></a>
-            </div>
+            <a href="examples/example_1.html"><div class="link">Пример 1</div></a>
+            <a href="examples/example_1_1.html"><div class="link">Пример 1.1</div></a>
         </section>
-    </article>
+    </main>
 </body>
 </html>

@@ -6,32 +6,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Б__Э_М</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../../styles/section.css">
+    <link rel="stylesheet" href="../../styles/style.css">
 </head>
-<body class="page">
+
+<body class="body">
     <header class="header">
+        <a class="header__button"  href="../other.html">&uArr;</a>
         <h1 class="header__title">Б__Э_М</h1>
     </header>
         
-    <article class="article">
+    <main class="main">
         <section class="section">
             <h2 class="section__header">Блок</h2>
 
             <pre class="screen screen_pre">
 class="б  б_м"
 
+class="б  б--м"
+
 б - блок
 м - модификатор</pre>
-            <p class="text">
+            <p class="paragraph">
                 &bull; Выполняет одну функцию<br>
                 &bull; Состоит из элементов объединённых логически<br>
-                &bull; Допускается вложенность блоков друг в друга<br>
+                &bull; Допускается вложенность блоков друг в друга
             </p>
                 
             <div class="subsection">
                 <h3 class="subsection__header">Какие свойства стиля нельзя использовать для класса .блок</h3>
                     
-                <p class="text">
+                <p class="paragraph">
                     &bull; <strong>margin: </strong><br>
                     &bull; <strong>position:</strong> со свойствами указывающими координаты по направлениям (<strong> top, right, bottom, left, ... </strong>)<br>
                     &bull; <strong>float: </strong>
@@ -45,28 +49,28 @@ class="б  б_м"
             <pre class="screen screen_pre">
 class="б__э  б__э_м"
 
+class="б__э  б__э--м"
+
 э - элемент</pre>
-            <p class="text">
-                - составная часть блока, которая не может быть и спользована без него
-            </p>
+            <p class="paragraph">- составная часть блока, которая не может быть и спользована без него</p>
         </section>
                 
         <section class="section">
             <h2 class="section__header">Модификатор</h2>
                 
-            <p class="text">
+            <p class="paragraph">
                 &bull; Модификатор определяет внешний вид, состояние или поведение элемента<br>
                 &bull; Модификатор не используется самостоятельно
             </p>
-                
             <pre class="screen screen_pre">
 class="б  б_м  б_м_з"
 class="б__э  б__э_м_з"
 
+class="б  б--м  б--м--з"
+class="б__э  б__э--м--з"
+
 з - значение</pre>
-            <p class="text">
-                Нельзя использовать сразу 2 класса с "...модификатор_значение"
-            </p>
+            <p class="paragraph">Нельзя использовать сразу 2 класса с "...модификатор_значение"</p>
         </section>
                 
         <section class="section">
@@ -76,16 +80,16 @@ class="б__э  б__э_м_з"
 1   .блок
    
 2   .блок_модификатор
+или .блок--модификатор
    
 3   .блок__элемент
    
-4   .блок__элемент_модификатор</pre>
-
-            <p class="text">Если элемент является блоком</p>
-
+4   .блок__элемент_модификатор
+или .блок__элемент--модификатор</pre>
+            <p class="paragraph">Если элемент является блоком</p>
             <pre class="screen screen_pre">
     .блок__элемент элемент</pre>
         </section>
-    </article>
+    </main>
 </body>
 </html>

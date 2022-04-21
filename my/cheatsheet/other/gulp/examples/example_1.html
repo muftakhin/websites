@@ -6,19 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Пример 1</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../../../styles/section.css">
+    <link rel="stylesheet" href="../../../styles/style.css">
 </head>
 
-<body class="page">
+<body class="body">
     <header class="header">
-        <h1 class="header__title">
-            Пример 1
-        </h1>
+        <a class="header__button"  href="../gulp.html">&uArr;</a>
+        <h1 class="header__title">Пример 1</h1>
     </header>
 
-    <article class="article">
+    <main class="main">
         <section class="section">
-            <p class="text">
+            <p class="paragraph">
                 &bull; После установки <strong>gulp</strong> создаём рядом с <strong>node_modules</strong> файл <strong>gulpfile.js</strong><br>
                 &bull; Создаёи папки <strong>src</strong> и <strong>build</strong><br>
                 &bull;
@@ -38,7 +37,7 @@ function scripts() {            // для обработки .js
 gulp.task('styles', styles);    // название (в скобках до запятой) не обязательно должно
 gulp.task('scripts', scripts);  // совпадать с названием функции (в скобках после запятой)</pre>
 
-            <p class="text">
+            <p class="paragraph">
                 Таски вызываются из командной строки: <strong>gulp styles</strong> или <strong>gulp scripts</strong>
             </p>
             <pre class="screen screen_post">
@@ -50,28 +49,20 @@ gulp scripts</pre>
         <section class="section">
             <h2 class="section__header">gulp-concat</h2>
 
-            <p class="text">
-                - для объединения файлов
-            </p>
+            <p class="paragraph">- для объединения файлов</p>
 
             <pre class="screen screen_post">
 npm install --save-dev gulp-concat</pre>
-            <p class="text">
-                или:
-            </p>
+            <p class="paragraph">или:</p>
             <pre class="screen screen_post">
 npm i -D gulp-concat</pre>
 
-            <p class="text">
-                Подключаем gulp-concat в gulpfile.js
-            </p>
+            <p class="paragraph">Подключаем gulp-concat в gulpfile.js</p>
             <pre class="screen screen_post">
 const gulp = require('gulp');
 const concat = require('gulp-concat');   // подключаем модуль gulp-concat
 ...</pre>
-            <p class="text">
-                Создаём массивы с объядиняемыми файлами
-            </p>
+            <p class="paragraph">Создаём массивы с объядиняемыми файлами</p>
             <pre class="screen screen_post">
 ...
 const cssFiles = [
@@ -84,9 +75,7 @@ const jsFiles = [
     './src/js/main.js'
 ]
 ...</pre>
-            <p class="text">
-                создаём функции для работы с <strong>.css</strong> и <strong>.js</strong>
-            </p>
+            <p class="paragraph">создаём функции для работы с <strong>.css</strong> и <strong>.js</strong></p>
             <pre class="screen screen_post">
 ...
 function styles() {
@@ -106,13 +95,11 @@ function scripts() {
         <section class="section">
             <h2 class="section__header">gulp-autoprefixer</h2>
 
-            <p class="text">
-                В терминале вводим
-            </p>
+            <p class="paragraph">В терминале вводим</p>
             <pre class="screen screen_post">
 npm install --save-dev gulp-autoprefixer</pre>
 
-            <p class="text">Подключаем</p>
+            <p class="paragraph">Подключаем</p>
             <pre class="screen screen_post">
 ...
 const concat = require('gulp-concat');
@@ -133,13 +120,11 @@ function styles() {
         <section class="section">
             <h2 class="section__header">gulp-clean-css</h2>
 
-            <p class="text">
-                В терминале вводим
-            </p>
+            <p class="paragraph">В терминале вводим</p>
             <pre class="screen screen_post">
 npm install gulp-clean-css --save-dev </pre>
 
-            <p class="text">Подключаем</p>
+            <p class="paragraph">Подключаем</p>
             <pre class="screen screen_post">
 ...
 const autoprefixer = require('gulp-autoprefixer');
@@ -163,18 +148,16 @@ function styles() {
         <section class="section">
             <h2 class="section__header">browser-sync</h2>
 
-            <p class="text">
-                В терминале вводим
-            </p>
+            <p class="paragraph">В терминале вводим</p>
             <pre class="screen screen_post">
 npm install browser-sync gulp --save-dev </pre>
 
-            <p class="text">Подключаем</p>
+            <p class="paragraph">Подключаем</p>
             <pre class="screen screen_post">
 ...
 const browserSync = require('browser-sync').create();
 ...</pre>
-            <p class="text">Создаём функцию</p>
+            <p class="paragraph">Создаём функцию</p>
             <pre class="screen screen_post">
 function watch() {
     browserSync.init({
@@ -219,6 +202,6 @@ gulp.task('build', gulp.series(clean, gulp.parallel(styles, scripts)));
 gulp.task('dev', gulp.series('build', 'watch'));</pre>
             </div>
         </section>
-    </article>
+    </main>
 </body>
 </html>
