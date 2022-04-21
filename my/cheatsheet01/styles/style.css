@@ -237,3 +237,19 @@ strong {
   font-size: 18px;
   line-height: 32px;
 }
+.link {
+  width: 160px;
+  margin-bottom: 8px;
+  color: white;
+  background-color: steelblue;
+  text-align: center;
+  line-height: 36px;
+  border-radius: 8px;
+  transition: all 0.2s ease-in-out;
+}
+.link:first-child {
+  margin-bottom: 4px;
+}
+.link:hover {
+  background-color: black;
+}

@@ -6,15 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LESS</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../../../styles/section.css">
+    <link rel="stylesheet" href="../../styles/style.css">
 </head>
 
-<body class="page">
+<body class="body">
     <header class="header">
+        <a class="header__button"  href="../other.html">&uArr;</a>
         <h1 class="header__title">LESS</h1>
     </header>
 
-    <article class="article">
+    <main class="main">
         <section class="section">
             <h2 class="section__header">Начало работы</h2>
 
@@ -49,9 +50,7 @@ lessc styles.less styles.css</pre>
                 <pre class="screen screen_post">
 color: fade(#000000, 50%);
 </pre>
-                <p class="text">
-                    Преобразуется в <strong>rgba(..., ..., ..., 0.5)</strong>
-                </p>
+                <p class="paragraph">Преобразуется в <strong>rgba(..., ..., ..., 0.5)</strong></p>
             </div>
 
             <div class="subsection">
@@ -82,9 +81,7 @@ color: darken(цвет, ...%);
         <section class="section">
             <h2 class="section__header">Импорт</h2>
 
-            <p class="text">
-                Заранее собирает <strong>CSS</strong>-файл
-            </p>
+            <p class="paragraph">Заранее собирает <strong>CSS</strong>-файл</p>
             <pre class="screen screen_pre">
 @import: 'normalize.less';
 
@@ -96,7 +93,7 @@ color: darken(цвет, ...%);
         <section class="section">
             <h2 class="section__header">Переменные</h2>
 
-            <p class="text">
+            <p class="paragraph">
                 &bull; Существуют в <strong>.less</strong>-файле, <strong>.css</strong>-файл компилируется уже без них<br>
                 &bull; Обладают областью видимости
             </p>
@@ -109,9 +106,7 @@ color: darken(цвет, ...%);
             <div class="subsection">
                 <h3 class="subsection__header">Интерполяция переменных</h3>
 
-                <p class="text">
-                    Усложняет чтение кода
-                </p>
+                <p class="paragraph">Усложняет чтение кода</p>
                 <pre class="screen screen_pre">
 @name: value_1;
                     
@@ -131,7 +126,7 @@ color: darken(цвет, ...%);
         <section class="section">
             <h2 class="section__header">Математические операции</h2>
 
-            <p class="text">
+            <p class="paragraph">
                 &bull; В отличии от <strong>.css</strong> (в котором вычисления происходят в браузере) в <strong>.less</strong> математические операции производятся перед компилированием в <strong>.css</strong>-файл.<br>
                 &nbsp; Поэтому нельзя использовать значения отображения зависящие от переменных параметров, таких как, например, размер окна браузера
             </p>
@@ -201,9 +196,7 @@ color: darken(цвет, ...%);
 .name_of_class {
     .name_of_mixin(value_1, value_2);
 }</pre>
-                <p class="text">
-                    Если не задать значения <strong>value_1</strong> и <strong>value_2</strong>, то в качестве значений <strong>@parameter_1</strong> и <strong>@parameter_2</strong> свойств <strong>property_1</strong> и <strong>property_2</strong> будут использованы значения по умолчанию <strong>default_value_1</strong> и <strong>default_value_2</strong>.
-                </p>
+                <p class="paragraph">Если не задать значения <strong>value_1</strong> и <strong>value_2</strong>, то в качестве значений <strong>@parameter_1</strong> и <strong>@parameter_2</strong> свойств <strong>property_1</strong> и <strong>property_2</strong> будут использованы значения по умолчанию <strong>default_value_1</strong> и <strong>default_value_2</strong></p>
             </div>
         </section>
 
@@ -266,7 +259,7 @@ color: darken(цвет, ...%);
     property_4: @parameter_4;
 }</pre>
 
-            <p class="text">
+            <p class="paragraph">
                 &bull; Можно использовать для модификаторов, псевдоклассов и псевдоэлементов, но не для составления <strong>"блок__элемент"</strong> <br>
                 &bull; Создавать контекстный селектор с вложенностью максимум 2 уровня
             </p>

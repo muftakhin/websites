@@ -6,14 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Git</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../../styles/section.css">
+    <link rel="stylesheet" href="../../styles/style.css">
 </head>
-<body class="page">
+
+<body class="body">
     <header class="header">
+        <a class="header__button"  href="../other.html">&uArr;</a>
         <h1 class="header__title">Git</h1>
     </header>
 
-    <article class="article">
+    <main class="main">
         <section class="section">
             <h2 class="section__header">Базовые настройки</h2>
 
@@ -50,26 +52,18 @@ start ~/directory_1/directory_2/file.txt   //открытие файла file.tx
             <div class="subsection">
                 <h3 class="subsection__header">Установка и начальная настройка</h3>
 
-                <p class="text">
-                    После установки Git и создания аккаунта на удалённом репозитории нужно соединить локальный репозиторий с удалённым
-                </p>
+                <p class="paragraph">После установки Git и создания аккаунта на удалённом репозитории нужно соединить локальный репозиторий с удалённым</p>
 
-                <p class="text">
-                    Для первоначальной настройки Git зададим имя и адрес электронной почты (желательно такой же как и при регистрации на удалённом репозитории)
-                </p>
+                <p class="paragraph">Для первоначальной настройки Git зададим имя и адрес электронной почты (желательно такой же как и при регистрации на удалённом репозитории)</p>
                 <pre class="screen screen_post">
 user ~
 $ git config --global user.name "First-name Second-name"
 
 user ~
 $ git config --global user.email "name@mail.com"</pre>
-                <p class="text">
-                    <strong>user</strong> - пользователь компьютера
-                </p>
+                <p class="paragraph"><strong>user</strong>- пользователь компьютера</p>
 
-                <p class="text">
-                    Создадим директорию репозитория и перейдя в неё инициализируем git-репозиторий
-                </p>
+                <p class="paragraph">Создадим директорию репозитория и перейдя в неё инициализируем git-репозиторий</p>
                 <pre class="screen screen_post">
 $ git init</pre>
             </div>
@@ -86,9 +80,7 @@ user ~ cd repositoryname</pre>
 //Выдаст:
 
 user ~/repositoryname master</pre>
-                <p class="text">
-                    - автоматически создастся папка с именем клонируемого репозитория <strong>repositoryname</strong>, в которую он клонируется
-                </p>
+                <p class="paragraph">- автоматически создастся папка с именем клонируемого репозитория <strong>repositoryname</strong>, в которую он клонируется</p>
 
                 <pre class="screen screen_post">
 user ~
@@ -99,15 +91,13 @@ user ~ cd directoryname</pre>
 //Выдаст:
                     
 user ~/directoryname master</pre>
-                <p class="text">
-                    - создастся папка с именем директории <strong>directoryname</strong>, в которую клонируется репозиторий
-                </p>
+                <p class="paragraph">- создастся папка с именем директории <strong>directoryname</strong>, в которую клонируется репозиторий</p>
             </div>
 
             <div class="subsection">
                 <h3 class="subsection__header">add и commit</h3>
 
-                <p class="text">
+                <p class="paragraph">
                     <strong>add</strong> - добавление файла в индекс изменений<br>
                     <strong>commit</strong> - фиксирование изменений в локальном репозитории
                 </p>
@@ -118,9 +108,7 @@ $ git add Filename.txt
 user ~/repositoryname master
 $ git commit -m "Первый коммит"</pre>
 
-                <p class="text">
-                    Чтобы добавить все новые и изменённые файлы:
-                </p>
+                <p class="paragraph">Чтобы добавить все новые и изменённые файлы:</p>
                 <pre class="screen screen_post">
 $ git add .</pre>
             </div>
@@ -128,13 +116,11 @@ $ git add .</pre>
             <div class="subsection">
                 <h3 class="subsection__header">push</h3>
 
-                <p class="text">
-                    <strong>push</strong> - отправка изменений на удалённый репозиторий
-                </p>
+                <p class="paragraph"><strong>push</strong> - отправка изменений на удалённый репозиторий</p>
                 <pre class="screen screen_post">
 user ~/repositoryname master
 $ git push origin master</pre>
-                <p class="text">
+                <p class="paragraph">
                     <strong>origin</strong> и <strong>master</strong> - значения по умолчанию<br>
                     <strong>origin</strong> - короткое название ссылки на удалённый клонированный репозиторий<br>
                     <strong>master</strong> - основная ветка репозитория
@@ -144,9 +130,7 @@ $ git push origin master</pre>
             <div class="subsection">
                 <h3 class="subsection__header">pull</h3>
 
-                <p class="text">
-                    <strong>pull</strong> - получение последнего состояния ветки и всех её предыдущих изменений с удалённого репозитория
-                </p> 
+                <p class="paragraph"><strong>pull</strong> - получение последнего состояния ветки и всех её предыдущих изменений с удалённого репозитория</p> 
                 <pre class="screen screen_post">
 user ~/repositoryname master
 $ git pull</pre>
@@ -155,9 +139,7 @@ $ git pull</pre>
             <div class="subsection">
                 <h3 class="section__header">Создание новой ветки</h3>
 
-                <p class="text">
-                    Создание новой ветки <strong>adaptive</strong>:
-                </p>
+                <p class="paragraph">Создание новой ветки <strong>adaptive</strong>:</p>
                 <pre class="screen screen_post">
 user ~/repositoryname master
 $ git checkout -b adaptive</pre>
@@ -165,7 +147,7 @@ $ git checkout -b adaptive</pre>
 //Выдаст:
 
 user ~/repositoryname adaptive</pre>
-                <p class="text">
+                <p class="paragraph">
                     <strong>git checkout -b</strong> - создание новой ветки<br>
                     <strong>adaptive</strong> - название новой ветки
                 </p>
@@ -174,9 +156,7 @@ user ~/repositoryname adaptive</pre>
             <div class="subsection">
                 <h3 class="section__header">Переключение на другую ветку</h3>
 
-                <p class="text">
-                    Переключение на ветку <strong>second-branch</strong>:
-                </p>
+                <p class="paragraph">Переключение на ветку <strong>second-branch</strong>:</p>
                 <pre class="screen screen_post">
 user ~/repositoryname master
 $ git checkout second-branch</pre>
@@ -203,9 +183,7 @@ $ git commit -m "Изменил что-то"</pre>
                 <pre class="screen screen_post">
 user ~/repositoryname adaptive
 $ git push origin adaptive</pre>
-                <p class="text">
-                    Отправляем изменения из новой ветки <strong>adaptive</strong> локального репозитория в ветку <strong>adaptive</strong> удалённого репозитория
-                </p>
+                <p class="paragraph">Отправляем изменения из новой ветки <strong>adaptive</strong> локального репозитория в ветку <strong>adaptive</strong> удалённого репозитория</p>
             </div>
         </section>
 
@@ -269,15 +247,11 @@ $ cd repositoryname</pre>
 //Выдаст:
 
 other-user ~/repositoryname master</pre>
-                <p class="text">
-                    Клонирование ветки <strong>master</strong> удалённого репозитория
-                </p>
+                <p class="paragraph">Клонирование ветки <strong>master</strong> удалённого репозитория</p>
                 <pre class="screen screen_post">
 other-user ~/repositoryname master
 $ git checkout origin/second-branch -b second-branch</pre>
-                <p class="text">
-                    Создание локальной ветки <strong>second-branch</strong> и получение в неё изменений из ветки <strong>second-branch</strong> удалённого репозитория
-                </p>
+                <p class="paragraph">Создание локальной ветки <strong>second-branch</strong> и получение в неё изменений из ветки <strong>second-branch</strong> удалённого репозитория</p>
             </div>
         </section>
     
@@ -289,7 +263,7 @@ $ git checkout origin/second-branch -b second-branch</pre>
 
                 <pre class="screen screen_post">
 $ git status</pre>
-                <p class="text">
+                <p class="paragraph">
                     &bull; Покажет какие файлы изенены (<strong>modified:</strong>) или удалены (<strong>deleted:</strong>)<br>
                     &bull; Покажет так же на каком изменении находятся <strong>on branch master</strong> или <strong>on branch имя-указателя</strong>
                 </p>
@@ -307,9 +281,7 @@ $ git diff</pre>
 
                 <pre class="screen screen_post">
 $ git checkout folders-name/file-name.txt</pre>
-                <p class="text">
-                    Если прежде "закомиченый" файл <strong>file-name.txt</strong> был удалён, то он вернётся в своё прежнее состояние, т.е. восстановится
-                </p>
+                <p class="paragraph">Если прежде "закомиченый" файл <strong>file-name.txt</strong> был удалён, то он вернётся в своё прежнее состояние, т.е. восстановится</p>
             </div>
         </section>
 
@@ -319,16 +291,12 @@ $ git checkout folders-name/file-name.txt</pre>
             <pre class="screen screen_post">
 user ~/repositoryname master
 $ git merge second-branch</pre>
-            <p class="text">
-                Сливание изменений из ветки <strong>second-branch</strong> в ветку <strong>master</strong>
-            </p>
+            <p class="paragraph">Сливание изменений из ветки <strong>second-branch</strong> в ветку <strong>master</strong></p>
 
             <pre class="screen screen_post">
 user ~/repositoryname master
 $ git merge second-branch -m 'Коммит'</pre>
-            <p class="text">
-                Слияние с созданием коммита
-            </p>
+            <p class="paragraph">Слияние с созданием коммита</p>
         </section>
     
         <section class="section">
@@ -348,9 +316,7 @@ $ git remote -v</pre>
                 <pre class="screen screen_post">
 user ~/repositoryname master
 $ git remote add name-1 git@github.com:name-2/branch-2.git</pre>
-                <p class="text">
-                    В итоге, помимо связи c <strong>origin</strong>, мы увидим новую связь с <strong>name-1</strong> репозиториями
-                </p>
+                <p class="paragraph">В итоге, помимо связи c <strong>origin</strong>, мы увидим новую связь с <strong>name-1</strong> репозиториями</p>
                 <pre class="screen screen_post">
 user ~/repositoryname master
 $ git remote -v
@@ -369,11 +335,9 @@ name-1 ... (push)</pre>
                 <pre class="screen screen_post">
 user ~/repositoryname master
 $ git pull name-1 master</pre>
-                <p class="text">
-                    - забираем изменения к себе в <strong>master</strong>-ветку из <strong>master</strong>-ветки репозитория обозначенным как <strong>name-1</strong>
-                </p>
+                <p class="paragraph">- забираем изменения к себе в <strong>master</strong>-ветку из <strong>master</strong>-ветки репозитория обозначенным как <strong>name-1</strong></p>
             </div>
         </section>
-    </article>
+    </main>
 </body>
 </html>
