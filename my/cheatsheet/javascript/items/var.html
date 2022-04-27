@@ -19,6 +19,10 @@
             <h2 class="section__header">Переменные</h2>
 
             <p class="paragraph">
+                &bull; имя переменной может состоять из <strong>букв</strong>, <strong>цифр</strong>, символов <strong>$</strong> и <strong>_</strong><br>
+                &bull; имя переменной не может начинаться с <strong>цифры</strong>
+            </p>
+            <p class="paragraph">
                 &bull; переменная <strong>var</strong> видна до её объявления<br>
                 &bull; все объекты в булевом контексте являются <strong>true</strong>
             </p>
@@ -30,17 +34,23 @@
                     <h4 class="subsubsection__header">Инициализация (создание)</h4>
 
                     <pre class="screen screen_pre">
-let name_1;</pre>
+let name_1;
+
+var name_3;</pre>
                 </div>
 
                 <div class="subsubsection">
                     <h4 class="subsubsection__header">Присвоение значения</h4>
 
                     <pre class="screen screen_pre">
-let name_1 = value_1;</pre>
+let name_1 = value_1;
+
+name_1 = value_2;</pre>
 
                     <pre class="screen screen_pre">
-name_1 = value_2;</pre>
+var name_3 = value_3;
+
+name_3 = value_4;</pre>
                     <p class="paragraph">При присвоении нового значения или ранее созданной переменной, использование ключевого слова не обязательно</p>
                 </div>
             </div>
@@ -70,9 +80,49 @@ name_1 = value_2;</pre>
                         &bull; Доступны только локально в самой функции<br>
                         &bull; Параметр переданный функции приобретают локальную область видимости, кроме массивов, передаваемых функции по ссылке. Если внести изменение в элемент массива, переданного в качестве параметра, изменятся элемент исходного массива<br>
                         &bull; Переменная цикла видна во всей функции, внутри которой объявлена<br>
-                        &bull; Создаются при первом вызове функции и исчезают при завершении функции
+                        &bull; Создаются при первом вызове функции и исчезают при завершении функции<br>
+                        &bull; При этом при создании переменной внутри блока кода <strong>if-else</strong> и <strong>for</strong> её область видимости этими блоками не ограничиваются (фигурные скобки этих блоков не изолируют область видимости этой переменной)
                     </p>
                 </div>
+
+                <div class="subsubsection">
+                    <h4 class="subsubsection__header">let</h4>
+
+                    <p class="paragraph">
+                        &bull; Переменная видимая внутри блока кода <strong>{ }</strong>, что защищает значение глобальной переменной<br>
+                    </p>
+
+                </div>
+
+                <pre class="screen screen_pre">
+var name_1 = value_1;
+                    
+                    
+if (name_1) {
+    var name_1 = value_2;
+}
+    &frasl;&frasl; Значение name_1 переопределится
+                    
+                    
+                    
+if (name_1) {
+    let name_1 = value_3;
+}
+    &frasl;&frasl; Значение name_1 не переопределится
+
+
+var i = value_4;
+
+for (var i=0, i&lt;value_5, i++) {
+    action_1;
+}
+    &frasl;&frasl; Значение глобальной переменной i не переопределится
+
+
+for (let i=0, i&lt;value_5, i++) {
+    action_1;
+}
+    &frasl;&frasl; Значение глобальной переменной i переопределится</pre>
             </div>
 
             <div class="subsection">

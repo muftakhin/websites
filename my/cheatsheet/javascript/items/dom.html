@@ -97,6 +97,24 @@ window.onload = name_1;</pre>
             </p>
 
             <div class="subsection">
+                <h3 class="subsection__header">Основные свойства объекта document</h3>
+
+                <p class="paragraph">
+                    <strong>document.anchors</strong> - массив со всеми якорями документа<br>
+                    <strong>document.images</strong> - массив-объект со всеми картинками докуента<br>
+                    <strong>links</strong> - массив со всемы ссылками документа<br>
+                    <strong>forms</strong> - массив со всеми формами документа
+                </p>
+
+                <pre class="screen screen_post">
+&lt;img src="&frasl;images&frasl;image_1.png"&gt;
+document.images[0].src = "&frasl;images&frasl;image_1.png";
+
+&lt;a href="http://ovnacode.ru"&gt;Код Овна&lt;/a&gt;
+document.links[0].href = "http://ovnacode.ru";</pre>
+            </div>
+
+            <div class="subsection">
                 <h3 class="subsection__header">Свойства объекта document</h3>
                     
                 <p class="paragraph">
@@ -118,6 +136,40 @@ window.onload = name_1;</pre>
 
                 <p class="paragraph">Элементы, которые возвращают методы вроде <strong>getElementById</strong> также являются объектами</p>
             </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Доступ к основным элементам</h3>
+
+                <div class="subsubsection">
+                    <h4 class="subsubsection__header">DOCTYPE</h4>
+
+                    <pre class="screen screen_pre">
+document.doctype</pre>
+                </div>
+
+                <div class="subsubsection">
+                    <h4 class="subsubsection__header">html</h4>
+
+                    <pre class="screen screen_pre">
+document.documentElement</pre>
+                </div>
+
+                <div class="subsubsection">
+                    <h4 class="subsubsection__header">head</h4>
+
+                    <pre class="screen screen_pre">
+document.head</pre>
+                </div>
+
+                <div class="subsubsection">
+                    <h4 class="subsubsection__header">body</h4>
+
+                    <pre class="screen screen_pre">
+document.body</pre>
+                    <pre class="screen screen_post">
+document.body.style.backgroundColor = "red";</pre>
+                </div>
+            </div>
         </section>
 
         <section class="section">
@@ -134,7 +186,7 @@ window.onload = name_1;</pre>
             </div>
 
             <div class="sunsection">
-                <h3 class="sub2section__header">Методы элемента (объекта элемнта)</h3>
+                <h3 class="subsection__header">Методы элемента (объекта элемента)</h3>
                     
                 <p class="paragraph">
                     <strong>appendChild</strong> и<br>

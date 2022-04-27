@@ -18,6 +18,7 @@ li {
   list-style-type: none;
 }
 .body {
+  min-width: 320px;
   background-color: #222222;
 }
 .header {

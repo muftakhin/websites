@@ -110,7 +110,11 @@ name_1.keys(); - возвращает массив, содержащий все 
 
             <p class="paragraph">При обращении к несуществующему свойству объекта, вернётся <strong>undefined</strong></p>
 
-            <p class="paragraph">Скобочная нотация позволяет заключать в квадратные скобки любые выражения. Необходимо лишь, чтобы результатом его вычисления являлось имя свойства</p>
+            <p class="paragraph">
+                &bull; Скобочная нотация позволяет заключать в квадратные скобки любые выражения. Необходимо лишь, чтобы результатом его вычисления являлось имя свойства<br>
+                &bull; Скобочная нотация позволяет записывать вместо имени свойства переменную<br>
+                &bull; Скобочная нотация позволяет записать в качестве имени свойства строку из нескольих слов
+            </p>
             <pre class="screen screen_pre">
 name_1['one' + 'two'];
                     
@@ -235,9 +239,8 @@ name_17[0].name_4[1]; - вернёт - value_4</pre>
             <h2 class="section__header">Передача объектов функциям</h2>
 
             <p class="paragraph">
-                &bull; При присвоении объекта переменной, переменная будет содержать не сам объект, а ссылку (указатель) на объект<br>
-                    Если передать параметру функции в качестве аргумента значение этой переменной , то в переменной параметра функции будет храниться копия ссылки на объект<br>
-                &bull; При изменении свойства объекта внутри функции, изменяется свойство исходного объекта
+                &bull; При присвоении объекта переменной, переменная будет содержать не сам объект, а ссылку (указатель) на объект. Если передать параметру функции в качестве аргумента значение этой переменной , то в переменной параметра функции будет храниться копия ссылки на объект<br>
+                &bull; При изменении свойства объекта внутри функции, изменяется свойство исходного объекта (функция "портит" объект)
             </p>
             <pre class="screen screen_post">
 pluto.weight = 48;
@@ -344,6 +347,67 @@ let name_10 = {
                 <p class="paragraph">Чтобы использовать один и тот же код метода с разными объектами, достаточно добавить его в виде свойства каждому из этих объектов</p>
             </div>
         </section>
+
+        <section class="section">
+            <h2 class="section__header">Деструктурирующее присваивание</h2>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Деструктуризация из объекта</h3>
+
+                <pre class="screen screen_pre">
+var name_1 = {
+    name_2: value_1,
+    name_3: value_2,
+    name_4: value_3,
+    name_5: ["", "", ""]
+}
+
+var {name_2, name_3} = name_1;</pre>
+                <p class="paragraph">
+                    &bull;<strong>name_2</strong> и <strong>name_3</strong> вытаскиваются из объекта <strong>name_1</strong> и для них создаются переменные с соответствующим именем и значением<br>
+                    &bull;Значения созданных в процессе деструктуризации переменных могут быть изменены
+                </p>
+                <pre class="screen screen_pre">
+name_2 = value_4;
+name_3 = value_5;</pre>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Деструктуризация из массива</h3>
+
+                <pre class="screen screen_pre">
+var [name_1] = ["value_1", "value_2", ..., "value_n"];
+var [,name_2] = ["value_1", "value_2", ..., "value_n"];
+...
+var [,,,name_3] = ["value_1", "value_2", ..., "value_n"];</pre>
+
+                <p class="paragraph">
+                    &bull; Переменной <strong>name_1</strong> будет присвоено первое значение массива, <strong>name_1</strong> - второе, а <strong>name_3</strong> - четвёртое<br>
+                    &bull; Запятых перед именем переменной, которой присваивается <strong>n-ое</strong> значение массива, должно быть в количестве равном <strong>n-1</strong> (соответствующему количеству пропущенных элементов)
+                </p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section__header">Расширение объектных литералов (реструктурирование)</h2>
+
+            <pre class="screen screen_pre">
+var name_1 = value_1;
+var name_2 = value_2;
+var name_3 = function() {
+    action_1;
+};
+
+var name_4 = {name_1,name_2,name_3};</pre>
+            <p class="paragraph"><strong>name_1</strong> и <strong>name_2</strong> становятся свойствами, а <strong>name_3</strong> методом объекта <strong>name_4</strong>:</p>
+            <pre class="screen screen_pre">
+var name_4 = {
+    name_1: value_1,
+    name_2: value_2
+    name_3: function() {
+        action_1;
+    }
+};</pre>
     </main>
 </body>
 </html>

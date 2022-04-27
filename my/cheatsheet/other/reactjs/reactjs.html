@@ -17,30 +17,37 @@
         <section class="section">
             <h2 class="section__header">Подключение</h2>
 
-            <p class="paragraph">
-                &bull; Скачиванием файла<br>
-                &bull; Указанием URL
-            </p>
-            <pre class="screen screen_post">
+            <div class="subsection">
+                <h3 class="subsection__header">Подключение указанием URL</h3>
+
+                <pre class="screen screen_post">
 ...
 &lt;head&gt;
     ...
-    &lt;script src=".../react.js"&gt;&lt;&frasl;script&gt;
-    &lt;script src=".../react-dom.js"&gt;&lt;&frasl;script&gt;
-    &lt;script src=".../browser.js"&gt;&lt;&frasl;script&gt;
+    &lt;script src=".../react.development.js"&gt;&lt;&frasl;script&gt;
+    &lt;script src=".../react-dom.development.js"&gt;&lt;&frasl;script&gt;
     ...
+    &lt;script src=".../babel.min.js"&gt;&lt;&frasl;script&gt;
 &lt;&frasl;head&gt;
 &lt;body&gt;
     ...
-    &lt;div id="content"&gt;&lt;&frasl;div&gt;
+    &lt;div id="root"&gt;&lt;&frasl;div&gt;
     ...
-    &lt;script type="paragraph/babel"&gt;
-    
+    &lt;script type="text/babel"&gt;
+        ...
     &lt;&frasl;script&gt;
     ...
 &lt;&frasl;body&gt;
 ...</pre>
+                <p class="paragraph">
+                    &bull; Мы подключили библиотеки <strong>react</strong> и <strong>react-dom</strong> как обычные скрипты<br>
+                    &bull; И <strong>babel</strong> библиотеку, чтобы код на <strong>JSX</strong> превращался в валидный JavaScript-код
+                </p>
+            </div>
         </section>
+
+
+
 
         <section class="section">
             <h2 class="section__header">Установка</h2>

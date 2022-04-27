@@ -18,7 +18,7 @@
         <section class="section">
             <p class="paragraph">
                 &bull; Это функция, которая создаёт объекты, давая им набор заранее определённых свойств и методов<br>
-                &bull; Принимает значения свойств, которые вы хотите задать в соём объекте, и возвращает новый объект со всеми нужными апм свойствами и методами<br>
+                &bull; Принимает значения свойств, которые вы хотите задать в соём объекте, и возвращает новый объект со всеми нужными нам свойствами и методами<br>
                 &bull; Должен использоваться с оператором <strong>new</strong> и иметь имя начинающееся с большой буквы<br>
                 &bull; Создаёт объекты имеющие одинаковую структуру, с общими именами свойств и методов<br>
                 &bull; Аргументы, передаваемые конструктору, используются при инициализации свойств создаваемого объекта<br>
@@ -54,26 +54,26 @@ let name_1 = new Name_2( value_1, value_2, ..., value_n )</pre>
             <p class="paragraph">Создадим Конструктор, который будет добавлять к каждому созданному объекту свойства <strong>x</strong> ... <strong>z</strong></p>
             <pre class="screen screen_pre">
 let Name_1 = function(param_1, param_2, ..., param_n) {
-this.param_1 = param_1;
-this.param_2 = param_2;
-...
-this.param_n = param_n;
+    this.param_1 = param_1;
+    this.param_2 = param_2;
+    ...
+    this.param_n = param_n;
 
-this.name_2 = function() { 
-    ...                         // могут использоваться в теле и this.param_1 ... this.param_n 
-};
+    this.name_2 = function() { 
+        ...                         // могут использоваться в теле и this.param_1 ... this.param_n 
+    };
 };</pre>
             <p class="paragraph">Или</p>
             <pre class="screen screen_pre">
 function Name_1(param_1, param_2, ..., param_n) {
-this.param_1 = param_1;
-this.param_2 = param_2;
-... 
-this.param_n = param_n;
+    this.param_1 = param_1;
+    this.param_2 = param_2;
+    ... 
+    this.param_n = param_n;
 
-this.name_2 = function() { 
-    ...                        // аналогично
-};
+    this.name_2 = function() { 
+        ...                        // аналогично
+    };
 }</pre>
             <p class="paragraph">Имена свойств и имена параметров необязательно должны быть одинаковыми но зачастую таковыми оказываются по соглашению</p>
                 
@@ -91,16 +91,15 @@ this.name_2 = function() {
             <p class="paragraph">Необходимо использовать <strong>this.</strong> в методе для ссылки на свойства в объекте</p>
             <pre class="screen screen_pre">
 function Name_1(param_1, param_2, ..., param_n) {
-this.param_1 = param_1;
-this.param_2 = param_2;
-...
-this.param_n = param_n;
+    this.param_1 = param_1;
+    this.param_2 = param_2;
+    ...
+    this.param_n = param_n;
 }</pre>
             <pre class="screen screen_post">
 function Name_1(x, y) {
-this.x = x;
-this.y = y;
-
+    this.x = x;
+    this.y = y;
 }
 let name_2 = new Name_1(10, 20);
    
@@ -108,12 +107,12 @@ name_2;  вернёт:  Name_1 {x: 10, y: 20}</pre>
             <p class="paragraph">Создаётся объект, используя функцию <strong>Name_1</strong> в качестве конструктора с передачей ей аргументов <strong>10</strong> и <strong>20</strong> для свойств <strong>x</strong> и <strong>y</strong>, затем возвращается полученный объект и сохраняется в переменной <strong>name_2</strong></p>
             <pre class="screen screen_post">
 function Name_1(param_1, param_2) {
-this.param_1 = param_1;
-this.param_2 = param_2;
+    this.param_1 = param_1;
+    this.param_2 = param_2;
 
-this.name_5 = function() {
-   ... ; 
-};
+    this.name_5 = function() {
+        ... ; 
+    };
 }
             
 Создадим 3 разных объекта:
@@ -127,7 +126,7 @@ let name_4 = new Name_1(50, 60);
 name_2.name_5();
 name_3.name_5();
 name_4.name_5();</pre>
-            <p class="paragraph">Мы создаём 3 разных объекта <strong>Name_1</strong>, каждый из которых будет обладать своими свойствами, для чего используем ключнвое слово <strong>new</strong> в сочетании с ранее созданным конструктором <strong>Name_1</strong>. Конструктор возвращает объект <strong>Name_1</strong>, сконфигурированный в соответствии с переданными нами аргументами</p>
+            <p class="paragraph">Мы создаём 3 разных объекта <strong>Name_1</strong>, каждый из которых будет обладать своими свойствами, для чего используем ключевое слово <strong>new</strong> в сочетании с ранее созданным конструктором <strong>Name_1</strong>. Конструктор возвращает объект <strong>Name_1</strong>, сконфигурированный в соответствии с переданными нами аргументами</p>
                 
             <p class="paragraph">Далее мы вызываем метод <strong>name_5</strong> в отношении каждого объекта <strong>Name_1</strong></p>
         </section>
@@ -138,22 +137,22 @@ name_4.name_5();</pre>
 
             <pre class="screen screen_pre">
 let name_1 = { name_2: value_1,
-           name_3: value_2,
-           ...
-           name_n: value_n
-        };</pre>
+    name_3: value_2,
+    ...
+    name_n: value_n
+};</pre>
             <p class="paragraph">- объектный литерал</p>
 
             <pre class="screen screen_pre">
 function NameName_1(params_1) {
-this.nameName_2 = params_1.nameName_2;
-this.nameName_3 = params_1.nameName_3;
-...
-this.nameName_n = params_1.nameName_n;
-
-this.name_x = function() {
+    this.nameName_2 = params_1.nameName_2;
+    this.nameName_3 = params_1.nameName_3;
     ...
-};
+    this.nameName_n = params_1.nameName_n;
+
+    this.name_x = function() {
+        ...
+    };
 }</pre>
             <p class="paragraph">- Конструктор с параметром-объектом</p>
 
@@ -187,7 +186,7 @@ let nameNameName_1 = new NameName_1(name_1)</pre>
             </p>
             <pre class="screen screen_post">
 if (name_1 instanceof Name_2) {
-...
+    ...
 };</pre>
             <p class="paragraph">- выполнится если <strong>name_1</strong> экземпляр созданный конструктором <strong>Name_2</strong></p>
         </section>
