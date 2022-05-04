@@ -11,7 +11,7 @@
 <body class="body">
     <header class="header">
         <a class="header__button"  href="../javascript.html">&uArr;</a>
-        <h1 class="header__title">Подключение JavaScript</h1>
+        <h1 class="header__title">Подключение</h1>
     </header>
 
     <main class="main">
@@ -24,7 +24,7 @@
                 <pre class="screen screen_pre">
 &lt;head&gt;
     ...
-    &lt;script src="scripts.js"&gt;&lt;&frasl;script&gt;
+    &lt;script src="name_1.js"&gt;&lt;&frasl;script&gt;
     ...
 &lt;&frasl;head&gt;</pre>
             </div>
@@ -35,10 +35,11 @@
                 <pre class="screen screen_pre">
 &lt;body&gt;
     ...
-    &lt;script src="scripts.js"&gt;&lt;&frasl;script&gt;
-    ...
+    &lt;script src="name_1.js"&gt;&lt;&frasl;script&gt;
 &lt;&frasl;body&gt;</pre>
             </div>
+
+            <p class="paragraph">При этом код между тегами <strong>script</strong> игнорируется, если он есть</p>
         </section>
 
         <section class="section">
@@ -67,7 +68,11 @@
         ...
     &lt;&frasl;script&gt;
 &lt;&frasl;body&gt;</pre>
-                <p class="paragraph">Чтобы заработала интерактивность после загрузки всей страницы, <strong>JavaScript</strong> подключают в самом низу</p>
+                <p class="paragraph">
+                    &bull; Чтобы заработала интерактивность после загрузки всей страницы, <strong>JavaScript</strong> подключают в самом низу<br>
+                    &bull; Атрибут <strong>defer</strong>, который указывает, что сценарий не будет изменять структуру страницы, а потому его можно безопасно выполнить после синтаксического анализа всей страницы
+                </p>
+                <p class="paragraph">Для экранирования символа применяют символ <strong>\</strong></p>
             </div>
         </section>
     </main>

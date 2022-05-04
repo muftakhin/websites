@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Модули</title>
+    <link rel="stylesheet" href="../../styles/style.css">
+</head>
+
+<body class="body">
+    <header class="header">
+        <a class="header__button"  href="../javascript.html">&uArr;</a>
+        <h1 class="header__title">Модули</h1>
+    </header>
+
+    <main class="main">
+        <section class="section">
+            <h2 class="section__header">export</h2>
+
+            <p class="paragraph">
+                &bull; Модуль- это фрагмент кода, пригодный для многократного использования<br>
+                &bull; Модули хранятся в отдельных файлах, по одному на модуль<br>
+                &bull; Из одного модуля можно экспортировать один или несколько объектов
+            </p>
+            <p class="paragraph">Экспорт одного объекта (одну переменную) из файла file_name_1.js:</p>
+            <pre class="screen screen_pre">
+const name_1 = new Name_2(...);
+
+export default name_1</pre>
+
+            <p class="paragraph">Экспорт двух объектов (две функции) из файла file_name_2.js:</p>
+            <pre class="screen screen_pre">
+export const name_3(...) => action_3_1;
+
+export const name_4(...) => {
+    name_4_1: value_4_1;
+    name_4_2: value_4_2() => action_4_1;
+}</pre>
+        </section>
+
+        <section class="section">
+            <h2 class="section__header">import</h2>
+
+            <pre class="screen screen_pre">
+import name_1 from './file_name_1'
+
+import name_3 from './file_name_2'
+import name_4 from './file_name_2'</pre>
+
+            <p class="paragraph">&bull; В модулях с несколькими экспортируемыми переменными можно обратиться к деструктурированию объектов</p>
+            <pre class="screen screen_pre">
+import { name_4_1, name_4_2 } from './file_name_2';</pre>
+
+            <p class="paragraph">&bull; Для переменными модуля можно задать локальную область видимости под ругими именами переменных</p>
+            <pre class="screen screen_pre">
+import { name_4_1 as name_5, name_4_2 as name_6 } from './file_name_2';</pre>
+
+            <p class="paragraph">&bull; Можно импортировать все в одну переменную</p>
+            <pre class="screen screen_pre">
+import * as name_6 from './file_name_2';</pre>
+        </section>
+    </main>
+</body>

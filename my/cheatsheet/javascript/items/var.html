@@ -36,7 +36,9 @@
                     <pre class="screen screen_pre">
 let name_1;
 
-var name_3;</pre>
+var name_2;
+
+var name_3,</pre>
                 </div>
 
                 <div class="subsubsection">
@@ -50,7 +52,11 @@ name_1 = value_2;</pre>
                     <pre class="screen screen_pre">
 var name_3 = value_3;
 
-name_3 = value_4;</pre>
+name_3 = value_4;
+
+var name_5 = value_5,   // Объявление в одной инструкции
+    name_6 = value_6,   // несколько переменных
+    name_7 = value_7;</pre>
                     <p class="paragraph">При присвоении нового значения или ранее созданной переменной, использование ключевого слова не обязательно</p>
                 </div>
             </div>
@@ -63,7 +69,27 @@ name_3 = value_4;</pre>
                 <div class="subsubsection">
                     <h4 class="subsubsection__header">Глобальные</h4>
 
-                    <p class="paragraph">Объявленные за пределами функций или внутри функции без использования ключевого слова <strong>var</strong> (используемые без предварительного объявления)</p>
+                    <p class="paragraph"><div class="subsubsection">
+                    <h4 class="subsubsection__header">Глобальные</h4>
+
+                    <p class="paragraph">Интерпретатор вытягивает все объявления переменных <strong>var</strong> в верхнюю часть своей области видимости</p>
+
+                    <p class="paragraph">
+                        &bull; Видны даже в дополнительных сценариях<br>
+                        &bull; Существуют, пока существует страница (при перезагрузке страницы уничтожаются и создаются заново)
+                    </p>
+                </div><strong>var</strong> или внутри функции без использования ключевого слова <strong>var</strong> (используемые без предварительного объявления)</p>
+
+                    <p class="paragraph">
+                        &bull; Видны даже в дополнительных сценариях<br>
+                        &bull; Существуют, пока существует страница (при перезагрузке страницы уничтожаются и создаются заново)
+                    </p>
+                </div>
+
+                <div class="subsubsection">
+                    <h4 class="subsubsection__header">Глобальные</h4>
+
+                    <p class="paragraph">Объявленные за пределами функций с использованием ключевого слова <strong>var</strong> или внутри функции без использования ключевого слова <strong>var</strong> (используемые без предварительного объявления)</p>
 
                     <p class="paragraph">
                         &bull; Видны даже в дополнительных сценариях<br>
@@ -207,6 +233,17 @@ const NAME1;</pre>
                 &bull; Нельзя присвоить новое значение<br>
                 &bull; Если значением является объект, то можно изменять его свойства
             </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section__header">Удаление переменной</h2>
+
+            <p class="paragraph">
+                &bull; Глобальные переменные созданные в глобальной области с помощью <strong>var</strong> не могут быть удалены<br>
+                &bull; Глобальные переменные созданные в локальной области без использоавания <strong>var</strong> (подразумаваемые глобальные переменные) могут быть удалены
+            </p>
+            <pre class="screen screen_pre">
+delete name_1;</pre>
         </section>
     </main>
 </body>

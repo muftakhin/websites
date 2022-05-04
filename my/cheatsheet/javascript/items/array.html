@@ -15,243 +15,146 @@
     </header>
 
     <main class="main">
-        <section class="section">
-            <h2 class="section__header">Определение массива</h2>
-
-            <p class="paragraph">
-                &bull; Массив - структура данных для работы с упорядоченными данными<br>
-                &bull; Массивы часто используют для хранения сходных данных<br>
-                &bull; Определение массива начинается с символа <strong>[</strong>
-            </p>
-            <pre class="screen screen_post">
-let name_1 = [ "one", "two", "three", "four", "five" ];
-
-    Другой вариант написания:
-
-let name_1 = [
-    "one",
-    "two",
-    "three",
-    "four",
-    "five"
-];
-
-"one", "two", ... - элементы массива name_1</pre>
-            <p class="paragraph">- массив присваивается переменной name_1</p>
-        </section>
 
         <section class="section">
-            <h2 class="section__header">Доступ к элементам массива</h2>
+            <h2 class="section__header">Доступ к элементам</h2>
 
             <pre class="screen screen_pre">
-name_1[0] - доступ к первому элементу массива name_1
-name_1[1] - доступ ко второму элементу массива name_1
-...</pre>
+name_1[n];
+
+name_1[n][n]...[n];  // многомерный массив</pre>
+            <p class="paragraph">Доступ к <strong>n+1</strong> элементу массива</p>
         </section>
 
         <section class="section">
-            <h2 class="section__header">Создание и изменение элементов массива</h2>
+            <h2 class="section__header">Создание и изменение элементов</h2>
 
             <div class="subsection">
                 <h3 class="subsection__header">Создание пустого массива</h3>
 
-                <div class="subsubsection">
-                    <h4 class="subsubsection__header">Упрощённая запись</h4>
-
-                    <pre class="screen screen_pre">
+                <p class="paragraph">Упрощённая запись:</p>
+                <pre class="screen screen_pre">
 let name_1 = [];</pre>
-                </div>
 
-                <div class="subsubsection">
-                    <h4 class="subsubsection__header">С помощью конструктора Array</h4>
-
-                    <pre class="screen screen_pre">
+                <p class="paragraph">С помощью конструктора Array:</p>
+                <pre class="screen screen_pre">
 let name_1 = new Array();</pre>
-                </div>
 
-                <div class="subsubsection">
-                    <h4 class="subsubsection__header">Создание пустого массива с несколькими элементами</h4>
-
-                    <pre class="screen screen_pre">
+                <p class="paragraph">Создание пустого массива с несколькими элементами:</p>
+                <pre class="screen screen_pre">
 let name_1 = new Array(n);</pre>
-                    <p class="paragraph"><strong>n</strong> - количество элементов</p>
-                </div>
+                <p class="paragraph"><strong>n</strong> - количество элементов</p>
             </div>
 
             <div class="subsection">
                 <h3 class="subsection__header">Создание массива при помощи литерала</h3>
 
                 <pre class="screen screen_pre">
-let name_1 = ["one", "two", "three"];</pre>
-                <p class="paragraph">- упрощённая запись</p>
+let name_1 = ["one", "two", "three"];
 
-                <pre class="screen screen_post">
 let name_1 = new Array("one", "two", "three");</pre>
             </div>
         </section>
 
         <section class="section">
-            <h2 class="section__header">Задание или изменение значение элемента массива</h2>
+            <h2 class="section__header">Задание, изменение значение и добавление элемента</h2>
 
-            <pre class="screen screen_post">
-name_1[0] = "six";</pre>
-            <p class="paragraph">- задать или изменить значение первого элемента массива name_1</p>
-        </section>
-
-        <section class="section">
-            <h2 class="section__header">Добавление элементов в массив</h2>
-
-            <pre class="screen screen_post">
-let name_1 = [];
-name_1[0] = "one";
-name_1[1] = "two";
-name_1[2] = "three";
-name_1[3] = "four";
-name_1[4] = "five";</pre>
-
-            <p class="paragraph">Или</p>
-            <pre class="screen screen_post">
-let name_1 =  new Array ();
-name_1[0] = "one";
-name_1[1] = "two";
-name_1[2] = "three";
-name_1[3] = "four";
-name_1[4] = "five";</pre>
-
+            <pre class="screen screen_pre">
+name_1[n] = value_1;</pre>
             <p class="paragraph">
-                &bull; Если добавить в пустой массив элементы с индексами <strong>[0]</strong> и <strong>[10]</strong>, элементы с индексами от <strong>[1]</strong> по <strong>[9]</strong> включительно, будут иметь значения <strong>undefined</strong>. Длинна этого массива будет равна <strong>10</strong>
+                - задать или изменить значение (n+1)-го элемента массива name_1<br>
+                Если добавить в пустой массив элементы с индексами <strong>[0]</strong> и <strong>[10]</strong>, элементы с индексами от <strong>[1]</strong> по <strong>[9]</strong> включительно, будут иметь значения <strong>undefined</strong>. Длинна этого массива будет равна <strong>10</strong>
             </p>
-        </section>
-
-        <section class="section">
-            <h2 class="section__header">Разные типы данных в массиве</h2>
-
-            <pre class="screen screen_post">
-let name_1 = [ 1, [ 2, "three", 4], "five"];
-
-name_1[1][2]; - вернёт 4</pre>
         </section>
 
         <section class="section">
             <h2 class="section__header">Работа с массивами</h2>
 
             <div class="subsection">
-                <h3 class="subsection__header">Длина массива</h3>
+                <h3 class="subsection__header">Длина</h3>
 
-                <pre class="screen screen_post">
-let name_1 = [1, 2, 3, 4, 5];
+                <pre class="screen screen_pre">
+name_1.length;  // вернёт кол-во элементов массива name_1
 
-name_1.length; - вернёт кол-во элементов массива name</pre>
-                    <pre class="screen screen_post">
-name_1[name_1.length - 1]; - вернёт значение последнего
-                          элемента массива name</pre>
+name_1.[length - 1];  // вернёт значение последнего
+                               элемента массива name_1</pre>
             </div>
 
             <div class="subsection">
-                <h3 class="subsection__header">Добавление элементов в массив</h3>
+                <h3 class="subsection__header">Добавление элементов</h3>
 
-                <div class="subsubsection">
-                    <h4 class="subsubsection__header">.push ()</h4>
-                        
-                    <p class="paragraph">- добавление элемента в конец массива</p>
-                    <pre class="screen screen_post">
-let name_1 = [];
-name_1.push("one");
-name_1.push(2);
-name_1.push("three");
-
-name_1; - вернёт ["one", 2, "three"]
-
-name_1.length; - вернёт 3</pre>
+                <p class="paragraph">Добавление элемента в конец массива:</p>
+                <pre class="screen screen_pre">
+name_1.push(value_1);</pre>
                 </div>
 
-                <div class="subsubsection">
-                    <h4 class="subsubsection__header">.unshift ()</h4>
-
-                    <p class="paragraph">- добавление элемента в начало массива</p>
-                    <pre class="screen screen_post">
-продолжение:
-
-name_1.unshift(5);
-
-name_1; - вернёт [5, "one", 2, "three"]</pre>
-                </div>
+                <p class="paragraph">Добавление элемента в начало массива</p>
+                <pre class="screen screen_pre">
+name_1.unshift(value_1);</pre>
             </div>
 
             <div class="subsection">
-                <h3 class="subsection__header">Удаление элементов из массива</h3>
+                <h3 class="subsection__header">Удаление элементов</h3>
 
-                <div class="subsubsection">
-                    <h4 class="subsubsection__header">.pop ()</h4>
-                        
-                    <p class="paragraph">- удаление элемента из конца массива</p>
-                    <pre class="screen screen_post">
-let name_1 = [1, 2, 3];
-let lastElementh = name_1.pop();
-
-lastElementh; - вернёт 3
-
-name_1; - вернёт [1, 2]</pre>
+                <p class="paragraph">Удаление элемента из конца массива</p>
+                <pre class="screen screen_pre">
+let name_1 = name_2.pop();</pre>
+                <p class="paragraph">- <strong>name_2.pop();</strong> удалит вернёт последний элемент массива</p>
                 </div>
 
-                <div class="subsubsection">
-                    <h4 class="subsubsection__header">.shift ()</h4>
-
-                    <p class="paragraph">- удаление элемента из начала массива</p>
-                    <pre class="screen screen_post">
-продолжение:            
-            
-let firstElementh = name_1.shift();
-           
-firstElementh; - вернёт 1
-           
-name_1; - вернёт [2]</pre>
+                <p class="paragraph">Удаление элемента из начала массива</p>
+                <pre class="screen screen_pre">
+let name_1 = name_2.shift();</pre>
+                <p class="paragraph">- <strong>name_2.shift();</strong> удалит и вернёт первый элемент массива</p>
                 </div>
             </div>
 
             <div class="subsection">
                 <h3 class="subsection__header">Объединение массивов</h3>
 
-                <pre class="screen screen_post">
-firstArray.concat(secondArray); - объединение 2х массивов</pre>
-                <p class="paragraph">Массивы <strong>firstArray</strong> и <strong>secondArray</strong> остаются прежними</p>
-                <pre class="screen screen_post">
-firstArray.concat(secondArray, ..., lastArray); - объединение нескольких массивов</pre>
+                <pre class="screen screen_pre">
+firstArray.concat(secondArray);  // объединение 2х массивов
+
+firstArray.concat(secondArray, ..., lastArray);  // объединение нескольких массивов</pre>
+                <p class="paragraph">В исходные массивы изменения не вносятся</p>
             </div>
 
             <div class="subsection">
                 <h3 class="subsection__header">Поиск индекса элемента в массиве</h3>
 
-                <pre class="screen screen_post">
-let colors = ["red", "green", "blue"];
-
-colors.indexOf("blue"); - вернёт 2
-
-colors[2]; - вернёт blue
-               
-colors.indexOf("voilet"); - вернёт -1 (нет в массиве)</pre>
-                <p class="paragraph">Если элемент встречается несколько раз, вернёт ближайший к началу</p>
+                <pre class="screen screen_pre">
+name_1.indexOf(value_1);</pre>
+                <p class="paragraph">
+                    &bull; Вернёт ключ(индекс) элемента массива <strong>name_1</strong> со  значением <strong>value_1</strong><br>
+                    &bull; Если элемент с таким значением отсутствует, вернёт <strong>-1</strong>
+                </p>
             </div>
 
             <div class="subsection">
                 <h3 class="subsection__header">Объединение элементов массива в одну строку</h3>
 
-                <pre class="screen screen_post">
-let colors = ["red", "green", "blue"];
-
-colors.join(); - вернёт "red,green,blue"
+                <pre class="screen screen_pre">
+name_1.join();  // вернёт "value_1,value_2, ... ,value_n"
                
-colors.join(" and "); - вернёт "red and green and blue"
-               
-.join() - в скобках указывается разделитель</pre>
+name_1.join(" simbols ");  // вернёт "value_1 simbols value_2 simbols ... simbols value_n"</pre>
             </div>
 
             <div class="subsection">
                 <h3 class="subsection__header">Случайный элемент массива</h3>
 
-                <pre class="screen screen_post">
+                <pre class="screen screen_pre">
 let name_2 = Math.floor(Math.random() * name_1.length);</pre>
                 <p class="paragraph">переменной <strong>name_2</strong> присваивается значение случайного элемента массива <strong>name_1</strong></p>
+            </div>
+
+            <div class="subsection">
+	            <h3 class="subsection__header">Метод .map()</h3>
+
+	            <pre class="screen screen_pre">
+const name_2 = name_1.map(function_1);</pre>
+				<p class="paragraph">
+					Метод <strong>.map()</strong> применяет функцию <sreong>function_1</sreong> последовательно к каждому элементу массива <strong>name_1</strong> и создаёт из результатов новый массив <strong>name_2</strong>, не внося изменения в массив <strong>name_1</strong> 
+				</p>
             </div>
         </section>
     </main>

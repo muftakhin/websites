@@ -94,7 +94,7 @@ li {
   font-size: 22px;
   font-family: monospace;
   text-align: center;
-  height: 48px;
+  min-height: 48px;
   line-height: 48px;
   width: 100%;
   color: white;

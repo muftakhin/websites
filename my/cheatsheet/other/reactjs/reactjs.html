@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../../styles/style.css">
 </head>
-    
+
 <body class="body">
     <header class="header">
         <a class="header__button"  href="../other.html">&uArr;</a>
@@ -15,127 +15,99 @@
 
     <main class="main">
         <section class="section">
-            <h2 class="section__header">Подключение</h2>
+            <h2 class="section__header">Элемент React</h2>
+            
+            <div class="subsection">
+                <h3 class="subsection__header">Создание элемента React</h3>
+
+                <pre class="screen screen_pre">
+React.createElement(tag-name_1, propertys_1, content_1);</pre>
+                <p class="paragraph">
+                    Где:<br>
+                    <strong>tag-name_1</strong> - "тип элемента"<br>
+                    <strong>propertys_1</strong> - свойства (если нет, то <strong>null</strong>)(если атрибуты, то <strong>{name_1: "value_1, name_2: "value_2"}</strong> )<br>
+                    <strong>content_1</strong> - то, что между тегами (дочерние элементы/содержимое)
+                </p>
+
+                <p class="paragraph">Создание списка:</p>
+                <pre class="screen screen_post">
+React.createElement(
+    "section",
+    {id: "container"},
+    React.createElement(
+        "ul",
+        {"className": "list"},
+        React.createElement("li", {"className": "list__item"}, "string_1"),
+        React.createElement("li", {"className": "list__item"}, "string_2"),
+        React.createElement("li", {"className": "list__item"}, "string_3"),
+    )
+)</pre>
+
+				<p class="paragraph">Создание списка из элементов массива name_1:</p>
+                <pre class="screen screen_post">
+React.createElement(
+    "ul",
+    {"className": "list"},
+    name_1.map(
+        item => React.createElement("li", {"className": "list__item"}, item)
+    )
+)</pre>
+            </div>
 
             <div class="subsection">
-                <h3 class="subsection__header">Подключение указанием URL</h3>
+                <h3 class="subsection__header">Отобразить элемент React в DOM</h3>
 
-                <pre class="screen screen_post">
-...
-&lt;head&gt;
-    ...
-    &lt;script src=".../react.development.js"&gt;&lt;&frasl;script&gt;
-    &lt;script src=".../react-dom.development.js"&gt;&lt;&frasl;script&gt;
-    ...
-    &lt;script src=".../babel.min.js"&gt;&lt;&frasl;script&gt;
-&lt;&frasl;head&gt;
-&lt;body&gt;
-    ...
-    &lt;div id="root"&gt;&lt;&frasl;div&gt;
-    ...
-    &lt;script type="text/babel"&gt;
-        ...
-    &lt;&frasl;script&gt;
-    ...
-&lt;&frasl;body&gt;
-...</pre>
+                <pre class="screen screen_pre">
+var name_1 = React.createElement(type, propertys, between);
+
+ReactDOM.render(name_1, document.getElementById('react-container'));</pre>
+				<p class="paragraph">
+					Где:<br>
+					<strong>name_1</strong> - элемент, который необходимо отобразить<br>
+					<strong>document.getElementById('react-container')</strong> - элемент с <strong>if="react-container"</strong> внутрь которого поместится элемент <strong>name_1</strong>
+				</p>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Создание элемента при помощи createFactory</h3>
+
+                <pre class="screen screen_pre">
+React.DOM.tag-name_1(propertys_1, content_1)</pre>
                 <p class="paragraph">
-                    &bull; Мы подключили библиотеки <strong>react</strong> и <strong>react-dom</strong> как обычные скрипты<br>
-                    &bull; И <strong>babel</strong> библиотеку, чтобы код на <strong>JSX</strong> превращался в валидный JavaScript-код
+                    Где:<br>
+                    <strong>tag-name_1</strong> - "тип элемента"<br>
+                    <strong>propertys_1</strong> - свойства (если нет, то <strong>null</strong>)(если атрибуты, то <strong>{name_1: "value_1, name_2: "value_2"}</strong> )<br>
+                    <strong>content_1</strong> - то, что между тегами (дочерние элементы/содержимое)
                 </p>
             </div>
         </section>
 
-
-
-
         <section class="section">
-            <h2 class="section__header">Установка</h2>
-
-            <p class="paragraph">
-                &bull; Запускаем <strong>NodeJS Command Prompt</strong><br>
-                &bull; Перемещаемся в папку с проектом<br>
-                &bull; Вводим
-            </p>
-            <pre class="screen screen_post">
-npx create-react-app my-app
-cd my-app
-npm start</pre>
-        </section>
-
-        <section class="section">
-            <h2 class="section__header">Основы</h2>
-
-            <p class="paragraph">
-                &bull; <strong>Компонента</strong> - функция, возвращающая разметку JSX<br>
-                &bull; Мы "вставляем" компоненту как тег с именем соответствующим имени функции<br>
-                &bull; В <strong>JSX</strong> разметке внутри функции, все элементы должны быть обёрнуты в единый элемент
-            </p>
+            <h2 class="section__header">JSX</h2>
 
             <pre class="screen screen_pre">
-const Name_1 = () =&gt; {
-    return (
-        ... );
-}</pre>
+&lt;h1&gt;string_1&lt;h1&gt;</pre>
+            <p class="paragraph">Выражения JavaScript, вычисления и типы отличные от строки должны заключаться в фигурные скобки</p>
+            <pre class="screen screen_pre">
+&lt;h1&gt;{"string_2" + name_1.name_2}&lt;h1&gt;</pre>
 
             <div class="subsection">
-                <h3 class="subsection__header">Импорт компонентов</h3>
-
-                <p class="paragraph">- для использования компонентов, находящихся в других файлах</p>
-                <pre class="screen screen_pre">
-    name.js:
-
-import Name_1 from '.&frasl;name_2.js';
-import Name_3 from '.&frasl;..&frasl;name_4.js';
-
-let name_5 = () =&gt; {
-
-    &lt;Name_1&frasl;&gt;
-    &lt;Name_3&frasl;&gt;
-
-}</pre>
-                <p class="paragraph">
-                    &bull; Путь относительный, и начинается с <strong>./</strong>, <strong>.js</strong> можно не ставить<br>
-                    &bull; При этом в файле из которого импортируются компоненты должен быть прописан <strong>export</strong>
-                </p>
+                <h3 class="subsection__header">Компонент JSX</h3>
 
                 <pre class="screen screen_pre">
-    name_2.js :
-
-let name_1 = () =&gt; {
-    ...
-}
-
-export default name_1;</pre>
+const name_1 = (name_2) =&gt;
+&lt;tag-name_1&gt;
+    &lt;tag-name_2&gt;
+        &lt;tag-name_4&gt;{name_2.title}&lt;&frasl;tag-name_4&gt;
+    &lt;&frasl;tag-name_2&gt;
+    &lt;tag-name_3 className="string_1"&gt;
+    &lt;&frasl;tag-name_3&gt;
+&lt;&frasl;tag-name_1&gt;</pre>
+                <p class="paragraph">В <strong>tag-name_3</strong> добавляется следующий компонент:</p>
                 <pre class="screen screen_pre">
-    name_4.js :
-
-let name_3 = () =&gt; {
-    ...
-}
-
-export default name_3;</pre>
-                <p class="paragraph">В <strong>name.js</strong> <strong>Name_1</strong> и <strong>Name_3</strong> можно писать любые имена (из-за того, что в <strong>name_2.js</strong> и <strong>name_4.js</strong> написано <strong>default</strong> ), но желательно соответствующие компонентам и с  большой буквы</p>
-
-                <div class="subsubsection">
-                    <h4 class="subsubsection__header">Импорт для JSX</h4>
-
-                    <p class="paragraph">Чтобы использовать JSX разметку, нужно в этот файл импортировать:</p>
-
-                    <pre class="screen screen_pre">
-import React from 'react';</pre>
-                </div>
-            </div>
-
-            <div class="subsection">
-                <h3 class="subsection__header">JSX</h3>
-
-                <div class="subsubsection">
-                    <h4 class="subsubsection__header">class="..."</h4>
-
-                    <pre class="screen screen_pre">
-className='name_1'</pre>
-                </div>
+&lt;tag-name_3 className="string_1"&gt;
+    {...}
+&lt;&frasl;tag-name_3&gt;</pre>
             </div>
         </section>
     </main>
