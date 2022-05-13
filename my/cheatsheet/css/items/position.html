@@ -19,7 +19,7 @@
             <h2 class="section__header">Типы позиционирования</h2>
 
             <pre class="screen screen_pre">
-position: static;    (default)
+position: static;    /* default */
         - relative;
         - absolute;
         - fixed;
@@ -91,11 +91,11 @@ right:
 bottom:
 left: px;
     - %;
-    - auto;            (default)
+    - auto;       /* default */
     - inherit;
 
 
-Применяется к позиционированным элементам (relative, absolute, fixed)</pre>
+/* Применяется к позиционированным элементам (relative, absolute, fixed) */</pre>
         </section>
 
         <section class="section">
@@ -121,7 +121,7 @@ left: px;
 
                 <pre class="screen screen_pre">
 z-index: число (целое);
-       - auto;     (default)
+       - auto;          /* default */
        - inherit;</pre>
                 <p class="paragraph">
                     <strong>z-index</strong> - число, чем больше значение, тем выше располагается элемент (ближе к переднему плану),дочерние элементы наследуют <strong>z-index</strong> родителя. При равном значении <strong>z-index</strong> на передний план выходит тот элемент, который в коде <strong>HTML</strong> располагается ниже<br>

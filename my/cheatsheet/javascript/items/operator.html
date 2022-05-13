@@ -79,20 +79,20 @@ let name_1 =  value_1;
 
                 <pre class="screen screen_pre">
 let name = 0;
-++name;  или  --name;  вернёт 1 и -1,
-name++;  или  name--;  вернёт 0</pre>
+++name;  или  --name;   // вернёт 1 и -1,
+name++;  или  name--;   // вернёт 0</pre>
             </div>
 
             <div class="subsection">
                 <h3 class="subsection__header">На заданное число</h3>
 
                 <pre class="screen screen_pre">
-+  -  увеличение
--  -  уменьшение
-*  -  умножение
-/  -  деление
-%  -  деление по модулю (остаток от деления)
-** -  возведение в степень</pre>
++      // увеличение
+-      // уменьшение
+*      // умножение
+/      // деление
+%      // деление по модулю (остаток от деления)
+**     // возведение в степень</pre>
                 <p class="paragraph">
                     &bull; При сложении числа со строкой выполняется конкатенация<br>
                     &bull; При умножении, делении и вычитании, JavaScript рассматривает операции как арифметические и строки преобразует в числа
@@ -108,9 +108,9 @@ name++;  или  name--;  вернёт 0</pre>
             </p>
 
             <pre class="screen screen_pre">
-&amp;&amp;  -  и
-||  -  или
-!   -  не</pre>
+&amp;&amp;    //  и
+||    // или
+!     // не</pre>
             <p class="paragraph">
                 <strong>&amp;&amp;</strong> - используются с двумя булевыми значениями, чтобы узнать равны ли оба <strong>true</strong><br>
                 <strong>&amp;&amp;</strong> - возвращает первое ложное значение
@@ -118,9 +118,7 @@ name++;  или  name--;  вернёт 0</pre>
             <pre class="screen screen_post">
 1 && 2 && 3 && null && 4
 
-вернёт
-
-null</pre>
+//-&gt; null</pre>
 
             <p class="paragraph">
                 <strong>||</strong> - равен ли кто-то <strong>true</strong><br>
@@ -129,9 +127,7 @@ null</pre>
             <pre class="screen screen_post">
 1 || 2 || 3 || null || 4
 
-вернёт
-
-1</pre>
+//-&gt; 1</pre>
 
             <p class="paragraph"><strong>!</strong> - меняет значение на противоположное</p>
         </section>
@@ -140,14 +136,14 @@ null</pre>
             <h2 class="section__header">Операторы сравнения</h2>
 
             <pre class="screen screen_pre">
-==   - равно
-===  - равно и того же типа (строго равно)
-&gt;    - больше
-&lt;    - меньше
-&gt;=   - больше или равно
-&lt;=   - меньше или равно
-!=   - не равно
-!==  - не равно и того же типа</pre>
+==      // равно
+===     // равно и того же типа (строго равно)
+&gt;       // больше
+&lt;       // меньше
+&gt;=      // больше или равно
+&lt;=      // меньше или равно
+!=      // не равно
+!==     // не равно и того же типа</pre>
 
             <p class="paragraph">Если переменную нужно сравнить, не является она <strong>true</strong> или <strong>false</strong>, то записывается только имя переменной (упрощается запись):</p>
             <pre class="screen screen_post">

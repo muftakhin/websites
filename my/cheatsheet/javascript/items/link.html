@@ -24,9 +24,9 @@
                 <pre class="screen screen_pre">
 &lt;head&gt;
     ...
-    &lt;script src="name_1.js"&gt;&lt;&frasl;script&gt;
+    &lt;script src="name_1.js"&gt;&lt;/script&gt;
     ...
-&lt;&frasl;head&gt;</pre>
+&lt;/head&gt;</pre>
             </div>
 
             <div class="subsection">
@@ -35,8 +35,8 @@
                 <pre class="screen screen_pre">
 &lt;body&gt;
     ...
-    &lt;script src="name_1.js"&gt;&lt;&frasl;script&gt;
-&lt;&frasl;body&gt;</pre>
+    &lt;script src="name_1.js"&gt;&lt;/script&gt;
+&lt;/body&gt;</pre>
             </div>
 
             <p class="paragraph">При этом код между тегами <strong>script</strong> игнорируется, если он есть</p>
@@ -53,9 +53,9 @@
     ...
     &lt;script&gt;
         ...
-    &lt;&frasl;script&gt;
+    &lt;/script&gt;
     ...
-&lt;&frasl;head&gt;</pre>
+&lt;/head&gt;</pre>
             </div>
                
             <div class="subsection">
@@ -66,8 +66,8 @@
     ...
     &lt;script&gt;
         ...
-    &lt;&frasl;script&gt;
-&lt;&frasl;body&gt;</pre>
+    &lt;/script&gt;
+&lt;/body&gt;</pre>
                 <p class="paragraph">
                     &bull; Чтобы заработала интерактивность после загрузки всей страницы, <strong>JavaScript</strong> подключают в самом низу<br>
                     &bull; Атрибут <strong>defer</strong>, который указывает, что сценарий не будет изменять структуру страницы, а потому его можно безопасно выполнить после синтаксического анализа всей страницы

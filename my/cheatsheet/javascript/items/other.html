@@ -81,7 +81,11 @@ alert("А хорошо жить ещё лучше!");</pre>
             <h2 class="section__header">Вывод в консоль</h2>
 
             <pre class="screen screen_pre">
-console.log('Выводимый текст');</pre>
+console.log('text');
+
+consle.warn('text');
+
+console.error('text');</pre>
         </section>
 
         <section class="section">
@@ -92,6 +96,7 @@ console.log('Выводимый текст');</pre>
             <div class="subsection">
                 <h3 class="subsection__header">Через заданное время</h3>
 
+                <p class="paragraph">Позволяет откладывать выполнение заданного кода</p>
                 <pre class="screen screen_pre">
 setTimeout(name_1, n);</pre>
                 <p class="paragraph">
@@ -240,21 +245,21 @@ let context = canvas.getContext('2d')</pre>
     &lt;div class="accordion-item"&gt;
         &lt;div class="accordion-item__trigger"&gt;
             Trigger 1
-        &lt;&frasl;div&gt;
+        &lt;/div&gt;
         &lt;div class="accordion-item__content"&gt;
             Content 1
-        &lt;&frasl;div&gt;
-    &lt;&frasl;div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
                     
     &lt;div class="accordion-item"&gt;
         &lt;div class="accordion-item__trigger"&gt;
             Trigger 2
-        &lt;&frasl;div&gt;
+        &lt;/div&gt;
         &lt;div class="accordion-item__content"&gt;
             Content 2
-        &lt;&frasl;div&gt;
-    &lt;&frasl;div&gt;
-&lt;&frasl;div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
                     
                     
     CSS:
@@ -302,16 +307,16 @@ document.querySelectorAll('.accordion-item__trigger').forEach((item) =>
 
 &lt;div class="slider-container"&gt;
     &lt;div class="slider-track"&gt;
-        &lt;div class="slider-item"&gt;&lt;&frasl;div&gt;
-        &lt;div class="slider-item"&gt;&lt;&frasl;div&gt;
+        &lt;div class="slider-item"&gt;&lt;/div&gt;
+        &lt;div class="slider-item"&gt;&lt;/div&gt;
             ...
-        &lt;div class="slider-item"&gt;&lt;&frasl;div&gt;
-    &lt;&frasl;div&gt;
-&lt;&frasl;div&gt;
+        &lt;div class="slider-item"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
 &lt;div class="slider-buttons"&gt;
-    &lt;div class="btn-prev"&gt;Preview&lt;&frasl;div&gt;
-    &lt;div class="btn-next"&gt;Next&lt;&frasl;div&gt;
-&lt;&frasl;div&gt;
+    &lt;div class="btn-prev"&gt;Preview&lt;/div&gt;
+    &lt;div class="btn-next"&gt;Next&lt;/div&gt;
+&lt;/div&gt;
 
 
     CSS:
@@ -344,7 +349,7 @@ const btnNext = document.querySelector('.btn-next');
 const items = document.querySelectorAll('.slider-item');
 
 const itemsCount = items.length;
-const itemWidth = container.clientwidth &frasl; slidesToShow;
+const itemWidth = container.clientwidth / slidesToShow;
 const movePosition = slidesToScroll * itemWidth;
 
 item.forEach((item) =&gt; {
@@ -352,7 +357,7 @@ item.forEach((item) =&gt; {
 });
 
 btnNext.addEventListener('click', () =&gt; {
-    const itemsLeft = itemsCount - (Math.abs(position) + slidesToShow * itemWidth) &frasl; itemWidth;
+    const itemsLeft = itemsCount - (Math.abs(position) + slidesToShow * itemWidth) / itemWidth;
 
     position -= itemsLeft &gt;= slidesToScroll ? movePosition : itemsLeft * itemWidth;
 
@@ -361,7 +366,7 @@ btnNext.addEventListener('click', () =&gt; {
 });
 
 btnPrev.addEventListener('click', () =&gt; {
-    const itemsLeft = Math.abs(position) &frasl; itemWidth;
+    const itemsLeft = Math.abs(position) / itemWidth;
 
     position += itemsLeft &gt;= slidesToScroll ? movePosition : itemsLeft * itemWidth;
 

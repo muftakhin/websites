@@ -165,15 +165,15 @@ font: font-style font-weight font-variant font-size/line-height font-family;</pr
                     Базовая линия - воображаемая линия, на которой располагаются нижние части символов.
                 </p>
                 <pre class="screen screen_pre">
-line-height: число (масштабный множитель на текущий размер;
+line-height: число;  /* масштабный множитель на текущий размер */
            - ...em;
            - ...%;
            - normal;
            - inherit;</pre>
                 <p class="paragraph">Можно воспользоваться свойством <strong>line-height</strong>, чтобы выровнять текст по средней линии блока:</p>
-                <pre class="screen screen_post">
+                <pre class="screen screen_pre">
 text-align: center;
-line-height: (высота блока);</pre>
+line-height: /* высота блока */;</pre>
             </div>
 
             <div class="subsection">
@@ -181,8 +181,8 @@ line-height: (высота блока);</pre>
 
                 <pre class="screen screen_pre">
 text-indent: ...px;
-           - ...em; ()
-           - ...% (на основе ширины родительского элемента);</pre>
+           - ...em;
+           - ...%;    /* на основе ширины родительского элемента */</pre>
                 <p class="paragraph">
                     Применяется к блочным элементам и ячейкам таблицы
                 </p>
@@ -232,7 +232,7 @@ text-decoration: none;
                - underline;
                - overline;
                - line-throught;
-               - blink (мерцание);
+               - blink;  /* мерцание */
                - inherit;</pre>
         </section>
 
@@ -241,7 +241,7 @@ text-decoration: none;
 
             <pre class="screen screen_pre">
 text-transform: none;
-              - capitalize (первая буква каждого слова заглавная);
+              - capitalize;  /* первая буква каждого слова заглавная */
               - lowercase;
               - uppercase;
               - inherit;</pre>
@@ -251,9 +251,9 @@ text-transform: none;
             <h2 class="subsection__header">Интервал между знаками (кернинг) и интервал между словами</h2>
 
             <pre class="screen screen_pre">
-letter-spacing:                 - между знаками
+letter-spacing:                 /* между знаками */
 
-word-spacing: значение длины;   - между словами
+word-spacing: значение длины;   /* между словами */
             - normal;
             - inherit;</pre>
         </section>
@@ -262,7 +262,7 @@ word-spacing: значение длины;   - между словами
             <h2 class="section__header">Обработка пробелов между словами и переносы строк внутри элемента</h2>
 
             <pre class="screen screen_pre">
-white-space: normal;     (default)
+white-space: normal;     /* default */
            - nowrap;
            - pre;
            - pre-wrap;
@@ -303,7 +303,7 @@ text-shadow: .2em .2em .15em silver, 8px 8px 16px black;</pre>
                 </p>
                 <pre class="screen screen_pre">
 list-style-type: none;
-               - disc;        (default)
+               - disc;        /* default */
                - circle;
                - square;
                - decimal;

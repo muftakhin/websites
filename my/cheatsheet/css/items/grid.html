@@ -52,8 +52,8 @@
                 </p>
                 <p class="paragraph">
                     <strong>minmax(размер_1, размер_2)</strong> где:<br>
-                    &bull; <strong>размер_1</strong> - минимальный размер, до которого максимально ужмётся, когда все остальные максимально ужмутся<br>
-                    &bull; <strong>размер_2</strong> - максимальный размер, пока остальные не ужмутся польностью
+                    <strong>размер_1</strong> - минимальный размер, до которого максимально ужмётся, когда все остальные максимально ужмутся<br>
+                    <strong>размер_2</strong> - максимальный размер, пока остальные не ужмутся польностью
                 </p>
             </div>
 
@@ -70,10 +70,10 @@
 }</pre>
 
                 <p class="paragraph">
-                    &bull; <strong>heigth</strong> - высота строки в (<strong>px</strong> , <strong>fr</strong> , <strong>%</strong> или <strong>em</strong> и смешение их). Где <strong>fr</strong> - доля строки (как flex-grow:)<br>
-                    &bull; <strong>auto</strong> - полоса будет автоматически увеличиваться по мере необходимости, в соответствии с размером контента<br>
-                    &bull; <strong>repeat()</strong> - функция - сокращённый вариант для определения нескольких полос<br>
-                    &bull; <strong>min-content</strong> - по контенту
+                    <strong>heigth</strong> - высота строки в (<strong>px</strong> , <strong>fr</strong> , <strong>%</strong> или <strong>em</strong> и смешение их). Где <strong>fr</strong> - доля строки (как flex-grow:)<br>
+                    <strong>auto</strong> - полоса будет автоматически увеличиваться по мере необходимости, в соответствии с размером контента<br>
+                    <strong>repeat()</strong> - функция - сокращённый вариант для определения нескольких полос<br>
+                    <strong>min-content</strong> - по контенту
                 </p>
 
                 <pre class="screen screen_post">
@@ -212,7 +212,7 @@ grid-gap: значение;
                     <h4 class="subsubsection__header">Горизонтальное выравнивание</h4>
 
                     <pre class="screen screen_pre">
-justify-content: start; (default)
+justify-content: start;      /* default */
                - end;
                - center;
                - stretch;
@@ -225,7 +225,7 @@ justify-content: start; (default)
                     <h4 class="subsubsection__header">Вертикальное выравнивание</h4>
 
                     <pre class="screen screen_pre">
-align-content: start;   (default)
+align-content: start;       /* default */
              - end;
              - center:
              - stretch;
@@ -249,7 +249,7 @@ place-content: "align-content" / "justify-content";</pre>
                     <h4 class="subsubsection__header">Горизонтальное выравнивание</h4>
 
                     <pre class="screen screen_pre">
-justify-items: start; (default)
+justify-items: start;     /* default */
              - end;
              - center;
              - stretch;</pre>
@@ -259,7 +259,7 @@ justify-items: start; (default)
                     <h4 class="subsubsection__header">Вертикальное выравнивание</h4>
 
                     <pre class="screen screen_pre">
-align-items: start;   (default)
+align-items: start;    /* default */
            - end;
            - center:
            - stretch;</pre>
@@ -277,12 +277,12 @@ place-items: "align-items" / "justify-items";</pre>
 
                     <pre class="screen screen_pre">
 .itemName {
-    justify-self: start; (default)
+    justify-self: start;   /* default */
                 - end;
                 - center;
                 - stretch;
 
-    align-self: start;   (default)
+    align-self: start;   /* default */
               - end;
               - center:
               - stretch;
@@ -371,7 +371,7 @@ place-items: "align-items" / "justify-items";</pre>
             <pre class="screen screen_pre">
 .containerName {
     ...
-    grid-auto-flow: row;           (default)
+    grid-auto-flow: row;          /* default */
                   - column;
                   - row dense;
                   - column dense;

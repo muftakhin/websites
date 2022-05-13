@@ -103,7 +103,7 @@ function Name_1(x, y) {
 }
 let name_2 = new Name_1(10, 20);
    
-name_2;  вернёт:  Name_1 {x: 10, y: 20}</pre>
+name_2;  //-&gt;  Name_1 {x: 10, y: 20}</pre>
             <p class="paragraph">Создаётся объект, используя функцию <strong>Name_1</strong> в качестве конструктора с передачей ей аргументов <strong>10</strong> и <strong>20</strong> для свойств <strong>x</strong> и <strong>y</strong>, затем возвращается полученный объект и сохраняется в переменной <strong>name_2</strong></p>
             <pre class="screen screen_post">
 function Name_1(param_1, param_2) {
@@ -184,7 +184,7 @@ let nameNameName_1 = new NameName_1(name_1)</pre>
                 &bull; Объект является экземпляром конструктора (даже если его после изменить)<br>
                 &bull; <strong>instanceof</strong> возвращает <strong>true</strong>, если объект был создан указанным конструктором
             </p>
-            <pre class="screen screen_post">
+            <pre class="screen screen_pre">
 if (name_1 instanceof Name_2) {
     ...
 };</pre>

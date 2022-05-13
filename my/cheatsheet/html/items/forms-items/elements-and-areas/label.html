@@ -18,19 +18,19 @@
         <section class="section">
             <p class="paragraph">Лучше весь текст в форме обрамлять <strong>label</strong>-ом</p>
             <pre class="screen screen_pre">
-&lt;label&gt; ... &lt;&frasl;label&gt;</pre>
+&lt;label&gt; ... &lt;/label&gt;</pre>
         </section>
 
         <section class="section">
             <h2 class="section__header">Неявная ассоциация</h2>
 
-            <p class="paragraph">- в элемент <strong>label</strong> внедряется элементы формы вместе с его описанием</p>
+            <p class="paragraph">В элемент <strong>label</strong> внедряются элементы формы вместе с его описанием</p>
             <pre class="screen screen_post">
 &lt;ul&gt;
-    &lt;li&gt; &lt;label&gt; &lt;input type="checkbox" name="icecream" value="vanilla"&gt; ванильное &lt;&frasl;label&gt;&lt;&frasl;li&gt;
-    &lt;li&gt; &lt;label&gt; &lt;input type="checkbox" name="icecream" value="cherry"&gt; вишнёвое &lt;&frasl;label&gt;&lt;&frasl;li&gt;
-    &lt;li&gt; &lt;label&gt; &lt;input type="checkbox" name="icecream" value="chokolate"&gt; шоколадное &lt;&frasl;label&gt;&lt;&frasl;li&gt;
-&lt;&frasl;ul&gt;</pre>
+    &lt;li&gt; &lt;label&gt; &lt;input type="checkbox" name="icecream" value="vanilla"&gt; ванильное &lt;/label&gt;&lt;/li&gt;
+    &lt;li&gt; &lt;label&gt; &lt;input type="checkbox" name="icecream" value="cherry"&gt; вишнёвое &lt;/label&gt;&lt;/li&gt;
+    &lt;li&gt; &lt;label&gt; &lt;input type="checkbox" name="icecream" value="chokolate"&gt; шоколадное &lt;/label&gt;&lt;/li&gt;
+&lt;/ul&gt;</pre>
             <ul>
                 <li><label><input type="checkbox" name="icecream" value="vanilla"> ванильное</label></li>
                 <li><label><input type="checkbox" name="icecream" value="cherry"> вишнёвое</label></li>
@@ -41,11 +41,11 @@
         <section class="section">
             <h2 class="section__header">Явная ассоциация</h2>
 
-            <p class="paragraph">- сопоставляется метка с идентификатором <strong>id</strong> элемента формы</p>
+            <p class="paragraph">Сопоставляется метка с идентификатором <strong>id</strong> элемента формы</p>
             <pre class="screen screen_post">
-&lt;label for="one"&gt; Дядя: &lt;&frasl;label&gt;
+&lt;label for="one"&gt; Дядя: &lt;/label&gt;
 &lt;input type="text" name="ancles_name" id="one"&gt; &lt;br&gt;
-&lt;label for="two"&gt; Тётя: &lt;&frasl;label&gt;
+&lt;label for="two"&gt; Тётя: &lt;/label&gt;
 &lt;input type="text" name="aunts_name" id="two"&gt;</pre>
             <p class="paragraph">
                 <label for="one">Дядя: </label>

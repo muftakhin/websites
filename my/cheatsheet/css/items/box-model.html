@@ -48,7 +48,7 @@ max-width: ...px;
 
             <pre class="screen screen_pre">
 * {
-    box-sizing: content-box;    (default)
+    box-sizing: content-box;     /* default */
               - padding-box;
               - border-box;
               - inherit;
@@ -60,7 +60,7 @@ max-width: ...px;
             <h2 class="section__header">Выход контента за пределы блока</h2>
 
             <pre class="screen screen_pre">
-overflow: visible;   (default)
+overflow: visible;    /* default */
         - hidden;
         - scroll;
         - auto;
@@ -82,7 +82,7 @@ border-style:
 border-top-style:
 border-right-style:
 border-bottom-style:
-border-left-style: none;  (default)
+border-left-style: none;    /* default */
                  - dotted;
                  - dashed;
                  - solid;
@@ -105,7 +105,7 @@ border-right-width:
 border-bottom-width:
 border-left-width: значение;
                  - thin;
-                 - medium;   (default)
+                 - medium;    /* default */
                  - thick;
                  - inherit;</pre>
                     <p class="paragraph">
@@ -139,7 +139,7 @@ border:
 border-top:
 border-right:
 border-bottom:
-border-left: border-style border-width border-color;   (в любом порядке)
+border-left: border-style border-width border-color;    /* в любом порядке */
            - inherit;</pre>
                 </div>
 
@@ -202,8 +202,8 @@ border-image: url(border.png) 55 stretch;</pre>
             <h2 class="section__header">Контур</h2>
 
             <p class="paragraph">
-                &bull; <strong>outline</strong> отрисовывается за пределами границы элемента иможет перекрывать другое содержимое (не является частью размеров элемента)
-                &bull; <strong>Отрисовывается вокруг элементов находящихся в фокусе</strong>
+                <strong>outline</strong> отрисовывается за пределами границы элемента иможет перекрывать другое содержимое (не является частью размеров элемента)<br>
+                Отрисовывается вокруг элементов находящихся в фокусе
             </p>
 
             <div class="subsection">
@@ -260,7 +260,7 @@ outline-offset: значение;</pre>
             <pre class="screen screen_pre">
 margin: значение;
       - %;
-      - auto;      (default)
+      - auto;      /* default */
       - inherit;</pre>
             <p class="paragraph">
                 <strong>%</strong> - процент от ширины ближайшего родительского элемента с указанными размерами (так же как и <strong>padding</strong>)
@@ -329,7 +329,7 @@ visibility: hidden;
 
             <pre class="screen screen_pre">
 box-shadow: x y b e c z;
-          - none;            (default)</pre>
+          - none;           /* default */</pre>
             <p class="paragraph">
                 <strong>x</strong>   - горизонтальное смещение<br>
                 <strong>y</strong> - вертикальное смещение<br>

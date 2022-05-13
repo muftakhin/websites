@@ -22,7 +22,7 @@
                 <h3 class="subsection__header">Встроенные (inline) стили</h3>
 
                 <pre class="screen screen_post">
-&lt;p style="font-size: 20px"&gt; Текст &lt;&frasl;p&gt;</pre>
+&lt;p style="font-size: 20px"&gt; Текст &lt;/p&gt;</pre>
             </div>
 
             <div class="subsection">
@@ -35,9 +35,9 @@
         p {
             font-size: 20px;
         }
-    &lt;&frasl;style&gt;
+    &lt;/style&gt;
     ...
-&lt;&frasl;head&gt;</pre>
+&lt;/head&gt;</pre>
             </div>
 
             <div class="subsection">
@@ -51,7 +51,7 @@
     ...
     &lt;link rel="stylesheet" href="style.css"&gt;
     ...
-&lt;&frasl;head&gt;</pre>
+&lt;/head&gt;</pre>
                     <p class="paragraph">
                         &bull; Подключать внешние стили желательно выше в документе<br>
                         &bull; При использовании нескольких таблиц стилей при помощи элемента <strong>&lt;link&gt;</strong>, внутри элемента <strong>&lt;head&gt;</strong> помещают отдельный элемент <strong>&lt;link&gt;</strong> для каждой таблицы стилей<br>
@@ -63,7 +63,7 @@
                     <h4 class="subsubsection__header">Импортирование</h4>
 
                     <pre class="screen screen_post">
-@import url("styles&frasl;style.css");</pre>
+@import url("styles/style.css");</pre>
                     <p class="paragraph">
                         &bull; <strong>@import</strong> Добавляется во внешний файл <strong>.css</strong> либо в элемент <strong>style</strong><br>
                         &bull; При использовании правила <strong>@import</strong> в таблице стилей, его необходимо помещать перед всеми остальными правилами<br>
@@ -75,13 +75,13 @@
                     <h4 class="subsubsection__header">Модульные таблицы стилей</h4>
 
                     <pre class="screen screen_post">
-&frasl;* настройки форматирования текста *&frasl;
+/* настройки форматирования текста */
 @import url("type.css")
-&frasl;* обработка форм *&frasl;
+/* обработка форм */
 @import url("forms.css")
-&frasl;* навигация *&frasl;
+/* навигация */
 @import url("list-nav.css")
-&frasl;* конкретные стили *&frasl;
+/* конкретные стили */
 body {background: orange;}
 ...</pre>
                     <p class="paragraph">Указываются перед правилами, которые используют селекторы</p>

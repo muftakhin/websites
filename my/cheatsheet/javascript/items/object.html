@@ -94,19 +94,21 @@ let name_1 = {};</pre>
             <h2 class="section__header">Доступ к значениям внутри объектов</h2>
 
             <pre class="screen screen_pre">
-name_1["name_2"]; - скобочная нотация
+name_1["name_2"];    // скобочная нотация
 
-name_1.name_2;    - точечная нотация
-
-где:    name_1 - имя объекта
-        name_2 - ключ(свойство, строка) объекта</pre>
+name_1.name_2;       // точечная нотация</pre>
+            <p class="paragraph">
+                где:
+                &bull; <strong>name_1</strong> - имя объекта<br>
+                &bull; <strong>name_2</strong> - ключ(свойство, строка) объекта
+            </p>
             <p class="paragraph">
                 &bull; Отличие от массива - вместо индекса(числа) ключ(строка)<br>
                 &bull; Точечная нотация возможна, если имя ключа соответствует правилам
             </p>
                 
             <pre class="screen screen_pre">
-name_1.keys(); - возвращает массив, содержащий все ключи объекта name_1</pre>
+name_1.keys();    //-&gt; массив, содержащий все ключи объекта name_1</pre>
 
             <p class="paragraph">При обращении к несуществующему свойству объекта, вернётся <strong>undefined</strong></p>
 
@@ -207,10 +209,10 @@ let name_1 = [
     { name_6: value_5, name_7: value_6 }
 ];
            
-name_1[0]; - вернёт { name_2: value_1, name_3: value_2 }
-name_1[1][name_4]; - вернёт value_3
+name_1[0];           //-&gt; { name_2: value_1, name_3: value_2 }
+name_1[1][name_4];   //-&gt; value_3
 
-name_1[2].name_7; - вернёт value_6</pre>
+name_1[2].name_7;    //-&gt; value_6</pre>
 
             <pre class="screen screen_pre">
     Создадим 3 объекта:            
@@ -227,11 +229,11 @@ let name_17 = [name_1, name_5, name_9];</pre>
                 <h3 class="subsection__header">Получение объектов из массива</h3>
 
                 <pre class="screen screen_pre">
-name_17[1]; - вернёт - { name_6: value_7, name_7: value_8, name_8: [value_9, value_10, value_11] }
+name_17[1];            //-&gt; - { name_6: value_7, name_7: value_8, name_8: [value_9, value_10, value_11] }
 
-name_17[2].name_11; - вернёт - value_13
+name_17[2].name_11;    //-&gt; - value_13
            
-name_17[0].name_4[1]; - вернёт - value_4</pre>
+name_17[0].name_4[1];  //-&gt; - value_4</pre>
             </div>
         </section>
 

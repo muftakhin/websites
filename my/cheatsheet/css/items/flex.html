@@ -23,19 +23,19 @@
     display: flex;
            - inline-flex;
 
-    flex-direction: row;            (default)
+    flex-direction: row;            /* default */
                   - row-reverse;
                   - column;
                   - column-reverse;
 
-    flex-wrap: nowrap;              (default)
+    flex-wrap: nowrap;              /* default */
              - wrap;
              - wrap-reverse;
 
     flex-flow: flex-direction flex-wrap;
 
 
-    justify-content: flex-start;    (default)
+    justify-content: flex-start;    /* default */
                    - flex-end;
                    - center;
                    - space-between;
@@ -46,7 +46,7 @@
                - flex-end;
                - center;
                - baseline;
-               - stretch;           (default)
+               - stretch;           /* default */
 
     align-content: flex-start;
                  - flex-end;
@@ -75,14 +75,14 @@
 
             <pre class="screen screen_pre">
 .item {
-    order: integer;         (defaulf=0)
+    order: integer;         /* defaulf=0 */
 
-    flex-grow: number;      (default=0)
+    flex-grow: number;      /* default=0 */
 
-    flex-shrink: number;    (default=1)
+    flex-shrink: number;    /* default=1 */
 
     flex-basis: length;
-              - auto;       (default)
+              - auto;       /* default */
 
     align-self: auto;
               - flex-start;
@@ -93,7 +93,7 @@
 }
 
 .item {
-    flex: flex-grow flex_shrink flex_basis;   (default: 0 1 auto)
+    flex: flex-grow flex_shrink flex_basis;   /* default: 0 1 auto */
 }
 </pre>
 
@@ -101,7 +101,7 @@
 				<h3 class="subsection__header">order</h3>
 				
 				<pre class="screen screen_pre">
-order: integer;         (defaulf=0)</pre>
+order: integer;    /* defaulf=0 */</pre>
 
 				<p class="paragraph">
 					<strong>{order: -1}</strong> - в начале списка<br>
@@ -114,7 +114,7 @@ order: integer;         (defaulf=0)</pre>
 				<h3 class="subsection__header">flex-grow</h3>
 				
 				<pre class="screen screen_pre">
-flex-grow: number;      (default=0)</pre>
+flex-grow: number;   /* default=0 */</pre>
 
 				<p class="paragraph">- величина относительно других flex-элементов, до которой может увеличиваться flex-элемент при наличии свободного пространства (относительный размер). &quot;Отъедает&quot; в долях(частях) свободное пространство, подобно фракциям <strong>fr</strong></p>
 			</div>
@@ -123,7 +123,7 @@ flex-grow: number;      (default=0)</pre>
 				<h3 class="subsection__header">flex-shrink</h3>
 				
 				<pre class="screen screen_pre">
-flex-shrink: number;    (default=1)</pre>
+flex-shrink: number;   /* default=1 */</pre>
 
 				<p class="paragraph">- величина, до которой может уменьшаться flex-элемент относительно других flex-элементов, когда имеется дефицит пространства (когда размер контейнера меньше суммы размеров элементов). Это значение важно, если у контейнера указан <strong>{ flex-wrap: nowrap; }</strong>. Если при <strong>{ flex-wrap: nowrap; }</strong> <strong>{ flex-shrink: 0 ; }</strong>, то элементы будут расширяться за пределы контейнера</p>
 			</div>
@@ -133,7 +133,7 @@ flex-shrink: number;    (default=1)</pre>
 				
 				<pre class="screen screen_pre">
 flex-basis: length;
-          - auto;       (default)</pre>
+          - auto;    /* default */</pre>
 
 				<p class="paragraph">
                     - базовый размер, к которому приводится размер flex-элемента<br>

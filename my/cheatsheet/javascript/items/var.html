@@ -16,7 +16,7 @@
 
     <main class="main">
         <section class="section">
-            <h2 class="section__header">Переменные</h2>
+            <h2 class="section__header">var let const</h2>
 
             <p class="paragraph">
                 &bull; имя переменной может состоять из <strong>букв</strong>, <strong>цифр</strong>, символов <strong>$</strong> и <strong>_</strong><br>
@@ -28,21 +28,24 @@
             </p>
 
             <div class="subsection">
-                <h3 class="subsection__header">Инициализация и присвоение значения</h3>
+                <h3 class="subsection__header">Объявление и инициализация</h3>
 
                 <div class="subsubsection">
-                    <h4 class="subsubsection__header">Инициализация (создание)</h4>
+                    <h4 class="subsubsection__header">Объявление</h4>
 
                     <pre class="screen screen_pre">
-let name_1;
+var name_1;
 
-var name_2;
+let name_2;
 
-var name_3,</pre>
+const NAME_3;</pre>
                 </div>
 
                 <div class="subsubsection">
-                    <h4 class="subsubsection__header">Присвоение значения</h4>
+                    <h4 class="subsubsection__header">Инициализация значением</h4>
+
+                    <pre class="screen screen_pre">
+const NAME_8 = value_8;</pre>
 
                     <pre class="screen screen_pre">
 let name_1 = value_1;
@@ -55,72 +58,56 @@ var name_3 = value_3;
 name_3 = value_4;
 
 var name_5 = value_5,   // Объявление в одной инструкции
-    name_6 = value_6,   // несколько переменных
+    name_6 = value_6,   // нескольких переменных
     name_7 = value_7;</pre>
                     <p class="paragraph">При присвоении нового значения или ранее созданной переменной, использование ключевого слова не обязательно</p>
                 </div>
             </div>
+        </section>
+
+        <section class="section">
+            <h3 class="section__header">Области видимости</h3>
+
+            <p class="paragraph">Интерпретатор поднимает все объявления переменных в верхнюю часть своей области видимости<br>
+                При этом он по умолчанию инициализирует <strong>var</strong> как <strong>undefined</strong>, а <strong>let</strong> и <strong>const</strong> не инициализирует</p>
+            <p class="paragraph">При обращении к неинициализированной переменной выдаётся ошибка</p>
+            <p class="paragraph">Необходимо инициализировать переменные перед их использованием</p>
+            <p class="paragraph">Если имена глобальной и локальной переменных совпадают, то локальная переменная замещает внутри функции глобальную</p>
 
             <div class="subsection">
-                <h3 class="subsection__header">Области видимости переменных</h3>
+                <h3 class="subsection__header">var глобальные</h3>
 
-                <p class="paragraph">Если имена глобальной и локальной переменных совпадают, то локальная переменная замещает внутри функции глобальную</p>
+                <p class="paragraph">Объявленные за пределами функций с использованием ключевого слова <strong>var</strong> или внутри функции без использования ключевого слова <strong>var</strong> (используемые без предварительного объявления)</p>
 
-                <div class="subsubsection">
-                    <h4 class="subsubsection__header">Глобальные</h4>
+                <p class="paragraph">
+                    &bull; Видны даже в дополнительных сценариях<br>
+                    &bull; Существуют, пока существует страница (при перезагрузке страницы уничтожаются и создаются заново)
+                </p>
+            </div>
 
-                    <p class="paragraph"><div class="subsubsection">
-                    <h4 class="subsubsection__header">Глобальные</h4>
-
-                    <p class="paragraph">Интерпретатор вытягивает все объявления переменных <strong>var</strong> в верхнюю часть своей области видимости</p>
-
-                    <p class="paragraph">
-                        &bull; Видны даже в дополнительных сценариях<br>
-                        &bull; Существуют, пока существует страница (при перезагрузке страницы уничтожаются и создаются заново)
-                    </p>
-                </div><strong>var</strong> или внутри функции без использования ключевого слова <strong>var</strong> (используемые без предварительного объявления)</p>
-
-                    <p class="paragraph">
-                        &bull; Видны даже в дополнительных сценариях<br>
-                        &bull; Существуют, пока существует страница (при перезагрузке страницы уничтожаются и создаются заново)
-                    </p>
-                </div>
-
-                <div class="subsubsection">
-                    <h4 class="subsubsection__header">Глобальные</h4>
-
-                    <p class="paragraph">Объявленные за пределами функций с использованием ключевого слова <strong>var</strong> или внутри функции без использования ключевого слова <strong>var</strong> (используемые без предварительного объявления)</p>
-
-                    <p class="paragraph">
-                        &bull; Видны даже в дополнительных сценариях<br>
-                        &bull; Существуют, пока существует страница (при перезагрузке страницы уничтожаются и создаются заново)
-                    </p>
-                </div>
-
-                <div class="subsubsection">
-                    <h4 class="subsubsection__header">Локальные</h4>
+            <div class="subsection">
+                <h3 class="subsection__header">var локальные</h3>
                             
-                    <p class="paragraph">Объявленные внутри функции используя ключевое слово <strong>var</strong></p>
+                <p class="paragraph">Объявленные внутри функции используя ключевое слово <strong>var</strong></p>
 
-                    <p class="paragraph">
-                        &bull; Доступны только локально в самой функции<br>
-                        &bull; Параметр переданный функции приобретают локальную область видимости, кроме массивов, передаваемых функции по ссылке. Если внести изменение в элемент массива, переданного в качестве параметра, изменятся элемент исходного массива<br>
-                        &bull; Переменная цикла видна во всей функции, внутри которой объявлена<br>
-                        &bull; Создаются при первом вызове функции и исчезают при завершении функции<br>
-                        &bull; При этом при создании переменной внутри блока кода <strong>if-else</strong> и <strong>for</strong> её область видимости этими блоками не ограничиваются (фигурные скобки этих блоков не изолируют область видимости этой переменной)
-                    </p>
-                </div>
+                <p class="paragraph">
+                    &bull; Доступны только локально в самой функции<br>
+                    &bull; Параметр переданный функции приобретают локальную область видимости, кроме массивов, передаваемых функции по ссылке. Если внести изменение в элемент массива, переданного в качестве параметра, изменятся элемент исходного массива<br>
+                    &bull; Переменная цикла видна во всей функции, внутри которой объявлена<br>
+                    &bull; Создаются при первом вызове функции и исчезают при завершении функции<br>
+                    &bull; При этом при создании переменной внутри блока кода <strong>if-else</strong> и <strong>for</strong> её область видимости этими блоками не ограничиваются (фигурные скобки этих блоков не изолируют область видимости этой переменной)
+                </p>
+            </div>
 
-                <div class="subsubsection">
-                    <h4 class="subsubsection__header">let</h4>
+            <div class="subsection">
+                <h3 class="subsection__header">let</h3>
 
-                    <p class="paragraph">
-                        &bull; Переменная видимая внутри блока кода <strong>{ }</strong>, что защищает значение глобальной переменной<br>
-                    </p>
+                <p class="paragraph">
+                    &bull; Переменная видимая внутри блока кода <strong>{ }</strong>, что защищает значение глобальной переменной<br>
+                </p>
+            </div>
 
-                </div>
-
-                <pre class="screen screen_pre">
+            <pre class="screen screen_pre">
 var name_1 = value_1;
                     
                     
@@ -149,90 +136,99 @@ for (let i=0, i&lt;value_5, i++) {
     action_1;
 }
     &frasl;&frasl; Значение глобальной переменной i переопределится</pre>
-            </div>
 
             <div class="subsection">
-                <h3 class="subsection__header">Зарезервированные слова</h3>
+                <h2 class="subsection__header">const</h2>
 
-                <p class="paragraph">Не допускается использование зарезервированных слов для именования переменных</p>
-
-                <ul class="word-list">
-                    <li class="word-list__item">abstract</li>
-                    <li class="word-list__item">as</li>
-                    <li class="word-list__item">boolean</li>
-                    <li class="word-list__item">break</li>
-                    <li class="word-list__item">byte</li>
-                    <li class="word-list__item">case</li>
-                    <li class="word-list__item">catch</li>
-                    <li class="word-list__item">char</li>
-                    <li class="word-list__item">class</li>
-                    <li class="word-list__item">continue</li>
-                    <li class="word-list__item">const</li>
-                    <li class="word-list__item">debugger</li>
-                    <li class="word-list__item">default</li>
-                    <li class="word-list__item">delete</li>
-                    <li class="word-list__item">do</li>
-                    <li class="word-list__item">double</li>
-                    <li class="word-list__item">else</li>
-                    <li class="word-list__item">enum</li>
-                    <li class="word-list__item">export</li>
-                    <li class="word-list__item">extends</li>
-                    <li class="word-list__item">false</li>
-                    <li class="word-list__item">final</li>
-                    <li class="word-list__item">finally</li>
-                    <li class="word-list__item">float</li>
-                    <li class="word-list__item">for</li>
-                    <li class="word-list__item">function</li>
-                    <li class="word-list__item">goto</li>
-                    <li class="word-list__item">if</li>
-                    <li class="word-list__item">implements</li>
-                    <li class="word-list__item">import</li>
-                    <li class="word-list__item">in</li>
-                    <li class="word-list__item">instanceof</li>
-                    <li class="word-list__item">int</li>
-                    <li class="word-list__item">interface</li>
-                    <li class="word-list__item">is</li>
-                    <li class="word-list__item">long</li>
-                    <li class="word-list__item">namespace</li>
-                    <li class="word-list__item">nativ</li>
-                    <li class="word-list__item">new</li>
-                    <li class="word-list__item">null</li>
-                    <li class="word-list__item">package</li>
-                    <li class="word-list__item">private</li>
-                    <li class="word-list__item">protected</li>
-                    <li class="word-list__item">public</li>
-                    <li class="word-list__item">return</li>
-                    <li class="word-list__item">short</li>
-                    <li class="word-list__item">static</li>
-                    <li class="word-list__item">super</li>
-                    <li class="word-list__item">switch</li>
-                    <li class="word-list__item">synchronized</li>
-                    <li class="word-list__item">this</li>
-                    <li class="word-list__item">throw</li>
-                    <li class="word-list__item">throws</li>
-                    <li class="word-list__item">transient</li>
-                    <li class="word-list__item">true</li>
-                    <li class="word-list__item">try</li>
-                    <li class="word-list__item">typeof</li>
-                    <li class="word-list__item">use</li>
-                    <li class="word-list__item">var</li>
-                    <li class="word-list__item">void</li>
-                    <li class="word-list__item">volatile</li>
-                    <li class="word-list__item">while</li>
-                </ul>
+                <p class="paragraph">- константы</p>
+                <p class="paragraph">Записываются заглавными буквами</p>
+                <pre class="screen screen_pre">
+const NAME1;</pre>
+                <p class="paragraph">
+                    &bull; Нельзя присвоить новое значение<br>
+                    &bull; Если значением является объект, то можно изменять его свойства
+                </p>
             </div>
         </section>
 
         <section class="section">
-            <h2 class="section__header">Константы</h2>
+            <h2 class="section__header">Зарезервированные слова</h2>
 
-            <p class="paragraph">Записываются заглавными буквами</p>
-            <pre class="screen screen_pre">
-const NAME1;</pre>
-            <p class="paragraph">
-                &bull; Нельзя присвоить новое значение<br>
-                &bull; Если значением является объект, то можно изменять его свойства
-            </p>
+            <p class="paragraph">Не допускается использование зарезервированных слов для именования переменных</p>
+
+            <ul class="word-list">
+                <li class="word-list__item">abstract</li>
+                <li class="word-list__item">arguments</li>
+                <li class="word-list__item">as</li>
+                <li class="word-list__item">await</li>
+                <li class="word-list__item">boolean</li>
+                <li class="word-list__item">break</li>
+                <li class="word-list__item">byte</li>
+                <li class="word-list__item">case</li>
+                <li class="word-list__item">catch</li>
+                <li class="word-list__item">char</li>
+                <li class="word-list__item">class</li>
+                <li class="word-list__item">const</li>
+                <li class="word-list__item">continue</li>
+                <li class="word-list__item">debugger</li>
+                <li class="word-list__item">default</li>
+                <li class="word-list__item">delete</li>
+                <li class="word-list__item">do</li>
+                <li class="word-list__item">double</li>
+                <li class="word-list__item">else</li>
+                <li class="word-list__item">enum</li>
+                <li class="word-list__item">eval</li>
+                <li class="word-list__item">export</li>
+                <li class="word-list__item">extends</li>
+                <li class="word-list__item">false</li>
+                <li class="word-list__item">final</li>
+                <li class="word-list__item">finally</li>
+                <li class="word-list__item">float</li>
+                <li class="word-list__item">for</li>
+                <li class="word-list__item">function</li>
+                <li class="word-list__item">goto</li>
+                <li class="word-list__item">if</li>
+                <li class="word-list__item">implements</li>
+                <li class="word-list__item">import</li>
+                <li class="word-list__item">in</li>
+                <li class="word-list__item">Infinity</li>
+                <li class="word-list__item">instanceof</li>
+                <li class="word-list__item">int</li>
+                <li class="word-list__item">interface</li>
+                <li class="word-list__item">is</li>
+                <li class="word-list__item">let</li>
+                <li class="word-list__item">long</li>
+                <li class="word-list__item">namespace</li>
+                <li class="word-list__item">nativ</li>
+                <li class="word-list__item">NaN</li>
+                <li class="word-list__item">new</li>
+                <li class="word-list__item">null</li>
+                <li class="word-list__item">package</li>
+                <li class="word-list__item">private</li>
+                <li class="word-list__item">protected</li>
+                <li class="word-list__item">public</li>
+                <li class="word-list__item">return</li>
+                <li class="word-list__item">short</li>
+                <li class="word-list__item">static</li>
+                <li class="word-list__item">super</li>
+                <li class="word-list__item">switch</li>
+                <li class="word-list__item">synchronized</li>
+                <li class="word-list__item">this</li>
+                <li class="word-list__item">throw</li>
+                <li class="word-list__item">throws</li>
+                <li class="word-list__item">transient</li>
+                <li class="word-list__item">true</li>
+                <li class="word-list__item">try</li>
+                <li class="word-list__item">typeof</li>
+                <li class="word-list__item">undefined</li>
+                <li class="word-list__item">use</li>
+                <li class="word-list__item">var</li>
+                <li class="word-list__item">void</li>
+                <li class="word-list__item">volatile</li>
+                <li class="word-list__item">while</li>
+                <li class="word-list__item">with</li>
+                <li class="word-list__item"> yield</li>
+            </ul>
         </section>
 
         <section class="section">

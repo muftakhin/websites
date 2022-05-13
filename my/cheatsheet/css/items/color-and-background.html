@@ -19,7 +19,7 @@
             <h2 class="section__header">Основной цвет</h2>
 
             <pre class="screen screen_pre">
-color: значение (имя/число);
+color: значение;  /* имя или число */
      - inherit;</pre>
         </section>
 
@@ -27,8 +27,8 @@ color: значение (имя/число);
             <h2 class="section__header">Фоновый цвет</h2>
 
             <pre class="screen screen_pre">
-background-color: значение (имя/число);
-                - transparent;          (default)
+background-color: значение;     /* имя или число */
+                - transparent;  /* default */
                 - inherit;</pre>
         </section>
 
@@ -36,7 +36,7 @@ background-color: значение (имя/число);
             <h2 class="subsection__header">Непрозрачность</h2>
 
             <pre class="screen screen_pre">
-opacity: число от 0 до 1;        (по умолчанию - 1)</pre>
+opacity: число от 0 до 1;        /* по умолчанию - 1 */</pre>
             <p class="paragraph">
                 <strong>0</strong> - прозрачный<br>
                 <strong>1</strong> - не прозрачный<br>
@@ -52,7 +52,7 @@ opacity: число от 0 до 1;        (по умолчанию - 1)</pre>
 
                 <pre class="screen screen_pre">
 background-image: url(images/image.gif);
-                - none;                  (default)
+                - none;                   /* default */
                 - inherit;</pre>
                 <p class="paragraph">
                     &bull; Если не задан <strong>padding:</strong>, фон заходит под <strong>border:</strong><br>
@@ -64,7 +64,7 @@ background-image: url(images/image.gif);
                 <h3 class="subsection__header">Управление мозаичным покрытием фона</h3>
 
                 <pre class="screen screen_pre">
-background-repeat: repeat;   (default)
+background-repeat: repeat;    /* default */
                  - repeat-x;
                  - repeat-y;
                  - no-repeat;
@@ -75,7 +75,7 @@ background-repeat: repeat;   (default)
                 <h3 class="subsection__header">Положение фона</h3>
 
                 <pre class="screen screen_pre">
-background-position: "значение_X" "значение_Y";      (default: 0% 0% /(left top))
+background-position: "значение_X" "значение_Y";      /* default: 0% 0% или left top */
                    - left;
                    - center;
                    - right;
@@ -100,7 +100,7 @@ background-position: "значение_X" "значение_Y";      (default: 0
             
                 <pre class="screen screen_pre">
 background-origin: content-box;
-                 - padding-box;  (default)
+                 - padding-box;   /* default */
                  - border-box;</pre>
                 <p class="paragraph">Можно задавать через запятую несколько систем отсчёта (для разных фоновых изображений)</p>
             </div>
@@ -109,17 +109,17 @@ background-origin: content-box;
                 <h3 class="subsection__header">Фиксация фона</h3>
             
                 <pre class="screen screen_pre">
-background-attachment: scroll;   (default)
+background-attachment: scroll;   /* default */
                      - fixed;
                      - inherit;
-                     - local; (перемещение внутри элемента)</pre>
+                     - local;    /* перемещение внутри элемента */</pre>
             </div>
 
             <div class="subsection">
                 <h3 class="section__header">Размер фона</h3>
             
                 <pre class="screen screen_pre">
-background-size: auto;   (default)
+background-size: auto;    /* default */
                - ширина высота;
                - %;
                - cover;
@@ -168,7 +168,7 @@ background:
             <h2 class="section__header">background-clip</h2>
                             
             <pre class="screen screen_pre">
-background-clip: border-box;     (default)
+background-clip: border-box;      /* default */
                - padding-box;
                - content-box;</pre>
                             
@@ -225,7 +225,7 @@ linear-gradient(direction, color_1 dot_1, ... ..., color_n dot_n);
 linear-gradient(yellow 50%, lightblue 50%);</pre>
                 <p class="paragraph">Если точки перехода цвета совпадают, то один цвет резко сменит другой в этой точке перехода</p>
             
-                <pre class="screen screen_pre">
+                <pre class="screen screen_post">
 linear-gradient(yellow 50%, lightblue 0);</pre>
                 <p class="paragraph">Если задать следующую точку равную <strong>0</strong>, то она автоматически будет в том же месте, что и предыдущая (если меньше предыдущей, то на том же месте, что и предыдущая)</p>
             </div>

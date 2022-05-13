@@ -31,8 +31,8 @@
                 <h3 class="subsection__header">Конструкция if</h3>
 
                 <pre class="screen screen_pre">
-if (условие) {
-    console.log ("Действие");
+if (contition) {
+    action;
 }</pre>
                 <p class="paragraph">Пример:</p>
                 <pre class="screen screen_post">
@@ -48,10 +48,10 @@ if (name.length > 6) {
                 <h3 class="subsection__header">Конструкция if ... else</h3>
 
                 <pre class="screen screen_pre">
-if (условие) {
-    console.log("Действие");
+if (condition) {
+    action_1;
 } else {
-    console.log("Действие иное");
+    action_2;
 }</pre>
                 
                 <p class="paragraph">Пример:</p>
@@ -69,16 +69,49 @@ if (name.length > 6) {
                 <h3 class="subsection__header">Цепочка конструкций if ... else</h3>
 
                 <pre class="screen screen_pre">
-if (условие_1) {
-    console.log ("Действие, если условие 1 истинно");
-} else if (условие_2) {
-    console.log ("Действие, если условие 2 истинно");
-} else if (условие_3) {
-    console.log ("Действие, если условие 3 истинно");
+if (condition_1) {
+    action_1;
+} else if (condition_2) {
+    action_2;
+} else if (condition_3) {
+    action_3;
 } else {
-    console.log ("Иначе действие");
+    action_4;
 }</pre>
                 <p class="paragraph">Указывать завершающий <strong>else</strong> не обязательно</p>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">switch</h3>
+
+                <pre class="screen screen_pre">
+let name_1 = value;
+
+switch (name_1) {
+    case value_2:
+        action_1;
+        break;
+    case value_3:
+        action_2;
+        break;
+    ...
+    case value_n:
+        action_n;
+        break;
+    default:        // не обязательно
+        action_n;
+        break;
+}</pre>
+
+                <pre class="screen screen_pre">
+switch (condition) {
+    case true:
+        action_1;
+        break;
+    case false:
+        action_2;
+        break;
+}</pre>
             </div>
         </section>
 
@@ -92,9 +125,9 @@ if (условие_1) {
 
                 <p class="paragraph">выполняется пока <strong>condition</strong>(условие) = <strong>true</strong></p>
                 <pre class="screen screen_pre">
-while (условие) {
-    console.log("Действие");
-    i++;
+while (condition) {
+    action;
+    step;
 }</pre>
                 
                 <p class="paragraph">Пример: "Считаем овец"</p>
@@ -111,36 +144,31 @@ console.log("Z-z-z-z-z-z");</pre>
                 <h3 class="subsection__header">Цикл do while</h3>
 
                 <p class="paragraph">аналогично <strong>while</strong>, но условие проверяется после выполнения</p>
-                <pre class="screen screen_post">
+                <pre class="screen screen_pre">
 do {
-    ...;
-    i++;
-} while (условие);</pre>
+    action;
+    step;
+} while (condition);</pre>
             </div>
 
             <div class="subsection">               
                 <h3 class="subsection__header">Цикл for</h3>
 
+                <p class="paragraph">Цикл <strong>for</strong> удобен, когда нужно сделать определённое количество циклов</p>
                 <p class="paragraph">Создаём переменную, задаём условие, указываем как должна меняться переменная после каждого повтора, пишем тело цикла</p>
                 <pre class="screen screen_pre">
-for ( настройка; условие; приращение ) {
-    console.log("Действие");
+for (start_point; condition; step) {
+    action;
 }</pre>
-                
-                <p class="paragraph">Пример: "Считаем овец"</p>
-                <pre class="screen screen_post">
-for (let sheepCounted = 0; sheepCounted &lt; 10; sheepCounted++) {
-    console.log("Посчитано овец: " + sheepCounted + "!");
-}
-console.log("Z-z-z-z-z-z-z-z");</pre>
-                
-                <p class="paragraph">Цикл <strong>for</strong> удобен, когда нужно сделать определённое количество циклов</p>
-                
-                <p class="paragraph">Пример: "Три раза сказать привет"</p>
-                <pre class="screen screen_post">
-let timesToSayHello = 3;
-for (let i = 0; i &lt; timesToSayHello; i++) {
-    console.log("Привет!");
+                <p class="paragraph">
+                    <strong>start_point</strong> - стартовое значение переменной счётчика цикла. Обычно это объявление и инициализация переменной<br>
+                    <strong>condition</strong> - проверяемое условие, определяющее продолжение цикла<br>
+                    <strong>step</strong> - изменение стартового значения. Часто это <strong>i++</strong>
+                </p>
+                <p class="paragraph">Не обязательно заполнять все 3 секции</p>
+                <pre class="screen screen_pre">
+for (; condition; ) {
+    action;
 }</pre>
 
                 <div class="subsubsection">
@@ -173,6 +201,32 @@ for (let x=2; x &lt; 10000; x=x*2) {
     console.log(x);
 }</pre>
                 </div>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Прерывание цикла</h3>
+
+                <pre class="screen screen_pre">
+for (start_point; condition_1; step) {
+    action;
+
+    if(condition_2) {
+        break;
+    }
+}</pre>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Пропуск итерации</h3>
+
+                <pre class="screen screen_pre">
+for (start_point; condition_1; step) {
+    if(condition_2) {
+        continue;
+    }
+
+    action;
+}</pre>
             </div>
         </section>
     </main>
