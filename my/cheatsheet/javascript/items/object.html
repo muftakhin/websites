@@ -29,14 +29,30 @@
                 <div class="table">
                     <div class="table__header">Предоставляет JavaScript</div>
 
+                    <div class="table__screen">Array</div>
+                    <div class="table__definition">Помогает хранить, извлекать и манипулировать наборами данных</div>
+
+                    <div class="table__screen">Boolean</div>
+                    <div class="table__definition">Служит оболочкой примитива <strong>Boolean</strong>, а также работает посредством
+                        значений <strong>true</strong> и <strong>false</strong></div>
+
                     <div class="table__screen">Date</div>
                     <div class="table__definition">Для работы с датой и временем</div>
+
+                    <div class="table__screen">Function</div>
+                    <div class="table__definition">Позволяет вызывать заданный код</div>
 
                     <div class="table__screen">Math</div>
                     <div class="table__definition"></div>
 
+                    <div class="table__screen">Number</div>
+                    <div class="table__definition">Служит оболочкой примитива <strong>number</strong></div>
+
                     <div class="table__screen">RegExp</div>
                     <div class="table__definition">Позволяет искать текст в строках по заданному шаблону</div>
+
+                    <div class="table__screen">String</div>
+                    <div class="table__definition">Служит оболочкой примитива <strong>string</strong></div>
 
                     <div class="table__screen">JSON</div>
                     <div class="table__definition">С помощью него можно передавать объекты <strong>objects</strong> в другие</div>
@@ -64,15 +80,15 @@
                 <h3 class="subsection__header">С использованием объектных литералов</h3>
 
                 <p class="paragraph">
-                    &bull; Объектный литерал - полное описание объекта
+                    &bull; Объектный литерал - полное описание объекта<br>
                     &bull; Подходит для создания небольшого количества объектов
                 </p>
                 <pre class="screen screen_pre">
 let name_1 = {
-    "string_1": value_1,
-    "string_2": value_2,
-        ...
-    "string_n": value_n       
+    name_11: value_11,
+    name_12: value_12,
+    ...
+    name_n: value_n
 };</pre>
                 <p class="paragraph">
                     &bull; Определение объекта начинается с символа <strong>{</strong><br>
@@ -80,6 +96,18 @@ let name_1 = {
                     &bull; Фигурные скобки и их содержимое называется литералом объекта<br>
                     &bull; В переменной хранится не сам объект, а ссылка на объект (значение представляющее механизм обращения к конкретному объекту). Такая переменная называется ссылочная переменная
                 </p>
+
+                <p class="paragraph">Свойством объекта может являться другой объект</p>
+                <pre class="screen screen_pre">
+let name_1 = {
+    name_11: value_11,
+    name_12: {
+        name_121: value_121;
+        ...
+    }
+    ...
+    name_n: value_n
+};</pre>
             </div>
 
             <div class="subsection">
@@ -94,9 +122,9 @@ let name_1 = {};</pre>
             <h2 class="section__header">Доступ к значениям внутри объектов</h2>
 
             <pre class="screen screen_pre">
-name_1["name_2"];    // скобочная нотация
+name_1[name_11];    // скобочная нотация
 
-name_1.name_2;       // точечная нотация</pre>
+name_1.name_11;       // точечная нотация</pre>
             <p class="paragraph">
                 где:
                 &bull; <strong>name_1</strong> - имя объекта<br>
@@ -129,27 +157,22 @@ name_1.['onetwo'];</pre>
             <h2 class="section__header">Добавление свойств объекту</h2>
 
             <pre class="screen screen_pre">
-name_1["name_3"] = value_1;</pre>
-                
-            <pre class="screen screen_pre">
-let name_1 = {};
-name_1["name_2"] = value_1;
-name_1["name_3"] = value_2;
-...
-name_1["name_n"] = value_n;</pre>
+name_1[name_11] = value_11;</pre>
 
             <div class="subsection">
                 <h3 class="subsection__header">Используя точечную нотацию</h3>
 
                 <pre class="screen screen_pre">
-name_1.name_3 = value_1;</pre>
+name_1.name_11 = value_11;</pre>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Когда свойством является объект</h3>
 
                 <pre class="screen screen_pre">
-let name_1 = {};
-name_1.name_2 = value_1;
-name_1.name_3 = value_2;
-...
-name_1.name_n = value_n;</pre>
+name_1[name_11][name_111] = value_111;
+
+name_1.name_111.name_111 = value_111;</pre>
             </div>
         </section>
 
@@ -157,7 +180,9 @@ name_1.name_n = value_n;</pre>
             <h2 class="section__header">Удаление элемента объекта (свойства)</h2>
 
             <pre class="screen screen_pre">
-delete name_1.name_2;</pre>
+delete name_1["name_11"];
+
+delete name_1.name_11;</pre>
 
             <p class="paragraph">- выраженние <strong>delete</strong> возвращает <strong>true</strong> если свойство было успешно удалено (либо если вы удаляете не существующее свойство или то, что не является свойством объекта</p>
         </section>
@@ -204,15 +229,15 @@ for (let name_1 in name_2) {
 
             <pre class="screen screen_pre">
 let name_1 = [
-    { name_2: value_1, name_3: value_2 },
-    { name_4: value_3, name_5: value_4 },
-    { name_6: value_5, name_7: value_6 }
+    { name_11: value_11, name_12: value_12 },
+    { name_21: value_21, name_22: value_22 },
+    { name_31: value_31, name_32: value_32 }
 ];
            
-name_1[0];           //-&gt; { name_2: value_1, name_3: value_2 }
-name_1[1][name_4];   //-&gt; value_3
+name_1[0];           //-&gt; { name_11: value_11, name_12: value_12 }
+name_1[1][name_21];   //-&gt; value_21
 
-name_1[2].name_7;    //-&gt; value_6</pre>
+name_1[2].name_32;    //-&gt; value_32</pre>
 
             <pre class="screen screen_pre">
     Создадим 3 объекта:            
@@ -266,25 +291,25 @@ alert(pluto.name + " now weights " + pluto.weight);</pre>
                 
             <pre class="screen screen_pre">
 let name_1 = {
-    name_2 : value_1,
-    name_3 : value_2,
-    name_4 : function() {
+    name_11 : value_11,
+    name_12 : value_12,
+    name_13 : function() {
             ...
     }
 };</pre>
             <p class="paragraph">те же яйца, только в профиль:</p>
             <pre class="screen screen_pre">
 let name_1 = {
-    this.name_2 = value_1,
-    this.name_3 = value_2,
-    this.name_4 = function() {
+    this.name_11 = value_11,
+    this.name_12 = value_12,
+    this.name_13 = function() {
             ...
     }
 };</pre>
             <p class="paragraph"><strong>name_4</strong> - метод объекта <strong>name_1</strong></p>
                 
             <pre class="screen screen_pre">
-name_1.name_4(); - вызов метода</pre>
+name_1.name_13();     // вызов метода</pre>
 
             <p class="paragraph">
                 Разница между функцией и методом:<br>
@@ -294,8 +319,8 @@ name_1.name_4(); - вызов метода</pre>
 
             <pre class="screen screen_pre">
 let name_1 = {
-    name_2 : value_1,
-    name_3 ( name_4 ){
+    name_11 : value_11,
+    name_12 ( name_12 ){
         action_1;
     }
 };</pre>
@@ -304,8 +329,8 @@ let name_1 = {
                 <h3 class="subsection__header">Добавление объектам новых методов</h3>
                     
                 <pre class="screen screen_pre">
-name_1.name_5 = function() {
-            ...
+name_1.name_13 = function() {
+    action_2;
 };</pre>
                 <p class="paragraph">- добавили объекту <strong>name_1</strong> свойство <strong>name_5</strong> и задали в качестве его значения функцию (т.е. добавили объекту <strong>name_1</strong> метод <strong>name_5</strong> )</p>
             </div>
@@ -331,9 +356,9 @@ let name_1 = function() {
                 <p class="paragraph">Теперь создадим объект <strong>name_2</strong>, и добавим в него 2 свойства и метод <strong>name_1</strong></p>
                 <pre class="screen screen_pre">
 let name_2 = {
-    name_3: value_1,
-    name_4: value_2,
-    name_5: name_1
+    name_21: value_21,
+    name_22: value_22,
+    name_23: name_1
 };</pre>
                 <p class="paragraph">
                     &bull; Создали объект <strong>name_2</strong> со свойствами <strong>name_3</strong>, <strong>name_4</strong> и <strong>name_5</strong><br>
@@ -343,18 +368,41 @@ let name_2 = {
 
                 <p class="paragraph">Функцию <strong>name_1</strong> можно использовать как метод и для других объектов:</p>
                 <pre class="screen screen_pre">
-let name_6 = {
-    name_7: value_3,
-    name_8: value_4,
-    name_9: name_1
+let name_3 = {
+    name_31: value_31,
+    name_32: value_32,
+    name_33: name_1
 };
 
-let name_10 = {
-    name_11: value_5,
-    name_12: value_6,
-    name_13: name_1
+let name_4 = {
+    name_41: value_41,
+    name_42: value_42,
+    name_43: name_1
 };</pre>
                 <p class="paragraph">Чтобы использовать один и тот же код метода с разными объектами, достаточно добавить его в виде свойства каждому из этих объектов</p>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Упрощённая синтаксис определения функций внутри объектов</h3>
+
+                <pre class="screen screen_pre">
+let name_1 = {
+    name_11: value_11,
+    name_12: value_12,
+    name_13: function() {
+        action_1;
+    }
+};
+
+// равно:
+
+let name_1 = {
+    name_11: value_11,
+    name_12: value_12,
+    name_13 () {
+        action_1;
+    }
+};</pre>
             </div>
         </section>
 
@@ -418,6 +466,25 @@ var name_4 = {
         action_1;
     }
 };</pre>
+        </section>
+
+        <section class="section">
+            <h2 class="section__header">Геттеры и сеттеры</h2>
+
+            <pre class="screen screen_pre">
+let name_1 = {
+    name_2: value_2;
+
+    get name_3() {
+        return this.name_2;
+    }
+
+    set name_4(value_3) {
+        this.name_2 = value_3;
+    }
+}</pre>
+            <p class="paragraph">В сеттере можно производить проверку данных</p>
+        </section>
     </main>
 </body>
 </html>

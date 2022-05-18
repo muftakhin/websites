@@ -91,6 +91,10 @@ name_1.push(value_1);</pre>
                 <p class="paragraph">Добавление элемента в начало массива</p>
                 <pre class="screen screen_pre">
 name_1.unshift(value_1);</pre>
+                <p class="paragraph">При добавлении данных в начало массива значение индекса каждого
+                    из существующих в нем элементов увеличивается с учетом вновь появившихся данных</p>
+
+                <p class="paragraph"><strong>.push()</strong> и <strong>.unshift()</strong> помимо добавления элементов также возвращают новую длину массива</p>
             </div>
 
             <div class="subsection">
@@ -99,7 +103,7 @@ name_1.unshift(value_1);</pre>
                 <p class="paragraph">Удаление элемента из конца массива</p>
                 <pre class="screen screen_pre">
 let name_1 = name_2.pop();</pre>
-                <p class="paragraph">- <strong>name_2.pop();</strong> удалит вернёт последний элемент массива</p>
+                <p class="paragraph">- <strong>name_2.pop();</strong> удалит и вернёт последний элемент массива</p>
                 </div>
 
                 <p class="paragraph">Удаление элемента из начала массива</p>
@@ -113,7 +117,7 @@ let name_1 = name_2.shift();</pre>
                 <h3 class="subsection__header">Объединение массивов</h3>
 
                 <pre class="screen screen_pre">
-firstArray.concat(secondArray);  // объединение 2х массивов
+firstArray.concat(secondArray);                  // объединение 2х массивов
 
 firstArray.concat(secondArray, ..., lastArray);  // объединение нескольких массивов</pre>
                 <p class="paragraph">В исходные массивы изменения не вносятся</p>
@@ -125,7 +129,7 @@ firstArray.concat(secondArray, ..., lastArray);  // объединение не�
                 <pre class="screen screen_pre">
 name_1.indexOf(value_1);</pre>
                 <p class="paragraph">
-                    &bull; Вернёт ключ(индекс) элемента массива <strong>name_1</strong> со  значением <strong>value_1</strong><br>
+                    &bull; Вернёт первый найденный ключ(индекс) элемента массива <strong>name_1</strong> со  значением <strong>value_1</strong><br>
                     &bull; Если элемент с таким значением отсутствует, вернёт <strong>-1</strong>
                 </p>
             </div>
@@ -146,15 +150,81 @@ name_1.join(" simbols ");  //-&gt; "value_1 simbols value_2 simbols ... simbols 
 let name_2 = Math.floor(Math.random() * name_1.length);</pre>
                 <p class="paragraph">переменной <strong>name_2</strong> присваивается значение случайного элемента массива <strong>name_1</strong></p>
             </div>
+        </section>
 
+        <section class="section">
+            <h2 class="section__header">Методы массива</h2>
+            
             <div class="subsection">
-	            <h3 class="subsection__header">Метод .map()</h3>
+	            <h3 class="subsection__header">.map()</h3>
 
 	            <pre class="screen screen_pre">
-const name_2 = name_1.map(function_1);</pre>
+let name_2 = name_1.map(function_1);</pre>
 				<p class="paragraph">
-					Метод <strong>.map()</strong> применяет функцию <sreong>function_1</sreong> последовательно к каждому элементу массива <strong>name_1</strong> и создаёт из результатов новый массив <strong>name_2</strong>, не внося изменения в массив <strong>name_1</strong> 
+					Метод <strong>.map()</strong> получает в качестве аргумента и применяет функцию обратного вызова <strong>function_1</strong> последовательно к каждому элементу массива <strong>name_1</strong> и создаёт из возвращаемых результатов новый массив <strong>name_2</strong>, не внося изменения в массив <strong>name_1</strong> 
 				</p>
+
+                <pre class="screen screen_pre">
+let name_2 = name_1.map(function_1, name_3, name_4);</pre>
+                <p class="paragraph">
+                    <strong>name_3</strong> - индекс текущего элемента массива<br>
+                    <strong>name_4</strong> - массив, для которого вызывается map
+                </p>
+            </div>
+
+            <div class="subsection">
+	            <h3 class="subsection__header">.filter()</h3>
+
+	            <pre class="screen screen_pre">
+let name_2 = name_1.filter(function_1);</pre>
+				<p class="paragraph">
+					Метод <strong>.filter()</strong> получает в качестве аргумента и применяет функцию обратного вызова <strong>function_1</strong> последовательно к каждому элементу массива <strong>name_1</strong> и создаёт из элементов для которых возвращаемый результат равен <strong>true</strong> новый массив <strong>name_2</strong>, не внося изменения в массив <strong>name_1</strong> 
+				</p>
+
+                <pre class="screen screen_pre">
+let name_2 = name_1.filter(function_1, name_3, name_4);</pre>
+                <p class="paragraph">
+                    <strong>name_3</strong> - индекс текущего элемента массива<br>
+                    <strong>name_4</strong> - массив, для которого вызывается filter
+                </p>
+                </div>
+
+                <pre class="screen screen_post">
+let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+let evenNumbers = numbers.filter(function (item) {
+    return (item % 2 == 0);
+});
+
+console.log(evenNumbers);</pre>
+                <p class="paragraph">В данном примере функция обратного вызова является анонимной</p>
+            </div>
+
+            <div class="subsection">
+	            <h3 class="subsection__header">.reduce()</h3>
+
+                <p class="paragraph">Получение одного значения из массива</p>
+	            <pre class="screen screen_pre">
+let name_2 = name_1.reduce(function_1(name_3, name_4), name_5);</pre>
+				<p class="paragraph">
+					Метод <strong>.reduce()</strong> получает два аргумента. В качестве первого аргумента функцию обратного вызова <strong>function_1</strong> с двумя аргументами <strong>name_3</strong> содержащем итоговое значение и <strong>name_4</strong> - текущий элеент массива<br>
+                    В качестве второго аргумента начальное значение <strong>name_5</strong>
+				</p>
+
+                <pre class="screen screen_post">
+let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+let evenNumbers = numbers.filter(function (item) {
+    return (item % 2 == 0);
+});
+
+console.log(evenNumbers);</pre>
+                <p class="paragraph">В данном примере функция обратного вызова является анонимной</p>
+
+                <pre class="screen screen_pre">
+let name_2 = name_1.reduce(function_1(name_3, name_4), name_5, name_6, name_7);</pre>
+                <p class="paragraph">
+                    <strong>name_6</strong> - индекс текущего элемента массива<br>
+                    <strong>name_7</strong> - массив, для которого вызывается map, filter или reduce
+                </p>
             </div>
         </section>
     </main>

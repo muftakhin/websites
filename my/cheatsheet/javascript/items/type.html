@@ -24,6 +24,12 @@
                 </li>
 
                 <li>
+                    <a href="type-items/bigint.html">
+                        <div class="subitems-list__item">bigint</div>
+                    </a>
+                </li>
+
+                <li>
                     <a href="type-items/string.html">
                         <div class="subitems-list__item">string</div>
                     </a>
@@ -56,6 +62,18 @@
                 <li>
                     <a href="type-items/infinity.html">
                         <div class="subitems-list__item">Infinity</div>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="type-items/symbol.html">
+                        <div class="subitems-list__item">symbol</div>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="type-items/object.html">
+                        <div class="subitems-list__item">Object</div>
                     </a>
                 </li>
             </ul>
@@ -96,6 +114,77 @@ parseInt(name_1)</pre>
 name_1 = 123;
 name_1 += ''</pre>
             </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Преобразование из 16 и 8</h3>
+
+                <pre class="screen screen_pre">
+let name_1 = parseInt('value_1', 16);
+let name_1 = parseInt('value_1', 8);</pre>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section__header">Округление числа</h2>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Math.round()</h3>
+
+                <pre class="screen screen_pre">
+Math.round(number_1);</pre>
+                <p class="paragraph">
+                    Возвращает число, округленное до ближайшего целого числа<br>
+                    При этом округление происходит вверх, если аргумент больше или равен 0,5<br>
+                    Если аргумент меньше 0,5, округление производится до текущего целого числа</p>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Math.ceil()</h3>
+
+                <pre class="screen screen_pre">
+Math.ceil(number_1);</pre>
+                <p class="paragraph">Возвращает число, которое больше или равно вашему аргументу</p>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Math.floor()</h3>
+
+                <pre class="screen screen_pre">
+Math.floor(number_1);</pre>
+                <p class="paragraph">Возвращает число, которое меньше или равно вашему аргументу</p>
+            </div>
+
+            <pre class="screen screen_post">
+Math.floor(.5);     //-&gt;  0
+Math.ceil(.5);      //-&gt;  1
+Math.round(.5);     //-&gt;  1
+
+Math.floor(3.14);   //-&gt;  3
+Math.ceil(3.14);    //-&gt;  3
+Math.round(3.14);   //-&gt;  4
+
+Math.floor(5.9);    //-&gt;  5
+Math.ceil(5.9);     //-&gt;  6
+Math.round(5.9);    //-&gt;  6</pre>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Math.random()</h3>
+
+                <pre class="screen screen_pre">
+let name_1 = Math.random(value_1);</pre>
+                <p class="paragraph">
+                    &bull; Возвращает число от 0 до 1<br>
+                    &bull; Если нужно число побольше, умножьте полученное на подходящий коэффициент
+                </p>
+            </div>
+
+            <pre class="screen screen_post">
+let colors = ["red", "green", "blue", "yellow", "violet"];
+colors[Math.floor(Math.random * 5)];</pre>
+            <p class="paragraph">
+                &bull; <strong>Math.random()</strong> умножаем на кол-во элементов массива<br>
+                &bull; В итоге возвратится один из элементов массива <strong>colors</strong>
+            </p>
         </section>
     </main>
 </body>

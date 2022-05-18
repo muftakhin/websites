@@ -43,11 +43,25 @@ let name_1 = "string";</pre>
 name_1[0];     // первый символ строки name_1
 name_1[1];     // второй символ строки name_1
 . . . .
-name_1[n];     // n-ый символ строки name_1</pre>
+name_1[n];     // (n-1)-ый символ строки name_1</pre>
         </section>
 
         <section class="section">
             <h2 class="section__header">Методы строк</h2>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Конкатенация</h3>
+
+                <pre class="screen screen_pre">
+let name_1 = "text_1";
+let name_2 = "text_2";
+
+let name_3 = name_1 + " text_3 " + name_2;
+
+//or:
+
+let name_3 = name_1.concat(" text_3" + name_2)</pre>
+            </div>
 
             <div class="subsection">
                 <h3 class="subsection__header">.length</h3>
@@ -63,49 +77,25 @@ name_1.length;</pre>
                 <p class="paragraph">- срез строки</p>
                 <pre class="screen screen_pre">
 name_1.slice(index_1, index_2);</pre>
-                <p class="paragraph"><strong>index_1</strong>, <strong>index_2</strong> - позиции символов перед которыми производится срез строки <strong>name_1</strong></p>
-            </div>
-
-            <div class="subsection">
-                <h3 class="subsection__header">.toUpperCase()</h3>
-
-                <p class="paragraph">- перевод строки в заглавный регистр</p>
-                <pre class="screen screen_pre">
-name_1.toUpperCase();</pre>
-            </div>
-
-            <div class="subsection">
-                <h3 class="subsection__header">.toLowerCase()</h3>
-
-                <p class="paragraph">- перевод строки в строчный регистр</p>
-                <pre class="screen screen_pre">
-name_1.toLowerCase();</pre>
-            </div>
-
-            <div class="subsection">
-                <h3 class="subsection__header">.charAt(i)</h3>
-
-                <p class="paragraph">- символ строки с индексом i</p>
-                <pre class="screen screen_pre">
-name_1.charAt(i);</pre>
-            </div>
-
-            <div class="subsection">
-                <h3 class="subsection__header">.indexOff("...")</h3>
-
-                <p class="paragraph">- индекс первого символа первого вхождения аргумента <strong>"строка"</strong> в строке <strong>name_1</strong></p>
-                <pre class="screen screen_pre">
-name_1.indexOff("строка");</pre>
-                <pre class="screen screen_pre">
-name_1.indexOff("строка", i);</pre>
                 <p class="paragraph">
-                    &bull; i - индекс начальной позиции поиска<br>
-                    &bull; Если аргумент в строке найти не удалось, метод возвратит <strong>-1</strong>
+                    &bull; <strong>index_1</strong>, <strong>index_2</strong> - позиции символов перед которыми производится срез строки <strong>name_1</strong><br>
+                    &bull; <strong>index_2</strong> может быть отрицательным, тогда он отсчитывается с конца
                 </p>
             </div>
 
             <div class="subsection">
-                <h3 class="subsection__header">.substring("...")</h3>
+                <h3 class="subsection__header">.substr()</h3>
+
+                <pre class="screen screen_pre">
+name_1.substr(start, length);</pre>
+                <p class="paragraph">
+                    &bull; <strong>index_1</strong>, <strong>index_2</strong> - позиции символов перед которыми производится срез строки <strong>name_1</strong><br>
+                    &bull; <strong>index_2</strong> может быть отрицательным, тогда он отсчитывается с конца
+                </p>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">.substring()</h3>
 
                 <p class="paragraph">- извлечение части строки</p>
                 <pre class="screen screen_pre">
@@ -117,18 +107,69 @@ name_1.substring(i);</pre>
             </div>
 
             <div class="subsection">
-                <h3 class="subsection__header">.split("...")</h3>
+                <h3 class="subsection__header">.split()</h3>
 
-                <p class="paragraph">- получает символ-ограничитель и разбивает строку на части по позиции ограничителя и возвращает их в массиве</p>
+                <p class="paragraph">- получает символ-ограничитель и разбивает строку на части по позиции символа-ограничителя и возвращает их в массиве</p>
+                <pre class="screen screen_pre">
+let name_2 = name_1.split("symbol");</pre>
+                <p class="paragraph"><strong>symbol</strong> - символ, указывающий место разделения</p>
                 <pre class="screen screen_pre">
 let name_1 = "string_1|string_2|string_3";
 let name_2 = name_1.split("|");
 
-console.log(vals);
+console.log(vals);    //-&gt; ["sreing_1", "string_2", "string_3"]</pre>
+            </div>
 
-вернёт:
+            <div class="subsection">
+                <h3 class="subsection__header">.toUpperCase()</h3>
 
-["sreing_1", "string_2", "string_3"]</pre>
+                <p class="paragraph">- перевод строки <strong>name_1</strong> в заглавный регистр</p>
+                <pre class="screen screen_pre">
+name_1.toUpperCase();</pre>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">.toLowerCase()</h3>
+
+                <p class="paragraph">- перевод строки <strong>name_1</strong> в строчный регистр</p>
+                <pre class="screen screen_pre">
+name_1.toLowerCase();</pre>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">.charAt(i)</h3>
+
+                <p class="paragraph">- символ строки с индексом <strong>i</strong></p>
+                <pre class="screen screen_pre">
+name_1.charAt(i);</pre>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">.indexOf()</h3>
+
+                <p class="paragraph">- индекс первого вхождения аргумента <strong>"text"</strong> в строке <strong>name_1</strong></p>
+                <pre class="screen screen_pre">
+name_1.indexOf("text");</pre>
+                <pre class="screen screen_pre">
+name_1.indexOf("text", i);</pre>
+                <p class="paragraph">
+                    &bull; i - индекс начальной позиции поиска<br>
+                    &bull; Если аргумент в строке найти не удалось, метод возвратит <strong>-1</strong>
+                </p>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">.lastIndexOf()</h3>
+
+                <p class="paragraph">- индекс последнего вхождения аргумента <strong>"text"</strong> в строке <strong>name_1</strong></p>
+                <pre class="screen screen_pre">
+name_1.lastIndexOf("text");</pre>
+                <pre class="screen screen_pre">
+name_1.lastIndexOf("text", i);</pre>
+                    <p class="paragraph">
+                        &bull; i - индекс начальной позиции поиска<br>
+                        &bull; Если аргумент в строке найти не удалось, метод возвратит <strong>-1</strong>
+                    </p>
             </div>
         </section>
     </main>
