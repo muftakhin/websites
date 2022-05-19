@@ -180,7 +180,8 @@ let name_1 = document.getElementsByTagName("name_2");
 let name_1 = document.querySelector("css_selector");</pre>
 
                     <pre class="screen screen_pre">
-// Задавание значений свойств с использованием .querySelector
+    // Задавание значений свойств с использованием .querySelector
+
 
 document.querySelector("css_selector").style.свойство = 'значение';</pre>
                 </div>
@@ -197,6 +198,7 @@ let name_2 = name_1[i]   //  - доступ к n-1 элементу массив
 
                     <pre class="screen screen_post">
     // Слайдер с использованием .querySelectorAll()
+
 
 let btn_prev = document.querySelectorAll('.gallery__btn_prev');
 let btn_next = document.querySelectorAll('.gallery__btn_next');
@@ -302,7 +304,8 @@ let name_1 = document.querySelector('css_selector_1');
 name_1.classList.add("class_1");</pre>
                     <p class="paragraph">Если у элемента <strong>element_1</strong> имеются классы, то новый класс добавляется в список последним</p>
                     <pre class="screen screen_post">
-// Открытие окна
+    // Открытие окна
+
 
 let buttonLink = document.querySelector(".button_link");
 let popup = document.querySelector(".sale_popup");
@@ -321,7 +324,8 @@ let name_1 = document.querySelector('css_selector_1');
 name_1.classList.remove("class_1");</pre>
 
                     <pre class="screen screen_post">
-// Закрытие окна
+    // Закрытие окна
+
 
 let closePopup = document.querySelector(".sale_popup_close");
 
@@ -342,7 +346,8 @@ name_1.classList.toggle("class_1");   //  наличие
 name_1.classList.toggle("class_1");   //  класса</pre>
 
                     <pre class="screen screen_pre">
-// переключает по клику
+    // переключает по клику
+
 
 const name_1 = document.querySelector('.name_2');
 name_1.addEventListener('click', () => {
@@ -376,6 +381,7 @@ if (name_1.classList.contains("class_1") == true {
                     <pre class="screen screen_pre">
    // Создание нового элемента и присоединение его к родителю последним элементом:
 
+
 let name_1 = document.createElement('html_element');
 let name_2 = document.querySelector('css_selector_1');
 
@@ -389,6 +395,7 @@ name_2.appendChild(name_1);</pre>
 
                     <pre class="screen screen_pre">
    // Создание нового элемента и присоединение его к родителю, перед элементом name_3:
+
 
 let name_1 = document.createElement('html_element');
 let name_2 = document.querySelector('css_selector_1');
@@ -407,6 +414,7 @@ name_2.insertBefore(name_1, name_3);</pre>
                     <pre class="screen screen_pre">
    // Продолжение: Удаление элемента
 
+
 name_2.removeChild(name_1);             // удаляет элемент name_1 из родительского элемента name_2
 
 name_1.parentNode.removeChild(name_1);  // удаляет элемент name_1 из родительского элемента
@@ -420,6 +428,7 @@ name_1.remove()                         // удаляет элемент name_1<
                     <pre class="screen screen_pre">
    // Клонирование элемента
 
+
 let name_1 = document.querySelector("css_selector_1");
 let name_2_1 = document.querySelector("css_selector_2_1");
 
@@ -431,27 +440,8 @@ name_1.appendChild(name_2_3);</pre>
                 </div>
             </div>
 
-            <div class="subsection">
-                <h3 class="subsection__header">Обработчик событий onclick</h3>
-
-                <pre class="screen screen_pre">
-let name = document.getElementById("button");
-name.onclick = instructions;
-function instructions() {
-    ...
-}</pre>
-                <p class="paragraph">Получив элемент DOM с id="button", задаём для свойства <strong>onclick</strong> функцию <strong>instructions</strong></p>
-
-                <pre class="screen screen_post">
-let colorRed = document.querySelector('.menu__item');
-colorRed.onclick = function() {
-    .menu__item.style.color = 'red';
-};</pre>
-                <p class="paragraph">Элементу DOM с атрибутом <strong>class="menu__item"</strong> задаём свойству <strong>color:</strong> значение <strong>red</strong>;</p>
-            </div>
-
             <pre class="screen screen_post">
-// Пример всплывающего окна
+    // Пример всплывающего окна
 
 &lt;script&gt;
 
@@ -498,7 +488,7 @@ form.addEventListener("submit", function(evt) {
 
 &lt;/script&gt;
 
-// + CSS code:
+    // + CSS code:
 
 &lt;style&gt;
 
@@ -532,7 +522,8 @@ animation-duration: 0,6s;
                 <h3 class="subsection__header">.firstChild</h3>
 
                 <pre class="screen screen_pre">
-// Проверка наличия потомка
+    // Проверка наличия потомка
+
 
 let name_1 = document.querySelector('css-selector_1');
 
@@ -545,7 +536,8 @@ if (name_1.firstChild) {
                 <h3 class="subsection__header">.сhildren</h3>
 
                 <pre class="screen screen_pre">
-// Обращение ко всем потомкам
+    // Обращение ко всем потомкам
+
 
 let name_1 = document.querySelector('css-selector_1');
 
@@ -555,128 +547,6 @@ for (let i=0; i &lt; name_1.children.length; i++) {
     document.writeIn(name_2.tagName);
 }</pre>
                 <p class="paragraph">Для этой коллекции доступны методы <strong>Array</strong></p>
-            </div>
-        </section>
-
-        <section class="section">
-            <h2 class="section__header">Обработчики события (функции обратного вызова)</h2>
-
-            <div class="subsection">
-                <h3 class="subsection__header">.addEventListener()</h3>
-
-                <p class="paragraph">- отлавливает событие элемента и выполняет переданную функцию</p>
-
-                <pre class="screen screen_pre">
-name_1.addEventListener("событие", function(){});</pre>
-
-                <p class="paragraph"><strong>name_1</strong> - имя элемента у которого отслеживается событие</p>
-
-                <div class="subsubsection">
-                    <h4 class="subsubsection__header">События отслеживаемые</h4>
-
-                    <ul class="word-list">
-                        <li>
-                            <div class="word-list__header">Мыши</div>
-                            <ul>
-                                <li class="word-list__item">mouseenter</li>
-                                <li class="word-list__item">mouseover</li>
-                                <li class="word-list__item">mousemove</li>
-                                <li class="word-list__item">mousedown</li>
-                                <li class="word-list__item">mouseup</li>
-                                <li class="word-list__item">click</li>
-                                <li class="word-list__item">dblclick</li>
-                                <li class="word-list__item">contextmenu</li>
-                                <li class="word-list__item">wheel</li>
-                                <li class="word-list__item">mouseleave</li>
-                                <li class="word-list__item">mouseout</li>
-                                <li class="word-list__item">select</li>
-                            </ul>
-                        </li>
-
-                        <li>
-                            <div class="word-list__header">Клавиатуры</div>
-                            <ul>
-                                <li class="word-list__item">keydown</li>
-                                <li class="word-list__item">keypress</li>
-                                <li class="word-list__item">keyup</li>
-                            </ul>
-                        </li>
-
-                        <li>
-                            <div class="word-list__header">Фокуса</div>
-                            <ul>
-                                <li class="word-list__item">focus</li>
-                                <li class="word-list__item">blur</li>
-                            </ul>
-                        </li>
-
-                        <li>
-                            <div class="word-list__header">Формы</div>
-                            <ul>
-                                <li class="word-list__item">reset</li>
-                                <li class="word-list__item">submit</li>
-                            </ul>
-                        </li>
-
-                        <li>
-                            <div class="word-list__header">Сетевые</div>
-                            <ul>
-                                <li class="word-list__item">online</li>
-                                <li class="word-list__item">offline</li>
-                            </ul>
-                        </li>
-
-                        <li>
-                            <div class="word-list__header">Другие</div>
-                            <ul>
-                                <li class="word-list__item">transitionend</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-
-                <pre class="screen screen_post">
-let buttonIn = document.querySelector(".button_in");
-
-buttonIn.addEventListener("click", function(){
-    cosole.log("Кнопка нОжата нажАта!");
-});</pre>
-                <pre class="screen screen_pre">
-name_1.addEventListener("событие", function(name_2){});</pre>
-                                                    
-                <p class="paragraph">
-                    <strong>name_1</strong> - имя элемента у которого отслеживается событие<br>
-                    <strong>name_2</strong> - имя объекта события
-                </p>
-    
-                <pre class="screen screen_post">
-let buttonLink = document.querySelector(".button_link");
-    
-buttonLink.addEventListener("click", function(lnkevent){
-    lnkevent.preventDefault();
-    cosole.log("Кнопка нОжата нажАта!");
-});</pre>
-            </div>
-
-            <div class="subsection">
-                <h3 class="subsection__header">.removeEventListener()</h3>
-
-                    <p class="paragraph">- удаление слушателя событий</p>
-
-                    <pre class="screen screen_pre">
-let name_1 = document.querySelector('.css_selector_1');
-let name_2 = document.querySelector('.css_selector_2');
-
-name_1.addEventListener('name_event', function() {
-    name_2. ... ;
-
-    let name_3 = function() {
-        ...
-        name_2.removeEventListener('transitionend', name_3);
-    };
-
-    name_2.addEventListener('transitionend', name_3);
-});</pre>
             </div>
         </section>
     </main>
