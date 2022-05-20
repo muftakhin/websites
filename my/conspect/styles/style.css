@@ -50,14 +50,18 @@ li {
 }
 .nav {
   padding: 0 8px;
+  margin: auto;
 }
 .nav-list {
   height: 100vh;
   padding: 0 4px;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
+}
+.nav-list__item {
+  margin: 16px;
 }
 .nav-list__item img {
   width: 15vh;
@@ -69,6 +73,7 @@ li {
   }
   .nav-list__item {
     transition: transform 0.3s ease-in-out;
+    margin: 16px;
   }
   .nav-list__item:hover {
     transform: scale(1.2, 1.2);

@@ -66,6 +66,7 @@ li {
 
 .nav {
     padding: 0 8px;
+    margin: auto;
 }
 
 .nav-list {
@@ -73,10 +74,11 @@ li {
     padding: 0 4px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
 
     &__item {
+        margin: 16px;
 
         img {
             width: 15vh;
@@ -92,6 +94,7 @@ li {
 
         &__item {
             transition: transform 0.3s ease-in-out;
+            margin: 16px;
 
             &:hover {
                 transform: scale(1.2, 1.2);
