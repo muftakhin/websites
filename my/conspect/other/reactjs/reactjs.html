@@ -15,29 +15,20 @@
 
   <main class="main">
     <section class="section">
-      <h2 class="section__header">метод ReactDom.render()</h2>
-
-      <pre class="screen screen_pre">
-ReactDom.render(jsx_code_1, place_1);</pre>
-      <p class="paragraph">
-        <strong>jsx_code_1</strong> - элементы, которые нужно вывести<br>
-        <strong>place_1</strong> - место в DOM, где React должна отобразить эти элементы, например <strong>document.querySelector('css_selector_1')</strong>
-      </p>
-    </section>
-
-    <section class="section">
       <h2 class="section__header">Компонент React</h2>
 
       <pre class="screen screen_pre">
-class Name_1 extends React.Component {     // компонент
+class Name_1 extends React.Component {
   render() {
-    return jsx_code_1
+    return (
+      jsx_code_1
+    );
   }
 }
 
 ReactDOM.render(
   &lt;Name_1/&gt;,
-  place_1
+  document.querySelector('css_selector_1')
 );</pre>
       <p class="paragraph"><strong>Name_1</strong> - имя компонента, с большой буквы</p>
 
@@ -47,13 +38,15 @@ ReactDOM.render(
         <pre class="screen screen_pre">
 class Name_1 extends React.Component {
   render() {
-    return (jsx_code_1 {this.props.name_2} jsx_code_2);
+    return (
+      jsx_code_1 {this.props.name_2} jsx_code_2
+    );
   }
 }
 
 ReactDOM.render(
   &lt;Name_1 name_2="value_2"/&gt;,
-  place_1
+  document.querySelector('css_selector_1')
 );</pre>
 
           <p class="paragraph">
@@ -62,23 +55,25 @@ ReactDOM.render(
           </p>
 
           <pre class="screen screen_post">
-class Button_1 extends React.Component {
+class Name_1 extends React.Component {
   render() {
     return (
       &lt;div&gt;
-      &lt;button type={this.props.button_2}&gt;
-        {this.props.children}
-      &lt;/button&gt;
+        &lt;button type={this.props.button_2}&gt;
+          {this.props.children}
+        &lt;/button&gt;
+      &lt;/div&gt;
     );
   }
 }
             
 ReactDOM.render(
   &lt;Button_1 button_2="submit"&gt;Отправить данные&lt;/Button&gt;,
-  document.querrySelector("container")
+  document.querrySelector("css_selector_1")
 );</pre>
             <p class="paragraph">
-              <strong>this.prop.children</strong> - вернёт дочерние элементы или просто содержимое будущего элемента, созданного методом <strong>.render()</strong> с использованием данного компонента
+              <strong>this.props.children</strong> - вернёт дочерние элементы или просто содержимое будущего элемента, созданного методом <strong>.render()</strong> с использованием данного компонента. Или сразу задать вместо него содержимое<br>
+              <strong>this.props.button_2 = "submit"</strong>
             </p>
       </div>
     </section>
@@ -87,30 +82,7 @@ ReactDOM.render(
       <h2 class="section__header">Стилизация</h2>
 
       <div class="subsection">
-        <h3 class="subsection__header">При помощи CSS-классов</h3>
-
-        <pre class="screen screen_pre">
-class Name_1 extends React.Component {
-  render() {
-    return (
-      &lt;tag_name_1 className="class_name_1" ...this.props.name_n... &gt;
-        {this.props.children}
-      &lt;/tag_name_1&gt;
-    );
-  }
-}
-
-ReactDOM.render(
-  &lt;Name_1 name_n="value_n"&gt;
-    content_1
-  &lt;/Name_1&gt;,
-  place_1
-);</pre>
-        <p class="paragraph">
-          <strong>tag_name_1</strong> - тег элемента<br>
-          <strong>class_name_1</strong> - имя класса<br>
-          <strong>content_1</strong> - содержимое элемента компонента, в т.ч. и дочерние элементы
-        </p>
+        <h3 class="subsection__header">При помощи импортируемых файлов стилей</h3>
       </div>
 
       <div class="subsection">
@@ -141,7 +113,7 @@ ReactDOM.render(
   &lt;Name_1 name_n="value_n"&gt;
     content_1
   &lt;/Name_1&gt;,
-  place_1
+  document.querrySelector("css_selector_1")
 );</pre>
           <p class="paragraph"><strong>value</strong> - цифры указываются без величин, а остальное как строки в кавычках, и разделяются запятыми</p>
         </div>
@@ -150,6 +122,1078 @@ ReactDOM.render(
 
     <section class="section">
       <h2 class="section__header">Создание сложных копонентов</h2>
+
+      <pre class="screen screen_pre">
+class Name_1 extends React.Component {
+  render() {
+    var name_1_style = {
+      property_11: value_11,
+      property_12: value_12,
+      ...
+      property_n: value_n,
+    };
+    
+    return (
+      &lt;div style={name_1_style}&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+
+class Name_2 extends React.Component {
+  render() {
+    var name_2_style = {
+      property_21: value_21,
+      property_22: value_22,
+      ...
+      property_n: value_n,
+    };
+    
+    return (
+      &lt;p style={name_2_style}&gt;
+        text
+      &lt;/p&gt;
+    );
+  }
+}
+
+class Name_3 extends React.Component {
+  render() {
+    var name_3_style = {
+      property_31: value_31,
+      property_32: value_32,
+      ...
+      property_n: value_n,
+    };
+    
+    return (
+      &lt;div style={name_3_style}&gt;
+        &lt;Name_1/&gt;
+        &lt;Name_2/&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+    
+ReactDOM.render(
+  &lt;div&gt;
+    &lt;Name_3/&gt;
+  &lt;/div&gt;,
+  document.querySelector("css_selector_1")
+);</pre>
+    </section>
+
+    <section class="section">
+      <h2 class="section__header">Передача свойств</h2>
+
+      <div class="subsection">
+        <h3 class="subsection__header">Передача свойств дочернему компоненту</h3>
+
+        <pre class="screen screen_pre">
+class Name_1 extends React.Component {
+  render() {
+    return (
+      &lt;div property_11={this.props.property_41}
+           property_12={this.props.property_42}&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+
+class Name_2 extends React.Component {
+  render() {
+    return (
+      &lt;Name_1 property_21={this.props.property_41}
+              property_22={this.props.property_42}&gt;
+      &lt;/Name_1&gt;
+    );
+  }
+}
+
+class Name_3 extends React.Component {
+  render() {
+    return (
+      &lt;Name_2 property_31={this.props.property_41}
+              property_32={this.props.property_42}&gt;
+      &lt;/Name_2&gt;
+    );
+  }
+}
+
+ReactDOM.render(
+  &lt;div&gt;
+    &lt;Name_3 property_41="value_41" property_42="value_42" /&gt;
+  &lt;/div&gt;,
+  document.querySelector("css_selector_1")
+);</pre>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__header">С помощью оператора расширения</h3>
+
+        <pre class="screen screen_pre">
+class Name_1 extends React.Component {
+  render() {
+    return (
+      &lt;div {...this.props}&gt;&lt;/div&gt;
+    );
+  }
+}
+
+class Name_2 extends React.Component {
+  render() {
+    return (
+      &lt;Name_1 {...this.props} /&gt;
+    );
+  }
+}
+
+class Name_3 extends React.Component {
+  render() {
+    return (
+      &lt;Name_2 {...this.props} /&gt;
+    );
+  }
+}
+          
+ReactDOM.render(
+  &lt;div&gt;
+    &lt;Name_3 property_41="value_41" property_42="value_42" /&gt;
+  &lt;/div&gt;,
+  document.querySelector("css_selector_1")
+);</pre>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section__header">JSX</h2>
+
+      <p class="paragraph">Имена компонентов начинаются с большой буквы, а теги элементов с маленькой</p>
+
+      <pre class="screen screen_pre">
+  // JSX:
+
+class Name_1 extends React.Component {
+  render() {
+    var name_2 = {
+      property_1: value_1,
+      property_2: value_2,
+      ...
+      property_n: value_n
+    };
+
+    return (
+      &lt;tag_name_1 style={name_2} &gt;
+        &lt;Name_3 property_31={this.props.value_1} /&gt;
+        &lt;Name_4 property_42={this.props.value_2} /&gt;
+      &lt;/tag_name_1&gt;
+    );
+  }
+}
+
+    // JSX to JavaScript:
+  
+class Name_1 extends React.Component {
+  render() {
+    var name_2 = {
+      property_1: value_1,
+      property_2: value_2,
+      ...
+      property_n: value_n
+    };
+  
+    return React.createElement(
+      "tag_name_1",
+      {style: name_2},
+      React.createElement(Name_3, {property_31: this.props.value_1}),
+      React.createElement(Name_4, {property_42: this.props.value_2}),
+    );
+  }
+}</pre>
+      <div class="subsection">
+        <h3 class="subsection__header">Обработка выражений</h3>
+
+        <pre class="screen screen_post">
+class Name_1 extends React.Component {
+  render() {
+    return (
+      &lt;tag_name_1&gt; content { Math.random()*100 } content &lt/tag_name_1&gt;
+    );
+  }
+}</pre>
+        <p class="paragraph">
+          Все выражения, весь не статический контент необходимо заключать в фигурные скобки <strong>{ }</strong><br>
+          Иначе он отобразится как текст</p>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__header">Возвращение нескольких элементов</h3>
+
+        <div class="subsubsection">
+          <h4 class="subsubsection__header">Использование массивоподобного синтаксиса</h4>
+
+          <pre class="screen screen_pre">
+class Name_1 extends React.Component {
+  render() {
+    return (
+      [
+        &lt;tag_name_1 key="1"&gt;text_1&lt;/tag_name_1&gt;,
+        &lt;tag_name_2 key="2"&gt;text_2&lt;/tag_name_2&gt;,
+        &lt;tag_name_2 key="2"&gt;text_3&lt;/tag_name_3&gt;,
+      ]
+    );
+  }
+}</pre>
+          <p class="paragraph"><strong>key</strong> позволяет иметь дело с нужными элементами</p>
+        </div>
+
+        <div class="subsubsection">
+          <h4 class="subsubsection__header">Использование фрагментов React.Fragment</h4>
+
+          <pre class="screen screen_pre">
+    // Полное указание:
+
+class Name_1 extends React.Component {
+  render() {
+    return (
+      &lt;React.Fragment&gt;
+        &lt;tag_name_1&gt;text_1&lt;/tag_name_1&gt;,
+        &lt;tag_name_2&gt;text_2&lt;/tag_name_2&gt;,
+        &lt;tag_name_2&gt;text_3&lt;/tag_name_3&gt;,
+      &lt;/React.Fragment&gt;
+    );
+  }
+}</pre>
+        <pre class="screen screen_pre">
+    // краткий синтаксис:
+
+class Name_1 extends React.Component {
+  render() {
+    return (
+      &lt;&gt;
+        &lt;tag_name_1&gt;text_1&lt;/tag_name_1&gt;,
+        &lt;tag_name_2&gt;text_2&lt;/tag_name_2&gt;,
+        &lt;tag_name_2&gt;text_3&lt;/tag_name_3&gt;,
+      &lt;/&gt;
+    );
+  }
+}</pre>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__header">Комментарии</h3>
+
+        <div class="subsubsection">
+          <h4 class="subsubsection__header">Как дочерний элемент элемента</h4>
+            <pre class="screen screen_pre">
+ReactDOM.render(
+  &lt;tag_name_1&gt;
+    &lt;tag_name_2&gt;
+      {/* Комментарий */}
+      &lt;Name_3/&gt;
+    &lt;/tag_name_2&gt;
+  &lt;/tag_name_1&gt;,
+  document.querySelector("css_selector_1")
+);</pre>
+        </div>
+      </div>
+
+      <div class="subsubsection">
+        <h4 class="subsubsection__header">Внутри тега элемента</h4>
+          <pre class="screen screen_pre">
+ReactDOM.render(
+  &lt;tag_name_1 &gt;
+    &lt;tag_name_2&gt;
+      &lt;Name_3
+        /* Многострочный
+        комментарий*/
+        className="name_4" // Однострочный комментарий
+      /&gt;
+    &lt;/tag_name_2&gt;
+  &lt;/tag_name_1&gt;,
+document.querySelector("css_selector_1")
+);</pre>
+      </div>
+    </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section__header">Работа с состояниями</h2>
+
+      <pre class="screen screen_post">
+&lt;script&gt;
+
+class LightningCounter extends React.Component {
+  constructor(props) {                       // конструктор компонента
+    super(props);
+
+    this.state = {                           //  state - объект компонента, хранящий его состояние,
+      strikes: 0                             // должен быть указан до рендеринга компонента
+    };
+  
+    this.timerTick = this.timerTick.bind(this);   // привязка функции timerTick() к компоненту,
+  }                                               //  для корректной работы ссылки this
+
+  timerTick() {
+    this.setState({                         // .setState() метод, принимает в качестве аргумента объект .state
+      strikes: this.state.strikes + 100     // позволяет вносить изменения в его свойства
+    });
+  }
+
+  componentDidMount() {                     // этот метод вызывается сразу после того
+    setInterval(this.timerTick, 1000);      // как компонент рендерится
+  }
+
+  render() {                                // после setState каждый раз запускается render()
+    var counterStyle = {
+      color: "#66FFFF",
+      fontSize: 50
+    };
+
+    var count = this.state.strikes.toLocaleString();
+  
+    return (
+      &lt;h1 style={counterStyle}>{count}&lt;/h1&gt;
+    );
+  }
+}
+
+class LightningCounterDisplay extends React.Component {
+  render() {
+    var commonStyle = {
+      margin: 0,
+      padding: 0
+    };
+
+    var divStyle = {
+      width: 250,
+      textAlign: "center",
+      backgroundColor: "#020202",
+      padding: 40,
+      fontFamily: "sans-serif",
+      color: "#999999",
+      borderRadius: 10
+    };
+
+    var textStyles = {
+      emphasis: {
+        fontSize: 38,
+        …commonStyle
+      },
+
+      smallEmphasis: {
+        …commonStyle
+      },
+
+      small: {
+        fontSize: 17,
+        opacity: 0.5,
+         …commonStyle
+      }
+    };
+
+    return (
+      &lt;div style={divStyle}&gt;
+      &lt;LightningCounter /&gt;
+        &lt;h2 style={textStyles.smallEmphasis}&gt;ВСПЫШКИ МОЛНИИ&lt;/h2&gt;
+        &lt;h2 style={textStyles.emphasis}&gt;НА ПЛАНЕТЕ&lt;/h2&gt;
+        &lt;p style={textStyles.small}&gt;(с момента запуска кода)&lt;/p&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+
+ReactDOM.render(
+  &lt;LightningCounterDisplay /&gt;,
+  document.querySelector("css_selector_1")
+);
+
+&lt;/script&gt;
+      </pre>
+    </section>
+
+    <section class="section">
+      <h2 class="section__header">Переход от данных к UI</h2>
+
+      <p class="paragraph">Код JSX можно вынести за пределы компонента и ReactDOM</p>
+
+      <pre class="screen screen_pre">
+class Name_1 extends React.Component {
+  render() {
+    var name_2 = {
+      property_2: value_2
+    };
+
+    return (
+      &lt;tag_name_3 style={name_2}&gt;
+      &lt;/tag_name_3&gt;
+    );
+  }
+}
+
+name_4 = &lt;Name_1 /&gt;;
+
+ReactDOM.render(
+  {name_4},
+  document.querySelector("css_selector_1")
+);</pre>
+
+  <pre class="screen screen_pre">
+// или:
+
+...
+function name_4() {
+  action_4;
+  return &lt;Name_1 ... /&gt;;
+}
+
+ReactDOM.render(
+  {name_4()},
+  document.querySelector("css_selector_1")
+);</pre>
+
+      <div class="subsection">
+        <h3 class="subsection__header">key={...}</h3>
+
+        <p class="paragraph">Когда элементы создаются динамически, необходимо устанавливать идентификаторы</p>
+
+        <pre class="screen screen_pre">
+for (var = 0; i &lt; name_1.length; i++) {
+  var name_2 = name_1[i];
+  name_3.push(&lt;Name_4 key={i+name_2} name_5={name_2} /&gt;);
+}</pre>
+      </div>
+
+      <pre class="screen screen_pre">
+// Преобразованный в CSS
+
+for (var i=0; i &lt; name_1.length; i++) {
+  var name_2 = name_1[i];
+
+  name_3.push(React.createElement(Name_4,
+    {
+      key: i + name_2,
+      bgColor: color
+    }
+  ));
+}
+      </pre>
+    </section>
+
+    <section class="section">
+      <h2 class="section__header">События в React</h2>
+
+      <div class="subsection">
+        <h3 class="subsection__header">События SyntheticEvent</h3>
+
+        <pre class="screen screen_post">
+  // счётчик кликов
+
+class Counter extends React.Component {
+  render() {
+    var textStyle = {
+      ...
+    };
+        
+    return (
+      &lt;div style={textStyle}&gt;
+        {this.props.display}
+      &lt;/div&gt;
+    );
+  }
+}
+        
+class CounterParent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      count: 0
+    };
+    this.increase = this.increase.bind(this);
+  }
+        
+  increase(e) {
+    this.setState(
+      {count: this.state.count + 1});
+  }
+        
+  render() {
+    var backgroundStyle = {
+      ...
+    };
+        
+    var buttonStyle = {
+      ...
+    };
+        
+    return (
+      &lt;div style={backgroundStyle}&gt;
+        &lt;Counter display={this.state.count} /&gt;
+        &lt;button onClick={this.increase} style={buttonStyle}&gt;+&lt;/button&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+        
+ReactDOM.render(
+  &lt;div&gt;
+    &lt;CounterParent /&gt;
+  &lt;/div&gt;,
+  document.querySelector("#container")
+);</pre>
+        <p class="paragraph">
+          &bull; В этом примере <strong>this</strong> внутри обработчика события относится к компоненту <strong>CounterParent</strong>, а не к элементу, его вызвавшего. Такое поведение можно указать, связав значение <strong>this</strong> с компонентом внутри конструктора
+        </p>
+        <p class="paragraph">
+          &bull; Слушатель событий нельзя повесить на компонент<br>
+          &bull; В React мы имеем дело с SyntheticEvent<br>
+          &bull; React никогда напрямую не прикрепляет обработчики событий к элементам DOM. Он использует один обработчик событий в корне документа, который отвечает за прослушку всех событий и при необходимости вызывает соответствующий обработчик событий
+        </p>
+      </div>
+      <div class="subsection">
+        <h3 class="subsection__header">Стандартные события DOM</h3>
+
+        <pre class="screen screen_pre">
+class Name_1 extends React.Component {
+  ...
+  name_2(e) {
+    action_2;
+  }
+
+  componentDidMount() {
+    window.addEventListener("event_1", this.name_2);
+  }
+
+  componentWillMount() {
+    window.removeEventListener("event_1", this.name_2);
+  }
+
+  render() {
+    ...
+  }
+}</pre>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section__header">Жизненный цикл компонента</h2>
+
+      <p class="paragraph">
+        Методы жизненного цикла:<br><br>
+        <strong>componentWillMount</strong><br>
+        <strong>componentDidMount</strong><br>
+        <strong>componentWillUnmount</strong><br>
+        <strong>componentWillUpdate</strong><br>
+        <strong>componentDidUpdate</strong><br>
+        <strong>shouldComponentUpdate</strong><br>
+        <strong>componentWillReceiveProps</strong><br>
+        <strong>componentDidCatch</strong>
+      </p>
+
+      <div class="subsection">
+        <h3 class="subsection__header">Этап начального рендеринга</h3>
+
+        <p class="paragraph">
+          МЖЦ начального рендеринга:<br>
+          <strong>Получение свойств по умолчанию</strong><br>
+          <strong>Получение состояния по умолчанию</strong><br>
+          <strong>componentWillMount()</strong><br>
+          <strong>render()</strong><br>
+          <strong>componentDidMount()</strong>
+        </p>
+
+        <div class="subsubsection">
+          <h4 class="subsubsection__header">Получение свойств по умолчанию</h4>
+
+          <pre class="screen screen_pre">
+  //  Настройка свойства name_2 компонента Name_1:
+
+Name_1.defaultProps {
+  name_2: value_2
+};</pre>
+        </div>
+
+        <div class="subsubsection">
+          <h4 class="subsubsection__header">Получение состояния по умолчанию</h4>
+
+          <pre class="screen screen_pre">
+class Name_1 extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {            // определяем и инициализируем объект state
+      count: 0                // с помощью свойства count
+    };                        // (указываем дефолтное значение state)
+
+    this.increase = this.increase.bind(this);
+  }
+
+  render() {
+...</pre>
+        </div>
+
+        <div class="subsubsection">
+          <h4 class="subsubsection__header">componentWillMount()</h4>
+
+          <p class="paragraph">
+            Это последний метод, который вызывается до того, как компонент будет передан в DOM<br>
+            Здесь важно отметить: если вы вызываете метод <strong>setState</strong> внутри метода <strong>componentWillMount</strong>, компонент
+            не будет повторно рендериться
+          </p>
+        </div>
+
+        <div class="subsubsection">
+          <h4 class="subsubsection__header">render()</h4>
+
+          <p class="paragraph">
+            Каждый компонент должен иметь этот метод, так как он отвечает за  возврат JSX-кода<br>
+            Если не  нужно ничего рендерить (визуализировать), верните значение <strong>null</strong> или <strong>false</strong>
+          </p>
+        </div>
+
+        <div class="subsubsection">
+          <h4 class="subsubsection__header">componentDidMount()</h4>
+
+          <p class="paragraph">
+            Этот метод вызывается сразу после того, как компонент визуализирован и помещен в DOM<br>
+            На этом этапе вы можете безопасно выполнять любые операции запроса DOM, не беспокоясь о готовности компонента<br>
+            Если у вас есть код, зависимый от готовности компонента, вы также можете указать его здесь<br>
+            За исключением метода render , все перечисленные методы жизненного цикла могут срабатывать только один раз
+          </p>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__header">Этап обновления</h3>
+
+        <p class="paragraph">
+          После того как компоненты будут добавлены в DOM, они могут обновиться и повторно выполнить рендеринг при возникновении изменений свойств или изменений состояния<br>
+          В это время вызывается другая коллекция методов жизненного цикла
+        </p>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__header">Изменение состояний</h3>
+
+        <p class="paragraph">
+          Когда происходит изменение состояния, компонент вновь вызывает свой метод <strong>render()</strong><br>
+          Любые компоненты, которые полагаются на  вывод этого компонента, также вызывают методы <strong>render()</strong><br>
+          Это делается для того, чтобы компонент всегда отображал самую последнюю версию
+        </p>
+
+        <p class="paragraph">
+          МЖЦ вызываемые при изменении состояния:<br>
+          <strong>shouldComponentUpdate()</strong><br>
+          <strong>componentWillMount()</strong><br>
+          <strong>render()</strong><br>
+          <strong>componentDidMount()</strong>
+        </p>
+
+        <div class="subsubsection">
+          <h4 class="subsubsection__header">shouldComponentUpdate()</h4>
+
+
+          <p class="paragraph">
+            Позволяет контролировать, выполнять ли обновление<br>
+            Если вы используете этот метод со значением <strong>true</strong>, компонент будет обновляться<br>
+            Если этот метод возвращает значение <strong>false</strong>, этот компонент пропускает обновление<br>
+            Этот метод вызывается с двумя аргументами с именами <strong>newProps</strong> и <strong>newState</strong>
+          </p>
+          <pre class="screen screen_pre">
+shouldComponentUpdate(newProps, newState) {
+
+  if (newState.count ...) {
+    return true;
+  } else {
+    return false;
+  }
+}</pre>
+        </div>
+
+        <div class="subsubsection">
+          <h4 class="subsubsection__header">componentWillUpdate()</h4>
+
+
+          <p class="paragraph">
+            Этот метод вызывается непосредственно перед обновлением компонента<br>
+            Нельзя изменить состояние, вызвав <strong>this.setState</strong> из этого метода
+          </p>
+          <pre class="screen screen_pre">
+shouldComponentUpdate(newProps, newState) {
+
+  if (newState.count ...) {
+    return true;
+  } else {
+    return false;
+  }
+}</pre>
+        </div>
+
+        <div class="subsubsection">
+          <h4 class="subsubsection__header">// снова render()</h4>
+
+          <p class="paragraph">Если не настроено поведение при обновлении с помощью метода <strong>shouldComponentUpdate()</strong> , код метода <strong>render()</strong> вновь вызывается, чтобы убедиться, что компонент отображается корректно</p>
+        </div>
+
+        <div class="subsubsection">
+          <h4 class="subsubsection__header">componentDidUpdate()</h4>
+
+          <p class="paragraph">
+            Этот метод вызывается после обновления компонента и после вызова метода <strong>render</strong><br>
+            Если вам нужно выполнить какой-либо код после обновления компонента, сейчас самое время
+          </p>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__header">Изменение свойств</h3>
+
+        <p class="paragraph">
+          МЖЦ когда значение свойств компонента изменяется:<br>
+          <strong>componentWillReceiveProps()</strong><br>
+          <strong>shouldComponentUpdate()</strong><br>
+          <strong>componentWillMount()</strong><br>
+          <strong>render()</strong><br>
+          <strong>componentDidMount()</strong>
+        </p>
+
+        <div class="subsubsection">
+          <h4 class="subsubsection__header">componentWillReceiveProps()</h4>
+
+          <p class="paragraph">Этот метод получает один аргумент, который содержит новое значение свойства для присваивания</p>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__header">Этап размонтирования</h3>
+
+        <p class="paragraph">
+          МЖЦ вызываемые при изменении состояния:<br>
+          <strong>componentWillUnmount()</strong>
+        </p>
+
+        <p class="paragraph">
+          Последний этап, когда компонент уничтожается и удаляется из DOM<br>
+          Здесь активен только один метод жизненного цикла, который называется <strong>componentWillUnmount()</strong><br>
+          На этом этапе выполняются задачи, связанные с очисткой, такие как удаление слушателей событий и остановка таймеров<br>
+          После вызова этого метода компонент удаляется из DOM, и вы можете попрощаться с ним
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section__header">Доступ к элементам DOM</h2>
+
+      <p class="paragraph">
+        Ссылки позволяют получить доступ к базовому элементу HTML за пределами JSX<br>
+        Порталы предоставляют ваше содержимое любому элементу в DOM, к которому у вас есть доступ
+      </p>
+
+      <div class="subsection">
+        <h3 class="subsection__header">Использование ссылок ref={}</h3>
+
+        <pre class="screen screen_post">
+&lt;body&gt;
+  &lt;div id="container"&gt;&lt;/div&gt;
+  &lt;script type="text/babel"&gt;
+
+class Colorizer extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      color: "",
+      bgColor: "white"
+    };
+
+    this.colorValue = this.colorValue.bind(this);
+    this.setNewColor = this.setNewColor.bind(this);
+  }
+
+  colorValue(e) {
+    this.setState({
+      color: e.target.value
+    });
+  }
+
+  setNewColor(e) {
+    this.setState({
+      bgColor: this.state.color
+    });
+
+    this._input.focus();                           // наводит фокус на input
+    this.input.value = "";                         // очищае поле ввода
+
+    e.preventDefault();
+  }
+
+  render() {
+    var squareStyle = {
+      backgroundColor: this.state.bgColor
+    };
+
+    var self = this;                               // замыкание для того, чтобы this относился к компоненту,
+                                                   // а не к функции
+    return (
+      &lt;div className="colorArea"&gt;
+        &lt;div style={squareStyle} className="colorSquare"&gt;&lt;/div&gt;
+
+        &lt;form onSubmit={this.setNewColor}&gt;
+  
+          &lt;input onChange={this.colorValue}        // элементу input передаём значения цвета
+          ref={                                    // к нему привязывает атрибут ref
+            function(e1) {                         // его значение - функция обратного вызова
+              self._input = e1                     // эта функция вызывается при монтировании компонента
+            }                                      // и даёт доступ к input из любого места компонента
+          }
+          placeholder="Значение цвета"&gt;&lt;/input&gt;
+
+          &lt;button type="submit"&gt;ok&lt;/button&gt;
+        &lt;/form&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+
+ReactDOM.render(
+  &lt;div&gt;
+    &lt;Colorizer /&gt;
+  &lt;/div&gt;,
+  document.querySelector("#container")
+);
+
+  &lt;/script&gt;
+&lt;/body&gt;</pre>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__header">Использование порталов</h3>
+
+        <pre class="screen screen_post">
+// добавляет к тексту в h1 двоеточие и название цвета
+
+...
+&lt;body&gt;
+  &lt;h1 class="colorHeading"&gt;Палитра&lt;/h1&gt;   // +++
+  ...
+  ...
+  &lt;div id="container"&gt;&lt;/div&gt;
+  &lt;script type="text/babel"&gt;
+  ...
+  ...
+class Colorizer extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      color: "",
+      bgColor: "white"
+    };
+
+    this.colorValue = this.colorValue.bind(this);
+    this.setNewColor = this.setNewColor.bind(this);
+  }
+...
+...
+  render() {
+    var squareStyle = {
+      backgroundColor: this.state.bgColor
+    };
+
+    var self = this;
+
+    return (
+      &lt;div className="colorArea"&gt;
+        &lt;div style={squareStyle} className="colorSquare"&gt;&lt;/div&gt;
+
+        &lt;form onSubmit={this.setNewColor}&gt;
+
+          &lt;input onChange={this.colorValue}
+          ref={
+            function(e1) {
+              self._input = e1
+            }
+          }
+          placeholder="Значение цвета"&gt;&lt;/input&gt;
+
+          &lt;button type="submit"&gt;ok&lt;/button&gt;
+        &lt;/form&gt;
+        &lt;ColorLabel color={this.state.bgColor}/&gt;   // +++
+      &lt;/div&gt;
+    );
+  }
+}
+
+var heading = document.querySelector("#colorHeading");   // +++
+
+class ColorLabel extends React.Component {    // +++
+  render() {
+    return ReactDOM.createPortal(
+      ": " + this.props.color,
+      heading
+    );
+  }
+}                                             +++ //
+  
+ReactDOM.render(
+  &lt;div&gt;
+    &lt;Colorizer /&gt;
+  &lt;/div&gt;,
+  document.querySelector("#container")
+);
+...</pre>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section__header">Настройка среды React</h2>
+
+      <pre class="screen screen_pre">
+npm install -g create-react-app</pre>
+      <pre class="screen screen_pre">
+create-react-app name_1   // name_1 - имя проекта
+
+cd name_1                 // переход в папку проекта
+
+npm start                 // сборка проекта и запуск локального сервера с проектом</pre>
+
+      <pre class="screen screen_post">
+  // index.html:
+
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;...&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div id="root"&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+
+      <pre class="screen screen_post">
+  // index.js:
+  
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Name_1 from './Name_1';
+import './index.css';
+
+ReactDOM.render(
+  &lt;Name_1 /&gt;,
+  document.querySelector('#root')
+);</pre>
+
+      <pre class="screen screen_post">
+  // Name_1.js:
+  
+import React, {Component} from 'react';   // для Компонентов добавляем {Component}
+import './Name_1.css';
+
+class Name_1 extends Component {
+  render() {
+    return (
+      &lt;div className="Name_1"&gt;
+        ...
+      &lt;/div&gt;
+    );
+  }
+}
+
+export default Name_1;</pre>
+    </section>
+
+    <section class="section">
+      <h2 class="section__header">Работа с внешними данными</h2>
+
+      <pre class="screen screen_post">
+// index.js
+
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import IPAddressContainer from "./IPAddressContainer";
+
+var destination = document.querySelector('#container');
+
+ReactDOM.render(
+  &lt;div&gt;
+    &lt;IPAddressContainer /&gt;
+  &lt;/div&gt;,
+  destination
+);</pre>
+
+      <pre class="screen screen_post">
+// IPAddressContainer.js
+
+import React, {Component} from "react";
+import IPAddress from "./IPAddress"
+
+var xhr;
+
+class IPAddressContainer extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      ip_address: ""
+    };
+
+    this.processRequest = this.processRequest.bind(this);
+  }
+
+  componentDidMount() {
+    xhr = new XMLHttpRequest();
+    xhr.open("GET", "https://ipinfo.io/json", true);
+    xhr.send();
+
+    xhr.addEventListener("readystatechange", this.processRequest, false);
+  }
+
+  processRequest() {
+    if(xhr.readyState === 4 && xhr.status === 200) {
+      var response = JSON.parse(xhr.responseText);
+
+      this.setState({
+        ip_address: response.ip
+      });
+    }
+  }
+
+  render() {
+    return(
+      &lt;IPAddress ip={this.state.ip_address} /&gt;
+    );
+  }
+}
+        
+export default IPAddressContainer;</pre>
+
+      <pre class="screen screen_post">
+// IPAddress.js
+
+import React, {Component} from "react";
+import "./IPAddress.css";
+
+class IPAddress extends Component {
+  render() {
+    return(
+      &lt;div&gt;
+        &lt;h1&gt;{this.props.ip}&lt;/h1&gt;
+        &lt;p&gt;(It is your IP-address. Maybe! P)&lt;/p&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+
+export default IPAddress;</pre>
+    </section>
+
+    <section class="section">
+      <h2 class="section__header">Создание планировщика</h2>
+
+
     </section>
   </main>
 </body>

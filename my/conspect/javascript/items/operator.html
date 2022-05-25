@@ -198,6 +198,22 @@ i**=n  // i возводится в степень n</pre>
         <section>
 
         <section class="section">
+            <h2 class="section__header">Оператор расширения ...</h2>
+
+            <pre class="screen screen_pre">
+var name_1 = ["value_1", "value_2", ... "value_n"];
+
+function name_2(name_2_1, name_2_2, ... name_2_n) {
+    action_2;
+}
+
+name_2(...name_1);
+
+name_2(name_1[0], name_1[1], ... name_1[n]);  // без ...</pre>
+            <p class="paragraph"><strong>...</strong> осуществляет вызов элементов по отдельности</p>
+        </section>
+
+        <section class="section">
             <h2 class="section__header">Приоритетность операторов</h2>
 
             <div class="table">
