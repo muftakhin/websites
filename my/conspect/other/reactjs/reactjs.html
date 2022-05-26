@@ -566,7 +566,7 @@ for (var = 0; i &lt; name_1.length; i++) {
       </div>
 
       <pre class="screen screen_pre">
-// Преобразованный в CSS
+// Преобразованный в JavaScript
 
 for (var i=0; i &lt; name_1.length; i++) {
   var name_2 = name_1[i];
@@ -587,6 +587,10 @@ for (var i=0; i &lt; name_1.length; i++) {
       <div class="subsection">
         <h3 class="subsection__header">События SyntheticEvent</h3>
 
+        <p class="paragraph">
+          В React значение <strong>this</strong> не относится к элементу, который активировал событие<br>
+          Нужно явно указывать связь с помощью метода <strong>.bind()</strong>
+        </p>
         <pre class="screen screen_post">
   // счётчик кликов
 
@@ -607,15 +611,26 @@ class Counter extends React.Component {
 class CounterParent extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
       count: 0
     };
-    this.increase = this.increase.bind(this);
+
+    this.increase = this.increase.bind(this);   // в этом примере this относится к CounterParent
   }
         
-  increase(e) {
+  increase(e) {                                 // События передают обработчику аргументы
+    var currentCount = this.state.count;        // событий, назовём e
+
+    if (e.shiftKey) {                           // shiftKey - свойство события SyntheticEvent
+      currentCount += 10;                       // при использовании мыши
+    } else {
+      currentCount += 1;
+    }
+
     this.setState(
-      {count: this.state.count + 1});
+      {count: currentCount}
+    );
   }
         
   render() {
@@ -643,30 +658,68 @@ ReactDOM.render(
   document.querySelector("#container")
 );</pre>
         <p class="paragraph">
-          &bull; В этом примере <strong>this</strong> внутри обработчика события относится к компоненту <strong>CounterParent</strong>, а не к элементу, его вызвавшего. Такое поведение можно указать, связав значение <strong>this</strong> с компонентом внутри конструктора
-        </p>
-        <p class="paragraph">
-          &bull; Слушатель событий нельзя повесить на компонент<br>
-          &bull; В React мы имеем дело с SyntheticEvent<br>
+          &bull; Слушатель событий нельзя повесить на компонент, ибо компонент возвращает HTML-элемент<br>
+          &bull; Нельзя напрямую прослушивать события компонета. Компонент это обёртка для элементов DOM<br>
+          &bull; В React мы имеем дело с SyntheticEvent, а не обращаемся к событиям DOM<br>
           &bull; React никогда напрямую не прикрепляет обработчики событий к элементам DOM. Он использует один обработчик событий в корне документа, который отвечает за прослушку всех событий и при необходимости вызывает соответствующий обработчик событий
+        </p>
+
+        <p class="paragraph">
+          Мы можем использовать обработчик событий как свойство и передать его компоненту. Внутри компонента мы можем затем назначить событие элементу DOM и присвоить обработчику события значение переданного свойства
+        </p>
+        <pre class="screen screen_post">
+// вариант:
+
+...
+import PlusButton from './PlusButton';
+...
+render() {
+  return(
+    &lt;div&gt;
+      &lt;Counter display={this.state.count} /&gt;
+      &lt;PlusButton clickHandler={this.increase} /&gt;     // onClick повесить на PlusButton не получится
+    &lt;/div&gt;
+  );
+}
+...
+
+// PlusButton.js
+
+...
+class PlusButton extends React.Component {
+  render() {
+    return(
+      &lt;button onClick={this.props.clickHandler}&gt;
+        +
+      &lt;/button&gt;
+    );
+  }
+}
+...</pre>
+        <p class="paragraph">
+          &bull; В этом примере создаём свойство <strong>clickHandler</strong>, значение которого - обработчик события <strong>increase</strong><br>
+          &bull; В элементе <strong>button</strong> указываем событие <strong>onClick</strong> и присваиваем его значение свойству <strong>clickHandler</strong><br>
+          &bull; Во время выполнения свойство обрабатывается как функция <strong>increase</strong> , а нажатие кнопки «плюс» гарантирует вызов функции <strong>increase</strong>. Так наша проблема решается, позволяя компоненту участвовать во всем этом событии
         </p>
       </div>
       <div class="subsection">
         <h3 class="subsection__header">Стандартные события DOM</h3>
 
+        <p class="paragraph">Не все события DOM имеют
+          эквивалентные события SyntheticEvent</p>
         <pre class="screen screen_pre">
-class Name_1 extends React.Component {
+class Name_1 extends React.Component {                   // компонент Name_1 определяет событие event_1
   ...
   name_2(e) {
     action_2;
   }
 
-  componentDidMount() {
-    window.addEventListener("event_1", this.name_2);
-  }
+  componentDidMount() {                                  // начинаем обрабатывать по методу componentDidMount(),
+    window.addEventListener("event_1", this.name_2);     // который автоматически вызывается при визуализации
+  }                                                      // компонента
 
-  componentWillMount() {
-    window.removeEventListener("event_1", this.name_2);
+  componentWillMount() {                                 // требуется удалить слушатель событий,
+    window.removeEventListener("event_1", this.name_2);  // если компонент будет уничтожен
   }
 
   render() {
@@ -679,6 +732,7 @@ class Name_1 extends React.Component {
     <section class="section">
       <h2 class="section__header">Жизненный цикл компонента</h2>
 
+      <p class="paragraph">Методы жизненного цикла автоматически вызываются компонентами и похожи на обработики событий</p>
       <p class="paragraph">
         Методы жизненного цикла:<br><br>
         <strong>componentWillMount</strong><br>
@@ -706,6 +760,10 @@ class Name_1 extends React.Component {
         <div class="subsubsection">
           <h4 class="subsubsection__header">Получение свойств по умолчанию</h4>
 
+          <p class="paragraph">
+            Это свойство компонента позволяет указать дефолтное значение <strong>this.props</strong><br>
+            Этот код выполняется до того, как компонент будет создан, или в него будут переданы свойства из родительских компонентов
+          </p>
           <pre class="screen screen_pre">
   //  Настройка свойства name_2 компонента Name_1:
 
@@ -717,6 +775,10 @@ Name_1.defaultProps {
         <div class="subsubsection">
           <h4 class="subsubsection__header">Получение состояния по умолчанию</h4>
 
+          <p class="paragraph">
+            Этот шаг выполняется внутри конструктора компонента<br>
+            Вы можете указать дефолтное значение <strong>this.state</strong> в части создания компонента
+          </p>
           <pre class="screen screen_pre">
 class Name_1 extends React.Component {
   constructor(props) {
@@ -819,15 +881,6 @@ shouldComponentUpdate(newProps, newState) {
             Этот метод вызывается непосредственно перед обновлением компонента<br>
             Нельзя изменить состояние, вызвав <strong>this.setState</strong> из этого метода
           </p>
-          <pre class="screen screen_pre">
-shouldComponentUpdate(newProps, newState) {
-
-  if (newState.count ...) {
-    return true;
-  } else {
-    return false;
-  }
-}</pre>
         </div>
 
         <div class="subsubsection">
@@ -840,7 +893,7 @@ shouldComponentUpdate(newProps, newState) {
           <h4 class="subsubsection__header">componentDidUpdate()</h4>
 
           <p class="paragraph">
-            Этот метод вызывается после обновления компонента и после вызова метода <strong>render</strong><br>
+            Этот метод вызывается после обновления компонента и после вызова метода <strong>render()</strong><br>
             Если вам нужно выполнить какой-либо код после обновления компонента, сейчас самое время
           </p>
         </div>
@@ -849,6 +902,7 @@ shouldComponentUpdate(newProps, newState) {
       <div class="subsection">
         <h3 class="subsection__header">Изменение свойств</h3>
 
+        <p class="paragraph">Обновления компонента, когда значение его свойства изменяется после того, как оно было визуализировано в DOM</p>
         <p class="paragraph">
           МЖЦ когда значение свойств компонента изменяется:<br>
           <strong>componentWillReceiveProps()</strong><br>
@@ -940,13 +994,12 @@ class Colorizer extends React.Component {
         &lt;div style={squareStyle} className="colorSquare"&gt;&lt;/div&gt;
 
         &lt;form onSubmit={this.setNewColor}&gt;
-  
-          &lt;input onChange={this.colorValue}        // элементу input передаём значения цвета
-          ref={                                    // к нему привязывает атрибут ref
-            function(e1) {                         // его значение - функция обратного вызова
-              self._input = e1                     // эта функция вызывается при монтировании компонента
-            }                                      // и даёт доступ к input из любого места компонента
-          }
+                                                   // к  интересующему нас элементу input привязываем атрибут ref
+          &lt;input onChange={this.colorValue}        // его значение - функция обратного вызова
+          ref={                                    // Эта функция вызывается при монтировании компонентакомпонента
+            function(e1) {                         // и даёт доступ к input из любого места
+              self._input = e1                     // ссылка на элемент DOM передаётся в качестве аргумента
+          }                                        // идентификатор e1 перехватывает этот аргумент
           placeholder="Значение цвета"&gt;&lt;/input&gt;
 
           &lt;button type="submit"&gt;ok&lt;/button&gt;
@@ -965,6 +1018,10 @@ ReactDOM.render(
 
   &lt;/script&gt;
 &lt;/body&gt;</pre>
+        <p class="paragraph">
+          Тело функции обратного вызова устанавливает пользовательское свойство, _input, как значение элемента DOM.<br>
+          Чтобы гарантировать, что мы создадим это свойство на нашем компоненте, мы используем переменную self для создания замыкания —  this относится к нашему компоненту, а не к самой функции обратного вызова
+        </p>
       </div>
 
       <div class="subsection">
@@ -1025,16 +1082,16 @@ class Colorizer extends React.Component {
   }
 }
 
-var heading = document.querySelector("#colorHeading");   // +++
+var heading = document.querySelector("#colorHeading");  // поиск элемента
 
-class ColorLabel extends React.Component {    // +++
+class ColorLabel extends React.Component {
   render() {
-    return ReactDOM.createPortal(
+    return ReactDOM.createPortal(                       // портал
       ": " + this.props.color,
       heading
     );
   }
-}                                             +++ //
+}
   
 ReactDOM.render(
   &lt;div&gt;

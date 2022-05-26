@@ -31,7 +31,8 @@
                 &bull; Ссылка на функцию - значение, которое может использоваться для обращения к функции<br>
                 &bull; Объявления функций обрабатываются до обработки кода<br>
                 &bull; Когда браузер обрабатывает объявление функции, он создает функцию и переменную, имя которой совпадает с именем функции, и сохраняет ссылку на функцию в переменной<br>
-                &bull; Когда браузер обрабатывает функциональное выражение, он создает функ-цию, а вы сами решаете, что делать со ссылкой<br>
+                &bull; Когда браузер обрабатывает функциональное выражение, он создает функцию, а вы сами решаете, что делать со ссылкой<br>
+                &bull; Вызвать функцию созданной через объявление можно в любом месте кода, а созданную функциональным выражением, в коде ниже
             </p>
 
             <p class="paragraph">
@@ -50,24 +51,15 @@
         </section>
 
         <section class="section">
-            <h2 class="section__header">Вызов функции</h2>
+            <h2 class="section__header">Объявление и вызов функции</h2>
 
+            <pre class="screen screen_pre">
+function name_1(parameter_1) {
+    action_1;
+}</pre>
             <pre class="screen screen_pre">
 name_1();</pre>
-            <p class="paragraph">
-                &bull; Функция вызывается по имени<br>
-                &bull; Вызов и передача управления функции это одно и то же
-            </p>
-        </section>
-
-        <section class="section">
-            <h2 class="section__header">Объявление функции</h2>
-
-            <pre class="screen screen_pre">
-function name_1(name_2) {
-    ...
-}</pre>
-            <p class="paragraph">- объявление функции с ключевым словом <strong>function</strong>, именем <strong>name_1</strong>, параметром <strong>name_2</strong> и блоком кода <strong>{ ... }</strong></p>
+            <p class="paragraph">- объявление функции с ключевым словом <strong>function</strong>, именем <strong>name_1</strong>, параметром <strong>parameter_1</strong> и блоком кода <strong>{ ... }</strong></p>
 
             <p class="paragraph">
                 &bull; Имя функции <strong>name_1</strong> фактически является переменной, содержащий код функции<br>
@@ -76,19 +68,24 @@ function name_1(name_2) {
                 &bull; Тело функции (блок кода) находится внутри фигурных скобок, которое содержит команды (операторы)<br>
                 &bull; Функция создаёт локальную область действия параметров и локальных переменных используемых ею
             </p>
+
+            <p class="paragraph">
+                &bull; Функция вызывается по имени<br>
+                &bull; Вызов и передача управления функции это одно и то же
+            </p>
         </section>
                 
         <section class="section">
             <h2 class="section__header">Функциональное выражение</h2>
 
             <pre class="screen screen_pre">
-let name_3 = function(name_4) {
-    ...
+let name_1 = function(parameter_1) {
+    action_1;
 };</pre>
             <p class="paragraph">
-                &bull; Функция вызывается через переменную <strong>name_3</strong><br>
+                &bull; Функция вызывается через переменную <strong>name_1</strong><br>
                 &bull; В отличии от объявления, эта функция не имеет имени<br>
-                &bull; Результатом обработки функционального выражения является значение, которое затем присваивается переменной <strong>name_3</strong>. Это значение является ссылкой на функцию<br>
+                &bull; Результатом обработки функционального выражения является значение, которое затем присваивается переменной <strong>name_1</strong>. Это значение является ссылкой на функцию<br>
                 &bull; Можно передать другой функции или вернуть его из функции
             </p>
 
@@ -114,8 +111,8 @@ let name_3 = function(name_4) {
                 &bull; Вместо переменной с сылкой на функцию мы подставляем функциональное выражение (которое при расчёте становится ссылкой)
             </p>
             <pre class="screen screen_pre">
-... = function() {
-    ...
+let name_1 = function() {
+    action_1;
 };</pre>
         </section>
 
@@ -129,18 +126,18 @@ let name_3 = function(name_4) {
             <p class="paragraph">Внутри функции при определении вложенной функции посредством объявления эта вложенная функция определена в любой точке тела функции. С другой стороны, если при создании вложенной функции используется функциональное выражение, то эта вложенная функция определена только после обработки функционального выражения</p>
             <pre class="screen screen_pre">
 let name_1 = function() {
-    ...
+    action_1;
 
     function name_2() {
-        ...
+        action_2
     }
 };
 
-function name_3 {
-    ...
+function name_3() {
+    action_3;
 
-    let name_4 = function () {
-    ...
+    let name_4 = function() {
+        action_4
     };
 }</pre>
         </section>
@@ -150,22 +147,22 @@ function name_3 {
 
             <p class="paragraph">Функции в JavaScript являются значениями - значениями, которые могут присваиваться переменным</p>
             <pre class="screen screen_pre">
-function name_1(name_2) {
-    ...
+function name_1(parameter_1) {
+    action_1;
 }
 
-let name_3 = function(name_4) {
-    ...
+let name_2 = function(parameter_2) {
+    action_2;
 };
 
-let name_5 = name_1;
-let name_6 = name_3;
+let name_3 = name_1;
+let name_4 = name_2;
 
-name_5(value_1);
-name_6(value_2);</pre>
+name_3(value_1);
+name_4(value_2);</pre>
             <p class="paragraph">
-                &bull; Ссылка на функции содержащиеся в переменных <strong>name_1</strong> и <strong>name_3</strong> присваиваются переменным <strong>name_5</strong> и <strong>name_6</strong> соответственно<br>
-                &bull; Эти функции могут быть вызваны используя имена переменных <strong>name_5</strong> и <strong>name_6</strong> с круглыми скобками и атрибутами в них, если они есть
+                &bull; Ссылка на функции содержащиеся в переменных <strong>name_1</strong> и <strong>name_2</strong> присваиваются переменным <strong>name_3</strong> и <strong>name_4</strong> соответственно<br>
+                &bull; Эти функции могут быть вызваны используя имена переменных <strong>name_3</strong> и <strong>name_4</strong> с круглыми скобками и атрибутами в них, если они есть
             </p>
         </section>
 
@@ -179,12 +176,14 @@ name_6(value_2);</pre>
             </p>
 
             <pre class="screen screen_pre">
-function name_1(name_2, name_3, ..., name_n) {
-    ...
+function name_1(parameter_1, parameter_2, ..., parameter_n) {
+    action_1;
 }
 
-let name_4 = function(name_5, name_6, ..., name_n) {
-    ...
+// или:
+
+let name_1 = function(parameter_1, parameter_2, ..., parameter_n) {
+    action_1;
 };</pre>
 
             <p class="paragraph"> 
@@ -203,26 +202,18 @@ let name_4 = function(name_5, name_6, ..., name_n) {
             </p>
 
             <pre class="screen screen_pre">
-function name_1(parameter) {
-    ...         ;
-    return x + y;
+function name_1(parameter_1) {
+    return action_1;
 }
 
-let name_2 = name_1(parameter);
-alert(name_2);</pre>
+let name_1 = function(parameter_1) {
+    return action_1;
+}
+
+let name_2 = name_1(parameter_1)</pre>
             <p class="paragraph">Функция <strong>name_1</strong> возвращает значение переменной <strong>name_2</strong></p>
 
-            <pre class="screen screen_post">
-let double = function(number) {
-    return number * 2;
-};
-   
-double(3); вернёт 6</pre>
             <p class="paragraph">Если не указать в теле функции, что именно возвращать, она вернёт <strong>undefined</strong></p>
-
-            <p class="paragraph">Также вызов функции можно указать в качестве аргумента другой функции</p>
-            <pre class="screen screen_post">
-double(double(3));</pre>
 
             <div class="subsection">
                 <h3 class="subsection__header">Ранний выход из функции по return</h3>
@@ -236,32 +227,19 @@ double(double(3));</pre>
             <div class="subsection">
                 <h3 class="subsection__header">Многократное использование return вместо конструкций if ... else</h3>
 
-                <pre class="screen screen_post">
-let medalForScore = function (score) {
-    if (score &lt; 3) {
-        return "Bronze";
+                <pre class="screen screen_pre">
+let name_1 = function (parameter_1) {
+    if (condition_1) {
+        return action_1;
     }
 
-    if (score &lt; 2) {
-        return "Silver";
+    if (condition_2) {
+        return action_2;
     }
 
-    return "Gold";
+    return action_3;
 };</pre>
             </div>
-        </section>
-
-        <section class="section">
-            <p class="paragraph">- функция замыкает в своей области связанные с ней переменные внешней области</p>
-            <p class="paragraph">- вновь создаваемая функция, содержащая свой переменный контекст</p>
-
-            <p class="paragraph">
-                <strong>замыкание = функция + внешний_контекст</strong><br>
-                <strong>функция</strong> - обычно создаётся или возвращается другой функцией<br>
-                <strong>внешний_контекст</strong> - переменные, на которые опирается <strong>функция</strong>
-            </p>
-            <p class="paragraph">Замыкания позволяют функциям работать, даже когда их среда существенно изменяется или исчезает. Любые переменные,
-                находившиеся в области при создании функции, замыкаются и защищаются, чтобы обеспечить продолжение работы функции</p>
         </section>
 
         <section class="section">
@@ -272,6 +250,9 @@ let medalForScore = function (score) {
                 - вновь создаваемая функция, содержащая свой переменный контекст<br>
                 - функция вместе с её окружением (свободными переменными), внутри лексической области действия (в теле функции, в которую они вложены)
             </p>
+
+            <p class="paragraph">Замыкания позволяют функциям работать, даже когда их среда существенно изменяется или исчезает. Любые переменные,
+                находившиеся в области при создании функции, замыкаются и защищаются, чтобы обеспечить продолжение работы функции</p>
 
             <p class="paragraph">
                 <strong>замыкание = функция + внешний_контекст</strong><br>
