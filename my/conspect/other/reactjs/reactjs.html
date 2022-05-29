@@ -1118,23 +1118,18 @@ npm start                 // сборка проекта и запуск лок�
       <pre class="screen screen_post">
   // index.html:
 
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-  &lt;meta charset="UTF-8"&gt;
-  &lt;title&gt;...&lt;/title&gt;
-&lt;/head&gt;
+...
 &lt;body&gt;
   &lt;div id="root"&gt;&lt;/div&gt;
 &lt;/body&gt;
-&lt;/html&gt;</pre>
+...</pre>
 
       <pre class="screen screen_post">
   // index.js:
   
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Name_1 from './Name_1';
+import React from 'react';           // импортируемые
+import ReactDOM from 'react-dom';    // библиотеки
+import Name_1 from './Name_1';       // файл компонента без расширения
 import './index.css';
 
 ReactDOM.render(
@@ -1167,10 +1162,10 @@ export default Name_1;</pre>
       <pre class="screen screen_post">
 // index.js
 
-import React from "react";
-import ReactDOM from "react-dom";
-import "./index.css";
-import IPAddressContainer from "./IPAddressContainer";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import IPAddressContainer from './IPAddressContainer';
 
 var destination = document.querySelector('#container');
 
@@ -1184,8 +1179,8 @@ ReactDOM.render(
       <pre class="screen screen_post">
 // IPAddressContainer.js
 
-import React, {Component} from "react";
-import IPAddress from "./IPAddress"
+import React, {Component} from 'react';
+import IPAddress from './IPAddress';
 
 var xhr;
 
@@ -1194,7 +1189,7 @@ class IPAddressContainer extends Component {
     super(props);
 
     this.state = {
-      ip_address: ""
+      ip_address: ''
     };
 
     this.processRequest = this.processRequest.bind(this);
@@ -1202,14 +1197,14 @@ class IPAddressContainer extends Component {
 
   componentDidMount() {
     xhr = new XMLHttpRequest();
-    xhr.open("GET", "https://ipinfo.io/json", true);
+    xhr.open("GET", "https://ipinfo.io/json", true);             // HTTP-запрос
     xhr.send();
 
-    xhr.addEventListener("readystatechange", this.processRequest, false);
+    xhr.addEventListener('readystatechange', this.processRequest, false);
   }
 
-  processRequest() {
-    if(xhr.readyState === 4 && xhr.status === 200) {
+  processRequest() {                                             // функция обрабатывающая ответ
+    if(xhr.readyState === 4 && xhr.status === 200) {             // от сервера
       var response = JSON.parse(xhr.responseText);
 
       this.setState({
@@ -1230,8 +1225,8 @@ export default IPAddressContainer;</pre>
       <pre class="screen screen_post">
 // IPAddress.js
 
-import React, {Component} from "react";
-import "./IPAddress.css";
+import React, {Component} from 'react';
+import './IPAddress.css';
 
 class IPAddress extends Component {
   render() {
@@ -1250,7 +1245,249 @@ export default IPAddress;</pre>
     <section class="section">
       <h2 class="section__header">Создание планировщика</h2>
 
+      <pre class="screen screen_post">
+// index.js
 
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import TodoList from './TodoList';
+
+var destination = document.querySelector('#container');
+
+ReactDOM.render(
+  &lt;div&gt;
+    &lt;TodoList /&gt;
+  &lt;/div&gt;,
+  destination
+);</pre>
+      <pre class="screen screen_post">
+// TodoList.js
+
+import React, {Component} from 'react';
+import TodoItems from './TodoItems';
+import './TodoList.css';
+
+class TodoList extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      items: []
+    };
+
+    this.addItem = this.addItem.bind(this);
+    this.deleteItem = this.deleteItem.bind(this);
+  }
+
+  deleteItem(key) {
+    var filteredItems = this.state.items.filter(function(item) {
+      return (item.key !== key);
+    });
+
+    this.setState({
+      items: filteredItems
+    });
+  }
+
+  addItem(e) {
+    var itemArray = this.state.items;
+
+    if(this._inputElement.value !== '') {
+      itemArray.unshift({
+        text: this._inputElement.value,
+        key: Date.now()
+      });
+
+      this.setState({
+        items: itemArray
+      });
+
+      this._inputElement.value = '';
+    }
+
+    console.log(itemArray);
+
+    e.preventDefault();                             // отменяем дефолтное действие, т.к. оно презагружает страницу
+  }
+
+  render() {
+    return(
+      &lt;div className='todoListMain'&gt;
+        &lt;div className='header'&gt;
+          &lt;form onSubmit={this.addItem}&gt;                    // HTML событие формы onSubmit вызываем метод .addItem
+            &lt;input ref={ (a) =&gt; this._inputElement = a } placeholder='add task'&gt;   // доступ к введённому значению
+            &lt;/input&gt;                                                               // через _inputElement
+            &lt;button type='submit'&gt;ok&lt;/button&gt;
+          &lt;/form&gt;
+        &lt;/div&gt;
+        &lt;TodoItems entries={this.state.items} delete={this.deleteItem} /&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+
+export default TodoList;</pre>
+      <p class="paragraph">
+        Отслеживаем событие формы HTML <strong>onSubmit</strong> возникающее при нажатии кнопки с <strong>type="submit"</strong> и вызываем метод <strong>addItem</strong> (HTML-событие в значении отрибута события вызывает функцию).<br>
+        Благодяря атрибуту <strong>type='submit'</strong> не слушаем события на кнопке.<br>
+        Нажатие на кнопку с <strong>type='submit'</strong> эквивалентно запуску события <strong>submit</strong> в форме.<br>
+        Сохраняем ссылку на элемент <strong>input</strong> в соответствующим образом названном свойстве <strong>_inputElement</strong>. Теперь мы можем получить доступ к элементу <strong>input</strong>, обратившись к свойству <strong>_inputElement</strong>.
+      </p>
+      <pre class="screen screen_post">
+// TodoItems.js
+
+import React, {Component} from 'react';
+import FlipMove from 'react-flip-move';
+
+class TodoItems extends Component {
+  constructor(props) {
+    super(props);
+
+    this.createTasks = this.createTasks.bind(this);
+  }
+
+  delete(key) {
+    this.props.delete(key);
+  };
+
+  createTasks(item) {
+    return &lt;li onClick={ () =&gt; this.delete(item.key)} key={item.key}&gt; {item.text} &lt;/li&gt;;
+  }
+
+  render() {
+    var todoEntries = this.props.entries;
+    var listItems = todoEntries.map(this.createTasks);
+
+    return(
+      &lt;ul className='theList'&gt;
+        &lt;FlipMove duration={250} easing='ease-out'&gt;
+          {listItems}
+        &lt;/FlipMove&gt;
+      &lt;/ul&gt;
+    );
+  }
+}
+
+export default TodoItems;</pre>
+    </section>
+
+    <section class="section">
+      <h2 class="section__header">Плавающее меню</h2>
+
+      <pre class="screen screen_post">
+// index.js
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import MenuContainer from './MenuContainer';
+
+ReactDOM.render(
+  &lt;MenuContainer /&gt;,
+  document.querySelector('#container')
+);</pre>
+      <pre class="screen screen_post">
+// MenuContainer.js
+
+import React, {Component} from 'react';
+import MenuButton from './MenuButton';
+import Menu from './Menu';
+
+class MenuContainer extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      visible: false
+    };
+
+    this.handleMouseDown = this.handleMouseDown.bind(this);
+    this.toggleMenu = this.toggleMenu.bind(this);
+  }
+
+  handleMouseDown(e) {
+    this.toggleMenu();
+
+    console.log('clicked');
+    e.stopPropagation();
+  }
+
+  toggleMenu() {                      // метод определяющий значение
+    this.setState({                   // переменной visible
+      visible: !this.state.visible
+    });
+  }
+
+  render() {
+    return (
+      &lt;div&gt;
+        &lt;MenuButton handleMouseDown={this.handleMouseDown} /&gt;
+        &lt;Menu handleMouseDown={this.handleMouseDown}
+        menuVisibility={this.state.visible} /&gt;
+        &lt;div&gt;
+          &lt;p&gt;Найди лишний пункт&lt;/p&gt;
+          &lt;ul&gt;
+            &lt;li&gt;Lorem&lt;/li&gt;
+            &lt;li&gt;Ipsum&lt;/li&gt;
+            &lt;li&gt;Dolor&lt;/li&gt;
+            &lt;li&gt;Sit&lt;/li&gt;
+            &lt;li&gt;Bumblebees&lt;/li&gt;
+            &lt;li&gt;Aenean&lt;/li&gt;
+            &lt;li&gt;Consectetur&lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+
+export default MenuContainer;</pre>
+
+      <pre class="screen screen_post">
+// Menu.js
+
+import React, {Component} from 'react';
+import './Menu.css';
+
+class Menu extends Component {
+  render() {
+    var visibility = 'hide';
+
+    if (this.props.menuVisibility) {
+      visibility = 'show';
+    }
+
+    return(
+      &lt;div id="flyoutMenu" onMouseDown={this.props.handleMouseDown}
+        className={visibility}&gt;
+        &lt;h2&gt;&lt;a href='#'&gt;Main&lt;/a&gt;&lt;/h2&gt;
+        &lt;h2&gt;&lt;a href='#'&gt;About&lt;/a&gt;&lt;/h2&gt;
+        &lt;h2&gt;&lt;a href='#'&gt;Contact&lt;/a&gt;&lt;/h2&gt;
+        &lt;h2&gt;&lt;a href='#'&gt;Search&lt;/a&gt;&lt;/h2&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+
+export default Menu;</pre>
+      <pre class="screen screen_post">
+// MenuButton.js
+
+import React, {Component} from 'react';
+import './MenuButton.css';
+
+class MenuButton extends Component {
+  render() {
+    return(
+      &lt;button id="roundButton"
+        onMouseDown={this.props.handleMouseDown}&gt;Menu
+      &lt;/button&gt;
+    );
+  }
+}
+
+export default MenuButton;</pre>
     </section>
   </main>
 </body>

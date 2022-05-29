@@ -99,11 +99,22 @@ typeof null;   //-&gt; object</pre>
 
                 <pre class="screen screen_pre">
 name_1 = '123';
-name_1 *= 1
 
-или
+// №1:
 
-parseInt(name_1)</pre>
+name_1 *= 1;
+
+// №2:
+
+parseInt(name_1);
+
+// №3:
+
+Number(name_1)  // если name_1 - строка из цифр;
+
+// №4:
+
++ name_1  // строки в выражении;</pre>
                 <p class="paragraph"><strong>name_1</strong> - имя переменной содержащей исходные данные</p>
             </div>
 
