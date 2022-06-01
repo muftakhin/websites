@@ -6,6 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Типы данных</title>
     <link rel="stylesheet" href="../../styles/style.css">
+    <style>
+        th {
+            font-weight: bold;
+            padding: 4px;
+        }
+
+        td {
+            padding: 4px;
+        }
+    </style>
 </head>
 
 <body class="body">
@@ -106,7 +116,8 @@ name_1 *= 1;
 
 // №2:
 
-parseInt(name_1);
+parseInt(name_1);    // в целое
+parseFloat(name_1);  // в с плавающей точкой
 
 // №3:
 
@@ -123,7 +134,14 @@ Number(name_1)  // если name_1 - строка из цифр;
 
                 <pre class="screen screen_pre">
 name_1 = 123;
-name_1 += ''</pre>
+
+// №1:
+
+name_1 += '';
+
+// №2:
+
+name_2 = name_1.toString();</pre>
             </div>
 
             <div class="subsection">
@@ -132,6 +150,82 @@ name_1 += ''</pre>
                 <pre class="screen screen_pre">
 let name_1 = parseInt('value_1', 16);
 let name_1 = parseInt('value_1', 8);</pre>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Таблица преобразований</h3>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Значение</th>
+                            <th>В число</th>
+                            <th>В строку</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Число</td>
+                            <td></td>
+                            <td>Строка из цифр</td>
+                        </tr>
+                        <tr>
+                            <td>Строка из цифр</td>
+                            <td>Число</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Пустая строка</td>
+                            <td>0</td>
+                            <td>''</td>
+                        </tr>
+                        <tr>
+                            <td>Строка</td>
+                            <td>NaN</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>false</td>
+                            <td>0</td>
+                            <td>'false'</td>
+                        </tr>
+                        <tr>
+                            <td>true</td>
+                            <td>1</td>
+                            <td>'true'</td>
+                        </tr>
+                        <tr>
+                            <td>null</td>
+                            <td>0</td>
+                            <td>'null'</td>
+                        </tr>
+                        <tr>
+                            <td>undefined</td>
+                            <td>NaN</td>
+                            <td>'undefined'</td>
+                        </tr>
+                        <tr>
+                            <td>Пустой массив</td>
+                            <td>0</td>
+                            <td>''</td>
+                        </tr>
+                        <tr>
+                            <td>Массив из одного числа</td>
+                            <td>Число</td>
+                            <td>Строка из цифр числа</td>
+                        </tr>
+                        <tr>
+                            <td>Массив</td>
+                            <td>NaN</td>
+                            <td>Строки разделённые запятыми</td>
+                        </tr>
+                        <tr>
+                            <td>Объект</td>
+                            <td>NaN</td>
+                            <td>'[object Object]'</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </section>
 

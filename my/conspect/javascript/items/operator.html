@@ -90,7 +90,7 @@ name++;  или  name--;   // вернёт 0</pre>
 +      // увеличение
 -      // уменьшение
 *      // умножение
-/      // деление
+/      // деление   !- всегда возвращает результат с плавающей точкой -!
 %      // деление по модулю (остаток от деления)
 **     // возведение в степень</pre>
                 <p class="paragraph">
@@ -305,6 +305,23 @@ name_2(name_1[0], name_1[1], ... name_1[n]);  // без ...</pre>
                 <div class="table__screen">&lt;&nbsp; &lt;=&nbsp; &gt;&nbsp; &gt;=&nbsp; ==&nbsp; !=&nbsp; ===&nbsp; !==</div>
                 <div class="table__definition">Операции отношения</div>
             </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section__header">Оператор typeof</h2>
+
+            <pre class="screen screen_pre">
+typeof parameter_1;</pre>
+            <p class="paragraph">
+                Унарный оператор <strong>typeof</strong> возвращает строковое значение, соответствующее типу значения, представленного оператору
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section__header">Тернарный оператор ? :</h2>
+
+            <pre class="screen screen_pre">
+let name = (condition) ? value_if_condition_true : value_if_condition_false;</pre>
         </section>
     </main>
 </body>

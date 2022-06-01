@@ -17,19 +17,6 @@
 
     <main class="main">
         <section class="section">
-            <h2 class="section__header">Установка Gulp</h2>
-
-            <div class="subsection">
-                <pre class="screen screen_post">
-npm i gulp-cli -g</pre>
-                <p class="paragraph">
-                    <strong>i</strong> - install (сокращённая запись)<br>
-                    <strong>-g</strong> - установка пакета глобально
-                </p>
-            </div>
-        </section>
-
-        <section class="section">
             <h2 class="section__header">Формирование package.json</h2>
 
             <div class="subsection">
@@ -43,20 +30,12 @@ npm init</pre>
         </section>
 
         <section class="section">
-            <h2 class="section__header">Просмотр установленных глобально пакетов</h2>
-
-            <div class="subsection">
-                <pre class="screen screen_post">
-npm ls -g</pre>
-            </div>
-        </section>
-
-        <section class="section">
             <h2 class="section__header">Установка Gulp в папке</h2>
 
             <div class="subsection">
                 <pre class="screen screen_post">
 npm i gulp --save-dev</pre>
+                <p class="paragraph">После этого в папке появится папка <strong>node_modules</strong></p>
             </div>
         </section>
 
@@ -68,11 +47,23 @@ npm i gulp --save-dev</pre>
 
                 <pre class="screen screen_post">
 gulp</pre>
+                <p class="paragraph">Но прежде:</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section__header">gulpfile</h2>
 
                 <p class="paragraph">Чтобы вызвать <strong>gulp</strong> создаём файл <strong>gulpfile.js</strong>, в котором прописываем:</p>
                 <pre class="screen screen_post">
-const gulp = require('gulp');</pre>
-                <p class="paragraph">С помощью команды <strong>require</strong> мы может подключать все пакеты, которые установили с помощью <strong>npm</strong> в данную папку</p>
+const gulp = require('gulp');
+
+const { src, dest, parallel, series, watch } = require('gulp');</pre>
+
+                <p class="paragraph">
+                    С помощью команды <strong>require</strong> мы может подключать все пакеты, которые установили с помощью <strong>npm</strong> в данную папку.<br>
+                    Во втором варианте нет необходимости в будущем указывать <strong>gulp</strong> при обращении к внутри <strong>{ }</strong>
+                </p>
 
                 <pre class="screen screen_post">
 const gulp = require('gulp');

@@ -15,6 +15,7 @@
     </header>
 
     <main class="main">
+        <p class="paragraph">Массив - объект, именами свойств которого являются строки из цифр от <strong>0</strong> до <strong>length</strong></p>
 
         <section class="section">
             <h2 class="section__header">Доступ к элементам</h2>
@@ -54,11 +55,18 @@ let name_1 = ["one", "two", "three"];
 
 let name_1 = new Array("one", "two", "three");</pre>
             </div>
+                <p class="parahraph">Некоторые элементы массива могут отсутствовать, тогда они принимают значение <strong>indefined</strong></p>
+                <pre class="screen screen_post">
+let name_1 = [, 2, ,"four", ,];</pre>
+                <p class="paragraph">Запятая в конце не означает отсутствие следующего за ней элемента</p>
         </section>
 
         <section class="section">
-            <h2 class="section__header">Задание, изменение значение и добавление элемента</h2>
+            <h2 class="section__header">Доступ к элементам массива</h2>
 
+            <pre class="screen screen_pre">
+name_1['n'];  //-> значение n-1 элемента массива</pre>
+            <p class="paragraph">Значение индекса элемента внутри квадратных скобок автоматическ преобразуется в строку, поэтому кавычки можно не использовать</p>
             <pre class="screen screen_pre">
 name_1[n] = value_1;</pre>
             <p class="paragraph">
@@ -81,7 +89,7 @@ name_1.[length - 1];  //-&gt; значение последнего
             </div>
 
             <div class="subsection">
-                <h3 class="subsection__header">Добавление элементов</h3>
+                <h3 class="subsection__header">Добавление элементов .push() и .unshift()</h3>
 
                 <p class="paragraph">Добавление элемента в конец массива:</p>
                 <pre class="screen screen_pre">
@@ -95,6 +103,10 @@ name_1.unshift(value_1);</pre>
                     из существующих в нем элементов увеличивается с учетом вновь появившихся данных</p>
 
                 <p class="paragraph"><strong>.push()</strong> и <strong>.unshift()</strong> помимо добавления элементов также возвращают новую длину массива</p>
+
+                <p class="paragraph">Поскольку массив это объект, можно добавить в него произвольные свойства</p>
+                <pre class="screen screen_pre">
+name_1.property_11 = value 11;</pre>
             </div>
 
             <div class="subsection">
@@ -170,6 +182,10 @@ let name_2 = name_1.map(function_1, name_3, name_4);</pre>
                     <strong>name_3</strong> - индекс текущего элемента массива<br>
                     <strong>name_4</strong> - массив, для которого вызывается map
                 </p>
+
+                <pre class="screen screen_pre">
+let name_2 = name_1.map((item, index, array) => { action_1; });</pre>
+                <p class="paragraph"><strong>.map()</strong> принимает 3 параметра: значение элемента, его индекс и сам массив</p>
             </div>
 
             <div class="subsection">
@@ -224,6 +240,28 @@ let name_2 = name_1.reduce(function_1(name_3, name_4), name_5, name_6, name_7);<
                 <p class="paragraph">
                     <strong>name_6</strong> - индекс текущего элемента массива<br>
                     <strong>name_7</strong> - массив, для которого вызывается map, filter или reduce
+                </p>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">.forEach()</h3>
+
+                <pre class="screen screen_pre">
+name_1.forEach((item, index, array) => { action_1; } );</pre>
+                <p class="paragraph">
+                    <strong>.forEach()</strong> принимает 3 параметра: значение элемента, его индекс и сам массив и применяет к каждому элементу <strong>action_1</strong><br>
+                    В отличие от <strong>.map()</strong> возвращает <strong>undefined</strong>, а не новый массив
+                </p>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">.includes()</h3>
+
+                <pre class="screen screen_pre">
+let name_2 = name_1.includes(value, index);</pre>
+                <p class="paragraph">
+                    <strong>.includes()</strong> ищет в массиве <strong>name_1</strong> значение <strong>value</strong> начиная с элемента с индексом <strong>index</strong>.<br>
+                    Если <strong>.includes()</strong> находит в заданном интервале данного массива элемент с заданным значением, то возвращает <strong>true</strong>, в ином случае возвращает <strong>false</strong>
                 </p>
             </div>
         </section>

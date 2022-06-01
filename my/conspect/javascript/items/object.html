@@ -156,6 +156,10 @@ name_1.['onetwo'];</pre>
         <section class="section">
             <h2 class="section__header">Добавление свойств объекту</h2>
 
+            <p class="paragraph">
+                Именем свойства может быть только строка<br>
+                При использовании пробела в имени свойства невозможно обращение к нему при помощи точечной нотации. Необходимо использовать <strong>['']</strong>
+            </p>
             <pre class="screen screen_pre">
 name_1[name_11] = value_11;</pre>
 
@@ -174,6 +178,17 @@ name_1[name_11][name_111] = value_111;
 
 name_1.name_111.name_111 = value_111;</pre>
             </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Задание вычисляемого имени свойства</h3>
+            </div>
+
+            <pre class="screen screen_pre">
+let name_1 = {
+    name_11: value_11,
+    [calculation_12]: value 12
+}
+            </pre>
         </section>
 
         <section class="section">
@@ -187,22 +202,8 @@ delete name_1.name_11;</pre>
             <p class="paragraph">- выраженние <strong>delete</strong> возвращает <strong>true</strong> если свойство было успешно удалено (либо если вы удаляете не существующее свойство или то, что не является свойством объекта</p>
         </section>
 
-        <section class="section">
-            <h2 class="section__header">Вычисления с использованием свойств объекта</h2>
-
-            <p class="paragraph">Свойство объекта можно использовать так же как переменную:</p>
-            <pre class="screen screen_post">
-if (car.whells &lt; 4) {
-    ready = true;
-}
-
-for (let i = 0; i &lt; 3; car.passengers++) {
-    addPassenger();
-}</pre>
-        </section>
-
         <section class="section">            
-            <h2 class="section__header">Перечислние свойств объекта</h2>
+            <h2 class="section__header">Перечисление свойств объекта</h2>
 
             <p class="paragraph">Для перечисления свойств объекта <strong>name_2</strong> используем цикл <strong>for-in</strong>:</p>
             <pre class="screen screen_pre">
@@ -234,10 +235,10 @@ let name_1 = [
     { name_31: value_31, name_32: value_32 }
 ];
            
-name_1[0];           //-&gt; { name_11: value_11, name_12: value_12 }
-name_1[1][name_21];   //-&gt; value_21
+name_1[0];                     //-&gt; { name_11: value_11, name_12: value_12 }
+name_1[1][name_21];            //-&gt; value_21
 
-name_1[2].name_32;    //-&gt; value_32</pre>
+name_1[2].name_32;             //-&gt; value_32</pre>
 
             <pre class="screen screen_pre">
     Создадим 3 объекта:            
