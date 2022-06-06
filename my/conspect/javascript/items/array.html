@@ -264,6 +264,72 @@ let name_2 = name_1.includes(value, index);</pre>
                     Если <strong>.includes()</strong> находит в заданном интервале данного массива элемент с заданным значением, то возвращает <strong>true</strong>, в ином случае возвращает <strong>false</strong>
                 </p>
             </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">.reverse()</h3>
+
+                <pre class="screen screen_pre">
+let name_2 = name_1.reverse();</pre>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section__header">Деструктуризация</h2>
+
+            <pre class="screen screen_pre">
+let name_1 = [value_11, value_12, ... value_1n];
+
+let [name_2, name_3] = name_1;
+let [ , name_4] = name_1;
+let [,, name_5] = name_1;
+
+// аналогично:
+
+name_2 = name_1[0];
+name_3 = name_1[1];
+name_4 = name_1[1];
+name_5 = name_1[2];</pre>
+            <p class="paragraph">Если переменные <strong>name_2, name_3, name_4, name_5</strong> были ранее объявлены, то деструктуризация присвоит им новые значения</p>
+            <pre class="screen screen_pre">
+let name_1 = [value_11, [value_121, value_122]];
+
+let [name_2, [name_3, name_4]] = name_1;
+
+    //-->   name_2 = value_11;
+    //-->   name_3 = value_121;
+    //-->   name_4 = value_122;</pre>
+            <pre class="screen screen_pre">
+    // Если деструктурирующий массив короче:
+
+let name_1 = [value_11, value_12];
+
+let [name_2, name_3, name_4] = name_1;
+
+    //-->   name_2 = value_11;
+    //-->   name_3 = value_121;
+    //-->   name_4 = undefined;</pre>
+            <p class="paragraph">Когда деструктуризация используется для присваивания, левая сторона может состоять не из переменных</p>
+            <pre class="screen screen_pre">
+[name_2[n], name_3.property_31] = [1, 2, ... n];</pre>
+
+            <pre class="screen screen_pre">
+let name_1 = [value_11, value_12, value_13, value_14, value_15];
+
+let [name_2, name_3, ...name_4] = name_1;
+
+    //-->   name_2 = value_11;
+    //-->   name_3 = value_12;
+    //-->   name_4 = [ value_13, value_14, value_15 ];</pre>
+
+            <pre class="screen screen_pre">
+let name_1 = [value_11, value_12];
+        
+let [name_2, name_3, name_4, ...name_5] = name_1;
+        
+    //-->   name_2 = value_11;
+    //-->   name_3 = value_12;
+    //-->   name_4 = undefined;
+    //-->   name_5 = [];</pre>
         </section>
     </main>
 </body>

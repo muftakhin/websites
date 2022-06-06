@@ -152,18 +152,18 @@ li {
   padding: 12px;
   margin-bottom: 8px;
   background-color: #222;
-  box-shadow: 0 0 8px 1px grey inset;
+  box-shadow: 0 0 4px 1px grey inset;
   font-size: 16px;
   font-family: monospace;
   overflow: auto;
 }
 .screen_pre {
   color: lightpink;
-  text-shadow: 0 0 4px lightpink;
+  text-shadow: 0 0 2px lightpink;
 }
 .screen_post {
   color: lightgreen;
-  text-shadow: 0 0 4px lightgreen;
+  text-shadow: 0 0 2px lightgreen;
 }
 .paragraph {
   padding: 8px;

@@ -166,6 +166,9 @@ i**=n  // i возводится в степень n</pre>
 &lt;=      // меньше или равно
 !=      // не равно
 !==     // не равно и того же типа</pre>
+            <p class="paragraph">
+                При использовании операторов <strong>&gt;</strong>,<strong>&lt;</strong>,<strong>&gt;=</strong>,<strong>&lt;=</strong> , если один операнд является числом, то другой преобразуется в число, и любое сравнение с <strong>NaN</strong> даёт <strong>NaN</strong>
+             </p>
 
             <p class="paragraph">Если переменную нужно сравнить, не является она <strong>true</strong> или <strong>false</strong>, то записывается только имя переменной (упрощается запись):</p>
             <pre class="screen screen_post">
@@ -196,22 +199,6 @@ i**=n  // i возводится в степень n</pre>
                 </p>
             </div>
         <section>
-
-        <section class="section">
-            <h2 class="section__header">Оператор расширения ...</h2>
-
-            <pre class="screen screen_pre">
-var name_1 = ["value_1", "value_2", ... "value_n"];
-
-function name_2(name_2_1, name_2_2, ... name_2_n) {
-    action_2;
-}
-
-name_2(...name_1);
-
-name_2(name_1[0], name_1[1], ... name_1[n]);  // без ...</pre>
-            <p class="paragraph"><strong>...</strong> осуществляет вызов элементов по отдельности</p>
-        </section>
 
         <section class="section">
             <h2 class="section__header">Приоритетность операторов</h2>
