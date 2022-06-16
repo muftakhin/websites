@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>ReactJS</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../../../styles/style.css">
+</head>
+
+<body class="body">
+  <header class="header">
+    <a class="header__button"  href="../../other.html">&uArr;</a>
+    <h1 class="header__title">Работа с состояниями</h1>
+  </header>
+
+  <main class="main">
+    <section class="section">
+      <pre class="screen screen_post">
+&lt;script&gt;
+
+class LightningCounter extends React.Component {
+  constructor(props) {                       // конструктор компонента
+    super(props);
+
+    this.state = {                           //  state - объект компонента, хранящий его состояние,
+      strikes: 0                             // должен быть указан до рендеринга компонента
+    };
+  
+    this.timerTick = this.timerTick.bind(this);   // привязка функции timerTick() к компоненту,
+  }                                               //  для корректной работы ссылки this
+
+  timerTick() {
+    this.setState({                         // .setState() метод, принимает в качестве аргумента объект .state
+      strikes: this.state.strikes + 100     // позволяет вносить изменения в его свойства
+    });
+  }
+
+  componentDidMount() {                     // этот метод вызывается сразу после того
+    setInterval(this.timerTick, 1000);      // как компонент рендерится
+  }
+
+  render() {                                // после setState каждый раз запускается render()
+    var counterStyle = {
+      color: "#66FFFF",
+      fontSize: 50
+    };
+
+    var count = this.state.strikes.toLocaleString();
+  
+    return (
+      &lt;h1 style={counterStyle}>{count}&lt;/h1&gt;
+    );
+  }
+}
+
+class LightningCounterDisplay extends React.Component {
+  render() {
+    var commonStyle = {
+      margin: 0,
+      padding: 0
+    };
+
+    var divStyle = {
+      width: 250,
+      textAlign: "center",
+      backgroundColor: "#020202",
+      padding: 40,
+      fontFamily: "sans-serif",
+      color: "#999999",
+      borderRadius: 10
+    };
+
+    var textStyles = {
+      emphasis: {
+        fontSize: 38,
+        …commonStyle
+      },
+
+      smallEmphasis: {
+        …commonStyle
+      },
+
+      small: {
+        fontSize: 17,
+        opacity: 0.5,
+         …commonStyle
+      }
+    };
+
+    return (
+      &lt;div style={divStyle}&gt;
+      &lt;LightningCounter /&gt;
+        &lt;h2 style={textStyles.smallEmphasis}&gt;ВСПЫШКИ МОЛНИИ&lt;/h2&gt;
+        &lt;h2 style={textStyles.emphasis}&gt;НА ПЛАНЕТЕ&lt;/h2&gt;
+        &lt;p style={textStyles.small}&gt;(с момента запуска кода)&lt;/p&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+
+ReactDOM.render(
+  &lt;LightningCounterDisplay /&gt;,
+  document.querySelector("css_selector_1")
+);
+
+&lt;/script&gt;
+      </pre>
+    </section>
+  </main>
+</body>

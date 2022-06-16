@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>ReactJS</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../../../styles/style.css">
+</head>
+
+<body class="body">
+  <header class="header">
+    <a class="header__button"  href="../../other.html">&uArr;</a>
+    <h1 class="header__title">Плавающее меню</h1>
+  </header>
+
+  <main class="main">
+    <section class="section">
+      <pre class="screen screen_post">
+// index.js
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import MenuContainer from './MenuContainer';
+
+ReactDOM.render(
+  &lt;MenuContainer /&gt;,
+  document.querySelector('#container')
+);</pre>
+      <pre class="screen screen_post">
+// MenuContainer.js
+
+import React, {Component} from 'react';
+import MenuButton from './MenuButton';
+import Menu from './Menu';
+
+class MenuContainer extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      visible: false
+    };
+
+    this.handleMouseDown = this.handleMouseDown.bind(this);
+    this.toggleMenu = this.toggleMenu.bind(this);
+  }
+
+  handleMouseDown(e) {
+    this.toggleMenu();
+
+    console.log('clicked');
+    e.stopPropagation();
+  }
+
+  toggleMenu() {                      // метод определяющий значение
+    this.setState({                   // переменной visible
+      visible: !this.state.visible
+    });
+  }
+
+  render() {
+    return (
+      &lt;div&gt;
+        &lt;MenuButton handleMouseDown={this.handleMouseDown} /&gt;
+        &lt;Menu handleMouseDown={this.handleMouseDown}
+        menuVisibility={this.state.visible} /&gt;
+        &lt;div&gt;
+          &lt;p&gt;Найди лишний пункт&lt;/p&gt;
+          &lt;ul&gt;
+            &lt;li&gt;Lorem&lt;/li&gt;
+            &lt;li&gt;Ipsum&lt;/li&gt;
+            &lt;li&gt;Dolor&lt;/li&gt;
+            &lt;li&gt;Sit&lt;/li&gt;
+            &lt;li&gt;Bumblebees&lt;/li&gt;
+            &lt;li&gt;Aenean&lt;/li&gt;
+            &lt;li&gt;Consectetur&lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+
+export default MenuContainer;</pre>
+
+      <pre class="screen screen_post">
+// Menu.js
+
+import React, {Component} from 'react';
+import './Menu.css';
+
+class Menu extends Component {
+  render() {
+    var visibility = 'hide';
+
+    if (this.props.menuVisibility) {
+      visibility = 'show';
+    }
+
+    return(
+      &lt;div id="flyoutMenu" onMouseDown={this.props.handleMouseDown}
+        className={visibility}&gt;
+        &lt;h2&gt;&lt;a href='#'&gt;Main&lt;/a&gt;&lt;/h2&gt;
+        &lt;h2&gt;&lt;a href='#'&gt;About&lt;/a&gt;&lt;/h2&gt;
+        &lt;h2&gt;&lt;a href='#'&gt;Contact&lt;/a&gt;&lt;/h2&gt;
+        &lt;h2&gt;&lt;a href='#'&gt;Search&lt;/a&gt;&lt;/h2&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+
+export default Menu;</pre>
+      <pre class="screen screen_post">
+// MenuButton.js
+
+import React, {Component} from 'react';
+import './MenuButton.css';
+
+class MenuButton extends Component {
+  shouldComponentUpdate(nextProps, nextState) {                        // отмена лишнего вызова render()
+    if (nextProps.handleMouseDown === this.props.handleMouseDown) {    // если значение handleMouseDown
+      return false;                                                    // остаётся неизменным
+    } else {
+      return true;
+    }
+  }
+
+  render() {
+    return(
+      &lt;button id="roundButton"
+        onMouseDown={this.props.handleMouseDown}&gt;
+      &lt;/button&gt;
+    );
+  }
+}
+
+export default MenuButton;</pre>
+      <p class="paragrapg">
+        <strong>nextProps</strong> - аргумент для передачи следующего значения свойства<br>
+        <strong>nextState</strong> - аргумент для передачи следующего значения состояния
+      </p>
+    </section>
+  </main>
+</body>

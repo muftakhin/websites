@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>ReactJS</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../../../styles/style.css">
+</head>
+
+<body class="body">
+  <header class="header">
+    <a class="header__button"  href="../../other.html">&uArr;</a>
+    <h1 class="header__title">Создание планировщика</h1>
+  </header>
+
+  <main class="main">
+    <section class="section">
+      <pre class="screen screen_post">
+// index.js
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import TodoList from './TodoList';
+
+var destination = document.querySelector('#container');
+
+ReactDOM.render(
+  &lt;div&gt;
+    &lt;TodoList /&gt;
+  &lt;/div&gt;,
+  destination
+);</pre>
+      <pre class="screen screen_post">
+// TodoList.js
+
+import React, {Component} from 'react';
+import TodoItems from './TodoItems';
+import './TodoList.css';
+
+class TodoList extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      items: []
+    };
+
+    this.addItem = this.addItem.bind(this);
+    this.deleteItem = this.deleteItem.bind(this);
+  }
+
+  deleteItem(key) {
+    var filteredItems = this.state.items.filter(function(item) {
+      return (item.key !== key);
+    });
+
+    this.setState({
+      items: filteredItems
+    });
+  }
+
+  addItem(e) {
+    var itemArray = this.state.items;
+
+    if(this._inputElement.value !== '') {
+      itemArray.unshift({
+        text: this._inputElement.value,
+        key: Date.now()
+      });
+
+      this.setState({
+        items: itemArray
+      });
+
+      this._inputElement.value = '';
+    }
+
+    console.log(itemArray);
+
+    e.preventDefault();                             // отменяем дефолтное действие, т.к. оно презагружает страницу
+  }
+
+  render() {
+    return(
+      &lt;div className='todoListMain'&gt;
+        &lt;div className='header'&gt;
+          &lt;form onSubmit={this.addItem}&gt;                    // HTML событие формы onSubmit вызываем метод .addItem
+            &lt;input ref={ (a) =&gt; this._inputElement = a } placeholder='add task'&gt;   // доступ к введённому значению
+            &lt;/input&gt;                                                               // через _inputElement
+            &lt;button type='submit'&gt;ok&lt;/button&gt;
+          &lt;/form&gt;
+        &lt;/div&gt;
+        &lt;TodoItems entries={this.state.items} delete={this.deleteItem} /&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+
+export default TodoList;</pre>
+      <p class="paragraph">
+        Отслеживаем событие формы HTML <strong>onSubmit</strong> возникающее при нажатии кнопки с <strong>type="submit"</strong> и вызываем метод <strong>addItem</strong> (HTML-событие в значении отрибута события вызывает функцию).<br>
+        Благодяря атрибуту <strong>type='submit'</strong> не слушаем события на кнопке.<br>
+        Нажатие на кнопку с <strong>type='submit'</strong> эквивалентно запуску события <strong>submit</strong> в форме.<br>
+        Сохраняем ссылку на элемент <strong>input</strong> в соответствующим образом названном свойстве <strong>_inputElement</strong>. Теперь мы можем получить доступ к элементу <strong>input</strong>, обратившись к свойству <strong>_inputElement</strong>.
+      </p>
+      <pre class="screen screen_post">
+// TodoItems.js
+
+import React, {Component} from 'react';
+import FlipMove from 'react-flip-move';
+
+class TodoItems extends Component {
+  constructor(props) {
+    super(props);
+
+    this.createTasks = this.createTasks.bind(this);
+  }
+
+  delete(key) {
+    this.props.delete(key);
+  };
+
+  createTasks(item) {
+    return &lt;li onClick={ () =&gt; this.delete(item.key)} key={item.key}&gt; {item.text} &lt;/li&gt;;
+  }
+
+  render() {
+    var todoEntries = this.props.entries;
+    var listItems = todoEntries.map(this.createTasks);
+
+    return(
+      &lt;ul className='theList'&gt;
+        &lt;FlipMove duration={250} easing='ease-out'&gt;
+          {listItems}
+        &lt;/FlipMove&gt;
+      &lt;/ul&gt;
+    );
+  }
+}
+
+export default TodoItems;</pre>
+    </section>
+  </main>
+</body>

@@ -193,6 +193,15 @@ let name_1 = function(parameter_1, parameter_2, ..., parameter_n) {
         </section>
 
         <section class="section">
+            <h2 class="section__header">Параметры по умолчанию</h2>
+
+            <pre class="screen screen__pre">
+function name_1(name_11="value_11", name_12="value_12") {
+    action_1;
+}</pre>
+        </section>
+
+        <section class="section">
             <h2 class="section__header">Возврат значения из функции</h2>
 
             <p class="paragraph">
@@ -364,8 +373,16 @@ name_2(name_1);</pre>
         <section class="section">
             <h2 class="section__header">Самовызывающаяся функция</h2>
 
-            <pre class="screen screen_pre">
-(function () {...}())</pre>
+            <p class="paragraph">
+                Рекурсивная функция<br>
+                Функция обратного вызова
+            </p>
+
+            <pre class="screen screen_post">
+const countdown = (value, fn) =&gt; {
+    fn(value)
+    return (value &gt; 0) ? countdown(value-1, fn) : value
+}</pre>
         </section>
 
         <section class="section">

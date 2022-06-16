@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>ReactJS</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../../../styles/style.css">
+</head>
+
+<body class="body">
+  <header class="header">
+    <a class="header__button"  href="../other.html">&uArr;</a>
+    <h1 class="header__title">React</h1>
+  </header>
+
+  <main class="main">
+    <section class="section">
+      <pre class="screen screen_pre">
+React.createElement("element_1", {data_1}, "child_1");</pre>
+      <p class="paragraph">
+        <strong>element_1</strong> - тег элемента или компонент(класс компонента) React.<br>
+        <strong>data_1</strong> - свойства создаваемого элемента (<strong>null</strong>=нет свойств).<br>
+        Если имя свойства соответствует стандартному атрибуту HTML, то оно будет отрендерено как атрибут элемента.<br>
+        <strong>child_1</strong> - дочерние элементы или внутренний контент.
+      </p>
+      <p class="paragraph">Все параметры после второго становятся дочерними элементами.</p>
+      <pre class="screen screen_pre">
+const name_1 = React.createElement("element_1", {data_1}, "child_1");
+ReactDOM.render(name_1, document.querySelector('css_selector_1'));</pre>
+
+      <pre class="screen screen_post">
+React.createElement(
+  "h1",
+  {id: "name_1", 'data-type': "title"},
+  "Text text"
+);
+
+  // Элемент React в JavaScript:
+{
+  $$typeof: Symbol(React.element),
+  "type": "h1",
+  "key": null,
+  "ref": null,
+  "props": {"children": "Baked Salmon"},
+  "_owner": null,
+  "_store": {}
+}</pre>
+
+      <pre class="screen screen_post">
+React.createElement(
+  "ul",
+  null,
+  React.createElement("li", null, "1 lb Salmon"),
+  React.createElement("li", null, "1 cup Pine Nuts"),
+  React.createElement("li", null, "2 cups Butter Lettuce"),
+  React.createElement("li", null, "1 Yellow Squash"),
+  React.createElement("li", null, "1/2 cup Olive Oil"),
+  React.createElement("li", null, "3 cloves of Garlic")
+);
+
+  // Элемент React в JavaScript:
+{
+  "type": "ul",
+  "props": {
+    "children": [
+      { "type": "li", "props": { "children": "1 lb Salmon" } .-.-. },
+      { "type": "li", "props": { "children": "1 cup Pine Nuts"} .-.-. },
+      { "type": "li", "props": { "children": "2 cups Butter Lettuce" } .-.-. },
+      { "type": "li", "props": { "children": "1 Yellow Squash"} .-.-. },
+      { "type": "li", "props": { "children": "1/2 cup Olive Oil"} .-.-. },
+      { "type": "li", "props": { "children": "3 cloves of Garlic"} .-.-. }
+    ],
+  .-.-.
+  }
+}</pre>
+
+      <pre class="screen screen_post">
+&lt;section id="baked-salmon"&gt;
+  &lt;h1&gt;Baked Salmon&lt;/h1&gt;
+  &lt;ul class="ingredients"&gt;
+    &lt;li&gt;1 lb Salmon&lt;/li&gt;
+    &lt;li&gt;1 cup Pine Nuts&lt;/li&gt;
+    &lt;li&gt;2 cups Butter Lettuce&lt;/li&gt;
+    &lt;li&gt;1 Yellow Squash&lt;/li&gt;
+    &lt;li&gt;1/2 cup Olive Oil&lt;/li&gt;
+    &lt;li&gt;3 cloves of Garlic&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;section class="instructions"&gt;
+    &lt;h2&gt;Cooking Instructions&lt;/h2&gt;
+    &lt;p&gt;Preheat the oven to 350 degrees.&lt;/p&gt;
+    &lt;p&gt;Spread the olive oil around a glass baking dish.&lt;/p&gt;
+    &lt;p&gt;Add the salmon, garlic, and pine nuts to the dish.&lt;/p&gt;
+    &lt;p&gt;Bake for 15 minutes.&lt;/p&gt;
+    &lt;p&gt;Add the yellow squash and put back in the oven for 30 mins.&lt;/p&gt;
+    &lt;p&gt;Remove from oven and let cool for 15 minutes.&lt;/p&gt;
+  &lt;/section&gt;
+&lt;/section&gt;
+
+  // Чистый React:
+
+React.createElement("section", {id: "baked-salmon"},
+  React.createElement("h1", null, "Baked Salmon"),
+  React.createElement("ul", {"className": "ingredients"},
+    React.createElement("li", null, "1 lb Salmon"),
+    React.createElement("li", null, "1 cup Pine Nuts"),
+    React.createElement("li", null, "2 cups Butter Lettuce"),
+    React.createElement("li", null, "1 Yellow Squash"),
+    React.createElement("li", null, "1/2 cup Olive Oil"),
+    React.createElement("li", null, "3 cloves of Garlic")
+  ),
+  React.createElement("section", {"className": "instructions"},
+    React.createElement("h2", null, "Cooking Instructions"),
+    React.createElement("p", null, "Preheat the oven to 350 degrees."),
+    React.createElement("p", null, "Spread the olive oil around a glass baking dish."),
+    React.createElement("p", null, "Add the salmon, garlic, and pine nuts to the dish."),
+    React.createElement("p", null, "Bake for 15 minutes."),
+    React.createElement("p", null, "Add the yellow squash and put back in the oven for 30 mins."),
+    React.createElement("p", null, "Remove from oven and let cool for 15minutes.")
+  )
+)</pre>
+    </section>
+  </main>
+</body>

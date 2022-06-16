@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>ReactJS</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../../../styles/style.css">
+</head>
+
+<body class="body">
+  <header class="header">
+    <a class="header__button"  href="../../other.html">&uArr;</a>
+    <h1 class="header__title">События в React</h1>
+  </header>
+
+  <main class="main">
+    <section class="section">
+      <div class="subsection">
+        <h3 class="subsection__header">События SyntheticEvent</h3>
+
+        <p class="paragraph">
+          В React значение <strong>this</strong> не относится к элементу, который активировал событие<br>
+          Нужно явно указывать связь с помощью метода <strong>.bind()</strong>
+        </p>
+        <pre class="screen screen_post">
+  // счётчик кликов
+
+class Counter extends React.Component {
+  render() {
+    var textStyle = {
+      ...
+    };
+        
+    return (
+      &lt;div style={textStyle}&gt;
+        {this.props.display}
+      &lt;/div&gt;
+    );
+  }
+}
+        
+class CounterParent extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      count: 0
+    };
+
+    this.increase = this.increase.bind(this);   // в этом примере this относится к CounterParent
+  }
+        
+  increase(e) {                                 // События передают обработчику аргументы
+    var currentCount = this.state.count;        // событий, назовём e
+
+    if (e.shiftKey) {                           // shiftKey - свойство события SyntheticEvent
+      currentCount += 10;                       // при использовании мыши
+    } else {
+      currentCount += 1;
+    }
+
+    this.setState(
+      {count: currentCount}
+    );
+  }
+        
+  render() {
+    var backgroundStyle = {
+      ...
+    };
+        
+    var buttonStyle = {
+      ...
+    };
+        
+    return (
+      &lt;div style={backgroundStyle}&gt;
+        &lt;Counter display={this.state.count} /&gt;
+        &lt;button onClick={this.increase} style={buttonStyle}&gt;+&lt;/button&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+        
+ReactDOM.render(
+  &lt;div&gt;
+    &lt;CounterParent /&gt;
+  &lt;/div&gt;,
+  document.querySelector("#container")
+);</pre>
+        <p class="paragraph">
+          &bull; Слушатель событий нельзя повесить на компонент, ибо компонент возвращает HTML-элемент<br>
+          &bull; Нельзя напрямую прослушивать события компонета. Компонент это обёртка для элементов DOM<br>
+          &bull; В React мы имеем дело с SyntheticEvent, а не обращаемся к событиям DOM<br>
+          &bull; React никогда напрямую не прикрепляет обработчики событий к элементам DOM. Он использует один обработчик событий в корне документа, который отвечает за прослушку всех событий и при необходимости вызывает соответствующий обработчик событий
+        </p>
+
+        <p class="paragraph">
+          Мы можем использовать обработчик событий как свойство и передать его компоненту. Внутри компонента мы можем затем назначить событие элементу DOM и присвоить обработчику события значение переданного свойства
+        </p>
+        <pre class="screen screen_post">
+// вариант:
+
+...
+import PlusButton from './PlusButton';
+...
+render() {
+  return(
+    &lt;div&gt;
+      &lt;Counter display={this.state.count} /&gt;
+      &lt;PlusButton clickHandler={this.increase} /&gt;     // onClick повесить на PlusButton не получится
+    &lt;/div&gt;
+  );
+}
+...
+
+// PlusButton.js
+
+...
+class PlusButton extends React.Component {
+  render() {
+    return(
+      &lt;button onClick={this.props.clickHandler}&gt;
+        +
+      &lt;/button&gt;
+    );
+  }
+}
+...</pre>
+        <p class="paragraph">
+          &bull; В этом примере создаём свойство <strong>clickHandler</strong>, значение которого - обработчик события <strong>increase</strong><br>
+          &bull; В элементе <strong>button</strong> указываем событие <strong>onClick</strong> и присваиваем его значение свойству <strong>clickHandler</strong><br>
+          &bull; Во время выполнения свойство обрабатывается как функция <strong>increase</strong> , а нажатие кнопки «плюс» гарантирует вызов функции <strong>increase</strong>. Так наша проблема решается, позволяя компоненту участвовать во всем этом событии
+        </p>
+      </div>
+      <div class="subsection">
+        <h3 class="subsection__header">Стандартные события DOM</h3>
+
+        <p class="paragraph">Не все события DOM имеют
+          эквивалентные события SyntheticEvent</p>
+        <pre class="screen screen_pre">
+class Name_1 extends React.Component {                   // компонент Name_1 определяет событие event_1
+  ...
+  name_2(e) {
+    action_2;
+  }
+
+  componentDidMount() {                                  // начинаем обрабатывать по методу componentDidMount(),
+    window.addEventListener("event_1", this.name_2);     // который автоматически вызывается при визуализации
+  }                                                      // компонента
+
+  componentWillMount() {                                 // требуется удалить слушатель событий,
+    window.removeEventListener("event_1", this.name_2);  // если компонент будет уничтожен
+  }
+
+  render() {
+    ...
+  }
+}</pre>
+      </div>
+    </section>
+  </main>
+</body>

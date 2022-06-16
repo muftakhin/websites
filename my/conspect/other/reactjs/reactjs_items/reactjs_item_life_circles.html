@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>ReactJS</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../../../styles/style.css">
+</head>
+
+<body class="body">
+  <header class="header">
+    <a class="header__button"  href="../../other.html">&uArr;</a>
+    <h1 class="header__title">Жизненный цикл компонента</h1>
+  </header>
+
+  <main class="main">
+    <section class="section">
+      <p class="paragraph">Методы жизненного цикла автоматически вызываются компонентами и похожи на обработики событий</p>
+      <p class="paragraph">
+        Методы жизненного цикла:<br><br>
+        <strong>componentWillMount</strong><br>
+        <strong>componentDidMount</strong><br>
+        <strong>componentWillUnmount</strong><br>
+        <strong>componentWillUpdate</strong><br>
+        <strong>componentDidUpdate</strong><br>
+        <strong>shouldComponentUpdate</strong><br>
+        <strong>componentWillReceiveProps</strong><br>
+        <strong>componentDidCatch</strong>
+      </p>
+
+      <div class="subsection">
+        <h3 class="subsection__header">Этап начального рендеринга</h3>
+
+        <p class="paragraph">
+          МЖЦ начального рендеринга:<br>
+          <strong>Получение свойств по умолчанию</strong><br>
+          <strong>Получение состояния по умолчанию</strong><br>
+          <strong>componentWillMount()</strong><br>
+          <strong>render()</strong><br>
+          <strong>componentDidMount()</strong>
+        </p>
+
+        <div class="subsubsection">
+          <h4 class="subsubsection__header">Получение свойств по умолчанию</h4>
+
+          <p class="paragraph">
+            Это свойство компонента позволяет указать дефолтное значение <strong>this.props</strong><br>
+            Этот код выполняется до того, как компонент будет создан, или в него будут переданы свойства из родительских компонентов
+          </p>
+          <pre class="screen screen_pre">
+  //  Настройка свойства name_2 компонента Name_1:
+
+Name_1.defaultProps {
+  name_2: value_2
+};</pre>
+        </div>
+
+        <div class="subsubsection">
+          <h4 class="subsubsection__header">Получение состояния по умолчанию</h4>
+
+          <p class="paragraph">
+            Этот шаг выполняется внутри конструктора компонента<br>
+            Вы можете указать дефолтное значение <strong>this.state</strong> в части создания компонента
+          </p>
+          <pre class="screen screen_pre">
+class Name_1 extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {            // определяем и инициализируем объект state
+      count: 0                // с помощью свойства count
+    };                        // (указываем дефолтное значение state)
+
+    this.increase = this.increase.bind(this);
+  }
+
+  render() {
+...</pre>
+        </div>
+
+        <div class="subsubsection">
+          <h4 class="subsubsection__header">componentWillMount()</h4>
+
+          <p class="paragraph">
+            Это последний метод, который вызывается до того, как компонент будет передан в DOM<br>
+            Здесь важно отметить: если вы вызываете метод <strong>setState</strong> внутри метода <strong>componentWillMount</strong>, компонент
+            не будет повторно рендериться
+          </p>
+        </div>
+
+        <div class="subsubsection">
+          <h4 class="subsubsection__header">render()</h4>
+
+          <p class="paragraph">
+            Каждый компонент должен иметь этот метод, так как он отвечает за  возврат JSX-кода<br>
+            Если не  нужно ничего рендерить (визуализировать), верните значение <strong>null</strong> или <strong>false</strong>
+          </p>
+        </div>
+
+        <div class="subsubsection">
+          <h4 class="subsubsection__header">componentDidMount()</h4>
+
+          <p class="paragraph">
+            Этот метод вызывается сразу после того, как компонент визуализирован и помещен в DOM<br>
+            На этом этапе вы можете безопасно выполнять любые операции запроса DOM, не беспокоясь о готовности компонента<br>
+            Если у вас есть код, зависимый от готовности компонента, вы также можете указать его здесь<br>
+            За исключением метода render , все перечисленные методы жизненного цикла могут срабатывать только один раз
+          </p>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__header">Этап обновления</h3>
+
+        <p class="paragraph">
+          После того как компоненты будут добавлены в DOM, они могут обновиться и повторно выполнить рендеринг при возникновении изменений свойств или изменений состояния<br>
+          В это время вызывается другая коллекция методов жизненного цикла
+        </p>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__header">Изменение состояний</h3>
+
+        <p class="paragraph">
+          Когда происходит изменение состояния, компонент вновь вызывает свой метод <strong>render()</strong><br>
+          Любые компоненты, которые полагаются на  вывод этого компонента, также вызывают методы <strong>render()</strong><br>
+          Это делается для того, чтобы компонент всегда отображал самую последнюю версию
+        </p>
+
+        <p class="paragraph">
+          МЖЦ вызываемые при изменении состояния:<br>
+          <strong>shouldComponentUpdate()</strong><br>
+          <strong>componentWillMount()</strong><br>
+          <strong>render()</strong><br>
+          <strong>componentDidMount()</strong>
+        </p>
+
+        <div class="subsubsection">
+          <h4 class="subsubsection__header">shouldComponentUpdate()</h4>
+
+
+          <p class="paragraph">
+            Позволяет контролировать, выполнять ли обновление<br>
+            Если вы используете этот метод со значением <strong>true</strong>, компонент будет обновляться<br>
+            Если этот метод возвращает значение <strong>false</strong>, этот компонент пропускает обновление<br>
+            Этот метод вызывается с двумя аргументами с именами <strong>newProps</strong> и <strong>newState</strong>
+          </p>
+          <pre class="screen screen_pre">
+shouldComponentUpdate(newProps, newState) {
+
+  if (newState.count ...) {
+    return true;
+  } else {
+    return false;
+  }
+}</pre>
+        </div>
+
+        <div class="subsubsection">
+          <h4 class="subsubsection__header">componentWillUpdate()</h4>
+
+
+          <p class="paragraph">
+            Этот метод вызывается непосредственно перед обновлением компонента<br>
+            Нельзя изменить состояние, вызвав <strong>this.setState</strong> из этого метода
+          </p>
+        </div>
+
+        <div class="subsubsection">
+          <h4 class="subsubsection__header">// снова render()</h4>
+
+          <p class="paragraph">Если не настроено поведение при обновлении с помощью метода <strong>shouldComponentUpdate()</strong> , код метода <strong>render()</strong> вновь вызывается, чтобы убедиться, что компонент отображается корректно</p>
+        </div>
+
+        <div class="subsubsection">
+          <h4 class="subsubsection__header">componentDidUpdate()</h4>
+
+          <p class="paragraph">
+            Этот метод вызывается после обновления компонента и после вызова метода <strong>render()</strong><br>
+            Если вам нужно выполнить какой-либо код после обновления компонента, сейчас самое время
+          </p>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__header">Изменение свойств</h3>
+
+        <p class="paragraph">Обновления компонента, когда значение его свойства изменяется после того, как оно было визуализировано в DOM</p>
+        <p class="paragraph">
+          МЖЦ когда значение свойств компонента изменяется:<br>
+          <strong>componentWillReceiveProps()</strong><br>
+          <strong>shouldComponentUpdate()</strong><br>
+          <strong>componentWillMount()</strong><br>
+          <strong>render()</strong><br>
+          <strong>componentDidMount()</strong>
+        </p>
+
+        <div class="subsubsection">
+          <h4 class="subsubsection__header">componentWillReceiveProps()</h4>
+
+          <p class="paragraph">Этот метод получает один аргумент, который содержит новое значение свойства для присваивания</p>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__header">Этап размонтирования</h3>
+
+        <p class="paragraph">
+          МЖЦ вызываемые при изменении состояния:<br>
+          <strong>componentWillUnmount()</strong>
+        </p>
+
+        <p class="paragraph">
+          Последний этап, когда компонент уничтожается и удаляется из DOM<br>
+          Здесь активен только один метод жизненного цикла, который называется <strong>componentWillUnmount()</strong><br>
+          На этом этапе выполняются задачи, связанные с очисткой, такие как удаление слушателей событий и остановка таймеров<br>
+          После вызова этого метода компонент удаляется из DOM, и вы можете попрощаться с ним
+        </p>
+      </div>
+    </section>
+  </main>
+</body>

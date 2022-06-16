@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>ReactJS</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../../../styles/style.css">
+</head>
+
+<body class="body">
+  <header class="header">
+    <a class="header__button"  href="../../other.html">&uArr;</a>
+    <h1 class="header__title">JSX</h1>
+  </header>
+
+  <main class="main">
+    <section class="section">
+      <p class="paragraph">Имена компонентов начинаются с большой буквы, а теги элементов с маленькой</p>
+
+      <pre class="screen screen_pre">
+  // JSX:
+
+class Name_1 extends React.Component {
+  render() {
+    var name_2 = {
+      property_1: value_1,
+      property_2: value_2,
+      ...
+      property_n: value_n
+    };
+
+    return (
+      &lt;tag_name_1 style={name_2} &gt;
+        &lt;Name_3 property_31={this.props.value_1} /&gt;
+        &lt;Name_4 property_42={this.props.value_2} /&gt;
+      &lt;/tag_name_1&gt;
+    );
+  }
+}
+
+    // JSX to JavaScript:
+  
+class Name_1 extends React.Component {
+  render() {
+    var name_2 = {
+      property_1: value_1,
+      property_2: value_2,
+      ...
+      property_n: value_n
+    };
+  
+    return React.createElement(
+      "tag_name_1",
+      {style: name_2},
+      React.createElement(Name_3, {property_31: this.props.value_1}),
+      React.createElement(Name_4, {property_42: this.props.value_2}),
+    );
+  }
+}</pre>
+      <div class="subsection">
+        <h3 class="subsection__header">Обработка выражений</h3>
+
+        <pre class="screen screen_post">
+class Name_1 extends React.Component {
+  render() {
+    return (
+      &lt;tag_name_1&gt; content { Math.random()*100 } content &lt/tag_name_1&gt;
+    );
+  }
+}</pre>
+        <p class="paragraph">
+          Все выражения, весь не статический контент необходимо заключать в фигурные скобки <strong>{ }</strong><br>
+          Иначе он отобразится как текст</p>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__header">Возвращение нескольких элементов</h3>
+
+        <div class="subsubsection">
+          <h4 class="subsubsection__header">Использование массивоподобного синтаксиса</h4>
+
+          <pre class="screen screen_pre">
+class Name_1 extends React.Component {
+  render() {
+    return (
+      [
+        &lt;tag_name_1 key="1"&gt;text_1&lt;/tag_name_1&gt;,
+        &lt;tag_name_2 key="2"&gt;text_2&lt;/tag_name_2&gt;,
+        &lt;tag_name_2 key="2"&gt;text_3&lt;/tag_name_3&gt;,
+      ]
+    );
+  }
+}</pre>
+          <p class="paragraph"><strong>key</strong> позволяет иметь дело с нужными элементами</p>
+        </div>
+
+        <div class="subsubsection">
+          <h4 class="subsubsection__header">Использование фрагментов React.Fragment</h4>
+
+          <pre class="screen screen_pre">
+    // Полное указание:
+
+class Name_1 extends React.Component {
+  render() {
+    return (
+      &lt;React.Fragment&gt;
+        &lt;tag_name_1&gt;text_1&lt;/tag_name_1&gt;,
+        &lt;tag_name_2&gt;text_2&lt;/tag_name_2&gt;,
+        &lt;tag_name_2&gt;text_3&lt;/tag_name_3&gt;,
+      &lt;/React.Fragment&gt;
+    );
+  }
+}</pre>
+        <pre class="screen screen_pre">
+    // краткий синтаксис:
+
+class Name_1 extends React.Component {
+  render() {
+    return (
+      &lt;&gt;
+        &lt;tag_name_1&gt;text_1&lt;/tag_name_1&gt;,
+        &lt;tag_name_2&gt;text_2&lt;/tag_name_2&gt;,
+        &lt;tag_name_2&gt;text_3&lt;/tag_name_3&gt;,
+      &lt;/&gt;
+    );
+  }
+}</pre>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__header">Комментарии</h3>
+
+        <div class="subsubsection">
+          <h4 class="subsubsection__header">Как дочерний элемент элемента</h4>
+            <pre class="screen screen_pre">
+ReactDOM.render(
+  &lt;tag_name_1&gt;
+    &lt;tag_name_2&gt;
+      {/* Комментарий */}
+      &lt;Name_3/&gt;
+    &lt;/tag_name_2&gt;
+  &lt;/tag_name_1&gt;,
+  document.querySelector("css_selector_1")
+);</pre>
+        </div>
+      </div>
+
+      <div class="subsubsection">
+        <h4 class="subsubsection__header">Внутри тега элемента</h4>
+          <pre class="screen screen_pre">
+ReactDOM.render(
+  &lt;tag_name_1 &gt;
+    &lt;tag_name_2&gt;
+      &lt;Name_3
+        /* Многострочный
+        комментарий*/
+        className="name_4" // Однострочный комментарий
+      /&gt;
+    &lt;/tag_name_2&gt;
+  &lt;/tag_name_1&gt;,
+document.querySelector("css_selector_1")
+);</pre>
+      </div>
+    </div>
+    </section>
+  </main>
+</body>

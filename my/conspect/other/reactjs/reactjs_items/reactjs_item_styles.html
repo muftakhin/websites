@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>ReactJS</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../../../styles/style.css">
+</head>
+
+<body class="body">
+  <header class="header">
+    <a class="header__button"  href="../../other.html">&uArr;</a>
+    <h1 class="header__title">Стилизация</h1>
+  </header>
+
+  <main class="main">
+    <section class="section">
+      <div class="subsection">
+        <h3 class="subsection__header">При помощи импортируемых файлов стилей</h3>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__header">Методом библиотеки React</h3>
+
+        <div class="subsubsection">
+          <h4 class="subsubsection__header">Создание объекта стиля</h4>
+
+          <pre class="screen screen_pre">
+class Name_1 extends React.Component {
+  render() {
+    var name_2 = {
+      property_1: value_1,
+      property_2: value_2,
+      ...
+      property_n: value_n
+    };
+
+    return (
+      &lt;tag_name_1 style={name_2} ...this.props.name_n... &gt;
+        {this.props.children}
+      &lt;/tag_name_1&gt;
+    );
+  }
+}
+            
+ReactDOM.render(
+  &lt;Name_1 name_n="value_n"&gt;
+    content_1
+  &lt;/Name_1&gt;,
+  document.querrySelector("css_selector_1")
+);</pre>
+          <p class="paragraph"><strong>value</strong> - цифры указываются без величин, а остальное как строки в кавычках, и разделяются запятыми</p>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>

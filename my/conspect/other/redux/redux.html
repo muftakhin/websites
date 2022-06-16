@@ -15,7 +15,170 @@
 
   <main class="main">
     <section class="section">
-      <h2 class="section__header"></h2>
+      <p class="paragraph">Состояние приложения
+        должно храниться в одном неизменяемом объекте</p>
+    </section>
+  
+    <section class="section">
+      <pre class="screen screen_pre">
+create-react-app name_1
+
+npm install redux
+
+npm install react-redux</pre>
+
+      <div class="subsection">
+        <h3 class="subsection__header">Счётчик</h3>
+
+        <pre class="screen screen_post">
+    // index.js
+
+import React, {Component} from 'react';
+import ReactDOM from 'react-dom';
+import {create-store} from 'redux';
+import counter from './reducer';
+import App from './App';
+import 'index.css';
+
+var destination = document.querySelector('#container');
+
+var store = createStore(counter);  // Инициализация хранилища
+ReactDOM.render(
+  &lt;Provider store={store}&gt;
+    &lt;App /&gt;
+  &lt;/Provider&gt;,
+  destination
+);
+        </pre>
+        <p class="paragraph">
+          Метод <strong>createStore</strong> принимает редуктор в своем аргументе.<br>
+          Редуктор ссылается на переменную <strong>counter</strong>.<br>
+          После создания хранилища мы предоставляем его в  качестве свойств для компонента <strong>Provider</strong>.<br>
+          Компонент <strong>Provider</strong> предназначен для использования в качестве внешнего компонента в приложении, чтобы гарантировать, что каждый компонент имеет доступ к хранилищу <strong>Redux</strong> и связанной с ним функциональности
+
+        </p>
+
+        <pre class="screen screen_post">
+    // reducer.js (редуктор)
+
+function counter(state, action) {
+  if (state === undefined) {
+    return {count: 0};
+  }
+
+  var count = state.count;
+
+  switch (action.type) {
+    case 'increase':
+      return {count: count + 1};
+    case 'descrease':
+      return {count: count - 1};
+    default:
+      return state;
+  }
+}
+
+export default counter;</pre>
+        <p class="paragraph">
+          У  нас есть переменная <strong>count</strong>, которой мы присваиваем значение <strong>0</strong>, если состояние пустое.<br>
+          Этот редуктор будет иметь дело с  двумя типами действий: <strong>increase</strong> и <strong>decrease</strong>.<br>
+          Если используется действие <strong>increase</strong>, мы увеличиваем значение переменной <strong>count</strong> на <strong>1</strong>.<br>
+          Если используется действие <strong>decrease</strong>, то уменьшаем значение переменной <strong>count</strong> на <strong>1</strong>.
+        </p>
+
+        <pre class="screen screen_post">
+    // App.js
+
+import {connect} from 'react-redux';
+import Counter from './Counter';
+
+
+    // Сопоставление состояния Redux со свойствами компонента
+function mapStateToProps(state) {
+  return {
+    countValue: state.count;
+  };
+}
+
+    // Действия
+var increaseAction = {type: 'increase'};
+var decreaseAction = {type: 'decrease'};
+
+    // Сопоставление действий Redux со свойствами компонента
+function mapDispatchToProps(dispatch) {
+  return {
+    increaseCount: function() {
+      return dispatch(increaseAction);
+    },
+    decreaseCount: function() {
+      return dispatch(descreaseAction);
+    }
+  };
+}
+
+    // НОС-компонент
+var connectedComponent = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Counter);
+
+export default connectedComponent;</pre>
+        <p class="paragraph">
+          Функция <strong>mapStateToProps</strong> подписывается на все обновления хранилища и вызывается, когда что-либо в хранилище изменяется.<br>
+          Она возвращает объект, содержащий данные хранилища, которые вы хотите передать в качестве свойств компоненту.<br>
+          В нашем случае то, что мы передаем, довольно просто: объект, который содержит свойство <strong>countValue</strong>, значение которого представлено свойством count из хранилища.<br>
+          Предоставление значения хранилища в качестве свойств —  это только первая часть того, что нам нужно сделать</p>
+        <p class="paragraph">
+          Затем нужно предоставить нашему компоненту доступ к действиям в виде свойств.
+        </p>
+        <p class="paragraph">
+          Действительно интересное происходит с  функцией <strong>mapDispatchToProps</strong>.<br>
+          Мы возвращаем объект, содержащий имена двух функций, которые компонент может вызвать для отправки изменений в хранилище.<br>
+          Функция <strong>increaseCount</strong> запускает отправку с типом действия <strong>increase</strong>.<br>
+          Функция <strong>decreaseCount</strong> запускает отправку с типом действия <strong>decrease</strong>.<br>
+          Если вы посмотрите на редуктор, который мы добавили несколько минут назад, вы увидите, как любой из этих вызовов функций повлияет на значение <strong>count</strong>, которое мы храним в хранилище.</p>
+
+        <pre class="screen screen_post">
+var connectedComponent = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Counter);
+        </pre>
+        <p class="paragraph">Эта функция создает магический HOC-компонент <strong>Connect</strong>, о котором мы говорили ранее.<br>
+          Он принимает команды <strong>mapStateToProps</strong> и <strong>mapDispatchToProps</strong> как аргументы, и передает все это в указанный компонент <strong>Counter</strong>.<br>
+          Конечный результат всего этого кода эквивалентен визуализации следующего:</p>
+
+        <pre class="screen screen_post">
+&lt;Connect&gt;
+  &lt;Counter increaseCount={increaseCount} decreaseCount={decreaseCount} countValue={countValue}/&gt;
+&lt;/Connect&gt;</pre>
+        <p class="paragraph">
+          Компонент <strong>Counter</strong> получает доступ к  функциям <strong>increase Count</strong>, <strong>decreaseCount</strong> и <strong>countValue</strong>.<br>
+          Странно, что нет никакой функции рендеринга или эквивалентной ей.<br>
+          Все это автоматически обрабатывается React и его HOC-компонентом<br>
+        </p>
+
+        <pre class="screen screen_post">
+import React, {Component} from "react";
+
+class Counter extends Component {
+  render() {
+    return (
+      &lt;div className="container"&gt;
+        &lt;button className="buttons" onClick={this.props.decreaseCount}&gt;
+          -
+        &lt;/button&gt;
+        &lt;span&gt;{this.props.countValue}&lt;/span&gt;
+        &lt;button className="buttons" onClick={this.props.increaseCount}&gt;
+          +
+        &lt;/button&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+
+export default Counter;</pre>
+      </div>
     </section>
   </main>
 </body>

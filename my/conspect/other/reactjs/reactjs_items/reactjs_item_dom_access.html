@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>ReactJS</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../../../styles/style.css">
+</head>
+
+<body class="body">
+  <header class="header">
+    <a class="header__button"  href="../../other.html">&uArr;</a>
+    <h1 class="header__title">Доступ к элементам DOM</h1>
+  </header>
+
+  <main class="main">
+    <section class="section">
+      <p class="paragraph">
+        Ссылки позволяют получить доступ к базовому элементу HTML за пределами JSX<br>
+        Порталы предоставляют ваше содержимое любому элементу в DOM, к которому у вас есть доступ
+      </p>
+
+      <div class="subsection">
+        <h3 class="subsection__header">Использование ссылок ref={}</h3>
+
+        <pre class="screen screen_post">
+&lt;body&gt;
+  &lt;div id="container"&gt;&lt;/div&gt;
+  &lt;script type="text/babel"&gt;
+
+class Colorizer extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      color: "",
+      bgColor: "white"
+    };
+
+    this.colorValue = this.colorValue.bind(this);
+    this.setNewColor = this.setNewColor.bind(this);
+  }
+
+  colorValue(e) {
+    this.setState({
+      color: e.target.value
+    });
+  }
+
+  setNewColor(e) {
+    this.setState({
+      bgColor: this.state.color
+    });
+
+    this._input.focus();                           // наводит фокус на input
+    this.input.value = "";                         // очищае поле ввода
+
+    e.preventDefault();
+  }
+
+  render() {
+    var squareStyle = {
+      backgroundColor: this.state.bgColor
+    };
+
+    var self = this;                               // замыкание для того, чтобы this относился к компоненту,
+                                                   // а не к функции
+    return (
+      &lt;div className="colorArea"&gt;
+        &lt;div style={squareStyle} className="colorSquare"&gt;&lt;/div&gt;
+
+        &lt;form onSubmit={this.setNewColor}&gt;
+                                                   // к  интересующему нас элементу input привязываем атрибут ref
+          &lt;input onChange={this.colorValue}        // его значение - функция обратного вызова
+          ref={                                    // Эта функция вызывается при монтировании компонентакомпонента
+            function(e1) {                         // и даёт доступ к input из любого места
+              self._input = e1                     // ссылка на элемент DOM передаётся в качестве аргумента
+          }                                        // идентификатор e1 перехватывает этот аргумент
+          placeholder="Значение цвета"&gt;&lt;/input&gt;
+
+          &lt;button type="submit"&gt;ok&lt;/button&gt;
+        &lt;/form&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+
+ReactDOM.render(
+  &lt;div&gt;
+    &lt;Colorizer /&gt;
+  &lt;/div&gt;,
+  document.querySelector("#container")
+);
+
+  &lt;/script&gt;
+&lt;/body&gt;</pre>
+        <p class="paragraph">
+          Тело функции обратного вызова устанавливает пользовательское свойство, _input, как значение элемента DOM.<br>
+          Чтобы гарантировать, что мы создадим это свойство на нашем компоненте, мы используем переменную self для создания замыкания —  this относится к нашему компоненту, а не к самой функции обратного вызова
+        </p>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__header">Использование порталов</h3>
+
+        <pre class="screen screen_post">
+// добавляет к тексту в h1 двоеточие и название цвета
+
+...
+&lt;body&gt;
+  &lt;h1 class="colorHeading"&gt;Палитра&lt;/h1&gt;   // +++
+  ...
+  ...
+  &lt;div id="container"&gt;&lt;/div&gt;
+  &lt;script type="text/babel"&gt;
+  ...
+  ...
+class Colorizer extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      color: "",
+      bgColor: "white"
+    };
+
+    this.colorValue = this.colorValue.bind(this);
+    this.setNewColor = this.setNewColor.bind(this);
+  }
+...
+...
+  render() {
+    var squareStyle = {
+      backgroundColor: this.state.bgColor
+    };
+
+    var self = this;
+
+    return (
+      &lt;div className="colorArea"&gt;
+        &lt;div style={squareStyle} className="colorSquare"&gt;&lt;/div&gt;
+
+        &lt;form onSubmit={this.setNewColor}&gt;
+
+          &lt;input onChange={this.colorValue}
+          ref={
+            function(e1) {
+              self._input = e1
+            }
+          }
+          placeholder="Значение цвета"&gt;&lt;/input&gt;
+
+          &lt;button type="submit"&gt;ok&lt;/button&gt;
+        &lt;/form&gt;
+        &lt;ColorLabel color={this.state.bgColor}/&gt;   // +++
+      &lt;/div&gt;
+    );
+  }
+}
+
+var heading = document.querySelector("#colorHeading");  // поиск элемента
+
+class ColorLabel extends React.Component {
+  render() {
+    return ReactDOM.createPortal(                       // портал
+      ": " + this.props.color,
+      heading
+    );
+  }
+}
+  
+ReactDOM.render(
+  &lt;div&gt;
+    &lt;Colorizer /&gt;
+  &lt;/div&gt;,
+  document.querySelector("#container")
+);
+...</pre>
+      </div>
+    </section>
+  </main>
+</body>

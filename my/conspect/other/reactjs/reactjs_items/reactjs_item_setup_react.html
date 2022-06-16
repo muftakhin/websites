@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>ReactJS</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../../../styles/style.css">
+</head>
+
+<body class="body">
+  <header class="header">
+    <a class="header__button"  href="../../other.html">&uArr;</a>
+    <h1 class="header__title">Настройка среды React</h1>
+  </header>
+
+  <main class="main">
+    <section class="section">
+      <pre class="screen screen_pre">
+npm install -g create-react-app</pre>
+      <pre class="screen screen_pre">
+create-react-app name_1        // name_1 - имя проекта
+
+cd name_1                      // переход в папку проекта
+
+npm i react-router-dom --save  // установка React Router
+
+npm start                      // сборка проекта и запуск локального сервера с проектом</pre>
+
+      <pre class="screen screen_post">
+  // index.html:
+
+...
+&lt;body&gt;
+  &lt;div id="root"&gt;&lt;/div&gt;
+&lt;/body&gt;
+...</pre>
+
+      <pre class="screen screen_post">
+  // index.js:
+  
+import React from 'react';           // импортируемые
+import ReactDOM from 'react-dom';    // библиотеки
+import Name_1 from './Name_1';       // файл компонента без расширения
+import './index.css';
+
+ReactDOM.render(
+  &lt;Name_1 /&gt;,
+  document.querySelector('#root')
+);</pre>
+
+      <pre class="screen screen_post">
+  // Name_1.js:
+  
+import React, {Component} from 'react';   // для Компонентов добавляем {Component}
+import './Name_1.css';
+
+class Name_1 extends Component {
+  render() {
+    return (
+      &lt;div className="Name_1"&gt;
+        ...
+      &lt;/div&gt;
+    );
+  }
+}
+
+export default Name_1;</pre>
+    </section>
+  </main>
+</body>

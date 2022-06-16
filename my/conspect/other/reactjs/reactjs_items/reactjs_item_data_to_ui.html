@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>ReactJS</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../../../styles/style.css">
+</head>
+
+<body class="body">
+  <header class="header">
+    <a class="header__button"  href="../../other.html">&uArr;</a>
+    <h1 class="header__title">Переход от данных к UI</h1>
+  </header>
+
+  <main class="main">
+    <section class="section">
+      <p class="paragraph">Код JSX можно вынести за пределы компонента и ReactDOM</p>
+
+      <pre class="screen screen_pre">
+class Name_1 extends React.Component {
+  render() {
+    var name_2 = {
+      property_2: value_2
+    };
+
+    return (
+      &lt;tag_name_3 style={name_2}&gt;
+      &lt;/tag_name_3&gt;
+    );
+  }
+}
+
+name_4 = &lt;Name_1 /&gt;;
+
+ReactDOM.render(
+  {name_4},
+  document.querySelector("css_selector_1")
+);</pre>
+
+  <pre class="screen screen_pre">
+// или:
+
+...
+function name_4() {
+  action_4;
+  return &lt;Name_1 ... /&gt;;
+}
+
+ReactDOM.render(
+  {name_4()},
+  document.querySelector("css_selector_1")
+);</pre>
+
+      <div class="subsection">
+        <h3 class="subsection__header">key={...}</h3>
+
+        <p class="paragraph">Когда элементы создаются динамически, необходимо устанавливать идентификаторы</p>
+
+        <pre class="screen screen_pre">
+for (var = 0; i &lt; name_1.length; i++) {
+  var name_2 = name_1[i];
+  name_3.push(&lt;Name_4 key={i+name_2} name_5={name_2} /&gt;);
+}</pre>
+      </div>
+
+      <pre class="screen screen_pre">
+// Преобразованный в JavaScript
+
+for (var i=0; i &lt; name_1.length; i++) {
+  var name_2 = name_1[i];
+
+  name_3.push(React.createElement(Name_4,
+    {
+      key: i + name_2,
+      bgColor: color
+    }
+  ));
+}
+      </pre>
+    </section>
+  </main>
+</body>

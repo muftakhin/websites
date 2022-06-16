@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>ReactJS</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../../../styles/style.css">
+</head>
+
+<body class="body">
+  <header class="header">
+    <a class="header__button"  href="../other.html">&uArr;</a>
+    <h1 class="header__title">Свойства компонента</h1>
+  </header>
+
+  <main class="main">
+    <section class="section">
+      <pre class="screen screen_pre">
+class Name_1 extends React.Component {
+  render() {
+    return (
+      &lt;element_1 {this.props.name_2} &gt;
+      {this.props.children}
+      &lt;/element_1&gt;
+    );
+  }
+}
+
+ReactDOM.render(
+  &lt;Name_1 name_2="value_2"/&gt;,
+  document.querySelector('css_selector_1')
+);</pre>
+
+      <p class="paragraph">
+        в фигурных скобках <strong>{ }</strong> содержимое оценивается как выражение<br>
+         <strong>this.props.name_2</strong> - доступ к заданному свойству с именем <strong>name_2</strong> и значением <strong>value_2</strong>.<br>
+         <strong>this.props</strong> - передаёт всё свойства дочернему элементу элемента <strong>Name_1</strong>.<br>
+         <strong>this.props.children</strong> - вернёт дочерние элементы или просто содержимое будущего элемента, созданного методом <strong>.render()</strong> с использованием данного компонента.
+      </p>
+
+      <pre class="screen screen_post">
+class Button extends React.Component {
+  render() {
+    return (
+      &lt;div&gt;
+        &lt;button type={this.props.type}&gt;
+          {this.props.children}
+        &lt;/button&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+            
+ReactDOM.render(
+  &lt;Button type="submit"&gt;Отправить данные&lt;/Button&gt;,
+  document.querrySelector("css_selector_1")
+);</pre>
+    </section>
+  </main>
+</body>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>ReactJS</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../../../styles/style.css">
+</head>
+
+<body class="body">
+  <header class="header">
+    <a class="header__button"  href="../../other.html">&uArr;</a>
+    <h1 class="header__title">React Router</h1>
+  </header>
+
+  <main class="main">
+    <section class="section">
+      <pre class="screen screen_pre">
+npm install react-router-dom --save</pre>
+    </section>
+
+    <section class="section">
+      <pre class="screen screen_post">
+    // index.html
+
+....
+&lt;body&gt;
+  &lt;div id="root"&gt;&lt;/div&gt;
+&lt;/body&gt;
+....</pre>
+
+      <pre class="screen screen_post">
+    // index.js
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Main from './Main';
+        
+ReactDOM.render(
+  &lt;Main/&gt;,
+  document.getElementById('root')
+);</pre>
+
+      <pre class="screen screen_post">
+    // Main.js
+  
+import React, {Component} from 'react';
+import {
+  Route,
+  NavLink,
+  HashRouter
+} from 'react-router-dom';
+import Home from './Home';
+import Stuff from './Stuff';
+import Contact from './Contact';
+  
+class Main extends Component {
+  render() {
+    return(
+      &lt;HashRouter&gt;
+        &lt;div&gt;
+          &lt;h1&gt;Simple SPA-application&lt;/h1&gt;
+          &lt;ul className="header"&gt;
+            &lt;li&gt;&lt;NavLink to="/"&gt;Главная&lt;/NavLink&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;NavLink to="/stuff"&gt;Продукты&lt;/NavLink&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;NavLink to="/contact"&gt;Контакты&lt;/NavLink&gt;&lt;/li&gt;
+          &lt;/ul&gt;
+          &lt;div className="content"&gt;
+            &lt;Route exact path="/" component={Home} /&gt;
+            &lt;Route path="/stuff" component={Stuff} /&gt;
+            &lt;Route path="/contact" component={Contact} /&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/HashRouter&gt;
+    );
+  }
+}
+  
+export default Main;</pre>
+
+      <pre class="screen screen_post">
+import React, {Component} from 'react';
+
+class Home extends Component {
+  render() {
+    return(
+      &lt;div&gt;
+        &lt;h2&gt;HELLO&lt;/h2&gt;
+        &lt;p&gt;Cras facilisis urna ornare ex volutpat, et convallis erat elementum. Ut aliquam, ipsum vitae gravida suscipit, metus dui bibendum est, eget  rhoncus nibh metus nec massa. Maecenas hendrerit laoreet augue nec molestie. Cum sociis natoque penatibus et magnis dis parturient montes,  nascetur ridiculus mus.&lt;/p&gt;
+        &lt;p&gt;Duis a turpis sed lacus dapibus elementum sed eu lectus.&lt;/p&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+
+export default Home;</pre>
+
+      <pre class="screen screen_post">
+import React, {Component} from 'react';
+
+class Stuff extends Component {
+  render() {
+    return(
+      &lt;div&gt;
+        &lt;h2&gt;Продукты&lt;/h2&gt;
+        &lt;p&gt;Mauris sem velit, vehicula eget sodales vitae, rhoncus eget sapien:&lt;/p&gt;
+        &lt;ol&gt;
+          &lt;li&gt;Nulla pulvinar diam&lt;/li&gt;
+          &lt;li&gt;Facilisis bibendum&lt;/li&gt;
+          &lt;li&gt;Vestibulum vulputate&lt;/li&gt;
+          &lt;li&gt;Eget erat&lt;/li&gt;
+          &lt;li&gt;Id porttitor&lt;/li&gt;
+        &lt;/ol&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+
+export default Stuff;</pre>
+
+      <pre class="screen screen_post">
+import React, {Component} from 'react';
+
+class Contact extends Component {
+  render() {
+    return(
+      &lt;div&gt;
+        &lt;h2&gt;ЕСТЬ ВОПРОСЫ?&lt;/h2&gt;
+        &lt;p&gt;Нет ответов!&lt;/p&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+
+export default Contact;</pre>
+    </section>
+  </main>
+</body>
