@@ -5,6 +5,15 @@
   <title>ReactJS</title>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="../../../styles/style.css">
+  <style>
+    th, td {
+      border: solid grey 1px;
+      padding: 4px;
+    }
+    th {
+      font-weight: bold;
+    }
+  </style>
 </head>
 
 <body class="body">
@@ -15,54 +24,92 @@
 
   <main class="main">
     <section class="section">
-      <p class="paragraph">Методы жизненного цикла автоматически вызываются компонентами и похожи на обработики событий</p>
-      <p class="paragraph">
-        Методы жизненного цикла:<br><br>
-        <strong>componentWillMount</strong><br>
-        <strong>componentDidMount</strong><br>
-        <strong>componentWillUnmount</strong><br>
-        <strong>componentWillUpdate</strong><br>
-        <strong>componentDidUpdate</strong><br>
-        <strong>shouldComponentUpdate</strong><br>
-        <strong>componentWillReceiveProps</strong><br>
-        <strong>componentDidCatch</strong>
+      <h2 class="section__header">События(методы) жизненного цикла</h2>
+
+      <p class="p">
+        У каждого без исключения компонента React есть события жизненного цикла, которые срабатывают в определенные моменты в зависимости от того, что сделал или собирается сделать компонент.<br>
+        Есть возможность управлять поведением компонента и настраивать его на основании событий его жизненного цикла.
       </p>
 
       <div class="subsection">
-        <h3 class="subsection__header">Этап начального рендеринга</h3>
+        <h3 class="subsection__header">Категории событий жизненного цикла</h3>
 
-        <p class="paragraph">
-          МЖЦ начального рендеринга:<br>
-          <strong>Получение свойств по умолчанию</strong><br>
-          <strong>Получение состояния по умолчанию</strong><br>
-          <strong>componentWillMount()</strong><br>
-          <strong>render()</strong><br>
-          <strong>componentDidMount()</strong>
+        <p class="p">
+          В ходе существования компонента React может инициировать события обновления многократно, тогда как события подключения и отключения однократно.
         </p>
 
         <div class="subsubsection">
-          <h4 class="subsubsection__header">Получение свойств по умолчанию</h4>
+          <h4 class="subsubsection__header">События подключения</h4>
 
-          <p class="paragraph">
-            Это свойство компонента позволяет указать дефолтное значение <strong>this.props</strong><br>
-            Этот код выполняется до того, как компонент будет создан, или в него будут переданы свойства из родительских компонентов
+          <p class="p">Происходят при присоединении элемента React (экземпляра компонента класса) к узлу DOM.</p>
+          <p class="p">
+            &nbsp; - <strong>constructor()</strong><br>
+            &nbsp; - <strong>componentWillMount()</strong> - происходит перед подключением к DOM. React знает, что этот элемент появится в реальной модели DOM.<br>
+            &nbsp; - <strong>componentDidMount()</strong> - происходит после подключения и рендера. Элемент React был «вставлен» в реальную модель
+            DOM и стал узлом DOM.
           </p>
-          <pre class="screen screen_pre">
-  //  Настройка свойства name_2 компонента Name_1:
-
-Name_1.defaultProps {
-  name_2: value_2
-};</pre>
         </div>
 
         <div class="subsubsection">
-          <h4 class="subsubsection__header">Получение состояния по умолчанию</h4>
+          <h4 class="subsubsection__header">События обновления</h4>
 
-          <p class="paragraph">
-            Этот шаг выполняется внутри конструктора компонента<br>
-            Вы можете указать дефолтное значение <strong>this.state</strong> в части создания компонента
+          <p class="p">Происходят при обновлении элемента React в результате изменения значений его свойств или состояния.</p>
+          <p class="p">
+            &nbsp; - <strong>componentWillReceiveProps(nextProps)</strong> - происходит перед получением свойств компонентом.<br>
+            &nbsp; - <strong>shouldComponentUpdate(nextProps, nextState)-> bool</strong> - позволяет оптимизировать повторный рендеринг компонента, помогая вам определить, когда нужно или не нужно проводить обновление.<br>
+            &nbsp; - <strong>componentWillUpdate(nextProps, nextState)</strong> - происходит непосредственно перед обновлением компонента.<br>
+            &nbsp; - <strong>componentDidUpdate(prevProps, prevState)</strong> - происходит сразу же после обновления компонента.
           </p>
-          <pre class="screen screen_pre">
+        </div>
+
+        <div class="subsubsection">
+          <h4 class="subsubsection__header">События отключения</h4>
+
+          <p class="p">Происходят при отсоединении элемента React от модели DOM.</p>
+          <p class="p">
+            &nbsp; - <strong>componentWillUnmount function()</strong> -позволяет отключить любые слушатели событий или провести любые завершающие действия перед отключением компонента.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section__header">Реализация события</h2>
+
+      <p class="p">Чтобы реализовать событие жизненного цикла, необходимо определить их в классе как метод</p>
+      <p class="p">
+        <strong>componentDidMount()</strong> вызывается при вставке компонента в DOM. В этом методе рекомендуется размещать код для интеграции с другими фреймворками клиентской части и библиотеками, а также код отправки запросов XHR-серверу, потому что в этой точке жизненного цикла элемент компонента находится в реальной модели DOM, а вы получаете доступ ко всем его элементам, включая дочерние.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2 class="section__header">События подключения</h2>
+
+      <p class="p">Выполнение <strong>constructor()</strong> происходит до <strong>componentWillMount()</strong>. Кроме того, React сначала рендерит, а затем подключает элементы. (Рендер в этом контексте означает вызов метода <strong>render()</strong> класса, а не отображение DOM.)</p>
+
+      <div class="subsection">
+        <h3 class="subsection__header">Получение свойств по умолчанию</h3>
+
+        <p class="p">
+          Это свойство компонента позволяет указать дефолтное значение <strong>this.props</strong><br>
+          Этот код выполняется до того, как компонент будет создан, или в него будут переданы свойства из родительских компонентов.
+        </p>
+      <pre class="screen screen_pre">
+    //  Настройка свойства property_1 компонента Name_1:
+
+Name_1.defaultProps {
+  property_1: value_1
+};</pre>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__header">Получение состояния по умолчанию</h3>
+
+        <p class="p">
+          Этот шаг выполняется внутри конструктора компонента.<br>
+          Вы можете указать дефолтное значение <strong>this.state</strong> в части создания компонента.
+        </p>
+        <pre class="screen screen_pre">
 class Name_1 extends React.Component {
   constructor(props) {
     super(props);
@@ -71,81 +118,148 @@ class Name_1 extends React.Component {
       count: 0                // с помощью свойства count
     };                        // (указываем дефолтное значение state)
 
-    this.increase = this.increase.bind(this);
+    this.name_2 = this.name_2.bind(this);
   }
 
   render() {
 ...</pre>
-        </div>
-
-        <div class="subsubsection">
-          <h4 class="subsubsection__header">componentWillMount()</h4>
-
-          <p class="paragraph">
-            Это последний метод, который вызывается до того, как компонент будет передан в DOM<br>
-            Здесь важно отметить: если вы вызываете метод <strong>setState</strong> внутри метода <strong>componentWillMount</strong>, компонент
-            не будет повторно рендериться
-          </p>
-        </div>
-
-        <div class="subsubsection">
-          <h4 class="subsubsection__header">render()</h4>
-
-          <p class="paragraph">
-            Каждый компонент должен иметь этот метод, так как он отвечает за  возврат JSX-кода<br>
-            Если не  нужно ничего рендерить (визуализировать), верните значение <strong>null</strong> или <strong>false</strong>
-          </p>
-        </div>
-
-        <div class="subsubsection">
-          <h4 class="subsubsection__header">componentDidMount()</h4>
-
-          <p class="paragraph">
-            Этот метод вызывается сразу после того, как компонент визуализирован и помещен в DOM<br>
-            На этом этапе вы можете безопасно выполнять любые операции запроса DOM, не беспокоясь о готовности компонента<br>
-            Если у вас есть код, зависимый от готовности компонента, вы также можете указать его здесь<br>
-            За исключением метода render , все перечисленные методы жизненного цикла могут срабатывать только один раз
-          </p>
-        </div>
       </div>
 
       <div class="subsection">
-        <h3 class="subsection__header">Этап обновления</h3>
+        <h3 class="subsection__header">componentWillMount()</h3>
 
-        <p class="paragraph">
-          После того как компоненты будут добавлены в DOM, они могут обновиться и повторно выполнить рендеринг при возникновении изменений свойств или изменений состояния<br>
-          В это время вызывается другая коллекция методов жизненного цикла
+        <p class="p">
+          Это последний метод, который вызывается до того, как компонент будет передан в DOM.<br>
+          Здесь важно отметить: если вы вызываете метод <strong>setState</strong> внутри метода <strong>componentWillMount</strong>, компонент не будет повторно рендериться.
+        </p>
+
+        <p class="p">
+          Метод <strong>componentWillMount()</strong> вызывается только один раз за жизненный цикл компонента. Время выполнения - непосредственно перед исходным рендерингом.
+        </p>
+
+        <p class="p">
+          Событие жизненного цикла <strong>componentWillMount()</strong> выполняется при рендере элемента React в браузере вызовом <strong>ReactDOM.render()</strong>. Считайте это присоединением (или подключением) элемента React к реальному узлу DOM. Это происходит в браузере, то есть в клиентской части.
+        </p>
+
+        <p class="p">
+          При рендере компонента React на сервере это событие также будет инициировано, хотя на сервере нет ни DOM, ни подключения в данном случае.
+        </p>
+
+        <p class="p">
+          Изменение состояния обычно инициирует повторный рендеринг. В тоже время если вы обновили состояние вызовом <strong>setState()</strong> в методе <strong>componentWillMount()</strong>, то <strong>render()</strong> получит обновленное состояние. Даже если новое состояние отличается от прежнего, повторный рендеринг не потребуется, потому что <strong>render()</strong> получит новое состояние. Другими словами, вы можете вызвать <strong>setState()</strong> в <strong>componentWillMount()</strong><br>
+          <strong>render()</strong> получит новые значения, если они есть, и дополнительный повторный рендеринг не потребуется.
         </p>
       </div>
 
       <div class="subsection">
-        <h3 class="subsection__header">Изменение состояний</h3>
+        <h3 class="subsection__header">componentDidMount()</h3>
 
-        <p class="paragraph">
-          Когда происходит изменение состояния, компонент вновь вызывает свой метод <strong>render()</strong><br>
-          Любые компоненты, которые полагаются на  вывод этого компонента, также вызывают методы <strong>render()</strong><br>
-          Это делается для того, чтобы компонент всегда отображал самую последнюю версию
+        <p class="p">
+          Этот метод вызывается сразу после того, как компонент визуализирован и помещен в DOM.<br>
+          На этом этапе вы можете безопасно выполнять любые операции запроса DOM, не беспокоясь о готовности компонента.<br>
+          Если у вас есть код, зависимый от готовности компонента, вы также можете указать его здесь.<br>
+          За исключением метода render , все перечисленные методы жизненного цикла могут срабатывать только один раз.
         </p>
 
-        <p class="paragraph">
-          МЖЦ вызываемые при изменении состояния:<br>
-          <strong>shouldComponentUpdate()</strong><br>
-          <strong>componentWillMount()</strong><br>
-          <strong>render()</strong><br>
-          <strong>componentDidMount()</strong>
+        <p class="p">
+          <strong>componentDidMount()</strong> вызывается после исходного рендеринга.<br>
+          Код выполняется только один раз и только в браузере, не на сервере.
         </p>
 
-        <div class="subsubsection">
-          <h4 class="subsubsection__header">shouldComponentUpdate()</h4>
+        <p class="p">
+          В этом событии жизненного цикла доступны любые ссылки на дочерние элементы (например, для обращения к соответствующему представлению DOM<br> Обратите внимание на то, что метод <strong>componentDidMount()</strong> дочерних компонентов вызывается раньше одноименного метода родительских компонентов.
+        </p>
+
+        <p class="p">
+          </strong>componentDidMount()</strong> лучше всего подходит для интеграции с другими библиотеками JavaScript.<br>
+          Например, вы можете получить данные в формате JSON, содержащие список пользователей с их данными.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section__header">События обновления</h2>
+
+      <table>
+        <tr>
+          <th>Обновление свойств компонента</th>
+          <th>Обновление состояния компонента</th>
+          <th>Обновление с использованием forceUpdate()</th>
+        </tr>
+        <tr>
+          <td>componentWillReceiveProps()</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>shouldComponentUpdate()</td>
+          <td>shouldComponentUpdate()</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>componentWillUpdate()</td>
+          <td>componentWillUpdate()</td>
+          <td>componentWillUpdate()</td>
+        </tr>
+        <tr>
+          <td>render()</td>
+          <td>render()</td>
+          <td>render()</td>
+        </tr>
+        <tr>
+          <td>componentDidUpdate()</td>
+          <td>componentDidUpdate()</td>
+          <td>componentDidUpdate()</td>
+        </tr>
+      </table>
+      <p class="p">
+        События подключения часто используются для интеграции React с внешним миром: другими фреймворками, библиотеками или хранилищами данных.<br>
+        События обновления связываются с обновлениями компонентов.
+      </p>
+
+      <div class="subsection">
+        <h3 class="subsection__header">componentWillReceiveProps(newProps)</h3>
+
+        <p class="p">Этот метод получает один аргумент, который содержит новое значение свойства для присваивания</p>
+
+        <p class="p">
+          Событие <strong>componentWillReceiveProps(newProps)</strong> инициируется при получении компонентом новых свойств. Эта стадия называется предстоящим переходом свойства. Данное событие позволяет вмешаться в работу компонента и включить новую логику между получением новых свойств и перед запуском <strong>render()</strong>.
+        </p>
+
+        <p class="p">
+          Метод <strong>componentWillReceiveProps(newProps)</strong> получает новые свойства в аргументе. Он не вызывается при исходном рендеринге компонента. Этот метод пригодится в тех случаях, когда вы хотите сохранить новое свойство и задать состояние перед повторным рендерингом. Старое значение свойства хранится в объекте <strong>this.props</strong>.
+        </p>
+
+        <pre class="screen screen_pre">
+componentWillReceiveProps(newProps) {
+  this.setState({
+    ....
+  })
+}</pre>
+        <p class="p">
+          В общем случае метод <strong>setState()</strong> в <strong>componentWillReceiveProps(newProps)</strong> не инициирует дополнительный повторный рендеринг.
+        </p>
+
+        <p class="p">
+          Несмотря на получение новых свойств, эти свойства не обязательно имеют новые значения (то есть значения, отличные от текущих значений свойств), потому что React не может определить, изменились значения свойств или нет. Следовательно, <strong>componentWillReceiveProps(NewProps)</strong> вызывается каждый раз при повторном рендеринге (родительской структуры или по вызову), независимо от изменений свойств/значений. А следовательно, нельзя считать, что <strong>newProps</strong> всегда имеет значения, отличные от текущих значений свойств.
+        </p>
+
+        <p class="p">
+          В то же время повторный рендеринг (вызовом <strong>render()</strong>) не обязательно означает изменения в реальной модели DOM. Решение о том, нужно ли обновлять реальную модель DOM и что именно должно обновляться, делегируется <strong>shouldComponentUpdate()</strong> и процессу согласования.
+        </p>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__header">shouldComponentUpdate()</h3>
 
 
-          <p class="paragraph">
-            Позволяет контролировать, выполнять ли обновление<br>
-            Если вы используете этот метод со значением <strong>true</strong>, компонент будет обновляться<br>
-            Если этот метод возвращает значение <strong>false</strong>, этот компонент пропускает обновление<br>
-            Этот метод вызывается с двумя аргументами с именами <strong>newProps</strong> и <strong>newState</strong>
-          </p>
-          <pre class="screen screen_pre">
+        <p class="p">
+          Позволяет контролировать, выполнять ли обновление<br>
+          Если вы используете этот метод со значением <strong>true</strong>, компонент будет обновляться<br>
+          Если этот метод возвращает значение <strong>false</strong>, этот компонент пропускает обновление<br>
+          Этот метод вызывается с двумя аргументами с именами <strong>newProps</strong> и <strong>newState</strong>
+        </p>
+        <pre class="screen screen_pre">
 shouldComponentUpdate(newProps, newState) {
 
   if (newState.count ...) {
@@ -154,67 +268,64 @@ shouldComponentUpdate(newProps, newState) {
     return false;
   }
 }</pre>
-        </div>
 
-        <div class="subsubsection">
-          <h4 class="subsubsection__header">componentWillUpdate()</h4>
+        <p class="p">
+          <strong>shouldComponentUpdate()</strong>, которое инициируется непосредственно перед рендером. Рендерингу предшествует получение новых свойств или состояния. Событие <strong>shouldComponentUpdate()</strong> не инициируется для исходного рендеринга или для <strong>forceUpdate()</strong>
+        </p>
 
-
-          <p class="paragraph">
-            Этот метод вызывается непосредственно перед обновлением компонента<br>
-            Нельзя изменить состояние, вызвав <strong>this.setState</strong> из этого метода
-          </p>
-        </div>
-
-        <div class="subsubsection">
-          <h4 class="subsubsection__header">// снова render()</h4>
-
-          <p class="paragraph">Если не настроено поведение при обновлении с помощью метода <strong>shouldComponentUpdate()</strong> , код метода <strong>render()</strong> вновь вызывается, чтобы убедиться, что компонент отображается корректно</p>
-        </div>
-
-        <div class="subsubsection">
-          <h4 class="subsubsection__header">componentDidUpdate()</h4>
-
-          <p class="paragraph">
-            Этот метод вызывается после обновления компонента и после вызова метода <strong>render()</strong><br>
-            Если вам нужно выполнить какой-либо код после обновления компонента, сейчас самое время
-          </p>
-        </div>
+        <p class="p">
+          Можно реализовать событие <strong>shouldComponentUpdate()</strong> с <strong>return false</strong>, чтобы запретить React повторный рендеринг. Например, это может быть полезно, когда проверка показывает, что изменений нет, и вы хотите избежать лишних потерь быстродействия
+        </p>
       </div>
 
       <div class="subsection">
-        <h3 class="subsection__header">Изменение свойств</h3>
+        <h3 class="subsection__header">componentWillUpdate()</h3>
 
-        <p class="paragraph">Обновления компонента, когда значение его свойства изменяется после того, как оно было визуализировано в DOM</p>
-        <p class="paragraph">
-          МЖЦ когда значение свойств компонента изменяется:<br>
-          <strong>componentWillReceiveProps()</strong><br>
-          <strong>shouldComponentUpdate()</strong><br>
-          <strong>componentWillMount()</strong><br>
-          <strong>render()</strong><br>
-          <strong>componentDidMount()</strong>
+        <p class="p">
+          Этот метод вызывается непосредственно перед обновлением компонента<br>
+          Нельзя изменить состояние, вызвав <strong>this.setState</strong> из этого метода
         </p>
 
-        <div class="subsubsection">
-          <h4 class="subsubsection__header">componentWillReceiveProps()</h4>
-
-          <p class="paragraph">Этот метод получает один аргумент, который содержит новое значение свойства для присваивания</p>
-        </div>
+        <p class="p">
+          <strong>componentWillUpdate()</strong>, вызывается непосредственно перед рендером, а ему предшествует получение новых свойств или состояния. Он не вызывается для исходного рендеринга. Можно использовать метод <strong>componentWillUpdate()</strong> для выполнения подготовительных действий перед обновлением и нужно старайтесь не использовать <strong>this.setState()</strong> в этом методе. Ибо инициирование обновления в то время, когда компонент находится в процессе обновления.<br>
+          Если <strong>shouldComponentUpdate()</strong> вернет <strong>false</strong>, то <strong>componentWillUpdate()</strong> не инициируется.
+        </p>
       </div>
 
       <div class="subsection">
-        <h3 class="subsection__header">Этап размонтирования</h3>
+        <h3 class="subsection__header">componentDidUpdate()</h3>
 
-        <p class="paragraph">
-          МЖЦ вызываемые при изменении состояния:<br>
-          <strong>componentWillUnmount()</strong>
+        <p class="p">
+          Этот метод вызывается после обновления компонента и после вызова метода <strong>render()</strong><br>
+          Если вам нужно выполнить какой-либо код после обновления компонента, сейчас самое время
         </p>
 
-        <p class="paragraph">
-          Последний этап, когда компонент уничтожается и удаляется из DOM<br>
-          Здесь активен только один метод жизненного цикла, который называется <strong>componentWillUnmount()</strong><br>
-          На этом этапе выполняются задачи, связанные с очисткой, такие как удаление слушателей событий и остановка таймеров<br>
-          После вызова этого метода компонент удаляется из DOM, и вы можете попрощаться с ним
+        <p class="p">
+          Событие <strong>componentDidUpdate()</strong> инициируется сразу же после того, как обновление компонентов будет отражено в DOM. И снова этот метод не вызывается для исходного рендеринга.<br>
+          <strong>componentDidUpdate()</strong> используется для написания кода, который работает с DOM и другими элементами после того, как компонент будет обновлен, потому что на этой стадии вы получите все обновления, отрендеренные в DOM.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section__header">События отключения</h2>
+
+      <p class="p">
+        В React под «отключением» понимается отсоединение или удаление элемента из DOM. К этой категории относится только одно событие, и она является последней категорией в жизненном цикле компонента.
+      </p>
+
+      <p class="p">
+        Последний этап, когда компонент уничтожается и удаляется из DOM<br>
+        Здесь активен только один метод жизненного цикла, который называется <strong>componentWillUnmount()</strong><br>
+        На этом этапе выполняются задачи, связанные с очисткой, такие как удаление слушателей событий и остановка таймеров<br>
+        После вызова этого метода компонент удаляется из DOM, и вы можете попрощаться с ним
+      </p>
+
+      <div class="subsection">
+        <h3 class="subsection__header">componentWillUnmount()</h3>
+
+        <p class="p">
+          Событие <strong>componentWillUnmount()</strong> вызывается непосредственно перед отключением компонента от DOM. Вы также можете включить в этот метод все необходимые завершающие действия, например: остановку таймеров, очистку любых элементов DOM или отсоединение событий, созданных в <strong>componentDidMount</strong>
         </p>
       </div>
     </section>

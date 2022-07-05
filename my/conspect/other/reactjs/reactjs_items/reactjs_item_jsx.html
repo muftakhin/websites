@@ -18,49 +18,73 @@
       <p class="paragraph">Имена компонентов начинаются с большой буквы, а теги элементов с маленькой</p>
 
       <pre class="screen screen_pre">
-  // JSX:
+    // JSX:
 
 class Name_1 extends React.Component {
   render() {
-    var name_2 = {
-      property_1: value_1,
-      property_2: value_2,
-      ...
-      property_n: value_n
-    };
-
     return (
-      &lt;tag_name_1 style={name_2} &gt;
-        &lt;Name_3 property_31={this.props.value_1} /&gt;
-        &lt;Name_4 property_42={this.props.value_2} /&gt;
+      &lt;tag_name_1 property_11=value_11 property_12=value_12 &gt;
+        &lt;Name_2 property_2=value_2 /&gt;
+        &lt;Name_3 property_3=value_3 /&gt;
       &lt;/tag_name_1&gt;
     );
   }
 }
 
-    // JSX to JavaScript:
+    // JavaScript:
   
 class Name_1 extends React.Component {
   render() {
-    var name_2 = {
-      property_1: value_1,
-      property_2: value_2,
-      ...
-      property_n: value_n
-    };
-  
     return React.createElement(
       "tag_name_1",
-      {style: name_2},
-      React.createElement(Name_3, {property_31: this.props.value_1}),
-      React.createElement(Name_4, {property_42: this.props.value_2}),
+      {property_11: value_11, property_12: value_12},
+      React.createElement(Name_2, {property_2: value_2}),
+      React.createElement(Name_3, {property_3: value_3}),
     );
   }
 }</pre>
-      <div class="subsection">
-        <h3 class="subsection__header">Обработка выражений</h3>
+      <pre class="screen screen_post">
+    // JSX:
 
-        <pre class="screen screen_post">
+class HelloWorld extends React.Component {
+  render() {
+    return (
+      &lt;div&gt;
+        &lt;h1&gt;1. Hello world!&lt;/h1&gt;
+        &lt;h1&gt;2. Hello world!&lt;/h1&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+
+ReactDOM.render(
+  &lt;HelloWorld/&gt;,
+  document.getElementById('content')
+)
+
+    // JavaScript:
+
+class HelloWorld extends React.Component {
+  render() {
+    return React.createElement(
+      'div',
+      null,
+      React.createElement('h1', null, '1. Hello world!'),
+      React.createElement('h1', null, '2. Hello world!')
+    );
+  }
+}
+
+ReactDOM.render(
+  React.createElement(HelloWorld, null),
+  document.getElementById('content')
+)</pre>
+    </section>
+
+    <section class="section">
+      <h2 class="section__header">Обработка выражений</h2>
+
+      <pre class="screen screen_pre">
 class Name_1 extends React.Component {
   render() {
     return (
@@ -68,36 +92,38 @@ class Name_1 extends React.Component {
     );
   }
 }</pre>
-        <p class="paragraph">
-          Все выражения, весь не статический контент необходимо заключать в фигурные скобки <strong>{ }</strong><br>
-          Иначе он отобразится как текст</p>
-      </div>
+      <p class="paragraph">
+        Все выражения, весь не статический контент необходимо заключать в фигурные скобки <strong>{ }</strong><br>
+        Иначе он отобразится как текст.<br>
+        В фигурные скобки <strong>{ }</strong> заключаются переменные и переменные свойства
+      </p>
+    </section>
+
+    <section class="section">
+      <h2 class="section__header">Возвращение нескольких элементов</h2>
 
       <div class="subsection">
-        <h3 class="subsection__header">Возвращение нескольких элементов</h3>
+        <h3 class="subsection__header">Использование массивоподобного синтаксиса</h3
 
-        <div class="subsubsection">
-          <h4 class="subsubsection__header">Использование массивоподобного синтаксиса</h4>
-
-          <pre class="screen screen_pre">
+        <pre class="screen screen_pre">
 class Name_1 extends React.Component {
   render() {
     return (
       [
         &lt;tag_name_1 key="1"&gt;text_1&lt;/tag_name_1&gt;,
         &lt;tag_name_2 key="2"&gt;text_2&lt;/tag_name_2&gt;,
-        &lt;tag_name_2 key="2"&gt;text_3&lt;/tag_name_3&gt;,
+        &lt;tag_name_3 key="3"&gt;text_3&lt;/tag_name_3&gt;,
       ]
     );
   }
 }</pre>
-          <p class="paragraph"><strong>key</strong> позволяет иметь дело с нужными элементами</p>
-        </div>
+        <p class="paragraph"><strong>key</strong> позволяет иметь дело с нужными элементами</p>
+      </div>
 
-        <div class="subsubsection">
-          <h4 class="subsubsection__header">Использование фрагментов React.Fragment</h4>
+      <div class="subsection">
+        <h3 class="subsection__header">Использование фрагментов React.Fragment</h3>
 
-          <pre class="screen screen_pre">
+        <pre class="screen screen_pre">
     // Полное указание:
 
 class Name_1 extends React.Component {
@@ -125,15 +151,16 @@ class Name_1 extends React.Component {
     );
   }
 }</pre>
-        </div>
       </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section__header">Комментарии</h2>
 
       <div class="subsection">
-        <h3 class="subsection__header">Комментарии</h3>
+        <h3 class="subsection__header">Как дочерний элемент элемента</h3>
 
-        <div class="subsubsection">
-          <h4 class="subsubsection__header">Как дочерний элемент элемента</h4>
-            <pre class="screen screen_pre">
+        <pre class="screen screen_pre">
 ReactDOM.render(
   &lt;tag_name_1&gt;
     &lt;tag_name_2&gt;
@@ -143,12 +170,12 @@ ReactDOM.render(
   &lt;/tag_name_1&gt;,
   document.querySelector("css_selector_1")
 );</pre>
-        </div>
       </div>
 
-      <div class="subsubsection">
-        <h4 class="subsubsection__header">Внутри тега элемента</h4>
-          <pre class="screen screen_pre">
+      <div class="subsection">
+        <h3 class="subsection__header">Внутри тега элемента</h3>
+
+        <pre class="screen screen_pre">
 ReactDOM.render(
   &lt;tag_name_1 &gt;
     &lt;tag_name_2&gt;
@@ -162,7 +189,51 @@ ReactDOM.render(
 document.querySelector("css_selector_1")
 );</pre>
       </div>
-    </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section__header">if else</h2>
+
+      <pre class="screen screen_post">
+    // JavaScript:
+....
+  render() {
+    if (user.session)
+      return React.createElement('a', {href: '/logout'}, 'Logout')
+    else
+      return React.createElement('a', {href: '/login'}, 'Login')
+  }
+....
+
+    // JSX:
+
+....
+  render() {
+    if (this.props.user.session)
+      return &lt;a href="/logout"&gt;Logout&lt;/a&gt;
+    else
+      return &lt;a href="/login"&gt;Login&lt;/a&gt;
+  }
+....</pre>
+    </section>
+
+    <section class="section">
+      <h2 class="section__header">Атрибут style</h2>
+
+      <pre class="screen screen_pre">
+&lt;tag_name_2 style={{nameProperty_21: 'value_21', nameProperty_22: 'value_22'}}&gt; .... &lt;/tag_name_2&gt;
+
+    //  или:
+
+let name_1 = {nameProperty_11: 'value_11', nameProperty_12: 'value_12'};
+&lt;tag_name_2 style={name_1}&gt; .... &lt;/tag_name_2&gt;</pre>
+    </section>
+
+    <section class="section">
+      <h2 class="section__header">Логические атрибуты</h2>
+
+      <pre class="screen screen_pre">
+&lt;input nameProperty={value} /&gt;  // значение без кавычек !!!</pre>
     </section>
   </main>
 </body>

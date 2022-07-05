@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Menu</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../../../styles/style.css">
+</head>
+
+<body class="body">
+  <header class="header">
+    <a class="header__button"  href="../../other.html">&uArr;</a>
+    <h1 class="header__title">Меню</h1>
+  </header>
+
+  <main class="main">
+    <section class="section">
+      <h2 class="section__header">Структура проекта и инициализация</h2>
+
+      <pre class="screen screen_post">
+/menu
+  index.html
+  package.json
+  react-dom.js
+  react.js
+  script.js</pre>
+        <pre class="screen screen_pre">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;....&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="root"&gt;&lt;/div&gt;
+    &lt;script type="text/babel" src="../src/index.js"&gt;
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</pre>
+    </section>
+
+    <section class="section">
+      <h2 class="section__header">Построение меню без JSX</h2>
+
+      <p class="p">
+        <strong>script.js</strong> — основной файл приложения — содержит код <strong>ReactDOM.render()</strong>, а также два компонента:
+      </p>
+      <pre class="screen screen_post">
+        // Звготовка сценария Menu. script.js:
+
+class Menu extends React.Component {...}  // Определение Menu
+class Link extends React.Component {...}  // Определение компонента Link, который используется Menu
+
+ReactDOM.render(                          // root.render(....); по новому!!!
+  React.createElement(
+    Menu,
+    Null                                  // Никакие свойства Menu не передаются
+  ),
+  document.getElementById('menu')
+);
+      </pre>
+      <div class="subsection">
+        <h3 class="subsection__header">Компонент Menu</h3>
+
+        <p class="p">
+          Чтобы создать <strong>Menu</strong>, следует расширить <strong>React.Component()</strong>:
+        </p>
+        <pre class="screen screen_post">
+class Menu extends React.Component {....}</pre>
+        <p class="p">
+          Компонент <strong>Menu</strong> рендерит отдельные пункты меню, которые представляют собой теги ссылок. Но прежде чем отрендерить их (ссылки), необходимо определить сами пункты. Они жестко зафиксированы в массиве menus (в более реалистичном приложении эти данные будут получены из модели данных, загружены из хранилища или с сервера):
+        </p>
+        <pre class="screen screen_post">
+render() {
+  let menus = [  // Имитация хранилища данных
+    'Home',
+    'About',
+    'Services',
+    'Portfolio',
+    'Contact us'
+  ];</pre>
+        <p class="p">
+          Теперь нужно вернуть элементы <strong>Link</strong> для меню (все четыре). Вспомните, что <strong>return</strong> может содержать только один элемент. По этой причине четыре ссылки заключаются в контейнер <strong>&lt;div&gt;</strong>. Начало контейнерного элемента <strong>&lt;div&gt;</strong> без атрибутов выглядит так:
+        </p>
+        <pre class="screen screen_post">
+return React.createElement('div',
+null,
+//... Ссылки будут сгенерированы позднее</pre>
+        <p class="p">
+          Генерирование массива элементов React:<br>
+          Метод <strong>map()</strong> хорошо подходит для этой цели, потому что он возвращает массив. Вы можете реализовать <strong>map()</strong> так, чтобы каждый элемент был результатом выражения <strong>React.createElement(Link, {label: v})</strong>, завернутого в <strong>&lt;div&gt;</strong>. В этом выражении <strong>v</strong> — значение элемента массива <strong>menus (Home, About, Services и т. д.)</strong>, а <strong>i</strong> — его индекс <strong>(0, 1, 2, 3 и т. д.)</strong>:
+        </p>
+        <pre class="screen screen_post">
+      menus.map((v, i) => {
+        return React.createElement(
+          'div',
+          {key: i},
+          React.createElement(
+            Link,
+            {label: v}
+          )
+        )
+      }
+    )
+  )
+}})
+        </pre>
+        <p class="p">
+          Каждый элемент списка должен обладать уникальным значением атрибута <strong>key</strong>. Эти значения не обязаны быть уникальными в пределах всего приложения и других компонентов — только внутри списка.
+        </p>
+        <p class="p">
+          <strong>&lt;div&gt;</strong> имеет атрибут <strong>key</strong>, это важно. Он позволяет React оптимизировать рендер списков посредством преобразования их в хеши; как известно, время обращения к хешу меньше, чем к спискам или массиву. Фактически вы создаете несколько компонентов <strong>Link</strong> в массиве, каждый из которых получает свойство <strong>label</strong> со значением из массива <strong>menus</strong>.
+        </p>
+        <pre class="screen screen_post">
+class Menu extends React.Component {
+  render() {
+    let menus = [
+      'Home',
+      'About',
+      'Services',
+      'Portfolio',
+      'Contact us'
+    ];
+
+    return React.createElement(
+      'div',
+      null,
+      menus.map((v, i) => {
+        return React.createElement(
+          'div',
+          {key: i},
+          React.createElement(
+            Link,
+            {label: v}
+          )
+        )
+      })
+    )
+  }
+}</pre>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__header">Компонент Link</h3>
+
+        <p class="p">
+          Вызов <strong>map()</strong> создает компонент <strong>Link</strong> для каждого элемента в массиве menus.<br>
+          В коде рендеринга компонента <strong>Link</strong> пишется выражение для создания URL-адреса. Этот URL-адрес будет использоваться в атрибуте href тега <strong>&lt;a&gt;</strong>. Значение <strong>this.props.label</strong> передается <strong>Link</strong> из <strong>Menu</strong> при создании <strong>Link</strong>. В методе <strong>render()</strong> компонента Menu элементы компонента <strong>Link</strong> создаются в итерации метода <strong>map</strong>, используя <strong>React.createElement(Link, {label: v})</strong>.
+        </p>
+        <p class="p">
+          Свойство <strong>label</strong> используется для построения описательной части (slug) URL(символы нижнего регистра, не включает пробелы):
+        </p>
+        <pre class="screen screen_post">
+class Link extends React.Component {
+  render() {
+    const url='/'
+    + this.props.label
+    .toLowerCase()
+    .trim()
+    .replace(' ', '-')</pre>
+
+        <p class="p">
+          Выражение для URL генерирует следующие URL-адреса:<br>
+          &bull; /home для <strong>Home</strong><br>
+          &bull; /about для <strong>About</strong><br>
+          &bull; /services для <strong>Services</strong><br>
+          &bull; /portfolio для <strong>Portfolio</strong><br>
+          &bull; /contact-us для <strong>Contact us</strong>
+        </p>
+        <p class="p">
+          Теперь можно реализовать пользовательский интерфейс <strong>Link</strong>: возвращаемое значение <strong>render()</strong>. В <strong>return</strong> метода <strong>render</strong> компонента <strong>Link</strong> значение <strong>this.props.label</strong> передается как третий аргумент для <strong>createElement()</strong>. Оно становится частью контента тега <strong>&lt;a&gt;</strong> (текст ссылки). <strong>Link</strong> может отрендерить этот элемент:
+        </p>
+        <pre class="screen screen_post">
+  ....
+    return React.createElement(
+      'a',
+      {href: url},
+      this.props.label
+    );
+  }
+}</pre>
+        <p class="p">
+          Но лучше отделить каждую ссылку элементом <strong>&lt;br&gt;</strong> (перенос строки). А поскольку компонент должен вернуть только один элемент, якорный элемент (<strong>&lt;a&gt;</strong>) и перенос строки (<strong>&lt;br&gt;</strong>) нужно обернуть контейнером (<strong>&lt;div&gt;</strong>). Следовательно, команда <strong>return</strong> в методе <strong>render()</strong> компонента <strong>Link</strong> начинается с <strong>div</strong> без атрибутов:
+        </p>
+        <pre class="screen screen_post">
+....
+return React.createElement(
+  'div',
+  null,
+....</pre>
+        <p class="p">
+          Каждый аргумент <strong>createElement()</strong> после второго (например, третий, четвертый и пятый) будет использоваться как контент (дочерние элементы). Чтобы создать элемент ссылки, передайте его во втором аргументе. А чтобы создать элемент переноса строки после каждой ссылки, передайте элемент <strong>&lt;br&gt;</strong> в четвертом аргументе:
+        </p>
+        <pre class="screen screen_post">
+....
+    return React.createElement(
+      'div',
+      null,
+      React.createElement(
+        'a',
+        {href: url},
+        this.props.label
+      ),
+      React.createElement('br')
+    );
+  }
+})</pre>
+        <p class="p">
+          Функция <strong>url</strong> может быть создана какметод класса или какметод за пределами компонента.
+        </p>
+        <pre class="screen screen_post">
+class Link extends React.Component {
+  render() {
+    const url='/'
+    + this.props.label
+    .toLowerCase()
+    .trim()
+    .replace(' ', '-')
+    return React.createElement(
+      'div',
+      null,
+      React.createElement(
+        'a',
+        {href: url},            // Передает фрагмент URL для задания атрибута href
+        this.props.label
+      ),
+      React.createElement('br')
+    );
+  }
+}</pre>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section__header">Построение меню в JSX</h2>
+
+      <p class="p">
+        Этот проект будет более обширным: в нем появляется папка <strong>node_modules</strong>, файл <strong>package.json</strong> и JSX:
+      </p>
+      <pre class="screen screen_post">
+/menu-jsx
+  /node_modules  // Зависимость Babel для транспиляции JSX в JS
+  index.html
+  package.json
+  react-dom.js
+  react.js
+  script.js
+  script.jsx  // Основной сценарий JSX</pre>
+      <p class="p">
+        Необходимо создать в папке <strong>menu-jsx</strong> файл <strong>package.json</strong> командой <strong>npm init -y</strong>
+      </p>
+      <pre class="screen screen_post">
+        // package.json:
+
+{
+  "name": "menu-jsx",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "build": "./node_modules/.bin/babel script.jsx -o script.js -w"   // Определяет сценарий сборки
+  },                                                                  // с флагом отслеживания изменений
+  "author": "Azat Mardan",
+  "license": "MIT",
+  "babel": {
+    "presets": ["react"]                                    // Настраивает Babel для транспиляции JSX React
+  },
+  "devDependencies": {                                      // Включает Babel CLI и конфигурацию React/JSX
+  "babel-cli": "6.9.0",
+  "babel-preset-react": "6.5.0"
+  }
+}</pre>
+      <p class="p">
+        Теперь рассмотрим файл <strong>script.jsx</strong>. На верхнем уровне он состоит из следующих частей:
+      </p>
+      <pre class="screen screen_post">
+class Menu extends React.Component {
+  render() {
+    ....
+  }
+}
+
+class Link extends React.Component {
+  render() {
+    ....
+  }
+}
+
+ReactDOM.render(&lt;Menu /&gt;, document.getElementById('menu'))</pre>
+
+      <div class="subsection">
+        <h3 class="subsection__header">Переработка компонента Menu</h3>
+
+        <p class="p">
+          Начало <strong>Menu</strong> остается неизменным:
+        </p>
+        <pre class="screen screen_post">
+class Menu extends React.Component {
+  render() {
+    let menus = [
+      'Home',
+      'About',
+      'Services',
+      'Portfolio',
+      'Contact us']
+    return ....
+  }
+}</pre>
+
+        <p class="p">
+          В переработанном коде компонента <strong>Menu</strong> значение <strong>v</strong> должно выводиться как значение атрибута <strong>label</strong> (то есть <strong>label={v}</strong>). Другими словами, значение <strong>v</strong> присваивается как свойство для <strong>label</strong>. Таким образом, строка создания элемента <strong>Link</strong>.
+        </p>
+        <pre class="screen screen_post">
+React.createElement(Link, {label: v});
+
+          // to JSX:
+
+&lt;Link label={v}/&gt;</pre>
+        <p class="p">
+          Свойство <strong>label</strong> второго аргумента (<strong>{label: v}</strong>) становится атрибутом <strong>label={v}</strong>. Значение <strong>v</strong> атрибута объявляется в <strong>{}</strong>, чтобы оно было динамическим (в отличие от жестко фиксированного значения).
+        </p>
+        <p class="p">
+          React также необходим атрибут <strong>key={i}</strong> для более эффективного обращения к элементам списка.
+        </p>
+        <pre class="screen screen_post">
+class Menu extends React.Component {
+  render() {
+    let menus = [
+      'Home',
+      'About',
+      'Services',
+      'Portfolio',
+      'Contact us'
+    ];
+
+    return (
+      &lt;div&gt;
+        {menus.map((v, i) =&gt; {
+          return &lt;div key={i}&gt;&lt;Link label={v}/&gt;&lt;/div&gt;
+        })}
+      &lt;/div&gt;
+    );
+  }
+}</pre>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__header">Переработка компонента Link</h3>
+
+        <p class="p">
+          Теги <strong>&lt;a&gt;</strong> и <strong>&lt;br&gt;</strong> в компоненте <strong>Link</strong> также преобразуются из исходного вида:
+        </p>
+        <pre class="screen screen_post">
+....
+return React.createElement(
+  'div',
+  null,
+
+  React.createElement(
+    'a',
+    {href: url},
+    this.props.label
+  ),
+
+  React.createElement('br')
+);
+....
+
+      // to JSX:
+
+....
+return (
+  &lt;div&gt;
+    &lt;a href={url}&gt;
+      {this.props.label}
+    &lt;/a&gt;
+    &lt;br/&gt;
+  &lt;/div&gt;
+....</pre>
+          <pre class="screen screen_post">
+class Link extends React.Component {
+  render() {
+    const url='/' 
+    + this.props.label
+    .toLowerCase()
+    .trim()
+    .replace(' ', '-');
+
+    return (
+      &lt;div&gt;
+        &lt;a href={url}&gt;
+          {this.props.label}
+        &lt;/a&gt;
+        &lt;br/&gt;
+      &lt;/div&gt;
+    );
+  }
+}</pre>
+      </div>
+    </section>
+  </main>
+</body>

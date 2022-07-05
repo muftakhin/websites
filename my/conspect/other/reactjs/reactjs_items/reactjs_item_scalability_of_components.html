@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Scalability of components</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../../../styles/style.css">
+</head>
+
+<body class="body">
+  <header class="header">
+    <a class="header__button"  href="../other.html">&uArr;</a>
+    <h1 class="header__title">Масштабируемость компонентов</h1>
+  </header>
+
+  <main class="main">
+    <section class="section">
+      <h2 class="section__header">Свойства по умолчанию в компонентах</h2>
+
+      <p class="p">
+        React предоставляет возможность определения значений по умолчанию для свойств — статический атрибут <strong>defaultProps</strong>.
+      </p>
+      <p class="p">
+        Главное преимущество <strong>defaultProps</strong> заключается в том, что при отсутствии свойства будет сгенерировано значение по умолчанию. Чтобы задать значение свойства по умолчанию для класса компонента, определите <strong>defaultProps</strong>. Можно добавить статический атрибут класса (не атрибут экземпляра, который не сработает, — атрибуты экземпляров задаются в <strong>constructor()</strong>):
+      </p>
+      <pre class="screen screen_post">
+class Datepicker extends React.Component {
+  ....
+}
+
+Datepicker.defaultProps = {
+  currentDate: Date(),
+  rows: 4,
+  locale: 'US'
+};</pre>
+
+      <p class="p">
+        Надпись кнопки определяется свойством <strong>buttonLabel</strong>, которое используется в атрибуте <strong>return</strong> метода <strong>render()</strong>. Это свойство всегда должно содержать <strong>Submit</strong>, если значение не задано. Для этого вы реализуете статический атрибут класса <strong>defaultProps</strong>, который представляет собой объект со свойством <strong>buttonLabel</strong> и значением по умолчанию:
+      </p>
+      <pre class="screen screen_post">
+class Button extends React.Component {
+  render() {
+    return (
+      &lt;button className="btn" &gt;{this.props.buttonLabel}&lt;/button&gt;
+    );
+  }
+}
+
+Button.defaultProps = {
+  buttonLabel: 'Submit'
+};</pre>
+
+      <pre class="screen screen_post">
+    // Родительский компонент Content рендерит четыре кнопки. У трех из этих четырех кнопок отсутствуют свойства:
+
+class Content extends React.Component {
+  render() {
+    return (
+      &lt;div&gt;
+        &lt;Button buttonLabel="Start"/&gt;
+        &lt;Button /&gt;
+        &lt;Button /&gt;
+        &lt;Button /&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+
+// На первой кнопке выводится надпись Start, а на остальных кнопках — надпись Submit</pre>
+      <p class="p">
+        Определять значения свойств по умолчанию стоит почти всегда, потому что они делают компоненты более устойчивыми к ошибкам. Компоненты становятся умнее, потому что они начинают обладать минимальным оформлением и поведением, даже если необходимые данные не были переданы.<br>
+        Определение значения по умолчанию означает, что не придется объявлять старое значение снова и снова. Если используется одно значение свойства в большинстве случаев, но при этом есть желание оставить возможность изменить это значение (переопределить значение по умолчанию), можно использовать <strong>defaultProps</strong>.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2 class="section__header">Типы свойств React и проверка данных</h2>
+
+      <p class="p">
+        Можно задать типы свойств, которые должны использоваться с классами компонентов React.js. Для этой цели используется статический атрибут <strong>propTypes</strong>. Он не обеспечивает форсированной проверки типов значений свойств, а всего лишь выдает предупреждение. При нахождении в режиме разработки(используя не минифицированную версию), при не совпадении типа, выдаётся предупреждающее сообщение в консоли, и в процессе эксплуатации приложения
+        ничего не будет сделано для того, чтобы помешать использованию неправильного типа. Фактически React.js подавляет это предупреждение в режиме эксплуатации. Таким образом, <strong>propTypes</strong> — в основном вспомогательная функция, которая предупредит вас о несоответствии типов данных на стадии разработки.
+      </p>
+      <p class="p">
+        Определения типов предоставляются отдельным пакетом <strong>prop-types</strong>.
+      </p>
+      <pre class="screen screen_post">
+class Datepicker extends React.Component {
+  ....
+}
+
+Datepicker.propTypes = {
+  currentDate: PropTypes.string,
+  rows: PropTypes.number,
+  locale: PropTypes.oneOf(['US', 'CA', 'MX', 'EU'])
+}</pre>
+      <p class="p">
+        Для проверки типов свойств используйте свойство <strong>propTypes</strong> с объектом, содержащим свойства как ключи, а типы как значения.
+      </p>
+      <p class="p">
+        Типы React.js содержащиеся в объекте <strong>PropTypes</strong>:<br>
+        &bull; <strong>PropTypes.string</strong><br>
+        &bull; <strong>PropTypes.number</strong><br>
+        &bull; <strong>PropTypes.bool</strong><br>
+        &bull; <strong>PropTypes.object</strong><br>
+        &bull; <strong>PropTypes.array</strong><br>
+        &bull; <strong>PropTypes.func</strong><br>
+        &bull; <strong>PropTypes.shape</strong><br>
+        &bull; <strong>PropTypes.any.isRequired</strong><br>
+        &bull; <strong>PropTypes.objectOf(PropTypes.number)</strong><br>
+        &bull; <strong>PropTypes.arrayOf(PropTypes.number)</strong><br>
+        &bull; <strong>PropTypes.node</strong><br>
+        &bull; <strong>PropTypes.instanceOf(Message)</strong><br>
+        &bull; <strong>PropTypes.element</strong><br>
+        &bull; <strong>PropTypes.oneOfType([PropTypes.number, ...])</strong>
+      </p>
+
+      <p class="p">
+        Для демонстрации расширим пример <strong>defaultProps</strong>, добавив несколько типов свойств в дополнение к значениям свойств по умолчанию.
+      </p>
+      <pre class="screen screen_post">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+  &lt;script src="js/react.js"&gt;&lt;/script&gt;
+  &lt;script src="js/prop-types.js"&gt;&lt;/script&gt;
+  &lt;script src="js/react-dom.js"&gt;&lt;/script&gt;
+  &lt;link href="css/bootstrap.css" type="text/css" rel="stylesheet"/&gt;
+  &lt;link href="css/style.css" type="text/css" rel="stylesheet"/&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+  &lt;div id="content" class="container"&gt;&lt;/div&gt;
+  &lt;script src="js/button.js"&gt;&lt;/script&gt;
+  &lt;script src="js/content.js"&gt;&lt;/script&gt;
+  &lt;script src="js/script.js"&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</pre>
+      <p class="p">
+        Определим класс <strong>Button</strong> с необязательным текстом строкового типа. Чтобы реализовать его, следует определить статический атрибут класса (свойство этого класса) <strong>propTypes</strong> c ключом <strong>title</strong> и значением <strong>PropTypes.string</strong>.
+      </p>
+      <pre class="screen screen_post">
+    // button.js:
+
+Button.propTypes = {
+  title: PropTypes.string;
+}</pre>
+      <pre class="screen screen_post">
+Button.propTypes = {
+  title: PropTypes.string.isRequired;  // Свойство объявляется обязательным
+}</pre>
+      <p class="p">
+        Кнопка также требует определения свойства <strong>handler</strong>, значением которого является функция:
+      </p>
+      <pre class="screen screen_post">
+Button.propTypes = {
+  handler: PropTypes.func.isRequired;
+}</pre>
+      <p class="p">
+        Здесь удобно то, что вы можете определить собственную процедуру проверки данных. Чтобы реализовать нестандартную проверку, достаточно создать выражение, которое возвращает экземпляр <strong>Error</strong>, а затем использовать это выражение в <strong>propTypes: {..}</strong> как значение свойства.
+      </p>
+      <pre class="screen screen_post">
+    // Проверяем свойство email с использованием регулярного выражения из emailRegularExpression:
+
+....
+propTypes = {
+  email: function(props, propName, componentName) {
+    var emailRegularExpression =
+    /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.
+    [a-z]{2})?)$/i;
+
+    if (!emailRegularExpression.test(props[propName])) {
+      return new Error('Email validation failed!');
+    }
+  }
+}
+....</pre>
+      <p class="p">
+        Компонент <strong>Button</strong> будет вызываться со свойством <strong>title</strong> (строка) и без него, а также со свойством <strong>handler</strong> (необходимая функция).
+      </p>
+      <p class="p">
+        Типы свойств помогают проверить, что <strong>hander</strong> является функцией, <strong>title</strong> — строкой, а <strong>email</strong> соответствует переданному регулярному выражению:
+      </p>
+      <pre class="screen screen_post">
+class Button extends React.Component {
+  render() {
+    return (
+      &lt;button className="btn"&gt;{this.props.buttonLabel}&lt;/button&gt;
+    );
+  }
+}
+
+Button.defaultProps = {
+  buttonLabel: 'Submit'
+};
+
+Button.propTypes = {
+  handler: PropTypes.func.isRequired,  // Требует свойства handler со значением функции
+  title: PropTypes.string,             // Определяет необязательное свойство title со строковым значением
+  email(props, propName, componentName) {  // Определяет проверку адреса электронной почты по регулярному выражению
+    let emailRegularExpression =
+    /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.
+    [a-z]{2})?)$/i;
+
+    if (!emailRegularExpression.test(props[propName])) {
+      return new Error('Email validation failed!');
+    }
+  }
+}</pre>
+      <p class="p">
+        Теперь реализуем родительский компонент <strong>Content</strong>, который рендерит шесть кнопок для тестирования предупреждений, генерируемых для типов свойств.
+      </p>
+      <pre class="screen screen_post">
+class Content extends React.Component {
+  render() {
+    let number = 1;
+
+    return (
+      &lt;div&gt;
+        &lt;Button buttonLabel="Start"/&gt;
+        &lt;Button /&gt;                           // Выдает предупреждение о том, что обработчик отсутствует
+        &lt;Button title={number}/&gt;             // Выдает предупреждение о том, что свойство title должно быть строкой
+        &lt;Button /&gt;
+        &lt;Button email="not-a-valid-email"/&gt;  // Выдает предупреждение о неправильном формате электронной почты
+        &lt;Button email="hi@azat.co"/&gt;
+      &lt;/div&gt;
+    );
+  }
+}</pre>
+      <p class="p">
+        При выполнении этого кода в консоли выводятся три предупреждения.<br>
+        Первое предупреждение относится к функции <strong>handler</strong>, которая обязательно должна быть задана и которая была опущена для нескольких кнопок:<br>
+        <strong>Warning: Failed propType: Required prop `handler` was not specified in `Button`. Check the render method of `Content`.</strong>
+      </p>
+      <p class="p">
+        Во втором предупреждении говорится о неверном формате электронной почты для четвертой кнопки:<br>
+        <strong>Warning: Failed propType: Email validation failed! Check the render method of `Content`.</strong>
+      </p>
+      <p class="p">
+        Третье предупреждение относится к неверному типу значения <strong>title</strong>, которое должно быть строкой (я передал число для одной кнопки):<br>
+        <strong>Warning: Failed propType: Invalid prop `title` of type `number` supplied to `Button`, expected `string`. Check the render method of `Content`.</strong>
+      </p>
+      <p class="p">
+        <strong>handler</strong> отсутствует у нескольких кнопок, но вы видите только одно предупреждение. React предупреждает о каждом свойстве только один раз на каждый вызов <strong>render()</strong> для <strong>Content</strong>.
+      </p>
+      <p class="p">
+        React сообщает, какой родительский компонент следует проверить (<strong>Content</strong> в данном примере).
+      </p>
+    </section>
+
+    <section class="section">
+      <h2 class="section__header">Рендеринг дочерних элементов</h2>
+
+      <p class="p">
+        поручено создать компонент, обладающий достаточной универсальностью для использования любых переданных
+ему дочерних элементов. Это компонент сообщения в блоге Content, который может
+состоять из заголовка и абзаца текста:
+      </p>
+      <pre class="screen screen_post">
+&lt;Content&gt;
+  &lt;h1&gt;React.js&lt;/h1&gt;
+  &lt;p&gt;Rocks&lt;/p&gt;
+&lt;/Content&gt;</pre>
+      <p class="p">
+        Другое сообщение в блоге может содержать изображение:
+      </p>
+      <pre class="screen screen_post">
+&lt;Content&gt;
+  &lt;img src="images/azat.jpg" width="100"/&gt;
+&lt;/Content&gt;</pre>
+      <p class="p">
+        Свойство <strong>children</strong> предоставляет простую возможность для ренедера всех дочерних элементов конструкцией <strong>{this.props.children}</strong>.<br>
+        Можно добавить <strong>&lt;div&gt;</strong> и передать с дочерними элементами:
+      </p>
+      <pre class="screen screen_post">
+class Content extends React.Component {
+  render() {
+    return (
+      &lt;div className="content"&gt;
+        {this.props.children}
+      &lt;/div&gt;
+    );
+  }
+}</pre>
+      <p class="p">
+        Родитель <strong>Content</strong> содержит дочерние элементы <strong>&lt;h1&gt;</strong> и <strong>&lt;p&gt;</strong>:
+      </p>
+      <pre class="screen screen_post">
+ReactDOM.render(
+  &lt;div&gt;
+    &lt;Content&gt;
+      &lt;h1&gt;React&lt;/h1&gt;
+      &lt;p&gt;Rocks&lt;/p&gt;
+    &lt;/Content&gt;
+  &lt;/div&gt;,
+  document.getElementById('content')
+)</pre>
+      <p class="p">
+        К такому компоненту, как <strong>Content</strong>, можно добавить еще много всего, например новые классы для стилевого оформления и макеты, и даже использовать свойства и интерактивность с событиями и состояниями. Благодаря <strong>this.props.children</strong> вы можете создавать компоненты, обладающие гибкостью, мощью и универсальностью.
+      </p>
+      <p class="p">
+        Допустим, помимо текста и графики необходимо вывести ссылку или кнопку.<br>
+        Компонент <strong>Content</strong> по-прежнему останется оберткой-<strong>&lt;div&gt;</strong> с классом CSS <strong>content</strong> (свойство <strong>className</strong>), но теперь дочерних элементов будет больше. Преимущество такого решения в том, что <strong>Content</strong> может не располагать информацией о своих дочерних элементах — вам не нужно вносить изменения в класс <strong>Content</strong>.
+      </p>
+      <pre class="screen screen_post">
+ReactDOM.render(
+  &lt;div&gt;
+    &lt;Content&gt;
+      &lt;h1&gt;React&lt;/h1&gt;
+      &lt;p&gt;Rocks&lt;/p&gt;
+    &lt;/Content&gt;
+    &lt;Content&gt;
+      &lt;img src="images/azat.jpg" width="100"/&gt;
+    &lt;/Content&gt;
+    &lt;Content&gt;
+      &lt;a href="http://react.rocks"&gt;http://react.rocks&lt;/a&gt;
+    &lt;/Content&gt;
+    &lt;Content&gt;
+      &lt;a className="btn btn-danger" href="http://react.rocks"&gt;http://react.rocks&lt;/a&gt;
+    &lt;/Content&gt;
+  &lt;/div&gt;,
+  document.getElementById('content')
+)</pre>
+      <p class="p">
+        В свойстве <strong>children</strong> интересно еще и то, что оно может быть массивом при наличии нескольких дочерних элементов. Для обращения к отдельным элементам используется запись следующего вида:
+      </p>
+      <pre class="screen screen_post">
+{this.props.children[0]};
+{this.props.children[1]};</pre>
+      <p class="p">
+        Нужно быть осторожным с проверкой дочерних элементов. Если дочерний элемент только один, <strong>this.props.children</strong> не является массивом. Если использовать <strong>this.props.children.length</strong>, а единственный дочерний узел является строкой, это может привести к ошибкам, потому что <strong>length</strong> является действительным свойством для строк. Вместо этого для получения точного количества дочерних элементов следует использовать <strong>React.Children.count(this.props.children)</strong>.
+      </p>
+      <p class="p">
+        Кроме <strong>React.Children.count</strong>, в React также существуют другие вспомогательные методы. СамыЕ интересные из них:<br>
+        &bull; <strong>React.Children.map()</strong><br>
+        &bull; <strong>React.Children.forEach()</strong><br>
+        &bull; <strong>React.Children.toArray()</strong>
+      </p>
+    </section>
+
+    <section class="section">
+      <h2 class="section__header">Компонентов высшего порядка (HOC, Higher-Order Component)</h2>
+
+      <p class="p">
+        HOC позволяет расширить компонент дополнительной логикой.<br>
+        HOC позволяют повторно использовать код.
+      </p>
+      <p class="p">
+        HOC представляют собой классы компонентов React, которые рендерят исходные классы, попутно добавляя к ним некую дополнительную функциональность.<br>
+        HOC определяются достаточно просто, потому что это всего лишь функции.<br>
+        Для их объявления используется «стрелочный» синтаксис:
+      </p>
+      <pre class="screen screen_pre">
+const Name_1 = (Component) => {
+  ....
+};</pre>
+      <p class="p">
+        Нужен текст на кнопке и обработчик события щелчка. Зададим надпись и определим метод <strong>handleClick()</strong>.
+      </p>
+      <pre class="screen screen_post">
+const LoadWebsite = (Component) => {
+  class _LoadWebsite extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {label: 'Run'};
+      this.state.handleClick = this.handleClick.bind(this);  // В этом методе обозначение «this» всегда должно
+    }                                                        // относиться к экземпляру компонента
+
+    getUrl() {    // Может быть строковой константой, потому что в экземпляре «this» нет необходимости, но этот
+      return 'https://facebook.github.io/react/docs/top-level-api.html'  // подход делает компонент автономным
+    }
+
+    handleClick(event) {
+      var iframe = document.getElementById('frame').src =this.getUrl();  // Загружает веб-сайт React в iframe
+    }
+
+    componentDidMount() {
+      console.log(ReactDOM.findDOMNode(this));
+    }
+
+    render() {
+      console.log(this.state);
+
+      return (
+        &lt;Component {...this.state} {...this.props} /&gt;                    // Передает state и props как свойства
+      );                                                                 // с использованием расширения
+    }
+  }
+
+  _LoadWebsite.displayName = 'EnhancedComponent';                        // Определяет отображаемое имя для HOC
+  return _LoadWebsite;
+}</pre>
+      <div class="subsection">
+        <h3 class="subsection__header">Использование displayName: как отличить дочерние компоненты от родителя</h3>
+
+        <p class="p">
+          По умолчанию JSX использует имя класса как имя экземпляра (элемента). Таким образом, элементам, созданным с HOC из этого примера, присваиваются имена <strong>_LoadWebsite</strong>.<br>
+          Чтобы изменить это имя, воспользуйтесь статическим атрибутом <strong>displayName</strong>.<br>
+          </strong>displayName</strong> необходимо для того, чтобы задать имена элементов React там, где они должны отличаться от имени класса компонента.
+        </p>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__header">Использование оператора расширения: передача всех атрибутов</h3>
+
+        <p class="p">
+          Оператор расширения позволяет передать все атрибуты объекта (obj) как свойства при использовании в элементе:
+        </p>
+        <pre class="screen screen_post">
+&lt;Component {...obj}/&gt;</pre>
+        <p class="p">
+          В React и JSX можно использовать несколько операторов расширения или смешать их с традиционными объявлениями свойств ключ=значение. Можно передать все состояния и все свойства из текущего класса, а также <strong>className</strong> новому элементу <strong>Component</strong>:
+        </p>
+        <pre class="screen screen_post">
+&lt;Component {...this.state} {...this.props} className="main" /&gt;</pre>
+        <p class="p">
+          Пример с дочерними элементами. В этой ситуации использование оператора расширения с <strong>this.props</strong> передаст все свойства <strong>DoneLink</strong> элементу ссылки <strong>&lt;a&gt;</strong>:
+        </p>
+        <pre class="screen screen_post">
+class DoneLink extends React.Component {
+  render() {
+    return (
+      &lt;a {...this.props}&gt;                     // Получает любые свойства, переданные DoneLink, и копирует их в &lt;a&gt;
+        &lt;span class="glyphicons glyphicons-check"&gt;&lt;/span&gt;        // Использует Glyphicons (http://glyphicons.com)
+        {this.props.children}                                    // для вывода значка пометки
+      &lt;/a&gt;
+    );
+  }
+}
+
+ReactDOM.render(
+  &lt;DoneLink href="/checked.html"&gt;                               // Передает значение для href
+    Click here!
+  &lt;/DoneLink&gt;,
+  document.getElementById('done-link')
+)</pre>
+        <p class="p">
+          В HOC все свойства и состояния передаются исходному компоненту при его рендере. При не нужно вручную добавлять свойства или удалять их из <strong>render()</strong> каждый раз, когда необходимо передать что-то новое или прекратить передачу существующих данных из Content, где создаём экземпляр <strong>LoadWebsite/EnhancedComponent</strong> для каждого исходного элемента.
+        </p>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__header">Использование компонентов высшего порядка</h3>
+
+        <p class="p">
+          Вернемся к <strong>Content</strong> и файлу <strong>content.jsx</strong>, где использовался компонент <strong>LoadWebsite</strong>. После определения HOC необходимо создать компоненты, использующие его, в <strong>content.jsx</strong>:
+        </p>
+        <pre class="screen screen_post">
+const EnhancedButton = LoadWebsite(Button);
+const EnhancedLink = LoadWebsite(Link);
+const EnhancedLogo = LoadWebsite(Logo);</pre>
+        <p class="p">
+          Затем мы реализуем три компонента — <strong>Button</strong>, <strong>Link</strong> и <strong>Logo</strong> — для повторного использования кода в паттерне HOC. Компонент <strong>Button</strong> создается через <strong>LoadWebsite</strong> и в результате волшебным образом наследует его свойства (<strong>this.props.handleClick</strong> и <strong>this.props.label</strong>):
+        </p>
+        <pre class="screen screen_post">
+class Button extends React.Component {
+  render() {
+    return (
+      &lt;button
+      className="btn btn-primary"
+      onClick={this.props.handleClick}&gt;
+        {this.props.label}
+      &lt;/button&gt;
+    );
+  }
+}</pre>
+        <p class="p">
+          Компонент <strong>Link</strong> создается HOC, что позволяет вам использовать свойства <strong>handleClick</strong> и <strong>label</strong>:
+        </p>
+        <pre class="screen screen_post">
+class Link extends React.Component {
+  render() {
+    return (
+      &lt;a onClick={this.props.handleClick} href="#"&gt;
+        {this.props.label}
+      &lt;/a&gt;
+    );
+  }
+}</pre>
+        <p class="p">
+          Компонент <strong>Logo</strong> использует те же свойства. Да, всё верно: они оказались здесь, потому что вы использовали оператор расширения при создании <strong>Logo</strong> в <strong>content.jsx</strong>:
+        </p>
+        <pre class="screen screen_post">
+class Logo extends React.Component {
+  render() {
+    return (
+      <img onClick={this.props.handleClick} width="40" src="logo.png" href="#"/>
+    );
+  }
+}</pre>
+        <p class="p">
+          Три компонента рендерятся по-разному, но все они получают <strong>this.props.handleClick</strong> и <strong>this.props.label</strong> из <strong>LoadWebsite</strong>:
+        </p>
+        <pre class="screen screen_post">
+const EnhancedButton = LoadWebsite(Button);
+const EnhancedLink = LoadWebsite(Link);
+const EnhancedLogo = LoadWebsite(Logo);
+
+class Content extends React.Component {
+  render() {
+    return (
+      &lt;div&gt; 
+        &lt;EnhancedButton /&gt; 
+        &lt;br /&gt; 
+        &lt;br /&gt; 
+        &lt;EnhancedLink /&gt; 
+        &lt;br /&gt; 
+        &lt;br /&gt; 
+        &lt;EnhancedLogo /&gt; 
+        &lt;br /&gt; 
+        &lt;br /&gt; 
+        &lt;iframe id="frame" src="" width="600" height="500"/&gt;    // Объявляет элемент iframe, в котором
+      &lt;/div&gt;                                                    // метод click загружает сайт React
+    );
+  }
+}</pre>
+        <p class="p">
+          Наконец, выполнение рендер <strong>Content</strong> в последних строках <strong>script.jsx</strong>:
+        </p>
+        <pre class="screen screen_post">
+ReactDOM.render(
+  &lt;Content /&gt;,
+  document.getElementById('content')
+);</pre>
+        <p class="p">
+          На странице находиться три элемента (<strong>Button</strong>, <strong>Link</strong> и <strong>Logo</strong>). Элементы обладают одинаковой функциональностью: они загружают <strong>IFrame</strong> по щелчку
+        </p>
+        <p class="p">
+          Компоненты HOC отлично подходят для абстрагирования кода. Вы можете использовать их для написания собственных мини-модулей, которые представляют собой компоненты React, пригодные для повторного использования.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section__header">Презентационные и контейнерные компоненты</h2>
+
+      <p class="p">
+        Презентационные компоненты обычно только добавляют структуру в DOM и стилевое оформление. Они получают свойства, но часто не имеют собственных состояний. В большинстве случаев для презентационных компонентов без состояния можно использовать функции.
+      </p>
+      <pre class="screen screen_post">
+        // Презентационный компонент в стиле ксласса:
+
+class Logo extends React.Component {
+  render() {
+    return (
+      &lt;img onClick={this.props.handleClick} width="40" src="logo.png" href="#"/&gt;
+    );
+  }
+}
+
+      // или в функциональном стиле:
+
+const Logo = (props)=&gt;{
+  return &lt;img onClick={props.handleClick} width="40" src="logo.png" href="#"/&gt;
+}</pre>
+      <p class="p">
+        Презентационные компоненты часто используют this.props.children в качестве обертки для стилевого оформления дочерних компонентов. С другой стороны, они редко имеют дело с данными и состояниями; это задача контейнерных компонентов.
+      </p>
+      <p class="p">
+        Контейнерные компоненты часто генерируются компонентами HOC для внедрения источников данных. Как презентационные, так и контейнерные компоненты
+        могут содержать другие презентационные или контейнерные компоненты.
+      </p>
+    </section>
+  </main>
+</body>

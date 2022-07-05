@@ -15,6 +15,110 @@
 
   <main class="main">
     <section class="section">
+      <h2 class="section__header">React Router</h2>
+
+      <p class="p">
+        JSX используется для создания объекта <strong>Route</strong> для каждой страницы, а также для вложения его в другой объект <strong>Route</strong> или <strong>Router</strong>. Объект <strong>Router</strong> находится в функции <strong>ReactDOM.render()</strong>, как и любой другой элемент React:
+      </p>
+      <pre class="screen screen_post">
+ReactDOM.render((
+  &lt;Router ...&gt;
+    &lt;Route ...&gt;
+      &lt;Route ../&gt;
+      ....
+    &lt;/Route&gt;
+    &lt;Route .../&gt;
+  &lt;/Router&gt;
+), document.getElementById('content'))</pre>
+      <p class="p">
+        Каждый объект <strong>Route</strong> содержит как минимум два свойства: <strong>path</strong> (шаблон URL, совпадение которого активизирует маршрут) и <strong>component</strong> (выборка и рендеринг необходимого компонента). Для <strong>Route</strong> такжеможно определить другие свойства, например обработчики событий и данные. Они будут доступны в свойстве <strong>props.route</strong> этого компонента <strong>Route</strong>. Так происходит передача данных компонентам маршрутов.
+      </p>
+      <p class="p">
+        Для демонстрации рассмотрим пример SPA-приложения с маршрутизацией по нескольким страницам: <strong>About</strong>, <strong>Posts</strong> (некое подобие блога), <strong>Post</strong>, <strong>Contact Us</strong> и <strong>Login</strong>. Эти страницы имеют разные пути и рендерятся разными компонентами:<br>
+        &bull; <strong>About</strong> - <strong>/about</strong><br>
+        &bull; <strong>Posts</strong> - <strong>/posts</strong><br>
+        &bull; <strong>Post</strong> - <strong>/post</strong><br>
+        &bull; <strong>Contact</strong> - <strong>/contact</strong>
+      </p>
+
+      <p class="p">
+        Страницы <strong>About</strong>, <strong>Posts</strong>, <strong>Post</strong> и <strong>Contact Us</strong> имеют одинаковый макет (компонент <strong>Content</strong>) и осуществляют рендер внутри него. Начальная (не финальная!) версия кода с использованием <strong>React Router</strong> выглядит так:
+      </p>
+      <pre class="screen screen_post">
+&lt;Router&gt;
+  &lt;Route path="/" component={Content} &gt;
+  &lt;Route path="/about" component={About} /&gt;
+  &lt;Route path="/about/company" .../&gt;
+  &lt;Route path="/about/author" .../&gt;
+  &lt;Route path="/posts" component={Posts} /&gt;
+  &lt;Route path="/posts/:id" component={Post}/&gt;
+  &lt;Route path="/contact" component={Contact} /&gt;
+  &lt;/Route&gt;
+&lt;/Router&gt;
+      </pre>
+
+      <p class="p">
+        Маршруты могут вкладываться для повторного использованиямакетовиз родителей, а их URL-адресамогут бытьнезависимымиот вложения. Например, возможно иметь вложенный компонент <strong>About</strong> с URL-адресом <strong>/about</strong>, хотя маршрут «родительского» макета <strong>Content</strong> использует <strong>/app</strong>. Компонент <strong>About</strong> также будет содержать макет <strong>Content</strong> (реализованный посредством <strong>this.props.children</strong> в <strong>Content</strong>):
+      </p>
+      <pre class="screen screen_post">
+&lt;Router&gt;
+  &lt;Route path="/app" component={Content} &gt;
+  &lt;Route path="/about" component={About} /&gt;
+....</pre>
+      <p class="p">
+        <strong>About</strong> не требуется вложенный URL-адрес <strong>/app/about</strong>, если только вы не захотите, чтобы это было именно так. Тем самым достигается большая гибкость в отношении путей и макетов.
+      </p>
+
+      <p class="p">
+        Меню и заголовок будут отрендерены из <strong>Content</strong> и повторно использованы на страницах <strong>About</strong>, <strong>Posts</strong>, <strong>Post</strong> и <strong>Contact Us</strong>.
+      </p>
+
+      <div class="subsection">
+        <h3 class="subsection__header">Стиль JSX в React Router</h3>
+
+        <pre class="screen screen_post">
+const ReactRouter = require('react-router')
+  let { Router, Route, Link } = ReactRouter;
+
+  ReactDOM.render((
+    &lt;Router history={hashHistory}&gt;
+      &lt;Route path="/" component={Content} &gt;
+       &lt;Route path="/about" component={About} /&gt;
+       &lt;Route path="/posts" component={Posts} posts={posts}/&gt;
+       &lt;Route path="/posts/:id" component={Post} posts={posts}/&gt;
+       &lt;Route path="/contact" component={Contact} /&gt;
+      &lt;/Route&gt;
+      &lt;Route path="/login" component={Login}/&gt;
+    &lt;/Router&gt; 
+  ), document.getElementById('content'))</pre>
+        <p class="p">
+          Последний маршрут <strong>Login</strong> существует вне маршрута <strong>Content</strong> и не отображает меню (которое находится в <strong>Content</strong>). Все, чему не нужен общий интерфейс, предоставляемый Content,можно вывести за пределы маршрута <strong>Content</strong>. Это поведение определяется иерархией вложенных маршрутов.
+        </p>
+        <p class="p">
+          Компонент <strong>Post</strong> рендерит информацию сообщения в блоге на основании описательной части (часть URL — можно считать, что это идентификатор сообщения), которую он читает из URL (например, <strong>/posts/http2</strong>) с использованием переменной <strong>props.params.id</strong>. Включая в путь специальный синтаксис с двоеточием, вы приказываете маршрутизатору разобрать это значение и использовать для заполнения <strong>props.params</strong>.
+        </p>
+      </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section class="section">
+      <h2 class="section__header">OLD</h2>
       <pre class="screen screen_pre">
 npm install react-router-dom --save</pre>
     </section>
