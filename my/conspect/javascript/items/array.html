@@ -89,6 +89,15 @@ name_1.[length - 1];  //-&gt; значение последнего
             </div>
 
             <div class="subsection">
+                <h3 class="subsection__header">Копирование массива</h3>
+
+                <pre class="screen screen_pre">
+let copyArray = srcArray.slice();</pre>
+                <pre class="screen screen_pre">
+let copyArray = [...srcArray];</pre>
+            </div>
+
+            <div class="subsection">
                 <h3 class="subsection__header">Добавление элементов .push() и .unshift()</h3>
 
                 <p class="paragraph">Добавление элемента в конец массива:</p>
@@ -110,7 +119,7 @@ name_1.property_11 = value 11;</pre>
             </div>
 
             <div class="subsection">
-                <h3 class="subsection__header">Удаление элементов</h3>
+                <h3 class="subsection__header">Удаление элементов .pop() и .shift()</h3>
 
                 <p class="paragraph">Удаление элемента из конца массива</p>
                 <pre class="screen screen_pre">
@@ -171,20 +180,20 @@ let name_2 = Math.floor(Math.random() * name_1.length);</pre>
 	            <h3 class="subsection__header">.map()</h3>
 
 	            <pre class="screen screen_pre">
-let name_2 = name_1.map(function_1);</pre>
+let name_2 = name_1.map( function_1 );</pre>
 				<p class="paragraph">
 					Метод <strong>.map()</strong> получает в качестве аргумента и применяет функцию обратного вызова <strong>function_1</strong> последовательно к каждому элементу массива <strong>name_1</strong> и создаёт из возвращаемых результатов новый массив <strong>name_2</strong>, не внося изменения в массив <strong>name_1</strong> 
 				</p>
 
                 <pre class="screen screen_pre">
-let name_2 = name_1.map(function_1, name_3, name_4);</pre>
+let name_2 = name_1.map( function_1, name_3, name_4 );</pre>
                 <p class="paragraph">
                     <strong>name_3</strong> - индекс текущего элемента массива<br>
                     <strong>name_4</strong> - массив, для которого вызывается map
                 </p>
 
                 <pre class="screen screen_pre">
-let name_2 = name_1.map((item, index, array) => { action_1; });</pre>
+let name_2 = name_1.map( ( item, index, array ) => { action_1; } );</pre>
                 <p class="paragraph"><strong>.map()</strong> принимает 3 параметра: значение элемента, его индекс и сам массив</p>
             </div>
 
@@ -192,7 +201,7 @@ let name_2 = name_1.map((item, index, array) => { action_1; });</pre>
 	            <h3 class="subsection__header">.filter()</h3>
 
 	            <pre class="screen screen_pre">
-let name_2 = name_1.filter(function_1);</pre>
+let name_2 = name_1.filter( function_1 );</pre>
 				<p class="paragraph">
 					Метод <strong>.filter()</strong> получает в качестве аргумента и применяет функцию обратного вызова <strong>function_1</strong> последовательно к каждому элементу массива <strong>name_1</strong> и создаёт из элементов для которых возвращаемый результат равен <strong>true</strong> новый массив <strong>name_2</strong>, не внося изменения в массив <strong>name_1</strong> 
 				</p>
@@ -205,7 +214,7 @@ let name_2 = name_1.filter(function_1);</pre>
                 </p>
 
                 <pre class="screen screen_pre">
-let name_2 = name_1.filter(function_1, name_3, name_4);</pre>
+let name_2 = name_1.filter( function_1, name_3, name_4 );</pre>
                 <p class="paragraph">
                     <strong>name_3</strong> - индекс текущего элемента массива<br>
                     <strong>name_4</strong> - массив, для которого вызывается filter
@@ -223,11 +232,27 @@ console.log(evenNumbers);</pre>
             </div>
 
             <div class="subsection">
+                <h3 class="subsection__header">.sort()</h3>
+
+                <p class="p">
+                    Возвращает отсортированный массив и изменяет исходный.
+                </p>
+                <pre class="screen screen_pre">
+name_1.sort( function (a, b) {    // если function возвращает &lt;0 - a получает индекс меньше, чем у b
+    expression;                                 // если ==0 - не меняется очерёдность
+});                                             // если &gt;0 - b получает индекс меньше, чем a
+
+b - предыдущий элемент
+a - следующий элемент
+                </pre>
+            </div>
+
+            <div class="subsection">
 	            <h3 class="subsection__header">.reduce()</h3>
 
                 <p class="paragraph">Получение одного значения из массива</p>
 	            <pre class="screen screen_pre">
-let name_2 = name_1.reduce(function_1(name_3, name_4), name_5);</pre>
+let name_2 = name_1.reduce( function_1( name_3, name_4 ), name_5 );</pre>
 				<p class="paragraph">
 					Метод <strong>.reduce()</strong> получает два аргумента. В качестве первого аргумента функцию обратного вызова <strong>function_1</strong> с двумя аргументами <strong>name_3</strong> содержащем итоговое значение и <strong>name_4</strong> - текущий элеент массива<br>
                     В качестве второго аргумента начальное значение <strong>name_5</strong>
@@ -243,7 +268,7 @@ console.log(evenNumbers);</pre>
                 <p class="paragraph">В данном примере функция обратного вызова является анонимной</p>
 
                 <pre class="screen screen_pre">
-let name_2 = name_1.reduce(function_1(name_3, name_4), name_5, name_6, name_7);</pre>
+let name_2 = name_1.reduce( function_1( name_3, name_4 ), name_5, name_6, name_7 );</pre>
                 <p class="paragraph">
                     <strong>name_6</strong> - индекс текущего элемента массива<br>
                     <strong>name_7</strong> - массив, для которого вызывается map, filter или reduce
@@ -253,10 +278,21 @@ let name_2 = name_1.reduce(function_1(name_3, name_4), name_5, name_6, name_7);<
             <div class="subsection">
                 <h3 class="subsection__header">.forEach()</h3>
 
+                <p class="p">Принимает в качестве аргумента Callback функцию и применяет её для каждого элемента массива.</p>
                 <pre class="screen screen_pre">
-name_1.forEach((item, index, array) => { action_1; } );</pre>
+name_1.forEach( function( item, index, array) {
+    expression_1;
+});</pre>
+                <pre class="screen screen_pre">
+name_1.forEach( ( item, index, array ) => { 
+    expression_1; 
+});</pre>
                 <p class="paragraph">
-                    <strong>.forEach()</strong> принимает 3 параметра: значение элемента, его индекс и сам массив и применяет к каждому элементу <strong>action_1</strong><br>
+                    <strong>item</strong> - значение элемента массива<br>
+                    <strong>index</strong> - ключ элемента массива<br>
+                    <strong>array</strong> - сам массив<br>
+                </p>
+                <p class="paragraph">
                     В отличие от <strong>.map()</strong> возвращает <strong>undefined</strong>, а не новый массив
                 </p>
             </div>
@@ -265,7 +301,7 @@ name_1.forEach((item, index, array) => { action_1; } );</pre>
                 <h3 class="subsection__header">.includes()</h3>
 
                 <pre class="screen screen_pre">
-let name_2 = name_1.includes(value, index);</pre>
+let name_2 = name_1.includes( value, index );</pre>
                 <p class="paragraph">
                     <strong>.includes()</strong> ищет в массиве <strong>name_1</strong> значение <strong>value</strong> начиная с элемента с индексом <strong>index</strong>.<br>
                     Если <strong>.includes()</strong> находит в заданном интервале данного массива элемент с заданным значением, то возвращает <strong>true</strong>, в ином случае возвращает <strong>false</strong>
@@ -278,11 +314,26 @@ let name_2 = name_1.includes(value, index);</pre>
                 <pre class="screen screen_pre">
 let name_2 = name_1.reverse();</pre>
                 <pre class="screen screen_pre">
-var name_1 = [value_11, value_12, value_13];
+var name_1 = [ value_11, value_12, value_13 ];
 var [name_2] = name_1.reverse();
 
 console.log(name_2);    //-&gt; value_3
 console.log(name_1.join(", "));    //-&gt; value_13, value_12, value_11</pre>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">for(of)</h3>
+
+                <pre class="screen screen_pre">
+for ( let name_1 of name_2 ) {
+    expression;               // используется name_1
+}</pre>
+                <p class="p">
+                    Все значения элементов массива <strong>name_2</strong> поочереди присваиваются переменной <strong>name_1</strong> и могут быть использовны в выражении.
+                </p>
+                <p class="p">
+                    В отличие от <strong>.forEach()</strong> позволяет использовать <strong>break</strong> и <strong>continue</strong>.
+                </p>
             </div>
         </section>
 

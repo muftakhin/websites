@@ -14,24 +14,44 @@
         <h1 class="header__title">Прототип</h1>
     </header>
 
-    <nav class="nav">
-        <ul class="items-list">
-            <li>
-                <a href="proto-items/proto.html">
-                    <div class="items-list__item">.__proto__</div>
-                </a>
-            </li>
-            <li>
-                <a href="proto-items/prototype.html">
-                    <div class="items-list__item">.prototype</div>
-                </a>
-            </li>
-        </ul>
-    </nav>
-
     <main class="main">
         <section class="section">
             <p class="paragraph">Одинаковые свойства и методы объектов можно задавать в прототипе</p>
+        </section>
+
+        <section class="section">
+            <h2 class="section__header">Назначение прототипа</h2>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Имеющемуся объекту</h3>
+
+                <pre class="screen screen_pre">
+Object.setPrototypeOf(myObj, protoObj);</pre>
+                <p class="p">
+                    Назначаем объекту <strong>myObj</strong> в качестве прототипа объект <strong>protoObj</strong>
+                </p>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Создаваемому объекту</h3>
+
+                <pre class="screen screen_pre">
+let myObj = Object.create(protoObj);</pre>
+                <p class="p">
+                    Назначаем создаваемому объекту <strong>myObj</strong> в качестве прототипа объект <strong>protoObj</strong>
+                </p>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section__header">.prototype</h2>
+
+            <pre class="screen screen_pre">
+Name_1.prototype = name_2;</pre>
+
+            <p class="paragraph">
+                - специальное свойство для консторуктора, которое задаёт конструктору <strong>Name_1</strong> для создаваемых объектов прототип <strong>name_2</strong>. Т.е. выполняет <strong>this.__proto__= name_2</strong>
+            </p>
         </section>
 
         <section class="section">

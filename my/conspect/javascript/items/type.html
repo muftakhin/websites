@@ -87,7 +87,10 @@
                     </a>
                 </li>
             </ul>
-            <p class="paragraph">Все типы данных, кроме объектов называются примитивами</p>
+            <p class="p">Все типы данных, кроме объектов называются примитивами</p>
+            <p class="p">
+                Примитивные типы данных передаются по значению, а объекты и т.п. по ссылке.
+            </p>
         </section>
 
         <section class="section">
@@ -109,24 +112,23 @@ typeof null;   //-&gt; object</pre>
                 <h3 class="subsection__header">Преобразование в число</h3>
 
                 <pre class="screen screen_pre">
-name_1 = '123';
+name_1 = '123';</pre>
 
-// №1:
-
+                <pre class="screen screen_pre">
 name_1 *= 1;
 
-// №2:
+---
 
 parseInt(name_1);    // в целое
 parseFloat(name_1);  // в с плавающей точкой
 
-// №3:
+---
 
-Number(name_1)  // если name_1 - строка из цифр;
+Number(name_1);       // если name_1 - строка из цифр
 
-// №4:
+---
 
-+ name_1  // строки в выражении;</pre>
++name_1;              // унарный плюс</pre>
                 <p class="paragraph"><strong>name_1</strong> - имя переменной содержащей исходные данные</p>
             </div>
 
@@ -134,15 +136,17 @@ Number(name_1)  // если name_1 - строка из цифр;
                 <h3 class="subsection__header">Преобразование в строку</h3>
 
                 <pre class="screen screen_pre">
-name_1 = 123;
+name_1 = 123;</pre>
+                <pre class="screen screen_pre">
+name_1 += '';           // конкатенация (сложение чего-либо со трокой)
 
-// №1:
+---
 
-name_1 += '';
+name_2 = name_1.toString();
 
-// №2:
+---
 
-name_2 = name_1.toString();</pre>
+name_2 = String(name_1);</pre>
             </div>
 
             <div class="subsection">
@@ -151,6 +155,13 @@ name_2 = name_1.toString();</pre>
                 <pre class="screen screen_pre">
 let name_1 = parseInt('value_1', 16);
 let name_1 = parseInt('value_1', 8);</pre>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Преобразование в bollean</h3>
+
+                <pre class="screen screen_pre">
+!!"string_1";</pre>
             </div>
 
             <div class="subsection">
@@ -228,69 +239,6 @@ let name_1 = parseInt('value_1', 8);</pre>
                     </tbody>
                 </table>
             </div>
-        </section>
-
-        <section class="section">
-            <h2 class="section__header">Округление числа</h2>
-
-            <div class="subsection">
-                <h3 class="subsection__header">Math.round()</h3>
-
-                <pre class="screen screen_pre">
-Math.round(number_1);</pre>
-                <p class="paragraph">
-                    Возвращает число, округленное до ближайшего целого числа<br>
-                    При этом округление происходит вверх, если аргумент больше или равен 0,5<br>
-                    Если аргумент меньше 0,5, округление производится до текущего целого числа</p>
-            </div>
-
-            <div class="subsection">
-                <h3 class="subsection__header">Math.ceil()</h3>
-
-                <pre class="screen screen_pre">
-Math.ceil(number_1);</pre>
-                <p class="paragraph">Возвращает число, которое больше или равно вашему аргументу</p>
-            </div>
-
-            <div class="subsection">
-                <h3 class="subsection__header">Math.floor()</h3>
-
-                <pre class="screen screen_pre">
-Math.floor(number_1);</pre>
-                <p class="paragraph">Возвращает число, которое меньше или равно вашему аргументу</p>
-            </div>
-
-            <pre class="screen screen_post">
-Math.floor(.5);     //-&gt;  0
-Math.ceil(.5);      //-&gt;  1
-Math.round(.5);     //-&gt;  1
-
-Math.floor(3.14);   //-&gt;  3
-Math.ceil(3.14);    //-&gt;  3
-Math.round(3.14);   //-&gt;  4
-
-Math.floor(5.9);    //-&gt;  5
-Math.ceil(5.9);     //-&gt;  6
-Math.round(5.9);    //-&gt;  6</pre>
-
-            <div class="subsection">
-                <h3 class="subsection__header">Math.random()</h3>
-
-                <pre class="screen screen_pre">
-let name_1 = Math.random(value_1);</pre>
-                <p class="paragraph">
-                    &bull; Возвращает число от 0 до 1<br>
-                    &bull; Если нужно число побольше, умножьте полученное на подходящий коэффициент
-                </p>
-            </div>
-
-            <pre class="screen screen_post">
-let colors = ["red", "green", "blue", "yellow", "violet"];
-colors[Math.floor(Math.random * 5)];</pre>
-            <p class="paragraph">
-                &bull; <strong>Math.random()</strong> умножаем на кол-во элементов массива<br>
-                &bull; В итоге возвратится один из элементов массива <strong>colors</strong>
-            </p>
         </section>
     </main>
 </body>

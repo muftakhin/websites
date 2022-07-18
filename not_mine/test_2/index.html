@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+"use strict"
+
+let numberOfFilms = +(prompt("How many films your watched ?"));
+
+const personalMovieDB = {
+  count: numberOfFilms,
+  movies: {},
+  actors: {},
+  genres: [],
+  privat: false
+};
+
+if (personalMovieDB.count < 10) {
+  console.log("маловато");
+} else if (personalMovieDB.count > 10 && personalMovieDB.count <= 30) {
+  console.log("норм");
+} else {
+  console.log("много");
+}
+
+for (let i = 0; i < 2; i++) {
+  let movies_name = prompt("Один из просмотренных фильмов");
+  let movies_rate = prompt("Оценка фильма");
+
+  if (movies_name.length != '' && movies_name.length < 50 && movies_name.length != null && movies_name.length != null) {
+    personalMovieDB.movies[movies_name] = +movies_rate;
+  } else {
+    i--;
+  }
+}
+
+console.log(personalMovieDB);
+  </script>
+</body>
+</html>

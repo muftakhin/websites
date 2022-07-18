@@ -17,8 +17,9 @@
     <main class="main">
         <section class="section">
             <p class="paragraph">
-                &bull; Объект представляет собой всего лишь коллекцию(набор) свойств, которые представляют собой пары {ключ(имя свойства): значение}<br>
-                &bull; Для доступа к элементам объекта (свойствам и их значениям) используются ключи, а не числа (индексы) как в массиве<br>
+                &bull; Объект представляет собой всего лишь коллекцию(набор) свойств, которые представляют собой пары (поля):<br>
+                <strong>{ ключ(имя свойства) : значение }</strong>.<br>
+                &bull; Для доступа к элементам объекта (свойствам и их значениям) используются ключи, а не числа (индексы) как в массиве.<br>
                 &bull; Объект обладает состоянием и поведением
             </p>
         </section>
@@ -158,7 +159,8 @@ name_1.['onetwo'];</pre>
 
             <p class="paragraph">
                 Именем свойства может быть только строка<br>
-                При использовании пробела в имени свойства невозможно обращение к нему при помощи точечной нотации. Необходимо использовать <strong>['']</strong>
+                При использовании пробела в имени свойства невозможно обращение к нему при помощи точечной нотации. Необходимо использовать <strong>['']</strong><br>
+                При добавлении имени свойства лучше использовать <strong>[]</strong>
             </p>
             <pre class="screen screen_pre">
 name_1[name_11] = value_11;</pre>
@@ -203,26 +205,27 @@ delete name_1.name_11;</pre>
         </section>
 
         <section class="section">            
-            <h2 class="section__header">Перечисление свойств объекта</h2>
+            <h2 class="section__header">for-in</h2>
 
-            <p class="paragraph">Для перечисления свойств объекта <strong>name_2</strong> используем цикл <strong>for-in</strong>:</p>
+            <p class="paragraph">Цикл для перебора свойств объекта <strong>name_2</strong>:</p>
             <pre class="screen screen_pre">
 let name_1;
 for (name_1 in name_2) {
-    alert (name_1);
+    expression_1;
+}</pre>
+            <pre class="screen screen_pre">
+// Или:
+
+for (let name_1 in name_2) {
+    expression_1;
 }</pre>
             <p class="paragraph">
-                При каждом выполнении цикла переменная <strong>name_1</strong> получает строковое значение следующего по очереди имени свойства объекта <strong>name_2</strong>
+                При каждом выполнении цикла переменная <strong>name_1</strong> получает строковое значение следующего по очереди имени свойства объекта <strong>name_2</strong><br>
+                Используя скобочную нотацию можем получить доступ к значению соответствующего свойства <strong>name_1</strong> объекта <strong>name_2</strong>
             </p>
             <pre class="screen screen_pre">
-name_2[name_1];</pre>
-            <p class="paragraph">Используя скобочную нотацию можем получить доступ к значению соответствующего свойства <strong>name_1</strong> объекта <strong>name_2</strong></p>
-
-            <p class="paragraph">Для перечисления свойств и их значений:</p>
-            <pre class="screen screen_pre">
-for (let name_1 in name_2) {
-    console.log (name_1 + ': ' + name_2[name_1]);
-}</pre>
+name_1;             // имя свойства объекта
+name_2[name_1];     // значение свойства объекта с именем name_1</pre>
         </section>
 
         <section class="section">
@@ -280,6 +283,55 @@ function loseWeight(dog) {
 loseWeight(pluto)
 
 alert(pluto.name + " now weights " + pluto.weight);</pre>
+        </section>
+
+        <section class="section">
+            <h2 class="section__header">Копирование объектов</h2>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Простое (поверхностное) копирование</h3>
+
+                <pre class="screen screen_pre">
+function clone(srcObject) {
+    let copyObject = {};
+    let key;
+
+    for (key in srcObject) {
+        copyObject[key] = srcObject[key];
+    }
+
+    return copyObject;
+}</pre>
+                <pre class="screen screen_pre">
+let 
+                </pre>
+
+                <div class="subsubsection">
+                    <h3 class="subsubsection__header">Object.assign()</h3>
+
+                    <pre class="screen screen_pre">
+Object.assign(destObject, addObject_1, .... addObject_n);     // возвращает destObject</pre>
+                    <p class="p">
+                        Добавляются объекту <strong>name_1</strong> свойства объектов <strong>addObject_2, .... addObject_n</strong>.<br>
+                        Если добавляемое свойство уже имеется, то переписывается значение.
+                    </p>
+
+                    <pre class="screen screen_pre">
+Object.assign({}, addObject);         // возвращает копию addObject</pre>
+                </div>
+
+                <div class="subsubsection">
+                    <h3 class="subsubsection__header">...</h3>
+
+                    <pre class="screen screen_pre">
+let copyObj = {srcObj};</pre>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Вложенное (глубокое) копирование</h3>
+
+            </div>
         </section>
 
         <section class="section">

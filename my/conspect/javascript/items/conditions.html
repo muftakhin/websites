@@ -31,17 +31,9 @@
                 <h3 class="subsection__header">Конструкция if</h3>
 
                 <pre class="screen screen_pre">
-if (contition) {
+if (contition) {    // Тело оператора if выполняется, только когда условие даёт true
     action;
 }</pre>
-                <p class="paragraph">Пример:</p>
-                <pre class="screen screen_post">
-let name = "Николай";
-console.log("Привет, " + name);
-if (name.length > 6) {
-    console.log("Ну и длиннющее же у вас имя!");
-}</pre>
-                <p class="paragraph">Тело оператора <strong>if</strong> выполняется, только когда условие даёт <strong>true</strong></p>
             </div>
 
             <div class="subsection">
@@ -52,16 +44,6 @@ if (condition) {
     action_1;
 } else {
     action_2;
-}</pre>
-                
-                <p class="paragraph">Пример:</p>
-                <pre class="screen screen_post">
-let name = "Николай";
-console.log("Привет, " + name);
-if (name.length > 6) {
-    console.log("Ну и длиннющее же у вас имя!");
-} else {
-    console.log("Имя у вас не из длинных.");
 }</pre>
             </div>
 
@@ -84,6 +66,7 @@ if (condition_1) {
             <div class="subsection">
                 <h3 class="subsection__header">switch</h3>
 
+                <p class="p"><strong>switch</strong> использует сравнение на строгое соответствие</p>
                 <pre class="screen screen_pre">
 let name_1 = value;
 
@@ -116,46 +99,40 @@ switch (condition) {
         </section>
 
         <section class="section">
-            <h2 class="section__header">Циклы</h2>
+            <h2 class="section__header">Тернарный оператор ? :</h2>
 
-            <p class="paragraph">Для проверки каких-либо действий в программе нужен <strong>цикл</strong></p>
+            <pre class="screen screen_pre">
+(condition) ? action_if_true : action_if_false;
+
+let name = (condition) ? value_if_condition_true : value_if_condition_false;</pre>
+        </section>
+
+        <section class="section">
+            <h2 class="section__header">Циклы</h2>
  
             <div class="subsection">
                 <h3 class="subsection__header">Цикл while</h3>
 
-                <p class="paragraph">выполняется пока <strong>condition</strong>(условие) = <strong>true</strong></p>
                 <pre class="screen screen_pre">
-while (condition) {
+while (condition) {     // выполняется пока condition = true
     action;
     step;
 }</pre>
-                
-                <p class="paragraph">Пример: "Считаем овец"</p>
-                <pre class="screen screen_post">
-let sheepCounted = 0;
-while (sheepCounted &lt; 10) {
-    console.log("Посчитано овец: " + sheepCounted + "!");
-    sheepCounted++;
-}
-console.log("Z-z-z-z-z-z");</pre>
             </div>
 
             <div class="subsection">
                 <h3 class="subsection__header">Цикл do while</h3>
 
-                <p class="paragraph">аналогично <strong>while</strong>, но условие проверяется после выполнения</p>
                 <pre class="screen screen_pre">
 do {
     action;
     step;
-} while (condition);</pre>
+} while (condition);    // условие проверяется после выполнения</pre>
             </div>
 
             <div class="subsection">               
                 <h3 class="subsection__header">Цикл for</h3>
 
-                <p class="paragraph">Цикл <strong>for</strong> удобен, когда нужно сделать определённое количество циклов</p>
-                <p class="paragraph">Создаём переменную, задаём условие, указываем как должна меняться переменная после каждого повтора, пишем тело цикла</p>
                 <pre class="screen screen_pre">
 for (start_point; condition; step) {
     action;
@@ -165,28 +142,28 @@ for (start_point; condition; step) {
                     <strong>condition</strong> - проверяемое условие, определяющее продолжение цикла<br>
                     <strong>step</strong> - изменение стартового значения. Часто это <strong>i++</strong>
                 </p>
-                <p class="paragraph">Не обязательно заполнять все 3 секции</p>
+
                 <pre class="screen screen_pre">
-for (; condition; ) {
+for (; condition; ) {   // Не обязательно заполнять все 3 секции
     action;
 }</pre>
 
                 <div class="subsubsection">
                     <h4 class="subsubsection__header">Цикл for, массивы и строки</h4>
 
-                    <p class="paragraph">Часто цикл <strong>for</strong> используют для перебора всех элементов массива или всех символов строки</p>
-                
-                    <p class="paragraph">Пример: "Напечатать названия всех животных в зоопарке"</p>
-                    <pre class="screen screen_post">
-let animals = ["лев", "фламинго", "белый медведь", "удав"];
-for (let i=0; i &lt; animals.length; i++) {
-    console.log("В этом зоопарке есть " + animals(i) + ".");
+                    <pre class="screen screen_pre">
+        // Пербор элементов массива:
+
+let name_1 = ["one", "two", "three", "four"];
+for (let i=0; i &lt; name_1.length; i++) {
+    console.log("name_1(i)");
 }</pre>
-                    <p class="paragraph">Пример: "Вывод символов имени"</p>
-                    <pre class="screen screen_post">
-let name = "Николай";
-for (let i=0; i &lt; animals.length; i++) {
-    console.log("В этом имени есть буква " + name(i) + ".");
+                    <pre class="screen screen_pre">
+        // Перебор символо строки:
+
+let name_1 = "string_1";
+for (let i=0; i &lt; name_1.length; i++) {
+    console.log("name_1(i)");
 }</pre>
                 </div>
 

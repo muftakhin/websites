@@ -160,11 +160,12 @@ document.body.style.backgroundColor = "red";</pre>
                     <pre class="screen screen_pre">
 let name_1 = document.getElementById("name_2");
 
-let name_1 = document.getElementsByClassName("name_2");
+let name_1 = document.getElementsByClassName("name_2");     // -&gt; псевдомассив (коллекцию) элементов
 
-let name_1 = document.getElementsByTagName("name_2");
+let name_1 = document.getElementsByTagName("name_2");       // -&gt; псевдомассив (коллекцию) элементов
+name_1[i];                                                  // i - индекс элемента псевдомассива
 
-    //-> null если такой name_2 отсутствует</pre>
+    //-&gt; null если такой name_2 отсутствует</pre>
                 </div>
 
                 <div class="subsubsection">
@@ -195,8 +196,10 @@ document.querySelector("css_selector").style.свойство = 'значени�
                     <pre class="screen screen_pre">
 let name_1 = document.querySelectorAll("css_selector");
     
-let name_2 = name_1[i]   //  - доступ к n-1 элементу массива элементов name_1</pre>
-
+let name_2 = name_1[i]   //  - доступ к i-1 элементу массива элементов name_1</pre>
+                    <p class="p">
+                        к name_1 применим метод массива <strong>forEach</strong>.
+                    </p>
                     <pre class="screen screen_post">
     // Слайдер с использованием .querySelectorAll()
 
@@ -240,17 +243,33 @@ btn_next.onclick = function() {
 
                     <p class="paragraph">
                         С помощью свойств <strong>.innerHTML</strong> и <strong>.textContent</strong> можем изменить содержимое элемента<br>
-                        <strong>.innerHTML</strong> представляет всё содержимое элемента, включая вложенные элементы<br>
-                        <strong>.textContent</strong> - текстовое содержимое элемента
+                        <strong>.innerHTML</strong> представляет всё содержимое элемента, включая вложенные элементы (всё в кавычках).<br>
+                        <strong>.textContent</strong> - текстовое содержимое элемента.
                     </p>
                     <pre class="screen screen_pre">
 let name_1 = document.querySelector("css_selector");
 
 name_1.innerHTML = "Содержимое элемента";     // задать
-name_1.textContent = "Содержимое элемента";   //содержимое
+name_1.textContent = "Содержимое элемента";   // содержимое
 
 console.log(name_1.innerHTML);                // вывести
-console.log(name_1.textContent);              //содержиммое</pre>
+console.log(name_1.textContent);              // содержиммое</pre>
+                </div>
+
+                <div class="subsubsection">
+                    <h4 class="subsubsection__header">.insertAdjacentHTML</h4>
+
+                    <pre class="screen screen_pre">
+name_1.insertAdjacentHTML("value", htmlCode);</pre>
+                    <p class="p">
+                        <strong>name_1</strong> - элемент-ориентир.<br>
+                        <strong>htmlCode</strong> - вставляемый код HTML<br>
+                        <strong>value</strong>:<br>
+                        - <strong>befoebegin</strong> - перед<br>
+                        - <strong>afterbegin</strong> - в начало<br>
+                        - <strong>beforeend</strong> - в конец<br>
+                        - <strong>afterend</strong> - после
+                    </p>
                 </div>
 
                 <div class="subsubsection">               
@@ -280,17 +299,45 @@ name_1.getAttribute("name_2");</pre>
                 <h3 class="subsection__header">Значение идентификатора и класса</h3>
 
                 <div class="subsubsection">
-                    <h4 class="subsubsection__header">.id() и .class()</h4>
+                    <h4 class="subsubsection__header">.id() и .className()</h4>
 
                     <p class="paragraph">- прямой путь задавания и получения значения <strong>id</strong> и <strong>class</strong> элемента, минуя <strong>.setAttribute()</strong> и <strong>.getAttribute()</strong></p>
                     <pre class="screen screen_pre">
 let name_1 = document.querySelector("css_selector");
 
 name_1.id("value_1");
-name_1.className("value_1");
+name_1.className("value_1");    // устарел
 
 console.log(name_1.id)
 console.log(name_1.className)</pre>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection__header">Стили элемента</h3>
+
+                <div class="subsubsection">
+                    <h4 class="subsubsection__header">inline</h4>
+
+                    <pre class="screen screen_pre">
+let name_1 = document.querySelector("css-selector_1");
+
+name_1.style.styleName_1 = "value_1";
+name_1.style.cssText = "style-name_1: value_1; style-name_2: value_2; ....";
+
+name_1.style.cssText = `style-name_1: ${....}; ....`;  // с переменными</pre>
+                    <pre class="screen screen_pre">
+    // для нескольких элементов:
+
+for (let i = 0; i &lt; name_1.length; i++) {
+     name_1[i].style.styleName = "value_1";
+}
+
+    // используя forEach (если querySelectorAll):
+
+name_1.forEach(item =&gt; {
+    item.style.styleName_1 = "value_1";
+});</pre>
                 </div>
             </div>
 
@@ -377,7 +424,7 @@ if (name_1.classList.contains("class_1") == true {
                 <h3 class="subsection__header">Создание и удаление и клонирование элементов</h3>
 
                 <div class="subsubsection">
-                    <h4 class="subsubsection__header">.createElement() и .appendChild()</h4>
+                    <h4 class="subsubsection__header">.createElement() + .append() //.appendChild() устарел</h4>
 
                     <pre class="screen screen_pre">
    // Создание нового элемента и присоединение его к родителю последним элементом:
@@ -388,11 +435,41 @@ let name_2 = document.querySelector('css_selector_1');
 
 name_1.textContent = "text_1";
 
-name_2.appendChild(name_1);</pre>
+name_2.append(name_1);</pre>
                 </div>
 
                 <div class="subsubsection">
-                    <h4 class="subsubsection__header">.insertBefore()</h4>
+                    <h4 class="subsubsection__header">.createElement() + .prepend()</h4>
+
+                    <pre class="screen screen_pre">
+    // Создание нового элемента и присоединение его к родителю первым элементом:
+
+
+let name_1 = document.createElement('html_element');
+let name_2 = document.querySelector('css_selector_1');
+
+name_1.textContent = "text_1";
+
+name_2.prepend(name_1);</pre>
+                </div>
+
+                <div class="subsubsection">
+                    <h4 class="subsubsection__header">.createElement() + .before()</h4>
+
+                    <pre class="screen screen_pre">
+    // Создание нового элемента и присоединение его перед элементом:
+
+
+let name_1 = document.createElement('html_element');
+let name_2 = document.querySelector('css_selector_1');
+
+name_1.textContent = "text_1";
+
+name_2[i].before(name_1);       // i - индекс элемента, перед которым вставляется name_1</pre>
+                </div>
+
+                <div class="subsubsection">
+                    <h4 class="subsubsection__header">.createElement() + .insertBefore()    // устарел</h4>
 
                     <pre class="screen screen_pre">
    // Создание нового элемента и присоединение его к родителю, перед элементом name_3:
@@ -410,17 +487,41 @@ name_2.insertBefore(name_1, name_3);</pre>
                 </div>
 
                 <div class="subsubsection">
-                    <h4 class="subsubsection__header">.removeChild() .parentNode. и .remove()</h4>
+                    <h4 class="subsubsection__header">.createElement() + .after()</h4>
+
+                    <pre class="screen screen_pre">
+    // Создание нового элемента и присоединение его перед элементом:
+
+
+let name_1 = document.createElement('html_element');
+let name_2 = document.querySelector('css_selector_1');
+
+name_1.textContent = "text_1";
+
+name_2[i].after(name_1);       // i - индекс элемента, после которого вставляется name_1</pre>
+                </div>
+
+                <div class="subsubsection">
+                    <h4 class="subsubsection__header">.remove() .removeChild() и .parentNode.</h4>
 
                     <pre class="screen screen_pre">
    // Продолжение: Удаление элемента
 
 
-name_2.removeChild(name_1);             // удаляет элемент name_1 из родительского элемента name_2
+name_1.remove()                         // удаляет элемент name_1
 
-name_1.parentNode.removeChild(name_1);  // удаляет элемент name_1 из родительского элемента
+name_2.removeChild(name_1);             // удаляет элемент name_1 из родительского элемента name_2 (устарел)
 
-name_1.remove()                         // удаляет элемент name_1</pre>
+name_1.parentNode.removeChild(name_1);  // удаляет элемент name_1 из родительского элемента</pre>
+                </div>
+
+                <div class="subsubsection">
+                    <h4 class="subsubsection__header">Замена элемента</h4>
+
+                    <pre class="screen screen_pre">
+name_1.replaceWith(name_2);     // name_1 заменяем на name_2
+
+name_3.replaceChild(name_1, name_2);  // (устарел)</pre>
                 </div>
 
                 <div class="subsubsection">

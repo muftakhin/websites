@@ -47,8 +47,10 @@ name_2.name_3 = name_1;</pre>
                 <h3 class="subsection__header">prompt()</h3>
                     
                 <p class="paragraph"><strong>prompt()</strong> принимает данные типа <strong>string</strong></p>
-                <pre class="screen screen_post">
-let name = prompt("Как вас зовут?");</pre>
+                <pre class="screen screen_pre">
+let name_1 = prompt("string_1");</pre>
+                <pre class="screen screen_pre">
+let name_1 = prompt("string_1", "placeholder_string_1");</pre>
                 <p class="paragraph">
                     &bull; создаём переменную <strong>name</strong> и присваиваем ей значение, которое вернёт вызов <strong>prompt()</strong><br>
                     &bull; если нажать "Отмена", то <strong>prompt()</strong> вернёт <strong>null</strong>
@@ -61,10 +63,11 @@ let name = prompt("Как вас зовут?");</pre>
                 <p class="paragraph">Функция <strong>confirm</strong> позволяет задать вопрос, на который можно ответить <strong>"да"</strong> или <strong>"нет"</strong> и возвращает <strong>true</strong> или <strong>false</strong></p>
                 <pre class="screen screen_post">
 let ok = confirm("Жми OK!");
+
 if (ok) {
-console.log("Молодцом!");
+    console.log("Молодцом!");
 } else {
-console.log("Не на ту нажал!");
+    console.log("Не на ту нажал!");
 }</pre>
             </div>
 

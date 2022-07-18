@@ -135,7 +135,7 @@ i**=n  // i возводится в степень n</pre>
 !     // не</pre>
             <p class="paragraph">
                 <strong>&amp;&amp;</strong> - используются с двумя булевыми значениями, чтобы узнать равны ли оба <strong>true</strong><br>
-                <strong>&amp;&amp;</strong> - возвращает первое ложное значение
+                <strong>&amp;&amp;</strong> - возвращает первое ложное значение или последнее если все <strong>true</strong>.
             </p>
             <pre class="screen screen_post">
 1 && 2 && 3 && null && 4
@@ -144,7 +144,7 @@ i**=n  // i возводится в степень n</pre>
 
             <p class="paragraph">
                 <strong>||</strong> - равен ли кто-то <strong>true</strong><br>
-                <strong>||</strong> возвращает первое истинное значение (ибо если первый операнд <strong>true</strong>, то второй не будет вычисляться )
+                <strong>||</strong> возвращает первое истинное значение или последнее, если все <strong>false</strong>.
             </p>
             <pre class="screen screen_post">
 1 || 2 || 3 || null || 4
@@ -312,7 +312,7 @@ let name = (condition) ? value_if_condition_true : value_if_condition_false;</pr
         </section>
 
         <section class="section">
-            <h2 class="section__header">Оператор распространения</h2>
+            <h2 class="section__header">Оператор распространения (spread-оператор)</h2>
 
             <p class="paragraph">Позволяет объединять содержимое массивов:</p>
             <pre class="screen screen_pre">
@@ -337,10 +337,17 @@ let name_1 = [value_1, value_2, value_3, value_4];
 let [name_2, ...name_3] = name_1;
 console.log(name_3.join(", ")) //-&gt; value_2, value_3, value_4</pre>
 
-            <p class="paragraph">Может служить для сбора аргументов функции в массив:</p>
+            <p class="paragraph">Может служить для передачи элементов массива в качестве аргументов функции:</p>
             <pre class="screen screen_pre">
+function name_1(param_1, param_2, .... param_n) {
+    expression_1;
+}
+
+let name_2 = [elem_1, elem_2, .... elem_n];
+
+
 function name_1(...name_2) {
-    action_1;
+    expression_1;
 }</pre>
             <p class="paragraph">Может служить для объединения объектов:</p>
             <pre class="screen screen_pre">

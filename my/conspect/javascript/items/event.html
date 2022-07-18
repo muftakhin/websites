@@ -18,22 +18,33 @@
         <section class="section">
             <h2 class="section__header">Прослушивание событий</h2>
 
+            <a href="../../html/items/events.html"><div class="link">События HTML</div></a>
+
             <pre class="screen screen_pre">
 let name_1 = document.querySelector("css_selector_1");
 
-name_1.addEventListener("eventName_1", eventHandler_1, phase);
+name_1.addEventListener("eventName_1", eventHandler_1, {options});
 
-function eventHandler_1(e) {
-    action;
+function eventHandler_1(name_2) {
+    expression_1;
 }</pre>
 
             <p class="paragraph">
-                <strong>name_1</strong> - имя элемента у которого отслеживается событие<br>
-                <strong>eventName_1</strong> - имя прослушиваемого события<br>
-                <strong>eventHandler_1</strong> - обработчик события<br>
-                <strong>e</strong> - объект события, содержащий свойства, связанные с этим событием<br>
-                <strong>phase</strong> - фаза события, указывать не обязательно
+                <strong>name_1</strong> - имя элемента у которого отслеживается событие.<br>
+                <strong>eventName_1</strong> - имя прослушиваемого события.<br>
+                <strong>eventHandler_1</strong> - обработчик события (callback-функция).<br>
+                <strong>name_2</strong> - объект события, содержащий свойства, связанные с этим событием, передающийся как первый аргумент callback-функции.<br>
+                <strong>{options}</strong> - дополнительный объект со свойствами.
             </p>
+
+            <div class="subsection">
+                <h3 class="subsection__header">{options}</h3>
+
+                <pre class="screen screen_pre">
+{ once: true }          - удаление после однократного срабатывания
+{ capture: true/false } - погружение/всплытие
+{ passive: true }       - обработчик никогда не вызовет preventDefault()</pre>
+            </div>
         </section>
 
         <section class="section">
@@ -68,13 +79,21 @@ let name_1 = document.querySelector("css_selector_1");
 
 name_1.addEventListener("eventName_1", eventHandler_1, phase);
                 
-function eventHandler_1(e) {
-    e.stopPropagation();
+function eventHandler_1(name_2) {
+    name_2.stopPropagation();
 }</pre>
-            <p class="paragraph"><strong>.stopPropagation()</strong> отменяет выполнение фазы всплытия</p>
+        </section>
+
+        <section class="section">
+            <h2 class="section__header">Отмена стандартного поведения</h2>
+
+            <p class="p">
+                Указывается в начале тела функции обработчика события<br>
+                <strong>.stopPropagation()</strong> отменяет выполнение фазы всплытия.
+            </p>
 
             <pre class="screen screen_pre">
-e.preventDefault();     // отключение встроенного поведения</pre>
+name_2.preventDefault();     // отключение встроенного поведения</pre>
         </section>
 
         <section class="section">
@@ -85,7 +104,7 @@ e.preventDefault();     // отключение встроенного пове�
 
                 <p class="paragraph">
                     <strong>event.currentTarget</strong> - элемент на котором сработал обработчик(до которого дошло событие)<br>
-                    <strong>event.target</strong> - исходный элемент, на котором произошло событие, в процессе всплытия он неизменен
+                    <strong>event.target</strong> - исходный элемент, на котором произошло событие (по которому кликнули и т.д.), в процессе всплытия он неизменен
                 </p>
             </div>
         </section>
@@ -100,8 +119,8 @@ e.preventDefault();     // отключение встроенного пове�
 let name_1 = document.querySelector("css_selector_1");
                     
 name_1.addEventListener("click", function_1, false);
-                                    
-function function_1(e) {
+
+function function_1(name_2) {
     action;
 }</pre>
 
@@ -138,11 +157,11 @@ function function_1(e) {
 
                 <pre class="screen screen_pre">
 let name_1 = document.querySelector("css_selector_1");
-                                    
+
 name_1.addEventListener("contextmenu", function_1, false);
-                                                    
-function function_1(e) {
-    e.preventDefault();     // отключение контекстного меню
+
+function function_1(name_2) {
+    name_2.preventDefault();     // отключение контекстного меню
 }</pre>
             </div>
         </section>
