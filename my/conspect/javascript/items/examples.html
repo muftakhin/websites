@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Примеры</title>
+  <link rel="stylesheet" href="../../styles/style.css">
+</head>
+
+<body class="body">
+  <header class="header">
+    <a class="header__button"  href="../javascript.html">&uArr;</a>
+    <h1 class="header__title">Примеры</h1>
+  </header>
+
+  <main class="main">
+    <section class="section">
+      <h2 class="section__header">Табы</h2>
+
+      <pre class="screen screen_post">
+window.addEventListener('DOMContentLoaded', () =&gt; {
+
+const tabsParent = document.querySelector('.tabheader__items');     // контейнер с заголовками табов
+const tabs = document.querySelectorAll('.tabheader__item');         // псевдомассив с заголовками табов
+const tabsContent = document.querySelectorAll('.tabcontent');       // псевдомассив с контентом табов
+
+function hideTabContent() {                                         // скрытие всех табов
+  tabsContent.forEach((item, i) =&gt; {                                // перебор элементов псевдомассива
+    item.style.display = 'none';                                    // и присваивание каждому значение свойства
+  });
+
+  tabs.forEach((item, i) =&gt; {                                       // перебор элементов псевдомассива
+    item.classList.remove('tabheader__item_active');                // и удаление класса показывающего
+  });
+}
+
+function showTabContent(i = 0) {                                    // показывание определённого таба
+  tabsContent[i].style.display = 'block';                           // первого по умолчанию
+  tabs[i].classList.add('tabheader__item_active');
+}
+
+hideTabContent();
+showTabContent();
+
+tabsParent.addEventListener('click', (e) =&gt; {                       // повешение слушателя события
+  const target = e.target;
+
+  if (target && target.classList.contains('tabheader__item')) {     // если попали по кнопке
+    tabs.forEach((item, i) =&gt; {
+      if (target == item) {                                         // , то у этого заголовка
+        hideTabContent();                                           // ( сначала все табы скрываем )
+        showTabContent(i);                                          // показываем таб
+      }
+    });
+  }
+});
+
+});</pre>
+    </section>
+
+    <section class="section">
+      <h2 class="section__header">Таймер обратного отсчёта</h2>
+
+      <pre class="screen screen_post">
+let deadline = '2022-07-25';    // устанавливаемое время
+
+function getTimeRemaining(endtime) {                        // оставшееся время
+  const t = Date.parse(endtime) - Date.parse(new Date());
+  const days = Math.floor(t / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+  const minutes = Math.floor((t / (1000 * 60)) % 60);
+  const seconds = Math.floor((t / 1000) % 60);
+
+  return {                              // возвращает объект с оставшимся временем
+    'totalms': t,
+    'days': days,
+    'hours': hours,
+    'minutes': minutes,
+    'seconds': seconds
+  };
+}
+
+function getZero(number) {            // подставление 0 перед одноразрядным числом
+  if (number &gt;= 0 && number &lt; 10) {
+    return `0${number}`;
+  } else {
+    return number;
+  }
+}
+
+function setClock(selector, endtime) {                    // отображение времени
+  const timer = document.querySelector('selector');
+
+  const days = document.querySelector('#days');
+  const hours = document.querySelector('#hours');
+  const minutes = document.querySelector('#minutes');
+  const seconds = document.querySelector('#seconds');
+
+  const timeInterval = setInterval(updateClock, 1000);
+
+  updateClock();                                          // чтобы не ждать 1 с (чтобы не мигало время)
+
+  function updateClock() {
+    const t = getTimeRemaining(endtime);
+
+    days.innerHTML = getZero(t.days);
+    hours.innerHTML = getZero(t.hours);
+    minutes.innerHTML = getZero(t.minutes);
+    seconds.innerHTML = getZero(t.seconds);
+
+    if (t.totalms &lt;= 0) {                 // сброс при истечении времени
+      clearInterval(timeInterval);
+    }
+  }
+}
+
+setClock('.timer', deadline);</pre>
+    </section>
+
+    <section class="section">
+      <h2 class="section__header">Модальное окно</h2>
+
+      <pre class="screen screen_post">
+const modalTrigger = document.querySelectorAll('[data-modal]')    // кнопки вызова окна
+const modal = document.querySelector(".modal");                   // само окно
+const modalCloseBtn = document.querySelector("[data-close]")      // кнопки закрытия окна
+
+function closeModal() {
+  modal.classList.toggle('show');
+  document.body.style.overflow = '';                              // значение по умолчанию
+}
+
+modalTrigger.forEach((btn, i) =&gt; {                                // ибо несколько кнопок
+  btn.addEventListener('click', () =&gt; {
+    modal.classList.toggle('show');
+    document.body.style.overflow = 'hidden';      // отменить скролл страницы при модальном окне
+  });
+});
+
+modalCloseBtn.addEventListener('click', closeModal);              // закрытие по клику на крестик
+
+modal.addEventListener('click', (e) =&gt; {                          // закрытие по клику вне окна
+  if (e.target === modal) {
+    modal.classList.toggle('show');
+    document.body.style.overflow = '';
+  }
+});
+
+document.addEventListener('keydown', (e) =&gt; {                     // закрытие окна по Esc
+  if (e.keyCode === 27) {
+    closeModal();
+  }
+});</pre>
+    </section>
+
+    <section class="section">
+      <h2 class="section__header">Действия при скролле</h2>
+
+      <pre class="screen screen_post">
+if (window.pageYOffset + document.documentElement.clientHeight >= document.documentElement.scrollHeight) {
+  ....;
+}</pre>
+    </section>
+
+    <section class="subsection">
+      <h2 class="section__header">Затемняющаяся фиксированная шапка</h2>
+
+      <pre class="screen screen_post">
+(function() {
+  const header = document.querySelector('.header');
+  window.onscroll = () =&gt; {
+    if (window.pageYOffset &gt; 1) {
+      header.classList.add('header_active');
+    } else {
+      header.classList.remove('header_active');
+    }
+  };
+}());</pre>
+    </section>
+
+    <section class="section">
+      <h2 class="section__header">Аккордеон</h2>
+
+      <pre class="screen screen_post">
+    // HTML:
+
+&lt;div class="accordion"&gt;
+  &lt;div class="accordion-item"&gt;
+    &lt;div class="accordion-item__trigger"&gt;
+      Trigger 1
+    &lt;/div&gt;
+    &lt;div class="accordion-item__content"&gt;
+      Content 1
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="accordion-item"&gt;
+    &lt;div class="accordion-item__trigger"&gt;
+      Trigger 2
+    &lt;/div&gt;
+    &lt;div class="accordion-item__content"&gt;
+      Content 2
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+    // CSS:
+
+.accordion-item__content {
+  display: none;
+}
+
+.accordion-item--active .accordion-item__content {
+  display: block;
+}
+
+    // JavaScript:
+
+document.querySelectorAll('.accordion-item__trigger').forEach((item) => {
+  item.addEventListener('click', () => {
+
+    const parent = item.parentNode;
+
+    if (parent.classList.contains('accordion-item--active')) {
+      parent.classList.remove('accordion-item--active')
+    } else {
+      document.querySelectorAll('.accordion-item').forEach((child) => {
+        child.classList.remove('accordion-item--active');
+      });
+      parent.classList.add('accordion-item--active');
+    }
+  });
+});</pre>
+      </div>
+
+      <div class="subsection">
+          <h3 class="subsection__header">Карусель</h3>
+
+          <pre class="screen screen_post">
+    // HTML:
+
+
+&lt;div class="slider-container"&gt;
+  &lt;div class="slider-track"&gt;
+    &lt;div class="slider-item"&gt;&lt;/div&gt;
+    &lt;div class="slider-item"&gt;&lt;/div&gt;
+      ...
+    &lt;div class="slider-item"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="slider-buttons"&gt;
+  &lt;div class="btn-prev"&gt;Preview&lt;/div&gt;
+  &lt;div class="btn-next"&gt;Next&lt;/div&gt;
+&lt;/div&gt;
+
+
+    // CSS:
+
+
+.slider-container {
+  overflow: hidden;
+}
+.slider-track {
+  display: flex;
+}
+.slider-item {
+  height: 100px;
+}
+
+
+    // JavaScript:
+
+
+let position = 0;
+
+const slidesToShow = 3;
+const slidesToScroll = 2;
+
+const container = document.querySelector('.slider-container');
+const track = document.querySelector('.slider-track');
+
+const brnPrev = document.querySelector('.btn-prev');
+const btnNext = document.querySelector('.btn-next');
+const items = document.querySelectorAll('.slider-item');
+
+const itemsCount = items.length;
+const itemWidth = container.clientwidth / slidesToShow;
+const movePosition = slidesToScroll * itemWidth;
+
+item.forEach((item) =&gt; {
+  item.style.minWidth = '${itemWidth}px';
+});
+
+btnNext.addEventListener('click', () =&gt; {
+  const itemsLeft = itemsCount - (Math.abs(position) + slidesToShow * itemWidth) / itemWidth;
+
+  position -= itemsLeft &gt;= slidesToScroll ? movePosition : itemsLeft * itemWidth;
+
+  setPosition();
+  checkBtns();
+});
+
+btnPrev.addEventListener('click', () =&gt; {
+  const itemsLeft = Math.abs(position) / itemWidth;
+
+  position += itemsLeft &gt;= slidesToScroll ? movePosition : itemsLeft * itemWidth;
+
+  setPosition();
+  checkBtns();
+});
+
+const setPosition = () =&gt; {
+  track.style.transform = 'translateX(${position}px)';
+};
+
+const checkBtns = () =&gt; {
+  btnPrev.disabled = position === 0;
+  btnNext.disabled = position &lt;= -(itemsCount - slidesToShow) * itemWidth;
+};
+
+checkBtns();</pre>
+      </div>
+  </section>
+  </main>
+</body>

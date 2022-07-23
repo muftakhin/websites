@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>События для мобильников</title>
+  <link rel="stylesheet" href="../../styles/style.css">
+</head>
+
+<body class="body">
+  <header class="header">
+    <a class="header__button"  href="../javascript.html">&uArr;</a>
+    <h1 class="header__title">События для мобильников</h1>
+  </header>
+
+  <main class="main">
+    <section class="section">
+      <h2 class="section__header">touchstart</h2>
+
+      <p class="p">
+        При касании элемента.
+      </p>
+
+      <pre class="screen screen_pre">
+window.addEventListener('DOMContentLoaded', () => {
+  const varName_1 = document.querySelector('.className_1');
+
+  varName_1.addEventListener('eventName_1', (e) => {
+    e.preventDefault();
+
+    expression_1;
+  });
+});</pre>
+    </section>
+
+    <section class="section">
+      <h2 class="section__header">touchmove</h2>
+
+      <p class="p">
+        Перемещение при касании элемента.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2 class="section__header">touchend</h2>
+
+      <p class="p">
+        При прекращении касания элемента.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2 class="section__header">touchenter</h2>
+
+      <p class="p">
+        При перемещении при касании над элементом.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2 class="section__header">touchleave</h2>
+
+      <p class="p">
+        При перемещении при касании за пределы элемента.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2 class="section__header">touchcancel</h2>
+
+      <p class="p">
+        Точка прикосновения не регистрируется в браузере.<br>
+        Палец вышел за пределы браузера (например при серфинге)
+      </p>
+    </section>
+  </main>
+</body>
+</html>

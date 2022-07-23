@@ -155,44 +155,29 @@ function name_3() {
                 Callback - это функция, которая должна быть выполнена после того, как другая функция завершит работу.<br>
                 Передаётся в качестве аргумента другой функции.
             </p>
-            <p class="paragraph">
-                Самовызывающаяся функция<br>
-                Рекурсивная функция<br>
-                Функция обратного вызова
-            </p>
 
             <pre class="screen screen_pre">
-function name_1(parameters, name_2) {
+function name_1(parameters, name_2) {           // name_2 без скобок ()
     expression_1;
-    name_2();                           // () только здесь
+    name_2();                                   // скобки () только здесь
 }
 
-name_1(arguments, function() {          // анонимная Callback функция
+function name_2() {                             // Callback функция
     expression_2;
-});</pre>
-            <pre class="screen screen_pre">
-function name_1(parameters, name_2) {
-    expression_1;
-    name_2();                           // () только здесь
-}
-
-function name_3() {                     // Callback функция
-    expression_2;
-}
-
-name_1(arguments,  name_3);             // name_3 без ()</pre>
-            <pre class="screen screen_post">
-const countdown = (value, fn) =&gt; {
-    fn(value)
-    return (value &gt; 0) ? countdown(value-1, fn) : value
 }</pre>
+            <pre class="screen screen_pre">
+function name_1(parameters, function() {        // анонимная Callback функция
+    expression_1;
+});</pre>
         </section>
 
         <section class="section">
             <h2 class="section__header">Стрелочные функции</h2>
 
             <pre class="screen screen_pre">
-let name_1 = (parameters) =&gt; {expressions};</pre>
+let name_1 = (parameters) =&gt; {
+    expression_1;
+};</pre>
             <p class="p">
                 Не имеют <strong>this</strong> и <strong>arguments</strong>.
             </p>
@@ -200,12 +185,12 @@ let name_1 = (parameters) =&gt; {expressions};</pre>
     Традиционная:
 
 var name_1 = function(name_2) {
-    return action_1;
+    expression_1;
 }
 
     Стрелочная:
 
-var name_1 = name_2 =&gt; action_1</pre>
+var name_1 = name_2 =&gt; expression_1;</pre>
 
             <p class="paragraph">
                 &bull;Стрелка <strong>=></strong> указывает на то, что должно быть возвращено, поэтому в данном примере можно не использовать <strong>return</strong><br>
@@ -232,9 +217,12 @@ var name_1 = (name_2, name_3) =&gt; action_1</pre>
         </section>
 
         <section class="section">
-            <h2 class="section__header">Number()</h2>
+            <h2 class="section__header">Самовызывающаяся функция</h2>
 
-            <p class="paragraph">- функция создающая числа</p>
+            <pre class="screen screen_pre">
+(function name_1() {
+    expression_1;
+}());</pre>
         </section>
 
         <section class="section">

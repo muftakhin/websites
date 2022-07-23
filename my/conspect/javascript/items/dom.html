@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DOM</title>
-    <link rel="stylesheet" href="../../styles/style.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM</title>
+  <link rel="stylesheet" href="../../styles/style.css">
 </head>
 
 <body class="body">
@@ -15,7 +15,12 @@
     </header>
 
     <main class="main">
-        <p class="paragraph">DOM - это API для XML, применение которого было расширино на HTML</p>
+        <p class="paragraph">
+            DOM - это API для XML, применение которого было расширино на HTML.
+        </p>
+        <p class="p">
+            Каждый элемент является узлом, но не каждый узел является элементом.
+        </p>
         <section class="section">
             <h2 class="section__header">window</h2>
 
@@ -64,14 +69,102 @@ window.onload = name_1;</pre>
             <div class="subsection">
                 <h3 class="subsection__header">Методы объекта window</h3>
 
-                <p class="paragraph">
-                    <strong>alert</strong> - выводит соответствующее диалоговое окно<br>
-                    <strong>prompt</strong> - получает информацию от пользователя<br>
-                    <strong>open</strong> - открывает новое окно браузера<br>
-                    <strong>close</strong> - закрывает окно<br>
-                    <strong>setTimeout</strong> - вызывает обработчик по истечении заданного интервала времени<br>
-                    <strong>setInterval</strong> - многократно вызывает обработчик через заданный интервал времени
-                </p>
+                <div class="subsubsection">
+                    <h4 class="subsubsection__header">prompt()</h4>
+
+                    <p class="p">
+                        <strong>prompt()</strong> принимает данные типа <strong>string</strong>
+                    </p>
+                    <pre class="screen screen_pre">
+let name_1 = prompt("string_1");</pre>
+                    <pre class="screen screen_pre">
+let name_1 = prompt("string_1", "placeholder_string_1");</pre>
+                    <p class="p">
+                        &bull; создаём переменную <strong>name</strong> и присваиваем ей значение, которое вернёт вызов <strong>prompt()</strong>.<br>
+                        &bull; если нажать "Отмена", то <strong>prompt()</strong> вернёт <strong>null</strong>.
+                    </p>
+                </div>
+
+                <div class="subsubsection">
+                    <h4 class="subsubsection__header">confirm()</h4>
+
+                    <p class="p">
+                        Функция <strong>confirm</strong> позволяет задать вопрос, на который можно ответить <strong>"да"</strong> или <strong>"нет"</strong> и возвращает <strong>true</strong> или <strong>false</strong>.
+                    </p>
+                    <pre class="screen screen_post">
+let ok = confirm("Жми OK!");
+
+if (ok) {
+    console.log("Молодцом!");
+} else {
+    console.log("Не на ту нажал!");
+}</pre>
+                </div>
+
+                <div class="subsubsection">
+                    <h4 class="subsubsection__header">alert()</h4>
+        
+                    <p class="p">
+                        Отображается, пока пользователь не нажмёт <strong>OK</strong>.
+                    </p>
+                    <pre class="screen screen_post">
+alert("А хорошо жить ещё лучше!");</pre>
+                </div>
+
+                <div class="subsubsection">
+                  <h4 class="subsubsection__header">setTimeout()</h4>
+
+                  <p class="p">
+                    <strong>setTimeout()</strong> асинхронно вызывает функцию через заданное время.<br>
+                    Позволяет откладывать выполнение заданного кода.
+                  </p>
+
+                  <pre class="screen screen_pre">
+setTimeout(name_1, n);</pre>
+                  <p class="p">
+                    где:<br>
+                    <strong>name_1</strong> - имя функции (без скобок)<br>
+                    <strong>n</strong> - количество миллисекунд
+                  </p>
+
+                  <pre class="screen screen_pre">
+const name_2 = setTimeout(name_1, n);
+
+clearInterval(name_2);                  // сброс</pre>
+                  <p class="p">
+                    <strong>name_2</strong> присваивается идентификатор таймера, возврвщаемый функциями <strong>setTimeout()</strong> и <strong>setInterval()</strong>.
+                  </p>
+
+                  <pre class="screen screen_pre">
+        // Рекурсивный setTimeout:
+
+let name_1 = setTimeout(function name_2() {
+  expression_1;
+  name_1 = setTimeout(name_2, n);
+}, n);</pre>
+                  <p class="p">
+                    Функция всегда выдерживает интервал после завершения каждой итерации, независимо от времени её выполнения.
+                  </p>
+                </div>
+
+                <div class="subsubsection">
+                  <h4 class="subsubsection__header">setInterval()</h4>
+
+                  <p class="p">
+                    <strong>setInterval()</strong> асинхронно вызывает функцию через заданный интервал многократно
+                  </p>
+
+                  <pre class="screen screen_pre">
+setInterval(name_1, n);</pre>
+                  <p class="p">
+                    где:<br>
+                    <strong>name_1</strong> - имя функции (без скобок).<br>
+                    <strong>n</strong> - количество миллисекунд.
+                  </p>
+                  <p class="p">
+                    Если функция <strong>name_1</strong> выполняется дольше <strong>n</strong>, то следующая итерация выполнится сразу.
+                  </p>
+                </div>
             </div>
         </section>
 
@@ -113,7 +206,7 @@ document.links[0].href = "http://ovnacode.ru";</pre>
             </div>
 
             <div class="subsection">
-                <h3 class="subsection__header">Доступ к основным элементам</h3>
+                <h3 class="subsection__header">Доступ к элементам document-а</h3>
 
                 <div class="subsubsection">
                     <h4 class="subsubsection__header">DOCTYPE</h4>
@@ -143,6 +236,74 @@ document.head</pre>
 document.body</pre>
                     <pre class="screen screen_post">
 document.body.style.backgroundColor = "red";</pre>
+                </div>
+
+                <div class="subsubsection">
+                    <h4 class="subsubsection__header">child of element</h4>
+
+                    <pre class="screen screen_pre">
+document.body.childNodes</pre>
+
+                    <pre class="screen screen_post">
+for ( let node of document.body.childNodes ) {
+    if ( node.nodeName == '#text' ) {
+        continue;
+    }
+}</pre>
+                </div>
+
+                <div class="subsubsection">
+                    <h4 class="subsubsection__header">firstChild и lastChild</h4>
+
+                    <pre class="screen screen_pre">
+document.body.firstChild
+document.body.lastChild
+
+domElement_1.firstElementChild
+domElement_1.last ElementChild</pre>
+                </div>
+
+                <div class="subsubsection">
+                    <h4 class="subsubsection__header">Родительский узел</h4>
+
+                    <pre class="screen screen_pre">
+domElement_1.parentNode</pre>
+                </div>
+
+                <div class="subsubsection">
+                    <h4 class="subsubsection__header">data-.... атрибуты</h4>
+
+                    <p class="p">
+                        Добавляем тегам атрибут.
+                    </p>
+                    <pre class="screen screen_pre">
+&lt;tagName data-.... &gt;
+    ....
+&lt;/tagName&gt;
+
+domElement_1.querySelector('[data-....]');</pre>
+                </div>
+
+                <div class="subsubsection">
+                    <h4 class="subsubsection__header">Соседний узел</h4>
+
+                    <pre class="screen screen_pre">
+domElement_1.previousSibling
+domElement_1.nextSibling</pre>
+                </div>
+
+                <div class="subsubsection">
+                    <h4 class="subsubsection__header">Следующий элемент</h4>
+
+                    <pre class="screen screen_pre">
+domElement_1.nextElementSibling</pre>
+                </div>
+
+                <div class="subsubsection">
+                    <h4 class="subsubsection__header">Следующий элемент</h4>
+
+                    <pre class="screen screen_pre">
+domElement_1.nextElementSibling</pre>
                 </div>
             </div>
         </section>
@@ -198,7 +359,7 @@ let name_1 = document.querySelectorAll("css_selector");
     
 let name_2 = name_1[i]   //  - доступ к i-1 элементу массива элементов name_1</pre>
                     <p class="p">
-                        к name_1 применим метод массива <strong>forEach</strong>.
+                        к <strong>name_1</strong> применим метод массива <strong>forEach</strong>.
                     </p>
                     <pre class="screen screen_post">
     // Слайдер с использованием .querySelectorAll()
@@ -351,6 +512,10 @@ name_1.forEach(item =&gt; {
 let name_1 = document.querySelector('css_selector_1');
 name_1.classList.add("class_1");</pre>
                     <p class="paragraph">Если у элемента <strong>element_1</strong> имеются классы, то новый класс добавляется в список последним</p>
+                    <pre class="screen screen_pre">
+    // Можно добавлять несколько классов:
+
+name_1.classList.add("class_1", "class_2", ....);</pre>
                     <pre class="screen screen_post">
     // Открытие окна
 
@@ -408,15 +573,25 @@ name_1.addEventListener('click', () => {
                     <h4 class="subsubsection__header">.classList.cotains()</h4>
 
                     <p class="paragraph">
-                        - сообщает, есть ли у элемента класс<br>
+                        - сообщает, есть ли у элемента класс с именем <strong>class_1</strong><br>
                         &bull; Возвращает булево значение
                     </p>
                     <pre class="screen screen_pre">
 let name_1 = document.querySelector('css_selector_1');
 
 if (name_1.classList.contains("class_1") == true {
-    // action;
+    expression_1;
 }</pre>
+                </div>
+
+                <div class="subsubsection">
+                    <h4 class="subsubsection__header">.classList.item()</h4>
+
+                    <p class="p">
+                        Возвращает имя класса с соответствующим индексом <strong>i</strong>.
+                    </p>
+                    <pre class="screen screen_pre">
+name_1.classList.item(i);</pre>
                 </div>
             </div>
 
@@ -595,61 +770,17 @@ form.addEventListener("submit", function(evt) {
 &lt;style&gt;
 
 @keyframes shake {
-0%, 100% { transform: translateX(0); }
-10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
-20%, 40%, 60%, 80% { transform: translateX(10px); }
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+    20%, 40%, 60%, 80% { transform: translateX(10px); }
 }
 
 .modal-error {
-animation-name: shake;
-animation-duration: 0,6s;
+    animation-name: shake;
+    animation-duration: 0,6s;
 }
 
 &lt;/style&gt;</pre>
-        </section>
-
-        <section class="section">
-            <h2 class="section__header">Перемещение по DOM</h2>
-
-            <p class="paragraph">
-                <strong>firstChild</strong><br>
-                <strong>lastChild</strong><br>
-                <strong>parentNode</strong><br>
-                <strong>children</strong><br>
-                <strong>previousSibling</strong><br>
-                <strong>nextSibling</strong>
-            </p>
-
-            <div class="subsection">
-                <h3 class="subsection__header">.firstChild</h3>
-
-                <pre class="screen screen_pre">
-    // Проверка наличия потомка
-
-
-let name_1 = document.querySelector('css-selector_1');
-
-if (name_1.firstChild) {
-    // action;
-}</pre>
-            </div>
-
-            <div class="subsection">
-                <h3 class="subsection__header">.сhildren</h3>
-
-                <pre class="screen screen_pre">
-    // Обращение ко всем потомкам
-
-
-let name_1 = document.querySelector('css-selector_1');
-
-for (let i=0; i &lt; name_1.children.length; i++) {
-    let name_2 = name_1.children[i];
-
-    document.writeIn(name_2.tagName);
-}</pre>
-                <p class="paragraph">Для этой коллекции доступны методы <strong>Array</strong></p>
-            </div>
         </section>
     </main>
 </body>
