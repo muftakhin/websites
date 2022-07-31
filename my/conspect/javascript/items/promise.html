@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Promise</title>
+  <link rel="stylesheet" href="../../styles/style.css">
+</head>
+
+<body class="body">
+  <header class="header">
+    <a class="header__button"  href="../javascript.html">&uArr;</a>
+    <h1 class="header__title">Promise</h1>
+  </header>
+
+  <main class="main">
+    <section class="section">
+      <h2 class="section__header">Callback Hell</h2>
+
+      <p class="p">
+        До ES6 использовались callback-и, чтобы управлять асинхронными задачами, такими как сетевые запросы.
+      </p>
+      <pre class="screen screen_pre">
+    // callback hell:
+
+expression_1;
+
+setTimeout(() => {
+  expression_2;
+  setTimeout(() => {
+    expression_3;
+    setTimeout(() => {
+      expression_4;
+    }, 1000);
+  }, 1000);
+},1000);
+      </pre>
+    </section>
+
+    <section class="section">
+      <h2 class="section__header">promise</h2>
+
+      <p class="p">
+        Промис создаётся при помощи конструктор промисов.<br>
+        Промис принимает 1 аргумент ( callback-функцию ), которая принимает 2 аргумента ( 2 callback-функции ) <strong>resolve</strong> и <strong>reject</strong>.<br>
+        <strong>resolve()</strong> и <strong>reject()</strong> принимают по 1 аргументу, который может быть строкой, числом, логическим выражением, массивом или объектом.<br>
+        Промис становится выполненным при вызове <strong>resolve()</strong>, и отклонённым при вызове <strong>reject()</strong>.<br>
+        Промис может быть выполнен или отклонен только один раз.
+      </p>
+      <pre class="screen screen_pre">
+const name_1 = new Promise((resolve, reject) => {
+  ....
+  resolve(value_1);
+  ....
+  reject(value_2);
+});</pre>
+        <div class="subsection">
+          <h3 class="subsection__header">Метод .then()</h3>
+
+          <pre class="screen screen_pre">
+const name_1 = new Promise((resolve, reject) => {
+  ....
+  resolve(value_1);
+  ....
+  reject(value_2);
+});
+
+name_1.then((data) => {       // data примет value_1
+    expression_with_data;
+  }, (error) => {             // error примет value_2
+    expression_with_error;
+  }
+);</pre>
+          <p class="p">
+          <strong>successCallback</strong> вызывается со значением, переданным в <strong>resolve()</strong>, если промис был успешно выполнен. Принимает один аргумент, который является значением переданным в <strong>resolve()</strong>.<br>
+          <strong>failureCallback</strong> вызывается со значением, переданным в <strong>reject()</strong>, если промис был отклонен. Принимает один аргумент, который является значением преданным в <strong>reject()</strong>.
+          </p>
+          <pre class="screen screen_pre">
+name_1.then(successCallBack(param_1), failureCallBack(param_2));</pre>
+        </div>
+
+        <div class="subsection">
+          <h3 class="subsection__header">Метод .catch()</h3>
+
+          <p class="p">
+            Используется для отработки ошибок.
+          </p>
+          <pre class="screen screen_pre">
+const name_1 = new Promise((resolve, reject) => {
+  ....
+  reject(value_1);
+});
+
+name_1
+  .then((data) => {
+    expression_1;
+  })
+  .catch((error) => {     // error примет value_1
+    expression_2;
+  });</pre>
+        </div>
+
+        <div class="subsection">
+          <h3 class="subsection__header">Цепочка промисов (promise chain)</h3>
+
+          <pre class="screen screen_pre">
+const name_1 = new Promise((resolve, reject) => {
+  resolve(value_1);
+});
+const name_2 = new Promise((resolve, reject) => {
+  resolve(value_2);
+});
+const name_3 = new Promise((resolve, reject) => {
+  reject(value_3);
+});
+
+name_1
+  .then((data) => {           // data примет value_1
+    expression_1_with_data;
+    return name_2;
+  })
+  .then((data) => {           // data примет value_2
+    expression_2_with_data;
+    return name_3;
+  })
+  .then((data) => {           // data примет value_2
+    expression_3_with_data;
+  })
+  .catch((error) => {         // error примет value_3
+    expression_4_with_error;
+  });</pre>
+          <p class="p">
+            Когда <strong>name_1</strong> выполнен, вызывается метод <strong>.then()</strong>, который возвращает <strong>name_2</strong><br>
+            Когда выполнен <strong>name_2</strong>, снова вызывается метод <strong>.then()</strong>, возвращающий теперь <strong>name_3</strong><br>
+            Так как <strong>name_3</strong> отклонен, вместо следующего <strong>then()</strong>, вызывается <strong>catch()</strong>, который и обрабатывает отклонение <strong>name_3</strong>.<br>
+            Как правило достаточно одного метода <strong>catch()</strong> для обработки отклонения любого из промисов в цепочке, если этот метод находится в конце неё.
+          </p>
+        </div>
+      <pre class="screen screen_post">
+const name_1 = new Promise((resolve, reject) => {   // resolve и reject - параметры принимающие функции
+  setTimeout(() => {
+    expression_1;
+    ....
+    resolve(name_11);                               // name_11 - передаваемые данные
+  }, 1000);                                         // (например, возвращённые с сервера)
+});
+
+name_1.then((name_11) => {                          // Метод выполняемый в Promise в случае положительного
+  return new Promise((resolve, reject) => {         // результата , и принимает аргумент name_11
+    setTimeout(() => {                              // принимаемый параметром resolve
+      expression_2;
+      ....
+      resolve(name_11);
+      ....
+      reject();                 // Пропуская все последующие блоки кода .then направляется в .catch
+    }, 1000);
+  });
+}).then((name_21) => {          // Данные name_21 приходят из предыдущей функции resolve
+  expression_3;
+}).then((name_21) => {
+  expression_4;
+}).catch(() => {
+  expression_5;  
+}).finally(() => {
+  expression_6;
+});</pre>
+      <p class="p">
+        Запускаем <strong>resolve()</strong> в случае положительного исхода выполнения <strong>expression_1</strong>.<br>
+        Запускаем <strong>reject()</strong> в противном случае.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2 class="section__header">Методы Promise</h2>
+
+      <div class="subsection">
+        <h3 class="subsection__header">.all</h3>
+
+        <p class="p">
+          Этот метод берет массив промисов и возвращает новый промис, который будет выполненным, когда все промисы внутри массива выполнены или отклонен, как только встречается промис, который отклоняется.<br>
+          Ждет успешное выполнение всех промисов, либо завершает свое выполнение при обнаружении первой неудачи в массиве промисов.<br>
+          Используется для того, чтобы точно убедиться, что все промисы выполнились.
+        </p>
+        <pre class="screen screen_pre">
+const name_1 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve(value_1);
+  }, 1000);
+});
+
+const name_2 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve(value_2);       // или reject(value_2)
+  }, 3000);                 // при &lt;1000
+});
+
+Promise.all([name_1, name_2])
+  .then((data) => {
+    expression_with_data;
+  })
+  .catch((error) => {
+    expression_with_error;
+  });</pre>
+        <pre class="screen screen_post">
+const name_1 = (time) => {
+  return new Promise(resolve => {       // reject редко нужны
+    setTimeout(() => {
+      resolve();
+    }, time);
+  });
+};
+
+Promise.all([test(1000), test(2000)]).then(() => {    // Promise.all принимает массив с промисами
+  expression_1;
+});</pre>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__header">.race</h3>
+
+        <p class="p">
+          Этот метод принимает массив промисов и возвращает один новый промис, который будет выполненным, как только встретится выполненный промис в массиве или же отклоняется, если отклоненный промис встречается раньше
+        </p>
+        <pre class="screen screen_pre">
+const name_1 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve(value_1);
+  }, 1000);
+});
+
+const name_2 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    reject(value_2);
+  }, 3000);
+});
+
+Promise.race([name_1, name_2])
+  .then((data) => {
+    expression_with_data;
+  })
+  .catch((error) => {
+    expression_with_error;
+  });</pre>
+      </div>
+    </section>
+  </main>
+</body>

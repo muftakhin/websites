@@ -1,346 +1,350 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Массивы</title>
-    <link rel="stylesheet" href="../../styles/style.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Массивы</title>
+  <link rel="stylesheet" href="../../styles/style.css">
 </head>
 
 <body class="body">
-    <header class="header">
-        <a class="header__button"  href="../javascript.html">&uArr;</a>
-        <h1 class="header__title">array</h1>
-    </header>
+  <header class="header">
+    <a class="header__button"  href="../javascript.html">&uArr;</a>
+    <h1 class="header__title">array</h1>
+  </header>
 
-    <main class="main">
-        <p class="paragraph">Массив - объект, именами свойств которого являются строки из цифр от <strong>0</strong> до <strong>length</strong></p>
+  <main class="main">
+    <section class="section">
+      <h2 class="section__header">Создание и изменение элементов</h2>
 
-        <section class="section">
-            <h2 class="section__header">Доступ к элементам</h2>
+      <p class="p">
+        Массив - объект, именами свойств которого являются строки из цифр от <strong>0</strong> до <strong>length</strong>.
+      </p>
 
-            <pre class="screen screen_pre">
-name_1[n];
+      <div class="subsection">
+        <h3 class="subsection__header">Создание пустого массива</h3>
 
-name_1[n][n]...[n];  // многомерный массив</pre>
-            <p class="paragraph">Доступ к <strong>n+1</strong> элементу массива</p>
-        </section>
+        <div class="subsubsection">
+          <h4 class="subsubsection__header">Упрощённая запись</h4>
 
-        <section class="section">
-            <h2 class="section__header">Создание и изменение элементов</h2>
-
-            <div class="subsection">
-                <h3 class="subsection__header">Создание пустого массива</h3>
-
-                <p class="paragraph">Упрощённая запись:</p>
-                <pre class="screen screen_pre">
+          <pre class="screen screen_pre">
 let name_1 = [];</pre>
+        </div>
 
-                <p class="paragraph">С помощью конструктора Array:</p>
-                <pre class="screen screen_pre">
+        <div class="subsubsection">
+          <h4 class="subsubsection__header">С помощью конструктора Array</h4>
+
+          <pre class="screen screen_pre">
 let name_1 = new Array();</pre>
+        </div>
 
-                <p class="paragraph">Создание пустого массива с несколькими элементами:</p>
-                <pre class="screen screen_pre">
-let name_1 = new Array(n);</pre>
-                <p class="paragraph"><strong>n</strong> - количество элементов</p>
-            </div>
+        <div class="subsubsection">
+          <h4 class="subsubsection__header">Создание пустого массива с несколькими элементами</h4>
 
-            <div class="subsection">
-                <h3 class="subsection__header">Создание массива при помощи литерала</h3>
+          <pre class="screen screen_pre">
+let name_1 = new Array(n);        // n - количество элементов</pre>
+        </div>
+      </div>
 
-                <pre class="screen screen_pre">
+      <div class="subsection">
+        <h3 class="subsection__header">Создание массива при помощи литерала</h3>
+
+        <pre class="screen screen_pre">
 let name_1 = ["one", "two", "three"];
 
 let name_1 = new Array("one", "two", "three");</pre>
-            </div>
-                <p class="parahraph">Некоторые элементы массива могут отсутствовать, тогда они принимают значение <strong>indefined</strong></p>
-                <pre class="screen screen_post">
-let name_1 = [, 2, ,"four", ,];</pre>
-                <p class="paragraph">Запятая в конце не означает отсутствие следующего за ней элемента</p>
-        </section>
+      </div>
 
-        <section class="section">
-            <h2 class="section__header">Доступ к элементам массива</h2>
+      <p class="p">
+        Некоторые элементы массива могут отсутствовать, тогда они принимают значение <strong>indefined</strong>.
+      </p>
+    </section>
 
-            <pre class="screen screen_pre">
-name_1['n'];  //-> значение n-1 элемента массива</pre>
-            <p class="paragraph">Значение индекса элемента внутри квадратных скобок автоматическ преобразуется в строку, поэтому кавычки можно не использовать</p>
-            <pre class="screen screen_pre">
-name_1[n] = value_1;</pre>
-            <p class="paragraph">
-                - задать или изменить значение (n+1)-го элемента массива name_1<br>
-                Если добавить в пустой массив элементы с индексами <strong>[0]</strong> и <strong>[10]</strong>, элементы с индексами от <strong>[1]</strong> по <strong>[9]</strong> включительно, будут иметь значения <strong>undefined</strong>. Длинна этого массива будет равна <strong>10</strong>
-            </p>
-        </section>
+    <section class="section">
+      <h2 class="section__header">Доступ к элементам массива</h2>
 
-        <section class="section">
-            <h2 class="section__header">Работа с массивами</h2>
+      <pre class="screen screen_pre">
+name_1['n'];        //-> значение n-1 элемента массива</pre>
+      <p class="p">
+        Значение индекса элемента внутри квадратных скобок автоматическ преобразуется в строку, поэтому кавычки можно не использовать.
+      </p>
+      <pre class="screen screen_pre">
+name_1[n];              // Доступ к n+1 элементу массива.
 
-            <div class="subsection">
-                <h3 class="subsection__header">Длина</h3>
+name_1[n][n]...[n];     // Многомерный массив</pre>
+      <pre class="screen screen_pre">
+name_1[n] = value_1;    // задать или изменить значение (n+1)-го элемента</pre>
+      <p class="p">
+        Если добавить в пустой массив элементы с индексами <strong>[0]</strong> и <strong>[10]</strong>, элементы с индексами от <strong>[1]</strong> по <strong>[9]</strong> включительно, будут иметь значения <strong>undefined</strong>. Длинна этого массива будет равна <strong>10</strong>
+      </p>
+    </section>
 
-                <pre class="screen screen_pre">
+    <section class="section">
+      <h2 class="section__header">Работа с массивами</h2>
+
+      <div class="subsection">
+        <h3 class="subsection__header">Длина</h3>
+
+        <pre class="screen screen_pre">
 name_1.length;        //-&gt; кол-во элементов массива name_1
 
 name_1.[length - 1];  //-&gt; значение последнего
                                элемента массива name_1</pre>
-            </div>
+      </div>
 
-            <div class="subsection">
-                <h3 class="subsection__header">Копирование массива</h3>
+      <div class="subsection">
+        <h3 class="subsection__header">Копирование массива</h3>
 
-                <pre class="screen screen_pre">
+        <pre class="screen screen_pre">
 let copyArray = srcArray.slice();</pre>
-                <pre class="screen screen_pre">
+        <pre class="screen screen_pre">
 let copyArray = [...srcArray];</pre>
-            </div>
+      </div>
 
-            <div class="subsection">
-                <h3 class="subsection__header">Добавление элементов .push() и .unshift()</h3>
+      <div class="subsection">
+        <h3 class="subsection__header">Добавление элементов .push() и .unshift()</h3>
 
-                <p class="paragraph">Добавление элемента в конец массива:</p>
-                <pre class="screen screen_pre">
+        <div class="subsubsection">
+          <h4 class="subsubsection__header">В конец массива</h4>
+
+          <pre class="screen screen_pre">
 name_1.push(value_1);</pre>
-                </div>
+        </div>
 
-                <p class="paragraph">Добавление элемента в начало массива</p>
-                <pre class="screen screen_pre">
+        <div class="subsubsection">
+          <h4 class="subsubsection__header">В начало массива</h4>
+
+          <pre class="screen screen_pre">
 name_1.unshift(value_1);</pre>
-                <p class="paragraph">При добавлении данных в начало массива значение индекса каждого
-                    из существующих в нем элементов увеличивается с учетом вновь появившихся данных</p>
+          <p class="p">
+            При добавлении данных в начало массива значение индекса каждого из существующих в нем элементов увеличивается с учетом вновь появившихся данных.<br>
+            <strong>.push()</strong> и <strong>.unshift()</strong> помимо добавления элементов также возвращают новую длину массива.
+          </p>
+      </div>
 
-                <p class="paragraph"><strong>.push()</strong> и <strong>.unshift()</strong> помимо добавления элементов также возвращают новую длину массива</p>
+      <div class="subsection">
+        <h3 class="subsection__header">Удаление элементов .pop() и .shift()</h3>
 
-                <p class="paragraph">Поскольку массив это объект, можно добавить в него произвольные свойства</p>
-                <pre class="screen screen_pre">
-name_1.property_11 = value 11;</pre>
-            </div>
+        <div class="subsubsection">
+          <h4 class="subsubsection__header">Из конца массива</h4>
 
-            <div class="subsection">
-                <h3 class="subsection__header">Удаление элементов .pop() и .shift()</h3>
-
-                <p class="paragraph">Удаление элемента из конца массива</p>
-                <pre class="screen screen_pre">
+          <pre class="screen screen_pre">
 let name_1 = name_2.pop();</pre>
-                <p class="paragraph">- <strong>name_2.pop();</strong> удалит и вернёт последний элемент массива</p>
-                </div>
+          <p class="p">
+            - <strong>name_2.pop();</strong> удалит и вернёт последний элемент массива.
+          </p>
+        </div>
+      </div>
 
-                <p class="paragraph">Удаление элемента из начала массива</p>
-                <pre class="screen screen_pre">
+      <div class="subsubsection">
+        <h4 class="subsubsection__header">Из начала массива</h4>
+
+        <pre class="screen screen_pre">
 let name_1 = name_2.shift();</pre>
-                <p class="paragraph">- <strong>name_2.shift();</strong> удалит и вернёт первый элемент массива</p>
-                </div>
-            </div>
+        <p class="p">
+          - <strong>name_2.shift();</strong> удалит и вернёт первый элемент массива.
+        </p>
+      </div>
 
-            <div class="subsection">
-                <h3 class="subsection__header">Объединение массивов</h3>
+      <div class="subsection">
+        <h3 class="subsection__header">Объединение массивов</h3>
 
-                <pre class="screen screen_pre">
+        <pre class="screen screen_pre">
 firstArray.concat(secondArray);                  // объединение 2х массивов
 
 firstArray.concat(secondArray, ..., lastArray);  // объединение нескольких массивов</pre>
-                <p class="paragraph">В исходные массивы изменения не вносятся</p>
-            </div>
+        <p class="p">
+          В исходные массивы изменения не вносятся.
+        </p>
+      </div>
 
-            <div class="subsection">
-                <h3 class="subsection__header">Поиск индекса элемента в массиве</h3>
+      <div class="subsection">
+        <h3 class="subsection__header">Поиск индекса элемента в массиве</h3>
 
-                <pre class="screen screen_pre">
+        <pre class="screen screen_pre">
 name_1.indexOf(value_1);</pre>
-                <p class="paragraph">
-                    &bull; Вернёт первый найденный ключ(индекс) элемента массива <strong>name_1</strong> со  значением <strong>value_1</strong><br>
-                    &bull; Если элемент с таким значением отсутствует, вернёт <strong>-1</strong>
-                </p>
-            </div>
+        <p class="p">
+          &bull; Вернёт первый найденный ключ(индекс) элемента массива <strong>name_1</strong> со  значением <strong>value_1</strong><br>
+          &bull; Если элемент с таким значением отсутствует, вернёт <strong>-1</strong>
+        </p>
+      </div>
 
-            <div class="subsection">
-                <h3 class="subsection__header">Объединение элементов массива в одну строку</h3>
+      <div class="subsection">
+        <h3 class="subsection__header">Объединение элементов массива в одну строку</h3>
 
-                <pre class="screen screen_pre">
+        <pre class="screen screen_pre">
 name_1.join();             //-&gt; "value_1,value_2, ... ,value_n"
                
 name_1.join(" simbols ");  //-&gt; "value_1 simbols value_2 simbols ... simbols value_n"</pre>
-            </div>
+      </div>
 
-            <div class="subsection">
-                <h3 class="subsection__header">Случайный элемент массива</h3>
+      <div class="subsection">
+        <h3 class="subsection__header">Случайный элемент массива</h3>
 
-                <pre class="screen screen_pre">
+        <pre class="screen screen_pre">
 let name_2 = Math.floor(Math.random() * name_1.length);</pre>
-                <p class="paragraph">переменной <strong>name_2</strong> присваивается значение случайного элемента массива <strong>name_1</strong></p>
-            </div>
-        </section>
+        <p class="p">
+          Переменной <strong>name_2</strong> присваивается значение случайного элемента массива <strong>name_1</strong>.
+        </p>
+      </div>
+    </section>
 
-        <section class="section">
-            <h2 class="section__header">Методы массива</h2>
-            
-            <div class="subsection">
-	            <h3 class="subsection__header">.map()</h3>
+    <section class="section">
+      <h2 class="section__header">Методы массива</h2>
 
-	            <pre class="screen screen_pre">
-let name_2 = name_1.map( function_1 );</pre>
-				<p class="paragraph">
-					Метод <strong>.map()</strong> получает в качестве аргумента и применяет функцию обратного вызова <strong>function_1</strong> последовательно к каждому элементу массива <strong>name_1</strong> и создаёт из возвращаемых результатов новый массив <strong>name_2</strong>, не внося изменения в массив <strong>name_1</strong> 
-				</p>
+      <div class="subsection">
+	      <h3 class="subsection__header">.map()</h3>
 
-                <pre class="screen screen_pre">
-let name_2 = name_1.map( function_1, name_3, name_4 );</pre>
-                <p class="paragraph">
-                    <strong>name_3</strong> - индекс текущего элемента массива<br>
-                    <strong>name_4</strong> - массив, для которого вызывается map
-                </p>
-
-                <pre class="screen screen_pre">
-let name_2 = name_1.map( ( item, index, array ) => { action_1; } );</pre>
-                <p class="paragraph"><strong>.map()</strong> принимает 3 параметра: значение элемента, его индекс и сам массив</p>
-            </div>
-
-            <div class="subsection">
-	            <h3 class="subsection__header">.filter()</h3>
-
-	            <pre class="screen screen_pre">
-let name_2 = name_1.filter( function_1 );</pre>
-				<p class="paragraph">
-					Метод <strong>.filter()</strong> получает в качестве аргумента и применяет функцию обратного вызова <strong>function_1</strong> последовательно к каждому элементу массива <strong>name_1</strong> и создаёт из элементов для которых возвращаемый результат равен <strong>true</strong> новый массив <strong>name_2</strong>, не внося изменения в массив <strong>name_1</strong> 
-				</p>
-                <p class="paragraph">
-                    В качестве своего единственного аргумента она получает предикат.<br>
-                    Так называется функция, которая всегда возвращает булево значение: <strong>true</strong> или <strong>false</strong>.<br>
-                    Функция <strong>Array.filter</strong> вызывает этот предикат по одному разу для каждого элемента массива.<br>
-                    Данный элемент передается предикату в качестве аргумента, а возвращаемое значение используется для принятия решения по включению
-элемента в новый массив
-                </p>
-
-                <pre class="screen screen_pre">
-let name_2 = name_1.filter( function_1, name_3, name_4 );</pre>
-                <p class="paragraph">
-                    <strong>name_3</strong> - индекс текущего элемента массива<br>
-                    <strong>name_4</strong> - массив, для которого вызывается filter
-                </p>
-                </div>
-
-                <pre class="screen screen_post">
-let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-let evenNumbers = numbers.filter(function (item) {
-    return (item % 2 == 0);
+	      <pre class="screen screen_pre">
+let name_2 = name_1.map( function (item, index, array) {
+  return expression;
 });
 
-console.log(evenNumbers);</pre>
-                <p class="paragraph">В данном примере функция обратного вызова является анонимной</p>
-            </div>
+  // item - элемент массива name_1
+  // index - индекс текущего элемента массива
+  // array - массив name_1</pre>
+				<p class="p">
+					Метод <strong>.map()</strong> получает в качестве аргумента и применяет функцию обратного вызова <strong>function</strong> последовательно к каждому элементу массива <strong>name_1</strong> и создаёт из возвращаемых результатов новый массив <strong>name_2</strong>, не внося изменения в массив <strong>name_1</strong>.
+				</p>
+      </div>
 
-            <div class="subsection">
-                <h3 class="subsection__header">.sort()</h3>
+      <div class="subsection">
+	      <h3 class="subsection__header">.filter()</h3>
 
-                <p class="p">
-                    Возвращает отсортированный массив и изменяет исходный.
-                </p>
-                <pre class="screen screen_pre">
+	      <pre class="screen screen_pre">
+let name_2 = name_1.filter( function (item, index, array) {
+  return expression;
+});
+
+  // item - элемент массива name_1
+  // index - индекс текущего элемента массива
+  // array - массив name_1</pre>
+				<p class="p">
+					Метод <strong>.filter()</strong> получает в качестве аргумента и применяет callback-функцию <strong>function</strong> последовательно к каждому элементу массива <strong>name_1</strong> и создаёт из элементов для которых возвращаемый результат равен <strong>true</strong> новый массив <strong>name_2</strong>, не внося изменения в массив <strong>name_1</strong>.<br>
+          <strong>function</strong> является предикатом,  ибо возвращает булево значение.<br>
+          Если ничего не найдено возвращает пустой массив.
+				</p>
+      </div>
+
+      <div class="subsection">
+	      <h3 class="subsection__header">.every() и .some() (устарело)</h3>
+
+	      <pre class="screen screen_pre">
+let name_2 = name_1.avery( function (item) {
+  return expression;
+});
+
+  // item - элемент массива name_1
+</pre>
+				<p class="p">
+					<strong>.every()</strong> и  <strong>.some()</strong> получают в качестве аргумента и применяет callback-функцию <strong>function</strong> последовательно к каждому элементу массива <strong>name_1</strong><br>
+          <strong>.every()</strong> вернёт <strong>true</strong>, если <strong>function</strong> для всех элементов вернёт <strong>true</strong>.<br>
+          <strong>.some()</strong> вернёт <strong>true</strong>, если <strong>function</strong> вернёт <strong>true</strong> хоть для одного элемента <strong>function</strong>.
+				</p>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__header">.sort()</h3>
+
+        <p class="p">
+          Возвращает отсортированный массив и изменяет исходный.
+        </p>
+        <pre class="screen screen_pre">
 name_1.sort( function (a, b) {    // если function возвращает &lt;0 - a получает индекс меньше, чем у b
     expression;                                 // если ==0 - не меняется очерёдность
 });                                             // если &gt;0 - b получает индекс меньше, чем a
 
 b - предыдущий элемент
-a - следующий элемент
-                </pre>
-            </div>
+a - следующий элемент</pre>
+      </div>
 
-            <div class="subsection">
-	            <h3 class="subsection__header">.reduce()</h3>
+      <div class="subsection">
+	      <h3 class="subsection__header">.reduce()</h3>
 
-                <p class="paragraph">Получение одного значения из массива</p>
-	            <pre class="screen screen_pre">
-let name_2 = name_1.reduce( function_1( name_3, name_4 ), name_5 );</pre>
-				<p class="paragraph">
-					Метод <strong>.reduce()</strong> получает два аргумента. В качестве первого аргумента функцию обратного вызова <strong>function_1</strong> с двумя аргументами <strong>name_3</strong> содержащем итоговое значение и <strong>name_4</strong> - текущий элеент массива<br>
-                    В качестве второго аргумента начальное значение <strong>name_5</strong>
-				</p>
+        <p class="p">
+          Вычисляется единое значение на основании всего массива.
+        </p>
+	      <pre class="screen screen_pre">
+let name_2 = name_1.reduce( function_1( previousValue, item, index, array ) {
+  expression;
+}, initial );
 
-                <pre class="screen screen_post">
-let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-let evenNumbers = numbers.filter(function (item) {
-    return (item % 2 == 0);
-});
+  // previousValue - результат предыдущего вызова функции (при первом вызове равен initial, если он задан).
+  // item - текущий элемент массива.
+  // index - индекс текущего элемента массива.
+  // array - сам массив.
+      </div>
 
-console.log(evenNumbers);</pre>
-                <p class="paragraph">В данном примере функция обратного вызова является анонимной</p>
+      <div class="subsection">
+        <h3 class="subsection__header">.forEach()</h3>
 
-                <pre class="screen screen_pre">
-let name_2 = name_1.reduce( function_1( name_3, name_4 ), name_5, name_6, name_7 );</pre>
-                <p class="paragraph">
-                    <strong>name_6</strong> - индекс текущего элемента массива<br>
-                    <strong>name_7</strong> - массив, для которого вызывается map, filter или reduce
-                </p>
-            </div>
-
-            <div class="subsection">
-                <h3 class="subsection__header">.forEach()</h3>
-
-                <p class="p">Принимает в качестве аргумента Callback функцию и применяет её для каждого элемента массива.</p>
-                <pre class="screen screen_pre">
+        <p class="p">
+          Принимает в качестве аргумента Callback функцию и применяет её для каждого элемента массива.
+        </p>
+        <pre class="screen screen_pre">
 name_1.forEach( function( item, index, array) {
     expression_1;
 });</pre>
-                <pre class="screen screen_pre">
+        <pre class="screen screen_pre">
 name_1.forEach( ( item, index, array ) => { 
-    expression_1; 
+    expression; 
 });</pre>
-                <p class="paragraph">
-                    <strong>item</strong> - значение элемента массива<br>
-                    <strong>index</strong> - ключ элемента массива<br>
-                    <strong>array</strong> - сам массив<br>
-                </p>
-                <p class="paragraph">
-                    В отличие от <strong>.map()</strong> возвращает <strong>undefined</strong>, а не новый массив
-                </p>
-            </div>
+        <p class="p">
+          <strong>item</strong> - значение элемента массива.<br>
+          <strong>index</strong> - ключ элемента массива.<br>
+          <strong>array</strong> - сам массив.<br>
+        </p>
 
-            <div class="subsection">
-                <h3 class="subsection__header">.includes()</h3>
+        <p class="p">
+          В отличие от <strong>.map()</strong> возвращает <strong>undefined</strong>, а не новый массив
+        </p>
+      </div>
 
-                <pre class="screen screen_pre">
+      <div class="subsection">
+        <h3 class="subsection__header">.includes()</h3>
+
+        <pre class="screen screen_pre">
 let name_2 = name_1.includes( value, index );</pre>
-                <p class="paragraph">
-                    <strong>.includes()</strong> ищет в массиве <strong>name_1</strong> значение <strong>value</strong> начиная с элемента с индексом <strong>index</strong>.<br>
-                    Если <strong>.includes()</strong> находит в заданном интервале данного массива элемент с заданным значением, то возвращает <strong>true</strong>, в ином случае возвращает <strong>false</strong>
-                </p>
-            </div>
+        <p class="p">
+          <strong>.includes()</strong> ищет в массиве <strong>name_1</strong> значение <strong>value</strong> начиная с элемента с индексом <strong>index</strong>.<br>
+          Если <strong>.includes()</strong> находит в заданном интервале данного массива элемент с заданным значением, то возвращает <strong>true</strong>, в ином случае возвращает <strong>false</strong>
+        </p>
+      </div>
 
-            <div class="subsection">
-                <h3 class="subsection__header">.reverse()</h3>
+      <div class="subsection">
+        <h3 class="subsection__header">.reverse()</h3>
 
-                <pre class="screen screen_pre">
+        <pre class="screen screen_pre">
 let name_2 = name_1.reverse();</pre>
-                <pre class="screen screen_pre">
+        <pre class="screen screen_pre">
 var name_1 = [ value_11, value_12, value_13 ];
 var [name_2] = name_1.reverse();
 
 console.log(name_2);    //-&gt; value_3
 console.log(name_1.join(", "));    //-&gt; value_13, value_12, value_11</pre>
-            </div>
+      </div>
 
-            <div class="subsection">
-                <h3 class="subsection__header">for(of)</h3>
+      <div class="subsection">
+        <h3 class="subsection__header">for(of)</h3>
 
-                <pre class="screen screen_pre">
+        <pre class="screen screen_pre">
 for ( let name_1 of name_2 ) {
     expression;               // используется name_1
 }</pre>
-                <p class="p">
-                    Все значения элементов массива <strong>name_2</strong> поочереди присваиваются переменной <strong>name_1</strong> и могут быть использовны в выражении.
-                </p>
-                <p class="p">
-                    В отличие от <strong>.forEach()</strong> позволяет использовать <strong>break</strong> и <strong>continue</strong>.
-                </p>
-            </div>
-        </section>
+        <p class="p">
+          Все значения элементов массива <strong>name_2</strong> поочереди присваиваются переменной <strong>name_1</strong> и могут быть использовны в выражении.
+        </p>
+        <p class="p">
+          В отличие от <strong>.forEach()</strong> позволяет использовать <strong>break</strong> и <strong>continue</strong>.
+        </p>
+      </div>
+    </section>
 
-        <section class="section">
-            <h2 class="section__header">Деструктурирующее присваивание</h2>
+    <section class="section">
+      <h2 class="section__header">Деструктурирующее присваивание</h2>
 
-            <pre class="screen screen_pre">
+      <pre class="screen screen_pre">
 let name_1 = [value_11, value_12, ... value_1n];
 
 let [name_2, name_3] = name_1;
@@ -353,8 +357,10 @@ name_2 = name_1[0];
 name_3 = name_1[1];
 name_4 = name_1[1];
 name_5 = name_1[2];</pre>
-            <p class="paragraph">Если переменные <strong>name_2, name_3, name_4, name_5</strong> были ранее объявлены, то деструктуризация присвоит им новые значения</p>
-            <pre class="screen screen_pre">
+        <p class="p">
+          Если переменные <strong>name_2, name_3, name_4, name_5</strong> были ранее объявлены, то деструктуризация присвоит им новые значения.
+        </p>
+        <pre class="screen screen_pre">
 let name_1 = [value_11, [value_121, value_122]];
 
 let [name_2, [name_3, name_4]] = name_1;
@@ -362,7 +368,7 @@ let [name_2, [name_3, name_4]] = name_1;
     //-->   name_2 = value_11;
     //-->   name_3 = value_121;
     //-->   name_4 = value_122;</pre>
-            <pre class="screen screen_pre">
+        <pre class="screen screen_pre">
     // Если деструктурирующий массив короче:
 
 let name_1 = [value_11, value_12];
@@ -372,11 +378,13 @@ let [name_2, name_3, name_4] = name_1;
     //-->   name_2 = value_11;
     //-->   name_3 = value_121;
     //-->   name_4 = undefined;</pre>
-            <p class="paragraph">Когда деструктуризация используется для присваивания, левая сторона может состоять не из переменных</p>
-            <pre class="screen screen_pre">
+        <p class="p">
+          Когда деструктуризация используется для присваивания, левая сторона может состоять не из переменных.
+        </p>
+        <pre class="screen screen_pre">
 [name_2[n], name_3.property_31] = [1, 2, ... n];</pre>
 
-            <pre class="screen screen_pre">
+        <pre class="screen screen_pre">
 let name_1 = [value_11, value_12, value_13, value_14, value_15];
 
 let [name_2, name_3, ...name_4] = name_1;
@@ -385,7 +393,7 @@ let [name_2, name_3, ...name_4] = name_1;
     //-->   name_3 = value_12;
     //-->   name_4 = [ value_13, value_14, value_15 ];</pre>
 
-            <pre class="screen screen_pre">
+        <pre class="screen screen_pre">
 let name_1 = [value_11, value_12];
         
 let [name_2, name_3, name_4, ...name_5] = name_1;
@@ -394,7 +402,7 @@ let [name_2, name_3, name_4, ...name_5] = name_1;
     //-->   name_3 = value_12;
     //-->   name_4 = undefined;
     //-->   name_5 = [];</pre>
-        </section>
-    </main>
+    </section>
+  </main>
 </body>
 </html>

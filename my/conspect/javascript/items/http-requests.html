@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTTP запросы</title>
+  <link rel="stylesheet" href="../../styles/style.css">
+</head>
+
+<body class="body">
+  <header class="header">
+    <a class="header__button"  href="../javascript.html">&uArr;</a>
+    <h1 class="header__title">HTTP запросы</h1>
+  </header>
+
+  <main class="main">
+    <section class="section">
+      <h2 class="section__header">XMLHttpRequest</h2>
+
+      <p class="p">
+        AJAX-запросы по умолчанию являются асинхронными.<br>
+        Осуществляются с помощью встроенного в браузер объекта <strong>XMLHttpRequest</strong>
+      </p>
+
+      <div class="subsection">
+        <h3 class="subsection__header">Создание объекта</h3>
+
+        <pre class="screen screen_pre">
+const name_1 = new XMLHttpRequest();</pre>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__header">Метод .open()</h3>
+
+        <p class="p">
+          Собирает настройки, которые в будущем помогут сделать запрос.
+        </p>
+        <pre class="screen screen_pre">
+name_1.open(method, url, async, login, password);
+
+  //  method - 'GET' или 'POST' (самые популярные)
+  //  url - 'путь к серверу' (в кавычках)
+  //  async - асинхронность true/false (по умолчанию true)
+  //  async, login, password не обязательные</pre>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__header">Установка HTTP-заголовков</h3>
+
+        <pre class="screen screen_pre">
+name_1.setRequestHeader('Content-type', 'contentType_1');
+
+  //  'contentType_1' - тип контента ('aplication/json; charset=utf-8')</pre>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__header">Метод .send()</h3>
+
+        <p class="p">
+          Отправка запроса
+        </p>
+        <pre class="screen screen_pre">
+name_1.send();</pre>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__header">Cвойства ответа</h3>
+
+        <pre class="screen screen_pre">
+status              //  404
+statusText          //  Страница не найдена
+response            //  Ответ от backenda, то, что мы должны использовать.
+readyState          //  Цифра от 0 до 4</pre>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__header">События (основные) XMLHttpRequest()</h3>
+
+        <pre class="screen screen_pre">
+readystatechange    // Следит за свойством readyState
+load                // Срабатывает, когда запрос полность загрузился и получен результат
+                    // , срабатывает 1 раз в отличие от readystatechange</pre>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__header">Примеры</h3>
+          
+        <div class="subsubsection">
+          <h4 class="subsubsection__header">Конвертер валют</h4>
+
+          <pre class="screen screen_post">
+const inputRub = document.querySelector('#rub');
+const inputUsd = document.querySelector('#usd');
+
+inputRUB.addEventListener('input', () => {
+  const request = new XMLHttpRequest();   // запрос на сервер при помощи XMLHttpRequest
+
+  request.open('GET', 'js/current.json');
+  request.open('Content-type', 'aplication/json; charset=utf-8');
+
+  request.addEventListener('load', () => {
+    if (request.readyState === 4 && request.status === 200) {
+      console.log(request.response);
+      const data = JSON.parse(request.response;
+      inputUsd.value = (+inputRub.value / data.current.usd).toFixed(2);   // .toFixed(n) где n - кол-во знаков после запятой
+    } else {
+      inputUsd.value = "Что-то пошло не так ";
+    }
+  });
+});</pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__header">FormData</h3>
+
+        <p class="p">
+          Объект браузера для отправки данных форм.
+        </p>
+        <pre class="screen screen_pre">
+let formData = new FormData();</pre>
+
+        <div class="subsubsection">
+          <h4 class="subsubsection__header">Примеры</h4>
+
+          <pre class="screen screen_post">
+    // Отправка FormData:
+
+const forms = document.querySelectorAll('form');    // Получаем формы на странице. Т.к. более одной формы на странице, чтобы не создавать 2 обработчика
+
+const message = {
+  loading: 'Загрузка',
+  success: "Спасибо! Скоро свяжемся",
+  failure: 'Что-то пошло не так... '
+};
+
+forms.forEach((item) =&gt; {    // Применяем postData к каждой форме на странице
+  postData(item);
+});
+
+
+function postData(form) {                       // Постиг данных
+  form.addEventListener('submit', (e) =&gt; {   // Событие срабатывает при отправке формы
+    e.preventDefault();                         // Отмена стандартного поведения с перезагрузкой страницы
+
+    const statusMessage = document.createElement('div');    // Блок для вывода собщения
+    statusMessage.classList.add('status');                  // Добавляем класс этому элементу (если он есть)
+    statusMessage.textContent = message.loading;            // Сообщение, что началась загрузка
+    form.append(statusMessage);                             // Вывод блока на страницу
+
+    const request = new XMLHttpRequest();     // Создаём объект
+    request.open('POST', 'server.php');       // Настройка запроса
+
+    // request.setRequestHeader('Content-type'  , 'multipart/form-data');   // Настройка заголовков, говорящая, что серверу приходит  
+    const formData = new FormData(form);      // form - та форма, из которой собираем данные
+// Когда используем связку XMLHttpRequest---FormData, отправлять заголовок request.setRequestHeader() не нужно, он устанавливается автоматически
+    request.send(formData);               // Отправка объекта
+
+    request.addEventListener('load', () =&gt; {     // Вешаем на объект обработчик события
+      if (request.status === 200) {                     // Если всё норм
+        console.log(request.response);                  // , то выводит в консоль инфу
+        statusMessage.textContent = message.success;    // Вывод сообщения о событии на странице
+        form.reset();                                   // Очистка формы
+        setTimeout(() =&gt; {                           // Пропадает сообщение через 5 сек
+          statusMessage.remove();
+        }, 5000);
+      } else {
+        statusMessage.textContent = message.failure;    // Если не норм, то тоже на страницу выводит сообщение
+      }
+    });
+  });
+}</pre>
+
+        `<pre class="screen screen_pre">
+    // Отправка JSON:
+
+const forms = document.querySelectorAll('form');
+
+const message = {
+  loading: 'Загрузка',
+  success: "Спасибо! Скоро свяжемся",
+  failure: 'Что-то пошло не так... '
+};
+
+forms.forEach((item) =&gt; {
+  postData(item);
+});
+
+
+function postData(form) {
+  form.addEventListener('submit', (e) =&gt; {      // срабатывает при отправке формы
+    e.preventDefault();
+
+    const statusMessage = document.createElement('div');
+    statusMessage.classList.add('status');
+    statusMessage.textContent = message.loading;
+    form.append(statusMessage);
+
+    const request = new XMLHttpRequest();
+    request.open('POST', 'server.php');
+
+    request.setRequestHeader('Content-type', 'application/json');   // Для JSON нужен закголовок
+    const formData = new FormData(form);
+// Приём, чтобы перегнать данные из FormData в JSON-формат
+    const object = {};                          // Создаём для начала пустой объект
+    formData.forEach(function(value, key) {     // Переберём formData и данные поместим в object
+      object[key] = value;
+    });
+
+    const json = JSON.stringify(object);    // Теперь превращаем объект с данными из formData в JSON
+
+    request.send(json);         // отправка JSON
+
+    request.addEventListener('load', () =&gt; {
+      if (request.status === 200) {
+        console.log(request.response);
+        statusMessage.textContent = message.success;
+        form.reset();
+        setTimeout(() =&gt; {
+          statusMessage.remove();
+        }, 3000);
+      } else {
+        statusMessage.textContent = message.failure;
+      }
+    });
+  });
+}</pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section__header">fetch</h2>
+
+      <p class="p">
+        <strong>fetch</strong> использует промисы.
+      </p>
+      <pre class="screen screen_pre">
+fetch('https://jsonplaceholder.typicode.com/todos/1', {
+  method: "POST",
+  body: JSON.stringify({name: 'Alex'}),
+  headers: {
+    'Content-type', 'application/json'
+  }
+})
+.then(response => response.json())
+.then(json => console.log(json))
+      </pre>
+      <pre class="screen screen_post">
+    // Отправка PostData:
+
+const forms = document.querySelectorAll('form');
+
+const message = {
+  loading: 'Загрузка',
+  success: "Спасибо! Скоро свяжемся",
+  failure: 'Что-то пошло не так... '
+};
+
+forms.forEach((item) => {
+  postData(item);
+});
+
+
+function postData(form) {
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const statusMessage = document.createElement('div');
+    statusMessage.classList.add('status');
+    statusMessage.textContent = message.loading;
+    form.append(statusMessage);
+
+    const formData = new FormData(form);
+
+    fetch('server.php', {
+      method: "POST",
+      body: formData
+    }).then((data) => {
+      return data.text();                         // преобразование данных
+    })
+    .then(data => {                               // data - данные возвращаемые из промиса
+      console.log(data);
+      statusMessage.textContent = message.success;
+      setTimeout(() => {
+        statusMessage.remove();
+      }, 5000);
+    }).catch(() => {
+      statusMessage.textContent = message.failure;
+    }).finally(() => {
+      form.reset();
+    })
+  });
+}</pre>
+      <pre class="screen screen_post">
+    // Отправка JSON:
+
+const forms = document.querySelectorAll('form');
+
+const message = {
+  loading: 'Загрузка',
+  success: "Спасибо! Скоро свяжемся",
+  failure: 'Что-то пошло не так... '
+};
+
+forms.forEach((item) => {
+  postData(item);
+});
+
+
+function postData(form) {
+  form.addEventListener('submit', (e) => {      // срабатывает при отправке формы
+    e.preventDefault();
+
+    const statusMessage = document.createElement('div');
+    statusMessage.classList.add('status');
+    statusMessage.textContent = message.loading;
+    form.append(statusMessage);
+
+    const formData = new FormData(form);
+
+    const object = {};
+    formData.forEach(function(value, key) {
+      object[key] = value;
+    });
+
+    fetch('server.php', {
+      method: "POST",
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify(object)
+    }).then((data) => {
+      return data.text();
+    }).then(data => {                 // data - данные возвращаемые из промиса
+      console.log(data);
+      statusMessage.textContent = message.success;
+      setTimeout(() => {
+        statusMessage.remove();
+      }, 5000);
+    }).catch(() => {
+      statusMessage.textContent = message.failure;
+    }).finally(() => {
+      form.reset();
+    })
+  });
+}</pre>
+      <p class="p">
+        Промис запускаемый при помощи <strong>fetch</strong> не перейдёт в состояние отклонено (<strong>reject</strong>) из-за ответа HTTP, который считается ошибкой. Он перейдёт в состояние <strong>resolve</strong> ибо смог сделать запрос<br>
+        Поменяется только статус, который перейдёт в стостояние <strong>false</strong>.
+      </p>
+    </section>
+  </main>
+</body>

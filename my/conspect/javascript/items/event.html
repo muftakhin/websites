@@ -1,288 +1,317 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>События</title>
-    <link rel="stylesheet" href="../../styles/style.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>События</title>
+  <link rel="stylesheet" href="../../styles/style.css">
 </head>
 
 <body class="body">
-    <header class="header">
-        <a class="header__button"  href="../javascript.html">&uArr;</a>
-        <h1 class="header__title">События</h1>
-    </header>
+  <header class="header">
+    <a class="header__button"  href="../javascript.html">&uArr;</a>
+    <h1 class="header__title">События</h1>
+  </header>
 
-    <main class="main">
-        <section class="section">
-            <h2 class="section__header">Прослушивание событий</h2>
+  <main class="main">
+    <section class="section">
+      <h2 class="section__header">Прослушивание событий</h2>
 
-            <a href="../../html/items/events.html"><div class="link">События HTML</div></a>
+      <a href="../../html/items/events.html"><div class="link">События HTML</div></a>
 
-            <pre class="screen screen_pre">
+      <pre class="screen screen_pre">
 let name_1 = document.querySelector("css_selector_1");
 
 name_1.addEventListener("eventName_1", eventHandler_1, {options});
 
 function eventHandler_1(name_2) {
-    name_2.preventDefault();
-    expression_1;
+  name_2.preventDefault();
+  expression_1;
 }</pre>
 
-            <p class="paragraph">
-                <strong>name_1</strong> - имя элемента у которого отслеживается событие.<br>
-                <strong>eventName_1</strong> - имя прослушиваемого события.<br>
-                <strong>eventHandler_1</strong> - обработчик события (callback-функция).<br>
-                <strong>name_2</strong> - объект события, содержащий свойства, связанные с этим событием, передающийся как первый аргумент callback-функции, обычно указывается как (<strong>e</strong> или <strong>event</strong>).<br>
-                <strong>{options}</strong> - дополнительный объект со свойствами.<br>
-                <strong>name_2.preventDefault();</strong> - отключение встроенного поведения. Указывается в начале тела функции обработчика события.
-            </p>
+      <p class="p">
+        <strong>name_1</strong> - имя элемента у которого отслеживается событие.<br>
+        <strong>eventName_1</strong> - имя прослушиваемого события.<br>
+        <strong>eventHandler_1</strong> - обработчик события (callback-функция).<br>
+        <strong>name_2</strong> - объект события, содержащий свойства, связанные с этим событием, передающийся как первый аргумент callback-функции, обычно указывается как (<strong>e</strong> или <strong>event</strong>).<br>
+        <strong>{options}</strong> - дополнительный объект со свойствами.<br>
+        <strong>name_2.preventDefault();</strong> - отключение встроенного поведения. Указывается в начале тела функции обработчика события.
+      </p>
 
-            <div class="subsection">
-                <h3 class="subsection__header">{options}</h3>
+      <div class="subsection">
+        <h3 class="subsection__header">{options}</h3>
 
-                <pre class="screen screen_pre">
+        <pre class="screen screen_pre">
 { once: true }          - удаление после однократного срабатывания
 { capture: true/false } - погружение/всплытие
 { passive: true }       - обработчик никогда не вызовет preventDefault()</pre>
-            </div>
-        </section>
+        </div>
+      </section>
 
-        <section class="section">
-            <h2 class="section__header">Удаление слушателя событий из объекта</h2>
+      <section class="section">
+        <h2 class="section__header">Удаление слушателя событий из объекта</h2>
 
-            <pre class="screen screen_pre">
-// продолжение:
+        <pre class="screen screen_pre">
+    // продолжение:
 
 name_1.removeEventListener("eventName_1", eventHandler_1, phase);</pre>
-        </section>
+    </section>
 
-        <section class="section">
-            <h2 class="section__header">Всплытие и погружение событий</h2>
+    <section class="section">
+      <h2 class="section__header">Всплытие и погружение событий</h2>
 
-            <p class="paragraph">
-                <strong>Фаза погружения события</strong> - фаза 1 - движение от корня документа<br>
-                <strong>Фаза всплытия события</strong> - фаза 2 - движение к корню документа
-            </p>
+      <p class="p">
+        <strong>Фаза погружения события</strong> - фаза 1 - движение от корня документа<br>
+        <strong>Фаза всплытия события</strong> - фаза 2 - движение к корню документа
+      </p>
 
-            <pre class="screen screen_pre">
+      <pre class="screen screen_pre">
 name_1.addEventListener("eventName_1", eventHandler_1, phase);
 
 phase = true    // фаза погружения
         false   // фаза всплытия (по умолчанию)</pre>
-        </section>
+    </section>
 
-        <section class="section">
-            <h2 class="section__header">Прерывание события</h2>
+    <section class="section">
+      <h2 class="section__header">Прерывание события</h2>
 
-            <pre class="screen screen_pre">
+      <pre class="screen screen_pre">
 let name_1 = document.querySelector("css_selector_1");
 
 name_1.addEventListener("eventName_1", eventHandler_1, phase);
                 
 function eventHandler_1(name_2) {
-    name_2.stopPropagation();
+  name_2.stopPropagation();
 }</pre>
+      <p class="p">
+        <strong>.stopPropagation()</strong> отменяет выполнение фазы всплытия.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2 class="section__header">Объект события event</h2>
+
+      <div class="subsection">
+        <h3 class="subsection__header">Свойства event</h3>
+
         <p class="p">
-            <strong>.stopPropagation()</strong> отменяет выполнение фазы всплытия.
+          <strong>event.currentTarget</strong> - элемент на котором сработал обработчик(до которого дошло событие)<br>
+          <strong>event.target</strong> - исходный элемент, на котором произошло событие (по которому кликнули и т.д.), в процессе всплытия он неизменен
         </p>
-        </section>
+      </div>
+    </section>
 
-        <section class="section">
-            <h2 class="section__header">Объект события event</h2>
+    <section class="section">
+      <h2 class="section__header">События мыши</h2>
 
-            <div class="subsection">
-                <h3 class="subsection__header">Свойства event</h3>
+      <div class="subsection">
+        <h3 class="subsection__header">click и dblclick</h3>
 
-                <p class="paragraph">
-                    <strong>event.currentTarget</strong> - элемент на котором сработал обработчик(до которого дошло событие)<br>
-                    <strong>event.target</strong> - исходный элемент, на котором произошло событие (по которому кликнули и т.д.), в процессе всплытия он неизменен
-                </p>
-            </div>
-        </section>
-
-        <section class="section">
-            <h2 class="section__header">События мыши</h2>
-
-            <div class="subsection">
-                <h3 class="subsection__header">click и dblclick</h3>
-
-                <pre class="screen screen_pre">
+        <pre class="screen screen_pre">
 let name_1 = document.querySelector("css_selector_1");
                     
 name_1.addEventListener("click", function_1, false);
 
 function function_1(name_2) {
-    action;
+  expression_1;
 }</pre>
+      </div>
 
-            </div>
+      <div class="subsection">
+        <h3 class="subsection__header">mouseover и mouseout</h3>
 
-            <div class="subsection">
-                <h3 class="subsection__header">mouseover и mouseout</h3>
+        <p class="p">
+          Срабатывает при наведении на элемент и убирании с него курсора мыши.
+        </p>
+      </div>
 
-                <p class="paragraph">Срабатывает при наведении на элемент и убирании с него курсора мыши</p>
-            </div>
+      <div class="subsection">
+        <h3 class="subsection__header">mouseenter и mouseleave</h3>
 
-            <div class="subsection">
-                <h3 class="subsection__header">mouseenter и mouseleave</h3>
+        <p class="p">
+          Отличаются от <strong>mouseover</strong> и <strong>mouseout</strong> тем, что не срабатывают при наведении на потомков, если они есть.
+        </p>
+      </div>
 
-                <p class="paragraph">Отличаются от <strong>mouseover</strong> и <strong>mouseout</strong> тем, что не срабатывают при наведении на потомков, если они есть</p>
-            </div>
+      <div class="subsection">
+        <h3 class="subsection__header">mousedown и mouseup</h3>
 
-            <div class="subsection">
-                <h3 class="subsection__header">mousedown и mouseup</h3>
+        <p class="p">
+          Срабатывает при нажатии на отпускание клавиши.
+        </p>
+      </div>
 
-                <p class="paragraph">Срабатывает при нажатии на отпускание клавиши</p>
-            </div>
+      <div class="subsection">
+        <h3 class="subsection__header">mousemove</h3>
 
-            <div class="subsection">
-                <h3 class="subsection__header">mousemove</h3>
+        <p class="p">
+          Срабатывает при движении курсора по элементу.
+        </p>
+      </div>
 
-                <p class="paragraph">Срабатывает при движении курсора по элементу</p>
-            </div>
+      <div class="subsection">
+        <h3 class="subsection__header">contextmenu</h3>
 
-            <div class="subsection">
-                <h3 class="subsection__header">contextmenu</h3>
+        <p class="p">
+          Срабатывает при нажатии правой клавиши мыши.
+        </p>
 
-                <p class="paragraph">Срабатывает при нажатии правой клавиши мыши</p>
-
-                <pre class="screen screen_pre">
+        <pre class="screen screen_pre">
 let name_1 = document.querySelector("css_selector_1");
 
 name_1.addEventListener("contextmenu", function_1, false);
 
 function function_1(name_2) {
-    name_2.preventDefault();     // отключение контекстного меню
+  name_2.preventDefault();     // отключение контекстного меню
 }</pre>
-            </div>
-        </section>
+      </div>
+    </section>
 
-        <section class="section">
-            <h2 class="section__header">Свойства MouseEvent</h2>
+    <section class="section">
+      <h2 class="section__header">Свойства MouseEvent</h2>
 
-            <div class="subsection">
-                <h3 class="subsection__header">Глобальная позиция мыши</h3>
+      <div class="subsection">
+        <h3 class="subsection__header">Глобальная позиция мыши</h3>
 
-                <p class="paragraph">- позиция курсора относительно верхнего левого угла дисплея</p>
-                <pre class="screen screen_pre">
+        <p class="p">
+          - позиция курсора относительно верхнего левого угла дисплея.
+        </p>
+        <pre class="screen screen_pre">
 let name_1 = document.querySelector("css_selector_1");
                                                         
 name_1.addEventListener("eventName_1", function_1, false);
                                                                         
 function function_1(e) {
-    e.screenX                  // - позиция по оси X
-    e.screenY                  // -                Y
+  e.screenX                  // - позиция по оси X
+  e.screenY                  // -                Y
 }</pre>
-            </div>
+      </div>
 
-            <div class="subsection">
-                <h3 class="subsection__header">Позиция в окне браузера</h3>
+      <div class="subsection">
+        <h3 class="subsection__header">Позиция в окне браузера</h3>
 
-                <pre class="screen screen_pre">
-...
-    e.clientX                  // - позиция по оси X
-    e.clientY                  // -                Y
-...</pre>
-            </div>
+        <pre class="screen screen_pre">
+....
+  e.clientX                  // - позиция по оси X
+  e.clientY                  // -                Y
+....</pre>
+      </div>
 
-            <div class="subsection">
-                <h3 class="subsection__header">Кнопка мыши</h3>
+      <div class="subsection">
+        <h3 class="subsection__header">Кнопка мыши</h3>
 
-                <pre class="screen screen_pre">
-...
-    e.button                  //-> = 0 , 1 или 2
-...</pre>
-            </div>
+        <pre class="screen screen_pre">
+....
+  e.button                  //-> = 0 , 1 или 2
+....</pre>
+      </div>
 
-            <div class="subsection">
-                <h3 class="subsection__header">Колесо мыши</h3>
+      <div class="subsection">
+        <h3 class="subsection__header">Колесо мыши</h3>
 
-                <pre class="screen screen_pre">
+        <pre class="screen screen_pre">
 let name_1 = document.querySelector("css_selector_1");
 
 name_1.addEventListener("mousewhell", function_1, false);
 
 function function_1(e) {
-    e.wheelDelta                  // + при прокрутке вверх
+  e.wheelDelta                   // + при прокрутке вверх
 }</pre>
 
-                <pre class="screen screen_pre">
-...
+        <pre class="screen screen_pre">
+....
 name_1.addEventListener("DOMMouseScroll", function_1, false);
 
 function function_1(e) {
-    e.detail                      // - при прокрутке вверх !!!
+  e.detail                      // - при прокрутке вверх !!!
 }</pre>
-            </div>
-        </section>
+      </div>
+    </section>
 
-        <section class="section">
-            <h2 class="section__header">События клавиатуры</h2>
+    <section class="section">
+      <h2 class="section__header">События клавиатуры</h2>
 
-            <p class="paragraph">
-                <strong>keydown</strong><br>
-                <strong>keypress</strong><br>
-                <strong>keyup</strong>
-            </p>
+      <p class="p">
+        <strong>keydown</strong><br>
+        <strong>keypress</strong><br>
+        <strong>keyup</strong>
+      </p>
 
-            <div class="subsection">
-                <h3 class="subsection__header">Свойства Keyboard</h3>
+      <div class="subsection">
+        <h3 class="subsection__header">Свойства Keyboard</h3>
 
-                <p class="paragraph">
-                    <strong>code</strong> - название клавиши.<br>
-                    <strong>keyCode</strong> - число соответствующее клавише.<br>
-                    <strong>charCode</strong> - ASCII код клавиши, только для <strong>keypress.</strong><br>
-                    <strong>ctrlKey</strong><br>
-                    <strong>altKey</strong><br>
-                    <strong>shiftKey</strong>
-                </p>
-            </div>
-        </section>
+        <p class="p">
+          <strong>code</strong> - название клавиши.<br>
+          <strong>keyCode</strong> - число соответствующее клавише.<br>
+          <strong>charCode</strong> - ASCII код клавиши, только для <strong>keypress.</strong><br>
+          <strong>ctrlKey</strong><br>
+          <strong>altKey</strong><br>
+          <strong>shiftKey</strong>
+        </p>
+      </div>
+    </section>
 
-        <section class="section">
-            <h2 class="section__header">Свойства загрузки страницы и др.</h2>
+    <section class="section">
+      <h2 class="section__header">Свойства загрузки страницы и др.</h2>
 
-            <div class="subsection">
-                <h3 class="subsection__header">DOMContentLoaded и load</h3>
+      <div class="subsection">
+        <h3 class="subsection__header">DOMContentLoaded и load</h3>
 
-                <p class="paragraph">
-                    <strong>DOMContentLoad</strong> - завершение загрузки и обработки сырого содержимого<br>
-                    <strong>load</strong> - полная загрузка страницы
-                </p>
+        <p class="p">
+          <strong>DOMContentLoad</strong> - завершение загрузки и обработки сырого содержимого<br>
+          <strong>load</strong> - полная загрузка страницы
+        </p>
 
-                <pre class="screen screen_pre">
+        <pre class="screen screen_pre">
 document.addEventListener("DOMContentLoaded", function_1, false);
 
 window.addEventListener("load", function_2, false);</pre>
-            </div>
+      </div>
 
-            <div class="subsection">
-                <h3 class="subsection__header">атрибуты async и defer</h3>
+      <div class="subsection">
+        <h3 class="subsection__header">атрибуты async и defer</h3>
 
-                <pre class="screen screen_pre">
+        <pre class="screen screen_pre">
 &lt;script src="..." async&gt; &lt;/script&gt;   // async
 
 &lt;script src="..." defer&gt; &lt;/script&gt;   // defer</pre>
-                <p class="paragraph">
-                    Атрибут <strong>async</strong> позволяет сценарию выполняться асинхронно<br>
-                    Сценарии с атрибутом <strong>defer</strong> запускаются в том порядке, в котором определены (в фоновом режиме), но выполняются в самом конце, после формирования <strong>DOM</strong>, до срабатывания события <strong>"DOMContentLoaded"</strong><br>
-                    Скрипты с атрибутом <strong>defer</strong> выполняются последовательно.
-                </p>
+        <p class="p">
+          Атрибут <strong>async</strong> позволяет сценарию выполняться асинхронно.<br>
+          Сценарии с атрибутом <strong>defer</strong> запускаются в том порядке, в котором определены (в фоновом режиме), но выполняются в самом конце, после формирования <strong>DOM</strong>, до срабатывания события <strong>"DOMContentLoaded"</strong>.<br>
+          Скрипты с атрибутом <strong>defer</strong> выполняются последовательно.
+        </p>
 
-                <p class="paragraph">
-                    Атрибутом <strong>defer</strong> нужно помечать сценарий ссылающийся на внешний файл<br>
-                    Атрибутом <strong>async</strong> нужно добавлять в сценарий не зависящий от загрузки DOM
-                </p>
-            </div>
-        </section>
+        <p class="p">
+          Атрибутом <strong>defer</strong> нужно помечать сценарий ссылающийся на внешний файл.<br>
+          Атрибутом <strong>async</strong> нужно добавлять в сценарий не зависящий от загрузки DOM.
+        </p>
+      </div>
+    </section>
 
-        <section class="section">
-            <h2 class="section__header">Делегирование событий</h2>
+    <section class="section">
+      <h2 class="section__header">Делегирование событий</h2>
 
-            <p class="paragraph">Создаётся слушатель событий для родительского элемента</p>
-        </section>
-    </main>
+      <p class="p">
+        Создаётся слушатель событий для родительского элемента.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2 class="section__header">События input-а</h2>
+
+      <pre class="screen screen_pre">
+change - смена фокуса
+input  - ...</pre>
+    </section>
+
+    <section class="section">
+      <h2 class="section__header">События формы</h2>
+
+      <pre class="screen screen_pre">
+submit    // при отправке
+      </pre>
+    </section>
+  </main>
 </body>
 </html>

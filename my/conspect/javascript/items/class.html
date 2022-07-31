@@ -1,160 +1,220 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Классы</title>
-    <link rel="stylesheet" href="../../styles/style.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Классы</title>
+  <link rel="stylesheet" href="../../styles/style.css">
 </head>
 
 <body class="body">
-    <header class="header">
-        <a class="header__button"  href="../javascript.html">&uArr;</a>
-        <h1 class="header__title">Классы</h1>
-    </header>
+  <header class="header">
+    <a class="header__button"  href="../javascript.html">&uArr;</a>
+    <h1 class="header__title">Классы</h1>
+  </header>
 
-    <main class="main">
-        <section class="section">
-            <h2 class="section__header">Создание класса</h2>
+  <main class="main">
+    <section class="section">
+      <h2 class="section__header">Создание класса</h2>
 
-            <p class="paragraph">
-                Внутрь класса можно поместить конструкторы, функции, методы, гетеры и сеттеры<br>
-                Объявление и инициализация переменных внутри класса не допускается
-            </p>
-            <pre class="screen screen_pre">
+      <p class="p">
+        Внутрь класса можно поместить конструкторы, функции, методы, гетеры и сеттеры.<br>
+        Объявление и инициализация переменных внутри класса не допускается.
+      </p>
+      <pre class="screen screen_pre">
 class Name_1{};</pre>
-        </section>
+    </section>
 
-        <section class="section">
-            <h2 class="section__header">Создание объекта на основе класса</h2>
+    <section class="section">
+      <h2 class="section__header">Создание объекта на основе класса</h2>
 
-            <pre class="screen screen_pre">
+      <pre class="screen screen_pre">
 let name_2 = new Name_1();</pre>
-            <p class="paragraph">Новый объект <strong>name_2</strong> имеет тип <strong>Name_1</strong></p>
-        </section>
+      <p class="p">Новый объект <strong>name_2</strong> имеет тип <strong>Name_1</strong></p>
+    </section>
 
-        <section class="section">
-            <h2 class="section__header">Создание объекта с помощью конструктора класса</h2>
+    <section class="section">
+      <h2 class="section__header">Создание объекта с помощью конструктора класса</h2>
 
-            <p class="paragraph">
-                Конструктор — это функция (или метод), существующий внутри тела класса<br>
-                Он отвечает за инициализацию создаваемых объектов, и делает он это, выполняя содержащийся в нем код, во время самого процесса создания<br>
-                Эта деталь является обязательной. Все классы должны быть оснащены  функцией-конструктором. Если у вашего класса таковой не имеется (как у Name_1), JavaScript автоматически создаст пустой конструктор за вас
-            </p>
+      <p class="p">
+        Конструктор — это функция (или метод), существующий внутри тела класса.<br>
+        Он отвечает за инициализацию создаваемых объектов, и делает он это, выполняя содержащийся в нем код, во время самого процесса создания.<br>
+        Эта деталь является обязательной. Все классы должны быть оснащены  функцией-конструктором. Если у вашего класса таковой не имеется (как у Name_1), JavaScript автоматически создаст пустой конструктор за вас.
+      </p>
 
-            <pre class="screen screen_pre">
+      <pre class="screen screen_pre">
 class Name_1 {
-    constructor(name_2){
-        this.name_3 = name_2;
-    }
+  constructor(param_1, param_2, ...., param_n) {
+    this.name_11 = param_1;
+    this.name_12 = param_2;
+    .... ;
+    this.name_1n = param_n;
+  }
 
-    name_4() {
-        ... ;
-    }
-}</pre>
-        <p class="paragraph">Метод <strong>name_4</strong> записывается в прототип создаваемого объекта</p>
-        <p class="paragraph">Тот же самый класс в функциональном стиле:</p>
-        <pre class="screen screen_pre">
-function Name_1(name_2) {
-    this.name_3 = name_2;
+  name_2() {
+    expression_1;
+  }
+}
+
+const name_3 = new Name_1(value_1, value_2, ...., value_n)</pre>
+      <p class="p">
+        Метод <strong>name_2</strong> записывается в прототип создаваемого объекта.
+      </p>
+      <p class="p">
+        Тот же самый класс в функциональном стиле:
+      </p>
+      <pre class="screen screen_pre">
+    // Тот же самое в функциональном стиле:
+
+function Name_1(param_1, param_2, ...., param_n) {
+  this.name_11 = param_1;
+  this.name_12 = param_2;
+  .... ;
+  this.name_1n = param_n;
 }
     
-Name_1.prototype.name_4 = function() {
-    ... ;
+Name_1.prototype.name_2 = function() {
+  expression_1;
 }</pre>
-        </section>
 
-        <section class="section">
-            <h2 class="section__header">Создания объекта с помощью статического метода</h3>
-
-            <div class="subsection">
-                <h3 class="subsection__header">Статические методы</h3>
-
-                <pre class="screen screen_pre">
+      <pre class="screen screen_post">
 class Name_1 {
-    constructor(name_3) {
-        this.name_11 = name_3;
-    }
-                
-    name_12() {
-        ... ;
-    }
+  constructor(param_1, param_2, ...., param_n, parentSelector) {
+    this.name_11 = param_1;
+    this.name_12 = param_2;
+    this.parent = document.querySelector(parentSelector);
+    .... ;
+    this.name_1n = param_n;
+    this.name2();
+  }
 
-    static name_13() {
-        ... ;
-    }
+  name2() {
+    expression_1;   // внутри this....
+  }
+
+  render() {
+    const name_3 = document.createElement('css_selector_1');
+    name_3.innerHTML = '
+      .... ${this.name_11} .... ${this.name_1n} ....
+      ....
+    ';
+    this.parent.append(name_3);
+  }
+}
+
+new Name_1(
+  value_1,
+  value_2,
+  ....
+  value_n
+).render();</pre>
+    </section>
+
+    <section class="section">
+      <h2 class="section__header">Создания объекта с помощью статического метода</h3>
+
+      <div class="subsection">
+        <h3 class="subsection__header">Статические методы</h3>
+
+        <pre class="screen screen_pre">
+class Name_1 {
+  constructor(param_1, param_2, ...., param_n) {
+    this.name_11 = param_1;
+    this.name_12 = param_2;
+    ....
+    this.name_1n = param_n;
+  }
+
+  name_2() {
+    expression_1;
+  }
+
+  static name_3() {
+    expression_2;
+  }
 }</pre>
-                <p class="paragraph"><strong>name_13</strong> - статический метод - метод принадлежащий самому классу, а не создаваемым объектам</p>
-            </div>
+        <p class="p">
+          <strong>name_3</strong> - статический метод - метод принадлежащий самому классу, а не создаваемым объектам.
+        </p>
+      </div>
 
-            <div class="subsection">
-                <h3 class="subsection__header">Создания объекта с помощью статического(фабричного) метода</h3>
+      <div class="subsection">
+        <h3 class="subsection__header">Создания объекта с помощью статического(фабричного) метода</h3>
 
-                <pre class="screen screen_pre">
+        <pre class="screen screen_pre">
 class Name_1 {
-    constructor(name_3) {
-        this.name_11 = name_3;
-    }
-                                    
-    name_12() {
-        ... ;
-    }
-                    
-    static name_13() {
-        return new Name_1();
-    }
+  constructor(param_1, param_2, ...., param_n) {
+    this.name_11 = param_1;
+    this.name_12 = param_2;
+    .... ;
+    this.name_1n = param_n;
+  }
+
+  name_2() {
+    expression_1;
+  }
+
+  static name_3() {
+    return new Name_1();
+  }
 }</pre>
-            </div>
-        </section>
+      </div>
+    </section>
 
-        <section class="section">
-            <h2 class="section__header">Наследование классов - extends</h2>
+    <section class="section">
+      <h2 class="section__header">Наследование классов - extends</h2>
 
-            <pre class="screen screen_pre">
+      <pre class="screen screen_pre">
 class Name_1 {
-    constructor(name_3) {
-        this.name_11 = name_3;
-    }
+  constructor(param_1, param_2, ...., param_n) {
+    this.name_11 = param_1;
+    this.name_12 = param_2;
+    .... ;
+    this.name_1n = param_n;
+  }
 
-    name_12() {
-        action_12;
-    }
+  name_2() {
+    expression_1;
+  }
 }
 
 class Name_2 extends Name_1 {
-    name_12() {
-        action_22;
-    }
+  name_2() {
+    expression_2;
+  }
 }</pre>
-            <p class="paragraph">
-                &bull; Класс <strong>Name_2</strong> наследуется от класса <strong>Name_1</strong><br>
-                &bull; Прототипом у объектов создаваемых через класс <strong>Name_2</strong> будет <strong>Name_1</strong><br>
-                &bull; Метод <strong>name_12</strong> переопределяется<br>
-                &bull; Если мы изменяем действие конструктора, то мы переопределяем его
-            </p>
+      <p class="p">
+        &bull; Класс <strong>Name_2</strong> наследуется от класса <strong>Name_1</strong>.<br>
+        &bull; Прототипом у объектов создаваемых через класс <strong>Name_2</strong> будет <strong>Name_1</strong>.<br>
+        &bull; Метод <strong>name_2</strong> переопределяется.<br>
+        &bull; Если мы изменяем действие конструктора, то мы переопределяем его.
+      </p>
 
-            <pre class="screen screen_pre">
+      <pre class="screen screen_pre">
 class Name_1 {
-    constructor(name_3) {
-        this.name_11 = name_3;
-    }
-                
-    name_12() {
-        action_12;
-    }
+  constructor(param_1, param_2, ...., param_n) {
+    this.name_11 = param_1;
+    this.name_12 = param_2;
+    .... ;
+    this.name_1n = param_n;
+  }
+
+  name_2() {
+    expression_1;
+  }
 }
-                
+
 class Name_2 extends Name_1 {
-    super.name_12();
-    name_12() {
-        action_22;
-    }
+  super.(name_11, name_12, ...., name_1n, name_2());
+  name_2() {
+    expression_2;
+  }
 }</pre>
-            <p class="paragraph">
-                &bull; Ключевое слово <strong>super</strong> - это ссылка на прототипа прототипа будущего объекта<br>
-                &bull; <strong>super.name_12();</strong> - вызов предыдущей(переопределяемой в данном случае) версии метода прототипа прототипа будущего объекта
-            </p>
-        </section>
+      <p class="p">
+        &bull; Ключевое слово <strong>super</strong> - это ссылка на прототипа прототипа будущего объекта.<br>
+        &bull; <strong>super.name_2();</strong> - вызов предыдущей(переопределяемой в данном случае) версии метода прототипа прототипа будущего объекта.
+      </p>
+    </section>
 	</main>
 </body>

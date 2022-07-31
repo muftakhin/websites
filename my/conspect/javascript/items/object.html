@@ -1,241 +1,246 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Объекты</title>
-    <link rel="stylesheet" href="../../styles/style.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Объекты</title>
+  <link rel="stylesheet" href="../../styles/style.css">
 </head>
 
 <body class="body">
-    <header class="header">
-        <a class="header__button"  href="../javascript.html">&uArr;</a>
-        <h1 class="header__title">object</h1>
-    </header>
+  <header class="header">
+    <a class="header__button"  href="../javascript.html">&uArr;</a>
+    <h1 class="header__title">object</h1>
+  </header>
 
-    <main class="main">
-        <section class="section">
-            <p class="paragraph">
-                &bull; Объект представляет собой всего лишь коллекцию(набор) свойств, которые представляют собой пары (поля):<br>
-                <strong>{ ключ(имя свойства) : значение }</strong>.<br>
-                &bull; Для доступа к элементам объекта (свойствам и их значениям) используются ключи, а не числа (индексы) как в массиве.<br>
-                &bull; Объект обладает состоянием и поведением
-            </p>
-        </section>
+  <main class="main">
+    <section class="section">
+      <p class="p">
+        &bull; Объект представляет собой всего лишь коллекцию(набор) свойств, которые представляют собой пары (поля):<br>
+        &bull; <strong>{ ключ(имя свойства) : значение }</strong>.<br>
+        &bull; Для доступа к элементам объекта (свойствам и их значениям) используются ключи, а не числа (индексы) как в массиве.<br>
+        &bull; Объект обладает состоянием и поведением
+      </p>
+    </section>
 
-        <section class="section">
-            <h2 class="section__header">Готовые объекты JavaScript</h2>
+    <section class="section">
+      <h2 class="section__header">Готовые объекты JavaScript</h2>
 
-                <div class="table">
-                    <div class="table__header">Предоставляет JavaScript</div>
+      <div class="table">
+        <div class="table__header">Предоставляет JavaScript</div>
 
-                    <div class="table__screen">Array</div>
-                    <div class="table__definition">Помогает хранить, извлекать и манипулировать наборами данных</div>
+        <div class="table__screen">Array</div>
+        <div class="table__definition">Помогает хранить, извлекать и манипулировать наборами данных</div>
 
-                    <div class="table__screen">Boolean</div>
-                    <div class="table__definition">Служит оболочкой примитива <strong>Boolean</strong>, а также работает посредством
-                        значений <strong>true</strong> и <strong>false</strong></div>
+        <div class="table__screen">Boolean</div>
+        <div class="table__definition">Служит оболочкой примитива <strong>Boolean</strong>, а также работает посредством значений <strong>true</strong> и <strong>false</strong></div>
 
-                    <div class="table__screen">Date</div>
-                    <div class="table__definition">Для работы с датой и временем</div>
+        <div class="table__screen">Date</div>
+        <div class="table__definition">Для работы с датой и временем</div>
 
-                    <div class="table__screen">Function</div>
-                    <div class="table__definition">Позволяет вызывать заданный код</div>
+        <div class="table__screen">Function</div>
+        <div class="table__definition">Позволяет вызывать заданный код</div>
 
-                    <div class="table__screen">Math</div>
-                    <div class="table__definition"></div>
+        <div class="table__screen">Math</div>
+        <div class="table__definition"></div>
 
-                    <div class="table__screen">Number</div>
-                    <div class="table__definition">Служит оболочкой примитива <strong>number</strong></div>
+        <div class="table__screen">Number</div>
+        <div class="table__definition">Служит оболочкой примитива <strong>number</strong></div>
 
-                    <div class="table__screen">RegExp</div>
-                    <div class="table__definition">Позволяет искать текст в строках по заданному шаблону</div>
+        <div class="table__screen">RegExp</div>
+        <div class="table__definition">Позволяет искать текст в строках по заданному шаблону</div>
 
-                    <div class="table__screen">String</div>
-                    <div class="table__definition">Служит оболочкой примитива <strong>string</strong></div>
+        <div class="table__screen">String</div>
+        <div class="table__definition">Служит оболочкой примитива <strong>string</strong></div>
 
-                    <div class="table__screen">JSON</div>
-                    <div class="table__definition">С помощью него можно передавать объекты <strong>objects</strong> в другие</div>
-                </div>
+        <div class="table__screen">JSON</div>
+        <div class="table__definition">С помощью него можно передавать объекты <strong>objects</strong> в другие</div>
+      </div>
 
-                <div class="table">
-                    <div class="table__header">Предоставляет Браузер</div>
+      <div class="table">
+        <div class="table__header">Предоставляет Браузер</div>
 
-                    <div class="table__screen">Document</div>
-                    <div class="table__definition">Для записи в страницу из программного кода</div>
+        <div class="table__screen">Document</div>
+        <div class="table__definition">Для записи в страницу из программного кода</div>
 
-                    <div class="table__screen">Window</div>
-                    <div class="table__definition">Предоставляет свойства, относящиеся к браузеру и методы, используемые в коде</div>
+        <div class="table__screen">Window</div>
+        <div class="table__definition">Предоставляет свойства, относящиеся к браузеру и методы, используемые в коде</div>
 
-                    <div class="table__screen">Console</div>
-                    <div class="table__definition">Его метод <strong>.log</strong> используется для вывода в консоль сообщений, <strong>clear</strong> - для очистки, <strong>table</strong> - для вывода объектов в виде таблицы</div>
-                </div>
-            </div>
-        </section>
+        <div class="table__screen">Console</div>
+        <div class="table__definition">Его метод <strong>.log</strong> используется для вывода в консоль сообщений, <strong>clear</strong> - для очистки, <strong>table</strong> - для вывода объектов в виде таблицы</div>
+      </div>
+    </section>
 
-        <section class="section">
-            <h2 class="section__header">Создание объектов</h2>
+    <section class="section">
+      <h2 class="section__header">Создание объектов</h2>
 
-            <div class="subsection">
-                <h3 class="subsection__header">С использованием объектных литералов</h3>
+      <div class="subsection">
+        <h3 class="subsection__header">С использованием объектных литералов</h3>
 
-                <p class="paragraph">
-                    &bull; Объектный литерал - полное описание объекта<br>
-                    &bull; Подходит для создания небольшого количества объектов
-                </p>
-                <pre class="screen screen_pre">
+        <p class="p">
+          &bull; Объектный литерал - полное описание объекта<br>
+          &bull; Подходит для создания небольшого количества объектов
+        </p>
+        <pre class="screen screen_pre">
 let name_1 = {
-    name_11: value_11,
-    name_12: value_12,
-    ...
-    name_n: value_n
+  name_11: value_11,
+  name_12: value_12,
+  ....
+  name_n: value_n
 };</pre>
-                <p class="paragraph">
-                    &bull; Определение объекта начинается с символа <strong>{</strong><br>
-                    &bull; Ключ всегда строковый и его можно записывать без кавычек, но по_правилам<br>
-                    &bull; Фигурные скобки и их содержимое называется литералом объекта<br>
-                    &bull; В переменной хранится не сам объект, а ссылка на объект (значение представляющее механизм обращения к конкретному объекту). Такая переменная называется ссылочная переменная
-                </p>
+        <p class="p">
+          &bull; Определение объекта начинается с символа <strong>{</strong>.<br>
+          &bull; Ключ всегда строковый и его можно записывать без кавычек, но по_правилам.<br>
+          &bull; Фигурные скобки и их содержимое называется литералом объекта.<br>
+          &bull; В переменной хранится не сам объект, а ссылка на объект (значение представляющее механизм обращения к конкретному объекту). Такая переменная называется ссылочная переменная.
+        </p>
 
-                <p class="paragraph">Свойством объекта может являться другой объект</p>
-                <pre class="screen screen_pre">
+        <p class="p">
+          Свойством объекта может являться другой объект.
+        </p>
+        <pre class="screen screen_pre">
 let name_1 = {
-    name_11: value_11,
-    name_12: {
-        name_121: value_121;
-        ...
-    }
-    ...
-    name_n: value_n
+  name_11: value_11,
+  name_12: {
+    name_121: value_121;
+      ....
+  }
+  ....
+  name_n: value_n
 };</pre>
-            </div>
+      </div>
 
-            <div class="subsection">
-                <h3 class="subsection__header">Создание пустого объекта</h3>
+      <div class="subsection">
+        <h3 class="subsection__header">Создание пустого объекта</h3>
 
-                <pre class="screen screen_pre">
+        <pre class="screen screen_pre">
 let name_1 = {};</pre>
-            </div>
-        </section>
+      </div>
+    </section>
 
-        <section class="section">
-            <h2 class="section__header">Доступ к значениям внутри объектов</h2>
+    <section class="section">
+      <h2 class="section__header">Доступ к значениям внутри объектов</h2>
 
-            <pre class="screen screen_pre">
-name_1[name_11];    // скобочная нотация
+      <pre class="screen screen_pre">
+name_1[name_11];      // скобочная нотация
 
 name_1.name_11;       // точечная нотация</pre>
-            <p class="paragraph">
-                где:
-                &bull; <strong>name_1</strong> - имя объекта<br>
-                &bull; <strong>name_2</strong> - ключ(свойство, строка) объекта
-            </p>
-            <p class="paragraph">
-                &bull; Отличие от массива - вместо индекса(числа) ключ(строка)<br>
-                &bull; Точечная нотация возможна, если имя ключа соответствует правилам
-            </p>
-                
-            <pre class="screen screen_pre">
+      <p class="p">
+        где:<br>
+        &bull; <strong>name_1</strong> - имя объекта.<br>
+        &bull; <strong>name_2</strong> - ключ(свойство, строка) объекта.
+      </p>
+      <p class="p">
+        &bull; Отличие от массива - вместо индекса(числа) ключ(строка).<br>
+        &bull; Точечная нотация возможна, если имя ключа соответствует правилам.
+      </p>
+
+      <pre class="screen screen_pre">
 name_1.keys();    //-&gt; массив, содержащий все ключи объекта name_1</pre>
 
-            <p class="paragraph">При обращении к несуществующему свойству объекта, вернётся <strong>undefined</strong></p>
+      <p class="p">
+        При обращении к несуществующему свойству объекта, вернётся <strong>undefined</strong>.
+      </p>
 
-            <p class="paragraph">
-                &bull; Скобочная нотация позволяет заключать в квадратные скобки любые выражения. Необходимо лишь, чтобы результатом его вычисления являлось имя свойства<br>
-                &bull; Скобочная нотация позволяет записывать вместо имени свойства переменную<br>
-                &bull; Скобочная нотация позволяет записать в качестве имени свойства строку из нескольих слов
-            </p>
-            <pre class="screen screen_pre">
+      <p class="p">
+        &bull; Скобочная нотация позволяет заключать в квадратные скобки любые выражения. Необходимо лишь, чтобы результатом его вычисления являлось имя свойства.<br>
+        &bull; Скобочная нотация позволяет записывать вместо имени свойства переменную.<br>
+        &bull; Скобочная нотация позволяет записать в качестве имени свойства строку из нескольих слов.
+      </p>
+      <pre class="screen screen_pre">
 name_1['one' + 'two'];
                     
     равно
                     
 name_1.['onetwo'];</pre>
-        </section>
+    </section>
 
-        <section class="section">
-            <h2 class="section__header">Добавление свойств объекту</h2>
+    <section class="section">
+      <h2 class="section__header">Добавление свойств объекту</h2>
 
-            <p class="paragraph">
-                Именем свойства может быть только строка<br>
-                При использовании пробела в имени свойства невозможно обращение к нему при помощи точечной нотации. Необходимо использовать <strong>['']</strong><br>
-                При добавлении имени свойства лучше использовать <strong>[]</strong>
-            </p>
-            <pre class="screen screen_pre">
+      <p class="p">
+        Именем свойства может быть только строка.<br>
+        При использовании пробела в имени свойства невозможно обращение к нему при помощи точечной нотации. Необходимо использовать <strong>['']</strong>.<br>
+        При добавлении имени свойства лучше использовать <strong>[]</strong>
+      </p>
+      <pre class="screen screen_pre">
 name_1[name_11] = value_11;</pre>
 
-            <div class="subsection">
-                <h3 class="subsection__header">Используя точечную нотацию</h3>
+      <div class="subsection">
+        <h3 class="subsection__header">Используя точечную нотацию</h3>
 
-                <pre class="screen screen_pre">
+        <pre class="screen screen_pre">
 name_1.name_11 = value_11;</pre>
-            </div>
+      </div>
 
-            <div class="subsection">
-                <h3 class="subsection__header">Когда свойством является объект</h3>
+      <div class="subsection">
+        <h3 class="subsection__header">Когда свойством является объект</h3>
 
-                <pre class="screen screen_pre">
+        <pre class="screen screen_pre">
 name_1[name_11][name_111] = value_111;
 
 name_1.name_111.name_111 = value_111;</pre>
-            </div>
+      </div>
 
-            <div class="subsection">
-                <h3 class="subsection__header">Задание вычисляемого имени свойства</h3>
-            </div>
+      <div class="subsection">
+        <h3 class="subsection__header">Задание вычисляемого имени свойства</h3>
+      </div>
 
-            <pre class="screen screen_pre">
+      <pre class="screen screen_pre">
 let name_1 = {
-    name_11: value_11,
-    [calculation_12]: value 12
-}
-            </pre>
-        </section>
+  name_11: value_11,
+  [calculation_12]: value 12
+};</pre>
+    </section>
 
-        <section class="section">
-            <h2 class="section__header">Удаление элемента объекта (свойства)</h2>
+    <section class="section">
+      <h2 class="section__header">Удаление элемента объекта (свойства)</h2>
 
-            <pre class="screen screen_pre">
+      <pre class="screen screen_pre">
 delete name_1["name_11"];
 
 delete name_1.name_11;</pre>
 
-            <p class="paragraph">- выраженние <strong>delete</strong> возвращает <strong>true</strong> если свойство было успешно удалено (либо если вы удаляете не существующее свойство или то, что не является свойством объекта</p>
-        </section>
+      <p class="p">
+        - выраженние <strong>delete</strong> возвращает <strong>true</strong> если свойство было успешно удалено (либо если вы удаляете не существующее свойство или то, что не является свойством объекта.
+      </p>
+    </section>
 
-        <section class="section">            
-            <h2 class="section__header">for-in</h2>
+    <section class="section">            
+      <h2 class="section__header">for-in</h2>
 
-            <p class="paragraph">Цикл для перебора свойств объекта <strong>name_2</strong>:</p>
-            <pre class="screen screen_pre">
+      <p class="p">
+        Цикл для перебора свойств объекта <strong>name_2</strong>:
+      </p>
+      <pre class="screen screen_pre">
 let name_1;
 for (name_1 in name_2) {
-    expression_1;
+  expression_1;
 }</pre>
-            <pre class="screen screen_pre">
-// Или:
+      <pre class="screen screen_pre">
+    // Или:
 
 for (let name_1 in name_2) {
-    expression_1;
+  expression_1;
 }</pre>
-            <p class="paragraph">
-                При каждом выполнении цикла переменная <strong>name_1</strong> получает строковое значение следующего по очереди имени свойства объекта <strong>name_2</strong><br>
-                Используя скобочную нотацию можем получить доступ к значению соответствующего свойства <strong>name_1</strong> объекта <strong>name_2</strong>
-            </p>
-            <pre class="screen screen_pre">
+      <p class="p">
+        При каждом выполнении цикла переменная <strong>name_1</strong> получает строковое значение следующего по очереди имени свойства объекта <strong>name_2</strong>.<br>
+        Используя скобочную нотацию можем получить доступ к значению соответствующего свойства <strong>name_1</strong> объекта <strong>name_2</strong>.
+      </p>
+      <pre class="screen screen_pre">
 name_1;             // имя свойства объекта
 name_2[name_1];     // значение свойства объекта с именем name_1</pre>
-        </section>
+    </section>
 
-        <section class="section">
-            <h2 class="section__header">Массив объектов</h2>
+    <section class="section">
+      <h2 class="section__header">Массив объектов</h2>
 
-            <pre class="screen screen_pre">
+      <pre class="screen screen_pre">
 let name_1 = [
-    { name_11: value_11, name_12: value_12 },
-    { name_21: value_21, name_22: value_22 },
-    { name_31: value_31, name_32: value_32 }
+  { name_11: value_11, name_12: value_12 },
+  { name_21: value_21, name_22: value_22 },
+  { name_31: value_31, name_32: value_32 }
 ];
            
 name_1[0];                     //-&gt; { name_11: value_11, name_12: value_12 }
@@ -243,235 +248,200 @@ name_1[1][name_21];            //-&gt; value_21
 
 name_1[2].name_32;             //-&gt; value_32</pre>
 
-            <pre class="screen screen_pre">
-    Создадим 3 объекта:            
+      <pre class="screen screen_pre">
+    // Создадим 3 объекта:            
 
 let name_1 = { name_2: value_1, name_3: value_2, name_4: [value_3, value_4, value_5, value_6] };
 let name_5 = { name_6: value_7, name_7: value_8, name_8: [value_9, value_10, value_11] };
 let name_9 = { name_10: value_12, name_11: value_13, name_12: [value_14, value_15, value_16] };
            
-    Создадим массив из объектов:
+    // Создадим массив из объектов:
            
 let name_17 = [name_1, name_5, name_9];</pre>
 
-            <div class="subsection">
-                <h3 class="subsection__header">Получение объектов из массива</h3>
+      <div class="subsection">
+        <h3 class="subsection__header">Получение объектов из массива</h3>
 
-                <pre class="screen screen_pre">
+        <pre class="screen screen_pre">
 name_17[1];            //-&gt; - { name_6: value_7, name_7: value_8, name_8: [value_9, value_10, value_11] }
 
 name_17[2].name_11;    //-&gt; - value_13
            
 name_17[0].name_4[1];  //-&gt; - value_4</pre>
-            </div>
-        </section>
+      </div>
+    </section>
 
-        <section class="section">
-            <h2 class="section__header">Передача объектов функциям</h2>
+    <section class="section">
+      <h2 class="section__header">Передача объектов функциям</h2>
 
-            <p class="paragraph">
-                &bull; При присвоении объекта переменной, переменная будет содержать не сам объект, а ссылку (указатель) на объект. Если передать параметру функции в качестве аргумента значение этой переменной , то в переменной параметра функции будет храниться копия ссылки на объект<br>
-                &bull; При изменении свойства объекта внутри функции, изменяется свойство исходного объекта (функция "портит" объект)
-            </p>
-            <pre class="screen screen_post">
+      <p class="p">
+        &bull; При присвоении объекта переменной, переменная будет содержать не сам объект, а ссылку (указатель) на объект. Если передать параметру функции в качестве аргумента значение этой переменной , то в переменной параметра функции будет храниться копия ссылки на объект<br>
+        &bull; При изменении свойства объекта внутри функции, изменяется свойство исходного объекта (функция "портит" объект)
+      </p>
+      <pre class="screen screen_post">
 pluto.weight = 48;
 
 function loseWeight(dog) {
-    dog.weight = dog.weight - 2;
+  dog.weight = dog.weight - 2;
 }
 
 loseWeight(pluto)
 
 alert(pluto.name + " now weights " + pluto.weight);</pre>
-        </section>
+    </section>
 
-        <section class="section">
-            <h2 class="section__header">Копирование объектов</h2>
+    <section class="section">
+      <h2 class="section__header">Копирование объектов</h2>
 
-            <div class="subsection">
-                <h3 class="subsection__header">Простое (поверхностное) копирование</h3>
+      <div class="subsection">
+        <h3 class="subsection__header">Простое (поверхностное) копирование</h3>
 
-                <pre class="screen screen_pre">
+        <pre class="screen screen_pre">
 function clone(srcObject) {
-    let copyObject = {};
-    let key;
+  let copyObject = {};
+  let key;
 
-    for (key in srcObject) {
-        copyObject[key] = srcObject[key];
-    }
+  for (key in srcObject) {
+    copyObject[key] = srcObject[key];
+  }
 
-    return copyObject;
+  return copyObject;
 }</pre>
-                <pre class="screen screen_pre">
-let 
-                </pre>
+        <div class="subsubsection">
+          <h3 class="subsubsection__header">Object.assign()</h3>
 
-                <div class="subsubsection">
-                    <h3 class="subsubsection__header">Object.assign()</h3>
-
-                    <pre class="screen screen_pre">
+          <pre class="screen screen_pre">
 Object.assign(destObject, addObject_1, .... addObject_n);     // возвращает destObject</pre>
-                    <p class="p">
-                        Добавляются объекту <strong>name_1</strong> свойства объектов <strong>addObject_2, .... addObject_n</strong>.<br>
-                        Если добавляемое свойство уже имеется, то переписывается значение.
-                    </p>
+          <p class="p">
+            Добавляются объекту <strong>name_1</strong> свойства объектов <strong>addObject_2, .... addObject_n</strong>.<br>
+            Если добавляемое свойство уже имеется, то переписывается значение.
+          </p>
 
-                    <pre class="screen screen_pre">
+          <pre class="screen screen_pre">
 Object.assign({}, addObject);         // возвращает копию addObject</pre>
-                </div>
+        </div>
 
-                <div class="subsubsection">
-                    <h3 class="subsubsection__header">...</h3>
+        <div class="subsubsection">
+          <h3 class="subsubsection__header">...</h3>
 
-                    <pre class="screen screen_pre">
+          <pre class="screen screen_pre">
 let copyObj = {srcObj};</pre>
-                </div>
-            </div>
+        </div>
+      </div>
 
-            <div class="subsection">
-                <h3 class="subsection__header">Вложенное (глубокое) копирование</h3>
+      <div class="subsection">
+        <h3 class="subsection__header">Вложенное (глубокое) копирование</h3>
 
-            </div>
-        </section>
+      </div>
+    </section>
 
-        <section class="section">
-            <h2 class="section__header">Методы</h2>
+    <section class="section">
+      <h2 class="section__header">Методы</h2>
 
-            <p class="paragraph">
-                &bull; Помимо строк, чисел и булевых значений в свойствах объектов можно хранить <strong>функции</strong> (функция является значением свойства) - тогда эти свойства называются <strong>методами</strong><br>
-                &bull; Методы могут получать аргументы
-            </p>
-                
-            <pre class="screen screen_pre">
-let name_1 = {
-    name_11 : value_11,
-    name_12 : value_12,
-    name_13 : function() {
-            ...
-    }
+      <div class="subsection">
+        <h3 class="subsection__header">Добавление объектам новых методов</h3>
+
+        <pre class="screen screen_pre">
+name_1.name_1n = function() {
+  expression_1;
 };</pre>
-            <p class="paragraph">те же яйца, только в профиль:</p>
-            <pre class="screen screen_pre">
-let name_1 = {
-    this.name_11 = value_11,
-    this.name_12 = value_12,
-    this.name_13 = function() {
-            ...
-    }
-};</pre>
-            <p class="paragraph"><strong>name_4</strong> - метод объекта <strong>name_1</strong></p>
-                
-            <pre class="screen screen_pre">
-name_1.name_13();     // вызов метода</pre>
+        <p class="p">
+          - добавили объекту <strong>name_1</strong> свойство <strong>name_1n</strong> и задали в качестве его значения функцию (т.е. добавили объекту <strong>name_1</strong> метод <strong>name_1n</strong> ).
+        </p>
+      </div>
 
-            <p class="paragraph">
-                Разница между функцией и методом:<br>
-                &bull; Функция - отдельный блок кода, который можно вызвать<br>
-                &bull; Метод - поведение привязанное к определённому объекту
-            </p>
+      <div class="subsection">
+        <h3 class="subsection__header">Ключевое слово this</h3>
 
-            <pre class="screen screen_pre">
-let name_1 = {
-    name_11 : value_11,
-    name_12( name_12 ) {
-        action_1;
-    }
-};</pre>
+        <p class="p">
+          &bull; - не является переменной.<br>
+          &bull; Ключевое слово <strong>this</strong> можно использовать в теле метода, чтобы обратиться к объекту (интерпритируется как ссылка на объект), для которого этот метод вызывается.<br>
+          &bull; Делает методы более гибкими, позволяя добавлять один и тот же метод ко многим объектам так, чтобы он имел доступ к свойствам того объекта, для которого в данный момент вызывается.
+        </p>
+      </div>
 
-            <div class="subsection">
-                <h3 class="subsection__header">Добавление объектам новых методов</h3>
-                    
-                <pre class="screen screen_pre">
-name_1.name_13 = function() {
-    action_2;
-};</pre>
-                <p class="paragraph">- добавили объекту <strong>name_1</strong> свойство <strong>name_5</strong> и задали в качестве его значения функцию (т.е. добавили объекту <strong>name_1</strong> метод <strong>name_5</strong> )</p>
-            </div>
+      <div class="subsection">                
+        <h3 class="subsection__header">Использование одного метода с разными объектами</h3>
 
-            <div class="subsection">
-                <h3 class="subsection__header">Ключевое слово this</h3>
-
-                <p class="paragraph">
-                    &bull; - не является переменной<br>
-                    &bull; Ключевое слово <strong>this</strong> можно использовать в теле метода, чтобы обратиться к объекту (интерпритируется как ссылка на объект), для которого этот метод вызывается<br>
-                    &bull; Делает методы более гибкими, позволяя добавлять один и тот же метод ко многим объектам так, чтобы он имел доступ к свойствам того объекта, для которого в данный момент вызывается
-                </p>
-            </div>
-
-            <div class="subsection">                
-                <h3 class="subsection__header">Использование одного метода с разными объектами</h3>
-
-                <p class="paragraph">Создадим функцию <strong>name_1</strong>, чтобы затем использовать её как метод с разными объектами</p>
-                <pre class="screen screen_pre">
+        <p class="p">
+          Создадим функцию <strong>name_1</strong>, чтобы затем использовать её как метод с разными объектами.
+        </p>
+        <pre class="screen screen_pre">
 let name_1 = function() {
-        ...
+  expression_1;
 };</pre>
-                <p class="paragraph">Теперь создадим объект <strong>name_2</strong>, и добавим в него 2 свойства и метод <strong>name_1</strong></p>
-                <pre class="screen screen_pre">
+        <p class="p">
+          Теперь создадим объект <strong>name_2</strong>, и добавим в него 2 свойства и метод <strong>name_1</strong>.
+        </p>
+        <pre class="screen screen_pre">
 let name_2 = {
-    name_21: value_21,
-    name_22: value_22,
-    name_23: name_1
+  name_21: value_21,
+  name_22: value_22,
+  name_23: name_1
 };</pre>
-                <p class="paragraph">
-                    &bull; Создали объект <strong>name_2</strong> со свойствами <strong>name_3</strong>, <strong>name_4</strong> и <strong>name_5</strong><br>
-                    &bull; Присвоили свойству <strong>name_5</strong> значение - функцию <strong>name_1</strong><br>
-                    &bull; Теперь <strong>name_2.name_1</strong> является методом, который можно вызвать командой <strong>name_2.name_1()</strong>
-                </p>
+        <p class="p">
+          &bull; Создали объект <strong>name_2</strong> со свойствами <strong>name_3</strong>, <strong>name_4</strong> и <strong>name_5</strong>.<br>
+          &bull; Присвоили свойству <strong>name_5</strong> значение - функцию <strong>name_1</strong>.<br>
+          &bull; Теперь <strong>name_2.name_1</strong> является методом, который можно вызвать командой <strong>name_2.name_1()</strong>.
+        </p>
 
-                <p class="paragraph">Функцию <strong>name_1</strong> можно использовать как метод и для других объектов:</p>
-                <pre class="screen screen_pre">
+        <p class="p">
+          Функцию <strong>name_1</strong> можно использовать как метод и для других объектов:
+        </p>
+        <pre class="screen screen_pre">
 let name_3 = {
-    name_31: value_31,
-    name_32: value_32,
-    name_33: name_1
+  name_31: value_31,
+  name_32: value_32,
+  name_33: name_1
 };
 
 let name_4 = {
-    name_41: value_41,
-    name_42: value_42,
-    name_43: name_1
+  name_41: value_41,
+  name_42: value_42,
+  name_43: name_1
 };</pre>
-                <p class="paragraph">Чтобы использовать один и тот же код метода с разными объектами, достаточно добавить его в виде свойства каждому из этих объектов</p>
-            </div>
+        <p class="p">
+          Чтобы использовать один и тот же код метода с разными объектами, достаточно добавить его в виде свойства каждому из этих объектов.
+        </p>
+      </div>
 
-            <div class="subsection">
-                <h3 class="subsection__header">Упрощённая синтаксис определения функций внутри объектов</h3>
+      <div class="subsection">
+        <h3 class="subsection__header">Упрощённая синтаксис определения функций внутри объектов</h3>
 
-                <pre class="screen screen_pre">
+        <pre class="screen screen_pre">
 let name_1 = {
-    name_11: value_11,
-    name_12: value_12,
-    name_13: function() {
-        action_1;
-    }
+  name_11: value_11,
+  name_12: value_12,
+  name_13: function() {
+    expression_1;
+  }
 };
 
-// равно:
+    // равно:
 
 let name_1 = {
-    name_11: value_11,
-    name_12: value_12,
-    name_13() {
-        action_1;
-    }
+  name_11: value_11,
+  name_12: value_12,
+  name_13() {
+    expression_1;
+  }
 };</pre>
-            </div>
-        </section>
+      </div>
+    </section>
 
-        <section class="section">
-            <h2 class="section__header">Деструктурирующее присваивание</h2>
+    <section class="section">
+      <h2 class="section__header">Деструктурирующее присваивание</h2>
 
-            <div class="subsection">
-                <h3 class="subsection__header">Деструктуризация из объекта</h3>
+      <div class="subsection">
+        <h3 class="subsection__header">Деструктуризация из объекта</h3>
 
-                <pre class="screen screen_pre">
+        <pre class="screen screen_pre">
 let name_1 = {
-    name_11: value_11,
-    name_12: value_12,
-    name_13: value_13,
-    name_14: ["", "", ""],
-    name_15: value_15
+  name_11: value_11,
+  name_12: value_12,
+  name_13: value_13,
+  name_14: ["", "", ""],
+  name_15: value_15
 }
 
 let {name_11, name_12} = name_1;
@@ -483,16 +453,18 @@ let {name_13: name_2, name_15: name_3} = name_1;
 
     //-->   name_2 = value_13;
     //-->   name_3 = value_15;</pre>
-                <p class="paragraph">Свойства вытаскиваются из объекта <strong>name_1</strong> и для них создаются переменные с соответствующим именем и значением</p>
-                <pre class="screen screen_pre">
+        <p class="p">
+          Свойства вытаскиваются из объекта <strong>name_1</strong> и для них создаются переменные с соответствующим именем и значением.
+        </p>
+        <pre class="screen screen_pre">
     // Можно задать значение по умолчанию:
 
 let name_1 = {
-    name_11: value_11,
-    name_12: value_12,
-    name_13: value_13,
-    name_14: ["", "", ""],
-    name_15: value_15
+  name_11: value_11,
+  name_12: value_12,
+  name_13: value_13,
+  name_14: ["", "", ""],
+  name_15: value_15
 }
 
 let {name_11 = value_21, name_12 = value_22, name_16 = value_26} = name_1;
@@ -500,52 +472,68 @@ let {name_11 = value_21, name_12 = value_22, name_16 = value_26} = name_1;
     //-->   name_11 = value_11;
     //-->   name_12 = value_12;
     //-->   name_16 = value_26;</pre>
-                <p class="paragraph">
-                    Значения по умолчанию будут использованы, если искомого свойства нет или его значение <strong>undefined</strong>
-                </p>
-            </div>
-        </section>
+        <p class="p">
+          Значения по умолчанию будут использованы, если искомого свойства нет или его значение <strong>undefined</strong>.
+        </p>
+      </div>
+    </section>
 
-        <section class="section">
-            <h2 class="section__header">Расширение объектных литералов (реструктурирование)</h2>
+    <section class="section">
+      <h2 class="section__header">Расширение объектных литералов (реструктурирование)</h2>
 
-            <p class="paragraph">С его помощью можно превратить в объект переменные из глобальной области видимости</p> 
-            <pre class="screen screen_pre">
-var name_1 = value_1;
-var name_2 = value_2;
-var name_3 = function() {
-    action_1;
+      <p class="p">
+        С его помощью можно превратить в объект переменные из глобальной области видимости
+      </p> 
+      <pre class="screen screen_pre">
+let name_1 = value_1;
+let name_2 = value_2;
+let name_3 = function() {
+  expression_1;
 };
 
-var name_4 = {name_1,name_2,name_3};</pre>
-            <p class="paragraph"><strong>name_1</strong> и <strong>name_2</strong> становятся свойствами, а <strong>name_3</strong> методом объекта <strong>name_4</strong>:</p>
-            <pre class="screen screen_pre">
+let name_4 = {name_1,name_2,name_3};</pre>
+      <p class="p">
+        <strong>name_1</strong> и <strong>name_2</strong> становятся свойствами, а <strong>name_3</strong> методом объекта <strong>name_4</strong>:
+      </p>
+      <pre class="screen screen_pre">
 var name_4 = {
-    name_1: value_1,
-    name_2: value_2
-    name_3: function() {
-        action_1;
-    }
+  name_1: value_1,
+  name_2: value_2
+  name_3: function() {
+    expression_1;
+  }
 };</pre>
-        </section>
+    </section>
 
-        <section class="section">
-            <h2 class="section__header">Геттеры и сеттеры</h2>
+    <section class="section">
+      <h2 class="section__header">Геттеры и сеттеры</h2>
 
-            <pre class="screen screen_pre">
+      <pre class="screen screen_pre">
 let name_1 = {
-    name_2: value_2;
+  name_2: value_2;
 
-    get name_3() {
-        return this.name_2;
-    }
+  get name_3() {
+    return this.name_2;
+  }
 
-    set name_4(value_3) {
-        this.name_2 = value_3;
-    }
+  set name_4(value_3) {
+    this.name_2 = value_3;
+  }
 }</pre>
-            <p class="paragraph">В сеттере можно производить проверку данных</p>
-        </section>
-    </main>
+      <p class="p">
+        В сеттере можно производить проверку данных.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2 class="section__header">Преобразование объекта в массив</h2>
+
+      <pre class="screen screen_pre">
+let arr = Object.entries(obj);
+
+  // obj - исходный объект
+  // arr - возвращаемый массив</pre>
+    </section>
+  </main>
 </body>
 </html>

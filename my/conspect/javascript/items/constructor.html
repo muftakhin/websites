@@ -1,195 +1,153 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Конструктор</title>
-    <link rel="stylesheet" href="../../styles/style.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Конструктор</title>
+  <link rel="stylesheet" href="../../styles/style.css">
 </head>
 
 <body class="body">
-    <header class="header">
-        <a class="header__button"  href="../javascript.html">&uArr;</a>
-        <h1 class="header__title">Конструктор</h1>
-    </header>
+  <header class="header">
+    <a class="header__button"  href="../javascript.html">&uArr;</a>
+    <h1 class="header__title">Конструктор</h1>
+  </header>
 
-    <main class="main">
-        <section class="section">
-            <p class="paragraph">
-                &bull; Это функция, которая создаёт объекты, давая им набор заранее определённых свойств и методов<br>
-                &bull; Принимает значения свойств, которые вы хотите задать в соём объекте, и возвращает новый объект со всеми нужными нам свойствами и методами<br>
-                &bull; Должен использоваться с оператором <strong>new</strong> и иметь имя начинающееся с большой буквы<br>
-                &bull; Создаёт объекты имеющие одинаковую структуру, с общими именами свойств и методов<br>
-                &bull; Аргументы, передаваемые конструктору, используются при инициализации свойств создаваемого объекта<br>
-                &bull; Если Конструктор содержит слишком много параметров, можно объединить их в один параметр-объект
-            </p>
-        </section>
+  <main class="main">
+    <section class="section">
+      <p class="p">
+        &bull; Это функция, которая создаёт объекты, давая им набор заранее определённых свойств и методов.<br>
+        &bull; Принимает значения свойств, которые вы хотите задать в соём объекте, и возвращает новый объект со всеми нужными нам свойствами и методами.<br>
+        &bull; Должен использоваться с оператором <strong>new</strong> и иметь <strong>Имя</strong> начинающееся с большой буквы.<br>
+        &bull; Создаёт объекты имеющие одинаковую структуру, с общими именами свойств и методов.<br>
+        &bull; Аргументы, передаваемые конструктору, используются при инициализации свойств создаваемого объекта.<br>
+        &bull; Если Конструктор содержит слишком много параметров, можно объединить их в один параметр-объект.
+      </p>
+    </section>
 
-        <section class="section">            
-            <h2 class="section__header">Устройство Конструктора</h2>
+    <section class="section">            
+      <h2 class="section__header">Устройство Конструктора</h2>
+
+      <pre class="screen screen_pre">
+    // Вызов Конструктора:
+
+let name_1 = new Name_2( value_1, value_2, ..., value_n );</pre>
+
+      <p class="p">
+        &bull; При каждом вызове Конструктор создаёт объект, добавляя ему нужные свойства.<br>
+        &bull; Для вызова Конструктора используется ключевое слово <strong>new</strong>, а следом - Имя Конструктора с большой буквы (по соглашению) и скобки.<br>
+        &bull; <strong>new</strong> сообщает JavaScript, что вы собираетесь использовать функцию как Конструктор.
+      </p>
+
+      <p class="p">
+        &bull; <strong>name_1</strong> - в этой переменной будет сохранена ссылка на новый объект.<br>
+        &bull; <strong>Name_2</strong> - имя Конструктора. JavaScript - программистов называют Конструкторы с заглавной буквы, чтобы отличать их от обычных функций (класс объектов).<br>
+        &bull; <strong>( value_1, value_2, ..., value_n )</strong> - значения аргументов передаваемые параметрам Конструктора соответствующим свойствам передаваемым создаваемому объекту. Значения параметров присваиваются соответствующим свойствам.<br>
+        &bull; Имена свойств и параметров не обязательно должны совпадать, но по соглашению желательно.
+      </p>
                 
-            <pre class="screen screen_pre">
-let name_1 = new Name_2( value_1, value_2, ..., value_n )</pre>
+      <p class="p">
+        Конструктор принимает значения свойств и возвращает объект.
+      </p>
+    </section>
 
-            <p class="paragraph">
-                &bull; При каждом вызове Конструктор создаёт объект, добавляя ему нужные свойства<br>
-                &bull; Для вызова Конструктора используется ключевое слово <strong>new</strong>, а следом - Имя Конструктора с большой буквы (по соглашению) и скобки<br>
-                &bull; <strong>new</strong> сообщает JavaScript, что вы собираетесь использовать вункцию как Конструктор
-            </p>
+    <section class="section">
+      <h2 class="section__header">Создание Конструктора</h2>
 
-            <p class="paragraph">
-                &bull; <strong>name_1</strong> - в этой переменной будет сохранена ссылка на новый объект<br>
-                &bull; <strong>Name_2</strong> - имя Конструктора. JavaScript - программистов называют Конструкторы с заглавной буквы, чтобы отличать их от обычных функций (класс объектов)<br>
-                &bull; <strong>( value_1, value_2, ..., value_n )</strong> - значения аргументов передаваемые параметрам Конструктора соответствующим свойствам передаваемым создаваемому объекту. Значения параметров присваиваются соответствующим свойствам<br>
-                &bull; Имена свойств и параметров не обязательно должны совпадать, но по соглашению желательно
-            </p>
-                
-            <p class="paragraph">Конструктор принимает значения свойств и возвращает объект</p>
-        </section>
-
-        <section class="section">
-            <h2 class="section__header">Создание Конструктора</h2>
-
-            <p class="paragraph">Создадим Конструктор, который будет добавлять к каждому созданному объекту свойства <strong>x</strong> ... <strong>z</strong></p>
-            <pre class="screen screen_pre">
+      <pre class="screen screen_pre">
 let Name_1 = function(param_1, param_2, ..., param_n) {
-    this.param_1 = param_1;
-    this.param_2 = param_2;
+    this.name_11 = param_1;
+    this.name_12 = param_2;
     ...
-    this.param_n = param_n;
+    this.name_1n = param_n;
 
-    this.name_2 = function() { 
-        ...                         // могут использоваться в теле и this.param_1 ... this.param_n 
+    this.name_x1 = function() { 
+        ...                         // могут использоваться в теле и this.name_1 ... this.name_n 
     };
 };</pre>
-            <p class="paragraph">Или</p>
-            <pre class="screen screen_pre">
+      <p class="p">
+        Или:
+      </p>
+      <pre class="screen screen_pre">
 function Name_1(param_1, param_2, ..., param_n) {
-    this.param_1 = param_1;
-    this.param_2 = param_2;
+    this.name_11 = param_1;
+    this.name_12 = param_2;
     ... 
-    this.param_n = param_n;
+    this.name_1n = param_n;
 
-    this.name_2 = function() { 
-        ...                        // аналогично
-    };
-}</pre>
-            <p class="paragraph">Имена свойств и имена параметров необязательно должны быть одинаковыми но зачастую таковыми оказываются по соглашению</p>
-                
-            <p class="paragraph">
-                &bull; Конструктор (параметры конструктора) принимает значения свойств(аргументы)(<strong>param_1</strong> ... <strong>param_n</strong>), и добавляет новому объекту свойства <strong>this.param_1</strong> ... <strong>this.param_n</strong>, которыми должен обладать создаваемый объект, сохраняя в них переданные значения <strong>x</strong> и <strong>y</strong><br>
-                &bull; При вызове Конструктора <strong>Name_1</strong> будет создан новый объект со свойствами <strong>param_1</strong> ... <strong>param_n</strong>, значения которых соответствуют переданным аргументам
-            </p>
-
-            <p class="paragraph"><strong>this.param_n = param_n;</strong> - инициализация свойства объекта значением, переданным Конструктору</p>
-
-            <p class="paragraph">Мы можем включить метод <strong>name_2</strong> в конструируемый объект путём инициализации свойства <strong>name_2</strong> значением функции</p>
-
-            <p class="paragraph">Чтобы добавить метод, назначаем свойству функцию</p>
-
-            <p class="paragraph">Необходимо использовать <strong>this.</strong> в методе для ссылки на свойства в объекте</p>
-            <pre class="screen screen_pre">
-function Name_1(param_1, param_2, ..., param_n) {
-    this.param_1 = param_1;
-    this.param_2 = param_2;
-    ...
-    this.param_n = param_n;
-}</pre>
-            <pre class="screen screen_post">
-function Name_1(x, y) {
-    this.x = x;
-    this.y = y;
-}
-let name_2 = new Name_1(10, 20);
-   
-name_2;  //-&gt;  Name_1 {x: 10, y: 20}</pre>
-            <p class="paragraph">Создаётся объект, используя функцию <strong>Name_1</strong> в качестве конструктора с передачей ей аргументов <strong>10</strong> и <strong>20</strong> для свойств <strong>x</strong> и <strong>y</strong>, затем возвращается полученный объект и сохраняется в переменной <strong>name_2</strong></p>
-            <pre class="screen screen_post">
-function Name_1(param_1, param_2) {
-    this.param_1 = param_1;
-    this.param_2 = param_2;
-
-    this.name_5 = function() {
-        ... ; 
-    };
-}
-            
-Создадим 3 разных объекта:
-
-let name_2 = new Name_1(10, 20);
-let name_3 = new Name_1(30, 40);
-let name_4 = new Name_1(50, 60);
-   
-Можем вызвать их методы:
-   
-name_2.name_5();
-name_3.name_5();
-name_4.name_5();</pre>
-            <p class="paragraph">Мы создаём 3 разных объекта <strong>Name_1</strong>, каждый из которых будет обладать своими свойствами, для чего используем ключевое слово <strong>new</strong> в сочетании с ранее созданным конструктором <strong>Name_1</strong>. Конструктор возвращает объект <strong>Name_1</strong>, сконфигурированный в соответствии с переданными нами аргументами</p>
-                
-            <p class="paragraph">Далее мы вызываем метод <strong>name_5</strong> в отношении каждого объекта <strong>Name_1</strong></p>
-        </section>
-
-
-        <section class="section">
-            <h2 class="section__header">Объектный литерал и параметр-объект</h2>
-
-            <pre class="screen screen_pre">
-let name_1 = { name_2: value_1,
-    name_3: value_2,
-    ...
-    name_n: value_n
-};</pre>
-            <p class="paragraph">- объектный литерал</p>
-
-            <pre class="screen screen_pre">
-function NameName_1(params_1) {
-    this.nameName_2 = params_1.nameName_2;
-    this.nameName_3 = params_1.nameName_3;
-    ...
-    this.nameName_n = params_1.nameName_n;
-
-    this.name_x = function() {
+    this.name_x1 = function() { 
         ...
     };
 }</pre>
-            <p class="paragraph">- Конструктор с параметром-объектом</p>
+      <p class="p">
+        Имена свойств и имена параметров необязательно должны быть одинаковыми но зачастую таковыми оказываются по соглашению.
+      </p>
 
-            <pre class="screen screen_pre">
-let nameNameName_1 = new NameName_1(name_1)</pre>
-        </section>
+      <p class="p">
+        &bull; Конструктор (параметры конструктора) принимает аргументы (<strong>param_1</strong> ... <strong>param_n</strong>), и добавляет новому объекту свойства <strong>this.name_11</strong> ... <strong>this.name_1n</strong>, которыми должен обладать создаваемый объект, сохраняя в них переданные параметрам конструктора значения аргументов.<br>
+        &bull; При вызове Конструктора <strong>Name_1</strong> будет создан новый объект со свойствами <strong>param_1</strong> ... <strong>param_n</strong>, значения которых соответствуют переданным аргументам.<br>
+        <strong>this.name_n = param_n;</strong> - инициализация свойства объекта значением, переданным Конструктору.<br>
+        Мы можем включить метод <strong>name_x1</strong> в конструируемый объект путём инициализации свойства <strong>name_x1</strong> значением функции.
+      </p>
+    </section>
 
-        <section class="section">
-            <h2 class="section__header">Как работает Конструктор</h2>
+    <section class="section">
+      <h2 class="section__header">Объектный литерал и параметр-объект</h2>
 
-            <p class="paragraph">
-                1) new создаёт новый, пустой объект<br>
-                2) new заносит в this ссылку на новый объект<br>
-                3) После подготовки this вызывается функция Конструктора<br>
-                4) Вызывается тело функции. Конструктор задаёт значения свойств нового объекта this<br>
-                5) После того как функция Конструктора будет выполнена, оператор new возвращает this, т.е. ссылку на новый объект. И эта ссылка присваивается далее переменной нового объекта<br>
-            </p>
-        </section>
+      <pre class="screen screen_pre">
+let name_1 = {                              // Объектный литерал
+    name_11: value_11,
+    name_12: value_12,
+    ....
+    name_1n: value_1n
+};
 
-        <section class="section">
-            <p class="paragraph">
-                &bull; В Конструкторе нельзя возвращать значение (отличное от <strong>this</strong> )<br>
-                &bull; Если не использовать <strong>new</strong> при создании объекта Конструктором, все ссылки в Конструкторе будут относиться к глобальному объекту приложения - глобальному объекту верхнего уровня, в коротом хранятся глобальные переменные (в браузере это объект <strong>window</strong> )<br>
-                &bull; В объект созданный с помощью конструктора можно добавлять и удалять новые свойства и методы как в обычный объект<br>
-                &bull; В новом объекте можно после создания переопределять свойства и методы
-            </p>
 
-            <p class="paragraph">
-                &bull; Объект является экземпляром конструктора (даже если его после изменить)<br>
-                &bull; <strong>instanceof</strong> возвращает <strong>true</strong>, если объект был создан указанным конструктором
-            </p>
-            <pre class="screen screen_pre">
+function Name_2(params_2) {                 // Конструктор с параметром-объектом
+    this.name_21 = params_2.name_11;
+    this.name_22 = params_2.name_12;
+    ....
+    this.name_2n = params_2.namee_1n;
+
+    this.name_x = function() { .... };
+}
+
+let name_3 = new Name_2(name_1)</pre>
+    </section>
+
+    <section class="section">
+      <h2 class="section__header">Как работает Конструктор</h2>
+
+      <p class="p">
+        1) <strong>new</strong> создаёт новый, пустой объект.<br>
+        2) <strong>new</strong> заносит в <strong>this</strong> ссылку на новый объект.<br>
+        3) После подготовки <strong>this</strong> вызывается функция Конструктора.<br>
+        4) Вызывается тело функции. Конструктор задаёт значения свойств нового объекта <strong>this</strong>.<br>
+        5) После того как функция Конструктора будет выполнена, оператор new возвращает <strong>this</strong>, т.е. ссылку на новый объект. И эта ссылка присваивается далее переменной нового объекта.<br>
+      </p>
+    </section>
+
+    <section class="section">
+      <p class="p">
+        &bull; В Конструкторе нельзя возвращать значение (отличное от <strong>this</strong> ).<br>
+        &bull; Если не использовать <strong>new</strong> при создании объекта Конструктором, все ссылки в Конструкторе будут относиться к глобальному объекту приложения - глобальному объекту верхнего уровня, в коротом хранятся глобальные переменные (в браузере это объект <strong>window</strong> ).<br>
+        &bull; В объект созданный с помощью конструктора можно добавлять и удалять новые свойства и методы как в обычный объект.<br>
+        &bull; В новом объекте можно после создания переопределять свойства и методы.
+      </p>
+
+      <p class="p">
+        &bull; Объект является экземпляром конструктора (даже если его после изменить).<br>
+        &bull; <strong>instanceof</strong> возвращает <strong>true</strong>, если объект был создан указанным конструктором.
+      </p>
+      <pre class="screen screen_pre">
 if (name_1 instanceof Name_2) {
     ...
 };</pre>
-            <p class="paragraph">- выполнится если <strong>name_1</strong> экземпляр созданный конструктором <strong>Name_2</strong></p>
-        </section>
-    </main>
+      <p class="p">
+        - выполнится если <strong>name_1</strong> экземпляр созданный конструктором <strong>Name_2</strong>.
+      </p>
+    </section>
+  </main>
 </body>
 </html>

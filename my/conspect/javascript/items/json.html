@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSON</title>
+  <link rel="stylesheet" href="../../styles/style.css">
+</head>
+
+<body class="body">
+  <header class="header">
+    <a class="header__button"  href="../javascript.html">&uArr;</a>
+    <h1 class="header__title">JSON</h1>
+  </header>
+
+  <main class="main">
+    <section class="section">
+      <h2 class="section__header">Объект браузера JSON</h2>
+
+      <p class="p">
+        Браузеры имеют встроенный объект JSON.
+      </p>
+
+      <div class="subsection">
+        <h3 class="subsection__header">Методы объекта JSON</h3>
+
+        <div class="subsubsection">
+          <h4 class="subsubsection__header">JSON.stringify()</h4>
+
+          <p class="p">
+            Преобразует JavaScript-объект в JSON.
+          </p>
+          <pre class="screen screen_pre">
+const name_1 = {
+  name_11: value_11,
+  name_12: value_12,
+  .... ,
+  name_1n: value_1n
+};
+
+.... JSON.stringify(name_1) .... ;</pre>
+        </div>
+
+        <div class="subsubsection">
+          <h4 class="subsubsection__header">JSON.parse()</h4>
+
+          <p class="p">
+            Преобразует JSON в JavaScript-объект.
+          </p>
+          <pre class="screen screen_pre">
+JSON.parse(....);</pre>
+        </div>
+      </div>
+
+      <pre class="screen screen_post">
+    // Глубокое клонирование объектов при помощи stringify() и parse():
+
+const name_1 = JSON.parse(JSON.stringify(name_2));</pre>
+    </section>
+    </main>
+</body>
