@@ -235,9 +235,9 @@ document.querySelectorAll('.accordion-item__trigger').forEach((item) => {
       </div>
 
       <div class="subsection">
-          <h3 class="subsection__header">Карусель</h3>
+        <h3 class="subsection__header">Карусель</h3>
 
-          <pre class="screen screen_post">
+        <pre class="screen screen_post">
     // HTML:
 
 
@@ -280,7 +280,7 @@ const slidesToScroll = 2;
 const container = document.querySelector('.slider-container');
 const track = document.querySelector('.slider-track');
 
-const brnPrev = document.querySelector('.btn-prev');
+const btnPrev = document.querySelector('.btn-prev');
 const btnNext = document.querySelector('.btn-next');
 const items = document.querySelectorAll('.slider-item');
 
@@ -289,7 +289,7 @@ const itemWidth = container.clientwidth / slidesToShow;
 const movePosition = slidesToScroll * itemWidth;
 
 item.forEach((item) =&gt; {
-  item.style.minWidth = '${itemWidth}px';
+  item.style.minWidth = `${itemWidth}px`;
 });
 
 btnNext.addEventListener('click', () =&gt; {
@@ -311,7 +311,7 @@ btnPrev.addEventListener('click', () =&gt; {
 });
 
 const setPosition = () =&gt; {
-  track.style.transform = 'translateX(${position}px)';
+  track.style.transform = `translateX(${position}px)`;
 };
 
 const checkBtns = () =&gt; {
@@ -321,6 +321,60 @@ const checkBtns = () =&gt; {
 
 checkBtns();</pre>
       </div>
-  </section>
+
+      <div class="subsection">
+        <h3 class="subsection__header">Слайдер</h3>
+
+        <pre class="screen screen_post">
+const slides = document.querySelectorAll('.offer__slide');
+const prev = document.querySelector('.offer__slider-prev');
+const next = document.querySelector('.offer__slider-next');
+const total = document.querySelector('#total');
+const current = document.querySelector('#current');
+let slideIndex = 1;
+
+showSllides(slideIndex);
+
+if (slides.length &lt; 10) {
+  total.textContent = `0${slides.length}`;
+} else {
+  total.textContent = slides.length;
+}
+
+function showSllides(n) {
+  if (n &gt; slides.length) {
+    slideIndex = 1;
+  }
+
+  if (n &lt; 1) {
+    slideIndex = slides.length;
+  }
+
+  slides.forEach((item) =&gt; {
+    item.style.display = 'none';
+  });
+
+  slides[slideIndex - 1].style.display = '';
+
+  if (slides.length &lt; 10) {
+    current.textContent = `0${slideIndex}`;
+  } else {
+    current.textContent = slideIndex;
+  }
+}
+
+function plusSlides(n) {
+  showSllides(slideIndex += n);
+}
+
+prev.addEventListener('click', () =&gt; {
+  plusSlides(-1);
+});
+
+next.addEventListener('click', () =&gt; {
+  plusSlides(1);
+});</pre>
+      </div>
+    </section>
   </main>
 </body>

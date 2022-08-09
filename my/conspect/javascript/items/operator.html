@@ -1,103 +1,115 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Операторы</title>
-    <link rel="stylesheet" href="../../styles/style.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Операторы</title>
+  <link rel="stylesheet" href="../../styles/style.css">
 </head>
 
 <body class="body">
-    <header class="header">
-        <a class="header__button"  href="../javascript.html">&uArr;</a>
-        <h1 class="header__title">Операторы</h1>
-    </header>
+  <header class="header">
+    <a class="header__button"  href="../javascript.html">&uArr;</a>
+    <h1 class="header__title">Операторы</h1>
+  </header>
 
-    <main class="main">
-        <p class="paragraph">
-            <strong>Унарные</strong> - воспринимают один операнд<br>
-            <strong>Бинарные</strong> - воспринимают два операнда<br>
-            <strong>Тернарные</strong> - имеют форму <strong>? x:y</strong>, является краткой однострочной формой инструкции <strong>if</strong>, которая выбирает одно из двух выражений на основе значения третьего выражения
+  <main class="main">
+    <section class="section">
+      <h2 class="section__header">Типы операторов</h2>
+
+      <p class="p">
+        <strong>Унарные</strong> - воспринимают один операнд.<br>
+        <strong>Бинарные</strong> - воспринимают два операнда.<br>
+        <strong>Тернарные</strong> - имеют форму <strong>? x:y</strong>, является краткой однострочной формой инструкции <strong>if</strong>, которая выбирает одно из двух выражений на основе значения третьего выражения.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2 class="section__header">Строковые</h2>
+
+      <div class="subsection">
+        <h3 class="subsection__header">Конкатенация</h3>
+
+        <p class="p">
+          - объединение строк.
         </p>
-
-        <section class="section">
-            <h2 class="section__header">Строковые</h2>
-
-            <div class="subsection">
-                <h3 class="subsection__header">Конкатенация</h3>
-
-                <p class="paragraph">- объединение строк</p>
-                <pre class="screen screen_pre">
+        <pre class="screen screen_pre">
 +
 +=</pre>
-                <pre class="screen screen_post">
+        <pre class="screen screen_post">
 let name_1 = 'one' + 'two';</pre>
-                <p class="paragraph">То же самое:</p>
-                <pre class="screen screen_post">
+        <p class="p">
+          То же самое:
+        </p>
+        <pre class="screen screen_post">
 let name_1 = 'one';
 name_1 += 'two';</pre>
 
-                <p class="paragraph">
-                    &bull; При конкатенации строки и числа, число преобразуется в строку<br>
-                    &bull; А <strong>true</strong> преобразуется в строку "true"
-                </p>
-            </div>
-        </section>
+        <p class="p">
+          &bull; При конкатенации строки и числа, число преобразуется в строку<br>
+          &bull; А <strong>true</strong> преобразуется в строку "true"
+        </p>
+      </div>
+    </section>
 
-        <section class="section">
-            <h2 class="section__header">Присваивания</h2>
+    <section class="section">
+      <h2 class="section__header">Присваивания</h2>
 
-            <p class="paragraph">- оператор обычного присваивания и его сочетания</p>
+      <p class="p">
+        - оператор обычного присваивания и его сочетания.
+      </p>
 
-            <pre class="screen screen_pre">
+      <pre class="screen screen_pre">
 =
 +=
 -=
 *=
 /=
 %=</pre>
-            <p class="paragraph">Присваивает левому операнду значение правого операнда</p>
-            <pre class="screen screen_pre">
+      <p class="p">
+        Присваивает левому операнду значение правого операнда.
+      </p>
+      <pre class="screen screen_pre">
 let name_1 =  value_1;
           +=
           -=
           *=
           /=
           %=</pre>
-            <p class="paragraph">
-                <strong>name_1</strong> - левый операнд<br>
-                <strong>value_1</strong> - значение
-            </p>
-        </section>
+      <p class="p">
+        <strong>name_1</strong> - левый операнд.<br>
+        <strong>value_1</strong> - значение.
+      </p>
+    </section>
 
-        <section class="section">
-            <h2 class="section__header">Арифметические операторы</h2>
+    <section class="section">
+      <h2 class="section__header">Арифметические операторы</h2>
 
-            <div class="subsection">
-                <h3 class="subsection__header">Инкремент и декремент</h3>
+      <div class="subsection">
+        <h3 class="subsection__header">Инкремент и декремент</h3>
 
-                <pre class="screen screen_pre">
+        <pre class="screen screen_pre">
 let name = 0;
 ++name;  или  --name;   // вернёт 1 и -1,
 name++;  или  name--;   // вернёт 0</pre>
-            </div>
+      </div>
 
-            <div class="subsection">
-                <h3 class="subsection__header">На заданное число</h3>
+      <div class="subsection">
+        <h3 class="subsection__header">На заданное число</h3>
 
-                <pre class="screen screen_pre">
+        <pre class="screen screen_pre">
 +      // увеличение
 -      // уменьшение
 *      // умножение
 /      // деление   !- всегда возвращает результат с плавающей точкой -!
 %      // деление по модулю (остаток от деления)
 **     // возведение в степень</pre>
-                <p class="paragraph">
-                    &bull; При сложении числа со строкой выполняется конкатенация<br>
-                    &bull; При умножении, делении и вычитании, JavaScript рассматривает операции как арифметические и строки преобразует в числа
-                </p>
-                <pre class="screen screen_pre">
+        <p class="p">
+          &bull; При сложении числа со строкой выполняется конкатенация.<br>
+          &bull; При умножении, делении и вычитании, JavaScript рассматривает операции как арифметические и строки преобразует в числа.
+        </p>
+        <pre class="screen screen_pre">
 i++    // увеличивает i на 1
 i-     // уменьшает i на 1
 i+=n   // увеличивает i на n
@@ -106,58 +118,58 @@ i*=n   // умножает i на n
 i/=n   // делит i на n
 i%=n   // находит остаток i при делении на n
 i**=n  // i возводится в степень n</pre>
-            </div>
+      </div>
 
-            <div class="subsection">
-                <h3 class="subsection__header">Порядок выполнения</h3>
+      <div class="subsection">
+        <h3 class="subsection__header">Порядок выполнения</h3>
 
-                <p class="paragraph">
-                    1. Скобки<br>
-                    2. Экспоненты<br>
-                    3. Умножение<br>
-                    4. Деление<br>
-                    5. Сложение<br>
-                    6. Вычитание
-                </p>
-            </div>
-        </section>
+        <p class="p">
+          1. Скобки<br>
+          2. Экспоненты<br>
+          3. Умножение<br>
+          4. Деление<br>
+          5. Сложение<br>
+          6. Вычитание
+        </p>
+      </div>
+    </section>
 
-        <section class="section">
-            <h2 class="section__header">Логические операторы</h2>
+    <section class="section">
+      <h2 class="section__header">Логические операторы</h2>
 
-            <p class="paragraph">
-                Сравнение разных типов данных приводит их к числам
-            </p>
+      <p class="p">
+        Сравнение разных типов данных приводит их к числам.
+      </p>
 
-            <pre class="screen screen_pre">
+      <pre class="screen screen_pre">
 &amp;&amp;    //  и
 ||    // или
 !     // не</pre>
-            <p class="paragraph">
-                <strong>&amp;&amp;</strong> - используются с двумя булевыми значениями, чтобы узнать равны ли оба <strong>true</strong><br>
-                <strong>&amp;&amp;</strong> - возвращает первое ложное значение или последнее если все <strong>true</strong>.
-            </p>
-            <pre class="screen screen_post">
+      <p class="p">
+        <strong>&amp;&amp;</strong> - используются с двумя булевыми значениями, чтобы узнать равны ли оба <strong>true</strong>.<br>
+        <strong>&amp;&amp;</strong> - возвращает первое ложное значение или последнее если все <strong>true</strong>.
+      </p>
+      <pre class="screen screen_post">
 1 && 2 && 3 && null && 4
 
 //-&gt; null</pre>
 
-            <p class="paragraph">
-                <strong>||</strong> - равен ли кто-то <strong>true</strong><br>
-                <strong>||</strong> возвращает первое истинное значение или последнее, если все <strong>false</strong>.
-            </p>
-            <pre class="screen screen_post">
+      <p class="p">
+        <strong>||</strong> - равен ли кто-то <strong>true</strong>.<br>
+        <strong>||</strong> возвращает первое истинное значение или последнее, если все <strong>false</strong>.
+      </p>
+      <pre class="screen screen_post">
 1 || 2 || 3 || null || 4
 
 //-&gt; 1</pre>
 
-            <p class="paragraph"><strong>!</strong> - меняет значение на противоположное</p>
-        </section>
+      <p class="p"><strong>!</strong> - меняет значение на противоположное</p>
+    </section>
 
-        <section class="section">
-            <h2 class="section__header">Операторы сравнения</h2>
+    <section class="section">
+      <h2 class="section__header">Операторы сравнения</h2>
 
-            <pre class="screen screen_pre">
+      <pre class="screen screen_pre">
 ==      // равно
 ===     // равно и того же типа (строго равно)
 &gt;       // больше
@@ -166,208 +178,197 @@ i**=n  // i возводится в степень n</pre>
 &lt;=      // меньше или равно
 !=      // не равно
 !==     // не равно и того же типа</pre>
-            <p class="paragraph">
-                При использовании операторов <strong>&gt;</strong>,<strong>&lt;</strong>,<strong>&gt;=</strong>,<strong>&lt;=</strong> , если один операнд является числом, то другой преобразуется в число, и любое сравнение с <strong>NaN</strong> даёт <strong>NaN</strong>
-             </p>
+      <p class="p">
+        При использовании операторов <strong>&gt;</strong>,<strong>&lt;</strong>,<strong>&gt;=</strong>,<strong>&lt;=</strong> , если один операнд является числом, то другой преобразуется в число, и любое сравнение с <strong>NaN</strong> даёт <strong>NaN</strong>.
+      </p>
 
-            <p class="paragraph">Если переменную нужно сравнить, не является она <strong>true</strong> или <strong>false</strong>, то записывается только имя переменной (упрощается запись):</p>
-            <pre class="screen screen_post">
+      <p class="p">
+        Если переменную нужно сравнить, не является она <strong>true</strong> или <strong>false</strong>, то записывается только имя переменной (упрощается запись):
+      </p>
+      <pre class="screen screen_post">
 Вместо:
 (name_1 == true) или (name_1 == false)
 
 Записывается:
 (name_1)</pre>
 
-            <div class="subsection">
-                <h3 class="subsection__header"> == &nbsp; Оператор проверки равенства</h3>
+      <div class="subsection">
+        <h3 class="subsection__header"> == &nbsp; Оператор проверки равенства</h3>
 
-                <p class="paragraph">
-                    &bull; Если сравнивается число и строка, строка преобразуется в число (строка из букв преобразуется в NaN)<br>
-                    &bull; Булевское значение преобразуется в число ( true в 1, false в 0)<br>
-                    &bull; <strong>undefined</strong> равен <strong>null</strong><br>
-                    &bull; Пустая строка преобразуется в <strong>0</strong><br>
-                    &bull; Для проверки равенства объектов не важно какой из операторов равенства (<strong>==</strong> или <strong>===</strong>), они работают одинаково. Сравниваются ссылки на объекты. Две ссылки равны, если оны ссылаются на один объект
-                </p>
-            </div>
+        <p class="p">
+          &bull; Если сравнивается число и строка, строка преобразуется в число (строка из букв преобразуется в NaN).<br>
+          &bull; Булевское значение преобразуется в число ( true в 1, false в 0).<br>
+          &bull; <strong>undefined</strong> равен <strong>null</strong>.<br>
+          &bull; Пустая строка преобразуется в <strong>0</strong>.<br>
+          &bull; Для проверки равенства объектов не важно какой из операторов равенства (<strong>==</strong> или <strong>===</strong>), они работают одинаково. Сравниваются ссылки на объекты. Две ссылки равны, если оны ссылаются на один объект.
+        </p>
+      </div>
 
-            <div class="subsection">
-                <h3 class="subsection__header"> &lt; &gt; &nbsp; Операторы проверки больше или меньше</h3>
+      <div class="subsection">
+        <h3 class="subsection__header"> &lt; &gt; &nbsp; Операторы проверки больше или меньше</h3>
 
-                <p class="paragraph">
-                    &bull; Булевское значение преобразуется в число ( true в 1, false в 0)<br>
-                    &bull; Cтроки преобразуется в числа, по порядку символов в юникоде
-                </p>
-            </div>
-        <section>
+        <p class="p">
+          &bull; Булевское значение преобразуется в число ( true в 1, false в 0)<br>
+          &bull; Cтроки преобразуется в числа, по порядку символов в юникоде
+        </p>
+      </div>
+    <section>
 
-        <section class="section">
-            <h2 class="section__header">Приоритетность операторов</h2>
+    <section class="section">
+      <h2 class="section__header">Приоритетность операторов</h2>
 
-            <div class="table">
-                <div class="table__screen">() []</div>
-                <div class="table__definition">Скобки, вызовы и составляющая объекта</div>
+      <div class="table">
+        <div class="table__screen">() []</div>
+        <div class="table__definition">Скобки, вызовы и составляющая объекта</div>
 
-                <div class="table__screen">++ --</div>
-                <div class="table__definition">Инкремент и декремент</div>
+        <div class="table__screen">++ --</div>
+        <div class="table__definition">Инкремент и декремент</div>
 
-                <div class="table__screen">+ - ~ !</div>
-                <div class="table__definition">Унарные, поразрядные и логические</div>
+        <div class="table__screen">+ - ~ !</div>
+        <div class="table__definition">Унарные, поразрядные и логические</div>
 
-                <div class="table__screen">* / %</div>
-                <div class="table__definition">Арифметические</div>
+        <div class="table__screen">* / %</div>
+        <div class="table__definition">Арифметические</div>
 
-                <div class="table__screen">+ -</div>
-                <div class="table__definition">Арифметические и строковые</div>
+        <div class="table__screen">+ -</div>
+        <div class="table__definition">Арифметические и строковые</div>
 
-                <div class="table__screen">&lt;&lt; &gt;&gt; &gt;&gt;&gt;</div>
-                <div class="table__definition">Поразрядные</div>
+        <div class="table__screen">&lt;&lt; &gt;&gt; &gt;&gt;&gt;</div>
+        <div class="table__definition">Поразрядные</div>
 
-                <div class="table__screen">&lt;&gt; &lt;= &gt;=</div>
-                <div class="table__definition">Сравнения</div>
+        <div class="table__screen">&lt;&gt; &lt;= &gt;=</div>
+        <div class="table__definition">Сравнения</div>
 
-                <div class="table__screen">== != === !==</div>
-                <div class="table__definition">Сравнения</div>
+        <div class="table__screen">== != === !==</div>
+        <div class="table__definition">Сравнения</div>
 
-                <div class="table__screen">& ^ |</div>
-                <div class="table__definition">Поразрядные</div>
+        <div class="table__screen">& ^ |</div>
+        <div class="table__definition">Поразрядные</div>
 
-                <div class="table__screen">&&</div>
-                <div class="table__definition">Логический</div>
+        <div class="table__screen">&&</div>
+        <div class="table__definition">Логический</div>
 
-                <div class="table__screen">||</div>
-                <div class="table__definition">Логический</div>
+        <div class="table__screen">||</div>
+        <div class="table__definition">Логический</div>
 
-                <div class="table__screen">? :</div>
-                <div class="table__definition">Трёхкомпонентный</div>
+        <div class="table__screen">? :</div>
+        <div class="table__definition">Трёхкомпонентный</div>
 
-                <div class="table__screen">= += -= *= /= %= &lt;&lt;= &gt;&gt;= &gt;&gt;&gt;= &= ^= |=</div>
-                <div class="table__definition">Присваивания</div>
+        <div class="table__screen">= += -= *= /= %= &lt;&lt;= &gt;&gt;= &gt;&gt;&gt;= &= ^= |=</div>
+        <div class="table__definition">Присваивания</div>
 
-                <div class="table__screen">,</div>
-                <div class="table__definition">Разделитель</div>
-            </div>
-        </section>
+        <div class="table__screen">,</div>
+        <div class="table__definition">Разделитель</div>
+      </div>
+    </section>
 
-        <section class="section">
-            <h2 class="section__header">Взаимосвязанность операторов</h2>
+    <section class="section">
+      <h2 class="section__header">Взаимосвязанность операторов</h2>
 
-            <div class="table">
-                <div class="table__header">Отсутствует</div>
+      <div class="table">
+        <div class="table__header">Отсутствует</div>
 
-                <div class="table__screen">++&nbsp; --</div>
-                <div class="table__definition">Инкремент и декремент</div>
-            </div>
+        <div class="table__screen">++&nbsp; --</div>
+        <div class="table__definition">Инкремент и декремент</div>
+      </div>
 
-            <div class="table">
-                <div class="table__header">Правая</div>
+      <div class="table">
+        <div class="table__header">Правая</div>
 
-                <div class="table__screen">new</div>
-                <div class="table__definition">Создание нового объекта</div>
+        <div class="table__screen">new</div>
+        <div class="table__definition">Создание нового объекта</div>
 
-                <div class="table__screen">+&nbsp; -&nbsp; ~&nbsp; !</div>
-                <div class="table__definition">Унарные и поразрядные операции</div>
+        <div class="table__screen">+&nbsp; -&nbsp; ~&nbsp; !</div>
+        <div class="table__definition">Унарные и поразрядные операции</div>
 
-                <div class="table__screen">?&nbsp; :</div>
-                <div class="table__definition">Условный оператор</div>
+        <div class="table__screen">?&nbsp; :</div>
+        <div class="table__definition">Условный оператор</div>
 
-                <div class="table__screen">==&nbsp; *=&nbsp; /=&nbsp; %=&nbsp; +=&nbsp; -=</div>
-                <div class="table__definition">Присваивание</div>
+        <div class="table__screen">==&nbsp; *=&nbsp; /=&nbsp; %=&nbsp; +=&nbsp; -=</div>
+        <div class="table__definition">Присваивание</div>
 
-                <div class="table__screen">&lt;&lt;=&nbsp; &gt;&gt;=&nbsp; &gt;&gt;&gt;=&nbsp; &=&nbsp; ^=&nbsp; |=</div>
-                <div class="table__definition">Присваивание</div>
-            </div>
+        <div class="table__screen">&lt;&lt;=&nbsp; &gt;&gt;=&nbsp; &gt;&gt;&gt;=&nbsp; &=&nbsp; ^=&nbsp; |=</div>
+        <div class="table__definition">Присваивание</div>
+      </div>
 
-            <div class="table">
-                <div class="table__header">Левая</div>
+      <div class="table">
+        <div class="table__header">Левая</div>
 
-                <div class="table__screen">,</div>
-                <div class="table__definition">Разделитель</div>
+        <div class="table__screen">,</div>
+        <div class="table__definition">Разделитель</div>
 
-                <div class="table__screen">+&nbsp; -&nbsp; *&nbsp; /&nbsp; %</div>
-                <div class="table__definition">Арифметические операции</div>
+        <div class="table__screen">+&nbsp; -&nbsp; *&nbsp; /&nbsp; %</div>
+        <div class="table__definition">Арифметические операции</div>
 
-                <div class="table__screen">&lt;&lt;&nbsp; &gt;&gt;&nbsp; &gt;&gt;&gt;</div>
-                <div class="table__definition">Порязрядные операции</div>
+        <div class="table__screen">&lt;&lt;&nbsp; &gt;&gt;&nbsp; &gt;&gt;&gt;</div>
+        <div class="table__definition">Порязрядные операции</div>
 
-                <div class="table__screen">&lt;&nbsp; &lt;=&nbsp; &gt;&nbsp; &gt;=&nbsp; ==&nbsp; !=&nbsp; ===&nbsp; !==</div>
-                <div class="table__definition">Операции отношения</div>
-            </div>
-        </section>
+        <div class="table__screen">&lt;&nbsp; &lt;=&nbsp; &gt;&nbsp; &gt;=&nbsp; ==&nbsp; !=&nbsp; ===&nbsp; !==</div>
+        <div class="table__definition">Операции отношения</div>
+      </div>
+    </section>
 
-        <section class="section">
-            <h2 class="section__header">Оператор typeof</h2>
+    <section class="section">
+      <h2 class="section__header">Оператор typeof</h2>
 
-            <pre class="screen screen_pre">
+      <pre class="screen screen_pre">
 typeof parameter_1;</pre>
-            <p class="paragraph">
-                Унарный оператор <strong>typeof</strong> возвращает строковое значение, соответствующее типу значения, представленного оператору
-            </p>
-        </section>
+      <p class="p">
+        Унарный оператор <strong>typeof</strong> возвращает строковое значение, соответствующее типу значения, представленного оператору.
+      </p>
+    </section>
 
-        <section class="section">
-            <h2 class="section__header">Тернарный оператор ? :</h2>
+    <section class="section">
+      <h2 class="section__header">Тернарный оператор ? :</h2>
 
-            <pre class="screen screen_pre">
+      <pre class="screen screen_pre">
 let name = (condition) ? value_if_condition_true : value_if_condition_false;</pre>
-        </section>
+    </section>
 
-        <section class="section">
-            <h2 class="section__header">Оператор распространения (spread-оператор)</h2>
+    <section class="section">
+      <h2 class="section__header">Spread оператор (оператор распространения)</h2>
 
-            <p class="paragraph">Позволяет объединять содержимое массивов:</p>
-            <pre class="screen screen_pre">
+      <pre class="screen screen_pre">
+        // Объединение содержимого массивов:
+
+
 let name_1 = [value_11, value_12, value_13];
 let name_2 = [value_21, value_22];
 
-let name_3 = [...name_1, ...name_2];
+let name_3 = [...name_1, ...name_2];</pre>
 
-console.log(name_3.join(", "));     //-&gt; value_11, value_12, value_13, value_21, value_22</pre>
+      <pre class="screen screen_pre">
+        // Передача элементов массива в качестве аргументов функции:
 
-            <p class="paragraph">Не изменяет исходный массив:</p>
-            <pre class="screen screen_pre">
-let name_1 = [value_11, value_12, value_13];
-let [name_2] = [...name_1].reverse();
-    
-console.log(name_2);    //-&gt; value_13
-console.log(name_1.join(", "));    //-&gt; value_11, value_12, value_13</pre>
-
-            <p class="paragraph">Может использоваться для получения нескольких выбранных или остальных элементов массива:</p>
-            <pre class="screen screen_pre">
-let name_1 = [value_1, value_2, value_3, value_4];
-let [name_2, ...name_3] = name_1;
-console.log(name_3.join(", ")) //-&gt; value_2, value_3, value_4</pre>
-
-            <p class="paragraph">Может служить для передачи элементов массива в качестве аргументов функции:</p>
-            <pre class="screen screen_pre">
-function name_1(param_1, param_2, .... param_n) {
-    expression_1;
-}
 
 let name_2 = [elem_1, elem_2, .... elem_n];
 
 
 function name_1(...name_2) {
-    expression_1;
+  expression_1;
 }</pre>
-            <p class="paragraph">Может служить для объединения объектов:</p>
-            <pre class="screen screen_pre">
+
+      <pre class="screen screen_pre">
+        // Объединение свойств объектов в один объект:
+
+
 let name_1 = {
-    name_11: value_11;
-    name_12: value_12;
+  name_11: value_11,
+  name_12: value_12
 }
 
 let name_2 = {
-    name_21: value_21;
+  name_21: value_21
 }
 
-let name_3 = {...name_1, name_2};</pre>
-        </section>
+let name_3 = {...name_1, ...name_2};</pre>
+    </section>
 
     <section class="section">
       <h2 class="section__header">Rest оператор (оставшиеся элементы)</h2>
 
       <p class="p">
-        Собирает остальные аргументы в массив
+        - собирает остальные аргументы в массив
       </p>
 
       <pre class="screen screen_pre">

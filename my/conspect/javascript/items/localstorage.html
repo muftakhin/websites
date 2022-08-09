@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Local Storage</title>
+  <link rel="stylesheet" href="../../styles/style.css">
+</head>
+
+<body class="body">
+  <header class="header">
+    <a class="header__button"  href="../javascript.html">&uArr;</a>
+    <h1 class="header__title">Local Storage</h1>
+  </header>
+
+  <main class="main">
+    <section class="section">
+      <p class="p">
+        Объект, уникальный для каждого домена.<br>
+        Браузеры выделяют объём 10Мб.
+      </p>
+
+      <h2 class="section__header">Методы localStorage</h2>
+
+      <div class="subsection">
+        <h3 class="subsection__header">.setItem()</h3>
+
+        <p class="p">
+          Создание новой записи.
+        </p>
+        <pre class="screen screen_pre">
+localStorage.setItem('name', value);
+
+    // name - имя ключа
+    // value - значение ключа</pre>
+        <p class="p">
+          Если ключ с таким именем уже существует, то его значение перепишется.
+        </p>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__header">.getItem()</h3>
+
+        <p class="p">
+          Получение записи.
+        </p>
+        <pre class="screen screen_pre">
+localStorage.getItem('name');
+
+    // name - имя ключа</pre>
+      </div>
+ 
+      <div class="subsection">
+        <h3 class="subsection__header">.removeItem()</h3>
+
+        <p class="p">
+          Удаление записи из хранилища.
+        </p>
+        <pre class="screen screen_pre">
+localStorage.removeItem('name');
+
+    // name - имя ключа</pre>
+      </div>
+ 
+      <div class="subsection">
+        <h3 class="subsection__header">clear()</h3>
+
+        <p class="p">- метод полной очистки хранилища</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

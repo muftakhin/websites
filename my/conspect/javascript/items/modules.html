@@ -1,64 +1,147 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Модули</title>
-    <link rel="stylesheet" href="../../styles/style.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Модули</title>
+  <link rel="stylesheet" href="../../styles/style.css">
 </head>
 
 <body class="body">
-    <header class="header">
-        <a class="header__button"  href="../javascript.html">&uArr;</a>
-        <h1 class="header__title">Модули</h1>
-    </header>
+  <header class="header">
+    <a class="header__button"  href="../javascript.html">&uArr;</a>
+    <h1 class="header__title">Модули</h1>
+  </header>
 
-    <main class="main">
-        <section class="section">
-            <h2 class="section__header">export</h2>
+  <main class="main">
+    <section class="section">
+      <h2 class="section__header">Модуль-приём</h2>
 
-            <p class="paragraph">
-                &bull; Модуль- это фрагмент кода, пригодный для многократного использования<br>
-                &bull; Модули хранятся в отдельных файлах, по одному на модуль<br>
-                &bull; Из одного модуля можно экспортировать один или несколько объектов
-            </p>
-            <p class="paragraph">Экспорт одного объекта (одну переменную) из файла file_name_1.js:</p>
-            <pre class="screen screen_pre">
-const name_1 = new Name_2(...);
+      <div class="subsection">
+        <h3 class="subsection__header">Самовызывающаяся анонимная функция</h3>
 
-export default name_1</pre>
+        <pre class="screen screen_pre">
+(function name_1() {
+    expression_1;
+}());</pre>
+        <p class="p">
+          Вызывается сразу после объявления.<br>
+          Позволяет получить локальную область видимости.
+        </p>
+      </div>
 
-            <p class="paragraph">Экспорт двух объектов (две функции) из файла file_name_2.js:</p>
-            <pre class="screen screen_pre">
-export const name_3(...) => action_3_1;
+      <div class="subsection">
+        <h3 class="subsection__header">Объектный интерфейс</h3>
 
-export const name_4(...) => {
-    name_4_1: value_4_1;
-    name_4_2: value_4_2() => action_4_1;
+        <p class="p">
+          Модуль записывается в переменную и в нём возвращаются методы доступные снаружи
+        </p>
+        <pre class="screen screen_pre">
+let name_1 = (function(){
+  let name_2 = function() {    // снаружи не доступна
+    expression_2;
+  };
+ 
+  return {
+    name_3: name_2
+  };
+}());
+
+name_1.name_3();   //-> выполнится expression_2</pre>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section__header">Modules ES6</h2>
+
+      <div class="subsection">
+        <h3 class="subsection__header">export</h3>
+
+        <pre class="screen screen_pre">
+export let name_1 = value_1;</pre>
+
+        <pre class="screen screen_pre">
+let name_2 = value_2;
+
+export {name_2};</pre>
+        <pre class="screen screen_pre">
+let name_1 = value_1;
+let name_2 = value_2;
+  
+export {name_1, name_2};</pre>
+        <pre class="screen screen_pre">
+export function name_3() {
+  expression_1;
 }</pre>
-        </section>
+        <pre class="screen screen_pre">
+function name_3() {
+  expression_1;
+}
 
-        <section class="section">
-            <h2 class="section__header">import</h2>
+export default name_3;      // Без {} при импортировании *</pre>
+        <p class="p">
+          <strong>export default</strong> может быть только один в файле
+        </p>
+        <pre class="screen screen_pre">
+      // Экспорт с переименованием:
 
-            <pre class="screen screen_pre">
-import name_1 from './file_name_1'
+let name_1 = value_1;
+let name_2 = value_2;
+  
+export {name_1 as n_1, name_2};     // name_1 переименовывается в n_1</pre>
+        <pre class="screen screen_pre">
+      // export и export default **:
 
-import name_3 from './file_name_2'
-import name_4 from './file_name_2'</pre>
+let name_1 = value_1;
+let name_2 = value_2;
 
-            <p class="paragraph">&bull; В модулях с несколькими экспортируемыми переменными можно обратиться к деструктурированию объектов</p>
-            <pre class="screen screen_pre">
-import { name_4_1, name_4_2 } from './file_name_2';</pre>
+export {name_1};
+export default name_2;</pre>
+      </div>
 
-            <p class="paragraph">&bull; Для переменными модуля можно задать локальную область видимости под ругими именами переменных</p>
-            <pre class="screen screen_pre">
-import { name_4_1 as name_5, name_4_2 as name_6 } from './file_name_2';</pre>
+      <div class="subsection">
+        <h3 class="subsection__header">import</h3>
 
-            <p class="paragraph">&bull; Можно импортировать все в одну переменную</p>
-            <pre class="screen screen_pre">
-import * as name_6 from './file_name_2';</pre>
-        </section>
-    </main>
+        <pre class="screen screen_pre">
+import name_3 from './name_js';     // Без {} ,т.к. export default *
+
+
+    // то же самое, что и:
+    
+import {default as name_3} from './name_js';
+
+
+    // можно сразу переименовать:
+    
+import n_3 from './name_js';        // name_3 переименуется в n_3</pre>
+
+        <pre class="screen screen_pre">
+import {name_1, name_2, ... name_n} from './name_js';     // Импорт из файла name_js.js</pre>
+
+        <pre class="screen screen_pre">
+      // ** :
+
+import name_2, {name_1} from './name_js';</pre>
+
+        <div class="subsubsection">
+          <h4 class="subsubsection__header">Импортирование с переименованием</h4>
+
+          <pre class="screen screen_pre">
+import {name_1 as name_a} from './name_js';         // name_1 переименовывается в name_a</pre>
+
+          <pre class="screen screen_pre">
+import * as name_a from './name_js';                // Все export из файла name_js.js переименовываются
+                                                    // и становятся свойствами объекта name_a</pre>
+        </div>
+
+        <div class="subsubsection">
+          <h4 class="subsubsection__header">Импортирование с деструктурированием</h4>
+
+          <pre class="screen screen_pre">
+import {name_1, name_2, .... name_n} from './name_js';</pre>
+        </div>
+      </div>
+    </section>
+  </main>
 </body>

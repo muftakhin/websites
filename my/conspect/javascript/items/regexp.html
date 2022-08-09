@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Regular Expressions</title>
+  <link rel="stylesheet" href="../../styles/style.css">
+</head>
+
+<body class="body">
+  <header class="header">
+    <a class="header__button"  href="../javascript.html">&uArr;</a>
+    <h1 class="header__title">Регулярные выражения</h1>
+  </header>
+  <main class="main">
+    <section class="section">
+      <h2 class="section__header">Введение</h2>
+
+      <p class="p">
+        Реализованы объектом RegExp и интегрированы в методы строк.<br>
+        Регулярные выражения состоят из шаблона и флагов.
+      </p>
+      <pre class="screen screen_pre">
+regexp = new RegExp("pattern", "flags");    // Длинная запись.
+
+regexp = /pattern/;                         // Без флагов.
+regexp = /pattern/gmi;                      // С gmi флагами.</pre>
+      <pre class="screen screen_pre">
+    // Pattern:
+
+. - все символы (как *)
+\ - экранирование спецсимволов
+\d - числа
+\D - не числа
+\w - буквы, слова
+\W - не буквы, не слова
+\s - пробелы
+
+
+    // Flags:
+
+i - независимо от регистра
+g - все совпадения
+m - многострочный режим
+s - режим dotall (точка равна переводу строки)
+u - вкл. полная поддержка юникода, разрешается крректная обработка суррогатных пар
+y - поиск на конкретной позиции в тексте</pre>
+
+      <div class="subsection">
+        <h3 class="subsection__header">Методы</h3>
+
+        <div class="subsubsection">
+          <h4 class="subsubsection__header">.search()</h4>
+
+          <pre class="screen screen_pre">
+let name_1 = name_2.search(name_3);
+
+    // name_2 - строка
+    // name_3 - регулярное выражение</pre>
+          <p class="p">
+            Ищет только первое совпадение.
+          </p>
+        </div>
+
+        <div class="subsubsection">
+          <h4 class="subsubsection__header">.match()</h4>
+
+          <pre class="screen screen_pre">
+let name_1 = name_2.match(name_3);
+
+    // name_2 - строка
+    // name_3 - регулярное выражение</pre>
+          <p class="p">
+            Если есть флаг <strong>g</strong> возвращает массив с соспадениями.<br>
+            Если его нет, возвращает массив с первым совпадением и свойствами с дополнительной информацией.<br>
+            Если нет совпадений - пустой массив.
+          </p>
+        </div>
+
+        <div class="subsubsection">
+          <h4 class="subsubsection__header">.replace()</h4>
+
+          <p class="p">
+            Заменяет совпадения.
+          </p>
+          <pre class="screen screen_pre">
+let name_1 = name_2.replace(name_3, "string_1");
+
+    // name_2 - строка
+    // name_3 - регулярное выражение
+    // string_1 - на что заменяем</pre>
+          <p class="p">
+            Если есть флаг <strong>g</strong> возвращает массив с соспадениями.<br>
+            Если его нет, возвращает массив с первым совпадением и свойствами с дополнительной информацией.<br>
+            Если нет совпадений - пустой массив.
+          </p>
+        </div>
+
+        <div class="subsubsection">
+          <h4 class="subsubsection__header">.test()</h4>
+
+          <p class="p">
+            
+          </p>
+          <pre class="screen screen_pre">
+let name_1 = name_3.test(name_2);
+
+    // name_2 - строка
+    // name_3 - регулярное выражение</pre>
+          <p class="p">
+            Возвращает <strong>true/false</strong> в зависимости есть/нет совпадений.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>

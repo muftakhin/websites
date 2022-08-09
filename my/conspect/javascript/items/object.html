@@ -87,7 +87,25 @@ let name_1 = {
   name_11: value_11,
   name_12: value_12,
   ....
-  name_n: value_n
+  name_n: value_n,
+
+  name_a: function() {
+    expression_1;
+  }
+};
+
+
+    // Упрощённый синтаксис (когда name_x: value_x):
+
+let name_1 = {
+  name_11,
+  name_12,
+  ....
+  name_n,
+
+  name_a() {
+    expression_1;
+  }
 };</pre>
         <p class="p">
           &bull; Определение объекта начинается с символа <strong>{</strong>.<br>
@@ -109,6 +127,29 @@ let name_1 = {
   ....
   name_n: value_n
 };</pre>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__header">Используя реструктурирование и Rest оператор</h3>
+
+        <pre class="screen screen_pre">
+let name_1 = value_1;
+
+let name_2 = {
+  name_21: value_21,
+  name_22: value_22
+}
+
+let name_3 = {
+  name_31: value_31
+}
+
+let name_4 = function() {
+  expression_41;
+};
+
+
+let name_5 = {...name_2, ...name_3, name_1, name_4};</pre>
       </div>
 
       <div class="subsection">
@@ -272,22 +313,41 @@ name_17[0].name_4[1];  //-&gt; - value_4</pre>
     </section>
 
     <section class="section">
-      <h2 class="section__header">Передача объектов функциям</h2>
+      <h2 class="section__header">Передача объекта функции в качестве аргумента</h2>
 
       <p class="p">
         &bull; При присвоении объекта переменной, переменная будет содержать не сам объект, а ссылку (указатель) на объект. Если передать параметру функции в качестве аргумента значение этой переменной , то в переменной параметра функции будет храниться копия ссылки на объект<br>
         &bull; При изменении свойства объекта внутри функции, изменяется свойство исходного объекта (функция "портит" объект)
       </p>
-      <pre class="screen screen_post">
-pluto.weight = 48;
-
-function loseWeight(dog) {
-  dog.weight = dog.weight - 2;
+      <pre class="screen screen_pre">
+function name_1(name_2) {
+  expression_1;
 }
 
-loseWeight(pluto)
+name_1({                      // Объект деструктурируется
+  name_21: value_21,
+  name_22: value_22,
+  ....
+  name_2n: value_2n
+});</pre>
+      <pre class="screen screen_pre">
+      // Со значениями по умолчанию:
 
-alert(pluto.name + " now weights " + pluto.weight);</pre>
+function name_1({
+  name_21: value_11,
+  name_22: value_12,
+  ....
+  name_2n: value_1n
+} = {}) {                     // ={} для возможности вызывать name_1() без name_1({})
+  expression_1;
+}
+
+name_1({
+  name_21: value_21,
+  name_22: value_22,
+  ....
+  name_2n: value_2n
+});</pre>
     </section>
 
     <section class="section">
@@ -313,7 +373,7 @@ function clone(srcObject) {
           <pre class="screen screen_pre">
 Object.assign(destObject, addObject_1, .... addObject_n);     // возвращает destObject</pre>
           <p class="p">
-            Добавляются объекту <strong>name_1</strong> свойства объектов <strong>addObject_2, .... addObject_n</strong>.<br>
+            Добавляются объекту <strong>addObject_1</strong> свойства объектов <strong>addObject_2, .... addObject_n</strong>.<br>
             Если добавляемое свойство уже имеется, то переписывается значение.
           </p>
 
@@ -440,38 +500,27 @@ let name_1 = {
   name_11: value_11,
   name_12: value_12,
   name_13: value_13,
-  name_14: ["", "", ""],
-  name_15: value_15
+  name_14: [value_141, value_142, value_143],
+  name_15: {
+    name_151: value_151,
+    name_152: value_152
+  }
 }
 
-let {name_11, name_12} = name_1;
 
-    //-->   name_11 = value_11;
-    //-->   name_12 = value_12;
+let {name_11, name_12, name_15: {name_151, name_152}} = name_1;
 
-let {name_13: name_2, name_15: name_3} = name_1;
 
-    //-->   name_2 = value_13;
-    //-->   name_3 = value_15;</pre>
-        <p class="p">
-          Свойства вытаскиваются из объекта <strong>name_1</strong> и для них создаются переменные с соответствующим именем и значением.
-        </p>
-        <pre class="screen screen_pre">
-    // Можно задать значение по умолчанию:
 
-let name_1 = {
-  name_11: value_11,
-  name_12: value_12,
-  name_13: value_13,
-  name_14: ["", "", ""],
-  name_15: value_15
-}
+      //  С переименованием:
 
-let {name_11 = value_21, name_12 = value_22, name_16 = value_26} = name_1;
+let {name_11: name_2, name_12: name_3} = name_1;
 
-    //-->   name_11 = value_11;
-    //-->   name_12 = value_12;
-    //-->   name_16 = value_26;</pre>
+
+
+      // С заданием значения по умолчанию:
+
+let {name_11 = value_21, name_12 = value_22, name_16 = value_26} = name_1;</pre>
         <p class="p">
           Значения по умолчанию будут использованы, если искомого свойства нет или его значение <strong>undefined</strong>.
         </p>
@@ -506,20 +555,42 @@ var name_4 = {
     </section>
 
     <section class="section">
-      <h2 class="section__header">Геттеры и сеттеры</h2>
+      <h2 class="section__header">Accessor Properties</h2>
+
+      <p class="p">
+        Свойства объекта делятся на 2 типа:<br>
+        <strong>data properties</strong> - свойства данные.<br>
+        <strong>accessors properties</strong> - свойства акцессоры (сеттеры и геттеры).
+      </p>
 
       <pre class="screen screen_pre">
 let name_1 = {
   name_2: value_2;
 
-  get name_3() {
+  get name_3() {                  // Геттер
     return this.name_2;
   }
 
-  set name_4(value_3) {
-    this.name_2 = value_3;
+  set name_4(param_4) {           // Сеттер
+    this.name_2 = param_4;
   }
 }</pre>
+
+      <p class="p">
+        Доступ к геттерам и сеттерам как к обычным свойствам.
+      </p>
+      <pre class="screen screen_pre">
+    // Геттер:
+
+let name_4 = name_1.name_3;
+
+    // или:
+
+console.log(name_1.name_3);</pre>
+      <pre class="screen screen_pre">
+    // Сеттер:
+
+name_1.name_4 = value_3;</pre>
       <p class="p">
         В сеттере можно производить проверку данных.
       </p>

@@ -167,11 +167,11 @@ class Name_1 {
 
       <pre class="screen screen_pre">
 class Name_1 {
-  constructor(param_1, param_2, ...., param_n) {
-    this.name_11 = param_1;
-    this.name_12 = param_2;
+  constructor(par_1, par_2, ...., par_n) {
+    this.name_11 = par_1;
+    this.name_12 = par_2;
     .... ;
-    this.name_1n = param_n;
+    this.name_1n = par_n;
   }
 
   name_2() {
@@ -193,27 +193,30 @@ class Name_2 extends Name_1 {
 
       <pre class="screen screen_pre">
 class Name_1 {
-  constructor(param_1, param_2, ...., param_n) {
-    this.name_11 = param_1;
-    this.name_12 = param_2;
-    .... ;
-    this.name_1n = param_n;
+  constructor(par_1, par_2, .... par_n) {
+    this.name_11 = par_1;
+    this.name_12 = par_2;
+    ....
+    this.name_1n = par_n;
   }
-
-  name_2() {
-    expression_1;
-  }
+  ....
 }
 
 class Name_2 extends Name_1 {
-  super.(name_11, name_12, ...., name_1n, name_2());
-  name_2() {
-    expression_2;
+  constructor(par_1, par_2, .... par_n, par_1a) {
+    super(par_1, par_2, .... par_n);
+    this.name_11 = par_1;
+    this.name_12 = par_2;
+    ....
+    this.name_1n = par_n;
+    this.name_1a = par_1a;
   }
+  ....
 }</pre>
       <p class="p">
-        &bull; Ключевое слово <strong>super</strong> - это ссылка на прототипа прототипа будущего объекта.<br>
-        &bull; <strong>super.name_2();</strong> - вызов предыдущей(переопределяемой в данном случае) версии метода прототипа прототипа будущего объекта.
+        Чтобы конструктор класса <strong>Name_2</strong> работал, он должен вызвать <strong>super()</strong> до того, как использовать <strong>this</strong>, чтобы не было ошибки.<br>
+        Ключевое слово <strong>super</strong> - это ссылка на прототипа прототипа будущего объекта.<br>
+        <strong>super.name_2();</strong> - вызов предыдущей(переопределяемой в данном случае) версии метода прототипа прототипа будущего объекта.
       </p>
     </section>
 	</main>
