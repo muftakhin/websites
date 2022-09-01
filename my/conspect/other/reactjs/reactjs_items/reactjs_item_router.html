@@ -20,7 +20,7 @@
       <p class="p">
         JSX используется для создания объекта <strong>Route</strong> для каждой страницы, а также для вложения его в другой объект <strong>Route</strong> или <strong>Router</strong>. Объект <strong>Router</strong> находится в функции <strong>ReactDOM.render()</strong>, как и любой другой элемент React:
       </p>
-      <pre class="screen screen_post">
+      <pre class="screen screen_pre">
 ReactDOM.render((
   &lt;Router ...&gt;
     &lt;Route ...&gt;
@@ -29,7 +29,7 @@ ReactDOM.render((
     &lt;/Route&gt;
     &lt;Route .../&gt;
   &lt;/Router&gt;
-), document.getElementById('content'))</pre>
+), document.querySelector('css_selector'))</pre>
       <p class="p">
         Каждый объект <strong>Route</strong> содержит как минимум два свойства: <strong>path</strong> (шаблон URL, совпадение которого активизирует маршрут) и <strong>component</strong> (выборка и рендеринг необходимого компонента). Для <strong>Route</strong> такжеможно определить другие свойства, например обработчики событий и данные. Они будут доступны в свойстве <strong>props.route</strong> этого компонента <strong>Route</strong>. Так происходит передача данных компонентам маршрутов.
       </p>
@@ -100,22 +100,7 @@ const ReactRouter = require('react-router')
       </div>
     </section>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+-----------------------------------------------------------------------------
 
     <section class="section">
       <h2 class="section__header">OLD</h2>
@@ -124,27 +109,6 @@ npm install react-router-dom --save</pre>
     </section>
 
     <section class="section">
-      <pre class="screen screen_post">
-    // index.html
-
-....
-&lt;body&gt;
-  &lt;div id="root"&gt;&lt;/div&gt;
-&lt;/body&gt;
-....</pre>
-
-      <pre class="screen screen_post">
-    // index.js
-
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Main from './Main';
-        
-ReactDOM.render(
-  &lt;Main/&gt;,
-  document.getElementById('root')
-);</pre>
-
       <pre class="screen screen_post">
     // Main.js
   
@@ -237,6 +201,61 @@ class Contact extends Component {
 }
 
 export default Contact;</pre>
+    </section>
+
+------------------------------------------------------------------------------------------------
+
+    <section class="section">
+      <h2 class="section__header">Установка</h2>
+
+      <pre class="screen screen_pre">
+npm i react-router-dom</pre>
+      <pre class="screen screen_pre">
+....
+import {BrowserRouter as Router, Route} from 'react-router-dom'
+....
+    return(
+      &lt;Router&gt;
+        &lt;div className="app"&gt;
+          &lt;Route path="/" exact component="ComponentHome" /&gt;      // можно exact="true"
+          &lt;Route path="/name_1" component="ComponentName1" /&gt;
+          &lt;Route path="/name_2" component="ComponentName2" /&gt;
+          ....
+          &lt;Route path="/name_n" exact component="ComponentNamen" /&gt;
+          &lt;Route path="/name_n/:id" component="ComponentNamenContainer" /&gt;
+        &lt;/div&gt;
+      &lt;/Router&gt;
+    );</pre>
+      <p class="p">
+        Если не добавить <strong>exact</strong>, то произойдёт компоновка страницы из компонентов с совпадениями в <strong>path</strong>.
+      </p>
+
+      <pre class="screen screen_pre">
+....
+import {Link} from 'react-router-dom';
+....
+    return(
+      ....
+      &lt;Link to="/"&gt;
+        LinkName0
+      &lt;/Link&gt;
+      ....
+      &lt;Link to="/name_1"&gt;
+        LinkName1
+      &lt;/Link&gt;
+      ....
+      &lt;Link to="/name_2"&gt;
+        LinkName2
+      &lt;/Link&gt;
+      ....
+      &lt;Link to="/name_n"&gt;
+        LinkNamen
+      &lt;/Link&gt;
+      ....
+    );</pre>
+      <p class="p">
+        <strong>&lt;Link&gt;&lt;/Link&gt;</strong> вместо <strong>&lt;a&gt;&lt;/a&gt;</strong>, у которого есть стандартное поведение.
+      </p>
     </section>
   </main>
 </body>

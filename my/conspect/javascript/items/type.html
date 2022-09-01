@@ -1,245 +1,260 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Типы данных</title>
-    <link rel="stylesheet" href="../../styles/style.css">
-    <style>
-        th {
-            font-weight: bold;
-            padding: 4px;
-        }
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Типы данных</title>
+  <link rel="stylesheet" href="../../styles/style.css">
 
-        td {
-            padding: 4px;
-        }
-    </style>
+  <style>
+th {
+    font-weight: bold;
+    padding: 4px;
+}
+
+td {
+    padding: 4px;
+}
+  </style>
+
 </head>
 
 <body class="body">
-    <header class="header">
-        <a class="header__button"  href="../javascript.html">&uArr;</a>
-        <h1 class="header__title">Типы данных</h1>
-    </header>
+  <header class="header">
+    <a class="header__button"  href="../javascript.html">&uArr;</a>
+    <h1 class="header__title">Типы данных</h1>
+  </header>
 
-    <main class="main">
-        <section class="section">
-            <ul class="subitems-list">
-                <li>
-                    <a href="type-items/number.html">
-                        <div class="subitems-list__item">number</div>
-                    </a>
-                </li>
+  <main class="main">
+    <section class="section">
+      <ul class="subitems-list">
+        <li>
+          <a href="type-items/primitive.html">
+            <div class="subitems-list__item">Примитивы</div>
+          </a>
+        </li>
 
-                <li>
-                    <a href="type-items/bigint.html">
-                        <div class="subitems-list__item">bigint</div>
-                    </a>
-                </li>
+        <li>
+          <a href="type-items/complex.html">
+            <div class="subitems-list__item">Сложные</div>
+          </a>
+        </li>
+      </ul>
+    </section>
 
-                <li>
-                    <a href="type-items/string.html">
-                        <div class="subitems-list__item">string</div>
-                    </a>
-                </li>
+    <section class="section">
+      <h2 class="section__header">Просмотр типа данных</h4>
 
-                <li>
-                    <a href="type-items/boolean.html">
-                        <div class="subitems-list__item">boolean</div>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="type-items/undefined.html">
-                        <div class="subitems-list__item">undefined</div>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="type-items/null.html">
-                        <div class="subitems-list__item">null</div>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="type-items/nan.html">
-                        <div class="subitems-list__item">NaN</div>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="type-items/infinity.html">
-                        <div class="subitems-list__item">Infinity</div>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="type-items/symbol.html">
-                        <div class="subitems-list__item">symbol</div>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="type-items/object.html">
-                        <div class="subitems-list__item">Object</div>
-                    </a>
-                </li>
-            </ul>
-            <p class="p">Все типы данных, кроме объектов называются примитивами</p>
-            <p class="p">
-                Примитивные типы данных передаются по значению, а объекты и т.п. по ссылке.
-            </p>
-        </section>
-
-        <section class="section">
-            <h2 class="section__header">Просмотр типа данных</h4>
-
-            <pre class="screen screen_pre">
+      <pre class="screen screen_pre">
 typeof name_1;</pre>
-            <p class="paragraph"><strong>name_1</strong> - переменная</p>
+      <p class="p">
+        Возвращает строку.<br>
+        <strong>name_1</strong> - переменная.
+      </p>
 
-            <pre class="screen screen_post">
+      <pre class="screen screen_post">
 typeof NaN;    //-&gt; number
 typeof null;   //-&gt; object</pre>
-        </section>
+    </section>
 
-        <section class="section">
-            <h2 class="section__header">Преобразование типов данных</h2>
-    
-            <div class="subsection">
-                <h3 class="subsection__header">Преобразование в число</h3>
+    <section class="section">
+      <h2 class="section__header">Преобразование типов данных</h2>
 
-                <pre class="screen screen_pre">
-name_1 = '123';</pre>
+      <div class="subsection">
+        <h3 class="subsection__header">Преобразование в число</h3>
 
-                <pre class="screen screen_pre">
-name_1 *= 1;
+        <p class="p">
+          Происходят при арифметических операциях.
+        </p>
+        <div class="subsubsection">
+          <h4 class="subsubsection__header">*=</h4>
 
----
+          <pre class="screen screen_pre">
+name_1 *= "value_1";</div>
+        </div>
 
-parseInt(name_1);    // в целое
-parseFloat(name_1);  // в с плавающей точкой
+        <div class="subsubsection">
+          <h4 class="subsubsection__header">parseInt()</h4>
 
----
+          <p class="p">
+            В целое число.
+          </p>
+          <pre class="screen screen_pre">
+parseInt(name_1);</div>
+        </div>
 
-Number(name_1);       // если name_1 - строка из цифр
+        <div class="subsubsection">
+          <h4 class="subsubsection__header">parseFloat()</h4>
 
----
+          <p class="p">
+            В число с плавающей точкой.
+          </p>
+          <pre class="screen screen_pre">
+parseFloat(name_1);</div>
+        </div>
 
-+name_1;              // унарный плюс</pre>
-                <p class="paragraph"><strong>name_1</strong> - имя переменной содержащей исходные данные</p>
-            </div>
+        <div class="subsubsection">
+          <h4 class="subsubsection__header">Number()</h4>
 
-            <div class="subsection">
-                <h3 class="subsection__header">Преобразование в строку</h3>
+          <p class="p">
+            Строку из цифр в число.<br>
+            Если нельзя преобразовть в число (содержит буквы), то вернёт <strong>NaN</strong>.
+          </p>
+          <pre class="screen screen_pre">
+Number(name_1);
 
-                <pre class="screen screen_pre">
-name_1 = 123;</pre>
-                <pre class="screen screen_pre">
-name_1 += '';           // конкатенация (сложение чего-либо со трокой)
+  //
 
----
+  underined -> NaN
+  null      -> 0
+  true      -> 1
+  false     -> 0</div>
+        </div>
 
-name_2 = name_1.toString();
+        <div class="subsubsection">
+          <h4 class="subsubsection__header">Унарные + и -</h4>
 
----
+          <pre class="screen screen_pre">
++name_1;
+-name_1;</div>
+      </div>
 
-name_2 = String(name_1);</pre>
-            </div>
+      <div class="subsection">
+        <h3 class="subsection__header">Преобразование в строку</h3>
 
-            <div class="subsection">
-                <h3 class="subsection__header">Преобразование из 16 и 8</h3>
+        <div class="subsubsection">
+          <h4 class="subsubsection__header">Сложение со строкой</h4>
 
-                <pre class="screen screen_pre">
+          <pre class="screen screen_pre">
+name_1 + "string";
+
+name_1 += "";</pre>
+        </div>
+
+        <div class="subsubsection">
+          <h4 class="subsubsection__header">.toString()</h4>
+
+          <pre class="screen screen_pre">
+name_1.toString();</pre>
+        </div>
+
+        <div class="subsubsection">
+          <h4 class="subsubsection__header">String()</h4>
+
+          <pre class="screen screen_pre">
+String(name_1);</pre>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__header">Преобразование из 16 и 8</h3>
+
+        <pre class="screen screen_pre">
 let name_1 = parseInt('value_1', 16);
 let name_1 = parseInt('value_1', 8);</pre>
-            </div>
+      </div>
 
-            <div class="subsection">
-                <h3 class="subsection__header">Преобразование в bollean</h3>
+      <div class="subsection">
+        <h3 class="subsection__header">Преобразование в boolean</h3>
 
-                <pre class="screen screen_pre">
+        <div class="subsubsection">
+          <h4 class="subsubsection__header">Boolean()</h4>
+
+          <pre class="screen screen_pre">
+Boolean(name_1);
+
+    //  Все true, кроме:
+
+  0         ->  false
+  ''        ->  false
+  NaN       ->  false
+  undefined ->  false
+  null      ->  false</pre>
+        </div>
+        <pre class="screen screen_pre">
 !!"string_1";</pre>
-            </div>
+      </div>
 
-            <div class="subsection">
-                <h3 class="subsection__header">Таблица преобразований</h3>
+      <div class="subsection">
+        <h3 class="subsection__header">Таблица преобразований</h3>
 
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Значение</th>
-                            <th>В число</th>
-                            <th>В строку</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Число</td>
-                            <td></td>
-                            <td>Строка из цифр</td>
-                        </tr>
-                        <tr>
-                            <td>Строка из цифр</td>
-                            <td>Число</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Пустая строка</td>
-                            <td>0</td>
-                            <td>''</td>
-                        </tr>
-                        <tr>
-                            <td>Строка</td>
-                            <td>NaN</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>false</td>
-                            <td>0</td>
-                            <td>'false'</td>
-                        </tr>
-                        <tr>
-                            <td>true</td>
-                            <td>1</td>
-                            <td>'true'</td>
-                        </tr>
-                        <tr>
-                            <td>null</td>
-                            <td>0</td>
-                            <td>'null'</td>
-                        </tr>
-                        <tr>
-                            <td>undefined</td>
-                            <td>NaN</td>
-                            <td>'undefined'</td>
-                        </tr>
-                        <tr>
-                            <td>Пустой массив</td>
-                            <td>0</td>
-                            <td>''</td>
-                        </tr>
-                        <tr>
-                            <td>Массив из одного числа</td>
-                            <td>Число</td>
-                            <td>Строка из цифр числа</td>
-                        </tr>
-                        <tr>
-                            <td>Массив</td>
-                            <td>NaN</td>
-                            <td>Строки разделённые запятыми</td>
-                        </tr>
-                        <tr>
-                            <td>Объект</td>
-                            <td>NaN</td>
-                            <td>'[object Object]'</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-    </main>
+        <table>
+
+          <thead>
+            <tr>
+              <th>Значение</th>
+              <th>В число</th>
+              <th>В строку</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>Число</td>
+              <td></td>
+              <td>Строка из цифр</td>
+            </tr>
+            <tr>
+              <td>Строка из цифр</td>
+              <td>Число</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Пустая строка</td>
+              <td>0</td>
+              <td>''</td>
+            </tr>
+            <tr>
+              <td>Строка</td>
+              <td>NaN</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>false</td>
+              <td>0</td>
+              <td>'false'</td>
+            </tr>
+            <tr>
+              <td>true</td>
+              <td>1</td>
+              <td>'true'</td>
+            </tr>
+            <tr>
+              <td>null</td>
+              <td>0</td>
+              <td>'null'</td>
+            </tr>
+            <tr>
+              <td>undefined</td>
+              <td>NaN</td>
+              <td>'undefined'</td>
+            </tr>
+            <tr>
+              <td>Пустой массив</td>
+              <td>0</td>
+              <td>''</td>
+            </tr>
+            <tr>
+              <td>Массив из одного числа</td>
+              <td>Число</td>
+              <td>Строка из цифр числа</td>
+            </tr>
+            <tr>
+              <td>Массив</td>
+              <td>NaN</td>
+              <td>Строки разделённые запятыми</td>
+            </tr>
+            <tr>
+              <td>Объект</td>
+              <td>NaN</td>
+              <td>'[object Object]'</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </section>
+  </main>
 </body>
 </html>

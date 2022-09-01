@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>String</title>
+  <link rel="stylesheet" href="../../../../styles/style.css">
+</head>
+
+<body class="body">
+  <header class="header">
+    <a class="header__button"  href="../type.html">&uArr;</a>
+    <h1 class="header__title">string</h1>
+  </header>
+
+  <main class="main">
+    <p class="p">
+      &bull; Строка может быть заключена в одинарные или двойные кавычки.<br>
+      &bull; Строка может содержать ноль и более символов.<br>
+      &bull; <strong>\</strong> является экранирующим символом.<br>
+      &bull; Все символы являются 16-разрядными.<br>
+      &bull; JavaScript не имеет символьного типа. Для того, чтобы получить символ, нужно задать строку из одного символа.<br>
+      &bull; JS может временно преобразовывать строку-примитив в строку-объект.<br>
+      &bull; Строка всегда примитив, если она не была создана с помощью конструкторов.
+    </p>
+
+    <section class="section">
+      <h2 class="section__header">Создание строки</h2>
+
+      <pre class="screen screen_pre">
+let name_1 = "string";</pre>
+      <p class="p">
+        &bull; - cоздать строку <strong>name_1</strong>:<br>
+        &bull; <strong>string</strong> может быть пустым.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2 class="section__header">Экранирование</h2>
+
+      <pre class="screen screen_pre">
+" \.... "</pre>
+    </section>
+
+    <section class="section">
+      <h2 class="section__header">Отдельный символ строки</h2>
+
+      <pre class="screen screen_pre">
+name_1[0];     // первый символ строки name_1
+name_1[1];     // второй символ строки name_1
+. . . .
+name_1[n];     // (n-1)-ый символ строки name_1</pre>
+    </section>
+
+    <section class="section">
+      <h2 class="section__header">Свойство строки</h2>
+
+      <div class="subsection">
+        <h3 class="subsection__header">.length</h3>
+
+        <p class="p">
+          - длина строки.
+        </p>
+        <pre class="screen screen_pre">
+name_1.length;</pre>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section__header">Методы строк</h2>
+
+      <div class="subsection">
+        <h3 class="subsection__header">Конкатенация</h3>
+
+        <pre class="screen screen_pre">
+let name_1 = "text_1";
+let name_2 = "text_2";
+
+let name_3 = name_1 + " text_3 " + name_2;
+
+//or:
+
+let name_3 = name_1.concat(" text_3" + name_2)</pre>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__header">.slice()</h3>
+
+        <p class="p">
+          - срез строки.
+        </p>
+        <pre class="screen screen_pre">
+name_1.slice(index_1, index_2);</pre>
+        <p class="p">
+          &bull; <strong>index_1</strong>, <strong>index_2</strong> - позиции символов перед которыми производится срез строки <strong>name_1</strong><br>
+          &bull; <strong>index_2</strong> может быть отрицательным, тогда он отсчитывается с конца
+        </p>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__header">.substr()</h3>
+
+        <pre class="screen screen_pre">
+name_1.substr(start, length);</pre>
+        <p class="p">
+          &bull; <strong>index_1</strong>, <strong>index_2</strong> - позиции символов перед которыми производится срез строки <strong>name_1</strong><br>
+          &bull; <strong>index_2</strong> может быть отрицательным, тогда он отсчитывается с конца
+        </p>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__header">.substring()</h3>
+
+        <p class="p">
+          - извлечение части строки.
+        </p>
+
+        <pre class="screen screen_pre">
+name_1.substring(i, j);</pre>
+        <p class="p">
+          Возвратит часть строки начинающуюся с индекса <strong>i</strong> включая его, и заканчивающуюсю индексом <strong>j</strong> не включая его.
+        </p>
+
+        <pre class="screen screen_pre">
+name_1.substring(i);</pre>
+        <p class="p">
+          Если не указывать второй индекс, метод возвратит часть строки начинающуюся с индекса <strong>i</strong> и до конца строки.
+        </p>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__header">.split()</h3>
+
+        <p class="p">
+          - получает символ-ограничитель и разбивает строку на части по позиции символа-ограничителя и возвращает их в массиве.
+        </p>
+
+        <pre class="screen screen_pre">
+let name_2 = name_1.split("symbol");</pre>
+        <p class="p">
+          <strong>symbol</strong> - символ, указывающий место разделения.
+        </p>
+
+        <pre class="screen screen_pre">
+let name_1 = "string_1|string_2|string_3";
+let name_2 = name_1.split("|");
+
+console.log(vals);    //-&gt; ["sreing_1", "string_2", "string_3"]</pre>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__header">.toUpperCase()</h3>
+
+        <p class="p">
+          - перевод строки <strong>name_1</strong> в заглавный регистр.
+        </p>
+        <pre class="screen screen_pre">
+name_1.toUpperCase();</pre>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__header">.toLowerCase()</h3>
+
+        <p class="p">
+          - перевод строки <strong>name_1</strong> в строчный регистр.
+        </p>
+        <pre class="screen screen_pre">
+name_1.toLowerCase();</pre>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__header">.charAt(i)</h3>
+
+        <p class="p">
+          - символ строки с индексом <strong>i</strong>.
+        </p>
+        <pre class="screen screen_pre">
+name_1.charAt(i);</pre>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__header">.indexOf()</h3>
+
+        <p class="p">
+          - индекс первого вхождения аргумента <strong>"text"</strong> в строке <strong>name_1</strong>.
+        </p>
+        <pre class="screen screen_pre">
+name_1.indexOf("text");</pre>
+        <pre class="screen screen_pre">
+name_1.indexOf("text", i);</pre>
+        <p class="p">
+          &bull; i - индекс начальной позиции поиска.<br>
+          &bull; Если аргумент в строке найти не удалось, метод возвратит <strong>-1</strong>.
+        </p>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__header">.lastIndexOf()</h3>
+
+        <p class="p">
+          - индекс последнего вхождения аргумента <strong>"text"</strong> в строке <strong>name_1</strong>.
+        </p>
+        <pre class="screen screen_pre">
+name_1.lastIndexOf("text");</pre>
+        <pre class="screen screen_pre">
+name_1.lastIndexOf("text", i);</pre>
+        <p class="p">
+          &bull; i - индекс начальной позиции поиска.<br>
+          &bull; Если аргумент в строке найти не удалось, метод возвратит <strong>-1</strong>.
+        </p>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__header">.trim()</h3>
+
+        <p class="p">
+          -удаляет пробелы.
+        </p>
+        <pre class="screen screen_pre">
+name_1.trim();</pre>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

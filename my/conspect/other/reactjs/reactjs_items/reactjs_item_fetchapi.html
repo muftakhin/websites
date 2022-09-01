@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Fetch API</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../../../styles/style.css">
+</head>
+
+<body class="body">
+  <header class="header">
+    <a class="header__button"  href="../../other.html">&uArr;</a>
+    <h1 class="header__title">Fetch API</h1>
+  </header>
+
+  <main class="main">
+    <section class="section">
+      <h2 class="section__header">Запостить данные на сервер</h2>
+
+      <pre class="screen screen_pre">
+let url = 'https://jsonplaceholder.typicode.com/posts/';
+let data = { username: 'example' };
+
+fetch(url, {
+  method: 'POST',
+  body: JSON.stringify(data),
+  headers: {
+    'Content-Type': 'application/json'
+  }
+})
+.then((response) =&gt; response.json())
+.then((myJson) =&gt; console.log('Success',myJson))
+.catch(error =&gt; console.error('Error', error));</pre>
+    </section>
+
+    <section class="section">
+      <h2 class="section__header">async await</h2>
+
+      <pre class="screen screen_pre">
+class GotService {
+  async getResource(url) {
+    const res = await fetch(url);
+  
+    if (!res.ok) {
+      throw new Error(`Could not fetch ${url}, status: ${res.status}`);
+    }
+  
+    const some = await res.json();
+  
+    return some;
+  };
+}
+
+getResource('https://jsonplaceholder.typicode.com/todos/1')
+  .then((res) =&gt; console.log('Success', res))
+  .catch(error =&gt; console.error(error));</pre>
+    </section>
+
+    <section class="section">
+      <h2 class="section__header">Сетевой сервис получения данных их API</h2>
+
+
+    </section>
+  </main>
+</body>

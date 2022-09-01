@@ -15,11 +15,23 @@
 
   <main class="main">
     <section class="section">
-      <p class="paragraph">
-        React Component можно создавать с помощью функций и с помощью классов.<br>
-        React Component может возвращать <strong>JSX</strong>, <strong>null</strong>, <strong>boolean</strong>, <strong>массив объекта</strong>, <strong>Fragment</strong>, <strong>Портал</strong> и с 16-го React можно возвращать <strong>sting</strong> и <strong>number</strong>.
+      <p class="p">
+        Компонент это функция или класс, который записывается с большой буквы и возвращает код.<br>
+        Компонент на основе функции не может хранить состояние компонента.<br>
+        Компонент может возвращать <strong>JSX</strong>, <strong>null</strong>, <strong>boolean</strong>, <strong>массив объекта</strong>, <strong>Fragment</strong>, <strong>Портал</strong> и с 16-го React можно возвращать <strong>sting</strong> и <strong>number</strong>.
       </p>
       <pre class="screen screen_pre">
+    // Function:
+
+const Name_1 = () => {
+  return (
+    jsx_code_1
+  )
+};
+
+
+    // Class (при import React from 'react;)
+
 class Name_1 extends React.Component {
   render() {
     return (
@@ -28,11 +40,20 @@ class Name_1 extends React.Component {
   }
 }
 
-ReactDOM.render(
-  &lt;Name_1/&gt;,
-  document.querySelector('css_selector_1')
-);</pre>
-      <p class="paragraph"><strong>Name_1</strong> - имя компонента, с большой буквы</p>
+
+// Class (при import React, {Component} from 'react';)
+
+class Name_1 extends Component {
+  render() {
+    return (
+      jsx_code_1
+    );
+  }
+}
+
+
+
+ReactDOM.render(&lt;Name_1/&gt;, document.querySelector('css_selector_1'));</pre>
     </section>
   </main>
 </body>

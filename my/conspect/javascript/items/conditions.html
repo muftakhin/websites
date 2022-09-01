@@ -16,13 +16,6 @@
 
     <main class="main">
         <section class="section">
-            <p class="paragraph">
-                Условные конструкции и циклы - управляющие конструкции<br>
-                <strong>{</strong> Программный блок <strong>}</strong>
-            </p>
-        </section>
-
-        <section class="section">
             <h2 class="section__header">Условные конструкции</h2>
 
             <p class="paragraph">Условными конструкциями можно пользоваться, чтобы запускать код в нужные моменты, а циклами - чтобы программа выполнялась так долго, как требуется</p>
@@ -66,7 +59,7 @@ if (condition_1) {
             <div class="subsection">
                 <h3 class="subsection__header">switch</h3>
 
-                <p class="p"><strong>switch</strong> использует сравнение на строгое соответствие</p>
+                <p class="p"><strong>switch</strong> использует строгое сравнение без приведения типов</p>
                 <pre class="screen screen_pre">
 let name_1 = value;
 
@@ -77,12 +70,12 @@ switch (name_1) {
     case value_3:
         action_2;
         break;
-    ...
+    ....
     case value_n:
         action_n;
         break;
     default:        // не обязательно
-        action_n;
+        action_x;
         break;
 }</pre>
 

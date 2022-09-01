@@ -137,33 +137,42 @@ i**=n  // i возводится в степень n</pre>
     <section class="section">
       <h2 class="section__header">Логические операторы</h2>
 
-      <p class="p">
-        Сравнение разных типов данных приводит их к числам.
-      </p>
-
       <pre class="screen screen_pre">
-&amp;&amp;    //  и
-||    // или
-!     // не</pre>
-      <p class="p">
-        <strong>&amp;&amp;</strong> - используются с двумя булевыми значениями, чтобы узнать равны ли оба <strong>true</strong>.<br>
-        <strong>&amp;&amp;</strong> - возвращает первое ложное значение или последнее если все <strong>true</strong>.
-      </p>
-      <pre class="screen screen_post">
-1 && 2 && 3 && null && 4
+    // Порядок выполнения:
 
-//-&gt; null</pre>
+!       // Не
+&amp;&amp;      // И
+||      // Или</pre>
 
-      <p class="p">
-        <strong>||</strong> - равен ли кто-то <strong>true</strong>.<br>
-        <strong>||</strong> возвращает первое истинное значение или последнее, если все <strong>false</strong>.
-      </p>
-      <pre class="screen screen_post">
-1 || 2 || 3 || null || 4
+      <div class="subsection">
+        <h3 class="subsection__header">!</h3>
 
-//-&gt; 1</pre>
+        <p class="p">
+          <strong>!</strong> - меняет значение на противоположное.
+        </p>
+      </div>
 
-      <p class="p"><strong>!</strong> - меняет значение на противоположное</p>
+      <div class="subsection">
+        <h3 class="subsection__header">&amp;&amp;</h3>
+
+        <p class="p">
+          <strong>&amp;&amp;</strong> - оба <strong>true</strong>?
+        </p>
+        <p class="p">
+          Возвращает первое ложное значение или последнее если все <strong>true</strong>.
+        </p>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__header">||</h3>
+
+        <p class="p">
+          <strong>||</strong> - кто-то <strong>true</strong>?
+        </p>
+        <p class="p">
+          Возвращает первое истинное значение или последнее, если все <strong>false</strong>.
+        </p>
+      </div>
     </section>
 
     <section class="section">

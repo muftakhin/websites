@@ -184,7 +184,7 @@ class SaveButton extends React.Component {
         <h3 class="subsection__header">Фазы спуска и подъёма</h3>
 
         <p class="p">
-          Событие объявляется в JSX как атрибут (например, onClick={handleSave}). Если вы объявляете события мыши, имя атрибута может быть любым из поддерживаемых событий. Значением атрибута является обработчик события.
+          Событие объявляется в JSX как атрибут (например, <strong>onClick={handleSave}</strong>). Если вы объявляете события мыши, имя атрибута может быть любым из поддерживаемых событий. Значением атрибута является обработчик события.
         </p>
 
         <pre class="screen screen_post">
@@ -208,7 +208,7 @@ class SaveButton extends React.Component {
 
       <p class="p">
         React не присоединяет слушателей событий к узлу DOM.<br>
-        Событие не присоединяется ни к отдельному узлу (такому, как &lt;div&gt;), ни к элементу с атрибутом <strong>data-reactroot</strong>.<br>
+        Событие не присоединяется ни к отдельному узлу (такому, как <strong>&lt;div&gt;</strong>), ни к элементу с атрибутом <strong>data-reactroot</strong>.<br>
         React присоединяет слушателя события к главному предку всех элементов — элементу <strong>document</strong>.
       </p>
     </section>
@@ -219,7 +219,7 @@ class SaveButton extends React.Component {
       <p class="p">
         Во внутренней реализации React использует собственный класс для синтетических событий (<strong>SyntheticEvent</strong>).<br>
         Экземпляры класса <strong>SyntheticEvent</strong> передаются обработчику событий.<br>
-        Чтобы получить доступ к объекту синтетического события, вы добавляете аргумент </strong>event</strong> функции-обработчику события.
+        Чтобы получить доступ к объекту синтетического события, вы добавляете аргумент <strong>event</strong> функции-обработчику события.
       </p>
       <pre class="screen screen_post">
     // Получение синтетического события обработчиком:
@@ -228,10 +228,10 @@ class Mouse extends React.Component {
   render() {
     return (
       &lt;div&gt;
-        &lt;div style={{border: '1px solid red'}} onMouseOver={((event)=&gt;{   // определяет аргумент event
+        &lt;div style={{border: '1px solid red'}} onMouseOver={((event)=&gt;{     // Определяет аргумент event
           console.log('mouse is over with event')
-          console.dir(event)                // Обращается к объекту SyntheticEvent для интерактивного вывода (dir)
-        })} &gt;
+          console.dir(event)                                                // Обращается к объекту SyntheticEvent
+        })} &gt;                                                               // для интерактивного вывода (dir)
           Open DevTools and move your mouse cursor over here
         &lt;/div&gt;
       &lt;/div&gt;
@@ -240,7 +240,7 @@ class Mouse extends React.Component {
 }</pre>
       <p class="p">
         Код обработки события можно переместить в метод компонента или в отдельную функцию.<br>
-        Как правило, в React обработчик события снабжается префиксом handle, чтобы отличить его от обычных методов класса, и именем события (например, mouseOver) или именем операции (например, save).
+        Как правило, в React обработчик события снабжается префиксом <strong>handle</strong>, чтобы отличить его от обычных методов класса, и именем события (например, <strong>mouseOver</strong>) или именем операции (например, <strong>save</strong>).
       </p>
       <pre class="screen screen_post">
     // Обработчик события как метод класса: связывание в render():
@@ -355,7 +355,7 @@ class ClickCounterButton extends React.Component {
         Компонент <strong>ClickCounterButton</strong> также использует свойство <strong>counter</strong>, которое рендерится конструкцией <strong>{this.props.counter}</strong>.
       </p>
       <p class="p">
-        Чтобы передать свойства <strong>counter</strong> и <strong>handler</strong> компоненту <strong>ClickCounterButton</strong>, укажите атрибуты в объявлении JSX параметра render родителя (в данном случае родителем является <strong>Content</strong>):
+        Чтобы передать свойства <strong>counter</strong> и <strong>handler</strong> компоненту <strong>ClickCounterButton</strong>, укажите атрибуты в объявлении JSX параметра <strong>render</strong> родителя (в данном случае родителем является <strong>Content</strong>):
       </p>
 
       <pre class="screen screen_post">
@@ -399,7 +399,7 @@ class Content extends React.Component {
         Компоненты представляют собой специализированные фрагменты представления, так что счетчик будет находиться в другом компоненте: <strong>Counter</strong>. А значит, всего в архитектуре будут задействованы три компонента: <strong>ClickCounterButton</strong>, <strong>Content</strong> и <strong>Counter</strong>
       </p>
       <p class="p">
-        <strong>ClickCounterButton</strong> и <strong>Counter</strong> должны общаться друг с другом. Для этого они используют Content, а не передают данные напрямую (прямой обмен данными нежелателен, потому что он создает сильную связь).
+        <strong>ClickCounterButton</strong> и <strong>Counter</strong> должны общаться друг с другом. Для этого они используют <strong>Content</strong>, а не передают данные напрямую (прямой обмен данными нежелателен, потому что он создает сильную связь).
       </p>
 
       <pre class="screen screen_post">
@@ -428,7 +428,7 @@ const ClickCounterButton = (props) =&gt; {
 }</pre>
 
       <p class="p">
-        Следующий новый компонент <strong>Counter</strong> выводит свойство <strong>value</strong>, которое используется в качестве счетчика
+        Следующий новый компонент <strong>Counter</strong> выводит свойство <strong>value</strong>, которое используется в качестве счетчика ...
       </p>
       <pre class="screen screen_post">
 class Counter extends React.Component {
@@ -441,7 +441,7 @@ class Counter extends React.Component {
   }
 }</pre>
       <p class="p">
-        Родительского компонента, который предоставляет свойства: в одном передается обработчик события, а в другом счетчик
+        ... родительского компонента, который предоставляет свойства: в одном передается обработчик события, а в другом счетчик
       </p>
       <pre class="screen screen_post">
 class Content extends React.Component {
@@ -546,610 +546,8 @@ class Radio extends React.Component {
       </p>
     </section>
 
-    <section class="section">
-      <h2 class="section__header">Работа с формами</h2>
-
-      <div class="subsection">
-        <h3 class="subsection__header">Рекомендуемый способ работы с формами в React</h3>
-
-        <pre class="screen screen_post">
-      /* если вы реализуете поле &lt;input&gt; в HTML, React всегда будет синхронизировать render()
-        с реальной моделью DOM.React не позволит пользователю изменить значение. */
-
-render() {
-  return (
-    &lt;input type="text" name="title" value="Mr." /&gt;
-  );
-}
-
-      // Сделаем значение поля ввода динамическим:
-
-render() {
-  return (
-    &lt;input type="text" name="title" value={this.state.title} /&gt;
-  );
-}</pre>
-        <pre class="screen screen_post">
-      // Перехват изменений в onChange
-
-handleChange(event) {
-  this.setState({title: event.target.value})
-}
-
-render() {
-  return (
-    &lt;input type="text" name="title" value={this.state.title}
-    onChange={this.handleChange.bind(this)}/&gt;
-  );
-}</pre>
-        <p class="p">
-          Лучше всего принять следующие меры для синхронизации внутреннего состояния с представлением:<br>
-          1. Определить элементы в <strong>render()</strong> с использованием значений из <strong>state</strong>.<br>
-          2. Сохранить изменение в элементе формы по мере их возникновения с использованием <strong>onChange</strong><br>
-          3. Обновить внутреннее состояние в обработчике состояния<br>
-          4. Новые значения сохраняются в <strong>state</strong>, после чего представление обновляется новым вызовом <strong>render()</strong>.
-        </p>
-
-        <p class="p">
-          Такой подход называется односторонним связыванием, потому что состояние изменяет представления — и всё. В обратную сторону это не работает: только одностороннее движение от состояния к представлению. При одностороннем связывании библиотека не будет автоматически обновлять состояние (или модель). Одно из главных преимуществ одностороннего связывания заключается в том, что оно снижает сложность при работе с большими приложениями, в которых множественные представления могут неявно обновлять множественные состояния (модели данных) и наоборот.<br>
-          И наоборот, двустороннее связывание позволяет представлениям автоматически изменять состояния без явной реализации процесса.  
-        </p>
-
-        <p class="p">
-          Сначала рассмотрим рекомендованный способ работы с формами. Он называется использованием управляемых компонентов и гарантирует, что внутреннее состояние компонентов всегда синхронизировано с представлением.
-        </p>
-
-        <div class="subsubsection">
-          <h4 class="subsubsection__header">Определение формы и ее событий в React</h4>
-
-          <p class="p">
-            Элемент <strong>&lt;form&gt;</strong> может обладать событиями:<br>
-            1. <strong>onChange</strong> - инициализируется при изменении любых элементов ввода в форме.<br>
-            2. <strong>onInput</strong> - инициализирууется при каждом изменении значений элементов <strong>textarea</strong> и <strong>input</strong> (не рекомендуется).<br>
-            3. <strong>onSubmit</strong> - инициализируется при отправке формы.<br>
-            а также </strong>onKeyUp</strong> и </strong>onClick</strong>.
-          </p>
-        </div>
-
-        <div class="subsubsection">
-          <h4 class="subsubsection__header">Определение элементов форм</h4>
-
-          <p class="p">
-            Почти все поля ввода в HTML реализуются всего четырьмя элементами: <strong>&lt;input&gt;</strong>, <strong>&lt;textarea&gt;</strong>, <strong>&lt;select&gt;</strong> и <strong>&lt;option&gt</strong>;<br>
-            Чтобы придать этим элементам особый статус, в React они наделяются изменяемыми свойствами <strong>value</strong>, <strong>checked</strong> и <strong>selected</strong>. Эти специальные изменяемые свойства также называются интерактивными свойствами.<br>
-            React DOM также поддерживает другие элементы, относящиеся к построению форм, такие как <strong>&lt;keygen&gt;</strong>, <strong>&lt;datalist&gt;</strong>, <strong>&lt;fieldset&gt;</strong> и <strong>&lt;label&gt;</strong>. Эти элементы не обладают такими суперспособностями, как изменяемый атрибут/свойство value, они рендерятся как соответствующие теги HTML
-          </p>
-
-          <p class="p">
-            Интерактивные свойства/поля (те, что могут изменяться), которые могут читаться из таких событий, как onChange, присоединенных к элементам форм:<br>
-            1. <strong>value</strong> - применяется к элементам <strong>&lt;input&gt;</strong>, <strong>&lt;textarea&gt;</strong> и <strong>&lt;select&gt;</strong>.<br>
-            2. <strong>checked</strong> — применяется к элементам <strong>&lt;input&gt;</strong> с <strong>type="checkbox"</strong> и <strong>type="radio"</strong>.<br>
-            3. <strong>selected</strong> — применяется к <strong>&lt;option&gt;</strong> (используется с <strong>&lt;select&gt;</strong>).<br>
-            Можно читать их значения и изменять их, работая с этими интерактивными (изменяемыми) свойствами.
-          </p>
-        </div>
-
-        <div class="subsubsection">
-          <h4 class="subsubsection__header">Элемент &lt;INPUT&gt;</h4>
-
-          <p class="p">
-            Элемент <strong>&lt;input&gt;</strong> рендерит различные поля, используя разные значения для атрибута <strong>type</strong>:<br>
-            - <strong>text</strong> — простое поле для ввода текста<br>
-            - <strong>password</strong> - поле для ввода замаскированного текста (для сохранения конфиденциальности).<br>
-            - <strong>radio</strong> - кнопка-переключатель. Используйте одинаковые имена для создания группы переключателей.<br>
-            - <strong>checkbox</strong> - флажок. Используйте одинаковые имена для создания группы.<br>
-            - <strong>button</strong> - элемент формы «кнопка».<br>
-            Все эти элементы типа <strong>&lt;input&gt;</strong>, кроме флажков и переключателей, используются прежде всего для работы с value как интерактивным/изменяемым свойством элемента.
-          </p>
-          <pre class="screen screen_post">
-      // для ввода адреса электронной почты может использовать
-      // состояние email и обработчик события onChange:
-
-&lt;input
-type="text"
-name="email"
-value={this.state.email}
-onChange={this.handleEmailChange}/&gt;</pre>
-          <p class="p">
-            Среди полей ввода есть два исключения, у которых <strong>value</strong> не является основным изменяемым атрибутом, — это типы <strong>checkbox</strong> и <strong>radio</strong>. Они используют значение <strong>checked</strong>, потому что эти два типа имеют одно значение на элемент HTML, а следовательно, значение не изменяется — но изменяется состояние <strong>checked/selected</strong>.
-          </p>
-
-          <pre class="screen screen_post">
-class Content extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleRadio = this.handleRadio.bind(this);
-      ....
-    this.state = {
-      ....
-      radioGroup: {
-        angular: false,
-        react: true,              // Назначает установленный переключатель по умолчанию в состоянии
-        polymer: false
-      }
-    }
-  }
-
-   handleRadio(event) {
-    let obj = {};                 // Стереть другие переключатели
-    obj[event.target.value] = event.target.checked;  // true  //  Использует атрибут target.checked для получения
-    this.setState({radioGroup: obj});                         // логического значения, показывающего,
-  }                                                           // выбран ли данный переключатель.
-  ....
-  render() {
-    return (
-      &lt;form&gt;
-        &lt;input type="radio"
-        name="radioGroup"
-        value='angular'                             // Жёстко фиксируется и изменять не надо.
-        checked={this.state.radioGroup['angular']}  // Использует атрибут из объекта state или любого атрибута state.
-        onChange={this.handleRadio}/&gt;               // Использует тот же обработчик события onChange, потому что
-                                                    // значение переключателя можно получить из target.value.
-
-        &lt;input type="radio"
-        name="radioGroup"
-        value='react'
-        checked={this.state.radioGroup['react']}
-        onChange={this.handleRadio}/&gt;
-
-        &lt;input type="radio"
-        name="radioGroup"
-        value='polymer'
-        checked={this.state.radioGroup['polymer']}
-        onChange={this.handleRadio}/&gt;
-        ....
-      &lt;/form&gt;
-    );
-  }
-}</pre>
-
-          <p class="p">
-            Для флажков применяется аналогичный подход: использование атрибута <strong>checked</strong> и логические значения для состояний. Эти логические значения  могут храниться в состоянии <strong>checkboxGroup</strong>:
-          </p>
-          <pre class="screen screen_post">
-class Content extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleCheckbox = this.handleCheckbox.bind(this);
-    // ...
-    this.state = {
-    // ...
-    checkboxGroup: {
-      node: false,
-      react: true,
-      express: false,
-      mongodb: false
-    }
-  }
-}</pre>
-          <p class="p">
-            Затем обработчик события (который связывается в конструкторе) получает текущие значения, добавляет <strong>true</strong> или <strong>false</strong> из <strong>event.target.value</strong> и задает состояние:
-          </p>
-          <pre class="screen screen_post">
-handleCheckbox(event) {
-  let obj = Object.assign(this.state.checkboxGroup);
-  obj[event.target.value] = event.target.checked;    // true или false;
-  this.setState({checkboxGroup: obj});
-}</pre>
-          <p class="p">
-            В присваивании из состояния в <strong>radio</strong> нет необходимости, потому что переключатели могут иметь только одно выбранное значение. А это означает, что вы можете использовать пустой объект. С флажками дело обстоит иначе: в группе может быть выбрано несколько значений, поэтому нужна операция слияния, а не замены.
-          </p>
-          <p class="p">
-            В JavaScript объекты передаются и присваиваются по ссылке. Таким образом, в команде <strong>obj = this.state.checkboxGroup</strong> <strong>obj</strong> - в действительности является состоянием. Напомню, что состояние не должно изменяться напрямую. Для предотвращения любых потенциальных конфликтов лучше присваивать значение вызовом <strong>Object.assign()</strong>. Этот прием также называется клонированием.
-          </p>
-          <p class="p">
-            Другой, менее эффективный и менее надежный способ присваивания основан на присваивании по значению с использованием JSON:
-          </p>
-          <pre class="screen screen_post">
-clonedData = JSON.parse(JSON.stringify(originalData));</pre>
-          <p class="p">
-            Если используем массивы состояний вместо объектов и вам потребовалось выполнить присваивание по значению, используйте конструкцию <strong>clonedArray = Array.from(originArray)</strong> или <strong>clonedArray = originArray.slice()</strong>.<br>
-            Обработчик события <strong>handleCheckbox()</strong> может использоваться для получения значения из <strong>event.target.value</strong>.
-          </p>
-          <pre class="screen screen_post">
-&lt;input type="checkbox"
-name="checkboxGroup"
-value='node'
-checked={this.state.checkboxGroup['node']}  // Использует состояние как значение. Это может быть атрибут объекта
-onChange={this.handleCheckbox}/&gt;            // или просто атрибут state
-
-&lt;input type="checkbox"
-name="checkboxGroup"
-value='react'
-checked={this.state.checkboxGroup['react']}
-onChange={this.handleCheckbox}/&gt;            // Использует onChange для отслеживания действий пользователя
-
-&lt;input type="checkbox"
-name="checkboxGroup"
-value='express'
-checked={this.state.checkboxGroup.express}  // Использует «точечную запись», когда ключи являются действительными
-onChange={this.handleCheckbox}/&gt;            // именами JS
-
-&lt;input type="checkbox"
-name="checkboxGroup"
-value='mongodb'
-checked={this.state.checkboxGroup['mongodb']}
-onChange={this.handleCheckbox}/&gt;              // Выполнять связывание в элементе не нужно, потому что оно
-                                              // выполняется в конструкторе (истинно для всех флажков).</pre>
-          <p class="p">
-            При использовании флажков или переключателей можно жестко присвоить значение в каждом отдельном элементе и использовать <strong>checked</strong> как изменяемый атрибут.
-          </p>
-        </div>
-
-        <div class="subsubsection">
-          <h4 class="subsubsection__header">Элемент &lt;TEXTAREA&gt;</h4>
-
-          <p class="p">
-            Элементы <strong>&lt;textarea&gt;</strong> предназначены для получения и вывода длинных текстовых сообщений — заметок, сообщений в блогах, фрагментов кода и т. д.<br>
-            В обычном HTML <strong>&lt;textarea&gt;</strong> использует внутреннюю разметку HTML (то есть дочерние элементы) в качестве значения.<br>
-            React использует атрибут <strong>value</strong>.
-          </p>
-          <pre class="screen screen_post">
-    // Не правильно:
-
-&lt;textarea name="description"&gt;{this.state.description}&lt;/textarea&gt;
-
-
-    // Правильно:
-
-render() {
-  return (
-    &lt;textarea name="description" value={this.state.description}/&gt;
-  );
-}</pre>
-          <p class="p">
-            Чтобы прослушивать изменения, нужно использовать <strong>onChange</strong> как для элементов <strong>&lt;input&gt;</strong>.
-          </p>
-        </div>
-
-        <div class="subsubsection">
-          <h4 class="subsubsection__header">Элементы &lt;SELECT&gt; и &lt;OPTION&gt;</h4>
-
-          <p class="p">
-            Поля <strong>&lt;select&gt;</strong> и <strong>&lt;option&gt;</strong> очень удобны для выбора одного или нескольких значений из заранее заполненного списка значений.<br>
-            В HTML для получения индекса выбранного элемента можно использовать <strong>selectDOMNode.selectedIndex</strong> или <strong>selectDOMNode.selectedOptions</strong>
-          </p>
-          <pre class="screen screen_post">
-....
-constructor(props) {
-  super(props);
-  this.state = {selectedValue: 'node'};
-}
-
-handleSelectChange(event) {
-  this.setState({selectedValue: event.target.value});
-}
-....
-render() {
-  return (
-    &lt;form&gt;
-      &lt;select
-      value={this.state.selectedValue}
-      onChange={this.handleSelectChange}&gt;
-        &lt;option value="ruby"&gt;Ruby&lt;/option&gt;
-        &lt;option value="node"&gt;Node&lt;/option&gt;
-        &lt;option value="python"&gt;Python&lt;/option&gt;
-      &lt;/select&gt;
-    &lt;/form&gt;
-  }
-....</pre>
-          <p class="p">
-          Этот фрагмент рендерит раскрывающееся меню и предварительно выбирает значение <strong>node</strong> (которое должно быть задано в конструкторе)<br>
-          Иногда бывает нужно использовать элемент с множественным выделением. Это можно сделать в JSX/React, передавая атрибут <strong>multiple</strong> без значения (React по умолчанию использует <strong>true</strong>) или со значением <strong>{true}</strong>.
-          </p>
-          <p class="p">
-          Чтобы осуществить предварительное выделение в списке нескольких элементов, можно передать <strong>&lt;select&gt;</strong> массив вариантов через атрибут </strong>value</strong>.
-          </p>
-          <pre class="screen screen_post">
-&lt;select multiple={true} value={['meteor', 'react']}&gt;
-  &lt;option value="meteor"&gt;Meteor&lt;/option&gt;
-  &lt;option value="react"&gt;React&lt;/option&gt;
-  &lt;option value="jQuery"&gt;jQuery&lt;/option&gt;
-&lt;/select></pre>
-          <p class="p">
-            С <strong>multiple={true}</strong> генерируется элемент с множественным выделением, в котором предварительно выделены значения <strong>Meteor</strong> и <strong>React</strong>.
-          </p>
-        </div>
-
-        <div class="subsubsrction">
-          <h4 class="subsubsection__header">Отслеживание изменений в формах</h4>
-
-          <p class="p">
-            Чтобы отслеживать изменения в элементах форм, определяется слушатель события onChange. Это событие перекрывает нормальное событие DOM <strong>onInput</strong>.<br>
-            Если понадобится обычное поведение <strong>onInput</strong> из HTML DOM, можно использовать событие <strong>onInput</strong> из React. С другой стороны, событие React <strong>onChange</strong> не полностью эквивалентно обычному событию DOM <strong>onChange</strong>. Обычное событие DOM <strong>onChange</strong> может инициироваться только при потере фокуса элементом, тогда как событие React <strong>onChange</strong> инициируется при любом новом вводе.
-          </p>
-          <p class="p">
-            Условие срабатывания <strong>onChange</strong> зависит от конкретного элемента:<br>
-            &bull; <strong>&lt;input&gt;</strong>, <strong>&lt;textarea&gt;</strong> и <strong>&lt;select&gt;</strong> — <strong>onChange</strong> инициируется изменением <strong>value</strong>.<br>
-            &bull; <strong>&lt;input&gt;</strong> с  типом <strong>checkbox</strong> или <strong>radio</strong>  — <strong>onChange</strong> инициируется изменением <strong>checked</strong>.
-          </p>
-          <p class="p">
-            Соответственно, изменяется и способ чтения значения. В аргументе обработчика события вы получаете объект <strong>SyntheticEvent</strong>. У него есть свойство <strong>target</strong> со значением <strong>value</strong>, <strong>checked</strong> или <strong>selected</strong> в зависимости от элемента.
-          </p>
-          <p class="p">
-            Чтобы прослушивать изменения, вы определяете обработчик события где-то в своем компоненте (его также можно определить во встроенном формате, то есть в фигурных скобках JSX <strong>{}</strong>) и создать атрибут <strong>onChange</strong>, указывающий на обработчик события.
-          </p>
-          <pre class="screen screen_post">
-    // Генерирование элементов форм и отслеживание изменений в поле для ввода адресов электронной почты:
-
-handleChange(event) {
-  console.log(event.target.value)
-}
-
-render() {
-  return (
-    &lt;input
-    type="text"
-    onChange={this.handleChange}
-    defaultValue="ovna@code.ru"/&gt;
-  );
-}</pre>
-          <p class="p">
-            Интересно, что если вы не определите <strong>onChange</strong>, но предоставите <strong>value</strong>, React выдаст предупреждение и сделает элемент доступным только для чтения. Если вы намерены создать поле только для чтения, лучше определить его явно при помощи <strong>readOnly</strong>.<br>
-            Чтобы явно задать значение, присвойте <strong>readOnly true</strong> (то есть <strong>readOnly={true}</strong>) или добавьте атрибут readOnly без значения; React по умолчанию добавит значение <strong>true</strong> к атрибуту.
-          </p>
-          <p class="p">
-            Обнаруженные изменения в элементах можно сохранить в состоянии компонента:
-          </p>
-          <pre class="screen screen_post">
-handleChange(event) {
-  this.setState({emailValue: event.target.value})
-}</pre>
-
-          <p class="p">
-            Создадим форму заявки на кредит с именем, адресом, номером телефона и номером социального страхования пользователя. Каждое поле обрабатывает свои изменения. В нижней части формы находится кнопка <strong>Submit</strong> для отправки состояния серверу. Ниже показано поле имени с <strong>onChange</strong>, которое сохраняет весь ввод в состоянии.
-          </p>
-          <pre class="screen screen_post">
-constructor(props) {
-  super(props);
-  this.handleInput = this.handleInput.bind(this);
-  this.handleSubmit = this.handleSubmit.bind(this);
-  ....
-}
-
-handleFirstNameChange(event) {
-  this.setState({firstName: event.target.value});  // Сохраняет изменения в поле firstName в состоянии
-}
-....
-handleSubmit() {
-  fetch(this.props['data-url'], {method: 'POST', body: JSON.stringify(this.state)})  // Отправляет данные по
-  .then((response)=>{return response.json()})                                        // URL-адресу из свойства
-  .then((data)=>{console.log('Submitted: ', data)});                                 // data-url с использованием
-}                                                                       // браузерного Fetch API на базе обещаний
-
-render() {
-  return (
-    &lt;form&gt;
-      &lt;input name="firstName"
-      onChange={this.handleFirstNameChange}
-      type="text"/&gt;
-      ....
-      &lt;input
-      type="button"
-      onClick={this.handleSubmit}                             // Определяет обработчик события для кнопки Submit
-      value="Submit"/&gt;
-    &lt;/form&gt;
-  );
-}</pre>
-        </div>
-
-        <div class="subsubsection">
-          <h4 class="subsubsection__header">Поле для банковского счета</h4>
-
-          <pre class="screen screen_post">
-class Content extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleChange = this.handleChange.bind(this);
-    this.state = {accountNumber: ''};                  // Задает пустую строку как исходный номер банковского счета
-  }
-
-  handleChange(event) {
-    console.log('Typed: ', event.target.value);                     // Выводит нефильтрованное значение в том виде, в каком оно было введено
-    this.setState({accountNumber: event.target.value.replace(/[^0-9]/ig,'')});  // Фильтрует значение и обновляет состояние
-  }
-
-  render() {
-    return (
-      &lt;div&gt;
-        Account Number:
-        &lt;input
-        type="text"
-        onChange={this.handleChange}              // Отслеживает изменения
-        placeholder="123456"
-        value={this.state.accountNumber}/&gt;     // Управляет элементом, присваивая значение state
-        &lt;br/&gt;
-        &lt;span&gt;{this.state.accountNumber.length&gt;0?'You entered: ' +   // Выводит номер счета, если он не пуст. «length» —
-        this.state.accountNumber: ''}&lt;/span&gt;                            // строковое свойство, возвращающее количество
-      &lt;/div&gt;                                                            // символов. Если значение пустое, ничего не выводится
-    );
-  }
-}</pre>
-          <p class="p">
-            Для удаления всех с имволов, не являющихся цифрами, используется регулярное выражение <strong>/[^0-9]/ig</strong> и строковая функция <strong>replace</strong>. Конструкция <strong>replace(/[^0-9]/ig, '')</strong> — несложный вызов функции регулярных выражений, который заменяет все, кроме цифр, пустой строкой. Модификатор ig означает игнорирование регистра символов и глобальность (иначе говоря, ищутся все совпадения).
-          </p>
-          <p class="p">
-            В <strong>render()</strong> присутствует поле ввода, которое является управляемым компонентом из-за <strong>value={this.state.accountNumber}</strong>. Если вы запустите этот пример, в поле будут вводиться только числовые данные, потому что React присваивает новому состоянию результат фильтрации введенных данных.
-          </p>
-        </div>
-      </div>
-
-      <div class="subsection">
-        <h3 class="subsection__header">Альтернативные способы работы с формами</h3>
-
-        <p class="p">
-          Элементы форм могут быть неуправляемыми, если атрибуты <strong>value</strong> не заданы (ни в состоянии, ни в статическом значении). Неуправляемые элементы могут быть полезны при построении простой формы, которая будет отправлена серверу
-        </p>
-        <p class="p">
-          Обычно для использования неуправляемых компонентов определяется событие отправки данных формы, как правило, это событие <strong>onClick</strong> для кнопки и/или <strong>onSubmit</strong> для формы.<br>
-          При наличии такого обработчика возможны два варианта:<br>
-          &bull; Отслеживать изменения так же, как при работе с управляемыми элементами, с использованием состояния для отправки, но не для значений.<br>
-          &bull; Не отслеживать изменения.<br>
-          Первый вариант достаточно прост: те же слушатели событий и обновление состояний. Получается слишком большой объем кода, если состояние используется только на последней стадии
-        </p>
-
-        <div class="subsubsection">
-          <h4 class="subsubsection__header">Неуправляемые элементы с отслеживанием изменений</h4>
-
-          <p class="p">
-            Неуправляемый компонент означает, что свойство <strong>value</strong> не задается библиотекой React.<br>
-            Когда это происходит, внутреннее значение (или состояние) компонента может отличаться от значения в представлении компонента. Фактически возникает диссонанс между внутренним состоянием и представлением. Состояние компонента может содержать логику (например, проверки данных); с паттерном неуправляемого компонента ваше представление будет получать весь пользовательский ввод в элементе формы, создавая расхождение между представлением и состоянием.
-          </p>
-          <pre class="screen screen_post">
-    // Неуправляемое текстовое поле:
-
-render() {
-  return (
-    &lt;input type="text" /&gt;
-  );
-}</pre>
-          <p class="p">
-            Любой пользовательский ввод будет немедленно рендериться в представлении.
-          </p>
-          <p class="p">
-            Для отслеживания изменений в неуправляемом компоненте используется событие <strong>onChange</strong>
-          </p>
-          <p class="p">
-            Метод <strong>handleChange()</strong>, который выводит значения в консоль и обновляет состояние с использованием <strong>event.target.value</strong>.
-          </p>
-          <pre class="screen screen_post">
-class Content extends React.Component {
-  constructor(props){
-    super(props);
-    this.state = {textbook: ''};  // Присваивает пустую строку в качестве исходного значения
-  }
-
-  handleChange(event) {
-    console.log(event.target.value);
-    this.setState({textbook: event.target.value});  // Обновляет состояние при каждом изменении в поле ввода
-  }
-
-  render() {
-    return (
-      &lt;div&gt;
-        &lt;input
-        type="text"
-        onChange={this.handleChange}                // Не задает значение, только слушатель события
-        placeholder="Eloquent TypeScript: Myth or Reality" /&gt;
-        &lt;br/&gt;
-        &lt;span&gt;{this.state.textbook}&lt;/span&gt;          // Использует &lt;span&gt; для вывода переменной состояния,
-      &lt;/div&gt;                                        // значение которой будет задаваться в методе handleChange()
-    );
-  }
-}</pre>
-        </div>
-
-        <div class="subsubsection">
-          <h4 class="subsubsection__header">Использование ссылок для обращения к переменным</h4>
-
-          <p class="p">
-            При работе с неуправляемыми компонентами, не отслеживающими события (такие, как <strong>onChange</strong>), для обращения к значениям используются ссылки, однако ссылки не являются исключительной особенностью этого конкретного паттерна.
-          </p>
-          <p class="p">
-            Ссылки позволяют вам получить элемент DOM (или узел) компонента React.js. Это может быть удобно, когда вам нужно получить значения элементов форм, но не отслеживать изменения в элементах.
-          </p>
-          <p class="p">
-            Чтобы использовать ссылку, вы должны:<br>
-            &bull; Убедиться в том, что у элемента в return метода render имеется атрибут с именем в верблюжьем регистре (например, <strong>email: &lt;input ref="userEmail" /&gt;</strong>).<br>
-            &bull; Обратиться к  экземпляру DOM по именованной ссылке из другого метода. Например, в обработчике события <strong>this.refs.NAME</strong> превращается в <strong>this.refs.userEmail</strong>.
-          </p>
-          <p class="p">
-            <strong>this.refs</strong>.NAME дает экземпляр компонента React.<br>
-            Чтобы обратиться к узлу DOM компонента, вызовите <strong>ReactDOM.findDOMNode(this.refs.NAME)</strong>:
-          </p>
-          <pre class="screen screen_post">
-let emailNode = ReactDOM.findDOMNode(this.refs.email);
-let email = emailNode.value;
-
-    // То же но с более удобным именем:
-
-let fD = ReactDOM.findDOMNode;
-let email = fD(this.refs.email).value;</pre>
-
-          <p class="p">
-            Когда нажата кнопка <strong>Submit</strong>,можно получить доступ к ссылкам <strong>emailAddress</strong> и <strong>comments</strong> и вывести значения на консоль:
-          </p>
-          <pre class="screen screen_post">
-    // Начало формы с адресом электронной почты:
-
-class Content extends React.Component {
-  constructor(props) {
-    super(props);
-    this.submit = this.submit.bind(this);
-    this.prompt = 'Please enter your email to win $1,000,000.';   // Определяет атрибут класса
-  }
-
-  submit(event) {
-    let emailAddress = this.refs.emailAddress;
-    let comments = this.refs.comments;
-    console.log(ReactDOM.findDOMNode(emailAddress).value);  // Обращается к значению
-    console.log(ReactDOM.findDOMNode(comments).value);      // адреса электронной почты по ссылке
-  }
-
-  render: function() {
-    return (
-      &lt;div className="well"&gt;
-        &lt;p&gt;{this.prompt}&lt;/p&gt;
-        &lt;div className="form-group"&gt;
-          Email: &lt;input ref="emailAddress" className="form-control"
-          type="text" placeholder="hi@azat.co"/&gt;
-        &lt;/div&gt;
-        &lt;div className="form-group"&gt;
-          Comments: &lt;textarea ref="comments" className="form-control"
-          placeholder="I like your website!"/&gt;
-        &lt;/div&gt;
-        &lt;div className="form-group"&gt;
-          &lt;a className="btn btn-primary" value="Submit"
-          onClick={this.submit}&gt;Submit&lt;/a&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-    );
-  }
-}</pre>
-          <p class="p">
-            Обычный узел HTML DOM для <strong>&lt;textarea&gt;</strong> использует innerHTML в качестве значения. Как упоминалось ранее, в React для этого элемента можно использовать свойство <strong>value</strong>:
-          </p>
-          <pre class="screen screen_post">
-ReactDOM.findDOMNode(comments).value;</pre>
-          <p class="p">
-            Поскольку метод <strong>ReactDOM.findDOMNode()</strong> возвращает узел DOM, вам доступны другие обычные атрибуты HTML (такие, как <strong>innerHTML</strong>) и методы (как <strong>getAttribute()</strong>).
-          </p>
-          <p class="p">
-            Ссылки нужны только для тех редких случаев, когда используются неуправляемые элементы. Злоупотребление ссылками считается нежелательной практикой. В большинстве случаев не приходится использовать ссылки с управляемыми элементами, потому что вместо них можно использовать состояния компонентов.
-          </p>
-        </div>
-
-        <div class="subsubsection">
-          <h4 class="subsubsection__header">Значения по умолчанию</h4>
-
-          <p class="p">
-            В React специальный атрибут <strong>defaultValue</strong> задает значение и позволяет пользователям изменять элементы формы.
-          </p>
-          <p class="p">
-            Если форма была сохранена ранее и необходимо заполнить поле <strong>&lt;input&gt;</strong> для удобства пользователя. В этом случае необходимо использовать свойство <strong>defaultValue</strong> для элементов формы. Исходное значение поля задается следующим образом:
-          </p>
-          <pre class="screen screen_post">
-&lt;input type="text" name="new-book-title" defaultValue="Node: The Best Parts"/&gt;</pre>
-
-          <p class="p">
-            Если вместо defaultValue используется атрибут <strong>value (value="JSX")</strong>, этот элемент становится доступным только для чтения. Он не только будет управляемым, но и его значение не будет изменяться при вводе в элементе <strong>&lt;input&gt;</strong>. Дело в том, что значение жестко фиксировано, и React будет поддерживать это значение. В реальных приложениях значения получаются на программном уровне, что в React означает использование свойств (<strong>this.props.name</strong>):
-          </p>
-          <pre class="screen screen_post">
-&lt;input type="text" name="new-book-title" defaultValue={this.props.title}/&gt;
-
-    // Или состояний:
-
-&lt;input type="text" name="new-book-title" defaultValue={this.state.title}/&gt;</pre>
-          <p class="p">
-            Атрибут React <strong>defaultValue</strong> чаще всего используется с неуправляемыми компонентами; но, как и в случае со ссылками, значения по умолчанию могут использоваться с управляемыми компонентами или в любых других сценариях. Правда, в управляемых компонентах значения по умолчанию уже не настолько актуальны, потому что эти значения можно определить в состоянии в конструкторе: например, <strong>this.state = { defaultName: 'Abe Lincoln'}</strong>.
-          </p>
-        </div>
-      </div>
-    </section>
-
-
-
-
+    ---------------------------------------------------------------------------------------------------------------------------
+    ---------------------------------------------------------------------------------------------------------------------------
 
     <section class="section">
       <h2 class="section__header">Прежний контент</h2>

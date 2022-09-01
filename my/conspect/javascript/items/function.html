@@ -159,6 +159,20 @@ function name_3() {
     </section>
 
     <section class="section">
+      <h2 class="section__header">Рекурсия</h2>
+
+      <p class="p">
+        - вызов функции из самой себя.<br>
+        Можно применять в качестве цикла.
+      </p>
+      <pre class="screen screen_pre">
+let name_1 = function(params) {
+  ....
+  .... name_1(params);
+}</pre>
+    </section>
+
+    <section class="section">
       <h2 class="section__header">Callback</h2>
 
       <p class="p">
@@ -383,7 +397,7 @@ let name_1 = function (parameter_1) {
         </p>
         <p class="p">
           &bull; При выполнении замыкания в контексте, отличном от контекста его создания, значения свободных переменных определяются окружением.<br>
-          &bull; Замыкания часто используются для сохра-нения состояния в обработчиках событий.
+          &bull; Замыкания часто используются для сохранения состояния в обработчиках событий.
         </div>
 
       <div class="subsection">
@@ -404,10 +418,10 @@ function name_3() {
 
 let name_4 = name_3;
 
-name_4(); // >> x_2 + y_2</pre>
+name_4();   //->    x_2 + y_2</pre>
 
         <pre class="screen screen_post">
-Счётчик с замыканием:
+    // Счётчик с замыканием:
 
 function name_1() {
     let name_2 = 0;
@@ -424,17 +438,6 @@ let name_4 = name_1;</pre>
         <p class="p">
           - счётчик с локальной и защищённой переменной <strong>name_2</strong>, которая не будет конфликтовать с другими переменными, а увеличить её можно только вызовом функции. Т.е. доступна она только через функцию.
         </p>
-
-        <pre class="screen screen_post">
-function name_1(name_2) {
-    return function(name_3) {
-        return name_3 + name_2;
-    }
-}
-
-const name_4 = name_1(name_2);
-
-console.log(name_4(name_3));</pre>
       </div>
 
       <p class="p">
@@ -461,7 +464,7 @@ name_1(string_1, x_1);
       <p class="p">
         &bull; <strong>name_1</strong> - функциональное выражение содержащее свободную переменную <strong>string_1</strong>, передаётся параментру функции <strong>setTimeout</strong> в качестве значения аргумента.<br>
         &bull; При этом функциональное выражение обрабатывается для получения ссылки на функцию, которая затем передается <strong>setTimeout</strong>.<br>
-        &bull; Метод <strong>setTimeout</strong> сохраняет функцию (а вернее, функцию вместе с окружением — иначе говоря, замыкание), после чего через <strong>x_1</strong> миллисекунд вызывает ее.
+        &bull; Метод <strong>setTimeout</strong> сохраняет функцию (а вернее, функцию вместе с окружением — иначе говоря, замыкание), после чего через <strong>x_1</strong> миллисекунд вызывает ее.<br>
         &bull; Функция, передаваемая <strong>setTimeout</strong>, представляет собой замыкание, потому что вместе с ней передается окружение, связывающее свободную переменную <strong>string_1</strong> с значением передаваемым ей атрибутом.
       </p>
     </section>

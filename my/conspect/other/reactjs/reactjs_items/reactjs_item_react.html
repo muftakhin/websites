@@ -15,15 +15,15 @@
 
   <main class="main">
     <section class="section">
-      <pre class="screen screen_pre">
-React.createElement("element_1", {data_1}, "child_1");</pre>
-      <p class="paragraph">
+      <p class="p">
         <strong>element_1</strong> - тег элемента или компонент(класс компонента) React.<br>
         <strong>data_1</strong> - свойства создаваемого элемента (<strong>null</strong>=нет свойств).<br>
         Если имя свойства соответствует стандартному атрибуту HTML, то оно будет отрендерено как атрибут элемента.<br>
         <strong>child_1</strong> - дочерние элементы или внутренний контент.
       </p>
-      <p class="paragraph">Все параметры после второго становятся дочерними элементами.</p>
+      <p class="p">
+        Все параметры после второго становятся дочерними элементами.
+      </p>
       <pre class="screen screen_pre">
 const name_1 = React.createElement("element_1", {data_1}, "child_1");
 ReactDOM.render(name_1, document.querySelector('css_selector_1'));</pre>
@@ -35,7 +35,9 @@ React.createElement(
   "Text text"
 );
 
-  // Элемент React в JavaScript:
+
+    // Элемент React в JavaScript:
+
 {
   $$typeof: Symbol(React.element),
   "type": "h1",
@@ -58,7 +60,9 @@ React.createElement(
   React.createElement("li", null, "3 cloves of Garlic")
 );
 
-  // Элемент React в JavaScript:
+
+    // Элемент React в JavaScript:
+
 {
   "type": "ul",
   "props": {
@@ -75,6 +79,8 @@ React.createElement(
 }</pre>
 
       <pre class="screen screen_post">
+    // HTML:
+
 &lt;section id="baked-salmon"&gt;
   &lt;h1&gt;Baked Salmon&lt;/h1&gt;
   &lt;ul class="ingredients"&gt;
@@ -96,7 +102,8 @@ React.createElement(
   &lt;/section&gt;
 &lt;/section&gt;
 
-  // Чистый React:
+
+    // Чистый React:
 
 React.createElement("section", {id: "baked-salmon"},
   React.createElement("h1", null, "Baked Salmon"),
