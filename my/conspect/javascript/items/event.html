@@ -25,8 +25,8 @@ let name_1 = document.querySelector("css_selector_1");
 
 name_1.addEventListener("eventName_1", eventHandler_1, {options});
 
-function eventHandler_1(name_2) {
-  name_2.preventDefault();
+function eventHandler_1(event) {
+  event.preventDefault();
   expression_1;
 }</pre>
 
@@ -34,9 +34,9 @@ function eventHandler_1(name_2) {
         <strong>name_1</strong> - имя элемента у которого отслеживается событие.<br>
         <strong>eventName_1</strong> - имя прослушиваемого события.<br>
         <strong>eventHandler_1</strong> - обработчик события (callback-функция).<br>
-        <strong>name_2</strong> - объект события, содержащий свойства, связанные с этим событием, передающийся как первый аргумент callback-функции, обычно указывается как (<strong>e</strong> или <strong>event</strong>).<br>
+        <strong>event</strong> - объект события, содержащий свойства, связанные с этим событием, передающийся как первый аргумент callback-функции, обычно указывается как (<strong>e</strong>).<br>
         <strong>{options}</strong> - дополнительный объект со свойствами.<br>
-        <strong>name_2.preventDefault();</strong> - отключение встроенного поведения. Указывается в начале тела функции обработчика события.
+        <strong>event.preventDefault();</strong> - отключение встроенного поведения. Указывается в начале тела функции обработчика события.
       </p>
 
       <div class="subsection">

@@ -31,7 +31,7 @@ class Name_1 extends React.Component {
     var name_2 = {
       property_1: value_1,
       property_2: value_2,
-      ...
+      ....
       property_n: value_n
     };
 
@@ -49,7 +49,28 @@ ReactDOM.render(
   &lt;/Name_1&gt;,
   document.querrySelector("css_selector_1")
 );</pre>
-          <p class="paragraph"><strong>value</strong> - цифры указываются без величин, а остальное как строки в кавычках, и разделяются запятыми</p>
+          <p class="p">
+            <strong>value</strong> - цифры указываются без величин, а остальное как строки в кавычках, и разделяются запятыми.
+          </p>
+
+          <pre class="screen screen_pre">
+    // Или:
+
+  ....
+    return (
+      &lt; tag_name_1 style={{property_1: value_1, property_2: value_2, .... property_n: value_n}} &gt;
+        ....
+      &lt;/ tag_name_1 &gt;
+    );
+  ....</pre>
+          <pre class="screen screen_post">
+  ....
+    return (
+      &lt;p style={{color: "red", paddingBottom: 8, marginLeft: 4}}&gt;
+        Text
+      &lt;/p&gt;
+    );
+  ....</pre>
         </div>
       </div>
     </section>

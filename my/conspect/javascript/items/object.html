@@ -76,6 +76,24 @@
       <h2 class="section__header">Создание объектов</h2>
 
       <div class="subsection">
+        <h3 class="subsection__header">Создание пустого объекта</h3>
+
+        <div class="subsubsection">
+          <h4 class="subsubsection__header">Синтаксис "конструктор объекта"</h4>
+
+          <pre class="screen screen_pre">
+let name_1 = new Object();</pre>
+        </div>
+
+        <div class="subsubsection">
+          <h4 class="subsubsection__header">Синтаксис "литерал объекта"</h4>
+
+          <pre class="screen screen_pre">
+let name_1 = {};</pre>
+        </div>
+      </div>
+
+      <div class="subsection">
         <h3 class="subsection__header">С использованием объектных литералов</h3>
 
         <p class="p">
@@ -151,20 +169,13 @@ let name_4 = function() {
 
 let name_5 = {...name_2, ...name_3, name_1, name_4};</pre>
       </div>
-
-      <div class="subsection">
-        <h3 class="subsection__header">Создание пустого объекта</h3>
-
-        <pre class="screen screen_pre">
-let name_1 = {};</pre>
-      </div>
     </section>
 
     <section class="section">
       <h2 class="section__header">Доступ к значениям внутри объектов</h2>
 
       <pre class="screen screen_pre">
-name_1[name_11];      // скобочная нотация
+name_1['name_11'];      // скобочная нотация (в кавычках, иначе будет искать переменную name_11)
 
 name_1.name_11;       // точечная нотация</pre>
       <p class="p">
@@ -206,7 +217,7 @@ name_1.['onetwo'];</pre>
         При добавлении имени свойства лучше использовать <strong>[]</strong>
       </p>
       <pre class="screen screen_pre">
-name_1[name_11] = value_11;</pre>
+name_1['name_11'] = value_11;</pre>
 
       <div class="subsection">
         <h3 class="subsection__header">Используя точечную нотацию</h3>
@@ -219,20 +230,35 @@ name_1.name_11 = value_11;</pre>
         <h3 class="subsection__header">Когда свойством является объект</h3>
 
         <pre class="screen screen_pre">
-name_1[name_11][name_111] = value_111;
+name_1['name_11']['name_111'] = value_111;
 
 name_1.name_111.name_111 = value_111;</pre>
       </div>
 
       <div class="subsection">
         <h3 class="subsection__header">Задание вычисляемого имени свойства</h3>
-      </div>
 
-      <pre class="screen screen_pre">
+        <pre class="screen screen_pre">
 let name_1 = {
   name_11: value_11,
   [calculation_12]: value 12
 };</pre>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__header">При помощи Object.assign()</h3>
+
+        <pre class="screen screen_pre">
+Object.assign(name_1, {name_11: value_11, name_12: value_12});
+
+
+    // Можно добавлять свойства из нескольких объектов:
+
+Object.assign(name_1, {name_11: value_11}, {name_12: value_12});</pre>
+        <p class="p">
+          Имеющееся свойство будет перезаписано.
+        </p>
+      </div>
     </section>
 
     <section class="section">
@@ -245,6 +271,50 @@ delete name_1.name_11;</pre>
 
       <p class="p">
         - выраженние <strong>delete</strong> возвращает <strong>true</strong> если свойство было успешно удалено (либо если вы удаляете не существующее свойство или то, что не является свойством объекта.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2 class="section__header">Получение данных объекта</h2>
+
+      <div class="subsection">
+        <h3 class="subsection__header">Object.keys(obj)</h3>
+
+        <pre class="screen screen_pre">
+let name_1 = Object.keys(name_2);</pre>
+        <p class="p">
+          – возвращает массив ключей.
+        </p>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__header">Object.values(obj)</h3>
+
+        <pre class="screen screen_pre">
+let name_1 = Object.values(name_2);</pre>
+        <p class="p">
+          – возвращает массив значений.
+        </p>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__header">Object.entries(obj)</h3>
+
+        <pre class="screen screen_pre">
+let name_1 = Object.entries(name_2);</pre>
+        <p class="p">
+          – возвращает массив пар [ключ, значение].
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section__header">Проверка наличия свойства</h2>
+
+      <pre class="screen screen_pre">
+let name_1 = 'prop_name_1' in obj_name_1;</pre>
+      <p class="p">
+        Возврвщает <strong>true</strong> или <strong>false</strong>.
       </p>
     </section>
 

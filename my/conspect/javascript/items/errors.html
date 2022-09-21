@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Исключения</title>
-    <link rel="stylesheet" href="../../styles/style.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Обработка ошибок</title>
+  <link rel="stylesheet" href="../../styles/style.css">
 </head>
 
 <body class="body">
-    <header class="header">
-        <a class="header__button"  href="../javascript.html">&uArr;</a>
-        <h1 class="header__title">Исключения</h1>
-    </header>
+  <header class="header">
+    <a class="header__button"  href="../javascript.html">&uArr;</a>
+    <h1 class="header__title">Обработка ошибок</h1>
+  </header>
 
     <main class="main">
         <section class="section">
             <h2 class="section__header">Обработка ошибок</h2>
 
-            <p class="paragraph">
+            <p class="p">
                 Не все ошибки можно "перехватить", например синтаксические или в асинхронно вызванных функциях
             </p>
-            <p class="paragraph">
+            <p class="p">
                 &bull; Возникающая ошибка прерывает исполнение кода. Необходимо её обработать<br>
                 &bull; Код, который потенциально может выдать ошибку, необходимо заключить в оператор <strong>try catch</strong>
             </p>
@@ -34,20 +34,14 @@ try {
 }
 
 action_3;</pre>
-            <p class="paragraph">
-                <strong>action_1</strong> - код с потенциальной ошибкой<br>
-                <strong>name_1</strong> - имя потенциальной ошибки<br>
-                <strong>action_2</strong> - реакция на потенциальную ошибку
+            <p class="p">
+                <strong>action_1</strong> - код с потенциальной ошибкой. Выполняется, пока не возникнет ошибка<br>
+                После возникновении ошибки выполнение кода прерывается и передаётся управление блоку <strong>catch</strong> и выполняется код <strong>action_2</strong>.<br>
+                <strong>name_1</strong> - объект содержащий информацию об ошибке, он называется исключением. Эту информацию можно вывести<br>
+                <strong>action_2</strong> - реакция на потенциальную ошибку.<br>
+                После выполнения <strong>action_2</strong> продолжается выполнение кода <strong>action_3</strong>.
             </p>
-            <p class="paragraph">
-                &bull; Код <strong>action_1</strong> выполняется, пока не возникнет ошибка<br>
-                &bull; После возникновении ошибки выполнение кода прерывается и передаётся управление блоку <strong>catch</strong> и выполняется код <strong>action_2</strong><br>
-                &bull; После выполнения <strong>action_2</strong> продолжается выполнение кода <strong>action_3</strong>
-            </p>
-            <p class="paragraph">
-                &bull; <strong>name_1</strong> - объект содержащий информацию об ошибке, он называется исключением<br>
-                &bull; Эту информацию можно вывести
-            </p>
+
             <pre class="screen screen_pre">
 try {
     action_1;
@@ -58,7 +52,7 @@ try {
                 
 action_3;</pre>
 
-            <p class="paragraph">
+            <p class="p">
                 Объект <strong>name_1</strong> имеет 2 основных свойства: <strong>.name</strong> и <strong>message</strong>, значения которых тоже можно вывести
             </p>
             <pre class="screen screen_pre">
@@ -73,28 +67,28 @@ try {
 action_3;</pre>
 
             <div class="subsection">
-                <h3 class="subsection__header">Создание своих исключений</h3>
+                <h3 class="subsection__header">Создание своих ошибок</h3>
 
                 <pre class="screen screen_pre">
 action_1 ...
 throw {name: 'string_1', message: 'string_2'};
 ... action_1;</pre>
-                <p class="paragraph">или:</p>
+                <p class="p">или:</p>
                 <pre class="screen screen_pre">
 action_1 ...
 throw new Error('string_3');
 ... action_1;</pre>
-                <p class="paragraph">
+                <p class="p">
                     где:<br>
                     <strong>string_1</strong> - значение свойства <strong>name:</strong><br>
                     <strong>string_2</strong> и <strong>string_3</strong> - значения свойства <strong>message:</strong>
                 </p>
             </div>
 
-            <div class="subsection">
-                <h3 class="subsection__header">finally</h3>
+      <div class="subsection">
+        <h3 class="subsection__header">finally</h3>
 
-                <pre class="screen screen_pre">
+        <pre class="screen screen_pre">
 try {
     action_1;
 } catch (name_1) {
@@ -102,12 +96,12 @@ try {
 } finally {
     action_3;
 }</pre>
-                <p class="paragraph">
-                    &bull; <strong>action_3</strong> выполнится после <strong>action_1</strong>, если не выпадет ошибка в <strong>action_1</strong><br>
-                    &bull; <strong>action_3</strong> выполнится после <strong>action_2</strong>, если ошибка выпадет<br>
-                    &bull; Если внутри <strong>try</strong> имеется <strong>return</strong>, то он выполнится после <strong>finally</strong>
-                </p>
-            </div>
-        </section>
+        <p class="p">
+          &bull; <strong>action_3</strong> выполнится после <strong>action_1</strong>, если не выпадет ошибка в <strong>action_1</strong>.<br>
+          &bull; <strong>action_3</strong> выполнится после <strong>action_2</strong>, если ошибка выпадет.<br>
+          &bull; Если внутри <strong>try</strong> имеется <strong>return</strong>, то он выполнится после <strong>finally</strong>.
+        </p>
+      </div>
+    </section>
 	</main>
 </body>

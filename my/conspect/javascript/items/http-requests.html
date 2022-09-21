@@ -232,14 +232,23 @@ function postData(form) {
     </section>
 
     <section class="section">
-      <h2 class="section__header">fetch</h2>
+      <h2 class="section__header">fetch()</h2>
 
       <p class="p">
-        <strong>fetch</strong> использует промисы.
+        <strong>fetch</strong> использует промисы.<br>
+        Возвращает промис.
       </p>
       <pre class="screen screen_pre">
+fetch("url")
+.then((res) => {
+  return res.json();
+})
+.then((data) => {
+  console.log(data);
+})</pre>
+      <pre class="screen screen_pre">
 fetch('https://jsonplaceholder.typicode.com/todos/1', {
-  method: "POST",
+  method: "POST",                                                     // По умолчанию - GET
   body: JSON.stringify({name: 'Alex'}),
   headers: {
     'Content-type', 'application/json'
@@ -248,6 +257,17 @@ fetch('https://jsonplaceholder.typicode.com/todos/1', {
 .then(response => response.json())
 .then(json => console.log(json))
       </pre>
+      <p class="p">
+        Чтобы получить результат запроса, нужно указать callback в <strong>.then(....)</strong>.<br>
+        В качестве аргумента в callback приходит объект <strong>response</strong>.<br>
+        Из объекта <strong>response</strong> можно получить служебную информацию.<br>
+        &bull; <strong>response.status</strong> - код ответа<br>
+        &bull; <strong>response.statusText</strong> - текст ответа<br>
+        &bull; <strong>response.url</strong> - код ответа<br>
+        &bull; <strong>response.text()</strong> - ответ от сервера в текстовом формате (возвращает промис)<br>
+        &bull; <strong>response.json()</strong> - преобразование ответа в объект (возвращает промис). Поэтому в первом <strong>.then(....)</strong> нужно его вернуть, а во втором его уже обработать<br>
+      </p>
+
       <pre class="screen screen_post">
     // Отправка PostData:
 

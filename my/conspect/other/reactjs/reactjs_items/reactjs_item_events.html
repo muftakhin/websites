@@ -36,64 +36,36 @@
       <h2 class="section__header">Работа с событиями DOM в React</h2>
 
       <p class="p">
-        Обработчик события (определение функции) определяется как значение атрибута элемента в JSX и как свойство элемента в простом коде JavaScript (когда createElement() вызывается напрямую без JSX)<br>
-        Для атрибутов, которые являются именами событий, используются стандартные имена событийW3C DOM в верблюжьем регистре
+        Событие объявляется в JSX как атрибут (например, <strong>onClick={handleSave}</strong>). Если вы объявляете события мыши, имя атрибута может быть любым из поддерживаемых событий.<br>
+        Значением атрибута является обработчик события.<br>
+        Для атрибутов, которые являются именами событий, используются стандартные имена событий DOM используя camelCase.
       </p>
 
       <pre class="screen screen_pre">
 onClick={function() {...}};
 
-    // или
+// Или:
 
 onClick={() => {...}};</pre>
 
       <p class="p">
-        Можно определить слушателя события, который срабатывает, когда пользователь щелкает на кнопке. В слушателе события в консоль выводится контекст <strong>this</strong>. Объект события представляет собой расширенную версию объекта события DOM (с именем SyntheticEvent):
+        Объект события представляет собой расширенную версию объекта события DOM (с именем SyntheticEvent):
       </p>
 
-      <pre class="screen screen_post">
-&lt;button onClick={(function(event) {console.log(this, event)} ).bind(this)}&gt;
-  Save
-&lt;/button&gt;</pre>
-
-      <p class="p">
-        Вызов <strong>bind()</strong> необходим, чтобы в функции — обработчике события можно было получить ссылку на экземпляр класса (элемент React). Без вызова <strong>bind()</strong> она будет равна <strong>null</strong> (use strict mode).
-      </p>
-      <p class="p">
-        Также можно добиться более элегантной записи, используя метод класса в качестве обработчика события (назовем его <strong>handleSave()</strong>) для события <strong>onClick</strong>:
-      </p>
-      <pre class="screen screen_post">
-class SaveButton extends React.Component {
-  handleSave(event) {
-    console.log(this, event)
-  }
-
-  render() {
-    return (
-      &lt;button onClick={this.handleSave.bind(this)}&gt;   // Передаёт определение функции, возвращаемое bind(),
-        Save                                          // событию onClick
-      &lt;/button&gt;
-    );
-  }
-}</pre>
-
-      <p class="p">
-        Обработчик события можно связать с классом в конструкторе класса. С функциональной точки зрения различий нет; но если вы используете тот же метод более одного раза в <strong>render()</strong>, связывание в конструкторе позволит устранить дублирование кода.
-      </p>
       <pre class="screen screen_post">
 class SaveButton extends React.Component {
   constructor(props) {
-    super(props)
-    this.handleSave = this.handleSave.bind(this)  // Связывает контекст this c классом, чтобы использовать this
-  }                                               // в обработчике события для ссылок на этот класс
+    super(props);
+    this.handleSave = this.handleSave.bind(this);
+  }
 
   handleSave(event) {
-    console.log(this, event)
+    console.log(this, event);
   }
 
   render() {
     return (
-      &lt;button onClick={this.handleSave}&gt;         // Передает определение функции onClick
+      &lt;button onClick={this.handleSave}&gt;
         Save
       &lt;/button&gt;
     );
@@ -183,12 +155,8 @@ class SaveButton extends React.Component {
       <div class="subsection">
         <h3 class="subsection__header">Фазы спуска и подъёма</h3>
 
-        <p class="p">
-          Событие объявляется в JSX как атрибут (например, <strong>onClick={handleSave}</strong>). Если вы объявляете события мыши, имя атрибута может быть любым из поддерживаемых событий. Значением атрибута является обработчик события.
-        </p>
-
         <pre class="screen screen_post">
-&lt;div style={{border: '1px solid red'}} onMouseOver={()=>{console.log('mouse is over')}}&gt;
+&lt;div style={{border: '1px solid red'}} onMouseOver={ () => { console.log('mouse is over') }}&gt;
   Open DevTools and move your mouse cursor over here
 &lt;/div&gt;</pre>
         <p class="p">
@@ -222,16 +190,16 @@ class SaveButton extends React.Component {
         Чтобы получить доступ к объекту синтетического события, вы добавляете аргумент <strong>event</strong> функции-обработчику события.
       </p>
       <pre class="screen screen_post">
-    // Получение синтетического события обработчиком:
+// Получение синтетического события обработчиком:
 
 class Mouse extends React.Component {
   render() {
     return (
       &lt;div&gt;
-        &lt;div style={{border: '1px solid red'}} onMouseOver={((event)=&gt;{     // Определяет аргумент event
+        &lt;div style={{border: '1px solid red'}} onMouseOver={( (event) =&gt; {
           console.log('mouse is over with event')
-          console.dir(event)                                                // Обращается к объекту SyntheticEvent
-        })} &gt;                                                               // для интерактивного вывода (dir)
+          console.dir(event) })}
+        &gt;
           Open DevTools and move your mouse cursor over here
         &lt;/div&gt;
       &lt;/div&gt;
@@ -243,7 +211,7 @@ class Mouse extends React.Component {
         Как правило, в React обработчик события снабжается префиксом <strong>handle</strong>, чтобы отличить его от обычных методов класса, и именем события (например, <strong>mouseOver</strong>) или именем операции (например, <strong>save</strong>).
       </p>
       <pre class="screen screen_post">
-    // Обработчик события как метод класса: связывание в render():
+// Обработчик события как метод класса (связывание в render()):
 
 class Mouse extends React.Component {
   handleMouseOver(event) {
@@ -264,23 +232,23 @@ class Mouse extends React.Component {
 
       <div class="table">
         <div class="table__header">Некоторые атрибуты и методы интерфейса SyntheticEvent:</div>
-        <div class="table__screen">currentTarget</div>
+        <div class="table__screen">event.currentTarget</div>
         <div class="table__definition">DOMEventTarget элемента, перехватившего событие (может быть целью или родителем цели).</div>
-        <div class="table__screen">target</div>
+        <div class="table__screen">event.target</div>
         <div class="table__definition">DOMEventTarget, то есть элемент, в котором было инициировано событие.</div>
-        <div class="table__screen">nativeEvent</div>
+        <div class="table__screen">event.nativeEvent</div>
         <div class="table__definition">DOMEvent, «родной» объект события браузера.</div>
-        <div class="table__screen">preventDefault()</div>
+        <div class="table__screen">event.preventDefault()</div>
         <div class="table__definition">блокирует поведение по умолчанию (например, ссылку или кнопку отправки данных формы).</div>
-        <div class="table__screen">isDefaultPrevented()</div>
+        <div class="table__screen">event.isDefaultPrevented()</div>
         <div class="table__definition">логическое значение: true, если поведение по умолчанию было заблокировано.</div>
-        <div class="table__screen">stopPropagation()</div>
+        <div class="table__screen">event.stopPropagation()</div>
         <div class="table__definition">останавливает распространение события.</div>
-        <div class="table__screen">isPropagationStopped()</div>
+        <div class="table__screen">event.isPropagationStopped()</div>
         <div class="table__definition">логическое значение: true, если распространение было заблокировано.</div>
-        <div class="table__screen">type</div>
+        <div class="table__screen">event.type</div>
         <div class="table__definition">строковое имя.</div>
-        <div class="table__screen">persist()</div>
+        <div class="table__screen">event.persist()</div>
         <div class="table__definition">удаляет синтетическое событие из пула и разрешает сохранение ссылок на событие в пользовательском коде.</div>
         <div class="table__screen">isPersistent</div>
         <div class="table__definition"> логическое значение: true, если объект SyntheticEvent был удален из пула.</div>
@@ -298,20 +266,20 @@ class Mouse extends React.Component {
 class Content extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {counter: 0};      // Присваивает 0 счетчику в исходном состоянии
+    this.state = {counter: 0};
   }
 
   handleClick(event) {
-    this.setState({counter: ++this.state.counter})    // Увеличивает значение счетчика на 1
+    this.setState({counter: ++this.state.counter});
   }
 
   render() {
     return (
       &lt;div&gt;
         &lt;button
-        onClick={this.handleClick.bind(this)}    // Почему не this.handleClick() ??? *
-        className="btn btn-primary"&gt;             // Присоединяет слушателя события onClick к триггеру handleClick
-          Don't click me {this.state.counter} times!  // Выводит значение счетчика из состояния
+        onClick={this.handleClick.bind(this)}
+        className="btn btn-primary"&gt;
+          Don't click me {this.state.counter} times!
         &lt;/button&gt;
       &lt;/div&gt;
     );
@@ -320,19 +288,13 @@ class Content extends React.Component {
       <p class="p">
         В <strong>constructor()</strong> значение <strong>this.state</strong> равно <strong>1</strong>, поэтому счётчику нужно присвоить <strong>0</strong> перед использованием его в представлении.<br>
         Метод <strong>handleClick()</strong> присваивает состоянию <strong>counter</strong> текущее значение <strong>counter</strong>, увеличенное на <strong>1</strong>.<br>
-        * В значении атрибута <strong>onClick</strong>(в <strong>{....}</strong> ) функция не вызывается, а передаётся определение функции. При этом мы вызываем метод <strong>.bind()</strong>, чтобы использовать правильное значение <strong>this</strong>, т.к. <strong>.bind()</strong> возвращает определение функции.
-      </p>
-      <p class="p">
-        Как и в случае с <strong>onClick</strong> или <strong>onMouseOver</strong>, вы можете использовать любые события DOM, поддерживаемые React.
+        В значении атрибута <strong>onClick</strong>(в <strong>{....}</strong> ) функция не вызывается, а передаётся определение функции. При этом мы вызываем метод <strong>.bind()</strong>, чтобы использовать правильное значение <strong>this</strong>, т.к. <strong>.bind()</strong> возвращает определение функции.
       </p>
     </section>
 
     <section class="section">
       <h2 class="section__header">Передача обработчиков событий как свойств</h2>
 
-      <p class="p">
-        Инициирование события из компонента без состояния, заключается в передаче обработчика события как свойства этому компоненту без состояния и использования свойства (функции обработчика события) в компоненте без состояния (вызова функции).
-      </p>
       <pre class="screen screen_post">
 class ClickCounterButton extends React.Component {
   render() {
@@ -471,230 +433,31 @@ class Content extends React.Component {
     </section>
 
     <section class="section">
-      <h2 class="section__header">Реакция на события DOM, не поддерживаемые React</h2>
+      <h2 class="section__header">Доступ к элементам через React.createRef()</h2>
 
-      <pre class="screen screen_post">
-class Radio extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleResize = this.handleResize.bind(this);
-    let order = props.order;
-    let i=1;
-    this.state = {                           // Сохраняет стили в состоянии
-      outerStyle: this.getStyle(4, i),
-      innerStyle: this.getStyle(1, i),
-      selectedStyle: this.getStyle(2, i),
-      taggerStyle: {top: order*20, width: 25, height: 25}
-    }
+      <pre class="screen screen_pre">
+import React from 'react';
+
+function Name_1(){
+  let name_2 = React.createRef();               // В class объявляются в constructor после state
+
+  function name_3(){
+    console.log(name_2.current.value);          //-&gt; значение вводимое в input
   }
 
-  getStyle(i, m) {            // Использует функцию для создания различных стилей из ширины
-    let value = i * m;        // (которая позднее изменится) и множителя
-    return (
-      {
-        top: value,
-        bottom: value,
-        left: value,
-        right: value,
-      }
-    );
-  }
-
-  componentDidMount() {
-    window.addEventListener('resize', this.handleResize)     // Присоединяет слушателя неподдерживаемого
-  }                                                          // события к window
-
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.handleResize)  // Удаляет слушателя неподдерживаемого
-  }                                                          // события из window
-
-  handleResize(event) {                                      // Реализует специальную функцию для масштабирования
-    let w = 1 + Math.round(window.innerWidth / 300);         // переключателя на основании нового размера экрана
-    this.setState({
-      taggerStyle: {top: this.props.order*w*10, width: w*10, height: w*10},
-      textStyle: {left: w*13, fontSize: 7*w}
-    })
-  } 
-
-  render() {
-    return (
-      &lt;div&gt;
-        &lt;div className="radio-tagger" style={this.state.taggerStyle}&gt;
-          &lt;input type="radio" name={this.props.name} id={this.props.id}&gt;
-          &lt;/input&gt;
-          &lt;label htmlFor={this.props.id}&gt;
-            &lt;div className="radio-text" style={this.state.textStyle}&gt;
-              {this.props.label}
-            &lt;/div&gt;
-            &lt;div className="radio-outer" style={this.state.outerStyle}&gt;
-              &lt;div className="radio-inner" style={this.state.innerStyle}&gt;
-                &lt;div className="radio-selected" style={this.state.selectedStyle}&gt;
-                &lt;/div&gt;
-              &lt;/div&gt;
-            &lt;/div&gt;
-          &lt;/label&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-    );
-  }
-}</pre>
-      <p class="p">
-        Слушатели события <strong>resize</strong> добавляются к window в <strong>componentDidMount()</strong>, а затем те же слушатели удаляются в <strong>componentWillUnmount()</strong>, чтобы после удаления компонента из DOM не оставалось ничего лишнего.
-      </p>
-      <p class="p">
-        Вспомогательная функция <strong>getStyle()</strong> абстрагирует часть стилей, потому что в CSS встречаются повторения (top, bottom, left и right), но с разными значениями, зависящими от ширины окна. Соответственно, <strong>getStyle()</strong> получает значение и множитель m и возвращает значение в пикселах (числа в CSS-коде React интерпретируются как пикселы).
-      </p>
-    </section>
-
-    ---------------------------------------------------------------------------------------------------------------------------
-    ---------------------------------------------------------------------------------------------------------------------------
-
-    <section class="section">
-      <h2 class="section__header">Прежний контент</h2>
-
-      <div class="subsection">
-        <h3 class="subsection__header">События SyntheticEvent</h3>
-
-        <p class="paragraph">
-          В React значение <strong>this</strong> не относится к элементу, который активировал событие<br>
-          Нужно явно указывать связь с помощью метода <strong>.bind()</strong>
-        </p>
-        <pre class="screen screen_post">
-  // счётчик кликов
-
-class Counter extends React.Component {
-  render() {
-    var textStyle = {
-      ...
-    };
-        
-    return (
-      &lt;div style={textStyle}&gt;
-        {this.props.display}
-      &lt;/div&gt;
-    );
-  }
-}
-        
-class CounterParent extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      count: 0
-    };
-
-    this.increase = this.increase.bind(this);   // в этом примере this относится к CounterParent
-  }
-        
-  increase(e) {                                 // События передают обработчику аргументы
-    var currentCount = this.state.count;        // событий, назовём e
-
-    if (e.shiftKey) {                           // shiftKey - свойство события SyntheticEvent
-      currentCount += 10;                       // при использовании мыши
-    } else {
-      currentCount += 1;
-    }
-
-    this.setState(
-      {count: currentCount}
-    );
-  }
-        
-  render() {
-    var backgroundStyle = {
-      ...
-    };
-        
-    var buttonStyle = {
-      ...
-    };
-        
-    return (
-      &lt;div style={backgroundStyle}&gt;
-        &lt;Counter display={this.state.count} /&gt;
-        &lt;button onClick={this.increase} style={buttonStyle}&gt;+&lt;/button&gt;
-      &lt;/div&gt;
-    );
-  }
-}
-        
-ReactDOM.render(
-  &lt;div&gt;
-    &lt;CounterParent /&gt;
-  &lt;/div&gt;,
-  document.querySelector("#container")
-);</pre>
-        <p class="paragraph">
-          &bull; Слушатель событий нельзя повесить на компонент, ибо компонент возвращает HTML-элемент<br>
-          &bull; Нельзя напрямую прослушивать события компонета. Компонент это обёртка для элементов DOM<br>
-          &bull; В React мы имеем дело с SyntheticEvent, а не обращаемся к событиям DOM<br>
-          &bull; React никогда напрямую не прикрепляет обработчики событий к элементам DOM. Он использует один обработчик событий в корне документа, который отвечает за прослушку всех событий и при необходимости вызывает соответствующий обработчик событий
-        </p>
-
-        <p class="paragraph">
-          Мы можем использовать обработчик событий как свойство и передать его компоненту. Внутри компонента мы можем затем назначить событие элементу DOM и присвоить обработчику события значение переданного свойства
-        </p>
-        <pre class="screen screen_post">
-// вариант:
-
-...
-import PlusButton from './PlusButton';
-...
-render() {
-  return(
-    &lt;div&gt;
-      &lt;Counter display={this.state.count} /&gt;
-      &lt;PlusButton clickHandler={this.increase} /&gt;     // onClick повесить на PlusButton не получится
-    &lt;/div&gt;
+  return (
+    &lt;&gt;
+      &lt;input onClick={name_3}  ref={name_2} /&gt;
+    &lt;/&gt;
   );
-}
-...
-
-// PlusButton.js
-
-...
-class PlusButton extends React.Component {
-  render() {
-    return(
-      &lt;button onClick={this.props.clickHandler}&gt;
-        +
-      &lt;/button&gt;
-    );
-  }
-}
-...</pre>
-        <p class="paragraph">
-          &bull; В этом примере создаём свойство <strong>clickHandler</strong>, значение которого - обработчик события <strong>increase</strong><br>
-          &bull; В элементе <strong>button</strong> указываем событие <strong>onClick</strong> и присваиваем его значение свойству <strong>clickHandler</strong><br>
-          &bull; Во время выполнения свойство обрабатывается как функция <strong>increase</strong> , а нажатие кнопки «плюс» гарантирует вызов функции <strong>increase</strong>. Так наша проблема решается, позволяя компоненту участвовать во всем этом событии
-        </p>
-      </div>
-      <div class="subsection">
-        <h3 class="subsection__header">Стандартные события DOM</h3>
-
-        <p class="paragraph">Не все события DOM имеют
-          эквивалентные события SyntheticEvent</p>
-        <pre class="screen screen_pre">
-class Name_1 extends React.Component {                   // компонент Name_1 определяет событие event_1
-  ...
-  name_2(e) {
-    action_2;
-  }
-
-  componentDidMount() {                                  // начинаем обрабатывать по методу componentDidMount(),
-    window.addEventListener("event_1", this.name_2);     // который автоматически вызывается при визуализации
-  }                                                      // компонента
-
-  componentWillMount() {                                 // требуется удалить слушатель событий,
-    window.removeEventListener("event_1", this.name_2);  // если компонент будет уничтожен
-  }
-
-  render() {
-    ...
-  }
 }</pre>
-      </div>
+      <p class="p">
+        При помощи <strong>name.current.</strong> можно задать содержимое, но лучше делать через <strong>state</strong> (useState).
+      </p>
+      <pre class="screen screen_pre">
+....
+name_3.current.innerHtml = name_2.current.value;
+....</pre>
     </section>
   </main>
 </body>

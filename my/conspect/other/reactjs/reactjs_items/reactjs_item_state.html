@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>ReactJS</title>
+  <title>State</title>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="../../../styles/style.css">
 </head>
@@ -10,56 +10,125 @@
 <body class="body">
   <header class="header">
     <a class="header__button"  href="../../other.html">&uArr;</a>
-    <h1 class="header__title">Работа с состояниями</h1>
+    <h1 class="header__title">State</h1>
   </header>
 
   <main class="main">
     <section class="section">
-      <h2 class="section__header">Назначение исходного состояния</h2>
+      <h2 class="section__header">Для функционального стиля</h2>
 
       <pre class="screen screen_pre">
-class Name_1 extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      state_name_1: state_value_1;
-      state_name_2: state_value_2;
-      ....
-      state_name_n: state_value_n;
-    };
+import React from 'react';
+import {useState} from 'react';
+
+function Name_1() {
+
+  const [count, setCount] = useState(0);           // 1*
+  const [comment, setComment] = useState([]);
+
+  let refName_1 = React.createRef();
+
+  let handler_1 = () =&gt; {
+    let currentCount = count;
+    currentCount++;
+    setCount(currentCount);
   }
 
-  render() {
-    const {name_1, name_2, ... name_n} = this.props;                      // Деструктуризация,
-    const {state_name_1, state_name_2, ... state_name_n} = this.state;    // чтобы использовать
-    return(                                                               // имя без this.
-      &lt;React.Fragment&gt;
-      .... {name_1} .... {state_name_1} ....
-      .... {name_2} .... {state_name_2} ....
-      ....
-      .... {name_n} .... {state_name_n} ....
-    &lt;/React.Fragment&gt;
+  let handler_2 = () =&gt; {
+    let commentValue = refName_1.current.value;
+    let comments = [...comment, commentValue];
+    setComment(comments);
+    refName_1.current.value = "";                 // Очистка ref после работы
+  }
+
+  return(
+    &lt;&gt;
+      &lt;button onClick={handler_1}&gt;Click me!&lt;/button&gt;
+      &lt;div&gt;
+        {count}
+      &lt;/div&gt;
+      &lt;textarea ref={refName_1}&gt;&lt;/textarea&gt;
+      &lt;button onClick={handler_2} &gt;Add comment&lt;/button&gt;
+      &lt;div&gt;
+        &lt;ul&gt;
+          {comment.map((item, index) =&gt; &lt;li key={index.toString()}&gt;{item}&lt;/li&gt;)}
+        &lt;/ul&gt;
+      &lt;/div&gt;
+    &lt;/&gt;
+  );
+}
+
+export default Name_1;</pre>
+      <p class="p">
+        1*:<br>
+        - <strong>count</strong> - какой state хотим получить.<br>
+        - <strong>setCount</strong> - метод устанавливающий этот count.<br>
+        - Внутри скобок <strong>useState()</strong> начальное значение.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2 class="section__header">Для класса</h2>
+
+      <pre class="screen screen_pre">
+import React from 'react';
+
+class Name_1 extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      count: 0,
+      comments: []
+    };
+    this.refName_1 = React.createRef();
+  }
+
+  handler_1 = () => {
+    let currentCount = this.state.count;
+    currentCount++;
+    this.setState({
+      count: currentCount;
+    })
+  }
+
+  handler_2 = () => {
+    let comment = this.refName_1.curent.value;     // В свойстве current лежит элемент refа
+    let comments = this.state.comment;
+    comments.push(comment);
+    this.setState({
+      "comments": comments, 
+    });
+    this.refName_1.curent.value = "";
+  }
+
+  render(){
+    return(
+      &lt;&gt;
+        &lt;button onClick={this.handler_1}&gt;Click me!&lt;/button&gt;
+        &lt;div&gt;
+          {this.state.count}
+        &lt;/div&gt;
+        &lt;textarea ref={this.refName_1}&gt;&lt;/textarea&gt;
+        &lt;button onClick={this.handler_2} &gt;Add comment&lt;/button&gt;
+        &lt;div&gt;
+          &lt;ul&gt;
+            {this.state.comment.map((item, index) =&gt; &lt;li key={index.toString()}&gt;{item}&lt;/li&gt;)}
+          &lt;/ul&gt;
+        &lt;/div&gt;
+      &lt;/&gt;
     );
   }
 }
-
-ReactDOM.render(&lt;Name_1 name_1="value_1" name_2="value_2" .... name_n="value_n" /&gt;, document.querySelector('css_selector_1'));</pre>
+  
+export default Name_1;</pre>
       <p class="p">
-        &bull; При работе с состоянием необходимо обращаться к нему по имени свойства(ключа/атрибута) объекта <strong>this.state</strong>.<br>
-        &bull; Изменение <strong>this.state</strong> приводит к изменению представления (рендерингу).<br>
         &bull; <strong>this.state</strong> похож на <strong>this.props</strong>, оба являются атрибутами класса компонента, только первый изменяем, а второй нет.<br>
         &bull; Свойства передаются из родительских компонентов, а состояние определяется в самом компоненте.<br>
         &bull; Изменить свойства можно только из родителя.<br>
         &bull; Свойства определяются при создании и остаются статическими, состояние задаётся и обновляется объектом.<br>
         &bull; Значение <strong>this.state</strong> должно быть объектом.<br>
-        &bull; Конструктор вызывается при создании экземпляра класса.<br>
-        &bull; При создании метода <strong>constructor()</strong> в него почти всегда должен включаться вызов <strong>super()</strong>, без которого конструктор родителя не будет выполнен. С другой стороны, если вы не определите метод <strong>constructor()</strong>, то вызов <strong>super()</strong> будет предполагаться по умолчанию.<br>
         &bull; Метод <strong>constructor()</strong> вызывается всего один раз, при создании элемента React на базе класса. Таким образом, задать состояние напрямую с использованием <strong>this.state</strong> можно только один раз — в методе <strong>constructor()</strong>.
       </p>
-    </section>
-
-    <section class="section">
-      <h2 class="section__header">Обновление состояния</h2>
 
       <p class="p">
         &bull; Состояние изменяется методом класса <strong>this.setState(data, callback)</strong>.<br>
@@ -69,102 +138,9 @@ ReactDOM.render(&lt;Name_1 name_1="value_1" name_2="value_2" .... name_n="value_
         &bull; <strong>setState()</strong> обновляет только те состояния, которые ему были переданы (частично или со слиянием, но без полной замены). Он не заменяет весь объект <strong>state</strong> каждый раз.
       </p>
 
-      <pre class="screen screen_pre">
-class Name_1 extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      state_name_1: state_value_1;
-      state_name_2: state_value_2;
-      ....
-      state_name_n: state_value_n;
-    };
-    this.name_2 = this.name_2.bind(this);
-  };
-
-  name_2() {
-    this.setState({
-      state_name_1: state_value_x;
-    })
-  }
-
-  render() {
-    return (
-      &lt;tagName event_1={this.name_2} &gt;     // name_2 без ()
-        ....
-      &lt;/tagName&gt;
-    );
-  };
-}
-
-    // Если счётчик:
-
-name_2() {
-  this.setState(state => ({
-    state_name_1: ++state_value_1;
-  })
-}</pre>
       <p class="p">
-        Вызов <strong>setState()</strong> инициирует выполнение <strong>render()</strong>.
-      </p>
-    </section>
-
-    <section class="section">
-      <h2 class="section__header">Компонент без состояния (stateless)</h2>
-
-      <p class="paragraph">
-        Не содержит состояний, других компонентов или других событий/методов жизненного цикла React.<br>
-        Цель компонентов без состояния — просто рендеринг представления.
-      </p>
-
-      <pre class="screen screen_pre">
-class Name_1 extends React.Component {
-  render() {
-    return(
-      &lt;tag_name_1 {...this.props}&gt;
-        Hello {this.props.frameworkName} world!!!
-      &lt;/tag_name_1&gt;
-    );
-  }
-}</pre>
-
-      <p class="paragraph">
-        Чтобы у компонентов без состояния был более компактный синтаксис, React использует функциональный стиль: вы создаете функцию, которая получает свойства в аргументе и возвращает представление.<br>
-        Компонент без состояния лучше создавать не в виде класса, чтобы сложнее было добавить в будущем состояние</p>
-      <pre class="screen screen_pre">
-const Name_1 = function(props) {
-  return(
-    &lt;h1 {...props}&gt;
-      Hello {props.frameworkName} world!!!
-    &lt;/h1&gt;
-  );
-}</pre>
-
-      <p class="paragraph">Также для компонентов без состояния можно использовать стрелочные функции</p>
-      <pre class="screen screen_pre">
-const Name_1 = (props) => {
-  return(
-    &lt;h1 {...props}&gt;
-      Hello {props.frameworkName} world!!!
-    &lt;/h1&gt;
-  );
-}</pre>
-      <pre class="screen screen_post">
-const Link = (props) =&gt; {
-  return (
-    &lt;a href={props.href} target="_blank" className="btn btn-primary"&gt;
-      {props.text}
-    &lt;/a&gt;
-  );
-}
-
-ReactDOM.render(
-  &lt;Link text='Text' href='https://www. .... .com/....'/&gt;,
-  document.getElementById('content')
-);</pre>
-      <p class="paragraph">
-        Компоненты без состояния должны быть простыми: ни состояния, ни методов.<br>
-        В частности, в них не должно быть вызовов внешних методов или функций, потому что их результаты могут нарушить предсказуемость (и концепцию чистоты).
+        Вызов <strong>setState()</strong> инициирует выполнение <strong>render()</strong>.<br>
+        Чтобы сработал <strong>this.</strong> у <strong>this.setState</strong> без <strong>bind</strong>, можно просто записать метод стрелочной функцией.
       </p>
     </section>
   </main>

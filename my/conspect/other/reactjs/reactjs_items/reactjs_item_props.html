@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>ReactJS</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../../../styles/style.css">
+</head>
+
+<body class="body">
+  <header class="header">
+    <a class="header__button"  href="../other.html">&uArr;</a>
+    <h1 class="header__title">Properties</h1>
+  </header>
+
+  <main class="main">
+    <section class="section">
+      <h2 class="section__header">props</h2>
+
+      <p class="p">
+        Задаются при вызове компонента и используются для изменения генерируемых элементов.<br>
+        <strong>props</strong> не изменяемые.<br>
+        Атрибуты задаваемые компоненту при его вызове, попадают внутрь него и называются <strong>props</strong>, и доступ к его значению получается через <strong>this.props.атрибут</strong><br>
+        Имена свойств соответствующие именам стандартных атрибутов HTML-элементов рендерятся, а нестандартные нет.<br>
+        Чтобы отрендерить свойство с нестандартным именем, нужно записать его <strong>data-"property_1"</strong>, где <strong>property</strong> - не стандартное имя свойства.
+      </p>
+      <pre class="screen screen_pre">
+function Name_1(props) {
+  return (
+    &lt;React.Fragment&gt;
+      &lt;tagName_11&gt; {props.name_1} &lt;/tagName_11&gt;
+      &lt;tagName_12&gt; {props.name_2} &lt;/tagName_12&gt;
+      ....
+      &lt;tagName_1n&gt; {props.name_n} &lt;/tagName_1n&gt;
+    &lt;/React.Fragment&gt;
+  );
+}
+
+-------------------------------------------------------------------------
+
+class Name_1 extends React.Component {
+  constructor(props){
+    super(props);
+  }
+
+  render() {
+    return (
+      &lt;tagName_1&gt;
+        {this.props.name_1}
+      &lt;/tagName_1&gt;
+      &lt;Name_2 name_22="{this.props.name_2}" /&gt;
+    );
+  }
+}
+
+class Name_2 extends React.Component {
+  constructor(props){
+    super(props);
+  }
+
+  render() {
+    return (
+      &lt;tagName_2&gt;
+        {this.props.name_22}
+      &lt;/tagName_2&gt;
+    );
+  }
+}
+
+------------------------------------------------------------------------
+
+ReactDOM.render(&lt;Name_1 name_1="value_1" name_2="value_2" .... name_n="value_n" /&gt;, document.querySelector('css_selector_1'));</pre>
+    </section>
+
+    <section class="section">
+      <h2 class="section__header">props в отдельном объекте</h2>
+
+      <pre class="screen screen_pre">
+import React from 'react';
+import Name_1 from './Name_1.js'
+
+const appData = {
+  name_11: "value_1",
+  name_12: "value_2",
+  ....
+  name_1n: "value_n"
+}
+
+function App() {
+  return (
+    &lt;Name_1 data={appData} /&gt;
+  );
+}
+
+export default App;</pre>
+      <pre class="screen screen_pre">
+import React from 'react';
+
+function Name_1(props) {
+  return (
+    &lt;tagName_1&gt;
+      {props.data.name_11}
+    &lt;/tagName_1&gt;
+    &lt;tagName_2&gt;
+      {props.data.name_12}
+    &lt;/tagName_2&gt;
+  );
+}
+
+export default Name_1;</pre>
+    </section>
+
+    <section class="section">
+      <h2 class="section__header">props в массиве</h2>
+
+      <pre class="screen screen_pre">
+import React from 'react';
+import Name_1 from './Name_1.js'
+
+const appData = {
+  name_11: "value_1",
+  nav: [
+    {"link": "nav1", "text": "My link 1"},
+    {"link": "nav2", "text": "My link 2"},
+    {"link": "nav3", "text": "My link 3"}
+  ]
+}
+
+function App() {
+  return (
+    &lt;Name_1 data={appData} /&gt;
+  );
+}
+
+export default App;</pre>
+      <pre class="screen screen_pre">
+import React from 'react';
+import Nav from './Nav.js'
+
+function Name_1(props) {
+  return (
+    &lt;tagName_1&gt;
+      {props.data.name_11}
+    &lt;/tagName_1&gt;
+    &lt;Nav navdata={props.data.nav} /&gt;
+  );
+}
+
+export default Name_1;</pre>
+      <pre class="screen screen_pre">
+import React from 'react';
+
+function Nav(props) {
+  let data = props.navdata;
+  const listItem = data.map(item => &lt;li key={item.link}&gt;&lt;a href={item.link}&gt;{item.text}&lt;/a&gt;&lt;/li&gt;)
+  return (
+    &lt;nav&gt;
+      &lt;ul&gt;
+        {listItem}
+      &lt;/ul&gt;
+    &lt;/nav&gt;
+  );
+}
+
+export default Nav;</pre>
+      <p class="p">
+        У динамически генерируемых элементов должен быть свой уникальный <strong>key={....}</strong>.
+      </p>
+    </section>
+  </main>
+</body>

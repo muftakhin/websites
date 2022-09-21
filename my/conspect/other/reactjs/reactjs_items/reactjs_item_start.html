@@ -34,13 +34,31 @@ import ReactDOM from 'react-dom';
 
 const Name_1 = () => {
   return (
-    <React.Fragment>
+    &lt;React.Fragment&gt;
       ....
-    </React.Fragment>
+    &lt;/React.Fragment&gt;
   )
 }
 
-ReactDOM.render(<Name_1/>, document.getElementById('idName'));</pre>
+ReactDOM.render(&lt;Name_1/&gt;, document.getElementById('idName'));</pre>
+      <pre class="screen screen_pre">
+    // index.js
+
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App.js';
+import reportWebVitals from './reportWebVitals';
+
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  &lt;React.StrictMode&gt;
+    &lt;App /&gt;
+  &lt;/React.StrictMode&gt;
+);
+
+reportWebVitals();</pre>
     </section>
   </main>
 </body>

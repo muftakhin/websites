@@ -20,53 +20,6 @@
       <div class="subsection">
         <h3 class="subsection__header">Рекомендуемый способ работы с формами в React</h3>
 
-        <pre class="screen screen_post">
-      /* если вы реализуете поле &lt;input&gt; в HTML, React всегда будет синхронизировать render()
-        с реальной моделью DOM.React не позволит пользователю изменить значение. */
-
-render() {
-  return (
-    &lt;input type="text" name="title" value="Mr." /&gt;
-  );
-}
-
-      // Сделаем значение поля ввода динамическим:
-
-render() {
-  return (
-    &lt;input type="text" name="title" value={this.state.title} /&gt;
-  );
-}</pre>
-        <pre class="screen screen_post">
-      // Перехват изменений в onChange
-
-handleChange(event) {
-  this.setState({title: event.target.value})
-}
-
-render() {
-  return (
-    &lt;input type="text" name="title" value={this.state.title}
-    onChange={this.handleChange.bind(this)}/&gt;
-  );
-}</pre>
-        <p class="p">
-          Лучше всего принять следующие меры для синхронизации внутреннего состояния с представлением:<br>
-          1. Определить элементы в <strong>render()</strong> с использованием значений из <strong>state</strong>.<br>
-          2. Сохранить изменение в элементе формы по мере их возникновения с использованием <strong>onChange</strong><br>
-          3. Обновить внутреннее состояние в обработчике состояния<br>
-          4. Новые значения сохраняются в <strong>state</strong>, после чего представление обновляется новым вызовом <strong>render()</strong>.
-        </p>
-
-        <p class="p">
-          Такой подход называется односторонним связыванием, потому что состояние изменяет представления — и всё. В обратную сторону это не работает: только одностороннее движение от состояния к представлению. При одностороннем связывании библиотека не будет автоматически обновлять состояние (или модель). Одно из главных преимуществ одностороннего связывания заключается в том, что оно снижает сложность при работе с большими приложениями, в которых множественные представления могут неявно обновлять множественные состояния (модели данных) и наоборот.<br>
-          И наоборот, двустороннее связывание позволяет представлениям автоматически изменять состояния без явной реализации процесса.  
-        </p>
-
-        <p class="p">
-          Сначала рассмотрим рекомендованный способ работы с формами. Он называется использованием управляемых компонентов и гарантирует, что внутреннее состояние компонентов всегда синхронизировано с представлением.
-        </p>
-
         <div class="subsubsection">
           <h4 class="subsubsection__header">Определение формы и ее событий в React</h4>
 
@@ -101,6 +54,10 @@ render() {
           <h4 class="subsubsection__header">Элемент &lt;INPUT&gt;</h4>
 
           <p class="p">
+            Получить значение <strong>input</strong> можно обратившись к нему через <strong>e.target.value</strong> (вместо <strong>e</strong> можно написать произвольное слово). При этом <strong>e</strong> нужно указать как параметр функции, в которой будем обращаться к <strong>e.target.value</strong>.<br>
+            <strong>e.target</strong> - элемент, на котором произошло событие.
+          </p>
+          <p class="p">
             Элемент <strong>&lt;input&gt;</strong> рендерит различные поля, используя разные значения для атрибута <strong>type</strong>:<br>
             - <strong>text</strong> — простое поле для ввода текста<br>
             - <strong>password</strong> - поле для ввода замаскированного текста (для сохранения конфиденциальности).<br>
@@ -109,138 +66,8 @@ render() {
             - <strong>button</strong> - элемент формы «кнопка».<br>
             Все эти элементы типа <strong>&lt;input&gt;</strong>, кроме флажков и переключателей, используются прежде всего для работы с value как интерактивным/изменяемым свойством элемента.
           </p>
-          <pre class="screen screen_post">
-      // для ввода адреса электронной почты может использовать
-      // состояние email и обработчик события onChange:
-
-&lt;input
-type="text"
-name="email"
-value={this.state.email}
-onChange={this.handleEmailChange}/&gt;</pre>
           <p class="p">
             Среди полей ввода есть два исключения, у которых <strong>value</strong> не является основным изменяемым атрибутом, — это типы <strong>checkbox</strong> и <strong>radio</strong>. Они используют значение <strong>checked</strong>, потому что эти два типа имеют одно значение на элемент HTML, а следовательно, значение не изменяется — но изменяется состояние <strong>checked/selected</strong>.
-          </p>
-
-          <pre class="screen screen_post">
-class Content extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleRadio = this.handleRadio.bind(this);
-      ....
-    this.state = {
-      ....
-      radioGroup: {
-        angular: false,
-        react: true,              // Назначает установленный переключатель по умолчанию в состоянии
-        polymer: false
-      }
-    }
-  }
-
-   handleRadio(event) {
-    let obj = {};                 // Стереть другие переключатели
-    obj[event.target.value] = event.target.checked;  // true  //  Использует атрибут target.checked для получения
-    this.setState({radioGroup: obj});                         // логического значения, показывающего,
-  }                                                           // выбран ли данный переключатель.
-  ....
-  render() {
-    return (
-      &lt;form&gt;
-        &lt;input type="radio"
-        name="radioGroup"
-        value='angular'                             // Жёстко фиксируется и изменять не надо.
-        checked={this.state.radioGroup['angular']}  // Использует атрибут из объекта state или любого атрибута state.
-        onChange={this.handleRadio}/&gt;               // Использует тот же обработчик события onChange, потому что
-                                                    // значение переключателя можно получить из target.value.
-
-        &lt;input type="radio"
-        name="radioGroup"
-        value='react'
-        checked={this.state.radioGroup['react']}
-        onChange={this.handleRadio}/&gt;
-
-        &lt;input type="radio"
-        name="radioGroup"
-        value='polymer'
-        checked={this.state.radioGroup['polymer']}
-        onChange={this.handleRadio}/&gt;
-        ....
-      &lt;/form&gt;
-    );
-  }
-}</pre>
-
-          <p class="p">
-            Для флажков применяется аналогичный подход: использование атрибута <strong>checked</strong> и логические значения для состояний. Эти логические значения  могут храниться в состоянии <strong>checkboxGroup</strong>:
-          </p>
-          <pre class="screen screen_post">
-class Content extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleCheckbox = this.handleCheckbox.bind(this);
-    // ...
-    this.state = {
-    // ...
-    checkboxGroup: {
-      node: false,
-      react: true,
-      express: false,
-      mongodb: false
-    }
-  }
-}</pre>
-          <p class="p">
-            Затем обработчик события (который связывается в конструкторе) получает текущие значения, добавляет <strong>true</strong> или <strong>false</strong> из <strong>event.target.value</strong> и задает состояние:
-          </p>
-          <pre class="screen screen_post">
-handleCheckbox(event) {
-  let obj = Object.assign(this.state.checkboxGroup);
-  obj[event.target.value] = event.target.checked;    // true или false;
-  this.setState({checkboxGroup: obj});
-}</pre>
-          <p class="p">
-            В присваивании из состояния в <strong>radio</strong> нет необходимости, потому что переключатели могут иметь только одно выбранное значение. А это означает, что вы можете использовать пустой объект. С флажками дело обстоит иначе: в группе может быть выбрано несколько значений, поэтому нужна операция слияния, а не замены.
-          </p>
-          <p class="p">
-            В JavaScript объекты передаются и присваиваются по ссылке. Таким образом, в команде <strong>obj = this.state.checkboxGroup</strong> <strong>obj</strong> - в действительности является состоянием. Напомню, что состояние не должно изменяться напрямую. Для предотвращения любых потенциальных конфликтов лучше присваивать значение вызовом <strong>Object.assign()</strong>. Этот прием также называется клонированием.
-          </p>
-          <p class="p">
-            Другой, менее эффективный и менее надежный способ присваивания основан на присваивании по значению с использованием JSON:
-          </p>
-          <pre class="screen screen_post">
-clonedData = JSON.parse(JSON.stringify(originalData));</pre>
-          <p class="p">
-            Если используем массивы состояний вместо объектов и вам потребовалось выполнить присваивание по значению, используйте конструкцию <strong>clonedArray = Array.from(originArray)</strong> или <strong>clonedArray = originArray.slice()</strong>.<br>
-            Обработчик события <strong>handleCheckbox()</strong> может использоваться для получения значения из <strong>event.target.value</strong>.
-          </p>
-          <pre class="screen screen_post">
-&lt;input type="checkbox"
-name="checkboxGroup"
-value='node'
-checked={this.state.checkboxGroup['node']}  // Использует состояние как значение. Это может быть атрибут объекта
-onChange={this.handleCheckbox}/&gt;            // или просто атрибут state
-
-&lt;input type="checkbox"
-name="checkboxGroup"
-value='react'
-checked={this.state.checkboxGroup['react']}
-onChange={this.handleCheckbox}/&gt;            // Использует onChange для отслеживания действий пользователя
-
-&lt;input type="checkbox"
-name="checkboxGroup"
-value='express'
-checked={this.state.checkboxGroup.express}  // Использует «точечную запись», когда ключи являются действительными
-onChange={this.handleCheckbox}/&gt;            // именами JS
-
-&lt;input type="checkbox"
-name="checkboxGroup"
-value='mongodb'
-checked={this.state.checkboxGroup['mongodb']}
-onChange={this.handleCheckbox}/&gt;              // Выполнять связывание в элементе не нужно, потому что оно
-                                              // выполняется в конструкторе (истинно для всех флажков).</pre>
-          <p class="p">
-            При использовании флажков или переключателей можно жестко присвоить значение в каждом отдельном элементе и использовать <strong>checked</strong> как изменяемый атрибут.
           </p>
         </div>
 

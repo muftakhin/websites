@@ -46,7 +46,8 @@ setTimeout(() => {
         Промис принимает 1 аргумент ( callback-функцию ), которая принимает 2 аргумента ( 2 callback-функции ) <strong>resolve</strong> и <strong>reject</strong>.<br>
         <strong>resolve()</strong> и <strong>reject()</strong> принимают по 1 аргументу, который может быть строкой, числом, логическим выражением, массивом или объектом.<br>
         Промис становится выполненным при вызове <strong>resolve()</strong>, и отклонённым при вызове <strong>reject()</strong>.<br>
-        Промис может быть выполнен или отклонен только один раз.
+        Промис может быть выполнен или отклонен только один раз.<br>
+        Если операция не может быть выполнена неверно, оставляем только <strong>resolve</strong>.
       </p>
       <pre class="screen screen_pre">
 const name_1 = new Promise((resolve, reject) => {

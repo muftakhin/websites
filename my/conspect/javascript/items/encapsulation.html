@@ -61,12 +61,18 @@ class Name_1 {
   set name_11(param_n11) {
     expression_n11;           // with this._name_11 = ....
   }
-}</pre>
+}
+
+  // Обращение:
+
+const name_1 = new Name_1;
+let name_g = name_1.name_11;
+name_1.name_11 = value_11;</pre>
       <p class="p">
         Пока не во всех браузерах:<br>
         - В методах можно использовать стрелочные функции.<br>
-        - З адавать свойства вне конструктора.<br>
-        - <strong>#name_1</strong> - задание приватного свойства.
+        - Задавать свойства вне конструктора.<br>
+        - <strong>_name_1</strong> - задание приватного свойства.
       </p>
     </section>
   </main>

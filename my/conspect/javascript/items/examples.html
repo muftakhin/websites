@@ -376,5 +376,103 @@ next.addEventListener('click', () =&gt; {
 });</pre>
       </div>
     </section>
+
+<pre class="screen screen_post">
+  // Слайдер с использованием .querySelectorAll()
+
+
+let btn_prev = document.querySelectorAll('.gallery__btn_prev');
+let btn_next = document.querySelectorAll('.gallery__btn_next');
+
+let images = document.querySelectorAll('.images__image');
+
+let i = 0;
+
+btn_prev.onclick = function() {
+images[i].style.display = 'none';
+i--;
+
+if(i &lt; 0) {
+  i = images.length - 1;
+}
+
+images[i].style.display = 'block';
+};
+
+btn_next.onclick = function() {
+images[i].style.display = 'none';
+i++;
+
+if(i &gt; images.length) {
+  i = 0;
+}
+
+images[i].style.display = 'block';
+};</pre>
+
+<pre class="screen screen_post">
+  // Пример всплывающего окна
+
+&lt;script&gt;
+
+let link = document.querySelector(".login-link");
+let popup = document.querySelector(".modal-login");
+let close = popup.querySelector(".modal-close");
+let form = popup.query.Selector("form");
+let login = popup.querySelector("[name=login]");
+let password = popup.querySelector("name=password");
+let storage = localStorage.getItem("login");
+
+link.addEventListener("click", function(evt){
+evt.preventDefault();
+popup.classList.add("modal-show")
+if (storage) {
+    login.value = storage;
+    password.focus();
+} else {
+    login.focus();
+}
+});
+
+close.addEventListener("click", function(evt){
+evt.preventDefault();
+popup.classList.remove("modal-show");
+popup.classList,remove("modal-error");
+});
+
+form.addEventListener("submit", function(evt) {
+if(!login.value || !password.value) {
+    evt.preventDefault();
+    popup.classList.add("modal-error");
+} else {
+    localStorage.setItem("login", login.value)
+});
+
+window.addEventListener("keydown", function(evt) {
+    if (evt.keyCode === 27) {
+        if (popup.classList.contains("modal-show")) {
+        popup.classList.remove("modal-show")
+    }
+}
+});
+
+&lt;/script&gt;
+
+  // + CSS code:
+
+&lt;style&gt;
+
+@keyframes shake {
+0%, 100% { transform: translateX(0); }
+10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+20%, 40%, 60%, 80% { transform: translateX(10px); }
+}
+
+.modal-error {
+animation-name: shake;
+animation-duration: 0,6s;
+}
+
+&lt;/style&gt;</pre>
   </main>
 </body>
